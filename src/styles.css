@@ -1,0 +1,330 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system "Reste connecté !" — pensé pour les seniors
+ *
+ * Philosophie : chaleureux, lisible, rassurant, jamais infantilisant.
+ * Palette : bleu confiance + accent orange chaleureux + vert/rouge doux pour le feedback.
+ * Typo : grande taille par défaut (18px+), excellente lisibilité.
+ * Boutons : minimum 56px de haut, espacement généreux.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-soft: var(--warning-soft);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Theme accent colors per quiz topic */
+  --color-theme-vocab: var(--theme-vocab);
+  --color-theme-vocab-soft: var(--theme-vocab-soft);
+  --color-theme-social: var(--theme-social);
+  --color-theme-social-soft: var(--theme-social-soft);
+  --color-theme-pop: var(--theme-pop);
+  --color-theme-pop-soft: var(--theme-pop-soft);
+  --color-theme-tech: var(--theme-tech);
+  --color-theme-tech-soft: var(--theme-tech-soft);
+
+  --color-rank-bronze: var(--rank-bronze);
+  --color-rank-silver: var(--rank-silver);
+  --color-rank-gold: var(--rank-gold);
+  --color-rank-platinum: var(--rank-platinum);
+  --color-rank-diamond: var(--rank-diamond);
+  --color-rank-master: var(--rank-master);
+
+  --font-sans: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Nunito", "Segoe UI", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Warm cream background, deep navy text — friendly + readable */
+  --background: oklch(0.985 0.012 85);
+  --foreground: oklch(0.22 0.05 250);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.05 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.05 250);
+
+  /* Primary: confident calming blue */
+  --primary: oklch(0.52 0.16 250);
+  --primary-foreground: oklch(0.99 0.005 85);
+  --primary-soft: oklch(0.94 0.04 250);
+
+  --secondary: oklch(0.95 0.02 250);
+  --secondary-foreground: oklch(0.22 0.05 250);
+
+  --muted: oklch(0.95 0.015 85);
+  --muted-foreground: oklch(0.45 0.03 250);
+
+  /* Accent: warm welcoming orange — used for CTAs */
+  --accent: oklch(0.72 0.16 55);
+  --accent-foreground: oklch(0.2 0.05 250);
+  --accent-soft: oklch(0.95 0.06 60);
+
+  /* Feedback colors — soft, never harsh */
+  --success: oklch(0.6 0.14 150);
+  --success-foreground: oklch(0.99 0.005 85);
+  --success-soft: oklch(0.94 0.06 150);
+
+  --warning: oklch(0.7 0.15 70);
+  --warning-foreground: oklch(0.2 0.05 250);
+  --warning-soft: oklch(0.95 0.07 70);
+
+  --destructive: oklch(0.58 0.2 25);
+  --destructive-foreground: oklch(0.99 0.005 85);
+
+  --border: oklch(0.88 0.02 250);
+  --input: oklch(0.88 0.02 250);
+  --ring: oklch(0.52 0.16 250);
+
+  /* Per-theme accent colors */
+  --theme-vocab: oklch(0.6 0.18 320); /* purple/pink — words */
+  --theme-vocab-soft: oklch(0.95 0.05 320);
+  --theme-social: oklch(0.65 0.17 200); /* teal — social */
+  --theme-social-soft: oklch(0.94 0.05 200);
+  --theme-pop: oklch(0.7 0.18 30); /* warm orange-red — pop */
+  --theme-pop-soft: oklch(0.95 0.06 30);
+  --theme-tech: oklch(0.55 0.16 150); /* green — tech */
+  --theme-tech-soft: oklch(0.94 0.05 150);
+
+  /* Rank colors (Bronze → Maître) */
+  --rank-bronze: oklch(0.55 0.12 50);
+  --rank-silver: oklch(0.7 0.02 250);
+  --rank-gold: oklch(0.75 0.15 85);
+  --rank-platinum: oklch(0.78 0.06 200);
+  --rank-diamond: oklch(0.7 0.15 220);
+  --rank-master: oklch(0.55 0.2 320);
+
+  /* Chart colors */
+  --chart-1: oklch(0.52 0.16 250);
+  --chart-2: oklch(0.72 0.16 55);
+  --chart-3: oklch(0.6 0.14 150);
+  --chart-4: oklch(0.6 0.18 320);
+  --chart-5: oklch(0.65 0.17 200);
+
+  /* Sidebar (rarely used here, kept for shadcn compatibility) */
+  --sidebar: oklch(0.98 0.012 85);
+  --sidebar-foreground: oklch(0.22 0.05 250);
+  --sidebar-primary: oklch(0.52 0.16 250);
+  --sidebar-primary-foreground: oklch(0.99 0.005 85);
+  --sidebar-accent: oklch(0.95 0.02 250);
+  --sidebar-accent-foreground: oklch(0.22 0.05 250);
+  --sidebar-border: oklch(0.88 0.02 250);
+  --sidebar-ring: oklch(0.52 0.16 250);
+
+  /* Elegant warm shadow */
+  --shadow-soft: 0 4px 16px -4px oklch(0.5 0.1 250 / 0.15);
+  --shadow-card: 0 8px 24px -8px oklch(0.5 0.1 250 / 0.18);
+}
+
+.dark {
+  --background: oklch(0.18 0.03 250);
+  --foreground: oklch(0.97 0.015 85);
+
+  --card: oklch(0.24 0.04 250);
+  --card-foreground: oklch(0.97 0.015 85);
+  --popover: oklch(0.24 0.04 250);
+  --popover-foreground: oklch(0.97 0.015 85);
+
+  --primary: oklch(0.72 0.16 240);
+  --primary-foreground: oklch(0.18 0.03 250);
+  --primary-soft: oklch(0.32 0.08 250);
+
+  --secondary: oklch(0.3 0.04 250);
+  --secondary-foreground: oklch(0.97 0.015 85);
+
+  --muted: oklch(0.3 0.04 250);
+  --muted-foreground: oklch(0.78 0.03 85);
+
+  --accent: oklch(0.78 0.16 60);
+  --accent-foreground: oklch(0.18 0.03 250);
+  --accent-soft: oklch(0.35 0.1 60);
+
+  --success: oklch(0.7 0.16 150);
+  --success-foreground: oklch(0.18 0.03 250);
+  --success-soft: oklch(0.3 0.08 150);
+
+  --warning: oklch(0.78 0.15 70);
+  --warning-foreground: oklch(0.18 0.03 250);
+  --warning-soft: oklch(0.35 0.1 70);
+
+  --destructive: oklch(0.7 0.2 25);
+  --destructive-foreground: oklch(0.18 0.03 250);
+
+  --border: oklch(0.35 0.04 250);
+  --input: oklch(0.35 0.04 250);
+  --ring: oklch(0.72 0.16 240);
+
+  --theme-vocab: oklch(0.72 0.18 320);
+  --theme-vocab-soft: oklch(0.32 0.08 320);
+  --theme-social: oklch(0.75 0.17 200);
+  --theme-social-soft: oklch(0.3 0.08 200);
+  --theme-pop: oklch(0.78 0.18 30);
+  --theme-pop-soft: oklch(0.35 0.1 30);
+  --theme-tech: oklch(0.7 0.16 150);
+  --theme-tech-soft: oklch(0.3 0.08 150);
+
+  --rank-bronze: oklch(0.65 0.12 50);
+  --rank-silver: oklch(0.8 0.02 250);
+  --rank-gold: oklch(0.82 0.15 85);
+  --rank-platinum: oklch(0.85 0.06 200);
+  --rank-diamond: oklch(0.78 0.15 220);
+  --rank-master: oklch(0.7 0.2 320);
+
+  --shadow-soft: 0 4px 16px -4px oklch(0 0 0 / 0.4);
+  --shadow-card: 0 8px 24px -8px oklch(0 0 0 / 0.5);
+}
+
+/* High contrast mode — toggled via .high-contrast class on <html> */
+.high-contrast {
+  --foreground: oklch(0.1 0 0);
+  --background: oklch(1 0 0);
+  --primary: oklch(0.35 0.2 250);
+  --border: oklch(0.3 0 0);
+  --muted-foreground: oklch(0.25 0 0);
+}
+.dark.high-contrast {
+  --foreground: oklch(1 0 0);
+  --background: oklch(0.05 0 0);
+  --primary: oklch(0.85 0.15 240);
+  --border: oklch(0.7 0 0);
+  --muted-foreground: oklch(0.85 0 0);
+}
+
+/* Font size preference — applied on <html> */
+html.font-normal {
+  font-size: 16px;
+}
+html.font-large {
+  font-size: 18px;
+}
+html.font-xlarge {
+  font-size: 21px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  /* Smooth interactive transitions across the app */
+  a,
+  button,
+  [role="button"] {
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.25s ease,
+      opacity 0.2s ease;
+  }
+
+  /* Big focus ring for accessibility */
+  *:focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Page-level entry animations */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes soft-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: page-fade-in 0.4s ease-out both;
+}
+
+.animate-soft-rise {
+  animation: soft-rise 0.5s ease-out both;
+}
