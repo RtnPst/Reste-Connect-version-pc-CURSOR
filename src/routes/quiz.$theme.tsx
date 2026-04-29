@@ -13,12 +13,14 @@ import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare, startMusic, stopMusic } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
 import { THEMES, type ThemeKey } from "@/lib/themes";
+import { displayIndexFromOriginal, toDisplayChoices } from "@/lib/choice-order";
 
 type Question = {
   id: string;
   theme: ThemeKey;
   question: string;
   choices: string[];
+  choiceOrder: number[];
   explanation: string;
 };
 
@@ -74,7 +76,16 @@ function QuizPage() {
         return;
       }
 
-      setQuestions(data);
+      setQuestions(
+        data.map((q) => {
+          const shuffled = toDisplayChoices(q.choices);
+          return {
+            ...q,
+            choices: shuffled.choices,
+            choiceOrder: shuffled.choiceOrder,
+          };
+        }),
+      );
       setLoading(false);
     })();
 
@@ -100,12 +111,13 @@ function QuizPage() {
     async (index: number) => {
       if (selectedIndex !== null || !current) return;
       try {
-        const result = await checkAnswer(current.id, index);
+        const chosenOriginalIndex = current.choiceOrder[index] ?? index;
+        const result = await checkAnswer(current.id, chosenOriginalIndex);
         setSelectedIndex(index);
         setRevealedCorrectIndex(result.correct_index);
         setAnswers((prev) => [
           ...prev,
-          { questionId: current.id, chosen: index, correct: result.correct_index },
+          { questionId: current.id, chosen: chosenOriginalIndex, correct: result.correct_index },
         ]);
         if (result.correct) setScore((prev) => prev + 1);
         const sfxOn = profile?.sfx_enabled ?? true;
@@ -237,7 +249,10 @@ function QuizPage() {
   if (!current) return null;
 
   const isAnswered = selectedIndex !== null;
-  const isCorrect = isAnswered && selectedIndex === revealedCorrectIndex;
+  const isCorrect =
+    isAnswered &&
+    selectedIndex !== null &&
+    (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -284,7 +299,7 @@ function QuizPage() {
         <div className="grid gap-3 mb-6">
           {current.choices.map((choice, idx) => {
             const isSelected = selectedIndex === idx;
-            const isCorrectChoice = idx === revealedCorrectIndex;
+            const isCorrectChoice = (current.choiceOrder[idx] ?? idx) === revealedCorrectIndex;
 
             let className =
               "border-2 border-border bg-card hover:border-primary hover:bg-primary-soft/30";
@@ -552,7 +567,7 @@ function ResultsScreen({
                   <p className="font-bold mb-2">{q.question}</p>
                   <p className="text-base">
                     <span className="font-semibold text-success">✅ Bonne réponse :</span>{" "}
-                    {q.choices[wrong[idx].a.correct]}
+                    {q.choices[displayIndexFromOriginal(q.choiceOrder, wrong[idx].a.correct)]}
                   </p>
                   <p className="text-sm text-muted-foreground mt-2">{q.explanation}</p>
                 </div>

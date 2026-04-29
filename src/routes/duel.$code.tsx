@@ -12,11 +12,13 @@ import { checkAnswer } from "@/lib/quiz-security";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { THEMES, type ThemeKey } from "@/lib/themes";
+import { toDisplayChoices } from "@/lib/choice-order";
 
 type Question = {
   id: string;
   question: string;
   choices: string[];
+  choiceOrder: number[];
   explanation: string;
 };
 
@@ -100,7 +102,7 @@ function DuelPage() {
       setQuestions(
         ordered.map((q) => ({
           ...q,
-          choices: q.choices as unknown as string[],
+          ...toDisplayChoices(q.choices as unknown as string[]),
         })),
       );
       setLoading(false);
@@ -187,10 +189,11 @@ function DuelPage() {
 
   const choose = async (i: number) => {
     if (selectedIndex !== null) return;
-    const result = await checkAnswer(currentQ.id, i);
+    const chosenOriginalIndex = currentQ.choiceOrder[i] ?? i;
+    const result = await checkAnswer(currentQ.id, chosenOriginalIndex);
     setSelectedIndex(i);
     setRevealedCorrectIndex(result.correct_index);
-    setAnswers((a) => [...a, { chosen: i, correct: result.correct_index }]);
+    setAnswers((a) => [...a, { chosen: chosenOriginalIndex, correct: result.correct_index }]);
     stopSpeaking();
   };
 
@@ -325,7 +328,9 @@ function DuelPage() {
   // PLAYING
   if (step === "playing" && currentQ) {
     const showFeedback = selectedIndex !== null;
-    const isCorrect = selectedIndex === revealedCorrectIndex;
+    const isCorrect =
+      selectedIndex !== null &&
+      (currentQ.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
     return (
       <div className="min-h-screen bg-background">
         <AppHeader />
@@ -359,7 +364,7 @@ function DuelPage() {
 
             <div className="space-y-3">
               {currentQ.choices.map((c, i) => {
-                const isThisCorrect = i === revealedCorrectIndex;
+                const isThisCorrect = (currentQ.choiceOrder[i] ?? i) === revealedCorrectIndex;
                 const isThisSelected = i === selectedIndex;
                 let cls = "border-border hover:border-primary hover:bg-primary-soft/40";
                 if (showFeedback) {

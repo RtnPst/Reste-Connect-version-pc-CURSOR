@@ -10,12 +10,14 @@ import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { speak } from "@/lib/speech";
 import { THEMES, type ThemeKey } from "@/lib/themes";
+import { toDisplayChoices } from "@/lib/choice-order";
 
 type Q = {
   id: string;
   theme: ThemeKey;
   question: string;
   choices: string[];
+  choiceOrder: number[];
   explanation: string;
 };
 
@@ -63,7 +65,7 @@ function DailyQuestionPage() {
             id: row.id,
             theme: row.theme,
             question: row.question,
-            choices: row.choices,
+            ...toDisplayChoices(row.choices),
             explanation: row.explanation,
           });
         }
@@ -74,7 +76,8 @@ function DailyQuestionPage() {
 
   const handleSelect = async (idx: number) => {
     if (selected !== null || !question) return;
-    const result = await checkAnswer(question.id, idx);
+    const chosenOriginalIndex = question.choiceOrder[idx] ?? idx;
+    const result = await checkAnswer(question.id, chosenOriginalIndex);
     setSelected(idx);
     setRevealedCorrectIndex(result.correct_index);
     // No auto-speak — user clicks the speaker button if they want to hear the explanation
@@ -86,7 +89,9 @@ function DailyQuestionPage() {
         score: result.correct ? 1 : 0,
         total_questions: 1,
         question_ids: [question.id],
-        answers: [{ questionId: question.id, chosen: idx, correct: result.correct_index }],
+        answers: [
+          { questionId: question.id, chosen: chosenOriginalIndex, correct: result.correct_index },
+        ],
       });
     }
   };
@@ -147,7 +152,10 @@ function DailyQuestionPage() {
   }
 
   const isAnswered = selected !== null;
-  const isCorrect = isAnswered && selected === revealedCorrectIndex;
+  const isCorrect =
+    isAnswered &&
+    selected !== null &&
+    (question.choiceOrder[selected] ?? selected) === revealedCorrectIndex;
   const themeMeta = THEMES[question.theme];
 
   return (
@@ -192,7 +200,7 @@ function DailyQuestionPage() {
         <div className="grid gap-3 mb-6">
           {question.choices.map((choice, idx) => {
             const isSel = selected === idx;
-            const isCorrectChoice = idx === revealedCorrectIndex;
+            const isCorrectChoice = (question.choiceOrder[idx] ?? idx) === revealedCorrectIndex;
             let cls =
               "border-2 border-border bg-card hover:border-primary hover:bg-primary-soft/30";
             let icon: React.ReactNode = null;

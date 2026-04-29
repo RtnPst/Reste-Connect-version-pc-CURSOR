@@ -12,12 +12,14 @@ import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { isMarathonMilestone } from "@/lib/levels";
+import { shuffledOrder, toDisplayChoices } from "@/lib/choice-order";
 
 type Question = {
   id: string;
   theme: ThemeKey;
   question: string;
   choices: string[];
+  choiceOrder: number[];
   explanation: string;
 };
 
@@ -55,8 +57,17 @@ function MarathonPage() {
         setLoading(false);
         return;
       }
-      setPool(data);
-      setOrder([...Array(data.length).keys()].sort(() => Math.random() - 0.5));
+      setPool(
+        data.map((q) => {
+          const choiceData = toDisplayChoices(q.choices);
+          return {
+            ...q,
+            choices: choiceData.choices,
+            choiceOrder: choiceData.choiceOrder,
+          };
+        }),
+      );
+      setOrder(shuffledOrder(data.length));
       setLoading(false);
     })();
     return () => stopSpeaking();
@@ -69,7 +80,8 @@ function MarathonPage() {
 
   const handleSelect = async (idx: number) => {
     if (selectedIndex !== null || !current) return;
-    const result = await checkAnswer(current.id, idx);
+    const chosenOriginalIndex = current.choiceOrder[idx] ?? idx;
+    const result = await checkAnswer(current.id, chosenOriginalIndex);
     setSelectedIndex(idx);
     setRevealedCorrectIndex(result.correct_index);
     const sfxOn = profile?.sfx_enabled ?? true;
@@ -99,7 +111,7 @@ function MarathonPage() {
     setRevealedCorrectIndex(null);
     // Re-mélange quand on a fait le tour
     if ((pos + 1) % order.length === 0) {
-      setOrder([...order].sort(() => Math.random() - 0.5));
+      setOrder(shuffledOrder(order.length));
     }
   };
 
@@ -138,7 +150,10 @@ function MarathonPage() {
 
   const themeMeta = THEMES[current.theme];
   const isAnswered = selectedIndex !== null;
-  const isCorrect = isAnswered && selectedIndex === revealedCorrectIndex;
+  const isCorrect =
+    isAnswered &&
+    selectedIndex !== null &&
+    (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -200,7 +215,7 @@ function MarathonPage() {
         <div className="grid gap-3 mb-6">
           {current.choices.map((choice, idx) => {
             const isSelected = selectedIndex === idx;
-            const isCorrectChoice = idx === revealedCorrectIndex;
+            const isCorrectChoice = (current.choiceOrder[idx] ?? idx) === revealedCorrectIndex;
 
             let className =
               "border-2 border-border bg-card hover:border-primary hover:bg-primary-soft/30";

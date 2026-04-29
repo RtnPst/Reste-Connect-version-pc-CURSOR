@@ -20,6 +20,7 @@ import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
 import { THEMES, type ThemeKey } from "@/lib/themes";
+import { shuffledOrder, toDisplayChoices } from "@/lib/choice-order";
 import {
   QUESTIONS_PER_LEVEL,
   PASS_PERCENTAGE,
@@ -35,6 +36,7 @@ type Question = {
   theme: ThemeKey;
   question: string;
   choices: string[];
+  choiceOrder: number[];
   explanation: string;
 };
 
@@ -94,15 +96,21 @@ function LevelPage() {
       const filteredByDifficulty = (data ?? []).filter((q) => q.difficulty === difficulty);
       const source =
         filteredByDifficulty.length >= QUESTIONS_PER_LEVEL ? filteredByDifficulty : (data ?? []);
-      const shuffled = [...source].sort(() => Math.random() - 0.5).slice(0, QUESTIONS_PER_LEVEL);
+      const shuffled = shuffledOrder(source.length)
+        .slice(0, QUESTIONS_PER_LEVEL)
+        .map((i) => source[i]);
       setQuestions(
-        shuffled.map((q) => ({
-          id: q.id,
-          theme: q.theme,
-          question: q.question,
-          choices: q.choices,
-          explanation: q.explanation,
-        })),
+        shuffled.map((q) => {
+          const choiceData = toDisplayChoices(q.choices);
+          return {
+            id: q.id,
+            theme: q.theme,
+            question: q.question,
+            choices: choiceData.choices,
+            choiceOrder: choiceData.choiceOrder,
+            explanation: q.explanation,
+          };
+        }),
       );
       setLoading(false);
     })();
@@ -121,10 +129,11 @@ function LevelPage() {
 
   const handleSelect = async (idx: number) => {
     if (selectedIndex !== null || !current) return;
-    const result = await checkAnswer(current.id, idx);
+    const chosenOriginalIndex = current.choiceOrder[idx] ?? idx;
+    const result = await checkAnswer(current.id, chosenOriginalIndex);
     setSelectedIndex(idx);
     setRevealedCorrectIndex(result.correct_index);
-    setAnswers((p) => [...p, { chosen: idx, correct: result.correct_index }]);
+    setAnswers((p) => [...p, { chosen: chosenOriginalIndex, correct: result.correct_index }]);
     const sfxOn = profile?.sfx_enabled ?? true;
     if (result.correct) playCorrect(sfxOn);
     else playWrong(sfxOn);
@@ -276,7 +285,10 @@ function LevelPage() {
 
   const themeMeta = THEMES[current.theme];
   const isAnswered = selectedIndex !== null;
-  const isCorrect = isAnswered && selectedIndex === revealedCorrectIndex;
+  const isCorrect =
+    isAnswered &&
+    selectedIndex !== null &&
+    (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -340,7 +352,7 @@ function LevelPage() {
         <div className="grid gap-3 mb-6">
           {current.choices.map((choice, idx) => {
             const isSelected = selectedIndex === idx;
-            const isCorrectChoice = idx === revealedCorrectIndex;
+            const isCorrectChoice = (current.choiceOrder[idx] ?? idx) === revealedCorrectIndex;
 
             let className =
               "border-2 border-border bg-card hover:border-primary hover:bg-primary-soft/30";
