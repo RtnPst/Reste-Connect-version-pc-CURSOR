@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system "Reste connecté !" — pensé pour les seniors
+ * Design system "Reste Connecté" — intergénérationnel et accessible
  *
  * Philosophie : chaleureux, lisible, rassurant, jamais infantilisant.
  * Palette : bleu confiance + accent orange chaleureux + vert/rouge doux pour le feedback.
@@ -75,58 +75,55 @@
 :root {
   --radius: 1rem;
 
-  /* Warm cream background, deep navy text — friendly + readable */
-  --background: oklch(0.985 0.012 85);
-  --foreground: oklch(0.22 0.05 250);
+  /* Tu captes? dark base */
+  --background: #0f172a;
+  --foreground: #f8fafc;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.05 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.05 250);
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
 
-  /* Primary: confident calming blue */
-  --primary: oklch(0.52 0.16 250);
-  --primary-foreground: oklch(0.99 0.005 85);
-  --primary-soft: oklch(0.94 0.04 250);
+  --primary: #4f46e5;
+  --primary-foreground: #f8fafc;
+  --primary-soft: #312e81;
 
-  --secondary: oklch(0.95 0.02 250);
-  --secondary-foreground: oklch(0.22 0.05 250);
+  --secondary: #7c3aed;
+  --secondary-foreground: #f8fafc;
 
-  --muted: oklch(0.95 0.015 85);
-  --muted-foreground: oklch(0.45 0.03 250);
+  --muted: #334155;
+  --muted-foreground: #cbd5e1;
 
-  /* Accent: warm welcoming orange — used for CTAs */
-  --accent: oklch(0.72 0.16 55);
-  --accent-foreground: oklch(0.2 0.05 250);
-  --accent-soft: oklch(0.95 0.06 60);
+  --accent: #f59e0b;
+  --accent-foreground: #0f172a;
+  --accent-soft: #78350f;
 
-  /* Feedback colors — soft, never harsh */
-  --success: oklch(0.6 0.14 150);
-  --success-foreground: oklch(0.99 0.005 85);
-  --success-soft: oklch(0.94 0.06 150);
+  --success: #22c55e;
+  --success-foreground: #0f172a;
+  --success-soft: #14532d;
 
-  --warning: oklch(0.7 0.15 70);
-  --warning-foreground: oklch(0.2 0.05 250);
-  --warning-soft: oklch(0.95 0.07 70);
+  --warning: #f59e0b;
+  --warning-foreground: #0f172a;
+  --warning-soft: #78350f;
 
-  --destructive: oklch(0.58 0.2 25);
-  --destructive-foreground: oklch(0.99 0.005 85);
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
 
-  --border: oklch(0.88 0.02 250);
-  --input: oklch(0.88 0.02 250);
-  --ring: oklch(0.52 0.16 250);
+  --border: #334155;
+  --input: #334155;
+  --ring: #7c3aed;
 
   /* Per-theme accent colors */
-  --theme-vocab: oklch(0.6 0.18 320); /* purple/pink — words */
-  --theme-vocab-soft: oklch(0.95 0.05 320);
-  --theme-social: oklch(0.65 0.17 200); /* teal — social */
-  --theme-social-soft: oklch(0.94 0.05 200);
-  --theme-pop: oklch(0.7 0.18 30); /* warm orange-red — pop */
-  --theme-pop-soft: oklch(0.95 0.06 30);
-  --theme-tech: oklch(0.55 0.16 150); /* green — tech */
-  --theme-tech-soft: oklch(0.94 0.05 150);
+  --theme-vocab: #7c3aed;
+  --theme-vocab-soft: #3b0764;
+  --theme-social: #4f46e5;
+  --theme-social-soft: #312e81;
+  --theme-pop: #f59e0b;
+  --theme-pop-soft: #78350f;
+  --theme-tech: #22c55e;
+  --theme-tech-soft: #14532d;
 
-  /* Rank colors (Bronze → Maître) */
+  /* Couleurs des paliers (En découverte → Maître du jeu, variables inchangées pour le thème) */
   --rank-bronze: oklch(0.55 0.12 50);
   --rank-silver: oklch(0.7 0.02 250);
   --rank-gold: oklch(0.75 0.15 85);
@@ -142,66 +139,65 @@
   --chart-5: oklch(0.65 0.17 200);
 
   /* Sidebar (rarely used here, kept for shadcn compatibility) */
-  --sidebar: oklch(0.98 0.012 85);
-  --sidebar-foreground: oklch(0.22 0.05 250);
-  --sidebar-primary: oklch(0.52 0.16 250);
-  --sidebar-primary-foreground: oklch(0.99 0.005 85);
-  --sidebar-accent: oklch(0.95 0.02 250);
-  --sidebar-accent-foreground: oklch(0.22 0.05 250);
-  --sidebar-border: oklch(0.88 0.02 250);
-  --sidebar-ring: oklch(0.52 0.16 250);
+  --sidebar: #0f172a;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #4f46e5;
+  --sidebar-primary-foreground: #f8fafc;
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-border: #334155;
+  --sidebar-ring: #7c3aed;
 
-  /* Elegant warm shadow */
-  --shadow-soft: 0 4px 16px -4px oklch(0.5 0.1 250 / 0.15);
-  --shadow-card: 0 8px 24px -8px oklch(0.5 0.1 250 / 0.18);
+  --shadow-soft: 0 6px 20px -8px rgb(2 6 23 / 45%);
+  --shadow-card: 0 12px 32px -12px rgb(2 6 23 / 55%);
 }
 
 .dark {
-  --background: oklch(0.18 0.03 250);
-  --foreground: oklch(0.97 0.015 85);
+  --background: #0f172a;
+  --foreground: #f8fafc;
 
-  --card: oklch(0.24 0.04 250);
-  --card-foreground: oklch(0.97 0.015 85);
-  --popover: oklch(0.24 0.04 250);
-  --popover-foreground: oklch(0.97 0.015 85);
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
 
-  --primary: oklch(0.72 0.16 240);
-  --primary-foreground: oklch(0.18 0.03 250);
-  --primary-soft: oklch(0.32 0.08 250);
+  --primary: #4f46e5;
+  --primary-foreground: #f8fafc;
+  --primary-soft: #312e81;
 
-  --secondary: oklch(0.3 0.04 250);
-  --secondary-foreground: oklch(0.97 0.015 85);
+  --secondary: #7c3aed;
+  --secondary-foreground: #f8fafc;
 
-  --muted: oklch(0.3 0.04 250);
-  --muted-foreground: oklch(0.78 0.03 85);
+  --muted: #334155;
+  --muted-foreground: #cbd5e1;
 
-  --accent: oklch(0.78 0.16 60);
-  --accent-foreground: oklch(0.18 0.03 250);
-  --accent-soft: oklch(0.35 0.1 60);
+  --accent: #f59e0b;
+  --accent-foreground: #0f172a;
+  --accent-soft: #78350f;
 
-  --success: oklch(0.7 0.16 150);
-  --success-foreground: oklch(0.18 0.03 250);
-  --success-soft: oklch(0.3 0.08 150);
+  --success: #22c55e;
+  --success-foreground: #0f172a;
+  --success-soft: #14532d;
 
-  --warning: oklch(0.78 0.15 70);
-  --warning-foreground: oklch(0.18 0.03 250);
-  --warning-soft: oklch(0.35 0.1 70);
+  --warning: #f59e0b;
+  --warning-foreground: #0f172a;
+  --warning-soft: #78350f;
 
-  --destructive: oklch(0.7 0.2 25);
-  --destructive-foreground: oklch(0.18 0.03 250);
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
 
-  --border: oklch(0.35 0.04 250);
-  --input: oklch(0.35 0.04 250);
-  --ring: oklch(0.72 0.16 240);
+  --border: #334155;
+  --input: #334155;
+  --ring: #7c3aed;
 
-  --theme-vocab: oklch(0.72 0.18 320);
-  --theme-vocab-soft: oklch(0.32 0.08 320);
-  --theme-social: oklch(0.75 0.17 200);
-  --theme-social-soft: oklch(0.3 0.08 200);
-  --theme-pop: oklch(0.78 0.18 30);
-  --theme-pop-soft: oklch(0.35 0.1 30);
-  --theme-tech: oklch(0.7 0.16 150);
-  --theme-tech-soft: oklch(0.3 0.08 150);
+  --theme-vocab: #7c3aed;
+  --theme-vocab-soft: #3b0764;
+  --theme-social: #4f46e5;
+  --theme-social-soft: #312e81;
+  --theme-pop: #f59e0b;
+  --theme-pop-soft: #78350f;
+  --theme-tech: #22c55e;
+  --theme-tech-soft: #14532d;
 
   --rank-bronze: oklch(0.65 0.12 50);
   --rank-silver: oklch(0.8 0.02 250);
@@ -210,24 +206,81 @@
   --rank-diamond: oklch(0.78 0.15 220);
   --rank-master: oklch(0.7 0.2 320);
 
-  --shadow-soft: 0 4px 16px -4px oklch(0 0 0 / 0.4);
-  --shadow-card: 0 8px 24px -8px oklch(0 0 0 / 0.5);
+  --shadow-soft: 0 6px 20px -8px rgb(2 6 23 / 45%);
+  --shadow-card: 0 12px 32px -12px rgb(2 6 23 / 55%);
 }
 
-/* High contrast mode — toggled via .high-contrast class on <html> */
-.high-contrast {
-  --foreground: oklch(0.1 0 0);
-  --background: oklch(1 0 0);
-  --primary: oklch(0.35 0.2 250);
-  --border: oklch(0.3 0 0);
-  --muted-foreground: oklch(0.25 0 0);
+/*
+ * High contrast — class on <html> (AuthContext). Base app uses dark tokens on :root
+ * without a .dark wrapper; the old rules forced light fg/bg while --card stayed dark,
+ * which produced unreadable dark-on-dark text. This block overrides the full token
+ * set so surfaces and text stay coherent. Normal mode is unchanged (no class).
+ */
+html.high-contrast,
+html.dark.high-contrast {
+  --background: #000000;
+  --foreground: #ffffff;
+
+  --card: #0d1117;
+  --card-foreground: #ffffff;
+  --popover: #0d1117;
+  --popover-foreground: #ffffff;
+
+  --primary: #c4b5fd;
+  --primary-foreground: #0a0a0a;
+  --primary-soft: #4c1d95;
+
+  --secondary: #e9d5ff;
+  --secondary-foreground: #0a0a0a;
+
+  --muted: #1f2937;
+  --muted-foreground: #f1f5f9;
+
+  --accent: #fde047;
+  --accent-foreground: #0a0a0a;
+  --accent-soft: #713f12;
+
+  --success: #86efac;
+  --success-foreground: #0a0a0a;
+  --success-soft: #14532d;
+
+  --warning: #fcd34d;
+  --warning-foreground: #0a0a0a;
+  --warning-soft: #713f12;
+
+  --destructive: #fca5a5;
+  --destructive-foreground: #0a0a0a;
+
+  --border: #e2e8f0;
+  --input: #52525b;
+  --ring: #f8fafc;
+
+  --theme-vocab: #d8b4fe;
+  --theme-vocab-soft: #4c1d95;
+  --theme-social: #c4b5fd;
+  --theme-social-soft: #3730a3;
+  --theme-pop: #fcd34d;
+  --theme-pop-soft: #713f12;
+  --theme-tech: #86efac;
+  --theme-tech-soft: #14532d;
+
+  --sidebar: #000000;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #c4b5fd;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #1f2937;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #f8fafc;
+
+  --shadow-soft: 0 8px 28px -10px rgb(0 0 0 / 55%);
+  --shadow-card: 0 14px 36px -14px rgb(0 0 0 / 65%);
 }
-.dark.high-contrast {
-  --foreground: oklch(1 0 0);
-  --background: oklch(0.05 0 0);
-  --primary: oklch(0.85 0.15 240);
-  --border: oklch(0.7 0 0);
-  --muted-foreground: oklch(0.85 0 0);
+
+/* Switch thumb stays light on dark track (thumb uses bg-background) */
+html.high-contrast [role="switch"] > span,
+html.dark.high-contrast [role="switch"] > span {
+  background-color: #ffffff !important;
 }
 
 /* Font size preference — applied on <html> */
@@ -327,4 +380,258 @@ main {
 
 .animate-soft-rise {
   animation: soft-rise 0.5s ease-out both;
+}
+
+.quiz-answer-card {
+  transform: translateZ(0);
+  transition:
+    transform 140ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+}
+
+.quiz-answer-card:active {
+  transform: scale(0.985);
+}
+
+.quiz-answer-card--correct {
+  animation: answer-correct-pop 220ms ease-out both;
+}
+
+.quiz-answer-card--wrong {
+  animation: answer-wrong-shift 220ms ease-out both;
+}
+
+.quiz-result-card {
+  background-image: linear-gradient(160deg, rgb(255 255 255 / 0.03) 0%, transparent 40%);
+}
+
+@keyframes answer-correct-pop {
+  0% {
+    transform: scale(0.985);
+  }
+  60% {
+    transform: scale(1.015);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes answer-wrong-shift {
+  0% {
+    transform: translateX(0);
+  }
+  35% {
+    transform: translateX(-2px);
+  }
+  70% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header « cinéma » — fond spatial + vague (codé, pas image de fond plein) */
+/* -------------------------------------------------------------------------- */
+.app-header-cinematic {
+  position: relative;
+  isolation: isolate;
+  border-bottom: none;
+  box-shadow: 0 12px 40px -18px rgba(15, 23, 42, 0.9);
+}
+
+.app-header-cinematic__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: opacity;
+  background: linear-gradient(
+    168deg,
+    #050214 0%,
+    #0c0824 22%,
+    #151032 48%,
+    #1a1440 68%,
+    #120b28 100%
+  );
+}
+
+.app-header-cinematic__stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.36;
+  mix-blend-mode: screen;
+  background-image:
+    radial-gradient(1.2px 1.2px at 6% 14%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(1px 1px at 14% 38%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 22% 8%, rgba(199, 210, 254, 0.8), transparent),
+    radial-gradient(1.2px 1.2px at 31% 62%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 44% 18%, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1px 1px at 52% 48%, rgba(224, 231, 255, 0.6), transparent),
+    radial-gradient(1.2px 1.2px at 61% 28%, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 73% 12%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 78% 55%, rgba(196, 181, 253, 0.7), transparent),
+    radial-gradient(1.2px 1.2px at 88% 22%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 92% 70%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 96% 40%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1.2px 1.2px at 11% 72%, rgba(165, 180, 252, 0.55), transparent),
+    radial-gradient(1px 1px at 38% 88%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 67% 82%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.2px 1.2px at 84% 92%, rgba(224, 231, 255, 0.5), transparent);
+}
+
+.app-header-cinematic__wave {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.125rem;
+  line-height: 0;
+}
+
+.app-header-cinematic__wave svg {
+  display: block;
+  width: 100%;
+  height: 14px;
+  filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.85)) drop-shadow(0 0 14px rgba(99, 102, 241, 0.45));
+}
+
+@media (min-width: 640px) {
+  .app-header-cinematic__wave svg {
+    height: 18px;
+  }
+}
+
+.app-header-cinematic[data-scrolled="true"] .app-header-cinematic__wave svg {
+  height: 10px;
+}
+
+@media (min-width: 640px) {
+  .app-header-cinematic[data-scrolled="true"] .app-header-cinematic__wave svg {
+    height: 12px;
+  }
+}
+
+.app-header-profile-card {
+  border-radius: 1rem;
+  border: 1px solid rgba(167, 139, 250, 0.38);
+  background: linear-gradient(
+    155deg,
+    rgba(15, 23, 42, 0.72) 0%,
+    rgba(30, 27, 75, 0.55) 50%,
+    rgba(15, 23, 42, 0.68) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 4px 28px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.app-header-xp-track {
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.app-header-xp-fill {
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #4f46e5, #8b5cf6 45%, #c4b5fd);
+  box-shadow:
+    0 0 10px rgba(167, 139, 250, 0.75),
+    0 0 20px rgba(99, 102, 241, 0.35);
+}
+
+.app-header-icon-ring {
+  border-radius: 9999px;
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  background: rgba(15, 23, 42, 0.35);
+  color: rgba(226, 232, 240, 0.95);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.app-header-icon-ring:hover {
+  border-color: rgba(196, 181, 253, 0.75);
+  background: rgba(99, 102, 241, 0.22);
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.35);
+}
+
+/* Header logo — PNG transparent : pas de filtre sombre (évite l’effet « carré noir »). */
+.app-header-logo-img {
+  background: transparent;
+  filter: none;
+}
+
+@media (max-width: 640px) {
+  .app-header-cinematic {
+    box-shadow: 0 8px 26px -18px rgba(15, 23, 42, 0.8);
+  }
+
+  .app-header-cinematic__stars {
+    opacity: 0.24;
+    mix-blend-mode: normal;
+  }
+
+  .app-header-profile-card {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 3px 20px rgba(0, 0, 0, 0.36),
+      0 0 0 1px rgba(15, 23, 42, 0.45);
+  }
+}
+
+/* Sonner toast visual consistency (brand-first, no default green blocks) */
+[data-sonner-toast] {
+  border-radius: 1rem !important;
+  border: 1px solid color-mix(in oklab, var(--border) 85%, transparent) !important;
+  background: color-mix(in oklab, var(--card) 92%, transparent) !important;
+  color: var(--foreground) !important;
+  box-shadow: 0 16px 34px -18px rgb(2 6 23 / 75%) !important;
+}
+
+[data-sonner-toast] [data-title] {
+  font-weight: 800 !important;
+  letter-spacing: -0.01em;
+}
+
+[data-sonner-toast] [data-description] {
+  color: var(--muted-foreground) !important;
+}
+
+[data-sonner-toast][data-type="success"] {
+  border-color: color-mix(in oklab, var(--primary) 45%, var(--border)) !important;
+  background-image: linear-gradient(
+    145deg,
+    color-mix(in oklab, var(--primary-soft) 32%, transparent) 0%,
+    transparent 56%
+  ) !important;
+}
+
+[data-sonner-toast][data-type="error"] {
+  border-color: color-mix(in oklab, var(--destructive) 45%, var(--border)) !important;
+  background-image: linear-gradient(
+    145deg,
+    color-mix(in oklab, var(--destructive) 20%, transparent) 0%,
+    transparent 56%
+  ) !important;
+}
+
+[data-sonner-toast][data-type="info"] {
+  border-color: color-mix(in oklab, var(--secondary) 45%, var(--border)) !important;
+  background-image: linear-gradient(
+    145deg,
+    color-mix(in oklab, var(--secondary) 24%, transparent) 0%,
+    transparent 56%
+  ) !important;
 }

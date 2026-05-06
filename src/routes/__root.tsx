@@ -32,29 +32,31 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Reste connecté ! — Quiz pour rester branché sur la culture des jeunes" },
+      { title: "Tu captes ? — Quiz fun culture web" },
       {
         name: "description",
         content:
-          "Quiz éducatif pensé pour les seniors : découvrez le vocabulaire, les réseaux sociaux, la culture pop et la tech des jeunes générations, en s'amusant.",
+          "Tu captes ? est un quiz fun et rapide pour voir si tu es encore dans le game des expressions et codes web.",
       },
-      { property: "og:title", content: "Reste connecté ! — Quiz pour seniors" },
+      { property: "og:title", content: "Tu captes ? — Quiz fun culture web" },
       {
         property: "og:description",
-        content: "Restez connecté avec les jeunes grâce à des quiz ludiques et bienveillants.",
+        content:
+          "Comprenez les codes et expressions d'aujourd'hui avec des quiz modernes, chaleureux et accessibles.",
       },
       { property: "og:type", content: "website" },
-      { name: "theme-color", content: "#2563eb" },
+      { name: "theme-color", content: "#4f46e5" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "default" },
-      { name: "apple-mobile-web-app-title", content: "Reste connecté" },
+      { name: "apple-mobile-web-app-title", content: "Tu captes ?" },
       { name: "mobile-web-app-capable", content: "yes" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "manifest", href: "/manifest.webmanifest" },
-      { rel: "icon", href: "/icon-192.svg", type: "image/svg+xml" },
-      { rel: "apple-touch-icon", href: "/icon-192.svg" },
+      { rel: "manifest", href: "/manifest.webmanifest?v=4" },
+      { rel: "icon", href: "/icon-192.png?v=4", sizes: "192x192", type: "image/png" },
+      { rel: "shortcut icon", href: "/icon-192.png?v=4", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/icon-512.png?v=4", sizes: "512x512" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -70,11 +72,11 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className="font-large">
+    <html lang="fr" className="font-large min-w-0 overflow-x-clip">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="min-w-0 overflow-x-clip bg-background antialiased">
         {children}
         <Scripts />
       </body>
@@ -93,7 +95,7 @@ function RootComponent() {
   return (
     <AuthProvider>
       <Outlet />
-      <Toaster richColors position="top-center" />
+      <Toaster position="top-center" />
     </AuthProvider>
   );
 }

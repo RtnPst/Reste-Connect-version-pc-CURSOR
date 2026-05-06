@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, CheckCircle2, Heart, Home, Volume2, XCircle } from "lucide-react";
+import { ArrowRight, Heart, Home } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
+import { ImmersiveQuizPlay } from "@/components/immersive-quiz/ImmersiveQuizPlay";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
@@ -23,14 +25,25 @@ type Question = {
   explanation: string;
 };
 
+const MARATHON_BEST_LS = "marathon_best_score";
+
+function readGuestMarathonBest(): number {
+  try {
+    const n = Number(localStorage.getItem(MARATHON_BEST_LS));
+    return Number.isFinite(n) && n >= 0 ? Math.floor(n) : 0;
+  } catch {
+    return 0;
+  }
+}
+
 export const Route = createFileRoute("/marathon")({
   head: () => ({
     meta: [
-      { title: "Mode Marathon — Reste connecté !" },
+      { title: "Mode Marathon — Tu captes ?" },
       {
         name: "description",
         content:
-          "Enchaînez les questions sans limite. Combien irez-vous loin ? Score infini, paliers à célébrer !",
+          "Enchaîne les questions sans limite. Jusqu’où tu vas ? Score infini, paliers à célébrer !",
       },
     ],
   }),
@@ -38,17 +51,24 @@ export const Route = createFileRoute("/marathon")({
 });
 
 function MarathonPage() {
-  const { profile } = useAuth();
+  const { user, profile, refreshProfile } = useAuth();
   const [pool, setPool] = useState<Question[]>([]);
   const [order, setOrder] = useState<number[]>([]);
   const [pos, setPos] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
-  const [bestStreak, setBestStreak] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [revealedCorrectIndex, setRevealedCorrectIndex] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [sessionEnded, setSessionEnded] = useState(false);
+  const [xpGained, setXpGained] = useState<number>(0);
+  const [streakUpdated, setStreakUpdated] = useState(false);
+  const [guestMarathonBest, setGuestMarathonBest] = useState(() => readGuestMarathonBest());
+
+  useEffect(() => {
+    if (!user) setGuestMarathonBest(readGuestMarathonBest());
+  }, [user]);
 
   useEffect(() => {
     (async () => {
@@ -90,12 +110,13 @@ function MarathonPage() {
       const newStreak = streak + 1;
       setScore(newScore);
       setStreak(newStreak);
-      setBestStreak((b) => Math.max(b, newStreak));
       playCorrect(sfxOn);
       if (isMarathonMilestone(newScore)) {
         setShowCelebration(true);
         playFanfare(sfxOn);
-        toast.success(`🎉 Palier ${newScore} bonnes réponses ! Continuez !`);
+        toast.success(
+          `🎉 Palier ${newScore} bonnes réponses ! Pense à terminer la session pour enregistrer tes XP.`,
+        );
         setTimeout(() => setShowCelebration(false), 3500);
       }
     } else {
@@ -123,11 +144,125 @@ function MarathonPage() {
     );
   };
 
+  const handleSpeakExplanation = () => {
+    if (!current || selectedIndex === null) return;
+    const ok = (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
+    speak(`${ok ? "Bonne réponse !" : "Pas tout à fait."} ${current.explanation}`, true);
+  };
+
+  const handleEndSession = async () => {
+    stopSpeaking();
+    const answeredCount = pos + (selectedIndex !== null ? 1 : 0);
+    const correctCount = score;
+    const rawXp = correctCount * 4 + 10 * Math.floor(correctCount / 10);
+    const grantedXp = Math.min(rawXp, 120);
+
+    setXpGained(0);
+    setStreakUpdated(false);
+
+    if (user) {
+      try {
+        const { data: dbProfile } = await supabase
+          .from("profiles")
+          .select("current_streak, longest_streak, last_play_date, total_xp, marathon_best_score")
+          .eq("id", user.id)
+          .maybeSingle();
+
+        if (dbProfile) {
+          const today = new Date().toISOString().slice(0, 10);
+          const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+          let newStreak = dbProfile.current_streak;
+          let didUpdateStreak = false;
+
+          if (answeredCount >= 5 && dbProfile.last_play_date !== today) {
+            newStreak = dbProfile.last_play_date === yesterday ? newStreak + 1 : 1;
+            didUpdateStreak = true;
+          }
+
+          const oldLevel = Math.floor(dbProfile.total_xp / 100) + 1;
+          const newTotalXp = dbProfile.total_xp + grantedXp;
+          const newLevel = Math.floor(newTotalXp / 100) + 1;
+
+          const nextMarathonBest = Math.max(dbProfile.marathon_best_score ?? 0, correctCount);
+
+          const updatePayload: {
+            total_xp: number;
+            marathon_best_score: number;
+            current_streak?: number;
+            longest_streak?: number;
+            last_play_date?: string;
+          } = { total_xp: newTotalXp, marathon_best_score: nextMarathonBest };
+
+          if (didUpdateStreak) {
+            updatePayload.current_streak = newStreak;
+            updatePayload.longest_streak = Math.max(newStreak, dbProfile.longest_streak);
+            updatePayload.last_play_date = today;
+          }
+
+          const { error: updateError } = await supabase
+            .from("profiles")
+            .update(updatePayload)
+            .eq("id", user.id);
+
+          if (updateError) {
+            console.error("Marathon progression update failed", {
+              message: updateError?.message,
+              code: updateError?.code,
+              details: updateError?.details,
+              hint: updateError?.hint,
+              userId: user.id,
+              answeredCount,
+              correctCount,
+              grantedXp,
+            });
+            throw updateError;
+          }
+
+          setXpGained(grantedXp);
+          if (newLevel > oldLevel) {
+            toast.success(`Niveau ${newLevel} atteint !`);
+          }
+
+          setStreakUpdated(didUpdateStreak);
+          await refreshProfile();
+        } else {
+          console.error("Marathon profile not found", {
+            userId: user.id,
+            answeredCount,
+            correctCount,
+            grantedXp,
+          });
+          toast.error("Progression non enregistrée. Réessayez plus tard.");
+        }
+      } catch (err) {
+        console.error("Marathon progression persistence error", {
+          userId: user.id,
+          answeredCount,
+          correctCount,
+          grantedXp,
+          error: err,
+        });
+        toast.error("Progression non enregistrée. Réessayez plus tard.");
+        setXpGained(0);
+      }
+    } else {
+      const nextGuestBest = Math.max(readGuestMarathonBest(), correctCount);
+      try {
+        localStorage.setItem(MARATHON_BEST_LS, String(nextGuestBest));
+      } catch {
+        /* ignore quota / private mode */
+      }
+      setGuestMarathonBest(nextGuestBest);
+    }
+
+    setSessionEnded(true);
+  };
+
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex items-center justify-center">
+        <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
           <p className="text-lg text-muted-foreground">Préparation du marathon…</p>
         </main>
       </div>
@@ -136,9 +271,9 @@ function MarathonPage() {
 
   if (!current) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex flex-col items-center justify-center gap-4 px-4">
+        <main className="flex min-w-0 w-full flex-1 flex-col items-center justify-center gap-4 overflow-x-clip px-4">
           <p className="text-lg text-destructive">Aucune question disponible.</p>
           <Button asChild variant="outline">
             <Link to="/">Retour à l'accueil</Link>
@@ -154,139 +289,151 @@ function MarathonPage() {
     isAnswered &&
     selectedIndex !== null &&
     (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
+  const answeredCount = pos + (selectedIndex !== null ? 1 : 0);
+  const streakDays = profile?.current_streak ?? 0;
+  const streakHint =
+    streakDays > 0 ? "Ta série sur l’app" : "Connecte-toi pour faire grandir ta série.";
+  const persistedMarathonRecord = user
+    ? Math.max(0, profile?.marathon_best_score ?? 0)
+    : guestMarathonBest;
+  const recordDisplay = Math.max(persistedMarathonRecord, score);
 
-  return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Confetti active={showCelebration} />
-      <AppHeader />
-      <main className="flex-1 container mx-auto px-4 sm:px-6 max-w-3xl py-6 sm:py-10">
-        {/* Score bar */}
-        <div className="grid grid-cols-3 gap-3 mb-6">
-          <div className="rounded-2xl bg-primary-soft text-primary p-3 text-center">
-            <div className="text-xs font-bold opacity-80">Score</div>
-            <div className="text-2xl font-extrabold">{score}</div>
-          </div>
-          <div className="rounded-2xl bg-warning-soft text-warning-foreground p-3 text-center">
-            <div className="text-xs font-bold opacity-80">Série</div>
-            <div className="text-2xl font-extrabold flex items-center justify-center gap-1">
-              <Heart className="size-5 text-warning fill-warning" /> {streak}
+  if (sessionEnded) {
+    return (
+      <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
+        <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm">
+          <Button variant="ghost" size="sm" className="shrink-0 gap-1 px-2" asChild>
+            <Link to="/" className="flex items-center font-semibold text-muted-foreground">
+              <Home className="size-4 shrink-0" aria-hidden />
+              <span className="hidden sm:inline">Accueil</span>
+            </Link>
+          </Button>
+          <span className="min-w-0 flex-1 truncate text-center text-xs font-extrabold sm:text-sm">
+            Session marathon
+          </span>
+          <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
+            <Link to="/quiz">Quiz</Link>
+          </Button>
+        </header>
+        <main className="container mx-auto w-full min-w-0 max-w-2xl flex-1 overflow-y-auto overflow-x-clip px-4 py-8 text-center sm:px-6 sm:py-10">
+          <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 shadow-[var(--shadow-card)]">
+            <h1 className="text-3xl font-extrabold mb-2">Session terminée</h1>
+            <p className="text-muted-foreground mb-1">
+              Questions répondues :{" "}
+              <span className="font-bold text-foreground">{answeredCount}</span>
+            </p>
+            <p className="text-muted-foreground mb-4">
+              Bonnes réponses : <span className="font-bold text-foreground">{score}</span>
+            </p>
+            <p className="text-sm sm:text-base font-semibold text-success mb-2">
+              +{xpGained} XP gagnés
+            </p>
+            {streakUpdated ? (
+              <p className="text-sm text-primary mb-6">🔥 Série validée pour aujourd’hui.</p>
+            ) : (
+              <p className="text-sm text-muted-foreground mb-6">
+                Réponds à au moins 5 questions pour valider ta série.
+              </p>
+            )}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Button asChild size="lg" variant="accent">
+                <Link to="/">
+                  <Home />
+                  Retour à l'accueil
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link to="/quiz">Faire un quiz complet</Link>
+              </Button>
             </div>
           </div>
-          <div className="rounded-2xl bg-success-soft text-success-foreground p-3 text-center">
-            <div className="text-xs font-bold opacity-80">Meilleure série</div>
-            <div className="text-2xl font-extrabold">{bestStreak}</div>
-          </div>
-        </div>
+        </main>
+      </div>
+    );
+  }
 
-        {/* Badge thème AVANT réponse */}
-        <div className="mb-4 flex justify-center">
-          <span
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-base font-extrabold border-2 animate-fade-in"
-            style={{
-              color: `var(--${themeMeta.colorVar})`,
-              borderColor: `var(--${themeMeta.colorVar})`,
-              backgroundColor: `color-mix(in oklab, var(--${themeMeta.colorVar}) 12%, transparent)`,
-            }}
-          >
-            <span aria-hidden>{themeMeta.emoji}</span>
-            {themeMeta.short}
-          </span>
-        </div>
-
-        {/* Question */}
-        <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 shadow-[var(--shadow-soft)] mb-6">
-          <div className="flex items-start gap-3">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug flex-1">
-              {current.question}
-            </h1>
-            <Button
-              onClick={handleSpeak}
-              variant="ghost"
-              size="icon"
-              aria-label="Écouter la question"
-              className="flex-shrink-0"
-            >
-              <Volume2 />
-            </Button>
-          </div>
-        </div>
-
-        {/* Choix */}
-        <div className="grid gap-3 mb-6">
-          {current.choices.map((choice, idx) => {
-            const isSelected = selectedIndex === idx;
-            const isCorrectChoice = (current.choiceOrder[idx] ?? idx) === revealedCorrectIndex;
-
-            let className =
-              "border-2 border-border bg-card hover:border-primary hover:bg-primary-soft/30";
-            let icon: React.ReactNode = null;
-            if (isAnswered) {
-              if (isCorrectChoice) {
-                className = "border-2 border-success bg-success-soft";
-                icon = <CheckCircle2 className="size-6 text-success flex-shrink-0" />;
-              } else if (isSelected) {
-                className = "border-2 border-destructive bg-destructive/10";
-                icon = <XCircle className="size-6 text-destructive flex-shrink-0" />;
-              } else {
-                className = "border-2 border-border bg-card opacity-60";
-              }
-            }
-
-            return (
-              <button
-                key={idx}
-                onClick={() => handleSelect(idx)}
-                disabled={isAnswered}
-                className={`text-left rounded-2xl p-4 sm:p-5 transition-all flex items-center gap-4 min-h-[64px] disabled:cursor-default ${className}`}
+  return (
+    <div className="relative flex min-h-[100dvh] min-w-0 flex-col overflow-hidden bg-background">
+      <Confetti active={showCelebration} />
+      <ImmersiveQuizPlay
+        quitHref="/"
+        quitAriaLabel="Quitter le marathon"
+        headerCenter={
+          <>
+            <span aria-hidden className="shrink-0">
+              🏃
+            </span>
+            <span className="truncate">Marathon</span>
+          </>
+        }
+        streak={streakDays}
+        streakTitle={streakHint}
+        progressPercent={null}
+        stepFraction={`${score}/${answeredCount}`}
+        flowStepKey={`${current.id}-${pos}-${answeredCount}`}
+        questionText={current.question}
+        belowProgressSlot={
+          <div className="space-y-2">
+            <div className="grid grid-cols-3 gap-1.5 text-center [@media(max-height:700px)]:gap-1">
+              <div className="rounded-xl bg-primary-soft/90 py-1.5 text-primary">
+                <div className="text-[9px] font-bold uppercase opacity-80">Bonnes</div>
+                <div className="text-lg font-extrabold leading-tight sm:text-xl">{score}</div>
+              </div>
+              <div className="rounded-xl bg-warning-soft/90 py-1.5 text-warning-foreground">
+                <div className="flex items-center justify-center gap-0.5 text-[9px] font-bold uppercase opacity-80">
+                  <Heart className="size-3 fill-warning text-warning" aria-hidden /> Série
+                </div>
+                <div className="text-lg font-extrabold leading-tight sm:text-xl">{streak}</div>
+              </div>
+              <div className="rounded-xl bg-success-soft/90 py-1.5 text-success-foreground">
+                <div className="text-[9px] font-bold uppercase opacity-80">Record</div>
+                <div className="text-lg font-extrabold leading-tight sm:text-xl">{recordDisplay}</div>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <span
+                className="inline-flex max-w-full items-center gap-1.5 truncate rounded-full border-2 px-2.5 py-0.5 text-[11px] font-extrabold sm:text-xs"
+                style={{
+                  color: `var(--${themeMeta.colorVar})`,
+                  borderColor: `var(--${themeMeta.colorVar})`,
+                  backgroundColor: `color-mix(in oklab, var(--${themeMeta.colorVar}) 12%, transparent)`,
+                }}
               >
-                <span
-                  className={`flex-shrink-0 size-10 rounded-full flex items-center justify-center font-extrabold text-lg ${
-                    isAnswered && isCorrectChoice
-                      ? "bg-success text-success-foreground"
-                      : isAnswered && isSelected
-                        ? "bg-destructive text-destructive-foreground"
-                        : "bg-secondary text-secondary-foreground"
-                  }`}
-                  aria-hidden
-                >
-                  {String.fromCharCode(65 + idx)}
-                </span>
-                <span className="flex-1 text-base sm:text-lg font-medium">{choice}</span>
-                {icon}
-              </button>
-            );
-          })}
-        </div>
-
-        {isAnswered && (
-          <div
-            className={`rounded-2xl p-5 mb-6 border-2 ${
-              isCorrect ? "bg-success-soft border-success/30" : "bg-warning-soft border-warning/40"
-            }`}
-          >
-            <p className="font-extrabold mb-2">
-              {isCorrect ? "✅ Bonne réponse !" : "💡 La bonne réponse était :"}
+                <span aria-hidden>{themeMeta.emoji}</span>
+                {themeMeta.short}
+              </span>
+            </div>
+            <p className="text-center text-[10px] leading-snug text-muted-foreground sm:text-[11px]">
+              Tes XP Marathon sont enregistrés quand tu termines la session.
             </p>
-            <p className="leading-relaxed">{current.explanation}</p>
           </div>
-        )}
-
-        {isAnswered ? (
-          <Button onClick={handleNext} size="xl" variant="accent" className="w-full">
-            Question suivante
-            <ArrowRight />
-          </Button>
-        ) : (
-          <div className="text-center">
+        }
+        choices={current.choices}
+        selectedIndex={selectedIndex}
+        revealedCorrectIndex={revealedCorrectIndex}
+        choiceOrder={current.choiceOrder}
+        onSelectChoice={(idx) => void handleSelect(idx)}
+        onSpeakQuestion={handleSpeak}
+        isCorrect={!!isCorrect}
+        explanation={current.explanation}
+        onSpeakExplanation={handleSpeakExplanation}
+        onPrimaryNext={handleNext}
+        primaryNextLabel="Question suivante"
+        sheetSecondaryAction={{ label: "Terminer la session", onClick: handleEndSession }}
+        footerWhenPlaying={
+          <div className="flex w-full max-w-md flex-col gap-2 mx-auto">
+            <Button type="button" onClick={handleEndSession} size="lg" variant="outline" className="w-full">
+              Terminer la session
+            </Button>
             <Link
               to="/"
-              className="text-sm text-muted-foreground underline-offset-4 hover:underline inline-flex items-center gap-1"
+              className="text-center text-xs text-muted-foreground underline-offset-4 hover:underline sm:text-sm inline-flex items-center justify-center gap-1"
             >
-              <Home className="size-3.5" /> Quitter le marathon
+              <Home className="size-3.5" aria-hidden /> Accueil
             </Link>
           </div>
-        )}
-      </main>
+        }
+      />
     </div>
   );
 }

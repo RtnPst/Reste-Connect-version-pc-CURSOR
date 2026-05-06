@@ -2,6 +2,26 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 
+const PROD_APP_URL = "https://tanstack-start-ts.npaysant.workers.dev";
+
+function normalizeUrlBase(url: string): string {
+  return url.trim().replace(/\/+$/, "");
+}
+
+function getAuthRedirectBase(): string {
+  const envUrl = import.meta.env.VITE_PUBLIC_APP_URL;
+  if (typeof envUrl === "string" && envUrl.trim()) {
+    return normalizeUrlBase(envUrl);
+  }
+  if (import.meta.env.PROD) {
+    return PROD_APP_URL;
+  }
+  if (typeof window !== "undefined" && window.location?.origin) {
+    return window.location.origin;
+  }
+  return PROD_APP_URL;
+}
+
 type Profile = {
   id: string;
   display_name: string | null;
@@ -14,6 +34,9 @@ type Profile = {
   current_streak: number;
   longest_streak: number;
   last_play_date: string | null;
+  max_unlocked_level: number;
+  level_best_scores: Record<string, number>;
+  marathon_best_score?: number;
   total_xp: number;
 };
 
@@ -50,6 +73,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
+  const authRedirectBase = getAuthRedirectBase();
 
   const fetchProfile = async (userId: string) => {
     const { data } = await supabase.from("profiles").select("*").eq("id", userId).maybeSingle();
@@ -98,7 +122,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       email,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/`,
+        emailRedirectTo: `${authRedirectBase}/`,
         data: { display_name: displayName },
       },
     });
@@ -113,7 +137,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signInWithGoogle = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: { redirectTo: `${window.location.origin}/` },
+      options: { redirectTo: `${authRedirectBase}/` },
     });
     if (error) throw error;
   };
@@ -130,7 +154,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const updatePreferences: AuthContextValue["updatePreferences"] = async (prefs) => {
     if (!user) return;
     const { error } = await supabase.from("profiles").update(prefs).eq("id", user.id);
-    if (error) throw error;
+    if (error) {
+      console.error("Supabase profile update failed", {
+        message: error?.message,
+        code: error?.code,
+        details: error?.details,
+        hint: error?.hint,
+        userId: user?.id,
+        payloadKeys: Object.keys(prefs || {}),
+      });
+      throw error;
+    }
     await fetchProfile(user.id);
   };
 

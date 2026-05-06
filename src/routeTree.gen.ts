@@ -9,12 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as StatistiquesRouteImport } from './routes/statistiques'
 import { Route as ReglagesRouteImport } from './routes/reglages'
 import { Route as QuestionDuJourRouteImport } from './routes/question-du-jour'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ParcoursRouteImport } from './routes/parcours'
 import { Route as NiveauxRouteImport } from './routes/niveaux'
 import { Route as MarathonRouteImport } from './routes/marathon'
+import { Route as DeleteAccountRouteImport } from './routes/delete-account'
 import { Route as ConnexionRouteImport } from './routes/connexion'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
@@ -24,6 +27,11 @@ import { Route as QuizThemeRouteImport } from './routes/quiz.$theme'
 import { Route as NiveauNRouteImport } from './routes/niveau.$n'
 import { Route as DuelCodeRouteImport } from './routes/duel.$code'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StatistiquesRoute = StatistiquesRouteImport.update({
   id: '/statistiques',
   path: '/statistiques',
@@ -39,6 +47,11 @@ const QuestionDuJourRoute = QuestionDuJourRouteImport.update({
   path: '/question-du-jour',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ParcoursRoute = ParcoursRouteImport.update({
   id: '/parcours',
   path: '/parcours',
@@ -52,6 +65,11 @@ const NiveauxRoute = NiveauxRouteImport.update({
 const MarathonRoute = MarathonRouteImport.update({
   id: '/marathon',
   path: '/marathon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeleteAccountRoute = DeleteAccountRouteImport.update({
+  id: '/delete-account',
+  path: '/delete-account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConnexionRoute = ConnexionRouteImport.update({
@@ -99,12 +117,15 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
   '/niveaux': typeof NiveauxRoute
   '/parcours': typeof ParcoursRoute
+  '/privacy': typeof PrivacyRoute
   '/question-du-jour': typeof QuestionDuJourRoute
   '/reglages': typeof ReglagesRoute
   '/statistiques': typeof StatistiquesRoute
+  '/terms': typeof TermsRoute
   '/duel/$code': typeof DuelCodeRoute
   '/niveau/$n': typeof NiveauNRoute
   '/quiz/$theme': typeof QuizThemeRoute
@@ -115,12 +136,15 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
   '/niveaux': typeof NiveauxRoute
   '/parcours': typeof ParcoursRoute
+  '/privacy': typeof PrivacyRoute
   '/question-du-jour': typeof QuestionDuJourRoute
   '/reglages': typeof ReglagesRoute
   '/statistiques': typeof StatistiquesRoute
+  '/terms': typeof TermsRoute
   '/duel/$code': typeof DuelCodeRoute
   '/niveau/$n': typeof NiveauNRoute
   '/quiz/$theme': typeof QuizThemeRoute
@@ -132,12 +156,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
   '/niveaux': typeof NiveauxRoute
   '/parcours': typeof ParcoursRoute
+  '/privacy': typeof PrivacyRoute
   '/question-du-jour': typeof QuestionDuJourRoute
   '/reglages': typeof ReglagesRoute
   '/statistiques': typeof StatistiquesRoute
+  '/terms': typeof TermsRoute
   '/duel/$code': typeof DuelCodeRoute
   '/niveau/$n': typeof NiveauNRoute
   '/quiz/$theme': typeof QuizThemeRoute
@@ -150,12 +177,15 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/delete-account'
     | '/marathon'
     | '/niveaux'
     | '/parcours'
+    | '/privacy'
     | '/question-du-jour'
     | '/reglages'
     | '/statistiques'
+    | '/terms'
     | '/duel/$code'
     | '/niveau/$n'
     | '/quiz/$theme'
@@ -166,12 +196,15 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/delete-account'
     | '/marathon'
     | '/niveaux'
     | '/parcours'
+    | '/privacy'
     | '/question-du-jour'
     | '/reglages'
     | '/statistiques'
+    | '/terms'
     | '/duel/$code'
     | '/niveau/$n'
     | '/quiz/$theme'
@@ -182,12 +215,15 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/delete-account'
     | '/marathon'
     | '/niveaux'
     | '/parcours'
+    | '/privacy'
     | '/question-du-jour'
     | '/reglages'
     | '/statistiques'
+    | '/terms'
     | '/duel/$code'
     | '/niveau/$n'
     | '/quiz/$theme'
@@ -199,12 +235,15 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   ConnexionRoute: typeof ConnexionRoute
+  DeleteAccountRoute: typeof DeleteAccountRoute
   MarathonRoute: typeof MarathonRoute
   NiveauxRoute: typeof NiveauxRoute
   ParcoursRoute: typeof ParcoursRoute
+  PrivacyRoute: typeof PrivacyRoute
   QuestionDuJourRoute: typeof QuestionDuJourRoute
   ReglagesRoute: typeof ReglagesRoute
   StatistiquesRoute: typeof StatistiquesRoute
+  TermsRoute: typeof TermsRoute
   DuelCodeRoute: typeof DuelCodeRoute
   NiveauNRoute: typeof NiveauNRoute
   QuizThemeRoute: typeof QuizThemeRoute
@@ -214,6 +253,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/statistiques': {
       id: '/statistiques'
       path: '/statistiques'
@@ -235,6 +281,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuestionDuJourRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/parcours': {
       id: '/parcours'
       path: '/parcours'
@@ -254,6 +307,13 @@ declare module '@tanstack/react-router' {
       path: '/marathon'
       fullPath: '/marathon'
       preLoaderRoute: typeof MarathonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/delete-account': {
+      id: '/delete-account'
+      path: '/delete-account'
+      fullPath: '/delete-account'
+      preLoaderRoute: typeof DeleteAccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/connexion': {
@@ -319,12 +379,15 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   ConnexionRoute: ConnexionRoute,
+  DeleteAccountRoute: DeleteAccountRoute,
   MarathonRoute: MarathonRoute,
   NiveauxRoute: NiveauxRoute,
   ParcoursRoute: ParcoursRoute,
+  PrivacyRoute: PrivacyRoute,
   QuestionDuJourRoute: QuestionDuJourRoute,
   ReglagesRoute: ReglagesRoute,
   StatistiquesRoute: StatistiquesRoute,
+  TermsRoute: TermsRoute,
   DuelCodeRoute: DuelCodeRoute,
   NiveauNRoute: NiveauNRoute,
   QuizThemeRoute: QuizThemeRoute,

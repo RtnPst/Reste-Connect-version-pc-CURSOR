@@ -126,7 +126,10 @@ export type Database = {
           high_contrast: boolean;
           id: string;
           last_play_date: string | null;
+          level_best_scores: Json;
           longest_streak: number;
+          marathon_best_score: number;
+          max_unlocked_level: number;
           music_enabled: boolean;
           sfx_enabled: boolean;
           total_xp: number;
@@ -142,7 +145,10 @@ export type Database = {
           high_contrast?: boolean;
           id: string;
           last_play_date?: string | null;
+          level_best_scores?: Json;
           longest_streak?: number;
+          marathon_best_score?: number;
+          max_unlocked_level?: number;
           music_enabled?: boolean;
           sfx_enabled?: boolean;
           total_xp?: number;
@@ -158,7 +164,10 @@ export type Database = {
           high_contrast?: boolean;
           id?: string;
           last_play_date?: string | null;
+          level_best_scores?: Json;
           longest_streak?: number;
+          marathon_best_score?: number;
+          max_unlocked_level?: number;
           music_enabled?: boolean;
           sfx_enabled?: boolean;
           total_xp?: number;

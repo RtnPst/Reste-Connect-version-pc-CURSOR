@@ -2,20 +2,47 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "./types";
 
-function createSupabaseClient() {
-  // Use import.meta.env for client-side (Vite build-time replacement)
-  // Fall back to process.env for SSR (server-side rendering)
-  const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-  const SUPABASE_PUBLISHABLE_KEY =
-    import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY;
+/**
+ * Canonical Supabase project root for createClient:
+ * `https://<ref>.supabase.co/` (exactly one trailing slash, no `//`).
+ * Strips `?query` / `#hash` so paths like `rest/v1` never get glued to the host (`…corest`).
+ */
+function normalizeSupabaseUrl(raw: string): string {
+  const trimmed = raw.trim();
+  const withoutQueryOrHash = trimmed.split(/[?#]/)[0]?.trim() ?? trimmed;
+  const base = withoutQueryOrHash.replace(/\/+$/, "");
+  if (!base) {
+    throw new Error("Invalid VITE_SUPABASE_URL: empty after normalization.");
+  }
+  return `${base}/`;
+}
 
-  if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
+/** Project URL — `import.meta.env.VITE_SUPABASE_URL` only (no hardcoded URLs). */
+export function getSupabaseUrl(): string {
+  const raw = import.meta.env.VITE_SUPABASE_URL;
+  const s = typeof raw === "string" ? raw.trim() : "";
+  if (!s) {
     throw new Error(
-      "Missing Supabase environment variables. Ensure SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY (or VITE_ prefixed versions) are set in your .env file.",
+      "Missing VITE_SUPABASE_URL. Set it in .env so Vite injects it at build time.",
     );
   }
+  return normalizeSupabaseUrl(s);
+}
 
-  return createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+/** Publishable (anon) key — `import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY` only. */
+export function getSupabasePublishableKey(): string {
+  const raw = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  const s = typeof raw === "string" ? raw.trim() : "";
+  if (!s) {
+    throw new Error(
+      "Missing VITE_SUPABASE_PUBLISHABLE_KEY. Set it in .env so Vite injects it at build time.",
+    );
+  }
+  return s;
+}
+
+function createSupabaseClient() {
+  return createClient<Database>(getSupabaseUrl(), getSupabasePublishableKey(), {
     auth: {
       storage: typeof window !== "undefined" ? localStorage : undefined,
       persistSession: true,

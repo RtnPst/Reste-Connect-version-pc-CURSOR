@@ -1,0 +1,1484 @@
+[
+  {
+    "question": "“DM quelqu’un”, ça veut dire…",
+    "choices": [
+      "L’appeler",
+      "Envoyer un message privé",
+      "Bloquer",
+      "Suivre"
+    ],
+    "correct_index": 1,
+    "explanation": "DM = Direct Message → message privé.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Follow quelqu’un”, ça veut dire…",
+    "choices": [
+      "Supprimer",
+      "Suivre",
+      "Signaler",
+      "Ignorer"
+    ],
+    "correct_index": 1,
+    "explanation": "Follow = suivre un compte.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Une story”, c’est…",
+    "choices": [
+      "Vidéo longue",
+      "Contenu temporaire",
+      "Message privé",
+      "Publication fixe"
+    ],
+    "correct_index": 1,
+    "explanation": "Story = contenu visible pendant 24h.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Scroll”, ça veut dire…",
+    "choices": [
+      "Écrire",
+      "Faire défiler",
+      "Poster",
+      "Liker"
+    ],
+    "correct_index": 1,
+    "explanation": "Scroll = faire défiler l’écran.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Poster”, ça veut dire…",
+    "choices": [
+      "Supprimer",
+      "Publier",
+      "Regarder",
+      "Liker"
+    ],
+    "correct_index": 1,
+    "explanation": "Poster = publier du contenu.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un mème”, c’est…",
+    "choices": [
+      "Podcast",
+      "Blague virale",
+      "Mail",
+      "Vidéo privée"
+    ],
+    "correct_index": 1,
+    "explanation": "Un mème = une blague reprise partout sur Internet.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un repost”, c’est…",
+    "choices": [
+      "Supprimer",
+      "Republier",
+      "Commenter",
+      "Liker"
+    ],
+    "correct_index": 1,
+    "explanation": "Repost = republier un contenu.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un bot”, c’est…",
+    "choices": [
+      "Personne",
+      "Programme automatique",
+      "Jeu",
+      "Vidéo"
+    ],
+    "correct_index": 1,
+    "explanation": "Bot = programme qui agit automatiquement.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un troll”, c’est…",
+    "choices": [
+      "Ami",
+      "Quelqu’un qui provoque",
+      "Fan",
+      "Créateur"
+    ],
+    "correct_index": 1,
+    "explanation": "Troll = personne qui provoque sur Internet.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un noob”, c’est…",
+    "choices": [
+      "Expert",
+      "Débutant",
+      "Chef",
+      "Créateur"
+    ],
+    "correct_index": 1,
+    "explanation": "Noob = joueur débutant.",
+    "category": "Gaming",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Flex”, ça veut dire…",
+    "choices": [
+      "Se plaindre",
+      "Se vanter",
+      "Se cacher",
+      "Ignorer"
+    ],
+    "correct_index": 1,
+    "explanation": "Flex = montrer pour impressionner.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“GOAT”, ça veut dire…",
+    "choices": [
+      "Débutant",
+      "Le meilleur",
+      "Mauvais",
+      "Moyen"
+    ],
+    "correct_index": 1,
+    "explanation": "GOAT = Greatest Of All Time → le meilleur.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Ghoster quelqu’un”, ça veut dire…",
+    "choices": [
+      "Appeler",
+      "Disparaître sans répondre",
+      "Suivre",
+      "Bloquer"
+    ],
+    "correct_index": 1,
+    "explanation": "Ghost = fantôme → disparaître sans répondre.",
+    "category": "Relations",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Low-key”, ça veut dire…",
+    "choices": [
+      "Visible",
+      "Discret",
+      "Rapide",
+      "Fort"
+    ],
+    "correct_index": 1,
+    "explanation": "Low-key = discret.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“High-key”, ça veut dire…",
+    "choices": [
+      "Discret",
+      "Très visible",
+      "Lent",
+      "Secret"
+    ],
+    "correct_index": 1,
+    "explanation": "High-key = très visible.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un banger”, c’est…",
+    "choices": [
+      "Mauvais",
+      "Très bon",
+      "Lent",
+      "Rare"
+    ],
+    "correct_index": 1,
+    "explanation": "Banger = musique qui cartonne.",
+    "category": "Musique",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un feat”, c’est…",
+    "choices": [
+      "Solo",
+      "Collaboration",
+      "Intro",
+      "Pause"
+    ],
+    "correct_index": 1,
+    "explanation": "Feat = featuring → collaboration.",
+    "category": "Musique",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Rage quit”, ça veut dire…",
+    "choices": [
+      "Gagner",
+      "Quitter énervé",
+      "Attendre",
+      "Observer"
+    ],
+    "correct_index": 1,
+    "explanation": "Rage = colère → quitter énervé.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“AFK”, ça veut dire…",
+    "choices": [
+      "Fort",
+      "Absent du clavier",
+      "En ligne",
+      "En vocal"
+    ],
+    "correct_index": 1,
+    "explanation": "AFK = Away From Keyboard.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Clutch”, ça veut dire…",
+    "choices": [
+      "Perdre",
+      "Action décisive réussie",
+      "Quitter",
+      "Attendre"
+    ],
+    "correct_index": 1,
+    "explanation": "Clutch = réussir au moment important.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Breadcrumbing”, ça veut dire…",
+    "choices": [
+      "Ignorer",
+      "Donner de faux espoirs",
+      "Bloquer",
+      "Appeler"
+    ],
+    "correct_index": 1,
+    "explanation": "Breadcrumbing = maintenir quelqu’un intéressé sans s’engager.",
+    "category": "Relations",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Shadowban”, ça veut dire…",
+    "choices": [
+      "Bloqué",
+      "Caché sans prévenir",
+      "Supprimé",
+      "Suivi"
+    ],
+    "correct_index": 1,
+    "explanation": "Shadowban = contenu rendu invisible sans avertir.",
+    "category": "Réseaux sociaux",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“FOMO”, ça veut dire…",
+    "choices": [
+      "Calme",
+      "Peur de rater",
+      "Content",
+      "Fatigué"
+    ],
+    "correct_index": 1,
+    "explanation": "FOMO = Fear Of Missing Out.",
+    "category": "Vocabulaire",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“NPC”, ça veut dire…",
+    "choices": [
+      "Joueur",
+      "Personne robotique",
+      "Chef",
+      "Créateur"
+    ],
+    "correct_index": 1,
+    "explanation": "NPC = personnage non-joueur.",
+    "category": "Culture internet",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Carry une partie”, ça veut dire…",
+    "choices": [
+      "Perdre",
+      "Faire gagner l’équipe",
+      "Quitter",
+      "Observer"
+    ],
+    "correct_index": 1,
+    "explanation": "Carry = porter l’équipe vers la victoire.",
+    "category": "Gaming",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Cap”, ça veut dire…",
+    "choices": [
+      "Vérité",
+      "Mensonge",
+      "Question",
+      "Réponse"
+    ],
+    "correct_index": 1,
+    "explanation": "Cap = mensonge.",
+    "category": "Vocabulaire",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“No cap”, ça veut dire…",
+    "choices": [
+      "Je rigole",
+      "Je dis la vérité",
+      "Je mens",
+      "Je doute"
+    ],
+    "correct_index": 1,
+    "explanation": "No cap = pas de mensonge.",
+    "category": "Vocabulaire",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Sus”, ça veut dire…",
+    "choices": [
+      "Sympa",
+      "Suspect",
+      "Rapide",
+      "Rare"
+    ],
+    "correct_index": 1,
+    "explanation": "Sus = suspicious.",
+    "category": "Vocabulaire",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Muter quelqu’un”, ça veut dire…",
+    "choices": [
+      "Supprimer",
+      "Couper le son ou masquer",
+      "Suivre",
+      "Appeler"
+    ],
+    "correct_index": 1,
+    "explanation": "Mute = couper le son ou ne plus voir sans bloquer.",
+    "category": "Réseaux sociaux",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Salty”, ça veut dire…",
+    "choices": [
+      "Heureux",
+      "Vexé",
+      "Calme",
+      "Motivé"
+    ],
+    "correct_index": 1,
+    "explanation": "Salty = vexé ou frustré.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Lit”, ça veut dire…",
+    "choices": [
+      "Ennuyant",
+      "Génial",
+      "Lent",
+      "Triste"
+    ],
+    "correct_index": 1,
+    "explanation": "Lit = quelque chose de très cool.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Quand quelqu’un écrit “dead”, ça veut dire…",
+    "choices": [
+      "Mort",
+      "Très drôle",
+      "Triste",
+      "Fatigué"
+    ],
+    "correct_index": 1,
+    "explanation": "Dead = mort de rire.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Mid”, ça veut dire…",
+    "choices": [
+      "Excellent",
+      "Moyen",
+      "Rapide",
+      "Rare"
+    ],
+    "correct_index": 1,
+    "explanation": "Mid = pas ouf, moyen.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Based”, ça veut dire…",
+    "choices": [
+      "Mauvais",
+      "Assumé",
+      "Lent",
+      "Faux"
+    ],
+    "correct_index": 1,
+    "explanation": "Based = assumer son avis.",
+    "category": "Culture internet",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Un viewer”, c’est…",
+    "choices": [
+      "Créateur",
+      "Spectateur",
+      "Programmeur",
+      "Modérateur"
+    ],
+    "correct_index": 1,
+    "explanation": "Viewer = personne qui regarde.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Streamer”, ça veut dire…",
+    "choices": [
+      "Regarder",
+      "Diffuser en direct",
+      "Télécharger",
+      "Poster"
+    ],
+    "correct_index": 1,
+    "explanation": "Stream = diffusion en direct.",
+    "category": "Réseaux sociaux",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un feed”, c’est…",
+    "choices": [
+      "Messages",
+      "Page principale",
+      "Stories",
+      "Likes"
+    ],
+    "correct_index": 1,
+    "explanation": "Feed = page principale des posts.",
+    "category": "Réseaux sociaux",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un filtre”, c’est…",
+    "choices": [
+      "Vidéo",
+      "Effet visuel",
+      "Message",
+      "Jeu"
+    ],
+    "correct_index": 1,
+    "explanation": "Filtre = effet appliqué à une image ou vidéo.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un leak”, c’est…",
+    "choices": [
+      "Bug",
+      "Info révélée avant",
+      "Message",
+      "Image"
+    ],
+    "correct_index": 1,
+    "explanation": "Leak = information dévoilée trop tôt.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Tryhard”, ça veut dire…",
+    "choices": [
+      "Jouer tranquille",
+      "Jouer à fond",
+      "Quitter",
+      "Observer"
+    ],
+    "correct_index": 1,
+    "explanation": "Tryhard = jouer sérieusement pour gagner.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un skin”, c’est…",
+    "choices": [
+      "Arme",
+      "Apparence",
+      "Niveau",
+      "Carte"
+    ],
+    "correct_index": 1,
+    "explanation": "Skin = apparence d’un personnage.",
+    "category": "Gaming",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Loot”, ça veut dire…",
+    "choices": [
+      "Quitter",
+      "Récompense",
+      "Attaquer",
+      "Perdre"
+    ],
+    "correct_index": 1,
+    "explanation": "Loot = objets récupérés dans un jeu.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Spawn”, ça veut dire…",
+    "choices": [
+      "Disparaître",
+      "Apparaître",
+      "Attaquer",
+      "Courir"
+    ],
+    "correct_index": 1,
+    "explanation": "Spawn = apparaître dans le jeu.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Respawn”, ça veut dire…",
+    "choices": [
+      "Mourir",
+      "Réapparaître",
+      "Attaquer",
+      "Gagner"
+    ],
+    "correct_index": 1,
+    "explanation": "Respawn = revenir après une mort.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Friendzone”, ça veut dire…",
+    "choices": [
+      "En couple",
+      "Rejet amoureux",
+      "Ami",
+      "Bloqué"
+    ],
+    "correct_index": 1,
+    "explanation": "Friendzone = rester seulement ami.",
+    "category": "Relations",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Love bombing”, ça veut dire…",
+    "choices": [
+      "Ignorer",
+      "Trop d’attention",
+      "Bloquer",
+      "Supprimer"
+    ],
+    "correct_index": 1,
+    "explanation": "Love bombing = donner beaucoup d’attention d’un coup.",
+    "category": "Relations",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Simp”, ça veut dire…",
+    "choices": [
+      "Méchant",
+      "Trop soumis",
+      "Ami",
+      "Inconnu"
+    ],
+    "correct_index": 1,
+    "explanation": "Simp = en faire trop pour plaire.",
+    "category": "Relations",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Un drop”, c’est…",
+    "choices": [
+      "Début",
+      "Moment fort",
+      "Fin",
+      "Pause"
+    ],
+    "correct_index": 1,
+    "explanation": "Drop = moment où la musique explose.",
+    "category": "Musique",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un remix”, c’est…",
+    "choices": [
+      "Original",
+      "Version modifiée",
+      "Pause",
+      "Fin"
+    ],
+    "correct_index": 1,
+    "explanation": "Remix = nouvelle version d’un morceau.",
+    "category": "Musique",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un son”, ça veut dire…",
+    "choices": [
+      "Bruit",
+      "Musique",
+      "Silence",
+      "Micro"
+    ],
+    "correct_index": 1,
+    "explanation": "Son = musique dans le langage courant.",
+    "category": "Musique",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Clickbait”, ça veut dire…",
+    "choices": [
+      "Utile",
+      "Titre trompeur",
+      "Court",
+      "Privé"
+    ],
+    "correct_index": 1,
+    "explanation": "Clickbait = attirer les clics avec un titre exagéré.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un thread”, c’est…",
+    "choices": [
+      "Photo",
+      "Suite de messages",
+      "Vidéo",
+      "Like"
+    ],
+    "correct_index": 1,
+    "explanation": "Thread = messages liés entre eux.",
+    "category": "Réseaux sociaux",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Une fake news”, c’est…",
+    "choices": [
+      "Info vraie",
+      "Info fausse",
+      "Vidéo",
+      "Image"
+    ],
+    "correct_index": 1,
+    "explanation": "Fake news = information fausse.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un spoiler”, c’est…",
+    "choices": [
+      "Intro",
+      "Révélation importante",
+      "Pub",
+      "Résumé"
+    ],
+    "correct_index": 1,
+    "explanation": "Spoiler = révéler un élément clé.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Spammer”, ça veut dire…",
+    "choices": [
+      "Envoyer",
+      "Envoyer beaucoup",
+      "Lire",
+      "Ignorer"
+    ],
+    "correct_index": 1,
+    "explanation": "Spam = envoyer plein de messages.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un algo”, c’est…",
+    "choices": [
+      "Vidéo",
+      "Système de sélection",
+      "Photo",
+      "Message"
+    ],
+    "correct_index": 1,
+    "explanation": "Algo = système qui choisit le contenu affiché.",
+    "category": "Culture internet",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Trend”, ça veut dire…",
+    "choices": [
+      "Ancien",
+      "Tendance",
+      "Lent",
+      "Rare"
+    ],
+    "correct_index": 1,
+    "explanation": "Trend = tendance du moment.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Slay”, ça veut dire…",
+    "choices": [
+      "Rater",
+      "Assurer",
+      "Attendre",
+      "Perdre"
+    ],
+    "correct_index": 1,
+    "explanation": "Slay = réussir avec style.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Boujee”, ça veut dire…",
+    "choices": [
+      "Simple",
+      "Chic",
+      "Fatigué",
+      "Lent"
+    ],
+    "correct_index": 1,
+    "explanation": "Boujee = chic, luxe, parfois un peu prétentieux.",
+    "category": "Vocabulaire",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Wesh”, c’est plutôt…",
+    "choices": [
+      "Un salut",
+      "Une appli",
+      "Un jeu",
+      "Un filtre"
+    ],
+    "correct_index": 0,
+    "explanation": "Wesh = façon familière de dire salut ou d’interpeller.",
+    "category": "Vocabulaire",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“C’est carré”, ça veut dire…",
+    "choices": [
+      "C’est raté",
+      "C’est propre",
+      "C’est long",
+      "C’est faux"
+    ],
+    "correct_index": 1,
+    "explanation": "Carré = bien fait, fiable, propre.",
+    "category": "Vocabulaire",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“C’est clean”, ça veut dire…",
+    "choices": [
+      "C’est sale",
+      "C’est propre",
+      "C’est vieux",
+      "C’est lent"
+    ],
+    "correct_index": 1,
+    "explanation": "Clean = propre, réussi, bien fait.",
+    "category": "Vocabulaire",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“C’est validé”, ça veut dire…",
+    "choices": [
+      "Refusé",
+      "Approuvé",
+      "Supprimé",
+      "Ignoré"
+    ],
+    "correct_index": 1,
+    "explanation": "Validé = approuvé, c’est bon.",
+    "category": "Vocabulaire",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Matrixé”, ça veut dire…",
+    "choices": [
+      "Fatigué",
+      "Très influencé",
+      "Riche",
+      "Célèbre"
+    ],
+    "correct_index": 1,
+    "explanation": "Matrixé = influencé ou obsédé par une idée.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Ratio”, sur les réseaux, ça veut dire…",
+    "choices": [
+      "Gros succès",
+      "Réponse plus likée",
+      "Compte bloqué",
+      "Post supprimé"
+    ],
+    "correct_index": 1,
+    "explanation": "Ratio = une réponse reçoit plus d’attention que le post original.",
+    "category": "Réseaux sociaux",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un live”, c’est…",
+    "choices": [
+      "Vidéo en direct",
+      "Photo privée",
+      "Message vocal",
+      "Post supprimé"
+    ],
+    "correct_index": 0,
+    "explanation": "Live = diffusion en direct.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un challenge”, sur TikTok, c’est…",
+    "choices": [
+      "Bug",
+      "Tendance à reproduire",
+      "Message privé",
+      "Compte payant"
+    ],
+    "correct_index": 1,
+    "explanation": "Challenge = tendance que les gens refont en vidéo.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“POV”, ça veut dire…",
+    "choices": [
+      "Point de vue",
+      "Vidéo privée",
+      "Profil officiel",
+      "Post viral"
+    ],
+    "correct_index": 0,
+    "explanation": "POV = Point Of View → point de vue.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Side eye”, ça veut dire…",
+    "choices": [
+      "Regard méfiant",
+      "Grand sourire",
+      "Ignorer",
+      "Regarder droit"
+    ],
+    "correct_index": 0,
+    "explanation": "Side eye = regard de côté, souvent avec jugement.",
+    "category": "Culture internet",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Drama”, ça veut dire…",
+    "choices": [
+      "Calme",
+      "Embrouille",
+      "Blague",
+      "Musique"
+    ],
+    "correct_index": 1,
+    "explanation": "Drama = conflit, embrouille ou histoire qui prend trop de place.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un fail”, c’est…",
+    "choices": [
+      "Réussite",
+      "Raté",
+      "Victoire",
+      "Message"
+    ],
+    "correct_index": 1,
+    "explanation": "Fail = échec ou moment raté.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Triggered”, ça veut dire…",
+    "choices": [
+      "Calme",
+      "Énervé",
+      "Heureux",
+      "Concentré"
+    ],
+    "correct_index": 1,
+    "explanation": "Triggered = vite énervé ou piqué par un sujet.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Cursed”, ça veut dire…",
+    "choices": [
+      "Normal",
+      "Bizarre",
+      "Très clair",
+      "Officiel"
+    ],
+    "correct_index": 1,
+    "explanation": "Cursed = bizarre, dérangeant, presque maudit.",
+    "category": "Culture internet",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“GG”, ça veut dire…",
+    "choices": [
+      "Bien joué",
+      "Jeu gratuit",
+      "Mauvais jeu",
+      "Gros bug"
+    ],
+    "correct_index": 0,
+    "explanation": "GG = Good Game → bien joué.",
+    "category": "Gaming",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Lag”, dans un jeu, c’est…",
+    "choices": [
+      "Ralentissement",
+      "Victoire",
+      "Nouveau niveau",
+      "Bonus"
+    ],
+    "correct_index": 0,
+    "explanation": "Lag = ralentissement, souvent à cause de la connexion.",
+    "category": "Gaming",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Farm”, dans un jeu, ça veut dire…",
+    "choices": [
+      "Accumuler",
+      "Quitter",
+      "Parler",
+      "Supprimer"
+    ],
+    "correct_index": 0,
+    "explanation": "Farm = récupérer des ressources en boucle.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Meta”, dans un jeu, c’est…",
+    "choices": [
+      "Le plus efficace",
+      "Le plus ancien",
+      "Le plus lent",
+      "Le plus cher"
+    ],
+    "correct_index": 0,
+    "explanation": "Meta = ce qui marche le mieux à un moment donné.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Boss”, dans un jeu, c’est…",
+    "choices": [
+      "Ennemi difficile",
+      "Joueur débutant",
+      "Menu pause",
+      "Petit bonus"
+    ],
+    "correct_index": 0,
+    "explanation": "Boss = ennemi important ou difficile à battre.",
+    "category": "Gaming",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Level up”, ça veut dire…",
+    "choices": [
+      "Monter de niveau",
+      "Quitter",
+      "Perdre",
+      "Ralentir"
+    ],
+    "correct_index": 0,
+    "explanation": "Level up = progresser ou monter de niveau.",
+    "category": "Gaming",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Ship deux personnes”, ça veut dire…",
+    "choices": [
+      "Les imaginer en couple",
+      "Les bloquer",
+      "Les séparer",
+      "Les ignorer"
+    ],
+    "correct_index": 0,
+    "explanation": "Ship = vouloir ou imaginer deux personnes ensemble.",
+    "category": "Relations",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Red flag”, en dating, c’est…",
+    "choices": [
+      "Bon signe",
+      "Signal d’alerte",
+      "Premier message",
+      "Compliment"
+    ],
+    "correct_index": 1,
+    "explanation": "Red flag = signe qu’il faut faire attention.",
+    "category": "Relations",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Crush”, ça veut dire…",
+    "choices": [
+      "Personne qui plaît",
+      "Ex",
+      "Ami proche",
+      "Compte bloqué"
+    ],
+    "correct_index": 0,
+    "explanation": "Crush = personne pour qui on a un petit faible.",
+    "category": "Relations",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Seen”, dans une conversation, ça veut dire…",
+    "choices": [
+      "Message vu",
+      "Message supprimé",
+      "Compte bloqué",
+      "Appel raté"
+    ],
+    "correct_index": 0,
+    "explanation": "Seen = message lu ou vu, sans forcément répondre.",
+    "category": "Relations",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un bail”, dans le langage courant, c’est…",
+    "choices": [
+      "Un truc",
+      "Un contrat",
+      "Une chanson",
+      "Un filtre"
+    ],
+    "correct_index": 0,
+    "explanation": "Bail = truc, histoire, situation.",
+    "category": "Vocabulaire",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un hater”, c’est…",
+    "choices": [
+      "Quelqu’un qui critique",
+      "Un fan",
+      "Un modérateur",
+      "Un abonné"
+    ],
+    "correct_index": 0,
+    "explanation": "Hater = personne qui critique ou déteste gratuitement.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un influenceur”, c’est…",
+    "choices": [
+      "Créateur suivi en ligne",
+      "Jeu vidéo",
+      "Filtre photo",
+      "Bug réseau"
+    ],
+    "correct_index": 0,
+    "explanation": "Influenceur = personne suivie qui peut influencer son audience.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Contenu sponsorisé”, ça veut dire…",
+    "choices": [
+      "Payé par une marque",
+      "Supprimé",
+      "Privé",
+      "Illégal"
+    ],
+    "correct_index": 0,
+    "explanation": "Sponsorisé = payé ou soutenu par une marque.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Unfollow quelqu’un”, ça veut dire…",
+    "choices": [
+      "Le suivre",
+      "Arrêter de le suivre",
+      "L’appeler",
+      "Le bloquer"
+    ],
+    "correct_index": 1,
+    "explanation": "Unfollow = ne plus suivre un compte.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Block quelqu’un”, ça veut dire…",
+    "choices": [
+      "Le suivre",
+      "Le bloquer",
+      "L’ignorer",
+      "Le liker"
+    ],
+    "correct_index": 1,
+    "explanation": "Block = empêcher quelqu’un de voir ou contacter.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Unfollow + follow”, c’est souvent pour…",
+    "choices": [
+      "Aider",
+      "Gagner des abonnés",
+      "Bloquer",
+      "Signaler"
+    ],
+    "correct_index": 1,
+    "explanation": "Technique pour attirer l’attention et gagner des abonnés.",
+    "category": "Réseaux sociaux",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Un post viral”, c’est…",
+    "choices": [
+      "Peu vu",
+      "Très partagé",
+      "Privé",
+      "Supprimé"
+    ],
+    "correct_index": 1,
+    "explanation": "Viral = vu et partagé massivement.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un commentaire épinglé”, c’est…",
+    "choices": [
+      "Supprimé",
+      "Mis en haut",
+      "Privé",
+      "Ignoré"
+    ],
+    "correct_index": 1,
+    "explanation": "Épinglé = fixé en haut des commentaires.",
+    "category": "Réseaux sociaux",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un fake account”, c’est…",
+    "choices": [
+      "Compte officiel",
+      "Faux compte",
+      "Compte pro",
+      "Compte privé"
+    ],
+    "correct_index": 1,
+    "explanation": "Fake account = compte non authentique.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un compte privé”, c’est…",
+    "choices": [
+      "Public",
+      "Accessible sur demande",
+      "Supprimé",
+      "Bloqué"
+    ],
+    "correct_index": 1,
+    "explanation": "Privé = visible seulement si accepté.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un compte vérifié”, c’est…",
+    "choices": [
+      "Faux",
+      "Authentifié",
+      "Supprimé",
+      "Bloqué"
+    ],
+    "correct_index": 1,
+    "explanation": "Vérifié = confirmé comme officiel.",
+    "category": "Réseaux sociaux",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un meme template”, c’est…",
+    "choices": [
+      "Image unique",
+      "Modèle réutilisé",
+      "Vidéo privée",
+      "Post supprimé"
+    ],
+    "correct_index": 1,
+    "explanation": "Template = modèle de base pour créer des memes.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un meme mort”, c’est…",
+    "choices": [
+      "Nouveau",
+      "Dépassé",
+      "Viral",
+      "Drôle"
+    ],
+    "correct_index": 1,
+    "explanation": "Meme mort = plus utilisé ou plus drôle.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un meme viral”, c’est…",
+    "choices": [
+      "Inconnu",
+      "Très partagé",
+      "Supprimé",
+      "Privé"
+    ],
+    "correct_index": 1,
+    "explanation": "Viral = partagé partout.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un inside joke”, c’est…",
+    "choices": [
+      "Blague publique",
+      "Blague privée",
+      "Message",
+      "Image"
+    ],
+    "correct_index": 1,
+    "explanation": "Inside joke = blague comprise par un groupe.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un roast”, c’est…",
+    "choices": [
+      "Compliment",
+      "Moquerie",
+      "Message sérieux",
+      "Silence"
+    ],
+    "correct_index": 1,
+    "explanation": "Roast = se moquer de quelqu’un.",
+    "category": "Culture internet",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un reaction”, c’est…",
+    "choices": [
+      "Créer",
+      "Réagir à du contenu",
+      "Supprimer",
+      "Bloquer"
+    ],
+    "correct_index": 1,
+    "explanation": "Reaction = montrer sa réaction à un contenu.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un ping”, c’est…",
+    "choices": [
+      "Ignorer",
+      "Notifier quelqu’un",
+      "Supprimer",
+      "Bloquer"
+    ],
+    "correct_index": 1,
+    "explanation": "Ping = notifier quelqu’un.",
+    "category": "Gaming",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un cooldown”, c’est…",
+    "choices": [
+      "Temps d’attente",
+      "Attaque",
+      "Bonus",
+      "Erreur"
+    ],
+    "correct_index": 0,
+    "explanation": "Cooldown = temps avant de réutiliser une action.",
+    "category": "Gaming",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Un buff”, c’est…",
+    "choices": [
+      "Faiblesse",
+      "Amélioration",
+      "Erreur",
+      "Pause"
+    ],
+    "correct_index": 1,
+    "explanation": "Buff = amélioration d’un personnage.",
+    "category": "Gaming",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Un nerf”, c’est…",
+    "choices": [
+      "Amélioration",
+      "Réduction de puissance",
+      "Pause",
+      "Erreur"
+    ],
+    "correct_index": 1,
+    "explanation": "Nerf = diminuer la puissance.",
+    "category": "Gaming",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Situationship”, ça veut dire…",
+    "choices": [
+      "Couple clair",
+      "Relation floue",
+      "Amitié",
+      "Blocage"
+    ],
+    "correct_index": 1,
+    "explanation": "Situationship = relation sans statut clair.",
+    "category": "Relations",
+    "difficulty": "hard"
+  },
+  {
+    "question": "“Texting”, ça veut dire…",
+    "choices": [
+      "Appeler",
+      "Envoyer des messages",
+      "Bloquer",
+      "Ignorer"
+    ],
+    "correct_index": 1,
+    "explanation": "Texting = discuter par messages.",
+    "category": "Relations",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Double text”, ça veut dire…",
+    "choices": [
+      "Ignorer",
+      "Envoyer 2 messages",
+      "Bloquer",
+      "Supprimer"
+    ],
+    "correct_index": 1,
+    "explanation": "Double text = envoyer plusieurs messages sans réponse.",
+    "category": "Relations",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un hit”, c’est…",
+    "choices": [
+      "Échec",
+      "Succès",
+      "Pause",
+      "Bug"
+    ],
+    "correct_index": 1,
+    "explanation": "Hit = musique ou contenu à succès.",
+    "category": "Musique",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un album drop”, c’est…",
+    "choices": [
+      "Suppression",
+      "Sortie",
+      "Pause",
+      "Erreur"
+    ],
+    "correct_index": 1,
+    "explanation": "Drop = sortie d’un projet.",
+    "category": "Musique",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un hack”, c’est…",
+    "choices": [
+      "Erreur",
+      "Astuce",
+      "Pause",
+      "Suppression"
+    ],
+    "correct_index": 1,
+    "explanation": "Hack = astuce pratique.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un tuto”, c’est…",
+    "choices": [
+      "Blague",
+      "Guide",
+      "Image",
+      "Bug"
+    ],
+    "correct_index": 1,
+    "explanation": "Tuto = tutoriel explicatif.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  },
+  {
+    "question": "“Un contenu viral court”, c’est souvent…",
+    "choices": [
+      "Long",
+      "Court",
+      "Privé",
+      "Payant"
+    ],
+    "correct_index": 1,
+    "explanation": "Les contenus courts se partagent plus facilement.",
+    "category": "Réseaux sociaux",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Un buzz”, c’est…",
+    "choices": [
+      "Silence",
+      "Attention massive",
+      "Erreur",
+      "Pause"
+    ],
+    "correct_index": 1,
+    "explanation": "Buzz = forte attention médiatique.",
+    "category": "Culture internet",
+    "difficulty": "easy"
+  }
+]

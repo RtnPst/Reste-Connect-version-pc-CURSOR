@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { supabase } from "@/integrations/supabase/client";
+import { getBadgeUiCopy, badgeUnlockHintOrDefault } from "@/lib/badge-ui";
 
 type EarnedBadge = {
   id: string;
@@ -14,13 +15,20 @@ type EarnedBadge = {
   icon: string;
   earned_at: string;
 };
+type BadgeCatalog = {
+  id: string;
+  code: string;
+  name: string;
+  description: string;
+  icon: string;
+};
 type Stats = { totalAttempts: number; avgScore: number };
 
 export const Route = createFileRoute("/parcours")({
   head: () => ({
     meta: [
-      { title: "Mon parcours — Reste connecté !" },
-      { name: "description", content: "Vos badges, statistiques et progression." },
+      { title: "Ton parcours — Tu captes ?" },
+      { name: "description", content: "Badges, stats et progression — ton game « Tu captes ? »." },
     ],
   }),
   component: ProfilePage,
@@ -30,6 +38,8 @@ function ProfilePage() {
   const { profile } = useAuth();
   const { user, loading } = useRequireAuth();
   const [badges, setBadges] = useState<EarnedBadge[]>([]);
+  const [allBadges, setAllBadges] = useState<BadgeCatalog[]>([]);
+  const [earnedBadgeIds, setEarnedBadgeIds] = useState<string[]>([]);
   const [stats, setStats] = useState<Stats>({ totalAttempts: 0, avgScore: 0 });
 
   useEffect(() => {
@@ -60,6 +70,13 @@ function ProfilePage() {
         })
         .filter((x): x is EarnedBadge => x !== null);
       setBadges(earned);
+      setEarnedBadgeIds(earned.map((b) => b.id));
+
+      const { data: catalog } = await supabase
+        .from("badges")
+        .select("id, code, name, description, icon")
+        .order("created_at", { ascending: true });
+      setAllBadges((catalog as BadgeCatalog[]) ?? []);
 
       const { data: attempts } = await supabase
         .from("quiz_attempts")
@@ -77,9 +94,9 @@ function ProfilePage() {
 
   if (loading || !user || !profile) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex items-center justify-center">
+        <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
           <p>Chargement…</p>
         </main>
       </div>
@@ -90,13 +107,13 @@ function ProfilePage() {
   const xpInLevel = profile.total_xp % 100;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
-      <main className="flex-1 container mx-auto px-4 sm:px-6 max-w-4xl py-8 sm:py-12">
+      <main className="container mx-auto w-full min-w-0 max-w-4xl flex-1 overflow-x-clip px-4 py-8 sm:px-6 sm:py-12">
         <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">
-          Bonjour {profile.display_name ?? "vous"} !
+          Salut {profile.display_name ?? "toi"} !
         </h1>
-        <p className="text-lg text-muted-foreground mb-8">Voici votre parcours.</p>
+        <p className="text-lg text-muted-foreground mb-8">Voilà où t'en es.</p>
 
         {/* Stats grid */}
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 mb-8">
@@ -120,11 +137,15 @@ function ProfilePage() {
           />
           <StatCard
             icon={<Trophy className="size-7" />}
-            label="Quiz faits"
+            label="Quiz thème"
             value={stats.totalAttempts.toString()}
             accent="text-success bg-success-soft"
           />
         </div>
+        <p className="text-xs text-muted-foreground -mt-4 mb-8 max-w-2xl">
+          Ce chiffre compte tes quiz <strong>par thème</strong> (les 4 pistes). Marathon, duels et
+          mode niveaux ne s’ajoutent pas ici — ton XP et ta série, eux, suivent quand même ailleurs.
+        </p>
 
         {/* Level progress */}
         <div className="bg-card rounded-3xl border-2 border-border p-6 mb-8">
@@ -136,34 +157,50 @@ function ProfilePage() {
             <div className="h-full bg-primary transition-all" style={{ width: `${xpInLevel}%` }} />
           </div>
           <p className="text-sm text-muted-foreground mt-3">
-            Score moyen : <strong>{stats.avgScore}%</strong> · Meilleure série :{" "}
+            Moyenne sur tes quiz thème : <strong>{stats.avgScore}%</strong> · Record de série :{" "}
             <strong>{profile.longest_streak} jours</strong>
           </p>
         </div>
 
         {/* Badges */}
         <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 mb-8">
-          <h2 className="text-2xl font-extrabold mb-4">Mes badges ({badges.length})</h2>
-          {badges.length === 0 ? (
+          <h2 className="text-2xl font-extrabold mb-4">Tes badges ({badges.length})</h2>
+          {allBadges.length === 0 ? (
             <p className="text-muted-foreground">
-              Aucun badge pour l'instant. Faites un quiz pour décrocher votre premier badge !
+              Le catalogue charge ou est vide. Réessaie dans un instant.
             </p>
           ) : (
             <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-              {badges.map((b) => (
-                <div
-                  key={b.id}
-                  className="flex items-center gap-3 p-4 rounded-2xl bg-accent-soft border-2 border-accent/20"
-                >
-                  <span className="text-4xl flex-shrink-0" aria-hidden>
-                    {b.icon}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-bold">{b.name}</p>
-                    <p className="text-sm text-muted-foreground">{b.description}</p>
+              {allBadges.map((b) => {
+                const isEarned = earnedBadgeIds.includes(b.id);
+                const ui = getBadgeUiCopy(b.code);
+                const displayName = ui?.name ?? b.name;
+                const earnedDescription = ui?.description ?? b.description;
+                const lockedHint = badgeUnlockHintOrDefault(b.code);
+                return (
+                  <div
+                    key={b.id}
+                    className={`flex items-center gap-3 p-4 rounded-2xl border-2 ${
+                      isEarned
+                        ? "bg-accent-soft border-accent/20"
+                        : "bg-muted/40 border-border opacity-70"
+                    }`}
+                  >
+                    <span className="text-4xl flex-shrink-0" aria-hidden>
+                      {b.icon}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-bold">
+                        {displayName}{" "}
+                        {!isEarned && <span className="text-xs font-semibold">(pas encore)</span>}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {isEarned ? earnedDescription : lockedHint}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>

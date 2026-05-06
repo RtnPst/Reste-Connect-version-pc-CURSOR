@@ -10,6 +10,12 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
+        onwarn(warning, defaultHandler) {
+          const msg = String(warning.message ?? "");
+          // TanStack / deps: harmless unused re-exports in SSR graph
+          if (msg.includes("never used") && msg.includes("node_modules")) return;
+          defaultHandler(warning);
+        },
         output: {
           manualChunks(id) {
             if (!id.includes("node_modules")) return;
