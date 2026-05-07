@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { AppBottomNav } from "@/components/AppBottomNav";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/contexts/AuthContext";
 
@@ -76,7 +77,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="min-w-0 overflow-x-clip bg-background antialiased">
+      <body className="min-w-0 overflow-x-clip bg-background pb-20 antialiased md:pb-0">
         {children}
         <Scripts />
       </body>
@@ -96,6 +97,7 @@ function RootComponent() {
     <AuthProvider>
       <Outlet />
       <Toaster position="top-center" />
+      <AppBottomNav />
     </AuthProvider>
   );
 }

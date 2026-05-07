@@ -14,7 +14,9 @@ import { Route as StatistiquesRouteImport } from './routes/statistiques'
 import { Route as ReglagesRouteImport } from './routes/reglages'
 import { Route as QuestionDuJourRouteImport } from './routes/question-du-jour'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PlayRouteImport } from './routes/play'
 import { Route as ParcoursRouteImport } from './routes/parcours'
+import { Route as ParametresRouteImport } from './routes/parametres'
 import { Route as NiveauxRouteImport } from './routes/niveaux'
 import { Route as MarathonRouteImport } from './routes/marathon'
 import { Route as DeleteAccountRouteImport } from './routes/delete-account'
@@ -52,9 +54,19 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlayRoute = PlayRouteImport.update({
+  id: '/play',
+  path: '/play',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ParcoursRoute = ParcoursRouteImport.update({
   id: '/parcours',
   path: '/parcours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParametresRoute = ParametresRouteImport.update({
+  id: '/parametres',
+  path: '/parametres',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NiveauxRoute = NiveauxRouteImport.update({
@@ -120,7 +132,9 @@ export interface FileRoutesByFullPath {
   '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
   '/niveaux': typeof NiveauxRoute
+  '/parametres': typeof ParametresRoute
   '/parcours': typeof ParcoursRoute
+  '/play': typeof PlayRoute
   '/privacy': typeof PrivacyRoute
   '/question-du-jour': typeof QuestionDuJourRoute
   '/reglages': typeof ReglagesRoute
@@ -139,7 +153,9 @@ export interface FileRoutesByTo {
   '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
   '/niveaux': typeof NiveauxRoute
+  '/parametres': typeof ParametresRoute
   '/parcours': typeof ParcoursRoute
+  '/play': typeof PlayRoute
   '/privacy': typeof PrivacyRoute
   '/question-du-jour': typeof QuestionDuJourRoute
   '/reglages': typeof ReglagesRoute
@@ -159,7 +175,9 @@ export interface FileRoutesById {
   '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
   '/niveaux': typeof NiveauxRoute
+  '/parametres': typeof ParametresRoute
   '/parcours': typeof ParcoursRoute
+  '/play': typeof PlayRoute
   '/privacy': typeof PrivacyRoute
   '/question-du-jour': typeof QuestionDuJourRoute
   '/reglages': typeof ReglagesRoute
@@ -180,7 +198,9 @@ export interface FileRouteTypes {
     | '/delete-account'
     | '/marathon'
     | '/niveaux'
+    | '/parametres'
     | '/parcours'
+    | '/play'
     | '/privacy'
     | '/question-du-jour'
     | '/reglages'
@@ -199,7 +219,9 @@ export interface FileRouteTypes {
     | '/delete-account'
     | '/marathon'
     | '/niveaux'
+    | '/parametres'
     | '/parcours'
+    | '/play'
     | '/privacy'
     | '/question-du-jour'
     | '/reglages'
@@ -218,7 +240,9 @@ export interface FileRouteTypes {
     | '/delete-account'
     | '/marathon'
     | '/niveaux'
+    | '/parametres'
     | '/parcours'
+    | '/play'
     | '/privacy'
     | '/question-du-jour'
     | '/reglages'
@@ -238,7 +262,9 @@ export interface RootRouteChildren {
   DeleteAccountRoute: typeof DeleteAccountRoute
   MarathonRoute: typeof MarathonRoute
   NiveauxRoute: typeof NiveauxRoute
+  ParametresRoute: typeof ParametresRoute
   ParcoursRoute: typeof ParcoursRoute
+  PlayRoute: typeof PlayRoute
   PrivacyRoute: typeof PrivacyRoute
   QuestionDuJourRoute: typeof QuestionDuJourRoute
   ReglagesRoute: typeof ReglagesRoute
@@ -288,11 +314,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/play': {
+      id: '/play'
+      path: '/play'
+      fullPath: '/play'
+      preLoaderRoute: typeof PlayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/parcours': {
       id: '/parcours'
       path: '/parcours'
       fullPath: '/parcours'
       preLoaderRoute: typeof ParcoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parametres': {
+      id: '/parametres'
+      path: '/parametres'
+      fullPath: '/parametres'
+      preLoaderRoute: typeof ParametresRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/niveaux': {
@@ -382,7 +422,9 @@ const rootRouteChildren: RootRouteChildren = {
   DeleteAccountRoute: DeleteAccountRoute,
   MarathonRoute: MarathonRoute,
   NiveauxRoute: NiveauxRoute,
+  ParametresRoute: ParametresRoute,
   ParcoursRoute: ParcoursRoute,
+  PlayRoute: PlayRoute,
   PrivacyRoute: PrivacyRoute,
   QuestionDuJourRoute: QuestionDuJourRoute,
   ReglagesRoute: ReglagesRoute,

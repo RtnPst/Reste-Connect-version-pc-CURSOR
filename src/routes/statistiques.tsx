@@ -55,7 +55,7 @@ function StatsPage() {
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
-          <p>Chargement…</p>
+          <p>On sort tes stats…</p>
         </main>
       </div>
     );

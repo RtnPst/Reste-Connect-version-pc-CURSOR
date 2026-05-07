@@ -28,16 +28,38 @@ import {
 } from "@/utils/questions.functions";
 
 type Difficulty = "facile" | "moyen" | "difficile";
+type QuestionStatus = "draft" | "review" | "live" | "archived";
+type InternetLevel = "debutant" | "initie" | "chronically_online";
+type QuestionTone = "funny" | "cringe" | "drama" | "absurd" | "social" | "gaming";
+type QuestionContext =
+  | "tiktok_comments"
+  | "group_chat"
+  | "family_dinner"
+  | "twitch_chat"
+  | "dating_app"
+  | "gaming_voice";
+type TrapIntensity = "obvious" | "soft_trap" | "generational_trap" | "fifty_fifty" | "troll";
+type QuestionEra = "facebook" | "snapchat" | "tiktok" | "streaming" | "ai";
+type QuestionFormat = "word" | "expression" | "meme_ref" | "emoji" | "scenario_text";
 
 type Question = {
   id: string;
   theme: ThemeKey;
   difficulty: Difficulty;
+  status: QuestionStatus;
   question: string;
   choices: string[];
   correct_index: number;
   explanation: string;
   is_active: boolean;
+  internet_level: InternetLevel | null;
+  tone: QuestionTone | null;
+  context: QuestionContext | null;
+  trap_intensity: TrapIntensity | null;
+  era: QuestionEra | null;
+  format: QuestionFormat | null;
+  editor_notes: string | null;
+  canonical_key: string | null;
 };
 
 type PreviewRow = AiPreviewQuestion & { key: string; accepted: boolean };
@@ -45,11 +67,27 @@ type PreviewRow = AiPreviewQuestion & { key: string; accepted: boolean };
 const EMPTY: Omit<Question, "id"> = {
   theme: "vocabulaire",
   difficulty: "facile",
+  status: "draft",
   question: "",
   choices: ["", "", "", ""],
   correct_index: 0,
   explanation: "",
-  is_active: true,
+  is_active: false,
+  internet_level: null,
+  tone: null,
+  context: null,
+  trap_intensity: null,
+  era: null,
+  format: null,
+  editor_notes: null,
+  canonical_key: null,
+};
+
+const STATUS_LABELS: Record<QuestionStatus, string> = {
+  draft: "Brouillon",
+  review: "À relire",
+  live: "En ligne",
+  archived: "Archivée",
 };
 
 export const Route = createFileRoute("/admin")({
@@ -71,8 +109,12 @@ function AdminPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loadingQ, setLoadingQ] = useState(true);
   const [filterTheme, setFilterTheme] = useState<ThemeKey | "all">("all");
+  const [filterDifficulty, setFilterDifficulty] = useState<Difficulty | "all">("all");
+  const [filterStatus, setFilterStatus] = useState<QuestionStatus | "all">("all");
+  const [missingMetaOnly, setMissingMetaOnly] = useState(false);
   const [editingId, setEditingId] = useState<string | "new" | null>(null);
   const [draft, setDraft] = useState<Omit<Question, "id">>(EMPTY);
+  const [advancedOpen, setAdvancedOpen] = useState(false);
 
   const previewFn = useServerFn(generateQuestionsPreview);
   const insertFn = useServerFn(insertAcceptedGeneratedQuestions);
@@ -135,6 +177,7 @@ function AdminPage() {
   const startNew = () => {
     setEditingId("new");
     setDraft(EMPTY);
+    setAdvancedOpen(false);
   };
 
   const startEdit = (q: Question) => {
@@ -142,12 +185,32 @@ function AdminPage() {
     setDraft({
       theme: q.theme,
       difficulty: q.difficulty,
+      status: q.status ?? (q.is_active ? "live" : "archived"),
       question: q.question,
       choices: [...q.choices, "", "", "", ""].slice(0, 4),
       correct_index: q.correct_index,
       explanation: q.explanation,
       is_active: q.is_active,
+      internet_level: q.internet_level,
+      tone: q.tone,
+      context: q.context,
+      trap_intensity: q.trap_intensity,
+      era: q.era,
+      format: q.format,
+      editor_notes: q.editor_notes,
+      canonical_key: q.canonical_key,
     });
+    setAdvancedOpen(
+      Boolean(
+        q.internet_level ||
+          q.tone ||
+          q.context ||
+          q.trap_intensity ||
+          q.era ||
+          q.format ||
+          q.editor_notes,
+      ),
+    );
   };
 
   const cancel = () => {
@@ -155,18 +218,27 @@ function AdminPage() {
     setDraft(EMPTY);
   };
 
-  const save = async () => {
+  const save = async (statusOverride?: QuestionStatus) => {
     if (!draft.question.trim()) return toast.error("La question est vide");
     if (draft.choices.some((c) => !c.trim()))
       return toast.error("Toutes les réponses doivent être remplies");
     if (!draft.explanation.trim()) return toast.error("L'explication est vide");
+    const nextStatus = statusOverride ?? draft.status;
+    if (!nextStatus) return toast.error("Le statut est requis");
+
+    const payload = {
+      ...draft,
+      status: nextStatus,
+      is_active: nextStatus === "live",
+      editor_notes: draft.editor_notes?.trim() ? draft.editor_notes.trim() : null,
+    };
 
     if (editingId === "new") {
-      const { error } = await supabase.from("questions").insert(draft);
+      const { error } = await supabase.from("questions").insert(payload);
       if (error) return toast.error(error.message);
       toast.success("Question ajoutée !");
     } else if (editingId) {
-      const { error } = await supabase.from("questions").update(draft).eq("id", editingId);
+      const { error } = await supabase.from("questions").update(payload).eq("id", editingId);
       if (error) return toast.error(error.message);
       toast.success("Question mise à jour !");
     }
@@ -175,13 +247,29 @@ function AdminPage() {
   };
 
   const toggleActive = async (q: Question) => {
+    const nextActive = !q.is_active;
     const { error } = await supabase
       .from("questions")
-      .update({ is_active: !q.is_active })
+      .update({
+        is_active: nextActive,
+        status: nextActive ? "live" : "archived",
+      })
       .eq("id", q.id);
     if (error) return toast.error(error.message);
     toast.success(q.is_active ? "Question masquée" : "Question activée");
     loadQuestions();
+  };
+
+  const duplicateQuestion = (q: Question) => {
+    setEditingId("new");
+    setDraft({
+      ...q,
+      status: "draft",
+      is_active: false,
+      question: `${q.question} (variante)`,
+      canonical_key: null,
+    });
+    setAdvancedOpen(true);
   };
 
   const handleGeneratePreview = async () => {
@@ -273,8 +361,16 @@ function AdminPage() {
 
   const acceptedCount = previewRows?.filter((r) => r.accepted).length ?? 0;
 
-  const filtered =
-    filterTheme === "all" ? questions : questions.filter((q) => q.theme === filterTheme);
+  const hasMissingMetadata = (q: Question) =>
+    !q.internet_level || !q.tone || !q.context || !q.trap_intensity || !q.era || !q.format;
+
+  const filtered = questions.filter((q) => {
+    if (filterTheme !== "all" && q.theme !== filterTheme) return false;
+    if (filterDifficulty !== "all" && q.difficulty !== filterDifficulty) return false;
+    if (filterStatus !== "all" && q.status !== filterStatus) return false;
+    if (missingMetaOnly && !hasMissingMetadata(q)) return false;
+    return true;
+  });
 
   return (
     <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
@@ -501,7 +597,46 @@ function AdminPage() {
         )}
 
         {/* Filter */}
-        <div className="flex min-w-0 flex-wrap gap-2">
+        <div className="grid min-w-0 gap-3 rounded-2xl border border-border/70 bg-card/60 p-3 sm:p-4">
+          <div className="grid min-w-0 gap-3 sm:grid-cols-3">
+            <div className="min-w-0">
+              <Label>Statut</Label>
+              <Select value={filterStatus} onValueChange={(v) => setFilterStatus(v as QuestionStatus | "all")}>
+                <SelectTrigger className="w-full min-w-0">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Tous les statuts</SelectItem>
+                  <SelectItem value="draft">Brouillon</SelectItem>
+                  <SelectItem value="review">À relire</SelectItem>
+                  <SelectItem value="live">En ligne</SelectItem>
+                  <SelectItem value="archived">Archivée</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="min-w-0">
+              <Label>Difficulté</Label>
+              <Select
+                value={filterDifficulty}
+                onValueChange={(v) => setFilterDifficulty(v as Difficulty | "all")}
+              >
+                <SelectTrigger className="w-full min-w-0">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Toutes</SelectItem>
+                  <SelectItem value="facile">Facile</SelectItem>
+                  <SelectItem value="moyen">Moyen</SelectItem>
+                  <SelectItem value="difficile">Difficile</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <label className="flex items-center gap-2 pt-6 text-sm font-medium">
+              <Checkbox checked={missingMetaOnly} onCheckedChange={(v) => setMissingMetaOnly(v === true)} />
+              Métadonnées incomplètes
+            </label>
+          </div>
+          <div className="flex min-w-0 flex-wrap gap-2">
           <Button
             variant={filterTheme === "all" ? "default" : "outline"}
             size="sm"
@@ -524,6 +659,7 @@ function AdminPage() {
               </Button>
             );
           })}
+          </div>
         </div>
 
         {/* Editor */}
@@ -533,7 +669,7 @@ function AdminPage() {
               {editingId === "new" ? "Nouvelle question" : "Modifier la question"}
             </h2>
 
-            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-4 sm:grid-cols-3">
               <div className="min-w-0">
                 <Label>Thème</Label>
                 <Select
@@ -565,6 +701,29 @@ function AdminPage() {
                     <SelectItem value="facile">Facile</SelectItem>
                     <SelectItem value="moyen">Moyen</SelectItem>
                     <SelectItem value="difficile">Difficile</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="min-w-0">
+                <Label>Statut</Label>
+                <Select
+                  value={draft.status}
+                  onValueChange={(v) =>
+                    setDraft({
+                      ...draft,
+                      status: v as QuestionStatus,
+                      is_active: v === "live",
+                    })
+                  }
+                >
+                  <SelectTrigger className="w-full min-w-0">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="draft">Brouillon</SelectItem>
+                    <SelectItem value="review">À relire</SelectItem>
+                    <SelectItem value="live">En ligne</SelectItem>
+                    <SelectItem value="archived">Archivée</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -618,9 +777,107 @@ function AdminPage() {
               />
             </div>
 
+            <div className="rounded-xl border border-border/70 bg-background/40 p-3 sm:p-4">
+              <button
+                type="button"
+                onClick={() => setAdvancedOpen((prev) => !prev)}
+                className="text-sm font-bold text-primary hover:underline"
+              >
+                {advancedOpen ? "Masquer les métadonnées avancées" : "Afficher les métadonnées avancées"}
+              </button>
+              {advancedOpen && (
+                <div className="mt-3 grid min-w-0 gap-3 sm:grid-cols-2">
+                  <MetaSelect
+                    label="Niveau internet"
+                    value={draft.internet_level}
+                    onChange={(v) => setDraft({ ...draft, internet_level: v as InternetLevel | null })}
+                    options={[
+                      { value: "debutant", label: "Débutant" },
+                      { value: "initie", label: "Initié" },
+                      { value: "chronically_online", label: "Chronically online" },
+                    ]}
+                  />
+                  <MetaSelect
+                    label="Ton"
+                    value={draft.tone}
+                    onChange={(v) => setDraft({ ...draft, tone: v as QuestionTone | null })}
+                    options={[
+                      { value: "funny", label: "Funny" },
+                      { value: "cringe", label: "Cringe" },
+                      { value: "drama", label: "Drama" },
+                      { value: "absurd", label: "Absurd" },
+                      { value: "social", label: "Social" },
+                      { value: "gaming", label: "Gaming" },
+                    ]}
+                  />
+                  <MetaSelect
+                    label="Contexte"
+                    value={draft.context}
+                    onChange={(v) => setDraft({ ...draft, context: v as QuestionContext | null })}
+                    options={[
+                      { value: "tiktok_comments", label: "Commentaires TikTok" },
+                      { value: "group_chat", label: "Group chat" },
+                      { value: "family_dinner", label: "Dîner familial" },
+                      { value: "twitch_chat", label: "Twitch chat" },
+                      { value: "dating_app", label: "App de dating" },
+                      { value: "gaming_voice", label: "Vocal gaming" },
+                    ]}
+                  />
+                  <MetaSelect
+                    label="Intensité du piège"
+                    value={draft.trap_intensity}
+                    onChange={(v) => setDraft({ ...draft, trap_intensity: v as TrapIntensity | null })}
+                    options={[
+                      { value: "obvious", label: "Évident" },
+                      { value: "soft_trap", label: "Soft trap" },
+                      { value: "generational_trap", label: "Piège générationnel" },
+                      { value: "fifty_fifty", label: "50/50" },
+                      { value: "troll", label: "Troll" },
+                    ]}
+                  />
+                  <MetaSelect
+                    label="Ère internet"
+                    value={draft.era}
+                    onChange={(v) => setDraft({ ...draft, era: v as QuestionEra | null })}
+                    options={[
+                      { value: "facebook", label: "Facebook era" },
+                      { value: "snapchat", label: "Snapchat era" },
+                      { value: "tiktok", label: "TikTok era" },
+                      { value: "streaming", label: "Streaming era" },
+                      { value: "ai", label: "AI era" },
+                    ]}
+                  />
+                  <MetaSelect
+                    label="Format contenu"
+                    value={draft.format}
+                    onChange={(v) => setDraft({ ...draft, format: v as QuestionFormat | null })}
+                    options={[
+                      { value: "word", label: "Mot" },
+                      { value: "expression", label: "Expression" },
+                      { value: "meme_ref", label: "Référence mème" },
+                      { value: "emoji", label: "Emoji" },
+                      { value: "scenario_text", label: "Mini scénario" },
+                    ]}
+                  />
+                  <div className="sm:col-span-2">
+                    <Label>Notes éditeur (optionnel)</Label>
+                    <Textarea
+                      value={draft.editor_notes ?? ""}
+                      onChange={(e) => setDraft({ ...draft, editor_notes: e.target.value })}
+                      rows={2}
+                      placeholder="Contexte, idée de variante, remarque qualité…"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
             <div className="flex min-w-0 flex-wrap gap-3">
-              <Button onClick={save} variant="accent" className="min-w-0 shrink">
-                <Save /> Enregistrer
+              <Button onClick={() => save("draft")} variant="outline" className="min-w-0 shrink">
+                <Save /> Sauver en brouillon
+              </Button>
+              <Button onClick={() => save("live")} variant="accent" className="min-w-0 shrink">
+                <Check /> Publier en live
               </Button>
               <Button onClick={cancel} variant="outline" className="min-w-0 shrink">
                 <X /> Annuler
@@ -651,12 +908,28 @@ function AdminPage() {
                       </span>
                       <span>•</span>
                       <span className="capitalize">{q.difficulty}</span>
+                      <span>•</span>
+                      <span>{STATUS_LABELS[q.status]}</span>
+                      {hasMissingMetadata(q) && (
+                        <>
+                          <span>•</span>
+                          <span className="text-warning">Meta incomplète</span>
+                        </>
+                      )}
                       {!q.is_active && <span className="text-warning">• Masquée</span>}
                     </div>
                     <p className="break-words font-semibold">{q.question}</p>
                     <p className="text-sm text-success mt-1">✓ {q.choices[q.correct_index]}</p>
                   </div>
                   <div className="flex gap-1 flex-shrink-0">
+                    <Button
+                      onClick={() => duplicateQuestion(q)}
+                      variant="ghost"
+                      size="icon"
+                      aria-label="Dupliquer"
+                    >
+                      <Plus />
+                    </Button>
                     <Button
                       onClick={() => startEdit(q)}
                       variant="ghost"
@@ -680,6 +953,37 @@ function AdminPage() {
           )}
         </div>
       </main>
+    </div>
+  );
+}
+
+function MetaSelect({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string | null;
+  onChange: (value: string | null) => void;
+  options: { value: string; label: string }[];
+}) {
+  return (
+    <div className="min-w-0">
+      <Label>{label}</Label>
+      <Select value={value ?? "none"} onValueChange={(v) => onChange(v === "none" ? null : v)}>
+        <SelectTrigger className="w-full min-w-0">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="none">Non défini</SelectItem>
+          {options.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }

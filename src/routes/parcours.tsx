@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Flame, Sparkles, Star, Trophy } from "lucide-react";
+import { Flame, Sparkles, Star, Target, TrendingUp, Trophy } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { getBadgeUiCopy, badgeUnlockHintOrDefault } from "@/lib/badge-ui";
+import { THEMES, THEME_KEYS, type ThemeKey } from "@/lib/themes";
 
 type EarnedBadge = {
   id: string;
@@ -23,6 +24,9 @@ type BadgeCatalog = {
   icon: string;
 };
 type Stats = { totalAttempts: number; avgScore: number };
+type ThemeStat = { key: ThemeKey; pct: number; count: number };
+type RecentAttempt = { id: string; score: number; total_questions: number; completed_at: string };
+type GameStats = { totalAttempts: number; avgScore: number; perfect: number };
 
 export const Route = createFileRoute("/parcours")({
   head: () => ({
@@ -41,6 +45,10 @@ function ProfilePage() {
   const [allBadges, setAllBadges] = useState<BadgeCatalog[]>([]);
   const [earnedBadgeIds, setEarnedBadgeIds] = useState<string[]>([]);
   const [stats, setStats] = useState<Stats>({ totalAttempts: 0, avgScore: 0 });
+  const [gameStats, setGameStats] = useState<GameStats>({ totalAttempts: 0, avgScore: 0, perfect: 0 });
+  const [themeStats, setThemeStats] = useState<ThemeStat[]>([]);
+  const [recentAttempts, setRecentAttempts] = useState<RecentAttempt[]>([]);
+  const [showAllBadges, setShowAllBadges] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -80,7 +88,7 @@ function ProfilePage() {
 
       const { data: attempts } = await supabase
         .from("quiz_attempts")
-        .select("score, total_questions")
+        .select("score, total_questions, theme")
         .eq("user_id", user.id)
         .eq("mode", "theme");
       const total = attempts?.length ?? 0;
@@ -89,6 +97,48 @@ function ProfilePage() {
           ? attempts!.reduce((s, a) => s + (a.score / a.total_questions) * 100, 0) / total
           : 0;
       setStats({ totalAttempts: total, avgScore: Math.round(avg) });
+
+      const byTheme: Record<ThemeKey, { correct: number; total: number; count: number }> = {
+        vocabulaire: { correct: 0, total: 0, count: 0 },
+        reseaux_sociaux: { correct: 0, total: 0, count: 0 },
+        culture_pop: { correct: 0, total: 0, count: 0 },
+        tech: { correct: 0, total: 0, count: 0 },
+      };
+      for (const a of attempts ?? []) {
+        const theme = a.theme as ThemeKey | null;
+        if (!theme || !byTheme[theme]) continue;
+        byTheme[theme].count += 1;
+        byTheme[theme].correct += a.score;
+        byTheme[theme].total += a.total_questions;
+      }
+      const compactThemeStats = THEME_KEYS.map((key) => {
+        const t = byTheme[key];
+        const pct = t.total > 0 ? Math.round((t.correct / t.total) * 100) : 0;
+        return { key, pct, count: t.count };
+      }).filter((item) => item.count > 0);
+      setThemeStats(compactThemeStats);
+
+      const { data: allAttempts } = await supabase
+        .from("quiz_attempts")
+        .select("id, score, total_questions, completed_at, theme")
+        .eq("user_id", user.id)
+        .order("completed_at", { ascending: false });
+
+      const all = allAttempts ?? [];
+      const totalAll = all.length;
+      const totalCorrect = all.reduce((sum, item) => sum + item.score, 0);
+      const totalQuestions = all.reduce((sum, item) => sum + item.total_questions, 0);
+      const avgAll = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+      const perfect = all.filter((item) => item.score === item.total_questions).length;
+      setGameStats({ totalAttempts: totalAll, avgScore: avgAll, perfect });
+      setRecentAttempts(
+        all.slice(0, 6).map((item) => ({
+          id: item.id,
+          score: item.score,
+          total_questions: item.total_questions,
+          completed_at: item.completed_at,
+        })),
+      );
     })();
   }, [user]);
 
@@ -97,7 +147,7 @@ function ProfilePage() {
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
-          <p>Chargement…</p>
+          <p>On charge ton parcours…</p>
         </main>
       </div>
     );
@@ -105,18 +155,20 @@ function ProfilePage() {
 
   const level = Math.floor(profile.total_xp / 100) + 1;
   const xpInLevel = profile.total_xp % 100;
+  const previewBadgeCount = 3;
+  const visibleBadges = showAllBadges ? allBadges : allBadges.slice(0, previewBadgeCount);
 
   return (
     <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
-      <main className="container mx-auto w-full min-w-0 max-w-4xl flex-1 overflow-x-clip px-4 py-8 sm:px-6 sm:py-12">
+      <main className="container mx-auto w-full min-w-0 max-w-4xl flex-1 overflow-x-clip px-4 py-7 sm:px-6 sm:py-10">
         <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">
           Salut {profile.display_name ?? "toi"} !
         </h1>
-        <p className="text-lg text-muted-foreground mb-8">Voilà où t'en es.</p>
+        <p className="text-lg text-muted-foreground mb-6">Voilà ton vrai niveau, aujourd’hui.</p>
 
         {/* Stats grid */}
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 mb-8">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4 mb-6">
           <StatCard
             icon={<Star className="size-7" />}
             label="Niveau"
@@ -142,36 +194,113 @@ function ProfilePage() {
             accent="text-success bg-success-soft"
           />
         </div>
-        <p className="text-xs text-muted-foreground -mt-4 mb-8 max-w-2xl">
-          Ce chiffre compte tes quiz <strong>par thème</strong> (les 4 pistes). Marathon, duels et
-          mode niveaux ne s’ajoutent pas ici — ton XP et ta série, eux, suivent quand même ailleurs.
-        </p>
-
         {/* Level progress */}
-        <div className="bg-card rounded-3xl border-2 border-border p-6 mb-8">
+        <div className="bg-card rounded-3xl border-2 border-border p-5 mb-6">
           <div className="flex justify-between mb-2">
             <span className="font-bold">Niveau {level}</span>
             <span className="text-muted-foreground">{xpInLevel} / 100 XP</span>
           </div>
-          <div className="h-4 bg-secondary rounded-full overflow-hidden">
+          <div className="relative h-3.5 rounded-full border border-black/45 bg-secondary overflow-hidden shadow-inner">
             <div className="h-full bg-primary transition-all" style={{ width: `${xpInLevel}%` }} />
+            <span
+              className="pointer-events-none absolute top-1/2 h-4 w-0.5 -translate-y-1/2 bg-black/70 shadow-[0_0_0_1px_rgba(255,255,255,0.22)]"
+              style={{ left: `clamp(2px, ${xpInLevel}%, calc(100% - 2px))` }}
+              aria-hidden
+            />
           </div>
           <p className="text-sm text-muted-foreground mt-3">
-            Moyenne sur tes quiz thème : <strong>{stats.avgScore}%</strong> · Record de série :{" "}
+            Moyenne quiz thème : <strong>{stats.avgScore}%</strong> · Record :{" "}
             <strong>{profile.longest_streak} jours</strong>
           </p>
         </div>
 
+        {/* Stats fusionnées */}
+        <div className="rounded-3xl border-2 border-border bg-card p-5 mb-6">
+          <h2 className="text-xl font-extrabold">Mes stats de jeu</h2>
+          <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+            <MiniStat
+              icon={<Target className="size-4" />}
+              label="Parties"
+              value={gameStats.totalAttempts.toString()}
+            />
+            <MiniStat
+              icon={<TrendingUp className="size-4" />}
+              label="Score moyen"
+              value={`${gameStats.avgScore}%`}
+            />
+            <MiniStat
+              icon={<Trophy className="size-4" />}
+              label="Tout bon"
+              value={gameStats.perfect.toString()}
+            />
+            <MiniStat
+              icon={<Flame className="size-4" />}
+              label="Record série"
+              value={`${profile.longest_streak} j`}
+            />
+          </div>
+
+          {themeStats.length > 0 && (
+            <div className="mt-4 space-y-2.5">
+              {themeStats.map((item) => (
+                <div key={item.key}>
+                  <div className="mb-1 flex items-center justify-between text-xs">
+                    <span className="font-semibold">
+                      {THEMES[item.key].emoji} {THEMES[item.key].label}
+                    </span>
+                    <span className="text-muted-foreground">
+                      {item.count} quiz · {item.pct}%
+                    </span>
+                  </div>
+                  <div className="h-2 rounded-full bg-muted overflow-hidden">
+                    <div className="h-full bg-primary" style={{ width: `${item.pct}%` }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {recentAttempts.length > 0 && (
+            <div className="mt-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
+                Dernières parties
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {recentAttempts.map((attempt) => (
+                  <span
+                    key={attempt.id}
+                    className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-background/60 px-2.5 py-1 text-xs font-semibold"
+                    title={new Date(attempt.completed_at).toLocaleDateString("fr-FR")}
+                  >
+                    {attempt.score}/{attempt.total_questions}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <p className="mt-4 text-sm text-muted-foreground">
+            XP total tout mode : <strong>{profile.total_xp} XP</strong>
+          </p>
+        </div>
+
         {/* Badges */}
-        <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 mb-8">
-          <h2 className="text-2xl font-extrabold mb-4">Tes badges ({badges.length})</h2>
+        <div className="bg-card rounded-3xl border-2 border-border p-5 sm:p-6 mb-6">
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <h2 className="text-2xl font-extrabold">Tes badges ({badges.length})</h2>
+            {allBadges.length > previewBadgeCount && (
+              <Button type="button" variant="ghost" size="sm" onClick={() => setShowAllBadges((v) => !v)}>
+                {showAllBadges ? "Réduire" : "Voir tous"}
+              </Button>
+            )}
+          </div>
           {allBadges.length === 0 ? (
             <p className="text-muted-foreground">
               Le catalogue charge ou est vide. Réessaie dans un instant.
             </p>
           ) : (
-            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-              {allBadges.map((b) => {
+            <div className="grid gap-2.5 sm:grid-cols-2 md:grid-cols-3">
+              {visibleBadges.map((b) => {
                 const isEarned = earnedBadgeIds.includes(b.id);
                 const ui = getBadgeUiCopy(b.code);
                 const displayName = ui?.name ?? b.name;
@@ -180,21 +309,21 @@ function ProfilePage() {
                 return (
                   <div
                     key={b.id}
-                    className={`flex items-center gap-3 p-4 rounded-2xl border-2 ${
+                    className={`flex items-center gap-2.5 p-3 rounded-2xl border-2 ${
                       isEarned
                         ? "bg-accent-soft border-accent/20"
                         : "bg-muted/40 border-border opacity-70"
                     }`}
                   >
-                    <span className="text-4xl flex-shrink-0" aria-hidden>
+                    <span className="text-3xl flex-shrink-0" aria-hidden>
                       {b.icon}
                     </span>
                     <div className="min-w-0">
-                      <p className="font-bold">
+                      <p className="font-bold text-[15px] leading-tight">
                         {displayName}{" "}
                         {!isEarned && <span className="text-xs font-semibold">(pas encore)</span>}
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="mt-0.5 text-xs text-muted-foreground">
                         {isEarned ? earnedDescription : lockedHint}
                       </p>
                     </div>
@@ -205,15 +334,32 @@ function ProfilePage() {
           )}
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          <Button asChild size="xl" variant="accent">
+        <div className="grid gap-3">
+          <Button asChild size="xl" variant="default" className="sm:max-w-sm">
             <Link to="/quiz">Faire un quiz</Link>
-          </Button>
-          <Button asChild size="xl" variant="outline">
-            <Link to="/reglages">Réglages d'accessibilité</Link>
           </Button>
         </div>
       </main>
+    </div>
+  );
+}
+
+function MiniStat({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="rounded-xl border border-border/70 bg-background/50 px-2.5 py-2">
+      <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+        {icon}
+        {label}
+      </p>
+      <p className="mt-1 text-base font-extrabold leading-tight">{value}</p>
     </div>
   );
 }
@@ -230,11 +376,11 @@ function StatCard({
   accent: string;
 }) {
   return (
-    <div className="bg-card rounded-2xl border-2 border-border p-4 flex items-center gap-3">
-      <div className={`size-12 rounded-xl flex items-center justify-center ${accent}`}>{icon}</div>
+    <div className="bg-card rounded-2xl border-2 border-border p-3 flex items-center gap-2.5">
+      <div className={`size-9 rounded-xl flex items-center justify-center ${accent}`}>{icon}</div>
       <div>
-        <p className="text-sm text-muted-foreground font-semibold">{label}</p>
-        <p className="text-2xl font-extrabold">{value}</p>
+        <p className="text-xs text-muted-foreground font-semibold leading-tight">{label}</p>
+        <p className="text-lg font-extrabold leading-tight">{value}</p>
       </div>
     </div>
   );

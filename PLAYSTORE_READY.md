@@ -1,7 +1,7 @@
 # Play Store Publishing Checklist
 
 ## App identity
-- App name: Reste Connecte
+- App name: Tu Captes ?
 - Package name: `com.npaysant.resteconnecte`
 
 ## Build output

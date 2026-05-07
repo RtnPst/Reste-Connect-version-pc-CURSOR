@@ -263,7 +263,7 @@ function MarathonPage() {
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
-          <p className="text-lg text-muted-foreground">Préparation du marathon…</p>
+          <p className="text-lg text-muted-foreground">On chauffe le marathon…</p>
         </main>
       </div>
     );

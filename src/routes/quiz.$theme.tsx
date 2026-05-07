@@ -228,7 +228,7 @@ function QuizPage() {
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
         <main className="flex min-w-0 flex-1 items-center justify-center overflow-x-clip px-4">
-          <p className="text-lg text-muted-foreground">On te prepare ton quiz...</p>
+          <p className="text-lg text-muted-foreground">On te prépare un run sur ce thème…</p>
         </main>
       </div>
     );

@@ -178,36 +178,63 @@ export type Database = {
       questions: {
         Row: {
           choices: Json;
+          canonical_key: string | null;
+          context: Database["public"]["Enums"]["question_context"] | null;
           correct_index: number;
           created_at: string;
           difficulty: Database["public"]["Enums"]["question_difficulty"];
+          editor_notes: string | null;
+          era: Database["public"]["Enums"]["question_era"] | null;
           explanation: string;
+          format: Database["public"]["Enums"]["question_format"] | null;
           id: string;
+          internet_level: Database["public"]["Enums"]["question_internet_level"] | null;
           is_active: boolean;
           question: string;
+          status: Database["public"]["Enums"]["question_status"];
           theme: Database["public"]["Enums"]["question_theme"];
+          tone: Database["public"]["Enums"]["question_tone"] | null;
+          trap_intensity: Database["public"]["Enums"]["question_trap_intensity"] | null;
         };
         Insert: {
           choices: Json;
+          canonical_key?: string | null;
+          context?: Database["public"]["Enums"]["question_context"] | null;
           correct_index: number;
           created_at?: string;
           difficulty?: Database["public"]["Enums"]["question_difficulty"];
+          editor_notes?: string | null;
+          era?: Database["public"]["Enums"]["question_era"] | null;
           explanation: string;
+          format?: Database["public"]["Enums"]["question_format"] | null;
           id?: string;
+          internet_level?: Database["public"]["Enums"]["question_internet_level"] | null;
           is_active?: boolean;
           question: string;
+          status?: Database["public"]["Enums"]["question_status"];
           theme: Database["public"]["Enums"]["question_theme"];
+          tone?: Database["public"]["Enums"]["question_tone"] | null;
+          trap_intensity?: Database["public"]["Enums"]["question_trap_intensity"] | null;
         };
         Update: {
           choices?: Json;
+          canonical_key?: string | null;
+          context?: Database["public"]["Enums"]["question_context"] | null;
           correct_index?: number;
           created_at?: string;
           difficulty?: Database["public"]["Enums"]["question_difficulty"];
+          editor_notes?: string | null;
+          era?: Database["public"]["Enums"]["question_era"] | null;
           explanation?: string;
+          format?: Database["public"]["Enums"]["question_format"] | null;
           id?: string;
+          internet_level?: Database["public"]["Enums"]["question_internet_level"] | null;
           is_active?: boolean;
           question?: string;
+          status?: Database["public"]["Enums"]["question_status"];
           theme?: Database["public"]["Enums"]["question_theme"];
+          tone?: Database["public"]["Enums"]["question_tone"] | null;
+          trap_intensity?: Database["public"]["Enums"]["question_trap_intensity"] | null;
         };
         Relationships: [];
       };
@@ -343,8 +370,26 @@ export type Database = {
     };
     Enums: {
       app_role: "admin" | "moderator" | "user";
+      question_context:
+        | "tiktok_comments"
+        | "group_chat"
+        | "family_dinner"
+        | "twitch_chat"
+        | "dating_app"
+        | "gaming_voice";
       question_difficulty: "facile" | "moyen" | "difficile";
+      question_era: "facebook" | "snapchat" | "tiktok" | "streaming" | "ai";
+      question_format: "word" | "expression" | "meme_ref" | "emoji" | "scenario_text";
+      question_internet_level: "debutant" | "initie" | "chronically_online";
+      question_status: "draft" | "review" | "live" | "archived";
+      question_tone: "funny" | "cringe" | "drama" | "absurd" | "social" | "gaming";
       question_theme: "vocabulaire" | "reseaux_sociaux" | "culture_pop" | "tech";
+      question_trap_intensity:
+        | "obvious"
+        | "soft_trap"
+        | "generational_trap"
+        | "fifty_fifty"
+        | "troll";
     };
     CompositeTypes: {
       [_ in never]: never;
@@ -471,8 +516,28 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      question_context: [
+        "tiktok_comments",
+        "group_chat",
+        "family_dinner",
+        "twitch_chat",
+        "dating_app",
+        "gaming_voice",
+      ],
       question_difficulty: ["facile", "moyen", "difficile"],
+      question_era: ["facebook", "snapchat", "tiktok", "streaming", "ai"],
+      question_format: ["word", "expression", "meme_ref", "emoji", "scenario_text"],
+      question_internet_level: ["debutant", "initie", "chronically_online"],
+      question_status: ["draft", "review", "live", "archived"],
+      question_tone: ["funny", "cringe", "drama", "absurd", "social", "gaming"],
       question_theme: ["vocabulaire", "reseaux_sociaux", "culture_pop", "tech"],
+      question_trap_intensity: [
+        "obvious",
+        "soft_trap",
+        "generational_trap",
+        "fifty_fifty",
+        "troll",
+      ],
     },
   },
 } as const;
