@@ -3,15 +3,18 @@ import { createMiddleware } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "./types";
+import { getSupabasePublishableKey, getSupabaseUrl } from "./client";
 
 export const requireSupabaseAuth = createMiddleware({ type: "function" }).server(
   async ({ next }) => {
-    const SUPABASE_URL = process.env.SUPABASE_URL;
-    const SUPABASE_PUBLISHABLE_KEY = process.env.SUPABASE_PUBLISHABLE_KEY;
-
-    if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
+    let SUPABASE_URL: string;
+    let SUPABASE_PUBLISHABLE_KEY: string;
+    try {
+      SUPABASE_URL = getSupabaseUrl();
+      SUPABASE_PUBLISHABLE_KEY = getSupabasePublishableKey();
+    } catch {
       throw new Response(
-        "Missing Supabase environment variables. Ensure SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY are set.",
+        "Missing Supabase environment variables. Ensure VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY are set.",
         { status: 500 },
       );
     }
@@ -37,7 +40,7 @@ export const requireSupabaseAuth = createMiddleware({ type: "function" }).server
       throw new Response("Unauthorized: No token provided", { status: 401 });
     }
 
-    const supabase = createClient<Database>(SUPABASE_URL!, SUPABASE_PUBLISHABLE_KEY!, {
+    const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
       global: {
         headers: {
           Authorization: `Bearer ${token}`,

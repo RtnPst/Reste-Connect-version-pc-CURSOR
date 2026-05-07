@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.npaysant.resteconnecte",
+      "sha256_cert_fingerprints": [
+        "2D:49:46:7F:A8:2F:22:D6:F2:96:EB:17:5A:76:46:F8:60:E8:D6:62:48:B9:24:4E:17:62:30:C1:13:19:89:B9"
+      ]
+    }
+  }
+]

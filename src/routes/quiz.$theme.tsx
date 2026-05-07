@@ -1,17 +1,26 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ArrowRight, CheckCircle2, Home, RotateCcw, Share2, Volume2, XCircle } from "lucide-react";
+import { ArrowRight, Home, RotateCcw, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { ImmersiveQuizPlay } from "@/components/immersive-quiz/ImmersiveQuizPlay";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { fetchUserBadgeIds, listNewBadgeNames } from "@/lib/badge-diff";
 import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
-import { playCorrect, playWrong, playFanfare, startMusic, stopMusic } from "@/lib/sfx";
+import { playCorrect, playWrong, playFanfare, stopMusic } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
+import {
+  culturePopPisteEmoji,
+  culturePopPisteLabel,
+  getCulturePopPisteForQuestion,
+  parseCulturePopPisteFromSearch,
+  pickCulturePopQuestions,
+  type CulturePopPisteSlug,
+} from "@/lib/culture-pop";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { displayIndexFromOriginal, toDisplayChoices } from "@/lib/choice-order";
 
@@ -25,13 +34,16 @@ type Question = {
 };
 
 const QUESTION_COUNT = 10;
+const DAILY_XP_BONUS = 20;
+const LUCKY_XP_CHANCE = 0.1;
 
 export const Route = createFileRoute("/quiz/$theme")({
+  validateSearch: (search: Record<string, unknown>) => parseCulturePopPisteFromSearch(search),
   head: ({ params }) => {
     const t = THEMES[params.theme as ThemeKey];
     return {
       meta: [
-        { title: `Quiz ${t?.label ?? ""} — Reste connecté !` },
+        { title: `Quiz ${t?.label ?? ""} — Tu captes ?` },
         { name: "description", content: `Testez vos connaissances : ${t?.description ?? ""}` },
       ],
     };
@@ -43,6 +55,9 @@ function QuizPage() {
   const { theme } = Route.useParams();
   const themeKey = theme as ThemeKey;
   const themeMeta = THEMES[themeKey];
+  const search = Route.useSearch();
+  const culturePiste: CulturePopPisteSlug | undefined =
+    themeKey === "culture_pop" ? search.piste : undefined;
   const navigate = useNavigate();
   const { user, profile, refreshProfile } = useAuth();
 
@@ -58,8 +73,10 @@ function QuizPage() {
   );
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-
-  // audioEnabled preference is used implicitly: the speak() call only fires on explicit click
+  const [xpGained, setXpGained] = useState<number | null>(null);
+  const [levelUpTo, setLevelUpTo] = useState<number | null>(null);
+  const [dailyBonusApplied, setDailyBonusApplied] = useState(false);
+  const [luckyBonusApplied, setLuckyBonusApplied] = useState(false);
 
   // Load questions
   useEffect(() => {
@@ -69,15 +86,22 @@ function QuizPage() {
       return;
     }
     (async () => {
-      const data = await getPlayableQuestions({ theme: themeKey, limit: QUESTION_COUNT });
+      const useBigPool = themeKey === "culture_pop" && Boolean(culturePiste);
+      const fetchLimit = useBigPool ? 100 : QUESTION_COUNT;
+      const data = await getPlayableQuestions({ theme: themeKey, limit: fetchLimit });
       if (!data.length) {
         setError("Impossible de charger les questions.");
         setLoading(false);
         return;
       }
 
+      const picked =
+        themeKey === "culture_pop"
+          ? pickCulturePopQuestions(data, culturePiste, QUESTION_COUNT)
+          : data;
+
       setQuestions(
-        data.map((q) => {
+        picked.map((q) => {
           const shuffled = toDisplayChoices(q.choices);
           return {
             ...q,
@@ -90,13 +114,7 @@ function QuizPage() {
     })();
 
     return () => stopSpeaking();
-  }, [themeKey, themeMeta]);
-
-  // Ambient music while playing
-  useEffect(() => {
-    if (profile?.music_enabled && !loading && !finished) startMusic();
-    return () => stopMusic();
-  }, [profile?.music_enabled, loading, finished]);
+  }, [themeKey, themeMeta, culturePiste]);
 
   const current = questions[currentIndex];
   const progress = useMemo(
@@ -131,7 +149,7 @@ function QuizPage() {
   );
 
   const handleSpeakExplanation = () => {
-    if (!current || selectedIndex === null || !profile?.audio_enabled) return;
+    if (!current || selectedIndex === null) return;
     const isCorrect = selectedIndex === revealedCorrectIndex;
     speak(`${isCorrect ? "Bonne réponse !" : "Pas tout à fait."} ${current.explanation}`, true);
   };
@@ -147,35 +165,44 @@ function QuizPage() {
       setFinished(true);
       playFanfare(profile?.sfx_enabled ?? true);
       stopMusic();
-      if (user) await saveAttempt(user.id, score, questions, answers, refreshProfile);
+      if (user) {
+        const progression = await saveAttempt(user.id, score, questions, answers, refreshProfile);
+        if (!progression.attemptSaved) {
+          toast.error("Impossible d'enregistrer ce quiz. Réessaie dans quelques secondes.");
+          return;
+        }
+        if (progression.xpGained !== null) {
+          setXpGained(progression.xpGained);
+          setLevelUpTo(progression.levelUpTo);
+          setDailyBonusApplied(progression.dailyBonusApplied);
+          setLuckyBonusApplied(progression.luckyBonusApplied);
+          if (progression.levelUpTo !== null) {
+            toast.success(`Niveau ${progression.levelUpTo} atteint !`);
+          }
+          if (progression.dailyBonusApplied) {
+            toast.success("🔥 Bonus du jour activé !");
+          }
+          if (progression.luckyBonusApplied) {
+            toast.success("🎁 Question bonus ! XP x2");
+          }
+        }
+        if (progression.newBadgeNames.length > 0) {
+          const n = progression.newBadgeNames;
+          toast.success(
+            n.length === 1
+              ? `Badge « ${n[0]} » débloqué !`
+              : `Badges débloqués : ${n.join(" · ")}`,
+          );
+        }
+      }
     }
   }, [currentIndex, profile?.sfx_enabled, user, score, questions, answers, refreshProfile]);
 
   const handleSpeakQuestion = () => {
-    if (!current || !profile?.audio_enabled) return;
+    if (!current) return;
     const text = `${current.question}. Choix : ${current.choices.map((c, i) => `${i + 1}, ${c}`).join(". ")}`;
     speak(text, true);
   };
-
-  useEffect(() => {
-    if (!profile?.audio_enabled || !current || selectedIndex !== null) return;
-    const id = window.setTimeout(() => {
-      const text = `${current.question}. Choix : ${current.choices
-        .map((c, i) => `${i + 1}, ${c}`)
-        .join(". ")}`;
-      speak(text, true);
-    }, 250);
-    return () => window.clearTimeout(id);
-  }, [profile?.audio_enabled, current, selectedIndex, revealedCorrectIndex]);
-
-  useEffect(() => {
-    if (!profile?.audio_enabled || !current || selectedIndex === null) return;
-    const isCorrect = selectedIndex === revealedCorrectIndex;
-    const id = window.setTimeout(() => {
-      speak(`${isCorrect ? "Bonne réponse !" : "Pas tout à fait."} ${current.explanation}`, true);
-    }, 250);
-    return () => window.clearTimeout(id);
-  }, [profile?.audio_enabled, current, selectedIndex, revealedCorrectIndex]);
 
   useEffect(() => {
     if (!current || finished) return;
@@ -198,10 +225,10 @@ function QuizPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex items-center justify-center">
-          <p className="text-lg text-muted-foreground">Chargement du quiz…</p>
+        <main className="flex min-w-0 flex-1 items-center justify-center overflow-x-clip px-4">
+          <p className="text-lg text-muted-foreground">On te prépare un run sur ce thème…</p>
         </main>
       </div>
     );
@@ -209,12 +236,12 @@ function QuizPage() {
 
   if (error || !themeMeta) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex flex-col items-center justify-center gap-4 px-4">
-          <p className="text-lg text-destructive">{error ?? "Thème introuvable."}</p>
+        <main className="flex min-w-0 flex-1 flex-col items-center justify-center gap-4 overflow-x-clip px-4">
+          <p className="text-lg text-destructive">{error ?? "Theme introuvable."}</p>
           <Button asChild variant="outline">
-            <Link to="/quiz">Retour aux thèmes</Link>
+            <Link to="/quiz">Revenir aux themes</Link>
           </Button>
         </main>
       </div>
@@ -229,7 +256,12 @@ function QuizPage() {
         questions={questions}
         answers={answers}
         themeKey={themeKey}
+        culturePopPiste={culturePiste}
         isLoggedIn={!!user}
+        xpGained={xpGained}
+        levelUpTo={levelUpTo}
+        dailyBonusApplied={dailyBonusApplied}
+        luckyBonusApplied={luckyBonusApplied}
         onReplay={() => {
           setQuestions([]);
           setCurrentIndex(0);
@@ -237,10 +269,19 @@ function QuizPage() {
           setRevealedCorrectIndex(null);
           setAnswers([]);
           setScore(0);
+          setXpGained(null);
+          setLevelUpTo(null);
+          setDailyBonusApplied(false);
+          setLuckyBonusApplied(false);
           setFinished(false);
           setLoading(true);
-          // re-trigger effect
-          setTimeout(() => navigate({ to: "/quiz/$theme", params: { theme: themeKey } }), 50);
+          setTimeout(() => {
+            navigate({
+              to: "/quiz/$theme",
+              params: { theme: themeKey },
+              search: culturePiste ? { piste: culturePiste } : {},
+            });
+          }, 50);
         }}
       />
     );
@@ -253,149 +294,69 @@ function QuizPage() {
     isAnswered &&
     selectedIndex !== null &&
     (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
+  const streak = profile?.current_streak ?? 0;
+  const longestStreak = profile?.longest_streak ?? 0;
+  const streakMessage =
+    streak > 0 && streak + 1 >= longestStreak
+      ? "Plus qu'un jour pour battre ton record."
+      : "Reviens demain pour continuer ta série.";
+
+  const cultureTagLine =
+    themeKey === "culture_pop" ? getCulturePopPisteForQuestion(current.question) : null;
+  const flowStepKey = `${current.id}-${currentIndex}`;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <AppHeader />
-      <main className="flex-1 container mx-auto px-4 sm:px-6 max-w-3xl py-6 sm:py-10">
-        {/* Progress */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm sm:text-base font-bold flex items-center gap-2">
-              <span aria-hidden>{themeMeta.emoji}</span> {themeMeta.short}
-            </span>
-            <span className="text-sm sm:text-base font-bold text-muted-foreground">
-              Question {currentIndex + 1} / {questions.length}
-            </span>
-          </div>
-          <Progress value={progress} className="h-3" />
-        </div>
-
-        {/* Question */}
-        <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 shadow-[var(--shadow-soft)] mb-6">
-          <div className="flex items-start gap-3 mb-2">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug flex-1">
-              {current.question}
-            </h1>
-            <Button
-              onClick={handleSpeakQuestion}
-              variant="ghost"
-              size="icon"
-              aria-label="Écouter la question"
-              title={
-                profile?.audio_enabled
-                  ? "Écouter la question"
-                  : "Activez la lecture vocale dans Réglages"
-              }
-              className="flex-shrink-0"
-              disabled={!profile?.audio_enabled}
-            >
-              <Volume2 />
-            </Button>
-          </div>
-        </div>
-
-        {/* Choices */}
-        <div className="grid gap-3 mb-6">
-          {current.choices.map((choice, idx) => {
-            const isSelected = selectedIndex === idx;
-            const isCorrectChoice = (current.choiceOrder[idx] ?? idx) === revealedCorrectIndex;
-
-            let className =
-              "border-2 border-border bg-card hover:border-primary hover:bg-primary-soft/30";
-            let icon: React.ReactNode = null;
-
-            if (isAnswered) {
-              if (isCorrectChoice) {
-                className = "border-2 border-success bg-success-soft text-foreground";
-                icon = <CheckCircle2 className="size-6 text-success flex-shrink-0" />;
-              } else if (isSelected) {
-                className = "border-2 border-destructive bg-destructive/10 text-foreground";
-                icon = <XCircle className="size-6 text-destructive flex-shrink-0" />;
-              } else {
-                className = "border-2 border-border bg-card opacity-60";
-              }
-            }
-
-            return (
-              <button
-                key={idx}
-                onClick={() => handleSelect(idx)}
-                disabled={isAnswered}
-                className={`text-left rounded-2xl p-4 sm:p-5 transition-all flex items-center gap-4 min-h-[64px] disabled:cursor-default ${className}`}
-              >
-                <span
-                  className={`flex-shrink-0 size-10 rounded-full flex items-center justify-center font-extrabold text-lg ${
-                    isAnswered && isCorrectChoice
-                      ? "bg-success text-success-foreground"
-                      : isAnswered && isSelected
-                        ? "bg-destructive text-destructive-foreground"
-                        : "bg-secondary text-secondary-foreground"
-                  }`}
-                  aria-hidden
-                >
-                  {String.fromCharCode(65 + idx)}
-                </span>
-                <span className="flex-1 text-base sm:text-lg font-medium">{choice}</span>
-                {icon}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Explanation */}
-        {isAnswered && (
-          <div
-            className={`rounded-2xl p-5 sm:p-6 mb-6 border-2 ${
-              isCorrect ? "bg-success-soft border-success/30" : "bg-warning-soft border-warning/40"
-            }`}
+    <ImmersiveQuizPlay
+      quitHref="/quiz"
+      headerCenter={
+        <>
+          <span aria-hidden className="shrink-0">
+            {themeMeta.emoji}
+          </span>
+          <span className="truncate">{themeMeta.short}</span>
+        </>
+      }
+      headerChip={
+        themeKey === "culture_pop" && culturePiste ? (
+          <span
+            className="hidden max-w-[40%] truncate rounded-full border border-border/80 bg-muted/40 px-2 py-0.5 text-[10px] font-bold sm:inline sm:text-xs"
+            style={{ color: `var(--${themeMeta.colorVar})` }}
           >
-            <div className="flex items-start gap-3">
-              <div className="flex-1">
-                <p className="font-extrabold text-lg mb-2">
-                  {isCorrect ? "✅ Bonne réponse !" : "💡 Pas tout à fait — voici l'explication :"}
-                </p>
-                <p className="text-base leading-relaxed">{current.explanation}</p>
-              </div>
-              <Button
-                onClick={handleSpeakExplanation}
-                variant="ghost"
-                size="icon"
-                aria-label="Écouter l'explication"
-                title={
-                  profile?.audio_enabled
-                    ? "Écouter l'explication"
-                    : "Activez la lecture vocale dans Réglages"
-                }
-                className="flex-shrink-0"
-                disabled={!profile?.audio_enabled}
-              >
-                <Volume2 />
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {/* Next button */}
-        {isAnswered && (
-          <Button onClick={handleNext} size="xl" variant="accent" className="w-full">
-            {currentIndex + 1 < questions.length ? "Question suivante" : "Voir mon score"}
-            <ArrowRight />
-          </Button>
-        )}
-
-        {!isAnswered && (
-          <div className="text-center">
-            <Link
-              to="/quiz"
-              className="text-sm text-muted-foreground underline-offset-4 hover:underline"
-            >
-              ← Changer de thème
-            </Link>
-          </div>
-        )}
-      </main>
-    </div>
+            {culturePopPisteEmoji(culturePiste)} {culturePopPisteLabel(culturePiste)}
+          </span>
+        ) : undefined
+      }
+      streak={streak}
+      streakTitle={streakMessage}
+      progressPercent={progress}
+      stepFraction={`${currentIndex + 1}/${questions.length}`}
+      flowStepKey={flowStepKey}
+      questionText={current.question}
+      questionSubtitle={
+        cultureTagLine ? <>{culturePopPisteLabel(cultureTagLine)}</> : undefined
+      }
+      choices={current.choices}
+      selectedIndex={selectedIndex}
+      revealedCorrectIndex={revealedCorrectIndex}
+      choiceOrder={current.choiceOrder}
+      onSelectChoice={(idx) => void handleSelect(idx)}
+      onSpeakQuestion={handleSpeakQuestion}
+      isCorrect={!!isCorrect}
+      explanation={current.explanation}
+      onSpeakExplanation={handleSpeakExplanation}
+      onPrimaryNext={handleNext}
+      primaryNextLabel={
+        currentIndex + 1 < questions.length ? "Question suivante" : "Voir mon score"
+      }
+      footerWhenPlaying={
+        <Link
+          to="/quiz"
+          className="text-xs text-muted-foreground underline-offset-4 hover:underline sm:text-sm"
+        >
+          Changer de thème
+        </Link>
+      }
+    />
   );
 }
 
@@ -405,9 +366,18 @@ async function saveAttempt(
   questions: Question[],
   answers: { questionId: string; chosen: number; correct: number }[],
   refreshProfile: () => Promise<void>,
-) {
+): Promise<{
+  attemptSaved: boolean;
+  xpGained: number | null;
+  levelUpTo: number | null;
+  newBadgeNames: string[];
+  dailyBonusApplied: boolean;
+  luckyBonusApplied: boolean;
+}> {
   try {
-    await supabase.from("quiz_attempts").insert({
+    const beforeBadgeIds = await fetchUserBadgeIds(userId);
+
+    const { error: attemptInsertError } = await supabase.from("quiz_attempts").insert({
       user_id: userId,
       theme: questions[0]?.theme ?? null,
       mode: "theme",
@@ -416,6 +386,16 @@ async function saveAttempt(
       question_ids: questions.map((q) => q.id),
       answers: answers,
     });
+    if (attemptInsertError) {
+      return {
+        attemptSaved: false,
+        xpGained: null,
+        levelUpTo: null,
+        newBadgeNames: [],
+        dailyBonusApplied: false,
+        luckyBonusApplied: false,
+      };
+    }
 
     // Update streak + XP
     const today = new Date().toISOString().slice(0, 10);
@@ -432,20 +412,68 @@ async function saveAttempt(
         const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
         newStreak = last === yesterday ? newStreak + 1 : 1;
       }
-      const xpGain = score * 10;
-      await supabase
+      const baseXpGain = score * 10;
+      const isFirstQuizToday = last !== today;
+      const dailyBonus = isFirstQuizToday ? DAILY_XP_BONUS : 0;
+      const luckyBonusApplied = Math.random() < LUCKY_XP_CHANCE;
+      const luckyMultiplier = luckyBonusApplied ? 2 : 1;
+      const xpGain = (baseXpGain + dailyBonus) * luckyMultiplier;
+      const oldLevel = Math.floor(profile.total_xp / 100) + 1;
+      const newTotalXp = profile.total_xp + xpGain;
+      const newLevel = Math.floor(newTotalXp / 100) + 1;
+
+      const { error: updateError } = await supabase
         .from("profiles")
         .update({
           current_streak: newStreak,
           longest_streak: Math.max(newStreak, profile.longest_streak),
           last_play_date: today,
-          total_xp: profile.total_xp + xpGain,
+          total_xp: newTotalXp,
         })
         .eq("id", userId);
+      if (updateError) {
+        throw updateError;
+      }
+      await refreshProfile();
+      let newBadgeNames: string[] = [];
+      try {
+        newBadgeNames = await listNewBadgeNames(userId, beforeBadgeIds);
+      } catch {
+        newBadgeNames = [];
+      }
+      return {
+        attemptSaved: true,
+        xpGained: xpGain,
+        levelUpTo: newLevel > oldLevel ? newLevel : null,
+        newBadgeNames,
+        dailyBonusApplied: isFirstQuizToday,
+        luckyBonusApplied,
+      };
     }
-    await refreshProfile();
+    let newBadgeNames: string[] = [];
+    try {
+      newBadgeNames = await listNewBadgeNames(userId, beforeBadgeIds);
+    } catch {
+      newBadgeNames = [];
+    }
+    return {
+      attemptSaved: true,
+      xpGained: null,
+      levelUpTo: null,
+      newBadgeNames,
+      dailyBonusApplied: false,
+      luckyBonusApplied: false,
+    };
   } catch (err) {
     console.error("Save attempt failed", err);
+    return {
+      attemptSaved: false,
+      xpGained: null,
+      levelUpTo: null,
+      newBadgeNames: [],
+      dailyBonusApplied: false,
+      luckyBonusApplied: false,
+    };
   }
 }
 
@@ -455,7 +483,12 @@ function ResultsScreen({
   questions,
   answers,
   themeKey,
+  culturePopPiste,
   isLoggedIn,
+  xpGained,
+  levelUpTo,
+  dailyBonusApplied,
+  luckyBonusApplied,
   onReplay,
 }: {
   score: number;
@@ -463,52 +496,111 @@ function ResultsScreen({
   questions: Question[];
   answers: { questionId: string; chosen: number; correct: number }[];
   themeKey: ThemeKey;
+  culturePopPiste?: CulturePopPisteSlug;
   isLoggedIn: boolean;
+  xpGained: number | null;
+  levelUpTo: number | null;
+  dailyBonusApplied: boolean;
+  luckyBonusApplied: boolean;
   onReplay: () => void;
 }) {
   const themeMeta = THEMES[themeKey];
   const percentage = Math.round((score / total) * 100);
   const message =
     percentage === 100
-      ? "Parfait ! Vous êtes incollable !"
+      ? "Parfait ! Tu es incollable !"
       : percentage >= 70
         ? "Excellent travail !"
         : percentage >= 40
-          ? "Pas mal, vous progressez !"
-          : "Continuez, ça va venir !";
+          ? "Pas mal, tu progresses !"
+          : "Continue, ça va venir !";
+  const progressMessage =
+    xpGained !== null
+      ? "Tu te rapproches du niveau suivant."
+      : "Chaque quiz te rapproche du niveau suivant.";
 
   const wrong = answers
     .map((a, i) => ({ a, q: questions[i] }))
     .filter(({ a }) => a.chosen !== a.correct);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       <Confetti active={percentage >= 70} />
-      <AppHeader />
-      <main className="flex-1 container mx-auto px-4 sm:px-6 max-w-3xl py-8 sm:py-12">
-        <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-10 shadow-[var(--shadow-card)] text-center mb-6 animate-scale-in">
+      <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm supports-[backdrop-filter]:bg-background/85">
+        <Button variant="ghost" size="sm" className="shrink-0 gap-1 px-2" asChild>
+          <Link to="/" className="flex items-center font-semibold text-muted-foreground">
+            <Home className="size-4 shrink-0" aria-hidden />
+            <span className="hidden sm:inline">Accueil</span>
+          </Link>
+        </Button>
+        <span className="min-w-0 flex-1 truncate text-center text-xs font-extrabold text-foreground sm:text-sm">
+          Résultats · {themeMeta.emoji} {themeMeta.short}
+        </span>
+        <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
+          <Link to="/quiz">Thèmes</Link>
+        </Button>
+      </header>
+      <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
+        <div className="quiz-result-card bg-card rounded-3xl border-2 border-border p-6 sm:p-10 shadow-[var(--shadow-card)] text-center mb-6 animate-scale-in">
           <div className="text-6xl sm:text-7xl mb-3">
             {percentage >= 70 ? "🎉" : percentage >= 40 ? "👍" : "💪"}
           </div>
+          <p className="inline-flex items-center rounded-full border border-primary/30 bg-primary-soft px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary mb-3 animate-fade-in">
+            Bien joue 🔥
+          </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">{message}</h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-6">
-            Votre score :{" "}
-            <span className="font-extrabold text-primary">
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-4">
+            Ton score :
+            {" "}
+            <span className="font-extrabold text-primary animate-fade-in">
               {score} / {total}
             </span>
           </p>
+          <div
+            className={`mx-auto mb-6 max-w-md rounded-2xl border px-4 py-3 animate-fade-in ${
+              dailyBonusApplied
+                ? "border-accent/60 bg-accent-soft/70 shadow-[0_0_0_1px_rgba(245,158,11,0.35),0_14px_24px_-20px_rgba(245,158,11,0.75)]"
+                : "border-success/35 bg-success-soft/70"
+            }`}
+          >
+            <p className="text-sm sm:text-base font-extrabold text-success">+{xpGained ?? 0} XP gagnes</p>
+            <p className="mt-1 text-sm font-medium text-foreground/80">{progressMessage}</p>
+            {dailyBonusApplied && (
+              <p className="mt-1 text-xs sm:text-sm font-bold text-accent-foreground">
+                🔥 Bonus du jour activé !
+              </p>
+            )}
+            {luckyBonusApplied && (
+              <p className="mt-1 text-xs sm:text-sm font-bold text-primary-foreground">
+                🎁 Question bonus ! XP x2
+              </p>
+            )}
+          </div>
+          {levelUpTo !== null && (
+            <p className="text-sm sm:text-base font-semibold text-primary mb-6">
+              Niveau {levelUpTo} atteint !
+            </p>
+          )}
 
-          <div className="grid gap-3 sm:grid-cols-2 max-w-lg mx-auto mb-3">
-            <Button onClick={onReplay} size="lg" variant="accent">
+          <div className="mx-auto mb-3 grid min-w-0 max-w-lg grid-cols-1 gap-3 sm:grid-cols-2">
+            <Button onClick={onReplay} size="lg" variant="accent" className="min-w-0 whitespace-normal">
               <RotateCcw />
               Rejouer
             </Button>
+            <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
+              <Link to="/quiz">
+                Continuer
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mx-auto mb-3 grid min-w-0 max-w-lg grid-cols-1 gap-3 sm:grid-cols-2">
             <Button
               onClick={async () => {
                 const url = window.location.origin;
                 const shareData = {
-                  title: "Reste connecté !",
-                  text: `🎉 J'ai fait ${score}/${total} au quiz « ${themeMeta.label} » sur Reste connecté ! Essaie aussi de rester branché sur la culture des jeunes 👇`,
+                  title: "Tu captes ?",
+                  text: `J’ai fait ${score}/${total} sur Tu captes ? Tu fais mieux ?`,
                   url,
                 };
                 try {
@@ -528,16 +620,15 @@ function ResultsScreen({
               }}
               size="lg"
               variant="default"
+              className="min-w-0 whitespace-normal"
             >
               <Share2 />
               Partager mon score
             </Button>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2 max-w-lg mx-auto">
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
               <Link to="/quiz">Autre thème</Link>
             </Button>
-            <Button asChild size="lg" variant="ghost">
+            <Button asChild size="lg" variant="ghost" className="min-w-0 whitespace-normal">
               <Link to="/">
                 <Home />
                 Accueil
@@ -547,7 +638,7 @@ function ResultsScreen({
 
           {!isLoggedIn && (
             <div className="mt-8 p-4 rounded-2xl bg-accent-soft border-2 border-accent/20">
-              <p className="font-semibold mb-2">💾 Envie de sauvegarder vos progrès ?</p>
+              <p className="font-semibold mb-2">💾 Envie de sauvegarder tes progrès ?</p>
               <Button asChild variant="accent" size="default">
                 <Link to="/connexion">Créer un compte gratuit</Link>
               </Button>
@@ -556,7 +647,7 @@ function ResultsScreen({
         </div>
 
         {wrong.length > 0 && (
-          <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8">
+          <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 animate-soft-rise">
             <h2 className="text-xl sm:text-2xl font-extrabold mb-4">À retenir ({wrong.length})</h2>
             <div className="space-y-4">
               {wrong.map(({ q }, idx) => (
@@ -564,8 +655,8 @@ function ResultsScreen({
                   key={idx}
                   className="rounded-2xl bg-warning-soft p-4 border-2 border-warning/30"
                 >
-                  <p className="font-bold mb-2">{q.question}</p>
-                  <p className="text-base">
+                  <p className="mb-2 break-words font-bold">{q.question}</p>
+                  <p className="break-words text-base">
                     <span className="font-semibold text-success">✅ Bonne réponse :</span>{" "}
                     {q.choices[displayIndexFromOriginal(q.choiceOrder, wrong[idx].a.correct)]}
                   </p>
@@ -576,7 +667,10 @@ function ResultsScreen({
           </div>
         )}
 
-        <p className="text-center text-sm text-muted-foreground mt-8">Thème : {themeMeta.label}</p>
+        <p className="text-center text-sm text-muted-foreground mt-8">
+          Thème : {themeMeta.label}
+          {culturePopPiste ? ` · ${culturePopPisteLabel(culturePopPiste)}` : ""}
+        </p>
       </main>
     </div>
   );

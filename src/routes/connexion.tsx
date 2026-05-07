@@ -6,14 +6,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AppHeader } from "@/components/AppHeader";
 import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/connexion")({
   head: () => ({
     meta: [
-      { title: "Connexion — Reste connecté !" },
+      { title: "Connexion — Tu captes ?" },
       {
         name: "description",
-        content: "Connectez-vous ou créez un compte pour sauvegarder vos quiz.",
+        content: "Connecte-toi ou crée un compte pour sauvegarder tes quiz.",
       },
     ],
   }),
@@ -29,18 +30,37 @@ function AuthPage() {
   const [displayName, setDisplayName] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const fallbackPseudoFromEmail = (value: string) => value.split("@")[0]?.trim() || "toi";
+
+  const getPseudoFromProfile = async (emailValue: string) => {
+    const { data: userData } = await supabase.auth.getUser();
+    const userId = userData.user?.id;
+    if (!userId) return fallbackPseudoFromEmail(emailValue);
+
+    const { data } = await supabase
+      .from("profiles")
+      .select("display_name")
+      .eq("id", userId)
+      .maybeSingle();
+
+    const name = (data as { display_name?: string | null } | null)?.display_name?.trim();
+    return name || fallbackPseudoFromEmail(emailValue);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
       if (mode === "signup") {
-        await signUp(email, password, displayName || email.split("@")[0]);
-        toast.success("Compte créé ! Vérifiez votre email pour confirmer.");
+        const pseudo = (displayName || fallbackPseudoFromEmail(email)).trim();
+        await signUp(email, password, pseudo);
+        toast.success(`Bienvenue à toi ${pseudo} !`);
         // After signup auto-confirm may be on; try navigating home
         navigate({ to: "/" });
       } else {
         await signIn(email, password);
-        toast.success("Bon retour parmi nous !");
+        const pseudo = await getPseudoFromProfile(email);
+        toast.success(`Bon retour parmi nous ${pseudo} !`);
         navigate({ to: "/" });
       }
     } catch (err) {
@@ -52,7 +72,7 @@ function AuthPage() {
         message.toLowerCase().includes("already registered") ||
         message.toLowerCase().includes("user already")
       ) {
-        toast.error("Un compte existe déjà avec cet email. Essayez de vous connecter.");
+        toast.error("Un compte existe déjà avec cet email. Essaie de te connecter.");
       } else if (message.toLowerCase().includes("password")) {
         toast.error("Le mot de passe doit contenir au moins 6 caractères.");
       } else {
@@ -73,25 +93,25 @@ function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
-      <main className="flex-1 flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-md">
+      <main className="flex min-w-0 w-full max-w-full flex-1 items-center justify-center overflow-x-clip px-4 py-10">
+        <div className="w-full min-w-0 max-w-md">
           <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 shadow-[var(--shadow-card)]">
             <h1 className="text-2xl sm:text-3xl font-extrabold mb-2 text-center">
               {mode === "signin" ? "Bon retour !" : "Créer mon compte"}
             </h1>
             <p className="text-center text-muted-foreground mb-6">
               {mode === "signin"
-                ? "Connectez-vous pour retrouver votre progression."
-                : "Sauvegardez vos badges et votre série de jeu."}
+                ? "Connecte-toi pour retrouver ta progression."
+                : "Badges et série sauvegardés sur ton compte."}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {mode === "signup" && (
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-base font-semibold">
-                    Comment souhaitez-vous être appelé(e) ?
+                    Comment tu veux qu’on t’appelle ?
                   </Label>
                   <Input
                     id="name"
@@ -113,7 +133,7 @@ function AuthPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="vous@exemple.fr"
+                  placeholder="toi@exemple.fr"
                   className="h-14 text-lg"
                   autoComplete="email"
                 />

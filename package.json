@@ -4,12 +4,20 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "check:culture-pop-tags": "node scripts/check-culture-pop-tags.mjs",
+    "check:supabase": "node scripts/check-supabase-connection.mjs",
+    "predev": "npm run check:culture-pop-tags",
+    "prebuild": "npm run check:culture-pop-tags",
     "dev": "vite dev",
     "build": "vite build",
+    "postbuild": "node scripts/patch-wrangler-supabase-vars.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "import:new-questions": "node scripts/import-new-questions.mjs",
+    "generate:culture-pop-tags": "node scripts/generate-culture-pop-tags.mjs",
+    "deploy": "node scripts/deploy-worker.mjs"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",

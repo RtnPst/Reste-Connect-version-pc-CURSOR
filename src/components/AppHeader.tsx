@@ -1,13 +1,96 @@
+import { useEffect, useId, useState } from "react";
 import { Link, useRouter } from "@tanstack/react-router";
 import { LogOut, Settings, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
+import { cn } from "@/lib/utils";
+
+/** Vague lumineuse en bas du header — SVG vectoriel (effet mockup « endgame »). */
+function HeaderBottomWave() {
+  const uid = useId().replace(/:/g, "");
+  const gradId = `header-wave-grad-${uid}`;
+  return (
+    <div className="app-header-cinematic__wave" aria-hidden>
+      <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#5b21b6" />
+            <stop offset="30%" stopColor="#c4b5fd" />
+            <stop offset="55%" stopColor="#ddd6fe" />
+            <stop offset="100%" stopColor="#4c1d95" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M0 26 C160 10 320 34 480 18 S800 6 960 24 S1200 38 1440 20 L1440 40 L0 40 Z"
+          fill={`url(#${gradId})`}
+          fillOpacity="0.12"
+        />
+        <path
+          d="M0 24 C200 8 400 32 600 18 S1000 4 1200 22 S1360 34 1440 20"
+          fill="none"
+          stroke={`url(#${gradId})`}
+          strokeWidth="2.25"
+          strokeLinecap="round"
+        />
+      </svg>
+    </div>
+  );
+}
+
+function HeaderBrandMark({ compact }: { compact: boolean }) {
+  const [useFallback, setUseFallback] = useState(false);
+  if (useFallback) {
+    return (
+      <span
+        className={cn(
+          "inline-flex shrink-0 items-center font-black tracking-tight text-violet-100 drop-shadow-md",
+          compact ? "text-xs" : "text-sm sm:text-base",
+        )}
+        aria-hidden
+      >
+        Tu captes ?
+      </span>
+    );
+  }
+  return (
+    <img
+      src="/logo.png"
+      alt=""
+      width={640}
+      height={240}
+      decoding="async"
+      className={cn(
+        "app-header-logo-img block h-28 w-auto max-w-[min(32rem,calc(100vw-3rem))] shrink-0 bg-transparent object-contain object-center align-middle motion-reduce:transition-none",
+        "transition-transform duration-200 ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100",
+        compact
+          ? "h-20 sm:h-16 sm:max-w-[min(24rem,calc(100vw-5rem))]"
+          : "sm:h-[6.2rem] sm:max-w-[min(30rem,calc(100vw-5rem))] md:h-[6.8rem] md:max-w-[32rem]",
+      )}
+      onError={() => setUseFallback(true)}
+    />
+  );
+}
+
+const SCROLL_COMPACT_PX = 36;
 
 export function AppHeader() {
   const { user, profile, signOut } = useAuth();
   const { isAdmin } = useIsAdmin();
   const router = useRouter();
+  const [scrolled, setScrolled] = useState(false);
+  const level = Math.floor((profile?.total_xp ?? 0) / 100) + 1;
+  const currentLevelXp = (profile?.total_xp ?? 0) % 100;
+  const progressPct = currentLevelXp;
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > SCROLL_COMPACT_PX);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleSignOut = async () => {
     await signOut();
@@ -15,68 +98,181 @@ export function AppHeader() {
   };
 
   return (
-    <header className="border-b-2 border-border bg-card/80 backdrop-blur-sm sticky top-0 z-40">
-      <div className="container mx-auto px-4 sm:px-6 max-w-5xl flex items-center justify-between h-16 sm:h-20">
-        <Link to="/" className="flex items-center gap-2 group">
-          <span className="text-3xl sm:text-4xl">🌟</span>
-          <span className="font-extrabold text-lg sm:text-xl text-primary group-hover:underline underline-offset-4">
-            Reste connecté !
-          </span>
-        </Link>
+    <header
+      className="app-header-cinematic sticky top-0 z-40 overflow-x-clip overflow-y-visible"
+      data-scrolled={scrolled ? "true" : undefined}
+    >
+      <div className="app-header-cinematic__bg" aria-hidden />
+      <div className="app-header-cinematic__stars" aria-hidden />
+      <div
+        className={cn(
+          "relative z-[1] container mx-auto flex w-full min-w-0 max-w-5xl items-center justify-between gap-3 px-3 transition-[min-height,padding] duration-200 ease-out sm:gap-4 sm:px-5 md:px-6",
+          "min-h-[4rem] py-2 sm:min-h-[4.5rem] sm:py-2.5 md:min-h-[4.75rem]",
+          scrolled && "min-h-[3.35rem] py-1.5 sm:min-h-[3.85rem] sm:py-2 md:min-h-[4rem]",
+          "pt-[max(0.25rem,env(safe-area-inset-top,0px))]",
+        )}
+      >
+        {user ? (
+          <div
+            className={cn(
+              "app-header-profile-card flex w-full min-w-0 items-center justify-between gap-2 overflow-hidden px-2 py-1.5 sm:px-2.5 sm:py-2",
+              "transition-[padding] duration-200 ease-out",
+            )}
+          >
+            <Link
+              to="/"
+              aria-label="Tu captes ? — Accueil"
+              className={cn(
+                "group flex min-w-0 shrink-0 items-center bg-transparent p-0 outline-offset-4 ring-0",
+                "max-w-[min(48%,calc(100vw-12rem))] sm:max-w-[min(52%,19rem)]",
+              )}
+            >
+              <HeaderBrandMark compact={scrolled} />
+              <span className="sr-only">Tu captes ? — Accueil</span>
+            </Link>
 
-        <nav className="flex items-center gap-2 sm:gap-3">
-          {user ? (
-            <>
-              <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
-                <Link to="/parcours">
-                  <span className="text-xl" aria-hidden>
+            <span
+              aria-hidden
+              className="h-20 w-[2px] shrink-0 rounded-full bg-linear-to-b from-violet-300/0 via-violet-300/45 to-violet-300/0 shadow-[0_0_12px_rgba(139,92,246,0.24)] sm:h-24"
+            />
+
+            <div className="flex min-w-0 items-center gap-2">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center justify-end gap-1 sm:gap-1.5">
+                  <Link
+                    to="/reglages"
+                    aria-label="Mon profil"
+                    className="mr-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-violet-300/35 bg-violet-600/20 text-base shadow-[0_0_10px_rgba(139,92,246,0.2)] transition-transform hover:scale-105 sm:h-8 sm:w-8 sm:text-lg"
+                  >
                     {profile?.avatar ?? "🙂"}
+                  </Link>
+                  <p
+                    className={cn(
+                      "max-w-[7.25rem] truncate text-right font-extrabold leading-tight text-slate-50 transition-[font-size,max-width] duration-300 sm:max-w-[8.5rem]",
+                      scrolled ? "text-[11px] sm:text-xs" : "text-xs sm:text-[13px]",
+                    )}
+                  >
+                    {profile?.display_name ?? "Mon profil"}
+                  </p>
+                  <span
+                    className={cn(
+                      "shrink-0 rounded-full border border-violet-400/35 bg-violet-600/25 px-1.5 py-px font-bold leading-none text-violet-100 shadow-[0_0_10px_rgba(139,92,246,0.25)] transition-[font-size,padding] duration-300",
+                      scrolled ? "text-[9px] sm:text-[10px]" : "text-[10px] sm:text-[11px]",
+                    )}
+                  >
+                    Niv. {level}
                   </span>
-                  <span>{profile?.display_name ?? "Mon parcours"}</span>
-                </Link>
-              </Button>
+                </div>
+                <p
+                  className={cn(
+                    "mt-0.5 text-right font-semibold tabular-nums text-slate-400 transition-[font-size] duration-300",
+                    scrolled ? "text-[10px] sm:text-[11px]" : "text-[11px] sm:text-xs",
+                  )}
+                >
+                  {currentLevelXp} / 100 XP
+                </p>
+                <div
+                  className={cn(
+                    "app-header-xp-track ml-auto mt-1 w-full max-w-[8rem] overflow-hidden transition-[height,max-width,margin-top] duration-300 sm:max-w-[9rem]",
+                    scrolled ? "h-1 sm:h-1.5" : "h-1.5 sm:h-2",
+                  )}
+                >
+                  <div
+                    className="app-header-xp-fill h-full min-w-0 transition-[width] duration-300"
+                    style={{ width: `${progressPct}%` }}
+                    aria-hidden
+                  />
+                </div>
+                <div
+                  className={cn(
+                    "mt-1 flex items-center justify-end gap-1 border-t border-white/10 pt-1 transition-[gap,padding,margin] duration-300 sm:mt-1.5 sm:pt-1.5",
+                    scrolled ? "sm:gap-1" : "sm:gap-1.5",
+                  )}
+                >
+                  <Button
+                    asChild
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Réglages"
+                    className={cn(
+                      "app-header-icon-ring shrink-0 rounded-full transition-[width,height] duration-300 [&_svg]:size-[1.05rem] sm:[&_svg]:size-[1.1rem]",
+                      scrolled ? "h-7 w-7 sm:h-8 sm:w-8" : "h-8 w-8 sm:h-9 sm:w-9",
+                      "hover:bg-violet-500/20 hover:text-foreground",
+                    )}
+                  >
+                    <Link to="/reglages">
+                      <Settings />
+                    </Link>
+                  </Button>
+                  {isAdmin && (
+                    <Button
+                      asChild
+                      variant="ghost"
+                      size="icon"
+                      aria-label="Administration"
+                      className={cn(
+                        "app-header-icon-ring shrink-0 rounded-full transition-[width,height] duration-300 [&_svg]:size-[1.05rem] sm:[&_svg]:size-[1.1rem]",
+                        scrolled ? "h-7 w-7 sm:h-8 sm:w-8" : "h-8 w-8 sm:h-9 sm:w-9",
+                        "hover:bg-violet-500/20 hover:text-foreground",
+                      )}
+                    >
+                      <Link to="/admin">
+                        <Shield />
+                      </Link>
+                    </Button>
+                  )}
+                  <Button
+                    onClick={handleSignOut}
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Se déconnecter"
+                    className={cn(
+                      "app-header-icon-ring shrink-0 rounded-full transition-[width,height] duration-300 [&_svg]:size-[1.05rem] sm:[&_svg]:size-[1.1rem]",
+                      scrolled ? "h-7 w-7 sm:h-8 sm:w-8" : "h-8 w-8 sm:h-9 sm:w-9",
+                      "text-slate-300 hover:border-orange-400/50 hover:bg-orange-950/30 hover:text-orange-200",
+                    )}
+                  >
+                    <LogOut />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <Link
+              to="/"
+              aria-label="Tu captes ? — Accueil"
+              className={cn(
+                "group flex min-w-0 shrink-0 items-center bg-transparent p-0 outline-offset-4 ring-0",
+                "max-w-[min(100%,calc(100vw-6.75rem))] sm:max-w-none",
+                scrolled && "max-w-[min(100%,calc(100vw-6.25rem))] sm:max-w-none",
+                "transition-transform duration-200 ease-out hover:scale-[1.02] active:scale-[0.99] motion-reduce:transition-none motion-reduce:hover:scale-100",
+              )}
+            >
+              <HeaderBrandMark compact={scrolled} />
+              <span className="sr-only">Tu captes ? — Accueil</span>
+            </Link>
+            <nav className="flex min-w-0 flex-1 justify-end overflow-hidden">
               <Button
                 asChild
                 variant="ghost"
-                size="icon"
-                className="sm:hidden"
-                aria-label="Mon parcours"
-              >
-                <Link to="/parcours">
-                  <span className="text-xl" aria-hidden>
-                    {profile?.avatar ?? "🙂"}
-                  </span>
-                </Link>
-              </Button>
-              <Button asChild variant="ghost" size="icon" aria-label="Réglages">
-                <Link to="/reglages">
-                  <Settings />
-                </Link>
-              </Button>
-              {isAdmin && (
-                <Button asChild variant="ghost" size="icon" aria-label="Administration">
-                  <Link to="/admin">
-                    <Shield />
-                  </Link>
-                </Button>
-              )}
-              <Button
-                onClick={handleSignOut}
-                variant="outline"
                 size="sm"
-                aria-label="Se déconnecter"
+                className={cn(
+                  "self-center rounded-full border border-white/14 bg-zinc-900/92 px-4 text-[13px] font-semibold text-white shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_2px_8px_-2px_rgba(0,0,0,0.45)] backdrop-blur-sm",
+                  "transition-[height,padding,background-color,border-color,color,transform,box-shadow] duration-200",
+                  "hover:border-white/22 hover:bg-zinc-800 hover:text-white hover:shadow-[0_1px_0_0_rgba(255,255,255,0.08)_inset,0_4px_14px_-4px_rgba(0,0,0,0.55)]",
+                  "focus-visible:ring-2 focus-visible:ring-white/25 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                  scrolled ? "h-9 sm:h-10 sm:px-4" : "h-10 sm:h-11 sm:px-5",
+                )}
               >
-                <LogOut />
-                <span className="hidden sm:inline">Déconnexion</span>
+                <Link to="/connexion">Se connecter</Link>
               </Button>
-            </>
-          ) : (
-            <Button asChild variant="accent" size="default">
-              <Link to="/connexion">Se connecter</Link>
-            </Button>
-          )}
-        </nav>
+            </nav>
+          </>
+        )}
       </div>
+      <HeaderBottomWave />
     </header>
   );
 }

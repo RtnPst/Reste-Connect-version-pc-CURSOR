@@ -38,10 +38,10 @@ export function maybeShowDailyReminder() {
   if (last === today) return;
   window.localStorage.setItem(KEY_LAST_SHOWN, today);
   try {
-    new Notification("Reste connecté ! 🌟", {
-      body: "Votre question du jour vous attend. Continuez votre série !",
-      icon: "/icon-192.svg",
-      badge: "/icon-192.svg",
+    new Notification("Tu captes ? 👀", {
+      body: "Ta question du jour t'attend. T'es encore dans le game ?",
+      icon: "/icon-192.png",
+      badge: "/icon-192.png",
     });
   } catch {
     // ignored

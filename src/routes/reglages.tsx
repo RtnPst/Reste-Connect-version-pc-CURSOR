@@ -1,47 +1,34 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Bell, Volume2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Flame } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { AVATAR_OPTIONS } from "@/lib/avatars";
-import { playCorrect, playFanfare, startMusic, stopMusic } from "@/lib/sfx";
-import {
-  disableReminder,
-  enableReminder,
-  isNotificationsSupported,
-  isReminderEnabled,
-} from "@/lib/reminders";
+import { stopMusic } from "@/lib/sfx";
 
 export const Route = createFileRoute("/reglages")({
   head: () => ({
     meta: [
-      { title: "Réglages — Reste connecté !" },
+      { title: "Profil — Tu captes ?" },
       {
         name: "description",
-        content: "Réglages d'accessibilité : avatar, pseudo, sons, taille du texte, contraste.",
+        content: "Ton profil : avatar, pseudo et progression personnelle.",
       },
     ],
   }),
-  component: SettingsPage,
+  component: ProfilePage,
 });
 
-function SettingsPage() {
+function ProfilePage() {
   const { profile, updatePreferences } = useAuth();
-  const { user, loading } = useRequireAuth();
+  useRequireAuth();
   const [displayName, setDisplayName] = useState("");
   const [saving, setSaving] = useState(false);
-  const [reminder, setReminder] = useState(false);
-  const notifSupported = isNotificationsSupported();
-
-  useEffect(() => {
-    setReminder(isReminderEnabled());
-  }, []);
+  const avatarSectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (profile) setDisplayName(profile.display_name ?? "");
@@ -52,10 +39,10 @@ function SettingsPage() {
 
   if (!profile) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex items-center justify-center">
-          <p>Chargement…</p>
+        <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
+          <p>On prépare tes réglages…</p>
         </main>
       </div>
     );
@@ -65,8 +52,11 @@ function SettingsPage() {
     try {
       await updatePreferences(prefs);
       toast.success("Préférences enregistrées");
-    } catch {
+      return true;
+    } catch (err) {
+      console.error("Erreur enregistrement préférences:", err);
       toast.error("Impossible d'enregistrer");
+      return false;
     }
   };
 
@@ -82,221 +72,124 @@ function SettingsPage() {
     }
   };
 
-  const toggleMusic = async (v: boolean) => {
-    await update({ music_enabled: v });
-    if (v) startMusic();
-    else stopMusic();
-  };
+  const jumpToAvatar = () =>
+    avatarSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const currentRank = Math.floor(profile.total_xp / 100) + 1;
+  const streak = profile.current_streak ?? 0;
+  const longestStreak = profile.longest_streak ?? 0;
+  const streakMessage =
+    streak > 0 && streak + 1 >= longestStreak
+      ? "Plus qu’un jour pour battre ton record."
+      : "Continue comme ça 🔥";
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
-      <main className="flex-1 container mx-auto px-4 sm:px-6 max-w-3xl py-8 sm:py-12">
-        <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">Réglages</h1>
-        <p className="text-lg text-muted-foreground mb-8">
-          Adaptez l'application à vos préférences.
-        </p>
-
-        <div className="space-y-6">
-          {/* Avatar */}
-          <div className="bg-card rounded-3xl border-2 border-border p-6">
-            <h2 className="text-xl font-extrabold mb-4">Mon avatar</h2>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="size-16 rounded-full bg-primary-soft flex items-center justify-center text-4xl border-2 border-primary">
+      <main className="container mx-auto w-full min-w-0 max-w-5xl flex-1 overflow-x-clip px-4 py-6 sm:px-6 sm:py-10">
+        <div className="mb-5 rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-18px_rgba(15,23,42,0.75)] sm:mb-6 sm:p-6 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="flex items-center gap-4">
+              <button
+                type="button"
+                onClick={jumpToAvatar}
+                aria-label="Aller à la sélection d'avatar"
+                className="size-16 rounded-full border-2 border-primary bg-primary-soft text-4xl flex items-center justify-center transition-[transform] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-105 hover:rotate-6 sm:size-20 motion-reduce:hover:scale-100 motion-reduce:hover:rotate-0"
+              >
                 {profile.avatar}
+              </button>
+              <div>
+                <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Profil</h1>
+                <p className="text-base font-semibold text-foreground">
+                  {displayName?.trim() || "Profil sans pseudo"}
+                </p>
+                <p className="text-sm text-muted-foreground sm:text-base">
+                  Ton identité et ta progression personnelle.
+                </p>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-warning/30 bg-warning-soft/70 px-2.5 py-1 text-xs sm:text-sm font-semibold text-foreground">
+                    <span aria-hidden>🔥</span> {streak} jour{streak > 1 ? "s" : ""} de suite
+                  </span>
+                  <span className="text-xs sm:text-sm text-muted-foreground">{streakMessage}</span>
+                </div>
               </div>
-              <p className="text-base text-muted-foreground">
-                Choisissez un avatar pour vous représenter.
-              </p>
-            </div>
-            <div className="grid grid-cols-6 sm:grid-cols-8 gap-2">
-              {AVATAR_OPTIONS.map((a) => (
-                <button
-                  key={a}
-                  onClick={() => update({ avatar: a })}
-                  className={`aspect-square rounded-xl border-2 text-2xl flex items-center justify-center transition-all ${
-                    profile.avatar === a
-                      ? "border-primary bg-primary-soft scale-110"
-                      : "border-border bg-card hover:border-primary/40"
-                  }`}
-                  aria-label={`Choisir l'avatar ${a}`}
-                >
-                  {a}
-                </button>
-              ))}
             </div>
           </div>
+        </div>
 
-          {/* Name */}
-          <div className="bg-card rounded-3xl border-2 border-border p-6">
-            <h2 className="text-xl font-extrabold mb-4">Mon pseudo</h2>
-            <p className="text-base text-muted-foreground mb-3">
-              C'est ce nom qui s'affiche dans les duels.
+        <div className="space-y-5 sm:space-y-6">
+          <section className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-16px_rgba(15,23,42,0.7)] sm:p-6 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+            <h2 className="text-xl font-extrabold mb-2">Ta progression</h2>
+            <p className="text-sm sm:text-base text-muted-foreground">
+              Parcours reste l’espace principal pour le détail complet de ton évolution.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Input
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-                className="h-14 text-lg flex-1"
-                placeholder="Votre nom ou pseudo"
-              />
-              <Button onClick={saveName} disabled={saving} variant="accent" size="lg">
-                Enregistrer
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs sm:text-sm font-semibold">
+                Rang {currentRank}
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs sm:text-sm font-semibold">
+                {profile.total_xp} XP
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-warning/30 bg-warning-soft/60 px-3 py-1.5 text-xs sm:text-sm font-semibold">
+                <Flame className="size-3.5" /> {longestStreak} jours record
+              </span>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <Button asChild variant="outline" size="lg" className="w-full">
+                <Link to="/parcours">Ouvrir Parcours</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="w-full">
+                <Link to="/parametres">Ouvrir paramètres</Link>
               </Button>
             </div>
-          </div>
+          </section>
 
-          {/* Font size */}
-          <div className="bg-card rounded-3xl border-2 border-border p-6">
-            <h2 className="text-xl font-extrabold mb-4">Taille du texte</h2>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {(["normal", "large", "xlarge"] as const).map((size) => (
-                <button
-                  key={size}
-                  onClick={() => update({ font_size: size })}
-                  className={`rounded-2xl p-4 border-2 transition-all ${profile.font_size === size ? "border-primary bg-primary-soft" : "border-border bg-card hover:border-primary/40"}`}
-                >
-                  <p
-                    className={`font-bold ${size === "normal" ? "text-base" : size === "large" ? "text-lg" : "text-xl"}`}
+          <div className="grid gap-5 lg:grid-cols-2">
+            <section
+              ref={avatarSectionRef}
+              className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-16px_rgba(15,23,42,0.7)] sm:p-6 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            >
+              <h2 className="text-xl font-extrabold mb-4">Mon avatar</h2>
+              <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                Choisis un emoji qui te ressemble.
+              </p>
+              <div className="grid grid-cols-6 gap-2 sm:grid-cols-8">
+                {AVATAR_OPTIONS.map((a) => (
+                  <button
+                    key={a}
+                    onClick={() => update({ avatar: a })}
+                    className={`aspect-square rounded-xl border-2 text-2xl flex items-center justify-center transition-[transform,border-color,background-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                      profile.avatar === a
+                        ? "border-primary bg-primary-soft scale-110"
+                        : "border-border bg-card hover:border-primary/50 hover:scale-110 active:scale-95 motion-reduce:hover:scale-100"
+                    }`}
+                    aria-label={`Choisir l'avatar ${a}`}
                   >
-                    {size === "normal" ? "Normal" : size === "large" ? "Grand" : "Très grand"}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">Aperçu : Aa</p>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Sound effects */}
-          <div className="bg-card rounded-3xl border-2 border-border p-6">
-            <div className="flex items-center justify-between gap-4 mb-3">
-              <div>
-                <Label htmlFor="sfx" className="text-xl font-extrabold cursor-pointer">
-                  Effets sonores
-                </Label>
-                <p className="text-base text-muted-foreground mt-1">
-                  Petits sons pour les bonnes/mauvaises réponses et la fin de quiz.
-                </p>
+                    {a}
+                  </button>
+                ))}
               </div>
-              <Switch
-                id="sfx"
-                checked={profile.sfx_enabled}
-                onCheckedChange={(v) => update({ sfx_enabled: v })}
-                className="scale-150"
-              />
-            </div>
-            {profile.sfx_enabled && (
-              <div className="flex flex-wrap gap-2 pt-2 border-t border-border">
-                <Button onClick={() => playCorrect(true)} variant="outline" size="sm">
-                  <Volume2 className="size-4" /> Bonne réponse
-                </Button>
-                <Button onClick={() => playFanfare(true)} variant="outline" size="sm">
-                  <Volume2 className="size-4" /> Fanfare
-                </Button>
-              </div>
-            )}
-          </div>
+            </section>
 
-          {/* Ambient music */}
-          <div className="bg-card rounded-3xl border-2 border-border p-6">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <Label htmlFor="music" className="text-xl font-extrabold cursor-pointer">
-                  Musique d'ambiance
-                </Label>
-                <p className="text-base text-muted-foreground mt-1">
-                  Une nappe douce et discrète pendant les quiz.
-                </p>
-              </div>
-              <Switch
-                id="music"
-                checked={profile.music_enabled}
-                onCheckedChange={toggleMusic}
-                className="scale-150"
-              />
-            </div>
-          </div>
-
-          {/* Audio (lecture vocale) */}
-          <div className="bg-card rounded-3xl border-2 border-border p-6">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <Label htmlFor="audio" className="text-xl font-extrabold cursor-pointer">
-                  Lecture vocale
-                </Label>
-                <p className="text-base text-muted-foreground mt-1">
-                  Active le bouton pour écouter les questions et explications.
-                </p>
-              </div>
-              <Switch
-                id="audio"
-                checked={profile.audio_enabled}
-                onCheckedChange={(v) => update({ audio_enabled: v })}
-                className="scale-150"
-              />
-            </div>
-          </div>
-
-          {/* Contrast */}
-          <div className="bg-card rounded-3xl border-2 border-border p-6">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <Label htmlFor="contrast" className="text-xl font-extrabold cursor-pointer">
-                  Contraste élevé
-                </Label>
-                <p className="text-base text-muted-foreground mt-1">
-                  Renforce les contrastes pour mieux voir les textes.
-                </p>
-              </div>
-              <Switch
-                id="contrast"
-                checked={profile.high_contrast}
-                onCheckedChange={(v) => update({ high_contrast: v })}
-                className="scale-150"
-              />
-            </div>
-          </div>
-
-          {/* Reminder */}
-          {notifSupported && (
-            <div className="bg-card rounded-3xl border-2 border-border p-6">
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <Label
-                    htmlFor="reminder"
-                    className="text-xl font-extrabold cursor-pointer flex items-center gap-2"
-                  >
-                    <Bell className="size-5" /> Rappel quotidien
-                  </Label>
-                  <p className="text-base text-muted-foreground mt-1">
-                    Une notification pour vous rappeler la question du jour.
-                  </p>
-                </div>
-                <Switch
-                  id="reminder"
-                  checked={reminder}
-                  onCheckedChange={async (v) => {
-                    if (v) {
-                      const ok = await enableReminder();
-                      if (ok) {
-                        setReminder(true);
-                        toast.success("Rappel activé");
-                      } else toast.error("Notifications refusées par votre navigateur");
-                    } else {
-                      disableReminder();
-                      setReminder(false);
-                      toast.success("Rappel désactivé");
-                    }
-                  }}
-                  className="scale-150"
+            <section className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-16px_rgba(15,23,42,0.7)] sm:p-6 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+              <h2 className="text-xl font-extrabold mb-4">Mon pseudo</h2>
+              <p className="text-sm sm:text-base text-muted-foreground mb-3">
+                Ce nom s’affiche dans les duels et sur ton profil.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Input
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  className="h-12 sm:h-14 text-base sm:text-lg flex-1"
+                  placeholder="Ton nom ou pseudo"
                 />
+                <Button onClick={saveName} disabled={saving} variant="accent" size="lg">
+                  Enregistrer
+                </Button>
               </div>
-            </div>
-          )}
+            </section>
+          </div>
 
-          <Button asChild variant="outline" size="lg" className="w-full">
-            <Link to="/parcours">Retour au parcours</Link>
-          </Button>
         </div>
       </main>
     </div>

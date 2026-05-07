@@ -31,3 +31,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Android / Gradle (builds locaux — ne pas versionner)
+.gradle/
+app/build/
+android/build/
+local.properties
+*.iml
+
+# Fichiers de signature (ne jamais les committer)
+android.keystore
+keystore.properties
+*.jks

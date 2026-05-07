@@ -45,8 +45,8 @@ type Duel = {
 export const Route = createFileRoute("/duel/$code")({
   head: ({ params }) => ({
     meta: [
-      { title: `Duel ${params.code} — Reste connecté !` },
-      { name: "description", content: "Rejoignez ce défi et comparez votre score !" },
+      { title: `Duel ${params.code} — Tu captes ?` },
+      { name: "description", content: "Rejoins ce défi et compare ton score !" },
     ],
   }),
   component: DuelPage,
@@ -96,7 +96,7 @@ function DuelPage() {
       // Order to match d.question_ids
       const ordered = d.question_ids
         .map((id: string) => qs.find((q) => q.id === id))
-        .filter(Boolean) as Question[];
+        .filter((q): q is (typeof qs)[number] => q !== undefined);
 
       setDuel(d as Duel);
       setQuestions(
@@ -118,7 +118,6 @@ function DuelPage() {
   const isCreator = duel?.creator_id === user?.id;
   const isParticipant = isCreator || duel?.opponent_id === user?.id;
   const myScore = isCreator ? duel?.creator_score : duel?.opponent_score;
-  const otherScore = isCreator ? duel?.opponent_score : duel?.creator_score;
   const otherName = isCreator ? duel?.opponent_name : duel?.creator_name;
 
   const shareUrl = useMemo(
@@ -230,7 +229,7 @@ function DuelPage() {
 
   if (loading || authLoading) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
         <AppHeader />
         <div className="container mx-auto px-4 max-w-2xl py-12 text-center text-muted-foreground">
           Chargement…
@@ -241,9 +240,9 @@ function DuelPage() {
 
   if (error || !duel) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
         <AppHeader />
-        <main className="container mx-auto px-4 max-w-2xl py-16 text-center">
+        <main className="container mx-auto w-full min-w-0 max-w-2xl overflow-x-clip px-4 py-16 text-center">
           <h1 className="text-2xl font-bold mb-3">{error}</h1>
           <Button asChild variant="outline">
             <Link to="/duel">Retour aux duels</Link>
@@ -257,9 +256,9 @@ function DuelPage() {
   if (step === "intro") {
     const themeMeta = THEMES[duel.theme];
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
         <AppHeader />
-        <main className="container mx-auto px-4 max-w-2xl py-8 space-y-6">
+        <main className="container mx-auto w-full min-w-0 max-w-2xl overflow-x-clip px-4 py-8 space-y-6">
           <div className="rounded-3xl border-2 border-border bg-card p-6 sm:p-8 text-center space-y-4">
             <span className="text-6xl">{themeMeta.emoji}</span>
             <h1 className="text-2xl sm:text-3xl font-extrabold">Duel : {themeMeta.label}</h1>
@@ -282,7 +281,7 @@ function DuelPage() {
 
             {isCreator && !duel.opponent_id && (
               <div className="space-y-3 pt-2">
-                <p className="font-semibold">Partagez ce lien avec votre adversaire :</p>
+                <p className="font-semibold">Partage ce lien avec ton adversaire :</p>
                 <div className="flex gap-2 flex-wrap">
                   <code className="flex-1 min-w-0 px-3 py-3 rounded-lg bg-muted text-sm font-mono truncate">
                     {shareUrl}
@@ -332,9 +331,9 @@ function DuelPage() {
       selectedIndex !== null &&
       (currentQ.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
         <AppHeader />
-        <main className="container mx-auto px-4 max-w-2xl py-6 space-y-5">
+        <main className="container mx-auto w-full min-w-0 max-w-2xl overflow-x-clip px-4 py-6 space-y-5">
           <div className="space-y-2">
             <div className="flex justify-between text-sm font-semibold text-muted-foreground">
               <span>
@@ -424,9 +423,9 @@ function DuelPage() {
   const tie = both && duel.creator_score === duel.opponent_score;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
       <AppHeader />
-      <main className="container mx-auto px-4 max-w-2xl py-8 space-y-6">
+      <main className="container mx-auto w-full min-w-0 max-w-2xl overflow-x-clip px-4 py-8 space-y-6">
         <div className="rounded-3xl border-2 border-border bg-card p-6 sm:p-8 text-center space-y-5">
           <Trophy className="mx-auto size-16 text-primary" />
           <h1 className="text-2xl sm:text-3xl font-extrabold">Résultat du duel</h1>

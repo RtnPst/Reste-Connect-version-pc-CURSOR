@@ -11,10 +11,11 @@ import { THEMES, THEME_KEYS, type ThemeKey } from "@/lib/themes";
 export const Route = createFileRoute("/statistiques")({
   head: () => ({
     meta: [
-      { title: "Mes statistiques — Reste connecté !" },
+      { title: "Tes stats — Tu captes ?" },
       {
         name: "description",
-        content: "Suivez votre progression : scores moyens, thèmes forts, séries, badges.",
+        content:
+          "Scores, thèmes où tu cartonnes, série de jours, badges : tout ton game en un coup d'œil.",
       },
       { name: "robots", content: "noindex" },
     ],
@@ -51,10 +52,10 @@ function StatsPage() {
 
   if (loading || loadingData || !profile) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex items-center justify-center">
-          <p>Chargement…</p>
+        <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
+          <p>On sort tes stats…</p>
         </main>
       </div>
     );
@@ -86,13 +87,13 @@ function StatsPage() {
   const maxScore = 10;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
-      <main className="flex-1 container mx-auto px-4 sm:px-6 max-w-4xl py-8 sm:py-12">
+      <main className="container mx-auto w-full min-w-0 max-w-4xl flex-1 overflow-x-clip px-4 py-8 sm:px-6 sm:py-12">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl sm:text-4xl font-extrabold flex items-center gap-3">
             <BarChart3 className="text-primary size-8" />
-            Mes statistiques
+            Tes stats
           </h1>
           <Button asChild variant="ghost" size="sm">
             <Link to="/parcours">
@@ -103,50 +104,65 @@ function StatsPage() {
 
         {totalAttempts === 0 ? (
           <div className="bg-card rounded-3xl border-2 border-border p-10 text-center">
-            <p className="text-lg text-muted-foreground mb-4">Aucun quiz terminé pour le moment.</p>
+            <p className="text-lg text-muted-foreground mb-4">
+              Rien enregistré pour l’instant. Un quiz thème ou la question du jour, et ça démarre.
+            </p>
             <Button asChild variant="accent" size="lg">
-              <Link to="/quiz">Commencer un quiz</Link>
+              <Link to="/quiz">Lancer un quiz</Link>
             </Button>
           </div>
         ) : (
           <div className="space-y-6">
             {/* KPI grid */}
-            <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-              <Kpi
-                icon={<Target className="size-6" />}
-                label="Quiz joués"
-                value={totalAttempts.toString()}
-                color="bg-primary-soft text-primary"
-              />
-              <Kpi
-                icon={<TrendingUp className="size-6" />}
-                label="Score moyen"
-                value={`${avgScore}%`}
-                color="bg-accent-soft text-accent"
-              />
-              <Kpi
-                icon={<Trophy className="size-6" />}
-                label="Quiz parfaits"
-                value={perfect.toString()}
-                color="bg-success-soft text-success"
-              />
-              <Kpi
-                icon={<Flame className="size-6" />}
-                label="Meilleure série"
-                value={`${profile.longest_streak}j`}
-                color="bg-warning-soft text-warning"
-              />
+            <div>
+              <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+                <Kpi
+                  icon={<Target className="size-6" />}
+                  label="Parties enregistrées"
+                  value={totalAttempts.toString()}
+                  color="bg-primary-soft text-primary"
+                />
+                <Kpi
+                  icon={<TrendingUp className="size-6" />}
+                  label="Score moyen"
+                  value={`${avgScore}%`}
+                  color="bg-accent-soft text-accent"
+                />
+                <Kpi
+                  icon={<Trophy className="size-6" />}
+                  label="Tout bon"
+                  value={perfect.toString()}
+                  color="bg-success-soft text-success"
+                />
+                <Kpi
+                  icon={<Flame className="size-6" />}
+                  label="Meilleure série"
+                  value={`${profile.longest_streak}j`}
+                  color="bg-warning-soft text-warning"
+                />
+              </div>
+              <p className="text-xs text-muted-foreground mt-3 max-w-3xl">
+                Basé sur les tentatives enregistrées (ex. quiz thème, question du jour). Marathon,
+                duels et mode niveaux ne créent pas ces lignes — donc tu ne les vois pas ici, même si
+                ton XP a bougé ailleurs.
+              </p>
             </div>
 
             {/* Per-theme breakdown */}
-            <div className="bg-card rounded-3xl border-2 border-border p-6">
-              <h2 className="text-xl font-extrabold mb-4">Performance par thème</h2>
+            <div className="bg-card rounded-3xl border-2 border-border p-6 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-16px_rgba(15,23,42,0.7)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+              <h2 className="text-xl font-extrabold mb-2">Perf par thème</h2>
+              <p className="text-sm text-muted-foreground mb-4">
+                Uniquement les parties où un thème est relié (souvent quiz thème + daily).
+              </p>
               <div className="space-y-4">
                 {THEME_KEYS.map((k) => {
                   const t = byTheme[k];
                   const pct = t.total ? Math.round((t.correct / t.total) * 100) : 0;
                   return (
-                    <div key={k}>
+                    <div
+                      key={k}
+                      className="rounded-xl px-2 py-1.5 -mx-2 transition-[transform,background-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:bg-muted/50 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    >
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-bold text-base">
                           {THEMES[k].emoji} {THEMES[k].label}
@@ -168,8 +184,10 @@ function StatsPage() {
             </div>
 
             {/* Last 10 attempts mini chart */}
-            <div className="bg-card rounded-3xl border-2 border-border p-6">
-              <h2 className="text-xl font-extrabold mb-4">Vos {last10.length} derniers quiz</h2>
+            <div className="bg-card rounded-3xl border-2 border-border p-6 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-16px_rgba(15,23,42,0.7)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+              <h2 className="text-xl font-extrabold mb-4">
+                Tes {last10.length} dernières parties
+              </h2>
               <div className="flex items-end justify-between gap-2 h-40">
                 {last10.map((a, i) => {
                   const h = Math.max(8, (a.score / maxScore) * 100);
@@ -190,8 +208,8 @@ function StatsPage() {
             </div>
 
             {/* Total XP */}
-            <div className="bg-gradient-to-br from-primary-soft to-accent-soft rounded-3xl border-2 border-primary/20 p-6 text-center">
-              <p className="text-base text-muted-foreground mb-1">Expérience totale gagnée</p>
+            <div className="bg-gradient-to-br from-primary-soft to-accent-soft rounded-3xl border-2 border-primary/20 p-6 text-center shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_18px_36px_-14px_rgba(79,70,229,0.35)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">
+              <p className="text-base text-muted-foreground mb-1">XP total (tout confondu)</p>
               <p className="text-5xl font-extrabold text-primary">{profile.total_xp} XP</p>
             </div>
           </div>
@@ -213,8 +231,10 @@ function Kpi({
   color: string;
 }) {
   return (
-    <div className="bg-card rounded-2xl border-2 border-border p-4 text-center">
-      <div className={`inline-flex items-center justify-center size-12 rounded-xl mb-2 ${color}`}>
+    <div className="group bg-card rounded-2xl border-2 border-border p-4 text-center transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1 hover:shadow-[0_14px_28px_-12px_rgba(15,23,42,0.65)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+      <div
+        className={`inline-flex items-center justify-center size-12 rounded-xl mb-2 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110 motion-reduce:group-hover:scale-100 ${color}`}
+      >
         {icon}
       </div>
       <div className="text-2xl font-extrabold">{value}</div>

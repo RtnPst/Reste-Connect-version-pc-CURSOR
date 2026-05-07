@@ -1,24 +1,19 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Home,
-  Lock,
-  RotateCcw,
-  Star,
-  Volume2,
-  XCircle,
-} from "lucide-react";
+import { ArrowRight, Home, Lock, RotateCcw } from "lucide-react";
+import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
+import { ImmersiveQuizPlay } from "@/components/immersive-quiz/ImmersiveQuizPlay";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { fetchUserBadgeIds, listNewBadgeNames } from "@/lib/badge-diff";
 import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
+import { RankBadge } from "@/components/RankBadge";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { shuffledOrder, toDisplayChoices } from "@/lib/choice-order";
 import {
@@ -26,6 +21,8 @@ import {
   PASS_PERCENTAGE,
   TOTAL_LEVELS,
   getRankForLevel,
+  getEffectiveUnlockedLevel,
+  mergeProgress,
   loadProgress,
   saveLevelResult,
   getDifficultyForLevel,
@@ -43,7 +40,7 @@ type Question = {
 export const Route = createFileRoute("/niveau/$n")({
   head: ({ params }) => ({
     meta: [
-      { title: `Niveau ${params.n} — Reste connecté !` },
+      { title: `Niveau ${params.n} — Tu captes ?` },
       {
         name: "description",
         content: `Niveau ${params.n} du parcours — ${QUESTIONS_PER_LEVEL} questions à enchaîner.`,
@@ -58,65 +55,69 @@ function LevelPage() {
   const level = Math.max(1, Math.min(TOTAL_LEVELS, parseInt(n, 10) || 1));
   const rank = getRankForLevel(level);
   const navigate = useNavigate();
-  const { profile } = useAuth();
+  const { user, profile, refreshProfile } = useAuth();
 
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [locked, setLocked] = useState(false);
+
+  const maxUnlocked = useMemo(() => getEffectiveUnlockedLevel(!!user, profile), [user, profile]);
+  const locked = level > maxUnlocked;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [revealedCorrectIndex, setRevealedCorrectIndex] = useState<number | null>(null);
+  const [checkingAnswer, setCheckingAnswer] = useState(false);
+  const [answerError, setAnswerError] = useState<string | null>(null);
   const [answers, setAnswers] = useState<{ chosen: number; correct: number }[]>([]);
   const [finished, setFinished] = useState(false);
-
-  // Vérifier le déblocage
-  useEffect(() => {
-    const p = loadProgress();
-    if (level > p.unlocked) {
-      setLocked(true);
-      setLoading(false);
-    }
-  }, [level]);
+  const [xpGained, setXpGained] = useState<number | null>(null);
+  const [levelUpTo, setLevelUpTo] = useState<number | null>(null);
+  const [replayKey, setReplayKey] = useState(0);
 
   // Charger les questions
   useEffect(() => {
     if (locked) return;
     (async () => {
-      const difficulty = getDifficultyForLevel(level);
-      const data = await getPlayableQuestions({ limit: 100 });
+      try {
+        setError(null);
+        const difficulty = getDifficultyForLevel(level);
+        const data = await getPlayableQuestions({ limit: 100 });
 
-      if (!data || data.length === 0) {
-        setError("Impossible de charger les questions.");
+        if (!data || data.length === 0) {
+          setError("Impossible de charger les questions pour ce niveau.");
+          return;
+        }
+
+        const filteredByDifficulty = (data ?? []).filter((q) => q.difficulty === difficulty);
+        const source =
+          filteredByDifficulty.length >= QUESTIONS_PER_LEVEL ? filteredByDifficulty : (data ?? []);
+        const shuffled = shuffledOrder(source.length)
+          .slice(0, QUESTIONS_PER_LEVEL)
+          .map((i) => source[i]);
+        setQuestions(
+          shuffled.map((q) => {
+            const choiceData = toDisplayChoices(q.choices);
+            return {
+              id: q.id,
+              theme: q.theme,
+              question: q.question,
+              choices: choiceData.choices,
+              choiceOrder: choiceData.choiceOrder,
+              explanation: q.explanation,
+            };
+          }),
+        );
+      } catch (err) {
+        console.error("Erreur chargement questions:", err);
+        setError("Erreur lors du chargement des questions.");
+      } finally {
         setLoading(false);
-        return;
       }
-
-      const filteredByDifficulty = (data ?? []).filter((q) => q.difficulty === difficulty);
-      const source =
-        filteredByDifficulty.length >= QUESTIONS_PER_LEVEL ? filteredByDifficulty : (data ?? []);
-      const shuffled = shuffledOrder(source.length)
-        .slice(0, QUESTIONS_PER_LEVEL)
-        .map((i) => source[i]);
-      setQuestions(
-        shuffled.map((q) => {
-          const choiceData = toDisplayChoices(q.choices);
-          return {
-            id: q.id,
-            theme: q.theme,
-            question: q.question,
-            choices: choiceData.choices,
-            choiceOrder: choiceData.choiceOrder,
-            explanation: q.explanation,
-          };
-        }),
-      );
-      setLoading(false);
     })();
 
     return () => stopSpeaking();
-  }, [level, locked]);
+  }, [level, locked, replayKey, user, profile]);
 
   const current = questions[currentIndex];
   const progressPct = useMemo(
@@ -128,29 +129,147 @@ function LevelPage() {
   );
 
   const handleSelect = async (idx: number) => {
-    if (selectedIndex !== null || !current) return;
+    if (selectedIndex !== null || !current || checkingAnswer) return;
+    setAnswerError(null);
+    setCheckingAnswer(true);
     const chosenOriginalIndex = current.choiceOrder[idx] ?? idx;
-    const result = await checkAnswer(current.id, chosenOriginalIndex);
-    setSelectedIndex(idx);
-    setRevealedCorrectIndex(result.correct_index);
-    setAnswers((p) => [...p, { chosen: chosenOriginalIndex, correct: result.correct_index }]);
-    const sfxOn = profile?.sfx_enabled ?? true;
-    if (result.correct) playCorrect(sfxOn);
-    else playWrong(sfxOn);
+    try {
+      const result = await checkAnswer(current.id, chosenOriginalIndex);
+      setSelectedIndex(idx);
+      setRevealedCorrectIndex(result.correct_index);
+      setAnswers((p) => [...p, { chosen: chosenOriginalIndex, correct: result.correct_index }]);
+      const sfxOn = profile?.sfx_enabled ?? true;
+      if (result.correct) playCorrect(sfxOn);
+      else playWrong(sfxOn);
+    } catch {
+      setAnswerError(
+        "Une erreur est survenue pendant la vérification. Réessayez dans quelques secondes.",
+      );
+    } finally {
+      setCheckingAnswer(false);
+    }
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     stopSpeaking();
     if (currentIndex + 1 < questions.length) {
       setCurrentIndex((i) => i + 1);
       setSelectedIndex(null);
       setRevealedCorrectIndex(null);
+      setAnswerError(null);
     } else {
       const score = answers.filter((a) => a.chosen === a.correct).length;
-      saveLevelResult(level, score);
+      const localProgress = saveLevelResult(level, score);
       setFinished(true);
-      if ((score / questions.length) * 100 >= PASS_PERCENTAGE) {
+      let beforeBadgeIds = new Set<string>();
+      if (user) {
+        try {
+          beforeBadgeIds = await fetchUserBadgeIds(user.id);
+        } catch {
+          beforeBadgeIds = new Set();
+        }
+      }
+      const passed = (score / questions.length) * 100 >= PASS_PERCENTAGE;
+      if (passed) {
         playFanfare(profile?.sfx_enabled ?? true);
+      }
+
+      if (user) {
+        try {
+          const mergedProgress = mergeProgress(localProgress, {
+            max_unlocked_level: profile?.max_unlocked_level,
+            level_best_scores: profile?.level_best_scores,
+          });
+          const { error: levelSyncError } = await supabase
+            .from("profiles")
+            .update({
+              max_unlocked_level: mergedProgress.unlocked,
+              level_best_scores: mergedProgress.best,
+            })
+            .eq("id", user.id);
+          if (levelSyncError) {
+            throw levelSyncError;
+          }
+        } catch (err) {
+          const error = err as {
+            message?: string;
+            code?: string;
+            details?: string | null;
+            hint?: string | null;
+          };
+          console.error("Level progression sync failed", {
+            message: error?.message,
+            code: error?.code,
+            details: error?.details,
+            hint: error?.hint,
+            userId: user.id,
+            level,
+            localUnlocked: localProgress.unlocked,
+            localBestForLevel: localProgress.best[level] ?? 0,
+          });
+        }
+      }
+
+      if (user) {
+        try {
+          const { data: dbProfile } = await supabase
+            .from("profiles")
+            .select("current_streak, longest_streak, last_play_date, total_xp")
+            .eq("id", user.id)
+            .maybeSingle();
+
+          if (dbProfile) {
+            const today = new Date().toISOString().slice(0, 10);
+            const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+            let newStreak = dbProfile.current_streak;
+            if (dbProfile.last_play_date !== today) {
+              newStreak = dbProfile.last_play_date === yesterday ? newStreak + 1 : 1;
+            }
+
+            const xpGain = score * 8 + 5 + (passed ? 10 : 0) + (score === questions.length ? 5 : 0);
+            const oldLevel = Math.floor(dbProfile.total_xp / 100) + 1;
+            const newTotalXp = dbProfile.total_xp + xpGain;
+            const newLevel = Math.floor(newTotalXp / 100) + 1;
+
+            const { error: updateError } = await supabase
+              .from("profiles")
+              .update({
+                current_streak: newStreak,
+                longest_streak: Math.max(newStreak, dbProfile.longest_streak),
+                last_play_date: today,
+                total_xp: newTotalXp,
+              })
+              .eq("id", user.id);
+            if (updateError) {
+              throw updateError;
+            }
+
+            setXpGained(xpGain);
+            if (newLevel > oldLevel) {
+              setLevelUpTo(newLevel);
+              toast.success(`Niveau ${newLevel} atteint !`);
+            } else {
+              setLevelUpTo(null);
+            }
+            await refreshProfile();
+          }
+        } catch (err) {
+          console.error("Level progression update failed", err);
+        }
+      }
+      if (user) {
+        try {
+          const names = await listNewBadgeNames(user.id, beforeBadgeIds);
+          if (names.length > 0) {
+            toast.success(
+              names.length === 1
+                ? `Badge « ${names[0]} » débloqué !`
+                : `Badges débloqués : ${names.join(" · ")}`,
+            );
+          }
+        } catch (err) {
+          console.error("Badge check failed", err);
+        }
       }
     }
   };
@@ -171,13 +290,15 @@ function LevelPage() {
 
   if (locked) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex flex-col items-center justify-center gap-4 px-4 text-center">
+        <main className="flex min-w-0 w-full flex-1 flex-col items-center justify-center gap-4 overflow-x-clip px-4 text-center">
           <Lock className="size-12 text-muted-foreground" />
           <h1 className="text-2xl font-extrabold">Niveau verrouillé</h1>
           <p className="text-muted-foreground max-w-md">
-            Terminez les niveaux précédents pour débloquer celui-ci.
+            {!user
+              ? "Sans compte, seul le niveau 1 est dispo. Connecte-toi pour retrouver tes niveaux débloqués."
+              : "Termine les niveaux précédents pour ouvrir celui-ci."}
           </p>
           <Button asChild variant="accent" size="lg">
             <Link to="/niveaux">Retour au parcours</Link>
@@ -189,9 +310,9 @@ function LevelPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex items-center justify-center">
+        <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
           <p className="text-lg text-muted-foreground">Chargement du niveau…</p>
         </main>
       </div>
@@ -200,9 +321,9 @@ function LevelPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
-        <main className="flex-1 flex flex-col items-center justify-center gap-4 px-4">
+        <main className="flex min-w-0 w-full flex-1 flex-col items-center justify-center gap-4 overflow-x-clip px-4">
           <p className="text-lg text-destructive">{error}</p>
           <Button asChild variant="outline">
             <Link to="/niveaux">Retour au parcours</Link>
@@ -217,12 +338,33 @@ function LevelPage() {
     const percent = Math.round((score / questions.length) * 100);
     const passed = percent >= PASS_PERCENTAGE;
     return (
-      <div className="min-h-screen flex flex-col bg-background">
+      <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
         <Confetti active={passed} />
-        <AppHeader />
-        <main className="flex-1 container mx-auto px-4 max-w-2xl py-10 text-center">
+        <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm">
+          <Button variant="ghost" size="sm" className="shrink-0 gap-1 px-2" asChild>
+            <Link to="/" className="flex items-center font-semibold text-muted-foreground">
+              <Home className="size-4 shrink-0" aria-hidden />
+              <span className="hidden sm:inline">Accueil</span>
+            </Link>
+          </Button>
+          <span className="min-w-0 flex-1 truncate text-center text-xs font-extrabold text-foreground sm:text-sm">
+            Résultat · Niveau {level}
+          </span>
+          <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
+            <Link to="/niveaux">Parcours</Link>
+          </Button>
+        </header>
+        <main className="container mx-auto w-full min-w-0 max-w-2xl flex-1 overflow-y-auto overflow-x-clip px-4 py-8 text-center sm:py-10">
           <div className="bg-card rounded-3xl border-2 border-border p-8 shadow-[var(--shadow-card)] animate-scale-in">
-            <div className="text-7xl mb-3">{passed ? rank.emoji : "💪"}</div>
+            <div className="mb-4 flex justify-center">
+              {passed ? (
+                <RankBadge rank={rank} level={level} size="lg" />
+              ) : (
+                <span className="text-6xl" aria-hidden>
+                  💪
+                </span>
+              )}
+            </div>
             <h1 className="text-3xl font-extrabold mb-2">
               {passed ? `Niveau ${level} validé !` : "Presque !"}
             </h1>
@@ -234,9 +376,22 @@ function LevelPage() {
             </p>
             <p className="text-base text-muted-foreground mb-6">
               {passed
-                ? `Rang ${rank.label} — vous débloquez le niveau ${Math.min(level + 1, TOTAL_LEVELS)} !`
+                ? `Palier « ${rank.label} » : le niveau ${Math.min(level + 1, TOTAL_LEVELS)} s’ouvre.`
                 : `Il faut au moins ${Math.ceil((PASS_PERCENTAGE / 100) * questions.length)}/${questions.length} pour valider.`}
             </p>
+            <p className="mb-4 text-xs sm:text-sm font-medium text-muted-foreground">
+              Les badges de quiz parfait se débloquent sur les quiz thème.
+            </p>
+            {xpGained !== null && (
+              <p className="text-sm sm:text-base font-semibold text-success mb-2">
+                +{xpGained} XP gagnés
+              </p>
+            )}
+            {levelUpTo !== null && (
+              <p className="text-sm sm:text-base font-semibold text-primary mb-6">
+                Niveau {levelUpTo} atteint !
+              </p>
+            )}
             <div className="grid gap-3 sm:grid-cols-2">
               {passed && level < TOTAL_LEVELS ? (
                 <Button
@@ -255,13 +410,16 @@ function LevelPage() {
                     setQuestions([]);
                     setCurrentIndex(0);
                     setSelectedIndex(null);
+                    setRevealedCorrectIndex(null);
+                    setAnswerError(null);
+                    setCheckingAnswer(false);
+                    setError(null);
                     setAnswers([]);
+                    setXpGained(null);
+                    setLevelUpTo(null);
                     setFinished(false);
                     setLoading(true);
-                    setTimeout(
-                      () => navigate({ to: "/niveau/$n", params: { n: String(level) } }),
-                      50,
-                    );
+                    setReplayKey((k) => k + 1);
                   }}
                 >
                   <RotateCcw />
@@ -289,34 +447,34 @@ function LevelPage() {
     isAnswered &&
     selectedIndex !== null &&
     (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
+  const streak = profile?.current_streak ?? 0;
+  const longestStreak = profile?.longest_streak ?? 0;
+  const streakMessage =
+    streak > 0 && streak + 1 >= longestStreak
+      ? "Plus qu’un jour pour battre ton record."
+      : "Continue comme ça 🔥";
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <AppHeader />
-      <main className="flex-1 container mx-auto px-4 sm:px-6 max-w-3xl py-6 sm:py-10">
-        {/* En-tête niveau */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-3">
-            <span
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-extrabold"
-              style={{
-                color: `var(--${rank.colorVar})`,
-                backgroundColor: `color-mix(in oklab, var(--${rank.colorVar}) 15%, transparent)`,
-              }}
-            >
-              {rank.emoji} Niveau {level} · {rank.label}
-            </span>
-            <span className="text-sm font-bold text-muted-foreground">
-              {currentIndex + 1} / {questions.length}
-            </span>
-          </div>
-          <Progress value={progressPct} className="h-3" />
-        </div>
-
-        {/* Badge thème de la question (visible AVANT de répondre) */}
-        <div className="mb-4 flex justify-center">
+    <ImmersiveQuizPlay
+      quitHref="/niveaux"
+      headerCenter={
+        <>
+          <span className="shrink-0">
+            <RankBadge rank={rank} level={level} size="sm" />
+          </span>
+          <span className="truncate font-extrabold">{rank.label}</span>
+        </>
+      }
+      streak={streak}
+      streakTitle={streakMessage}
+      progressPercent={progressPct}
+      stepFraction={`${currentIndex + 1}/${questions.length}`}
+      flowStepKey={`${current.id}-${currentIndex}`}
+      questionText={current.question}
+      belowProgressSlot={
+        <div className="flex justify-center">
           <span
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-base font-extrabold border-2 animate-fade-in"
+            className="inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-1 text-xs font-extrabold sm:text-sm"
             style={{
               color: `var(--${themeMeta.colorVar})`,
               borderColor: `var(--${themeMeta.colorVar})`,
@@ -328,120 +486,36 @@ function LevelPage() {
             {themeMeta.short}
           </span>
         </div>
-
-        {/* Question */}
-        <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 shadow-[var(--shadow-soft)] mb-6">
-          <div className="flex items-start gap-3">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-snug flex-1">
-              {current.question}
-            </h1>
-            <Button
-              onClick={handleSpeakQuestion}
-              variant="ghost"
-              size="icon"
-              aria-label="Écouter la question"
-              title="Écouter la question"
-              className="flex-shrink-0"
-            >
-              <Volume2 />
-            </Button>
-          </div>
-        </div>
-
-        {/* Choix */}
-        <div className="grid gap-3 mb-6">
-          {current.choices.map((choice, idx) => {
-            const isSelected = selectedIndex === idx;
-            const isCorrectChoice = (current.choiceOrder[idx] ?? idx) === revealedCorrectIndex;
-
-            let className =
-              "border-2 border-border bg-card hover:border-primary hover:bg-primary-soft/30";
-            let icon: React.ReactNode = null;
-
-            if (isAnswered) {
-              if (isCorrectChoice) {
-                className = "border-2 border-success bg-success-soft text-foreground";
-                icon = <CheckCircle2 className="size-6 text-success flex-shrink-0" />;
-              } else if (isSelected) {
-                className = "border-2 border-destructive bg-destructive/10 text-foreground";
-                icon = <XCircle className="size-6 text-destructive flex-shrink-0" />;
-              } else {
-                className = "border-2 border-border bg-card opacity-60";
-              }
-            }
-
-            return (
-              <button
-                key={idx}
-                onClick={() => handleSelect(idx)}
-                disabled={isAnswered}
-                className={`text-left rounded-2xl p-4 sm:p-5 transition-all flex items-center gap-4 min-h-[64px] disabled:cursor-default ${className}`}
-              >
-                <span
-                  className={`flex-shrink-0 size-10 rounded-full flex items-center justify-center font-extrabold text-lg ${
-                    isAnswered && isCorrectChoice
-                      ? "bg-success text-success-foreground"
-                      : isAnswered && isSelected
-                        ? "bg-destructive text-destructive-foreground"
-                        : "bg-secondary text-secondary-foreground"
-                  }`}
-                  aria-hidden
-                >
-                  {String.fromCharCode(65 + idx)}
-                </span>
-                <span className="flex-1 text-base sm:text-lg font-medium">{choice}</span>
-                {icon}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Explication */}
-        {isAnswered && (
-          <div
-            className={`rounded-2xl p-5 sm:p-6 mb-6 border-2 ${
-              isCorrect ? "bg-success-soft border-success/30" : "bg-warning-soft border-warning/40"
-            }`}
-          >
-            <div className="flex items-start gap-3">
-              <div className="flex-1">
-                <p className="font-extrabold text-lg mb-2">
-                  {isCorrect ? "✅ Bonne réponse !" : "💡 Pas tout à fait — voici l'explication :"}
-                </p>
-                <p className="text-base leading-relaxed">{current.explanation}</p>
-              </div>
-              <Button
-                onClick={handleSpeakExplanation}
-                variant="ghost"
-                size="icon"
-                aria-label="Écouter l'explication"
-                title="Écouter l'explication"
-                className="flex-shrink-0"
-              >
-                <Volume2 />
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {isAnswered && (
-          <Button onClick={handleNext} size="xl" variant="accent" className="w-full">
-            {currentIndex + 1 < questions.length ? "Question suivante" : "Voir mon score"}
-            <ArrowRight />
-          </Button>
-        )}
-
-        {!isAnswered && (
-          <div className="text-center">
-            <Link
-              to="/niveaux"
-              className="text-sm text-muted-foreground underline-offset-4 hover:underline"
-            >
-              ← Retour au parcours
-            </Link>
-          </div>
-        )}
-      </main>
-    </div>
+      }
+      choices={current.choices}
+      selectedIndex={selectedIndex}
+      revealedCorrectIndex={revealedCorrectIndex}
+      choiceOrder={current.choiceOrder}
+      onSelectChoice={(idx) => void handleSelect(idx)}
+      choicesDisabled={checkingAnswer}
+      onSpeakQuestion={handleSpeakQuestion}
+      isCorrect={!!isCorrect}
+      explanation={current.explanation}
+      onSpeakExplanation={handleSpeakExplanation}
+      onPrimaryNext={handleNext}
+      primaryNextLabel={
+        currentIndex + 1 < questions.length ? "Question suivante" : "Voir mon score"
+      }
+      statusMessage={
+        checkingAnswer ? (
+          <span className="text-muted-foreground">Vérification…</span>
+        ) : answerError ? (
+          <span className="text-destructive">{answerError}</span>
+        ) : undefined
+      }
+      footerWhenPlaying={
+        <Link
+          to="/niveaux"
+          className="text-xs text-muted-foreground underline-offset-4 hover:underline sm:text-sm"
+        >
+          Retour au parcours
+        </Link>
+      }
+    />
   );
 }
