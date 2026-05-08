@@ -21,7 +21,10 @@ import { CockpitTabs } from "@/components/admin-cockpit/CockpitTabs";
 import { KpiCard } from "@/components/admin-cockpit/KpiCard";
 import { ReadOnlyBanner } from "@/components/admin-cockpit/ReadOnlyBanner";
 import { WarningList } from "@/components/admin-cockpit/WarningList";
+import { AnalyticsTab } from "@/components/admin-cockpit/tabs/AnalyticsTab";
+import { BatchReviewsTab } from "@/components/admin-cockpit/tabs/BatchReviewsTab";
 import { ConceptIntakeTab } from "@/components/admin-cockpit/tabs/ConceptIntakeTab";
+import { EditorialHealthTab } from "@/components/admin-cockpit/tabs/EditorialHealthTab";
 import { QuestionDraftsTab } from "@/components/admin-cockpit/tabs/QuestionDraftsTab";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
@@ -34,15 +37,24 @@ import {
   type AiPreviewQuestion,
 } from "@/utils/questions.functions";
 import {
+  EMPTY_ANALYTICS_SUMMARY,
+  EMPTY_BATCH_REVIEWS,
   EMPTY_CONCEPT_INTAKE,
+  EMPTY_EDITORIAL_HEALTH,
   EMPTY_META,
   EMPTY_OVERVIEW,
   EMPTY_QUESTION_DRAFTS,
+  loadAnalyticsSummarySnapshot,
+  loadBatchReviewsSnapshot,
   loadConceptIntakeSnapshot,
+  loadEditorialHealthSnapshot,
   loadMetaSnapshot,
   loadOverviewSnapshot,
   loadQuestionDraftsSnapshot,
+  type AdminCockpitAnalyticsSummary,
+  type AdminCockpitBatchReviews,
   type AdminCockpitConceptIntake,
+  type AdminCockpitEditorialHealth,
   type AdminCockpitMeta,
   type AdminCockpitOverview,
   type AdminCockpitQuestionDrafts,
@@ -122,9 +134,15 @@ export const Route = createFileRoute("/admin")({
           ? "concept_intake"
           : raw === "question_drafts"
             ? "question_drafts"
-            : raw === "overview"
-              ? "overview"
-              : "overview";
+            : raw === "editorial_health"
+              ? "editorial_health"
+              : raw === "analytics"
+                ? "analytics"
+                : raw === "batch_reviews"
+                  ? "batch_reviews"
+                  : raw === "overview"
+                    ? "overview"
+                    : "overview";
     return { tab };
   },
   head: () => ({
@@ -173,6 +191,14 @@ function AdminPage() {
   const [snapshotWarnings, setSnapshotWarnings] = useState<string[]>([]);
   const [conceptIntakeWarning, setConceptIntakeWarning] = useState<string | null>(null);
   const [questionDraftsWarning, setQuestionDraftsWarning] = useState<string | null>(null);
+  const [editorialHealthSnapshot, setEditorialHealthSnapshot] =
+    useState<AdminCockpitEditorialHealth>(EMPTY_EDITORIAL_HEALTH);
+  const [analyticsSummarySnapshot, setAnalyticsSummarySnapshot] =
+    useState<AdminCockpitAnalyticsSummary>(EMPTY_ANALYTICS_SUMMARY);
+  const [batchReviewsSnapshot, setBatchReviewsSnapshot] = useState<AdminCockpitBatchReviews>(EMPTY_BATCH_REVIEWS);
+  const [editorialHealthWarning, setEditorialHealthWarning] = useState<string | null>(null);
+  const [analyticsSummaryWarning, setAnalyticsSummaryWarning] = useState<string | null>(null);
+  const [batchReviewsWarning, setBatchReviewsWarning] = useState<string | null>(null);
 
   const loadQuestions = async () => {
     setLoadingQ(true);
@@ -198,11 +224,37 @@ function AdminPage() {
     let cancelled = false;
     (async () => {
       setSnapshotLoading(true);
-      const [metaRes, overviewRes] = await Promise.all([loadMetaSnapshot(), loadOverviewSnapshot()]);
+      const [
+        metaRes,
+        overviewRes,
+        conceptRes,
+        draftsRes,
+        editorialRes,
+        analyticsRes,
+        batchRes,
+      ] = await Promise.all([
+        loadMetaSnapshot(),
+        loadOverviewSnapshot(),
+        loadConceptIntakeSnapshot(),
+        loadQuestionDraftsSnapshot(),
+        loadEditorialHealthSnapshot(),
+        loadAnalyticsSummarySnapshot(),
+        loadBatchReviewsSnapshot(),
+      ]);
       if (cancelled) return;
       setMetaSnapshot(metaRes.data);
       setOverviewSnapshot(overviewRes.data);
+      setConceptIntakeSnapshot(conceptRes.data);
+      setQuestionDraftsSnapshot(draftsRes.data);
+      setEditorialHealthSnapshot(editorialRes.data);
+      setAnalyticsSummarySnapshot(analyticsRes.data);
+      setBatchReviewsSnapshot(batchRes.data);
       setSnapshotWarnings([metaRes.warning, overviewRes.warning].filter((v): v is string => !!v));
+      setConceptIntakeWarning(conceptRes.warning);
+      setQuestionDraftsWarning(draftsRes.warning);
+      setEditorialHealthWarning(editorialRes.warning);
+      setAnalyticsSummaryWarning(analyticsRes.warning);
+      setBatchReviewsWarning(batchRes.warning);
       setSnapshotLoading(false);
     })();
     return () => {
@@ -457,7 +509,13 @@ function AdminPage() {
                   ? "concept_intake"
                   : next === "question_drafts"
                     ? "question_drafts"
-                    : "overview";
+                    : next === "editorial_health"
+                      ? "editorial_health"
+                      : next === "analytics"
+                        ? "analytics"
+                        : next === "batch_reviews"
+                          ? "batch_reviews"
+                          : "overview";
             navigate({
               to: "/admin",
               search: (prev) => ({ ...prev, tab }),
@@ -555,6 +613,30 @@ function AdminPage() {
               snapshot={questionDraftsSnapshot}
               loading={snapshotLoading}
               fetchWarning={questionDraftsWarning}
+            />
+          </TabsContent>
+
+          <TabsContent value="editorial_health" className="mt-0 space-y-4">
+            <EditorialHealthTab
+              snapshot={editorialHealthSnapshot}
+              loading={snapshotLoading}
+              fetchWarning={editorialHealthWarning}
+            />
+          </TabsContent>
+
+          <TabsContent value="analytics" className="mt-0 space-y-4">
+            <AnalyticsTab
+              snapshot={analyticsSummarySnapshot}
+              loading={snapshotLoading}
+              fetchWarning={analyticsSummaryWarning}
+            />
+          </TabsContent>
+
+          <TabsContent value="batch_reviews" className="mt-0 space-y-4">
+            <BatchReviewsTab
+              snapshot={batchReviewsSnapshot}
+              loading={snapshotLoading}
+              fetchWarning={batchReviewsWarning}
             />
           </TabsContent>
 

@@ -35,6 +35,30 @@ export function CockpitTabs({ value, onValueChange }: Props) {
           Question drafts
         </TabsTrigger>
         <TabsTrigger
+          value="editorial_health"
+          className="rounded-lg px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
+          data-state={value === "editorial_health" ? "active" : "inactive"}
+          onClick={() => onValueChange("editorial_health")}
+        >
+          Editorial health
+        </TabsTrigger>
+        <TabsTrigger
+          value="analytics"
+          className="rounded-lg px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
+          data-state={value === "analytics" ? "active" : "inactive"}
+          onClick={() => onValueChange("analytics")}
+        >
+          Analytics
+        </TabsTrigger>
+        <TabsTrigger
+          value="batch_reviews"
+          className="rounded-lg px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
+          data-state={value === "batch_reviews" ? "active" : "inactive"}
+          onClick={() => onValueChange("batch_reviews")}
+        >
+          Batch reviews
+        </TabsTrigger>
+        <TabsTrigger
           value="legacy"
           className="rounded-lg px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
           data-state={value === "legacy" ? "active" : "inactive"}
