@@ -20,6 +20,22 @@ dist-ssr
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
+supabase/.temp/
+
+# Analytics generated snapshots (keep *-latest tracked)
+exports/analytics/phase0-summary-20*.csv
+exports/analytics/phase0-summary-20*.json
+exports/analytics/phase1-summary-20*.csv
+exports/analytics/phase1-summary-20*.json
+
+# Timestamped export runs (siblings *-latest.* remain visible / tracked as needed)
+exports/dedup-audit/*-20[12][0-9][0-9]-[01][0-9]-[0-3][0-9]T*.csv
+exports/dedup-audit/*-20[12][0-9][0-9]-[01][0-9]-[0-3][0-9]T*.json
+exports/tech-theme-audit/*-20[12][0-9][0-9]-[01][0-9]-[0-3][0-9]T*.csv
+exports/tech-theme-audit/*-20[12][0-9][0-9]-[01][0-9]-[0-3][0-9]T*.json
+# Culture pop: only live-review timestamped copies (not pool-export-* or *-latest.*)
+exports/culture-pop-pool/culture-pop-live-review-20*.csv
+exports/culture-pop-pool/culture-pop-live-review-prefilled-20*.csv
 
 # Editor directories and files
 .vscode/*
