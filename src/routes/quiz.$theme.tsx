@@ -1,5 +1,5 @@
 import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, Home, RotateCcw, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
@@ -21,6 +21,7 @@ import {
   wouldRepeatConceptTooSoon,
 } from "@/lib/concept-runtime";
 import { getNextActionSuggestion } from "@/lib/next-action";
+import { createAnalyticsRunId, trackEvent } from "@/lib/analytics";
 
 type Question = {
   id: string;
@@ -122,6 +123,10 @@ function QuizPage() {
   const [levelUpTo, setLevelUpTo] = useState<number | null>(null);
   const [dailyBonusApplied, setDailyBonusApplied] = useState(false);
   const [luckyBonusApplied, setLuckyBonusApplied] = useState(false);
+  const [runId, setRunId] = useState<string | null>(null);
+  const runStartMsRef = useRef<number | null>(null);
+  const startedSentRef = useRef(false);
+  const completedSentRef = useRef(false);
 
   // Load questions
   useEffect(() => {
@@ -263,6 +268,48 @@ function QuizPage() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [current, selectedIndex, finished, handleNext, handleSelect]);
 
+  useEffect(() => {
+    if (loading || error || finished || !questions.length) return;
+    if (!user?.id || startedSentRef.current) return;
+    const nextRunId = createAnalyticsRunId();
+    setRunId(nextRunId);
+    runStartMsRef.current = Date.now();
+    startedSentRef.current = true;
+    completedSentRef.current = false;
+    void trackEvent({
+      event_name: "mode_started",
+      user_id: user.id,
+      mode: "theme",
+      run_id: nextRunId,
+      event_props: {
+        entry_surface: "deep_link",
+        theme: themeKey,
+        is_retry: false,
+      },
+    });
+  }, [loading, error, finished, questions.length, themeKey, user?.id]);
+
+  useEffect(() => {
+    if (!finished || !user?.id || !runId || completedSentRef.current) return;
+    completedSentRef.current = true;
+    const durationSec = runStartMsRef.current
+      ? Math.max(0, Math.round((Date.now() - runStartMsRef.current) / 1000))
+      : 0;
+    void trackEvent({
+      event_name: "mode_completed",
+      user_id: user.id,
+      mode: "theme",
+      run_id: runId,
+      event_props: {
+        score,
+        total_questions: questions.length,
+        duration_sec: durationSec,
+        completed: true,
+        theme: themeKey,
+      },
+    });
+  }, [finished, questions.length, runId, score, themeKey, user?.id]);
+
   if (loading) {
     return (
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
@@ -301,6 +348,8 @@ function QuizPage() {
         levelUpTo={levelUpTo}
         dailyBonusApplied={dailyBonusApplied}
         luckyBonusApplied={luckyBonusApplied}
+        runId={runId}
+        userId={user?.id ?? null}
         onReplay={() => {
           setQuestions([]);
           setCurrentIndex(0);
@@ -312,6 +361,10 @@ function QuizPage() {
           setLevelUpTo(null);
           setDailyBonusApplied(false);
           setLuckyBonusApplied(false);
+          setRunId(null);
+          runStartMsRef.current = null;
+          startedSentRef.current = false;
+          completedSentRef.current = false;
           setFinished(false);
           setLoading(true);
           setTimeout(() => {
@@ -511,6 +564,8 @@ function ResultsScreen({
   levelUpTo,
   dailyBonusApplied,
   luckyBonusApplied,
+  runId,
+  userId,
   onReplay,
 }: {
   score: number;
@@ -523,6 +578,8 @@ function ResultsScreen({
   levelUpTo: number | null;
   dailyBonusApplied: boolean;
   luckyBonusApplied: boolean;
+  runId: string | null;
+  userId: string | null;
   onReplay: () => void;
 }) {
   const themeMeta = THEMES[themeKey];
@@ -615,7 +672,24 @@ function ResultsScreen({
             </p>
             <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
             <Button asChild size="lg" variant="accent" className="mt-3 w-full min-w-0 whitespace-normal">
-              <Link to={nextAction.to}>
+              <Link
+                to={nextAction.to}
+                onClick={() => {
+                  void trackEvent({
+                    event_name: "post_run_cta_clicked",
+                    user_id: userId,
+                    mode: "theme",
+                    run_id: runId,
+                    event_props: {
+                      cta_id: "next_action_primary",
+                      source_mode: "theme",
+                      destination: nextAction.to,
+                      score_context: score,
+                      total_context: total,
+                    },
+                  });
+                }}
+              >
                 {nextAction.label}
                 <ArrowRight className="size-4" />
               </Link>

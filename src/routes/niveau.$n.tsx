@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, Home, Lock, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
@@ -18,6 +18,7 @@ import { selectLevelQuestions } from "@/lib/levels-selector";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { toDisplayChoices } from "@/lib/choice-order";
 import { getNextActionSuggestion } from "@/lib/next-action";
+import { createAnalyticsRunId, trackEvent } from "@/lib/analytics";
 import {
   QUESTIONS_PER_LEVEL,
   PASS_PERCENTAGE,
@@ -77,6 +78,11 @@ function LevelPage() {
   const [xpGained, setXpGained] = useState<number | null>(null);
   const [levelUpTo, setLevelUpTo] = useState<number | null>(null);
   const [replayKey, setReplayKey] = useState(0);
+  const [runId, setRunId] = useState<string | null>(null);
+  const runStartMsRef = useRef<number | null>(null);
+  const startedSentRef = useRef(false);
+  const completedSentRef = useRef(false);
+  const levelResultSentRef = useRef(false);
 
   // Same route component instance when only $n changes: reset run state or "finished"
   // stays true and answers from the previous level pair with the new level param.
@@ -93,6 +99,11 @@ function LevelPage() {
     setError(null);
     setQuestions([]);
     setLoading(true);
+    setRunId(null);
+    runStartMsRef.current = null;
+    startedSentRef.current = false;
+    completedSentRef.current = false;
+    levelResultSentRef.current = false;
   }, [level]);
 
   // Charger les questions
@@ -306,6 +317,69 @@ function LevelPage() {
     speak(`${isCorrect ? "Bonne réponse !" : "Pas tout à fait."} ${current.explanation}`, true);
   };
 
+  useEffect(() => {
+    if (locked || loading || error || finished || !questions.length) return;
+    if (!user?.id || startedSentRef.current) return;
+    const nextRunId = createAnalyticsRunId();
+    setRunId(nextRunId);
+    runStartMsRef.current = Date.now();
+    startedSentRef.current = true;
+    completedSentRef.current = false;
+    levelResultSentRef.current = false;
+    void trackEvent({
+      event_name: "mode_started",
+      user_id: user.id,
+      mode: "level",
+      run_id: nextRunId,
+      event_props: {
+        entry_surface: "deep_link",
+        level,
+        is_retry: replayKey > 0,
+      },
+    });
+  }, [error, finished, level, loading, locked, questions.length, replayKey, user?.id]);
+
+  useEffect(() => {
+    if (!finished || !user?.id || !runId || !questions.length) return;
+    const score = answers.filter((a) => a.chosen === a.correct).length;
+    const passed = Math.round((score / questions.length) * 100) >= PASS_PERCENTAGE;
+    const durationSec = runStartMsRef.current
+      ? Math.max(0, Math.round((Date.now() - runStartMsRef.current) / 1000))
+      : 0;
+    if (!completedSentRef.current) {
+      completedSentRef.current = true;
+      void trackEvent({
+        event_name: "mode_completed",
+        user_id: user.id,
+        mode: "level",
+        run_id: runId,
+        event_props: {
+          score,
+          total_questions: questions.length,
+          duration_sec: durationSec,
+          completed: true,
+          level,
+        },
+      });
+    }
+    if (!levelResultSentRef.current) {
+      levelResultSentRef.current = true;
+      void trackEvent({
+        event_name: "level_result",
+        user_id: user.id,
+        mode: "level",
+        run_id: runId,
+        event_props: {
+          level,
+          passed,
+          score,
+          total_questions: questions.length,
+          required_to_pass: passRequired,
+        },
+      });
+    }
+  }, [answers, finished, level, passRequired, questions.length, runId, user?.id]);
+
   if (locked) {
     return (
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
@@ -430,7 +504,22 @@ function LevelPage() {
                 <Button
                   size="lg"
                   variant="accent"
-                  onClick={() => navigate({ to: "/niveau/$n", params: { n: String(level + 1) } })}
+                  onClick={() => {
+                    void trackEvent({
+                      event_name: "post_run_cta_clicked",
+                      user_id: user?.id,
+                      mode: "level",
+                      run_id: runId,
+                      event_props: {
+                        cta_id: "next_action_primary",
+                        source_mode: "level",
+                        destination: `/niveau/${level + 1}`,
+                        score_context: score,
+                        total_context: questions.length,
+                      },
+                    });
+                    navigate({ to: "/niveau/$n", params: { n: String(level + 1) } });
+                  }}
                 >
                   Niveau suivant
                   <ArrowRight />
@@ -440,6 +529,19 @@ function LevelPage() {
                   size="lg"
                   variant="accent"
                   onClick={() => {
+                    void trackEvent({
+                      event_name: "post_run_cta_clicked",
+                      user_id: user?.id,
+                      mode: "level",
+                      run_id: runId,
+                      event_props: {
+                        cta_id: "next_action_primary",
+                        source_mode: "level",
+                        destination: `/niveau/${level}`,
+                        score_context: score,
+                        total_context: questions.length,
+                      },
+                    });
                     setQuestions([]);
                     setCurrentIndex(0);
                     setSelectedIndex(null);

@@ -184,7 +184,7 @@ Proposed indexes:
 RLS/privacy guidance:
 
 - insert policy must restrict authenticated rows to own `user_id`
-- guest rows must be sanitized and remain `user_id = null`
+- Phase 1 v1 behavior: guest events are skipped client-side (no anon insert policy)
 - raw global analytics read access should be admin-only
 
 Retention:

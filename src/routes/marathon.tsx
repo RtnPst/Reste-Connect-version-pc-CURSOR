@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, Heart, Home } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
@@ -21,6 +21,7 @@ import {
   selectNextMarathonQuestion,
   type MarathonSelectorState,
 } from "@/lib/marathon-selector";
+import { createAnalyticsRunId, trackEvent } from "@/lib/analytics";
 
 type Question = {
   id: string;
@@ -79,6 +80,11 @@ function MarathonPage() {
   );
   const [recentMisses, setRecentMisses] = useState<boolean[]>([]);
   const [recentConcepts, setRecentConcepts] = useState<Array<string | null>>([]);
+  const [runId, setRunId] = useState<string | null>(null);
+  const runStartMsRef = useRef<number | null>(null);
+  const startedSentRef = useRef(false);
+  const completedSentRef = useRef(false);
+  const marathonEndedSentRef = useRef(false);
 
   useEffect(() => {
     if (!user) setGuestMarathonBest(readGuestMarathonBest());
@@ -133,7 +139,71 @@ function MarathonPage() {
     setCurrentQuestion(next);
   }, [pool, currentQuestion, selectorState]);
 
+  useEffect(() => {
+    if (loading || sessionEnded || !currentQuestion) return;
+    if (!user?.id || startedSentRef.current) return;
+    const nextRunId = createAnalyticsRunId();
+    setRunId(nextRunId);
+    runStartMsRef.current = Date.now();
+    startedSentRef.current = true;
+    completedSentRef.current = false;
+    marathonEndedSentRef.current = false;
+    void trackEvent({
+      event_name: "mode_started",
+      user_id: user.id,
+      mode: "marathon",
+      run_id: nextRunId,
+      event_props: {
+        entry_surface: "deep_link",
+        is_retry: false,
+      },
+    });
+  }, [currentQuestion, loading, sessionEnded, user?.id]);
+
   const current = currentQuestion;
+  const answeredCount = answeredCountBase + (selectedIndex !== null ? 1 : 0);
+  const persistedMarathonRecord = user
+    ? Math.max(0, profile?.marathon_best_score ?? 0)
+    : guestMarathonBest;
+  const recordDisplay = Math.max(persistedMarathonRecord, score);
+
+  useEffect(() => {
+    if (!sessionEnded || !user?.id || !runId) return;
+    const answeredCountFinal = answeredCountBase + (selectedIndex !== null ? 1 : 0);
+    const durationSec = runStartMsRef.current
+      ? Math.max(0, Math.round((Date.now() - runStartMsRef.current) / 1000))
+      : 0;
+    if (!completedSentRef.current) {
+      completedSentRef.current = true;
+      void trackEvent({
+        event_name: "mode_completed",
+        user_id: user.id,
+        mode: "marathon",
+        run_id: runId,
+        event_props: {
+          score,
+          total_questions: answeredCountFinal,
+          duration_sec: durationSec,
+          completed: true,
+        },
+      });
+    }
+    if (!marathonEndedSentRef.current) {
+      marathonEndedSentRef.current = true;
+      void trackEvent({
+        event_name: "marathon_ended",
+        user_id: user.id,
+        mode: "marathon",
+        run_id: runId,
+        event_props: {
+          answered_count: answeredCountFinal,
+          correct_count: score,
+          best_score_at_end: Math.max(persistedMarathonRecord, score),
+          duration_sec: durationSec,
+        },
+      });
+    }
+  }, [answeredCountBase, persistedMarathonRecord, runId, score, selectedIndex, sessionEnded, user?.id]);
 
   const handleSelect = async (idx: number) => {
     if (selectedIndex !== null || !current) return;
@@ -334,14 +404,9 @@ function MarathonPage() {
     isAnswered &&
     selectedIndex !== null &&
     (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
-  const answeredCount = answeredCountBase + (selectedIndex !== null ? 1 : 0);
   const streakDays = profile?.current_streak ?? 0;
   const streakHint =
     streakDays > 0 ? "Ta série sur l’app" : "Connecte-toi pour faire grandir ta série.";
-  const persistedMarathonRecord = user
-    ? Math.max(0, profile?.marathon_best_score ?? 0)
-    : guestMarathonBest;
-  const recordDisplay = Math.max(persistedMarathonRecord, score);
 
   if (sessionEnded) {
     const nextAction = getNextActionSuggestion({
@@ -392,7 +457,24 @@ function MarathonPage() {
               </p>
               <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
               <Button asChild size="lg" variant="accent" className="mt-3 w-full">
-                <Link to={nextAction.to}>
+                <Link
+                  to={nextAction.to}
+                  onClick={() => {
+                    void trackEvent({
+                      event_name: "post_run_cta_clicked",
+                      user_id: user?.id,
+                      mode: "marathon",
+                      run_id: runId,
+                      event_props: {
+                        cta_id: "next_action_primary",
+                        source_mode: "marathon",
+                        destination: nextAction.to,
+                        score_context: score,
+                        total_context: answeredCount,
+                      },
+                    });
+                  }}
+                >
                   {nextAction.label}
                   <ArrowRight />
                 </Link>
