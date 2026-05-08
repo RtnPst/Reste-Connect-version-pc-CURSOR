@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-05-08T14:43:41.246Z",
+  "policy": "editorial_freshness_quality_v1_review_only",
+  "input": "exports/dedup-audit/concept-intake-v1-review-latest.csv",
+  "rows_in_queue": 5,
+  "priority_bucket_counts": {
+    "review_soon": 2,
+    "watchlist": 2,
+    "parked": 1
+  },
+  "unresolved_age_days_estimate": 0.07,
+  "queue": [
+    {
+      "raw_term": "brainrot",
+      "suggested_concept_key": "brainrot",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "low",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "risk_flags": "definition_needs_review; micro_trend_volatility",
+      "human_decision": "approve",
+      "unresolved_age_days_estimate": "0.07",
+      "priority_bucket": "review_soon",
+      "queue_reason": "needs near-term editorial pass"
+    },
+    {
+      "raw_term": "delulu",
+      "suggested_concept_key": "delulu",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "low",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "risk_flags": "definition_needs_review; micro_trend_volatility",
+      "human_decision": "approve",
+      "unresolved_age_days_estimate": "0.07",
+      "priority_bucket": "review_soon",
+      "queue_reason": "needs near-term editorial pass"
+    },
+    {
+      "raw_term": "aura farming",
+      "suggested_concept_key": "aura_farming",
+      "suggested_theme": "culture_pop",
+      "confidence": "medium",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "risk_flags": "definition_needs_review",
+      "human_decision": "watchlist",
+      "unresolved_age_days_estimate": "0.07",
+      "priority_bucket": "watchlist",
+      "queue_reason": "tracked concept, not production-ready yet"
+    },
+    {
+      "raw_term": "cooked",
+      "suggested_concept_key": "cooked",
+      "suggested_theme": "culture_pop",
+      "confidence": "low",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend",
+      "risk_flags": "definition_needs_review; micro_trend_volatility",
+      "human_decision": "watchlist",
+      "unresolved_age_days_estimate": "0.07",
+      "priority_bucket": "watchlist",
+      "queue_reason": "tracked concept, not production-ready yet"
+    },
+    {
+      "raw_term": "mog",
+      "suggested_concept_key": "mog",
+      "suggested_theme": "culture_pop",
+      "confidence": "low",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "risk_flags": "definition_needs_review; short_concept_key_len; micro_trend_volatility",
+      "human_decision": "reject",
+      "unresolved_age_days_estimate": "0.07",
+      "priority_bucket": "parked",
+      "queue_reason": "low-priority parked state"
+    }
+  ],
+  "outputs": {
+    "csv": [
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\editorial-priority-v1-2026-05-08T14-43-41-236Z.csv",
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\editorial-priority-v1-latest.csv"
+    ]
+  },
+  "no_db_changes": true,
+  "no_imports": true,
+  "no_automatic_publishing": true
+}

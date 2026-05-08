@@ -1,0 +1,6 @@
+raw_term,concept_key,confidence,trend_freshness,trend_durability,human_decision,unresolved_age_days_estimate,risk_flags,freshness_score,freshness_band,refresh_note
+mog,mog,low,to_review,micro_trend,reject,0.07,definition_needs_review; short_concept_key_len; micro_trend_volatility,15,critical_refresh,stale/high-volatility/high-risk concept requiring revalidation
+brainrot,brainrot,low,to_review,micro_trend,approve,0.07,definition_needs_review; micro_trend_volatility,20,critical_refresh,stale/high-volatility/high-risk concept requiring revalidation
+delulu,delulu,low,to_review,micro_trend,approve,0.07,definition_needs_review; micro_trend_volatility,20,critical_refresh,stale/high-volatility/high-risk concept requiring revalidation
+cooked,cooked,low,recent,micro_trend,watchlist,0.07,definition_needs_review; micro_trend_volatility,50,refresh_soon,schedule editorial freshness check
+aura farming,aura_farming,medium,recent,seasonal,watchlist,0.07,definition_needs_review,70,monitor,keep monitored in periodic review

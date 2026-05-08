@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-05-08T14:43:42.109Z",
+  "policy": "editorial_freshness_quality_v1_review_only",
+  "input": "exports/dedup-audit/concept-intake-v1-review-latest.csv",
+  "rows": 5,
+  "source_age_days_estimate": 0.07,
+  "freshness_band_counts": {
+    "critical_refresh": 3,
+    "refresh_soon": 1,
+    "monitor": 1
+  },
+  "rows_data": [
+    {
+      "raw_term": "mog",
+      "concept_key": "mog",
+      "confidence": "low",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "human_decision": "reject",
+      "unresolved_age_days_estimate": "0.07",
+      "risk_flags": "definition_needs_review; short_concept_key_len; micro_trend_volatility",
+      "freshness_score": "15",
+      "freshness_band": "critical_refresh",
+      "refresh_note": "stale/high-volatility/high-risk concept requiring revalidation"
+    },
+    {
+      "raw_term": "brainrot",
+      "concept_key": "brainrot",
+      "confidence": "low",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "human_decision": "approve",
+      "unresolved_age_days_estimate": "0.07",
+      "risk_flags": "definition_needs_review; micro_trend_volatility",
+      "freshness_score": "20",
+      "freshness_band": "critical_refresh",
+      "refresh_note": "stale/high-volatility/high-risk concept requiring revalidation"
+    },
+    {
+      "raw_term": "delulu",
+      "concept_key": "delulu",
+      "confidence": "low",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "human_decision": "approve",
+      "unresolved_age_days_estimate": "0.07",
+      "risk_flags": "definition_needs_review; micro_trend_volatility",
+      "freshness_score": "20",
+      "freshness_band": "critical_refresh",
+      "refresh_note": "stale/high-volatility/high-risk concept requiring revalidation"
+    },
+    {
+      "raw_term": "cooked",
+      "concept_key": "cooked",
+      "confidence": "low",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend",
+      "human_decision": "watchlist",
+      "unresolved_age_days_estimate": "0.07",
+      "risk_flags": "definition_needs_review; micro_trend_volatility",
+      "freshness_score": "50",
+      "freshness_band": "refresh_soon",
+      "refresh_note": "schedule editorial freshness check"
+    },
+    {
+      "raw_term": "aura farming",
+      "concept_key": "aura_farming",
+      "confidence": "medium",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "human_decision": "watchlist",
+      "unresolved_age_days_estimate": "0.07",
+      "risk_flags": "definition_needs_review",
+      "freshness_score": "70",
+      "freshness_band": "monitor",
+      "refresh_note": "keep monitored in periodic review"
+    }
+  ],
+  "outputs": {
+    "csv": [
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-freshness-v1-2026-05-08T14-43-42-103Z.csv",
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-freshness-v1-latest.csv"
+    ]
+  },
+  "no_db_changes": true,
+  "no_imports": true,
+  "no_automatic_publishing": true
+}

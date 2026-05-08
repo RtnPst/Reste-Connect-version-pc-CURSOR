@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-05-08T14:43:45.136Z",
+  "policy": "editorial_freshness_quality_v1_review_only",
+  "inputs": [
+    "exports/dedup-audit/concept-intake-v1-review-latest.csv",
+    "exports/dedup-audit/concept-overexposure-v1-latest.csv"
+  ],
+  "rows": 1,
+  "rows_data": [
+    {
+      "concept_key": "aura_farming",
+      "raw_term": "aura farming",
+      "suggested_theme": "culture_pop",
+      "confidence": "medium",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "human_decision": "watchlist",
+      "risk_flags": "definition_needs_review",
+      "saturation_risk_band": "low",
+      "evergreen_readiness_note": "candidate for future stable manual draft batches"
+    }
+  ],
+  "outputs": {
+    "csv": [
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\safe-evergreen-v1-2026-05-08T14-43-45-129Z.csv",
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\safe-evergreen-v1-latest.csv"
+    ]
+  },
+  "no_db_changes": true,
+  "no_imports": true,
+  "no_automatic_publishing": true
+}

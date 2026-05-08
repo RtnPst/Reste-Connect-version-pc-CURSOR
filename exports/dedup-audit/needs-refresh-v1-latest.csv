@@ -1,0 +1,5 @@
+raw_term,concept_key,human_decision,trend_freshness,trend_durability,unresolved_age_days_estimate,risk_flags,refresh_reason,severity,action_note
+brainrot,brainrot,approve,to_review,micro_trend,0.07,definition_needs_review; micro_trend_volatility,freshness_recheck,medium,schedule this concept in next review cycle
+cooked,cooked,watchlist,recent,micro_trend,0.07,definition_needs_review; micro_trend_volatility,risk_flag_followup,medium,schedule this concept in next review cycle
+delulu,delulu,approve,to_review,micro_trend,0.07,definition_needs_review; micro_trend_volatility,freshness_recheck,medium,schedule this concept in next review cycle
+mog,mog,reject,to_review,micro_trend,0.07,definition_needs_review; short_concept_key_len; micro_trend_volatility,freshness_recheck,medium,schedule this concept in next review cycle

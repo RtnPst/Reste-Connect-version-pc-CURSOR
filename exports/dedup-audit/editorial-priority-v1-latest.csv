@@ -1,0 +1,6 @@
+raw_term,suggested_concept_key,suggested_theme,confidence,trend_freshness,trend_durability,risk_flags,human_decision,unresolved_age_days_estimate,priority_bucket,queue_reason
+brainrot,brainrot,reseaux_sociaux,low,to_review,micro_trend,definition_needs_review; micro_trend_volatility,approve,0.07,review_soon,needs near-term editorial pass
+delulu,delulu,reseaux_sociaux,low,to_review,micro_trend,definition_needs_review; micro_trend_volatility,approve,0.07,review_soon,needs near-term editorial pass
+aura farming,aura_farming,culture_pop,medium,recent,seasonal,definition_needs_review,watchlist,0.07,watchlist,"tracked concept, not production-ready yet"
+cooked,cooked,culture_pop,low,recent,micro_trend,definition_needs_review; micro_trend_volatility,watchlist,0.07,watchlist,"tracked concept, not production-ready yet"
+mog,mog,culture_pop,low,to_review,micro_trend,definition_needs_review; short_concept_key_len; micro_trend_volatility,reject,0.07,parked,low-priority parked state
