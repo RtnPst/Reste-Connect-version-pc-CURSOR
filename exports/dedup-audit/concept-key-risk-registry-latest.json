@@ -1,0 +1,321 @@
+{
+  "summary": {
+    "generated_at": "2026-05-08T02:09:34.325Z",
+    "risky_concept_keys": 37,
+    "issue_type_counts": {
+      "short_key": 26,
+      "acronym_or_ultra_short_token": 37,
+      "generic_or_common_word": 7,
+      "potential_overloaded_slang": 5,
+      "cross_group_merge_risk": 1
+    },
+    "suggested_action_counts": {
+      "manual_review": 18,
+      "keep": 11,
+      "expand_key": 7,
+      "split_later": 1
+    },
+    "outputs": [
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-key-risk-registry-latest.csv",
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-key-risk-registry-2026-05-08T02-09-34-320Z.csv"
+    ]
+  },
+  "rows": [
+    {
+      "concept_key": "afk",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_3ae461bfe361",
+      "representative_questions": "“AFK”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "appli",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_f89beb337d9a",
+      "representative_questions": "Qu'est-ce qu'une \"appli\" ?",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "askip",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_191fb37ce63b",
+      "representative_questions": "Que veut dire \"askip\" ?",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "based",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_966eba025853",
+      "representative_questions": "“Based”, ça veut dire…",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "boss",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_4ddca2db0f33",
+      "representative_questions": "“Boss”, dans un jeu, c’est…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "cap",
+      "issue_type": "short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang",
+      "affected_duplicate_groups": "exact_6b4d3bd320f7",
+      "representative_questions": "“Cap”, ça veut dire…",
+      "suggested_action": "expand_key",
+      "confidence": "high"
+    },
+    {
+      "concept_key": "crush",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_933ad71b7e53",
+      "representative_questions": "“Crush”, ça veut dire…",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "dead",
+      "issue_type": "short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang",
+      "affected_duplicate_groups": "exact_ad4289f71752",
+      "representative_questions": "Quand quelqu’un écrit “dead”, ça veut dire…",
+      "suggested_action": "expand_key",
+      "confidence": "high"
+    },
+    {
+      "concept_key": "dm",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_c4d8acfdbbbd",
+      "representative_questions": "Que veut dire \"DM\" ?",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "drama",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_bb8c114b4546",
+      "representative_questions": "“Drama”, ça veut dire…",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "farm",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_5fdbc04cc5ac",
+      "representative_questions": "“Farm”, dans un jeu, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "flex",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_1320e7cf671b",
+      "representative_questions": "“Flex”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "fomo",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_f9c674326ddb",
+      "representative_questions": "“FOMO”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "gg",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_65d38c8e37d1",
+      "representative_questions": "“GG”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "goat",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_6480a466637e",
+      "representative_questions": "“GOAT”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "ia",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_f86b7845e7d3",
+      "representative_questions": "Que veut dire \"IA\" ?",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "lag",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_7c71706bcc02",
+      "representative_questions": "“Lag”, dans un jeu, c’est…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "lit",
+      "issue_type": "short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang",
+      "affected_duplicate_groups": "exact_cec61c0eb007",
+      "representative_questions": "“Lit”, ça veut dire…",
+      "suggested_action": "expand_key",
+      "confidence": "high"
+    },
+    {
+      "concept_key": "loot",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_95b14f16a039",
+      "representative_questions": "“Loot”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "manga",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_3f8df1569399",
+      "representative_questions": "Qu'est-ce qu'un \"manga\" ?",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "mdr",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_b5907ead58f9",
+      "representative_questions": "Que veut dire \"mdr\" ?",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "meta",
+      "issue_type": "short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang",
+      "affected_duplicate_groups": "exact_2277573d0a07",
+      "representative_questions": "“Meta”, dans un jeu, c’est…",
+      "suggested_action": "expand_key",
+      "confidence": "high"
+    },
+    {
+      "concept_key": "mid",
+      "issue_type": "short_key;generic_or_common_word;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_06c78fd7cf93",
+      "representative_questions": "“Mid”, ça veut dire…",
+      "suggested_action": "expand_key",
+      "confidence": "high"
+    },
+    {
+      "concept_key": "npc",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_9faf6839418b",
+      "representative_questions": "“NPC”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "oklm",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_3c3758e04d97",
+      "representative_questions": "Que veut dire \"OKLM\" ?",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "pov",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_15a6adadd129",
+      "representative_questions": "“POV”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "ratio",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_8e847d1df024",
+      "representative_questions": "“Ratio”, sur les réseaux, ça veut dire…",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "reels",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_18d3a985d2a6",
+      "representative_questions": "Que sont les \"Reels\" sur Instagram ?",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "salty",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_cc9580a59f9d",
+      "representative_questions": "“Salty”, ça veut dire…",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "seen",
+      "issue_type": "short_key;generic_or_common_word;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_e8f14af61968",
+      "representative_questions": "“Seen”, dans une conversation, ça veut dire…",
+      "suggested_action": "expand_key",
+      "confidence": "high"
+    },
+    {
+      "concept_key": "simp",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_20de7d8ad26c",
+      "representative_questions": "“Simp”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "slay",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_b7dfd2d39a96",
+      "representative_questions": "“Slay”, ça veut dire…",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "spawn",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_cf91e658e1cd",
+      "representative_questions": "“Spawn”, ça veut dire…",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "sus",
+      "issue_type": "short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang",
+      "affected_duplicate_groups": "exact_4898c581f937",
+      "representative_questions": "“Sus”, ça veut dire…",
+      "suggested_action": "expand_key",
+      "confidence": "high"
+    },
+    {
+      "concept_key": "trend",
+      "issue_type": "acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_a06d4b5d153f",
+      "representative_questions": "“Trend”, ça veut dire…",
+      "suggested_action": "keep",
+      "confidence": "low"
+    },
+    {
+      "concept_key": "vpn",
+      "issue_type": "short_key;acronym_or_ultra_short_token",
+      "affected_duplicate_groups": "exact_1846ebdcc72c",
+      "representative_questions": "Que veut dire \"VPN\" ?",
+      "suggested_action": "manual_review",
+      "confidence": "medium"
+    },
+    {
+      "concept_key": "wesh",
+      "issue_type": "short_key;acronym_or_ultra_short_token;cross_group_merge_risk",
+      "affected_duplicate_groups": "exact_08991363467a;exact_1a83bd9ed883",
+      "representative_questions": "“Wesh”, c’est plutôt… | Que veut dire \"wesh\" ?",
+      "suggested_action": "split_later",
+      "confidence": "high"
+    }
+  ]
+}

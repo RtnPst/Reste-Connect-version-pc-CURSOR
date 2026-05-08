@@ -1,0 +1,3 @@
+collision_type,key_a,key_b,duplicate_groups_a,duplicate_groups_b,confidence,why_may_belong_together,why_may_remain_distinct,merge_hint
+near_identical_slug_family,influenceur,un_influenceur,exact_e8d1d8dec933,exact_279c2475323d,high,Slug tokens are highly similar after article stripping and token normalization.,Could intentionally separate context/difficulty variants even with close slugs.,token_jaccard_1.00
+same_key_multi_group,wesh,wesh,exact_08991363467a;exact_1a83bd9ed883,exact_08991363467a;exact_1a83bd9ed883,high,Same resolved concept_key currently selected across different exact duplicate families.,No obvious contextual split in current previews.,same_final_concept_key_across_multiple_duplicate_groups

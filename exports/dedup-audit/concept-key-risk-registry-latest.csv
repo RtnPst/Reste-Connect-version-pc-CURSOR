@@ -1,0 +1,38 @@
+concept_key,issue_type,affected_duplicate_groups,representative_questions,suggested_action,confidence
+afk,short_key;acronym_or_ultra_short_token,exact_3ae461bfe361,"“AFK”, ça veut dire…",manual_review,medium
+appli,acronym_or_ultra_short_token,exact_f89beb337d9a,"Qu'est-ce qu'une ""appli"" ?",keep,low
+askip,acronym_or_ultra_short_token,exact_191fb37ce63b,"Que veut dire ""askip"" ?",keep,low
+based,acronym_or_ultra_short_token,exact_966eba025853,"“Based”, ça veut dire…",keep,low
+boss,short_key;acronym_or_ultra_short_token,exact_4ddca2db0f33,"“Boss”, dans un jeu, c’est…",manual_review,medium
+cap,short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang,exact_6b4d3bd320f7,"“Cap”, ça veut dire…",expand_key,high
+crush,acronym_or_ultra_short_token,exact_933ad71b7e53,"“Crush”, ça veut dire…",keep,low
+dead,short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang,exact_ad4289f71752,"Quand quelqu’un écrit “dead”, ça veut dire…",expand_key,high
+dm,short_key;acronym_or_ultra_short_token,exact_c4d8acfdbbbd,"Que veut dire ""DM"" ?",manual_review,medium
+drama,acronym_or_ultra_short_token,exact_bb8c114b4546,"“Drama”, ça veut dire…",keep,low
+farm,short_key;acronym_or_ultra_short_token,exact_5fdbc04cc5ac,"“Farm”, dans un jeu, ça veut dire…",manual_review,medium
+flex,short_key;acronym_or_ultra_short_token,exact_1320e7cf671b,"“Flex”, ça veut dire…",manual_review,medium
+fomo,short_key;acronym_or_ultra_short_token,exact_f9c674326ddb,"“FOMO”, ça veut dire…",manual_review,medium
+gg,short_key;acronym_or_ultra_short_token,exact_65d38c8e37d1,"“GG”, ça veut dire…",manual_review,medium
+goat,short_key;acronym_or_ultra_short_token,exact_6480a466637e,"“GOAT”, ça veut dire…",manual_review,medium
+ia,short_key;acronym_or_ultra_short_token,exact_f86b7845e7d3,"Que veut dire ""IA"" ?",manual_review,medium
+lag,short_key;acronym_or_ultra_short_token,exact_7c71706bcc02,"“Lag”, dans un jeu, c’est…",manual_review,medium
+lit,short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang,exact_cec61c0eb007,"“Lit”, ça veut dire…",expand_key,high
+loot,short_key;acronym_or_ultra_short_token,exact_95b14f16a039,"“Loot”, ça veut dire…",manual_review,medium
+manga,acronym_or_ultra_short_token,exact_3f8df1569399,"Qu'est-ce qu'un ""manga"" ?",keep,low
+mdr,short_key;acronym_or_ultra_short_token,exact_b5907ead58f9,"Que veut dire ""mdr"" ?",manual_review,medium
+meta,short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang,exact_2277573d0a07,"“Meta”, dans un jeu, c’est…",expand_key,high
+mid,short_key;generic_or_common_word;acronym_or_ultra_short_token,exact_06c78fd7cf93,"“Mid”, ça veut dire…",expand_key,high
+npc,short_key;acronym_or_ultra_short_token,exact_9faf6839418b,"“NPC”, ça veut dire…",manual_review,medium
+oklm,short_key;acronym_or_ultra_short_token,exact_3c3758e04d97,"Que veut dire ""OKLM"" ?",manual_review,medium
+pov,short_key;acronym_or_ultra_short_token,exact_15a6adadd129,"“POV”, ça veut dire…",manual_review,medium
+ratio,acronym_or_ultra_short_token,exact_8e847d1df024,"“Ratio”, sur les réseaux, ça veut dire…",keep,low
+reels,acronym_or_ultra_short_token,exact_18d3a985d2a6,"Que sont les ""Reels"" sur Instagram ?",keep,low
+salty,acronym_or_ultra_short_token,exact_cc9580a59f9d,"“Salty”, ça veut dire…",keep,low
+seen,short_key;generic_or_common_word;acronym_or_ultra_short_token,exact_e8f14af61968,"“Seen”, dans une conversation, ça veut dire…",expand_key,high
+simp,short_key;acronym_or_ultra_short_token,exact_20de7d8ad26c,"“Simp”, ça veut dire…",manual_review,medium
+slay,short_key;acronym_or_ultra_short_token,exact_b7dfd2d39a96,"“Slay”, ça veut dire…",manual_review,medium
+spawn,acronym_or_ultra_short_token,exact_cf91e658e1cd,"“Spawn”, ça veut dire…",keep,low
+sus,short_key;generic_or_common_word;acronym_or_ultra_short_token;potential_overloaded_slang,exact_4898c581f937,"“Sus”, ça veut dire…",expand_key,high
+trend,acronym_or_ultra_short_token,exact_a06d4b5d153f,"“Trend”, ça veut dire…",keep,low
+vpn,short_key;acronym_or_ultra_short_token,exact_1846ebdcc72c,"Que veut dire ""VPN"" ?",manual_review,medium
+wesh,short_key;acronym_or_ultra_short_token;cross_group_merge_risk,exact_08991363467a;exact_1a83bd9ed883,"“Wesh”, c’est plutôt… | Que veut dire ""wesh"" ?",split_later,high

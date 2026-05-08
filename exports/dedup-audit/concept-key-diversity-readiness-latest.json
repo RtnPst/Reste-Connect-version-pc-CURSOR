@@ -1,0 +1,1297 @@
+{
+  "summary": {
+    "generated_at": "2026-05-08T02:09:34.373Z",
+    "concepts_counted": 142,
+    "repetition_risk_counts": {
+      "low": 141,
+      "medium": 1
+    },
+    "readiness_tag_counts": {
+      "single_axis_may_repeat": 121,
+      "supports_diversity": 21
+    },
+    "outputs": [
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-key-diversity-readiness-latest.csv"
+    ]
+  },
+  "rows": [
+    {
+      "concept_key": "afk",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "appli",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "tech",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "askip",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "based",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "block_quelquun",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "bluetooth",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "tech",
+      "difficulties": "facile;moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "boomer",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "boss",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "boujee",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "breadcrumbing",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "cap",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "carry_une_partie",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "cest_carre",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "cest_clean",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "cest_valide",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "clickbait",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "clutch",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "contenu_sponsorise",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "cookie",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "tech",
+      "difficulties": "moyen;difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "crush",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "cursed",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "dead",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "deepfake",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux;tech",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "discord_est_principalement_utilise_pour",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile;moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "dm",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "dm_quelquun",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "double_text",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "drama",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "farm",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "flex",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "follow_quelquun",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "fomo",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "friendzone",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "gg",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "ghoster",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "ghoster_quelquun",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "goat",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "high_key",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "ia",
+      "duplicate_group_count": 1,
+      "member_question_count": 3,
+      "themes": "tech",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "influenceur",
+      "duplicate_group_count": 1,
+      "member_question_count": 3,
+      "themes": "reseaux_sociaux",
+      "difficulties": "difficile;moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "lag",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "level_up",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "lit",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "loot",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "love_bombing",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "low_key",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "manga",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen;difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "matrixe",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "mdr",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "meta",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "mid",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "mot_de_passe_fort",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "tech",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "muter_quelquun",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "no_cap",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "npc",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "oklm",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "facile;moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "podcast",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux;tech",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "poster",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "pov",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "qr_code",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "tech",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "que_signifie_lexpression_avoir_le_seum",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "quelle_est_la_particularite_de_lapplication_bereal",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "quest_ce_que_chatgpt",
+      "duplicate_group_count": 1,
+      "member_question_count": 3,
+      "themes": "tech",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "qui_est_squeezie",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile;moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "rage_quit",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "ratio",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "red_flag",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "reels",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen;difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "respawn",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "salty",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "scroll",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "scroller",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux;tech",
+      "difficulties": "moyen;facile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "seen",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "shadowban",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "ship_deux_personnes",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "side_eye",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "simp",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "situationship",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "slay",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "spammer",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "spawn",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "stories",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "streamer",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "sus",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "tagger",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "telecharger",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "tech",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "texting",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "trend",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "triggered",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "tryhard",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_album_drop",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_algo",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_bail",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "vocabulaire",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_banger",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_bot",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_buff",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_buzz",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_challenge",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_commentaire_epingle",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_compte_prive",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_compte_verifie",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_contenu_viral_court",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_cooldown",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_drop",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_fail",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_fake_account",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_feat",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_feed",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_filtre",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_hack",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_hater",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_hit",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_influenceur",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_inside_joke",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_leak",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_live",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_meme",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_meme_mort",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_meme_template",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_meme_viral",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_nerf",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_noob",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_ping",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_post_viral",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_reaction",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_remix",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_repost",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_roast",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_skin",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_son",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_spoiler",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_thread",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_troll",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_tuto",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "un_viewer",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "une_fake_news",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "culture_pop",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "une_story",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "unfollow",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "moyen;difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "supports_diversity"
+    },
+    {
+      "concept_key": "unfollow_follow",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "unfollow_quelquun",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "reseaux_sociaux",
+      "difficulties": "facile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "vpn",
+      "duplicate_group_count": 1,
+      "member_question_count": 2,
+      "themes": "tech",
+      "difficulties": "difficile",
+      "repetition_risk": "low",
+      "readiness_tag": "single_axis_may_repeat"
+    },
+    {
+      "concept_key": "wesh",
+      "duplicate_group_count": 2,
+      "member_question_count": 5,
+      "themes": "vocabulaire",
+      "difficulties": "facile;moyen",
+      "repetition_risk": "medium",
+      "readiness_tag": "supports_diversity"
+    }
+  ]
+}

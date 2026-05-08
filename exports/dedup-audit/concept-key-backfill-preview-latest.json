@@ -1,0 +1,361 @@
+{
+  "summary": {
+    "generated_at": "2026-05-08T01:47:54.099Z",
+    "policy": "concept_key_stage1_backfill_preview_only",
+    "rows_in_preview_plan": 37,
+    "rows_with_new_concept_key": 37,
+    "rows_from_manual_overrides": 0,
+    "rows_from_final_recommended": 37,
+    "unresolved_rows": 0,
+    "no_db_updates": true,
+    "source_files": {
+      "groups_review": "exports/dedup-audit/concept-key-group-top-attention-latest.csv",
+      "row_suggestions": "exports/dedup-audit/concept-key-suggestions-latest.csv"
+    },
+    "outputs": {
+      "plan_csv": [
+        "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-key-backfill-preview-2026-05-08T01-47-54-089Z.csv",
+        "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-key-backfill-preview-latest.csv"
+      ],
+      "reviewed_json": [
+        "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-key-group-top-attention-reviewed-2026-05-08T01-47-54-089Z.json",
+        "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-key-group-top-attention-reviewed-latest.json"
+      ]
+    }
+  },
+  "plan_rows": [
+    {
+      "question_id": "b3af12e9-7b9d-4774-93c1-d575af13ab47",
+      "duplicate_group_id": "exact_050fd02d5fa6",
+      "old_concept_key": "",
+      "new_concept_key": "mot_de_passe_fort",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "expanded_from_mot_de_passe_context;quoted_root_generic_common_word;short_concept_key_len"
+    },
+    {
+      "question_id": "d364b36e-3013-4c86-9130-3ad536cf51c8",
+      "duplicate_group_id": "exact_050fd02d5fa6",
+      "old_concept_key": "",
+      "new_concept_key": "mot_de_passe_fort",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "expanded_from_mot_de_passe_context;quoted_root_generic_common_word;short_concept_key_len"
+    },
+    {
+      "question_id": "3f061654-5aad-47c0-8865-5bebac3c82d8",
+      "duplicate_group_id": "exact_06c78fd7cf93",
+      "old_concept_key": "",
+      "new_concept_key": "mid",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "quoted_root_generic_common_word;short_concept_key_len"
+    },
+    {
+      "question_id": "89ce1775-3946-4d04-a64b-55fd4c6359d4",
+      "duplicate_group_id": "exact_06c78fd7cf93",
+      "old_concept_key": "",
+      "new_concept_key": "mid",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "quoted_root_generic_common_word;short_concept_key_len"
+    },
+    {
+      "question_id": "496e10af-fe74-4fe5-adcd-7ccef9d71dfc",
+      "duplicate_group_id": "exact_08991363467a",
+      "old_concept_key": "",
+      "new_concept_key": "wesh",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "ad02112d-1a0f-450c-9bf7-250770543d3c",
+      "duplicate_group_id": "exact_08991363467a",
+      "old_concept_key": "",
+      "new_concept_key": "wesh",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "023882fa-4f05-4c02-81af-0891403be434",
+      "duplicate_group_id": "exact_1320e7cf671b",
+      "old_concept_key": "",
+      "new_concept_key": "flex",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "39b8869a-b716-474b-afe3-493181562886",
+      "duplicate_group_id": "exact_1320e7cf671b",
+      "old_concept_key": "",
+      "new_concept_key": "flex",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "9929f190-6288-41c3-9249-f48296bcd8a8",
+      "duplicate_group_id": "exact_1a83bd9ed883",
+      "old_concept_key": "",
+      "new_concept_key": "wesh",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "e9bd5a20-87b3-4e1d-aebc-3063418b8fa4",
+      "duplicate_group_id": "exact_1a83bd9ed883",
+      "old_concept_key": "",
+      "new_concept_key": "wesh",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "f07dfa67-766c-4898-9cf5-be095bd6d2e0",
+      "duplicate_group_id": "exact_1a83bd9ed883",
+      "old_concept_key": "",
+      "new_concept_key": "wesh",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "8313de64-93d0-43e6-8630-e2169721be19",
+      "duplicate_group_id": "exact_20de7d8ad26c",
+      "old_concept_key": "",
+      "new_concept_key": "simp",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "cd48d070-da41-4d0f-9175-97146b3874b5",
+      "duplicate_group_id": "exact_20de7d8ad26c",
+      "old_concept_key": "",
+      "new_concept_key": "simp",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "2f0980e2-1286-41d5-b41b-ad36b13c26d2",
+      "duplicate_group_id": "exact_2277573d0a07",
+      "old_concept_key": "",
+      "new_concept_key": "meta",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "3a3fa07a-52d1-48f2-bfb4-cdf384f77627",
+      "duplicate_group_id": "exact_2277573d0a07",
+      "old_concept_key": "",
+      "new_concept_key": "meta",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "f497743a-c715-4a34-a8a9-447f421ec62d",
+      "duplicate_group_id": "exact_4898c581f937",
+      "old_concept_key": "",
+      "new_concept_key": "sus",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "ff2dea3b-d1d7-4e66-b043-4e05a61c4341",
+      "duplicate_group_id": "exact_4898c581f937",
+      "old_concept_key": "",
+      "new_concept_key": "sus",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "22d55c2a-0dfa-4c2b-a464-a899600481e0",
+      "duplicate_group_id": "exact_4ddca2db0f33",
+      "old_concept_key": "",
+      "new_concept_key": "boss",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "4f513adf-0c13-4dcd-8d63-0cdef1f79717",
+      "duplicate_group_id": "exact_4ddca2db0f33",
+      "old_concept_key": "",
+      "new_concept_key": "boss",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "3bbee80c-b59a-4875-ae14-a76fb9e78fc8",
+      "duplicate_group_id": "exact_5fdbc04cc5ac",
+      "old_concept_key": "",
+      "new_concept_key": "farm",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "92568fda-0db5-4004-b28b-f6a3ad6ab289",
+      "duplicate_group_id": "exact_5fdbc04cc5ac",
+      "old_concept_key": "",
+      "new_concept_key": "farm",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "1b187f9a-9eda-4203-b23e-ebb92d10daa1",
+      "duplicate_group_id": "exact_6b4d3bd320f7",
+      "old_concept_key": "",
+      "new_concept_key": "cap",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "c25bcd9b-b4b0-4af4-a86b-a0f2c2c2421a",
+      "duplicate_group_id": "exact_6b4d3bd320f7",
+      "old_concept_key": "",
+      "new_concept_key": "cap",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "5f041b78-6e40-4b78-a6f9-884714efa43b",
+      "duplicate_group_id": "exact_7c71706bcc02",
+      "old_concept_key": "",
+      "new_concept_key": "lag",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "9c62499c-9fa8-4091-a888-062fe7c8fa63",
+      "duplicate_group_id": "exact_7c71706bcc02",
+      "old_concept_key": "",
+      "new_concept_key": "lag",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "05b908c4-c672-453b-a358-ac6e2b79f31a",
+      "duplicate_group_id": "exact_95b14f16a039",
+      "old_concept_key": "",
+      "new_concept_key": "loot",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "565fb642-ed5d-4a91-966d-ce352cd0ae1b",
+      "duplicate_group_id": "exact_95b14f16a039",
+      "old_concept_key": "",
+      "new_concept_key": "loot",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "7acb5233-6a7f-4d44-88a8-1c1f15927477",
+      "duplicate_group_id": "exact_ad4289f71752",
+      "old_concept_key": "",
+      "new_concept_key": "dead",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "c710e1fc-3050-4eab-b064-fd627c6e6c99",
+      "duplicate_group_id": "exact_ad4289f71752",
+      "old_concept_key": "",
+      "new_concept_key": "dead",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "cdb5cfef-8f7e-437b-9862-c98cb4f1f625",
+      "duplicate_group_id": "exact_b5907ead58f9",
+      "old_concept_key": "",
+      "new_concept_key": "mdr",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "e06cc6a2-4f80-4ca1-878c-06b8d9a9c995",
+      "duplicate_group_id": "exact_b5907ead58f9",
+      "old_concept_key": "",
+      "new_concept_key": "mdr",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "27eb5f80-3659-4f3a-9b61-ec741058fd12",
+      "duplicate_group_id": "exact_b7dfd2d39a96",
+      "old_concept_key": "",
+      "new_concept_key": "slay",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "ac8d3271-5968-47a6-9061-52667e792088",
+      "duplicate_group_id": "exact_b7dfd2d39a96",
+      "old_concept_key": "",
+      "new_concept_key": "slay",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "55f6b0f6-e9a7-480b-a640-7b055e6c3243",
+      "duplicate_group_id": "exact_cec61c0eb007",
+      "old_concept_key": "",
+      "new_concept_key": "lit",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "d419b84c-9d8d-46bd-a564-dd801c056b33",
+      "duplicate_group_id": "exact_cec61c0eb007",
+      "old_concept_key": "",
+      "new_concept_key": "lit",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "0258f3e1-41b6-4e9c-bedc-077d5fbe7825",
+      "duplicate_group_id": "exact_e8f14af61968",
+      "old_concept_key": "",
+      "new_concept_key": "seen",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    },
+    {
+      "question_id": "5f3d73b8-1970-4e53-8741-462280a20895",
+      "duplicate_group_id": "exact_e8f14af61968",
+      "old_concept_key": "",
+      "new_concept_key": "seen",
+      "source_of_decision": "final_recommended",
+      "confidence": "high",
+      "issue_types": "short_concept_key_len"
+    }
+  ]
+}

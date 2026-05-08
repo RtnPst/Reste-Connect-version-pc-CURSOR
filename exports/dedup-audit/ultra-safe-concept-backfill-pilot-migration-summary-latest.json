@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-05-08T10:56:05.394Z",
+  "policy": "real_migration_preparation_ultra_safe_pilot_only",
+  "migration_filename": "supabase/migrations/20260509120500_backfill_questions_concept_key_ultra_safe_pilot.sql",
+  "expected_rows": 40,
+  "group_count": 20,
+  "concept_key_count": 20,
+  "concept_keys": [
+    "boujee",
+    "breadcrumbing",
+    "cest_valide",
+    "clutch",
+    "contenu_sponsorise",
+    "cursed",
+    "double_text",
+    "friendzone",
+    "ghoster_quelquun",
+    "love_bombing",
+    "low_key",
+    "scroll",
+    "ship_deux_personnes",
+    "side_eye",
+    "streamer",
+    "texting",
+    "triggered",
+    "tryhard",
+    "unfollow",
+    "unfollow_follow"
+  ],
+  "rollback_file": "exports/dedup-audit/ultra-safe-concept-backfill-pilot-rollback-latest.sql",
+  "validation_file": "exports/dedup-audit/ultra-safe-concept-backfill-pilot-post-apply-validation-latest.sql",
+  "no_db_updates_performed": true
+}

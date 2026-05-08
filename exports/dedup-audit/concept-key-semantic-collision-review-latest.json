@@ -1,0 +1,37 @@
+{
+  "summary": {
+    "generated_at": "2026-05-08T02:09:34.361Z",
+    "possible_collisions": 2,
+    "by_type": {
+      "near_identical_slug_family": 1,
+      "same_key_multi_group": 1
+    },
+    "outputs": [
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-key-semantic-collision-review-latest.csv"
+    ]
+  },
+  "rows": [
+    {
+      "collision_type": "near_identical_slug_family",
+      "key_a": "influenceur",
+      "key_b": "un_influenceur",
+      "duplicate_groups_a": "exact_e8d1d8dec933",
+      "duplicate_groups_b": "exact_279c2475323d",
+      "confidence": "high",
+      "why_may_belong_together": "Slug tokens are highly similar after article stripping and token normalization.",
+      "why_may_remain_distinct": "Could intentionally separate context/difficulty variants even with close slugs.",
+      "merge_hint": "token_jaccard_1.00"
+    },
+    {
+      "collision_type": "same_key_multi_group",
+      "key_a": "wesh",
+      "key_b": "wesh",
+      "duplicate_groups_a": "exact_08991363467a;exact_1a83bd9ed883",
+      "duplicate_groups_b": "exact_08991363467a;exact_1a83bd9ed883",
+      "confidence": "high",
+      "why_may_belong_together": "Same resolved concept_key currently selected across different exact duplicate families.",
+      "why_may_remain_distinct": "No obvious contextual split in current previews.",
+      "merge_hint": "same_final_concept_key_across_multiple_duplicate_groups"
+    }
+  ]
+}

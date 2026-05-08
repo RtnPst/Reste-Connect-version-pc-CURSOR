@@ -1,0 +1,277 @@
+{
+  "summary": {
+    "generated_at": "2026-05-08T02:09:34.380Z",
+    "batch2_groups_reviewed": 26,
+    "category_counts": {
+      "keep_multiple_formulations": 7,
+      "needs_manual_editorial_review": 5,
+      "keep_difficulty_variants": 13,
+      "keep_context_variants": 1
+    },
+    "outputs": [
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-batch2-reframing-preview-latest.csv"
+    ]
+  },
+  "rows": [
+    {
+      "duplicate_group_id": "exact_050fd02d5fa6",
+      "concept_key": "mot_de_passe_fort",
+      "category": "keep_multiple_formulations",
+      "confidence": "medium_high",
+      "rationale": "Multiple editorial formulations may support future concept diversity.",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce qu'un mot de passe \"fort\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_0edbf2ec5b3a",
+      "concept_key": "deepfake",
+      "category": "keep_multiple_formulations",
+      "confidence": "medium_high",
+      "rationale": "Multiple editorial formulations may support future concept diversity.",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce qu'un \"deepfake\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_1846ebdcc72c",
+      "concept_key": "vpn",
+      "category": "needs_manual_editorial_review",
+      "confidence": "medium",
+      "rationale": "Concept key flagged as risky (short_key;acronym_or_ultra_short_token).",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"VPN\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_18d3a985d2a6",
+      "concept_key": "reels",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que sont les \"Reels\" sur Instagram ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_191fb37ce63b",
+      "concept_key": "askip",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"askip\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_1a83bd9ed883",
+      "concept_key": "wesh",
+      "category": "needs_manual_editorial_review",
+      "confidence": "medium",
+      "rationale": "Concept key flagged as risky (short_key;acronym_or_ultra_short_token;cross_group_merge_risk).",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"wesh\" ?",
+      "member_count": "3"
+    },
+    {
+      "duplicate_group_id": "exact_2250d1df3605",
+      "concept_key": "qr_code",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce qu'un \"QR code\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_2a8d1fabda1a",
+      "concept_key": "que_signifie_lexpression_avoir_le_seum",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que signifie l'expression 'avoir le seum' ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_3a365e93c5a4",
+      "concept_key": "bluetooth",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"bluetooth\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_3c3758e04d97",
+      "concept_key": "oklm",
+      "category": "needs_manual_editorial_review",
+      "confidence": "medium",
+      "rationale": "Concept key flagged as risky (short_key;acronym_or_ultra_short_token).",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"OKLM\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_3f8df1569399",
+      "concept_key": "manga",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce qu'un \"manga\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_4cb42ef8b364",
+      "concept_key": "cookie",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce qu'un \"cookie\" sur Internet ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_550b94d9250c",
+      "concept_key": "quelle_est_la_particularite_de_lapplication_bereal",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Quelle est la particularité de l'application BeReal ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_5858e3b1083f",
+      "concept_key": "boomer",
+      "category": "keep_multiple_formulations",
+      "confidence": "medium_high",
+      "rationale": "Multiple editorial formulations may support future concept diversity.",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"boomer\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_6a57a2cb162a",
+      "concept_key": "telecharger",
+      "category": "keep_multiple_formulations",
+      "confidence": "medium_high",
+      "rationale": "Multiple editorial formulations may support future concept diversity.",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"télécharger\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_7b33e41ffb2e",
+      "concept_key": "stories",
+      "category": "keep_context_variants",
+      "confidence": "medium_high",
+      "rationale": "Question phrasing includes context-focused formulations (platform/usage framing).",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que sont les \"Stories\" sur Instagram ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_8a952e878e9c",
+      "concept_key": "qui_est_squeezie",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qui est Squeezie ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_8bf674d2a9c3",
+      "concept_key": "ghoster",
+      "category": "keep_multiple_formulations",
+      "confidence": "medium_high",
+      "rationale": "Multiple editorial formulations may support future concept diversity.",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"ghoster\" quelqu'un ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_a0688bc37fd1",
+      "concept_key": "podcast",
+      "category": "keep_multiple_formulations",
+      "confidence": "medium_high",
+      "rationale": "Multiple editorial formulations may support future concept diversity.",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce qu'un \"podcast\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_b308d1cfe8c7",
+      "concept_key": "tagger",
+      "category": "keep_multiple_formulations",
+      "confidence": "medium_high",
+      "rationale": "Multiple editorial formulations may support future concept diversity.",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"tagger\" quelqu'un ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_b5907ead58f9",
+      "concept_key": "mdr",
+      "category": "needs_manual_editorial_review",
+      "confidence": "medium",
+      "rationale": "Concept key flagged as risky (short_key;acronym_or_ultra_short_token).",
+      "analysis_reasons": "choices_differ;explanations_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"mdr\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_c4d8acfdbbbd",
+      "concept_key": "dm",
+      "category": "needs_manual_editorial_review",
+      "confidence": "medium",
+      "rationale": "Concept key flagged as risky (short_key;acronym_or_ultra_short_token).",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"DM\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_d09e56f9508e",
+      "concept_key": "quest_ce_que_chatgpt",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce que ChatGPT ?",
+      "member_count": "3"
+    },
+    {
+      "duplicate_group_id": "exact_e8d1d8dec933",
+      "concept_key": "influenceur",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce qu'un \"influenceur\" ?",
+      "member_count": "3"
+    },
+    {
+      "duplicate_group_id": "exact_f79d00be24c8",
+      "concept_key": "scroller",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium_high",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Que veut dire \"scroller\" ?",
+      "member_count": "2"
+    },
+    {
+      "duplicate_group_id": "exact_f89beb337d9a",
+      "concept_key": "appli",
+      "category": "keep_difficulty_variants",
+      "confidence": "medium",
+      "rationale": "Group contains distinct difficulty variants under same semantic prompt.",
+      "analysis_reasons": "choices_differ;explanations_differ;difficulty_differ;heuristic_tie_ambiguous",
+      "representative_question": "Qu'est-ce qu'une \"appli\" ?",
+      "member_count": "2"
+    }
+  ]
+}
