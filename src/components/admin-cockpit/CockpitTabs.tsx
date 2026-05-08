@@ -8,19 +8,35 @@ type Props = {
 
 export function CockpitTabs({ value, onValueChange }: Props) {
   return (
-    <div className="overflow-x-auto">
-      <TabsList className="inline-flex h-auto min-w-max gap-1 rounded-xl bg-muted/70 p-1">
+    <div className="overflow-x-auto -mx-1 px-1">
+      <TabsList className="inline-flex h-auto min-w-max max-w-full flex-wrap gap-1 rounded-xl bg-muted/70 p-1 sm:flex-nowrap">
         <TabsTrigger
           value="overview"
-          className="rounded-lg px-3 py-1.5 text-xs sm:text-sm"
+          className="rounded-lg px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
           data-state={value === "overview" ? "active" : "inactive"}
           onClick={() => onValueChange("overview")}
         >
           Overview
         </TabsTrigger>
         <TabsTrigger
+          value="concept_intake"
+          className="rounded-lg px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
+          data-state={value === "concept_intake" ? "active" : "inactive"}
+          onClick={() => onValueChange("concept_intake")}
+        >
+          Concept intake
+        </TabsTrigger>
+        <TabsTrigger
+          value="question_drafts"
+          className="rounded-lg px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
+          data-state={value === "question_drafts" ? "active" : "inactive"}
+          onClick={() => onValueChange("question_drafts")}
+        >
+          Question drafts
+        </TabsTrigger>
+        <TabsTrigger
           value="legacy"
-          className="rounded-lg px-3 py-1.5 text-xs sm:text-sm"
+          className="rounded-lg px-2.5 py-1.5 text-xs sm:px-3 sm:text-sm"
           data-state={value === "legacy" ? "active" : "inactive"}
           onClick={() => onValueChange("legacy")}
         >

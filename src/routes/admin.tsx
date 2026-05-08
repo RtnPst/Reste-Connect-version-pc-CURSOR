@@ -21,6 +21,8 @@ import { CockpitTabs } from "@/components/admin-cockpit/CockpitTabs";
 import { KpiCard } from "@/components/admin-cockpit/KpiCard";
 import { ReadOnlyBanner } from "@/components/admin-cockpit/ReadOnlyBanner";
 import { WarningList } from "@/components/admin-cockpit/WarningList";
+import { ConceptIntakeTab } from "@/components/admin-cockpit/tabs/ConceptIntakeTab";
+import { QuestionDraftsTab } from "@/components/admin-cockpit/tabs/QuestionDraftsTab";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
@@ -32,12 +34,18 @@ import {
   type AiPreviewQuestion,
 } from "@/utils/questions.functions";
 import {
+  EMPTY_CONCEPT_INTAKE,
   EMPTY_META,
   EMPTY_OVERVIEW,
+  EMPTY_QUESTION_DRAFTS,
+  loadConceptIntakeSnapshot,
   loadMetaSnapshot,
   loadOverviewSnapshot,
+  loadQuestionDraftsSnapshot,
+  type AdminCockpitConceptIntake,
   type AdminCockpitMeta,
   type AdminCockpitOverview,
+  type AdminCockpitQuestionDrafts,
   type CockpitTabId,
 } from "@/lib/admin-cockpit/loadSnapshot";
 
@@ -106,10 +114,18 @@ const STATUS_LABELS: Record<QuestionStatus, string> = {
 
 export const Route = createFileRoute("/admin")({
   validateSearch: (search) => {
-    const tab = (search as Record<string, unknown>).tab;
-    return {
-      tab: tab === "legacy" ? "legacy" : "overview",
-    } as { tab: CockpitTabId };
+    const raw = (search as Record<string, unknown>).tab;
+    const tab: CockpitTabId =
+      raw === "legacy"
+        ? "legacy"
+        : raw === "concept_intake"
+          ? "concept_intake"
+          : raw === "question_drafts"
+            ? "question_drafts"
+            : raw === "overview"
+              ? "overview"
+              : "overview";
+    return { tab };
   },
   head: () => ({
     meta: [
@@ -150,7 +166,13 @@ function AdminPage() {
   const [snapshotLoading, setSnapshotLoading] = useState(true);
   const [metaSnapshot, setMetaSnapshot] = useState<AdminCockpitMeta>(EMPTY_META);
   const [overviewSnapshot, setOverviewSnapshot] = useState<AdminCockpitOverview>(EMPTY_OVERVIEW);
+  const [conceptIntakeSnapshot, setConceptIntakeSnapshot] =
+    useState<AdminCockpitConceptIntake>(EMPTY_CONCEPT_INTAKE);
+  const [questionDraftsSnapshot, setQuestionDraftsSnapshot] =
+    useState<AdminCockpitQuestionDrafts>(EMPTY_QUESTION_DRAFTS);
   const [snapshotWarnings, setSnapshotWarnings] = useState<string[]>([]);
+  const [conceptIntakeWarning, setConceptIntakeWarning] = useState<string | null>(null);
+  const [questionDraftsWarning, setQuestionDraftsWarning] = useState<string | null>(null);
 
   const loadQuestions = async () => {
     setLoadingQ(true);
@@ -415,7 +437,6 @@ function AdminPage() {
     return true;
   });
 
-  const activeTab: CockpitTabId = search.tab === "legacy" ? "legacy" : "overview";
   const overviewKpis = Object.entries(overviewSnapshot.kpis ?? {});
   const sourceSummary = {
     total: metaSnapshot.sources.length,
@@ -427,9 +448,16 @@ function AdminPage() {
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-5xl overflow-x-clip px-3 py-8 sm:px-6">
         <Tabs
-          value={activeTab}
+          value={search.tab}
           onValueChange={(next) => {
-            const tab = next === "legacy" ? "legacy" : "overview";
+            const tab: CockpitTabId =
+              next === "legacy"
+                ? "legacy"
+                : next === "concept_intake"
+                  ? "concept_intake"
+                  : next === "question_drafts"
+                    ? "question_drafts"
+                    : "overview";
             navigate({
               to: "/admin",
               search: (prev) => ({ ...prev, tab }),
@@ -439,7 +467,7 @@ function AdminPage() {
           className="space-y-4"
         >
           <CockpitTabs
-            value={activeTab}
+            value={search.tab}
             onValueChange={(tab) => {
               navigate({
                 to: "/admin",
@@ -512,6 +540,22 @@ function AdminPage() {
                 )}
               </>
             )}
+          </TabsContent>
+
+          <TabsContent value="concept_intake" className="mt-0 space-y-4">
+            <ConceptIntakeTab
+              snapshot={conceptIntakeSnapshot}
+              loading={snapshotLoading}
+              fetchWarning={conceptIntakeWarning}
+            />
+          </TabsContent>
+
+          <TabsContent value="question_drafts" className="mt-0 space-y-4">
+            <QuestionDraftsTab
+              snapshot={questionDraftsSnapshot}
+              loading={snapshotLoading}
+              fetchWarning={questionDraftsWarning}
+            />
           </TabsContent>
 
           <TabsContent value="legacy" className="space-y-6 mt-0">
