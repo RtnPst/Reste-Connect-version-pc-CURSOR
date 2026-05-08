@@ -15,6 +15,7 @@ import { Confetti } from "@/components/Confetti";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { isMarathonMilestone } from "@/lib/levels";
 import { toDisplayChoices } from "@/lib/choice-order";
+import { getNextActionSuggestion } from "@/lib/next-action";
 import {
   buildNextMarathonState,
   selectNextMarathonQuestion,
@@ -343,6 +344,12 @@ function MarathonPage() {
   const recordDisplay = Math.max(persistedMarathonRecord, score);
 
   if (sessionEnded) {
+    const nextAction = getNextActionSuggestion({
+      mode: "marathon",
+      isLoggedIn: !!user,
+      score,
+      total: answeredCount,
+    });
     return (
       <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
         <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm">
@@ -379,6 +386,18 @@ function MarathonPage() {
                 Réponds à au moins 5 questions pour valider ta série.
               </p>
             )}
+            <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/60 px-4 py-3 text-left">
+              <p className="text-[11px] font-bold uppercase tracking-wide text-primary">
+                Prochaine meilleure action
+              </p>
+              <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
+              <Button asChild size="lg" variant="accent" className="mt-3 w-full">
+                <Link to={nextAction.to}>
+                  {nextAction.label}
+                  <ArrowRight />
+                </Link>
+              </Button>
+            </div>
             <div className="grid gap-3 sm:grid-cols-2">
               <Button asChild size="lg" variant="accent">
                 <Link to="/">

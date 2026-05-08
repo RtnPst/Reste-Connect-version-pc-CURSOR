@@ -20,6 +20,7 @@ import {
   rankCandidatesByConceptFreshness,
   wouldRepeatConceptTooSoon,
 } from "@/lib/concept-runtime";
+import { getNextActionSuggestion } from "@/lib/next-action";
 
 type Question = {
   id: string;
@@ -538,6 +539,12 @@ function ResultsScreen({
     xpGained !== null
       ? "Tu te rapproches du niveau suivant."
       : "Chaque quiz te rapproche du niveau suivant.";
+  const nextAction = getNextActionSuggestion({
+    mode: "theme",
+    isLoggedIn,
+    score,
+    total,
+  });
 
   const wrong = answers
     .map((a, i) => ({ a, q: questions[i] }))
@@ -601,6 +608,19 @@ function ResultsScreen({
               Niveau {levelUpTo} atteint !
             </p>
           )}
+
+          <div className="mx-auto mb-4 max-w-lg rounded-2xl border border-primary/30 bg-primary-soft/70 px-4 py-3 text-left">
+            <p className="text-[11px] font-bold uppercase tracking-wide text-primary">
+              Prochaine meilleure action
+            </p>
+            <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
+            <Button asChild size="lg" variant="accent" className="mt-3 w-full min-w-0 whitespace-normal">
+              <Link to={nextAction.to}>
+                {nextAction.label}
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
 
           <div className="mx-auto mb-3 grid min-w-0 max-w-lg grid-cols-1 gap-3 sm:grid-cols-2">
             <Button onClick={onReplay} size="lg" variant="accent" className="min-w-0 whitespace-normal">

@@ -17,6 +17,7 @@ import { RankBadge } from "@/components/RankBadge";
 import { selectLevelQuestions } from "@/lib/levels-selector";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { toDisplayChoices } from "@/lib/choice-order";
+import { getNextActionSuggestion } from "@/lib/next-action";
 import {
   QUESTIONS_PER_LEVEL,
   PASS_PERCENTAGE,
@@ -354,6 +355,15 @@ function LevelPage() {
     const score = answers.filter((a) => a.chosen === a.correct).length;
     const percent = Math.round((score / questions.length) * 100);
     const passed = percent >= PASS_PERCENTAGE;
+    const nextAction = getNextActionSuggestion({
+      mode: "level",
+      isLoggedIn: !!user,
+      score,
+      total: questions.length,
+      passed,
+      level,
+      totalLevels: TOTAL_LEVELS,
+    });
     return (
       <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
         <Confetti active={passed} />
@@ -409,6 +419,12 @@ function LevelPage() {
                 Niveau {levelUpTo} atteint !
               </p>
             )}
+            <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/60 px-4 py-3 text-left">
+              <p className="text-[11px] font-bold uppercase tracking-wide text-primary">
+                Prochaine meilleure action
+              </p>
+              <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
+            </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {passed && level < TOTAL_LEVELS ? (
                 <Button
