@@ -118,8 +118,8 @@ function LevelsPage() {
         <div className="text-center mb-10 animate-fade-in">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3">Mode niveaux</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {QUESTIONS_PER_LEVEL} questions mélangées (tous les thèmes). Tape au moins 70 % pour
-            déverrouiller le suivant et grimper dans les rangs.
+            {QUESTIONS_PER_LEVEL} questions mélangées (tous les thèmes). Fais au moins 4/5 bonnes
+            réponses pour déverrouiller le suivant et grimper dans les rangs.
           </p>
           <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-soft text-primary font-bold">
             <Trophy className="size-5" />

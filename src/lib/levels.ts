@@ -165,6 +165,10 @@ export function saveLevelResult(level: number, score: number): LevelProgress {
   return next;
 }
 
+export function getPassRequiredCorrect(totalQuestions: number): number {
+  return Math.ceil((PASS_PERCENTAGE / 100) * totalQuestions);
+}
+
 // Difficulté progressive : niveaux 1-10 facile, 11-20 moyen, 21+ difficile
 export function getDifficultyForLevel(level: number): "facile" | "moyen" | "difficile" {
   if (level <= 10) return "facile";

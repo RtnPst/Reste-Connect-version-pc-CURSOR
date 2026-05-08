@@ -14,11 +14,17 @@ import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { isMarathonMilestone } from "@/lib/levels";
-import { shuffledOrder, toDisplayChoices } from "@/lib/choice-order";
+import { toDisplayChoices } from "@/lib/choice-order";
+import {
+  buildNextMarathonState,
+  selectNextMarathonQuestion,
+  type MarathonSelectorState,
+} from "@/lib/marathon-selector";
 
 type Question = {
   id: string;
   theme: ThemeKey;
+  difficulty: "facile" | "moyen" | "difficile";
   question: string;
   choices: string[];
   choiceOrder: number[];
@@ -53,8 +59,8 @@ export const Route = createFileRoute("/marathon")({
 function MarathonPage() {
   const { user, profile, refreshProfile } = useAuth();
   const [pool, setPool] = useState<Question[]>([]);
-  const [order, setOrder] = useState<number[]>([]);
-  const [pos, setPos] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
+  const [answeredCountBase, setAnsweredCountBase] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -65,6 +71,13 @@ function MarathonPage() {
   const [xpGained, setXpGained] = useState<number>(0);
   const [streakUpdated, setStreakUpdated] = useState(false);
   const [guestMarathonBest, setGuestMarathonBest] = useState(() => readGuestMarathonBest());
+  const [recentQuestionIds, setRecentQuestionIds] = useState<string[]>([]);
+  const [recentThemes, setRecentThemes] = useState<string[]>([]);
+  const [recentDifficulties, setRecentDifficulties] = useState<("facile" | "moyen" | "difficile")[]>(
+    [],
+  );
+  const [recentMisses, setRecentMisses] = useState<boolean[]>([]);
+  const [recentConcepts, setRecentConcepts] = useState<Array<string | null>>([]);
 
   useEffect(() => {
     if (!user) setGuestMarathonBest(readGuestMarathonBest());
@@ -87,16 +100,39 @@ function MarathonPage() {
           };
         }),
       );
-      setOrder(shuffledOrder(data.length));
       setLoading(false);
     })();
     return () => stopSpeaking();
   }, []);
 
-  const current = useMemo<Question | null>(() => {
-    if (!pool.length || !order.length) return null;
-    return pool[order[pos % order.length]];
-  }, [pool, order, pos]);
+  const selectorState = useMemo<MarathonSelectorState>(
+    () => ({
+      answeredCount: answeredCountBase,
+      streak,
+      recentQuestionIds,
+      recentThemes,
+      recentDifficulties,
+      recentMisses,
+      recentConcepts,
+    }),
+    [
+      answeredCountBase,
+      streak,
+      recentQuestionIds,
+      recentThemes,
+      recentDifficulties,
+      recentMisses,
+      recentConcepts,
+    ],
+  );
+
+  useEffect(() => {
+    if (currentQuestion || !pool.length) return;
+    const next = selectNextMarathonQuestion(pool, selectorState);
+    setCurrentQuestion(next);
+  }, [pool, currentQuestion, selectorState]);
+
+  const current = currentQuestion;
 
   const handleSelect = async (idx: number) => {
     if (selectedIndex !== null || !current) return;
@@ -126,14 +162,22 @@ function MarathonPage() {
   };
 
   const handleNext = () => {
+    if (!current) return;
     stopSpeaking();
-    setPos((p) => p + 1);
+    const isCurrentCorrect =
+      selectedIndex !== null &&
+      revealedCorrectIndex !== null &&
+      (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
+    const nextState = buildNextMarathonState(selectorState, current, isCurrentCorrect);
+    setAnsweredCountBase(nextState.answeredCount);
+    setRecentQuestionIds(nextState.recentQuestionIds);
+    setRecentThemes(nextState.recentThemes);
+    setRecentDifficulties(nextState.recentDifficulties);
+    setRecentMisses(nextState.recentMisses);
+    setRecentConcepts(nextState.recentConcepts);
+    setCurrentQuestion(selectNextMarathonQuestion(pool, nextState));
     setSelectedIndex(null);
     setRevealedCorrectIndex(null);
-    // Re-mélange quand on a fait le tour
-    if ((pos + 1) % order.length === 0) {
-      setOrder(shuffledOrder(order.length));
-    }
   };
 
   const handleSpeak = () => {
@@ -152,7 +196,7 @@ function MarathonPage() {
 
   const handleEndSession = async () => {
     stopSpeaking();
-    const answeredCount = pos + (selectedIndex !== null ? 1 : 0);
+    const answeredCount = answeredCountBase + (selectedIndex !== null ? 1 : 0);
     const correctCount = score;
     const rawXp = correctCount * 4 + 10 * Math.floor(correctCount / 10);
     const grantedXp = Math.min(rawXp, 120);
@@ -289,7 +333,7 @@ function MarathonPage() {
     isAnswered &&
     selectedIndex !== null &&
     (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
-  const answeredCount = pos + (selectedIndex !== null ? 1 : 0);
+  const answeredCount = answeredCountBase + (selectedIndex !== null ? 1 : 0);
   const streakDays = profile?.current_streak ?? 0;
   const streakHint =
     streakDays > 0 ? "Ta série sur l’app" : "Connecte-toi pour faire grandir ta série.";
@@ -370,7 +414,7 @@ function MarathonPage() {
         streakTitle={streakHint}
         progressPercent={null}
         stepFraction={`${score}/${answeredCount}`}
-        flowStepKey={`${current.id}-${pos}-${answeredCount}`}
+        flowStepKey={`${current.id}-${answeredCountBase}-${answeredCount}`}
         questionText={current.question}
         belowProgressSlot={
           <div className="space-y-2">

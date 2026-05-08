@@ -15,6 +15,11 @@ import { playCorrect, playWrong, playFanfare, stopMusic } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { displayIndexFromOriginal, toDisplayChoices } from "@/lib/choice-order";
+import {
+  getQuestionConceptProxy,
+  rankCandidatesByConceptFreshness,
+  wouldRepeatConceptTooSoon,
+} from "@/lib/concept-runtime";
 
 type Question = {
   id: string;
@@ -28,6 +33,42 @@ type Question = {
 const QUESTION_COUNT = 10;
 const DAILY_XP_BONUS = 20;
 const LUCKY_XP_CHANCE = 0.1;
+
+function applyConceptSpacing(questions: Question[]): Question[] {
+  if (questions.length <= 1) return questions;
+
+  const pool = [...questions];
+  const selected: Question[] = [];
+  let recentConcepts: Array<string | null> = [];
+
+  const pickOne = (enforceConceptRecency: boolean): Question | null => {
+    if (pool.length === 0) return null;
+    const ranked = rankCandidatesByConceptFreshness(pool, recentConcepts);
+    for (const q of ranked) {
+      const concept = getQuestionConceptProxy(q);
+      if (enforceConceptRecency && wouldRepeatConceptTooSoon(concept, recentConcepts, 3)) continue;
+      return q;
+    }
+    return ranked[0] ?? null;
+  };
+
+  while (pool.length > 0) {
+    // Pass 1: prefer concept freshness.
+    let chosen = pickOne(true);
+    // Pass 2: relax concept recency if constrained.
+    if (!chosen) chosen = pickOne(false);
+    if (!chosen) break;
+
+    selected.push(chosen);
+    recentConcepts = [...recentConcepts, getQuestionConceptProxy(chosen)].slice(-6);
+
+    const idx = pool.findIndex((q) => q.id === chosen?.id);
+    if (idx >= 0) pool.splice(idx, 1);
+    else pool.shift();
+  }
+
+  return selected.length === questions.length ? selected : questions;
+}
 
 export const Route = createFileRoute("/quiz/$theme")({
   validateSearch: () => ({}),
@@ -97,14 +138,16 @@ function QuizPage() {
       }
 
       setQuestions(
-        data.map((q) => {
+        applyConceptSpacing(
+          data.map((q) => {
           const shuffled = toDisplayChoices(q.choices);
           return {
             ...q,
             choices: shuffled.choices,
             choiceOrder: shuffled.choiceOrder,
           };
-        }),
+          }),
+        ),
       );
       setLoading(false);
     })();

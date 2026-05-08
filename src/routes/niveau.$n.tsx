@@ -14,18 +14,19 @@ import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
 import { RankBadge } from "@/components/RankBadge";
+import { selectLevelQuestions } from "@/lib/levels-selector";
 import { THEMES, type ThemeKey } from "@/lib/themes";
-import { shuffledOrder, toDisplayChoices } from "@/lib/choice-order";
+import { toDisplayChoices } from "@/lib/choice-order";
 import {
   QUESTIONS_PER_LEVEL,
   PASS_PERCENTAGE,
   TOTAL_LEVELS,
+  getPassRequiredCorrect,
   getRankForLevel,
   getEffectiveUnlockedLevel,
   mergeProgress,
   loadProgress,
   saveLevelResult,
-  getDifficultyForLevel,
 } from "@/lib/levels";
 
 type Question = {
@@ -54,6 +55,7 @@ function LevelPage() {
   const { n } = Route.useParams();
   const level = Math.max(1, Math.min(TOTAL_LEVELS, parseInt(n, 10) || 1));
   const rank = getRankForLevel(level);
+  const passRequired = getPassRequiredCorrect(QUESTIONS_PER_LEVEL);
   const navigate = useNavigate();
   const { user, profile, refreshProfile } = useAuth();
 
@@ -98,7 +100,6 @@ function LevelPage() {
     (async () => {
       try {
         setError(null);
-        const difficulty = getDifficultyForLevel(level);
         const data = await getPlayableQuestions({ limit: 100 });
 
         if (!data || data.length === 0) {
@@ -106,14 +107,13 @@ function LevelPage() {
           return;
         }
 
-        const filteredByDifficulty = (data ?? []).filter((q) => q.difficulty === difficulty);
-        const source =
-          filteredByDifficulty.length >= QUESTIONS_PER_LEVEL ? filteredByDifficulty : (data ?? []);
-        const shuffled = shuffledOrder(source.length)
-          .slice(0, QUESTIONS_PER_LEVEL)
-          .map((i) => source[i]);
+        const selected = selectLevelQuestions(data ?? [], level, QUESTIONS_PER_LEVEL);
+        if (selected.length < QUESTIONS_PER_LEVEL) {
+          setError("Questions insuffisantes pour composer ce niveau. Réessaie plus tard.");
+          return;
+        }
         setQuestions(
-          shuffled.map((q) => {
+          selected.map((q) => {
             const choiceData = toDisplayChoices(q.choices);
             return {
               id: q.id,
@@ -394,7 +394,7 @@ function LevelPage() {
             <p className="text-base text-muted-foreground mb-6">
               {passed
                 ? `Palier « ${rank.label} » : le niveau ${Math.min(level + 1, TOTAL_LEVELS)} s’ouvre.`
-                : `Il faut au moins ${Math.ceil((PASS_PERCENTAGE / 100) * questions.length)}/${questions.length} pour valider.`}
+                : `Il faut ${passRequired}/${QUESTIONS_PER_LEVEL} bonnes réponses pour valider.`}
             </p>
             <p className="mb-4 text-xs sm:text-sm font-medium text-muted-foreground">
               Les badges de quiz parfait se débloquent sur les quiz thème.
