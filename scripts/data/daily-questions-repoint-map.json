@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "description": "Non-canonical duplicate question IDs → reviewed canonical IDs (daily_questions repoint only). Must stay in sync with exact-dup-critical-canonical-decisions.json.",
+  "mappings": [
+    {
+      "from_question_id": "12b15800-b7cb-46d2-9518-d4d3edf4be30",
+      "to_question_id": "83d5c73a-e515-4f5a-bbfd-deb80582edb4",
+      "group_id": "exact_e9459f5e7919",
+      "note": "Discord — heuristic keeper was wrong variant; canonical chosen in review"
+    },
+    {
+      "from_question_id": "cb0e54cb-acd5-4ad1-b05f-515a3e59051a",
+      "to_question_id": "403251de-3624-4fdb-ac1f-3a1af46297d4",
+      "group_id": "exact_2d4021b2df5a",
+      "note": "unfollow"
+    },
+    {
+      "from_question_id": "f502806a-1256-45ea-b38c-a69095cb7f51",
+      "to_question_id": "7ce5b778-c270-4681-9e2d-a5c75a423b0b",
+      "group_id": "exact_f86b7845e7d3",
+      "note": "IA variant"
+    },
+    {
+      "from_question_id": "cd1de849-8f29-4948-a51c-feadf48b3494",
+      "to_question_id": "7ce5b778-c270-4681-9e2d-a5c75a423b0b",
+      "group_id": "exact_f86b7845e7d3",
+      "note": "IA variant"
+    }
+  ]
+}
