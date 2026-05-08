@@ -21,7 +21,7 @@ export function CockpitStatusBadge({ tone = "neutral", className, children }: Pr
   return (
     <span
       className={cn(
-        "inline-flex max-w-full items-center rounded-md border px-2 py-0.5 text-[11px] font-semibold leading-tight break-words",
+        "inline-flex min-h-[1.5rem] max-w-full min-w-0 items-center rounded-md border px-2 py-1 text-[10px] font-semibold leading-snug break-words sm:min-h-0 sm:py-0.5 sm:text-[11px]",
         toneClass[tone],
         className,
       )}

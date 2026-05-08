@@ -522,7 +522,7 @@ function AdminPage() {
               replace: true,
             });
           }}
-          className="space-y-4"
+          className="min-w-0 space-y-4"
         >
           <CockpitTabs
             value={search.tab}
@@ -536,8 +536,8 @@ function AdminPage() {
           />
 
           <TabsContent value="overview" className="space-y-4">
-            <div className="rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
-              <h1 className="text-2xl font-extrabold sm:text-3xl">Admin AI Cockpit — Overview</h1>
+            <div className="min-w-0 rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
+              <h1 className="text-2xl font-extrabold [overflow-wrap:anywhere] sm:text-3xl">Admin AI Cockpit — Overview</h1>
               <p className="mt-1 text-sm text-muted-foreground">
                 Snapshot généré: {metaSnapshot.generated_at || "non disponible"}
               </p>
@@ -557,7 +557,11 @@ function AdminPage() {
             />
 
             {snapshotLoading ? (
-              <div className="rounded-xl border border-border/70 bg-card/60 p-4 text-sm text-muted-foreground">
+              <div
+                role="status"
+                aria-live="polite"
+                className="flex min-h-[5.5rem] items-center justify-center rounded-xl border border-border/70 bg-card/60 px-4 py-6 text-sm text-muted-foreground"
+              >
                 Chargement du snapshot cockpit…
               </div>
             ) : (
@@ -640,13 +644,26 @@ function AdminPage() {
             />
           </TabsContent>
 
-          <TabsContent value="legacy" className="space-y-6 mt-0">
+          <TabsContent value="legacy" className="mt-0 space-y-6">
+            <div
+              role="status"
+              className="rounded-xl border border-destructive/45 bg-destructive/10 px-3 py-2.5 text-xs leading-snug text-foreground sm:px-4 sm:text-sm"
+            >
+              <span className="font-bold text-destructive">Zone d&apos;écriture admin</span>
+              <span className="text-muted-foreground">
+                {" "}
+                — les actions ici peuvent modifier les questions en base.
+              </span>
+            </div>
+
         <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <div className="min-w-0">
             <h1 className="text-2xl sm:text-4xl font-extrabold flex flex-wrap items-center gap-2 break-words">
-              <Shield className="shrink-0 text-primary" /> Administration
+              <Shield className="shrink-0 text-primary" /> Quick Generate / Questions
             </h1>
-            <p className="text-muted-foreground">{questions.length} questions au total</p>
+            <p className="text-muted-foreground">
+              Générateur rapide et gestion des questions · {questions.length} questions au total
+            </p>
           </div>
           <Button onClick={startNew} size="lg" variant="accent" className="w-full shrink-0 sm:w-auto">
             <Plus /> Nouvelle question

@@ -3,6 +3,7 @@ import { CockpitStatusBadge } from "@/components/admin-cockpit/CockpitStatusBadg
 import { KpiCard } from "@/components/admin-cockpit/KpiCard";
 import { ReadOnlyBanner } from "@/components/admin-cockpit/ReadOnlyBanner";
 import { WarningList } from "@/components/admin-cockpit/WarningList";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -62,7 +63,7 @@ function SectionShell({
 }) {
   return (
     <details open className="min-w-0 rounded-xl border border-border/70 bg-card/60">
-      <summary className="cursor-pointer list-none px-3 py-3 sm:px-4 [&::-webkit-details-marker]:hidden">
+      <summary className="min-h-11 cursor-pointer list-none rounded-t-xl px-3 py-3 outline-none ring-offset-background transition-colors hover:bg-muted/30 sm:min-h-0 sm:px-4 [&::-webkit-details-marker]:hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
         <span className="text-base font-extrabold">{title}</span>
         {description ? (
           <p className="mt-1 text-xs text-muted-foreground">{description}</p>
@@ -86,12 +87,12 @@ function SimpleDataTable({
   rows: ReactNode[][];
 }) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-border/60">
+    <div className="touch-pan-x overflow-x-auto rounded-lg border border-border/60">
       <table className={`w-full min-w-0 border-collapse text-left text-sm ${minWidth}`}>
         <thead className="bg-muted/40 text-xs uppercase text-muted-foreground">
           <tr>
             {headers.map((h) => (
-              <th key={h} className="p-2 font-bold">
+              <th key={h} className="px-2 py-2.5 font-bold sm:px-3">
                 {h}
               </th>
             ))}
@@ -101,7 +102,7 @@ function SimpleDataTable({
           {rows.map((cells, ri) => (
             <tr key={ri} className="border-t border-border/50 align-top">
               {cells.map((c, ci) => (
-                <td key={ci} className="p-2">
+                <td key={ci} className="min-w-0 px-2 py-2.5 align-top sm:px-3">
                   {c}
                 </td>
               ))}
@@ -259,8 +260,8 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
 
   return (
     <div className="min-w-0 space-y-4">
-      <div className="rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
-        <h1 className="text-2xl font-extrabold sm:text-3xl">Admin AI Cockpit — Santé éditoriale</h1>
+      <div className="min-w-0 rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
+        <h1 className="text-2xl font-extrabold [overflow-wrap:anywhere] sm:text-3xl">Admin AI Cockpit — Santé éditoriale</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Snapshot: {snapshot.generated_at || "non disponible"}
         </p>
@@ -269,10 +270,35 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
       <WarningList title="Avertissements snapshot" warnings={warnings} />
 
       {loading ? (
-        <div className="rounded-xl border border-border/70 bg-card/60 p-4 text-sm text-muted-foreground">
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex min-h-[5.5rem] items-center justify-center rounded-xl border border-border/70 bg-card/60 px-4 py-6 text-sm text-muted-foreground"
+        >
           Chargement du snapshot…
         </div>
       ) : (
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="min-h-10 shrink-0"
+              onClick={() => {
+                setPqBucket("all");
+                setPqQ("");
+                setFrBand("all");
+                setFrQ("");
+                setNrSev("all");
+                setNrQ("");
+                setOeBand("all");
+                setOeQ("");
+              }}
+            >
+              Réinitialiser les filtres
+            </Button>
+          </div>
         <div className="space-y-4">
           <SectionShell
             title="File prioritaire"
@@ -283,7 +309,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               <div>
                 <Label htmlFor="eh-pq-b">Bucket</Label>
                 <Select value={pqBucket} onValueChange={setPqBucket}>
-                  <SelectTrigger id="eh-pq-b" className="mt-1 min-w-0">
+                  <SelectTrigger id="eh-pq-b" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                     <SelectValue placeholder="Tous" />
                   </SelectTrigger>
                   <SelectContent>
@@ -298,7 +324,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               </div>
               <div>
                 <Label htmlFor="eh-pq-q">Recherche</Label>
-                <Input id="eh-pq-q" className="mt-1 min-w-0" value={pqQ} onChange={(e) => setPqQ(e.target.value)} />
+                <Input id="eh-pq-q" className="mt-1 min-h-10 min-w-0 sm:min-h-9" value={pqQ} onChange={(e) => setPqQ(e.target.value)} />
               </div>
             </div>
             <div className="hidden md:block">
@@ -341,7 +367,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               <div>
                 <Label htmlFor="eh-fr-b">Bande</Label>
                 <Select value={frBand} onValueChange={setFrBand}>
-                  <SelectTrigger id="eh-fr-b" className="mt-1 min-w-0">
+                  <SelectTrigger id="eh-fr-b" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                     <SelectValue placeholder="Toutes" />
                   </SelectTrigger>
                   <SelectContent>
@@ -356,7 +382,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               </div>
               <div>
                 <Label htmlFor="eh-fr-q">Recherche</Label>
-                <Input id="eh-fr-q" className="mt-1 min-w-0" value={frQ} onChange={(e) => setFrQ(e.target.value)} />
+                <Input id="eh-fr-q" className="mt-1 min-h-10 min-w-0 sm:min-h-9" value={frQ} onChange={(e) => setFrQ(e.target.value)} />
               </div>
             </div>
             <div className="hidden md:block">
@@ -394,7 +420,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               <div>
                 <Label htmlFor="eh-nr-s">Sévérité</Label>
                 <Select value={nrSev} onValueChange={setNrSev}>
-                  <SelectTrigger id="eh-nr-s" className="mt-1 min-w-0">
+                  <SelectTrigger id="eh-nr-s" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                     <SelectValue placeholder="Toutes" />
                   </SelectTrigger>
                   <SelectContent>
@@ -409,7 +435,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               </div>
               <div>
                 <Label htmlFor="eh-nr-q">Recherche</Label>
-                <Input id="eh-nr-q" className="mt-1 min-w-0" value={nrQ} onChange={(e) => setNrQ(e.target.value)} />
+                <Input id="eh-nr-q" className="mt-1 min-h-10 min-w-0 sm:min-h-9" value={nrQ} onChange={(e) => setNrQ(e.target.value)} />
               </div>
             </div>
             <div className="hidden md:block">
@@ -449,7 +475,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               <div>
                 <Label htmlFor="eh-oe-b">Bande risque</Label>
                 <Select value={oeBand} onValueChange={setOeBand}>
-                  <SelectTrigger id="eh-oe-b" className="mt-1 min-w-0">
+                  <SelectTrigger id="eh-oe-b" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                     <SelectValue placeholder="Toutes" />
                   </SelectTrigger>
                   <SelectContent>
@@ -464,7 +490,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               </div>
               <div>
                 <Label htmlFor="eh-oe-q">Concept key</Label>
-                <Input id="eh-oe-q" className="mt-1 min-w-0" value={oeQ} onChange={(e) => setOeQ(e.target.value)} />
+                <Input id="eh-oe-q" className="mt-1 min-h-10 min-w-0 sm:min-h-9" value={oeQ} onChange={(e) => setOeQ(e.target.value)} />
               </div>
             </div>
             <div className="hidden md:block">
@@ -492,6 +518,7 @@ export function EditorialHealthTab({ snapshot, loading, fetchWarning }: Props) {
               {oeFiltered.map((r, i) => renderOeMobile(r, i))}
             </div>
           </SectionShell>
+        </div>
         </div>
       )}
     </div>

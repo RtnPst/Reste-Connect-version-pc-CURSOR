@@ -3,6 +3,7 @@ import { CockpitStatusBadge } from "@/components/admin-cockpit/CockpitStatusBadg
 import { KpiCard } from "@/components/admin-cockpit/KpiCard";
 import { ReadOnlyBanner } from "@/components/admin-cockpit/ReadOnlyBanner";
 import { WarningList } from "@/components/admin-cockpit/WarningList";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -63,8 +64,8 @@ export function BatchReviewsTab({ snapshot, loading, fetchWarning }: Props) {
 
   return (
     <div className="min-w-0 space-y-4">
-      <div className="rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
-        <h1 className="text-2xl font-extrabold sm:text-3xl">Admin AI Cockpit — Revues batch</h1>
+      <div className="min-w-0 rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
+        <h1 className="text-2xl font-extrabold [overflow-wrap:anywhere] sm:text-3xl">Admin AI Cockpit — Revues batch</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Snapshot: {snapshot.generated_at || "non disponible"} · champs sensibles (IDs questions) exclus du rendu.
         </p>
@@ -79,12 +80,16 @@ export function BatchReviewsTab({ snapshot, loading, fetchWarning }: Props) {
       </div>
 
       {loading ? (
-        <div className="rounded-xl border border-border/70 bg-card/60 p-4 text-sm text-muted-foreground">
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex min-h-[5.5rem] items-center justify-center rounded-xl border border-border/70 bg-card/60 px-4 py-6 text-sm text-muted-foreground"
+        >
           Chargement du snapshot…
         </div>
       ) : (
         <>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <KpiCard label="Groupes / lignes" value={String(snapshot.rows.length)} />
             <KpiCard label="Questions (somme des counts)" value={String(totalQ)} />
             <KpiCard label="Affichées (filtre)" value={String(filtered.length)} />
@@ -94,7 +99,7 @@ export function BatchReviewsTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="br-risk">Risk level</Label>
               <Select value={risk} onValueChange={setRisk}>
-                <SelectTrigger id="br-risk" className="mt-1 min-w-0">
+                <SelectTrigger id="br-risk" className="mt-1 h-auto min-h-10 min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Tous" />
                 </SelectTrigger>
                 <SelectContent>
@@ -110,7 +115,7 @@ export function BatchReviewsTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="br-action">Action recommandée</Label>
               <Select value={action} onValueChange={setAction}>
-                <SelectTrigger id="br-action" className="mt-1 min-w-0">
+                <SelectTrigger id="br-action" className="mt-1 h-auto min-h-10 min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Toutes" />
                 </SelectTrigger>
                 <SelectContent>
@@ -126,7 +131,7 @@ export function BatchReviewsTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="br-cat">Catégorie</Label>
               <Select value={category} onValueChange={setCategory}>
-                <SelectTrigger id="br-cat" className="mt-1 min-w-0">
+                <SelectTrigger id="br-cat" className="mt-1 h-auto min-h-10 min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Toutes" />
                 </SelectTrigger>
                 <SelectContent>
@@ -142,7 +147,7 @@ export function BatchReviewsTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="br-arch">Archive only later</Label>
               <Select value={archiveLater} onValueChange={setArchiveLater}>
-                <SelectTrigger id="br-arch" className="mt-1 min-w-0">
+                <SelectTrigger id="br-arch" className="mt-1 h-auto min-h-10 min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Tous" />
                 </SelectTrigger>
                 <SelectContent>
@@ -159,7 +164,7 @@ export function BatchReviewsTab({ snapshot, loading, fetchWarning }: Props) {
               <Label htmlFor="br-cq">Recherche concept key</Label>
               <Input
                 id="br-cq"
-                className="mt-1 min-w-0"
+                className="mt-1 min-h-10 min-w-0 sm:min-h-9"
                 value={conceptQ}
                 onChange={(e) => setConceptQ(e.target.value)}
                 placeholder="ex. brainrot…"
@@ -167,12 +172,32 @@ export function BatchReviewsTab({ snapshot, loading, fetchWarning }: Props) {
             </div>
           </div>
 
+          <div className="flex flex-wrap gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="min-h-10 shrink-0"
+              onClick={() => {
+                setRisk("all");
+                setAction("all");
+                setCategory("all");
+                setArchiveLater("all");
+                setConceptQ("");
+              }}
+            >
+              Réinitialiser les filtres
+            </Button>
+          </div>
+
           {filtered.length === 0 ? (
-            <p className="py-6 text-center text-sm text-muted-foreground">Aucune ligne ne correspond aux filtres.</p>
+            <p className="rounded-xl border border-dashed border-border/80 bg-muted/20 px-4 py-8 text-center text-sm leading-relaxed text-muted-foreground">
+              Aucune ligne ne correspond aux filtres.
+            </p>
           ) : (
             <>
               <div className="hidden min-w-0 md:block">
-                <div className="overflow-x-auto rounded-xl border border-border/70">
+                <div className="touch-pan-x overflow-x-auto rounded-xl border border-border/70">
                   <table className="w-full min-w-[720px] border-collapse text-left text-sm">
                     <thead className="border-b border-border/80 bg-muted/40 text-xs uppercase text-muted-foreground">
                       <tr>

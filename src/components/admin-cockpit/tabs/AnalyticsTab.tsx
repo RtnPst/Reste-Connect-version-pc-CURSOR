@@ -24,7 +24,7 @@ function AggTable({
 }) {
   if (!rows.length) {
     return (
-      <div className="rounded-lg border border-border/60 bg-muted/20 p-3 text-sm text-muted-foreground">
+      <div className="min-h-[3.25rem] rounded-lg border border-dashed border-border/70 bg-muted/20 p-3 text-sm leading-relaxed text-muted-foreground">
         {title} — aucune ligne.
       </div>
     );
@@ -32,12 +32,12 @@ function AggTable({
   return (
     <div className="min-w-0 space-y-2">
       <h3 className="text-sm font-bold uppercase tracking-wide text-muted-foreground">{title}</h3>
-      <div className="overflow-x-auto rounded-lg border border-border/60">
+      <div className="touch-pan-x overflow-x-auto rounded-lg border border-border/60">
         <table className={`w-full min-w-0 border-collapse text-left text-sm ${minW}`}>
           <thead className="bg-muted/40 text-xs text-muted-foreground">
             <tr>
               {headers.map((h) => (
-                <th key={h} className="p-2 font-bold">
+                <th key={h} className="px-2 py-2.5 font-bold sm:px-3">
                   {h}
                 </th>
               ))}
@@ -47,7 +47,7 @@ function AggTable({
             {rows.map((cells, ri) => (
               <tr key={ri} className="border-t border-border/50 align-top">
                 {cells.map((c, ci) => (
-                  <td key={ci} className="p-2 break-words">
+                  <td key={ci} className="px-2 py-2.5 break-words sm:px-3">
                     {c}
                   </td>
                 ))}
@@ -70,8 +70,8 @@ export function AnalyticsTab({ snapshot, loading, fetchWarning }: Props) {
 
   return (
     <div className="min-w-0 space-y-4">
-      <div className="rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
-        <h1 className="text-2xl font-extrabold sm:text-3xl">Admin AI Cockpit — Analytics</h1>
+      <div className="min-w-0 rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
+        <h1 className="text-2xl font-extrabold [overflow-wrap:anywhere] sm:text-3xl">Admin AI Cockpit — Analytics</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Snapshot: {snapshot.generated_at || "non disponible"} · agrégats uniquement, pas d&apos;événements bruts.
         </p>
@@ -79,7 +79,7 @@ export function AnalyticsTab({ snapshot, loading, fetchWarning }: Props) {
       <ReadOnlyBanner />
       <WarningList title="Avertissements snapshot" warnings={warnings} />
 
-      <div className="rounded-xl border border-border/70 bg-card/60 p-3 text-sm sm:p-4">
+      <div className="min-w-0 rounded-xl border border-border/70 bg-card/60 p-3 text-sm sm:p-4">
         <p className="font-bold text-foreground">Confidentialité (extrait snapshot)</p>
         <ul className="mt-2 flex flex-wrap gap-2">
           {safetyEntries.length ? (
@@ -101,14 +101,18 @@ export function AnalyticsTab({ snapshot, loading, fetchWarning }: Props) {
       </div>
 
       {loading ? (
-        <div className="rounded-xl border border-border/70 bg-card/60 p-4 text-sm text-muted-foreground">
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex min-h-[5.5rem] items-center justify-center rounded-xl border border-border/70 bg-card/60 px-4 py-6 text-sm text-muted-foreground"
+        >
           Chargement du snapshot…
         </div>
       ) : (
-        <div className="space-y-6">
-          <div>
+        <div className="min-w-0 space-y-6">
+          <div className="min-w-0">
             <h2 className="mb-2 text-lg font-extrabold">Phase 0 — tentatives & répartition</h2>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {summaryEntries.length ? (
                 summaryEntries.map(([k, v]) => (
                   <KpiCard key={k} label={k.replaceAll("_", " ")} value={String(v)} />
@@ -170,7 +174,7 @@ export function AnalyticsTab({ snapshot, loading, fetchWarning }: Props) {
 
           <div>
             <h2 className="mb-2 text-lg font-extrabold">Phase 1 — événements analytics agrégés</h2>
-            <div className="mb-3 grid gap-3 sm:grid-cols-2">
+            <div className="mb-3 grid min-w-0 gap-3 sm:grid-cols-2">
               <KpiCard
                 label="Événements analytics disponibles"
                 value={p1.analytics_events_available ? "oui" : "non"}
@@ -240,7 +244,9 @@ export function AnalyticsTab({ snapshot, loading, fetchWarning }: Props) {
               <h3 className="text-sm font-bold uppercase text-warning-foreground">Angles morts signalés</h3>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-sm break-words">
                 {snapshot.blind_spots.map((b, i) => (
-                  <li key={`${i}-${b.slice(0, 24)}`}>{b}</li>
+                  <li key={`blind-${i}`} className="min-w-0 [overflow-wrap:anywhere] break-words">
+                    {b}
+                  </li>
                 ))}
               </ul>
             </div>

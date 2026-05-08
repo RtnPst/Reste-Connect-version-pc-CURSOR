@@ -3,6 +3,7 @@ import { KpiCard } from "@/components/admin-cockpit/KpiCard";
 import { ReadOnlyBanner } from "@/components/admin-cockpit/ReadOnlyBanner";
 import { WarningList } from "@/components/admin-cockpit/WarningList";
 import { CockpitStatusBadge } from "@/components/admin-cockpit/CockpitStatusBadge";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -90,7 +91,9 @@ function RowCard({ row }: { row: ConceptIntakeRow }) {
         </dl>
       )}
       <details className="mt-3 rounded-lg border border-border/60 bg-background/50 px-2 py-1.5 text-sm">
-        <summary className="cursor-pointer font-semibold text-foreground">Notes & contrôles doublons</summary>
+        <summary className="min-h-10 cursor-pointer list-none py-1 font-semibold text-foreground outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+          Notes & contrôles doublons
+        </summary>
         <div className="mt-2 space-y-2 text-muted-foreground">
           <p className="whitespace-pre-wrap break-words">
             <span className="font-semibold text-foreground/90">Notes: </span>
@@ -177,8 +180,8 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
 
   return (
     <div className="min-w-0 space-y-4">
-      <div className="rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
-        <h1 className="text-2xl font-extrabold sm:text-3xl">Admin AI Cockpit — Concept intake</h1>
+      <div className="min-w-0 rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
+        <h1 className="text-2xl font-extrabold [overflow-wrap:anywhere] sm:text-3xl">Admin AI Cockpit — Concept intake</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Snapshot: {snapshot.generated_at || "non disponible"}
         </p>
@@ -188,12 +191,16 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
       <WarningList title="Avertissements snapshot" warnings={warnings} />
 
       {loading ? (
-        <div className="rounded-xl border border-border/70 bg-card/60 p-4 text-sm text-muted-foreground">
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex min-h-[5.5rem] items-center justify-center rounded-xl border border-border/70 bg-card/60 px-4 py-6 text-sm text-muted-foreground"
+        >
           Chargement du snapshot…
         </div>
       ) : (
         <>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <KpiCard label="Lignes (total)" value={String(kpis.total)} />
             <KpiCard label="Avec drapeaux risque" value={String(kpis.withRisk)} />
             <KpiCard label="Confiance basse" value={String(kpis.low)} />
@@ -204,7 +211,7 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0 lg:col-span-1">
               <Label htmlFor="ci-theme">Thème suggéré</Label>
               <Select value={theme} onValueChange={setTheme}>
-                <SelectTrigger id="ci-theme" className="mt-1 w-full min-w-0">
+                <SelectTrigger id="ci-theme" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Tous" />
                 </SelectTrigger>
                 <SelectContent>
@@ -220,7 +227,7 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="ci-confidence">Confiance</Label>
               <Select value={confidence} onValueChange={setConfidence}>
-                <SelectTrigger id="ci-confidence" className="mt-1 w-full min-w-0">
+                <SelectTrigger id="ci-confidence" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Toutes" />
                 </SelectTrigger>
                 <SelectContent>
@@ -236,7 +243,7 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="ci-decision">Décision humaine</Label>
               <Select value={humanDecision} onValueChange={setHumanDecision}>
-                <SelectTrigger id="ci-decision" className="mt-1 w-full min-w-0">
+                <SelectTrigger id="ci-decision" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Toutes" />
                 </SelectTrigger>
                 <SelectContent>
@@ -252,7 +259,7 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="ci-risk">Drapeau risque</Label>
               <Select value={riskFlag} onValueChange={setRiskFlag}>
-                <SelectTrigger id="ci-risk" className="mt-1 w-full min-w-0">
+                <SelectTrigger id="ci-risk" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Tous" />
                 </SelectTrigger>
                 <SelectContent>
@@ -282,23 +289,23 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
           </p>
 
           {filtered.length === 0 ? (
-            <p className="py-6 text-center text-sm text-muted-foreground">
+            <p className="rounded-xl border border-dashed border-border/80 bg-muted/20 px-4 py-8 text-center text-sm leading-relaxed text-muted-foreground">
               Aucune ligne ne correspond aux filtres.
             </p>
           ) : (
             <>
               <div className="hidden min-w-0 md:block">
-                <div className="overflow-x-auto rounded-xl border border-border/70">
+                <div className="touch-pan-x overflow-x-auto rounded-xl border border-border/70">
                   <table className="w-full min-w-[640px] border-collapse text-left text-sm">
                     <thead className="border-b border-border/80 bg-muted/40 text-xs uppercase tracking-wide text-muted-foreground">
                       <tr>
-                        <th className="p-2 font-bold">Terme</th>
-                        <th className="p-2 font-bold">Clé</th>
-                        <th className="p-2 font-bold">Thème</th>
-                        <th className="p-2 font-bold">Confiance</th>
-                        <th className="p-2 font-bold">Décision</th>
-                        <th className="p-2 font-bold">Risques</th>
-                        <th className="p-2 font-bold">Notes</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Terme</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Clé</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Thème</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Confiance</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Décision</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Risques</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Notes</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -307,22 +314,24 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
                           key={`${row.suggested_concept_key}-${idx}`}
                           className="border-b border-border/50 align-top"
                         >
-                          <td className="max-w-[140px] p-2 font-medium break-words">{row.raw_term}</td>
-                          <td className="max-w-[120px] p-2 font-mono text-xs break-all">
+                          <td className="max-w-[140px] min-w-0 px-2 py-2.5 font-medium break-words sm:px-3">
+                            {row.raw_term}
+                          </td>
+                          <td className="max-w-[120px] min-w-0 px-2 py-2.5 font-mono text-xs break-all sm:px-3">
                             {row.suggested_concept_key}
                           </td>
-                          <td className="p-2 text-xs break-words">{row.suggested_theme}</td>
-                          <td className="p-2">
+                          <td className="min-w-0 px-2 py-2.5 text-xs break-words sm:px-3">{row.suggested_theme}</td>
+                          <td className="min-w-0 px-2 py-2.5 sm:px-3">
                             <CockpitStatusBadge tone={confidenceTone(row.confidence)}>
                               {row.confidence || "—"}
                             </CockpitStatusBadge>
                           </td>
-                          <td className="p-2">
+                          <td className="min-w-0 px-2 py-2.5 sm:px-3">
                             <CockpitStatusBadge tone={decisionTone(row.human_decision)}>
                               {row.human_decision || "—"}
                             </CockpitStatusBadge>
                           </td>
-                          <td className="max-w-[200px] p-2">
+                          <td className="max-w-[200px] min-w-0 px-2 py-2.5 sm:px-3">
                             <div className="flex flex-wrap gap-1">
                               {row.risk_flags.length ? (
                                 row.risk_flags.map((f) => (
@@ -335,9 +344,9 @@ export function ConceptIntakeTab({ snapshot, loading, fetchWarning }: Props) {
                               )}
                             </div>
                           </td>
-                          <td className="max-w-[220px] p-2">
+                          <td className="max-w-[220px] min-w-0 px-2 py-2.5 sm:px-3">
                             <details>
-                              <summary className="cursor-pointer text-xs font-semibold text-primary">
+                              <summary className="min-h-9 cursor-pointer list-none text-xs font-semibold text-primary outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
                                 Voir
                               </summary>
                               <div className="mt-1 max-h-48 space-y-2 overflow-y-auto text-xs break-words text-muted-foreground">

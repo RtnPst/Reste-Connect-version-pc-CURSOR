@@ -3,6 +3,7 @@ import { KpiCard } from "@/components/admin-cockpit/KpiCard";
 import { ReadOnlyBanner } from "@/components/admin-cockpit/ReadOnlyBanner";
 import { WarningList } from "@/components/admin-cockpit/WarningList";
 import { CockpitStatusBadge } from "@/components/admin-cockpit/CockpitStatusBadge";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -69,7 +70,9 @@ function DraftCard({ row }: { row: QuestionDraftRow }) {
       </ol>
       <p className="mt-2 text-xs text-muted-foreground break-words">{row.explanation}</p>
       <details className="mt-3 rounded-lg border border-border/60 bg-background/50 px-2 py-1.5 text-sm">
-        <summary className="cursor-pointer font-semibold text-foreground">Risques / doublons / notes</summary>
+        <summary className="min-h-10 cursor-pointer list-none py-1 font-semibold text-foreground outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+          Risques / doublons / notes
+        </summary>
         <dl className="mt-2 space-y-2 text-xs">
           <div>
             <dt className="font-bold text-foreground/80">Ton & risque</dt>
@@ -153,8 +156,8 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
 
   return (
     <div className="min-w-0 space-y-4">
-      <div className="rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
-        <h1 className="text-2xl font-extrabold sm:text-3xl">Admin AI Cockpit — Question drafts</h1>
+      <div className="min-w-0 rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
+        <h1 className="text-2xl font-extrabold [overflow-wrap:anywhere] sm:text-3xl">Admin AI Cockpit — Question drafts</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Snapshot: {snapshot.generated_at || "non disponible"}
         </p>
@@ -164,12 +167,16 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
       <WarningList title="Avertissements snapshot" warnings={warnings} />
 
       {loading ? (
-        <div className="rounded-xl border border-border/70 bg-card/60 p-4 text-sm text-muted-foreground">
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex min-h-[5.5rem] items-center justify-center rounded-xl border border-border/70 bg-card/60 px-4 py-6 text-sm text-muted-foreground"
+        >
           Chargement du snapshot…
         </div>
       ) : (
         <>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <KpiCard label="Brouillons (total)" value={String(kpis.total)} />
             <KpiCard label="À revoir (humain)" value={String(kpis.pending)} />
             <KpiCard label="Concepts distincts" value={String(kpis.concepts)} />
@@ -179,7 +186,7 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="qd-concept">Concept key</Label>
               <Select value={conceptKey} onValueChange={setConceptKey}>
-                <SelectTrigger id="qd-concept" className="mt-1 w-full min-w-0">
+                <SelectTrigger id="qd-concept" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Tous" />
                 </SelectTrigger>
                 <SelectContent>
@@ -195,7 +202,7 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="qd-theme">Thème suggéré</Label>
               <Select value={theme} onValueChange={setTheme}>
-                <SelectTrigger id="qd-theme" className="mt-1 w-full min-w-0">
+                <SelectTrigger id="qd-theme" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Tous" />
                 </SelectTrigger>
                 <SelectContent>
@@ -211,7 +218,7 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="qd-diff">Difficulté</Label>
               <Select value={difficulty} onValueChange={setDifficulty}>
-                <SelectTrigger id="qd-diff" className="mt-1 w-full min-w-0">
+                <SelectTrigger id="qd-diff" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Toutes" />
                 </SelectTrigger>
                 <SelectContent>
@@ -227,7 +234,7 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
             <div className="min-w-0">
               <Label htmlFor="qd-decision">Décision humaine</Label>
               <Select value={humanDecision} onValueChange={setHumanDecision}>
-                <SelectTrigger id="qd-decision" className="mt-1 w-full min-w-0">
+                <SelectTrigger id="qd-decision" className="mt-1 h-auto min-h-10 w-full min-w-0 sm:min-h-9">
                   <SelectValue placeholder="Toutes" />
                 </SelectTrigger>
                 <SelectContent>
@@ -244,7 +251,7 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
               <Label htmlFor="qd-q">Recherche (texte question)</Label>
               <Input
                 id="qd-q"
-                className="mt-1 min-w-0"
+                className="mt-1 min-h-10 min-w-0 sm:min-h-9"
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 placeholder="Mot-clé dans l’intitulé…"
@@ -252,27 +259,45 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
             </div>
           </div>
 
+          <div className="flex flex-wrap gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="min-h-10 shrink-0"
+              onClick={() => {
+                setConceptKey("all");
+                setTheme("all");
+                setDifficulty("all");
+                setHumanDecision("all");
+                setQ("");
+              }}
+            >
+              Réinitialiser les filtres
+            </Button>
+          </div>
+
           <p className="text-sm text-muted-foreground">
             {filtered.length} / {snapshot.rows.length} brouillon(s) affiché(s)
           </p>
 
           {filtered.length === 0 ? (
-            <p className="py-6 text-center text-sm text-muted-foreground">
+            <p className="rounded-xl border border-dashed border-border/80 bg-muted/20 px-4 py-8 text-center text-sm leading-relaxed text-muted-foreground">
               Aucun brouillon ne correspond aux filtres.
             </p>
           ) : (
             <>
               <div className="hidden min-w-0 md:block">
-                <div className="overflow-x-auto rounded-xl border border-border/70">
+                <div className="touch-pan-x overflow-x-auto rounded-xl border border-border/70">
                   <table className="w-full min-w-[720px] border-collapse text-left text-sm">
                     <thead className="border-b border-border/80 bg-muted/40 text-xs uppercase tracking-wide text-muted-foreground">
                       <tr>
-                        <th className="p-2 font-bold">Concept</th>
-                        <th className="p-2 font-bold">Thème</th>
-                        <th className="p-2 font-bold">Diff.</th>
-                        <th className="p-2 font-bold">Décision</th>
-                        <th className="p-2 font-bold">Question & choix</th>
-                        <th className="p-2 font-bold">Notes</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Concept</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Thème</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Diff.</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Décision</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Question & choix</th>
+                        <th className="px-2 py-2.5 font-bold sm:px-3">Notes</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -283,17 +308,17 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
                             key={`${row.concept_key}-${row.question_type}-${idx}`}
                             className="border-b border-border/50 align-top"
                           >
-                            <td className="max-w-[100px] p-2 font-mono text-xs break-all">
+                            <td className="max-w-[100px] min-w-0 px-2 py-2.5 font-mono text-xs break-all sm:px-3">
                               {row.concept_key}
                             </td>
-                            <td className="p-2 text-xs break-words">{row.suggested_theme}</td>
-                            <td className="p-2 whitespace-nowrap">{row.difficulty}</td>
-                            <td className="p-2">
+                            <td className="min-w-0 px-2 py-2.5 text-xs break-words sm:px-3">{row.suggested_theme}</td>
+                            <td className="min-w-0 px-2 py-2.5 whitespace-nowrap sm:px-3">{row.difficulty}</td>
+                            <td className="min-w-0 px-2 py-2.5 sm:px-3">
                               <CockpitStatusBadge tone={decisionTone(row.human_decision)}>
                                 {row.human_decision?.trim() || "—"}
                               </CockpitStatusBadge>
                             </td>
-                            <td className="max-w-[320px] p-2">
+                            <td className="max-w-[320px] min-w-0 px-2 py-2.5 sm:px-3">
                               <p className="font-semibold break-words">{row.question}</p>
                               <ol className="mt-1 list-decimal pl-4 text-xs text-muted-foreground">
                                 {choices.map((c, i) => (
@@ -309,9 +334,9 @@ export function QuestionDraftsTab({ snapshot, loading, fetchWarning }: Props) {
                                 ))}
                               </ol>
                             </td>
-                            <td className="max-w-[240px] p-2">
+                            <td className="max-w-[240px] min-w-0 px-2 py-2.5 sm:px-3">
                               <details>
-                                <summary className="cursor-pointer text-xs font-semibold text-primary">
+                                <summary className="min-h-9 cursor-pointer list-none text-xs font-semibold text-primary outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
                                   Voir
                                 </summary>
                                 <div className="mt-1 max-h-48 space-y-2 overflow-y-auto text-xs break-words">
