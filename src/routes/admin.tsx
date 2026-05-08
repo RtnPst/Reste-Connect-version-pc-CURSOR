@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Check, Eye, EyeOff, Plus, Pencil, Save, X, Shield, Sparkles, Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -16,6 +16,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { CockpitTabs } from "@/components/admin-cockpit/CockpitTabs";
+import { KpiCard } from "@/components/admin-cockpit/KpiCard";
+import { ReadOnlyBanner } from "@/components/admin-cockpit/ReadOnlyBanner";
+import { WarningList } from "@/components/admin-cockpit/WarningList";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
@@ -26,6 +31,15 @@ import {
   insertAcceptedGeneratedQuestions,
   type AiPreviewQuestion,
 } from "@/utils/questions.functions";
+import {
+  EMPTY_META,
+  EMPTY_OVERVIEW,
+  loadMetaSnapshot,
+  loadOverviewSnapshot,
+  type AdminCockpitMeta,
+  type AdminCockpitOverview,
+  type CockpitTabId,
+} from "@/lib/admin-cockpit/loadSnapshot";
 
 type Difficulty = "facile" | "moyen" | "difficile";
 type QuestionStatus = "draft" | "review" | "live" | "archived";
@@ -91,6 +105,12 @@ const STATUS_LABELS: Record<QuestionStatus, string> = {
 };
 
 export const Route = createFileRoute("/admin")({
+  validateSearch: (search) => {
+    const tab = (search as Record<string, unknown>).tab;
+    return {
+      tab: tab === "legacy" ? "legacy" : "overview",
+    } as { tab: CockpitTabId };
+  },
   head: () => ({
     meta: [
       { title: "Administration — Tu captes ?" },
@@ -102,6 +122,8 @@ export const Route = createFileRoute("/admin")({
 });
 
 function AdminPage() {
+  const navigate = useNavigate({ from: "/admin" });
+  const search = Route.useSearch();
   const { session } = useAuth();
   const { loading: authLoading } = useRequireAuth();
   const { isAdmin, loading: roleLoading } = useIsAdmin();
@@ -125,6 +147,10 @@ function AdminPage() {
   const [generating, setGenerating] = useState(false);
   const [inserting, setInserting] = useState(false);
   const [previewRows, setPreviewRows] = useState<PreviewRow[] | null>(null);
+  const [snapshotLoading, setSnapshotLoading] = useState(true);
+  const [metaSnapshot, setMetaSnapshot] = useState<AdminCockpitMeta>(EMPTY_META);
+  const [overviewSnapshot, setOverviewSnapshot] = useState<AdminCockpitOverview>(EMPTY_OVERVIEW);
+  const [snapshotWarnings, setSnapshotWarnings] = useState<string[]>([]);
 
   const loadQuestions = async () => {
     setLoadingQ(true);
@@ -143,6 +169,23 @@ function AdminPage() {
 
   useEffect(() => {
     if (isAdmin) loadQuestions();
+  }, [isAdmin]);
+
+  useEffect(() => {
+    if (!isAdmin) return;
+    let cancelled = false;
+    (async () => {
+      setSnapshotLoading(true);
+      const [metaRes, overviewRes] = await Promise.all([loadMetaSnapshot(), loadOverviewSnapshot()]);
+      if (cancelled) return;
+      setMetaSnapshot(metaRes.data);
+      setOverviewSnapshot(overviewRes.data);
+      setSnapshotWarnings([metaRes.warning, overviewRes.warning].filter((v): v is string => !!v));
+      setSnapshotLoading(false);
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [isAdmin]);
 
   if (authLoading || roleLoading) {
@@ -372,10 +415,106 @@ function AdminPage() {
     return true;
   });
 
+  const activeTab: CockpitTabId = search.tab === "legacy" ? "legacy" : "overview";
+  const overviewKpis = Object.entries(overviewSnapshot.kpis ?? {});
+  const sourceSummary = {
+    total: metaSnapshot.sources.length,
+    missing: metaSnapshot.sources.filter((s) => !s.exists).length,
+  };
+
   return (
     <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
       <AppHeader />
-      <main className="container mx-auto w-full min-w-0 max-w-5xl overflow-x-clip px-3 py-8 sm:px-6 space-y-6">
+      <main className="container mx-auto w-full min-w-0 max-w-5xl overflow-x-clip px-3 py-8 sm:px-6">
+        <Tabs
+          value={activeTab}
+          onValueChange={(next) => {
+            const tab = next === "legacy" ? "legacy" : "overview";
+            navigate({
+              to: "/admin",
+              search: (prev) => ({ ...prev, tab }),
+              replace: true,
+            });
+          }}
+          className="space-y-4"
+        >
+          <CockpitTabs
+            value={activeTab}
+            onValueChange={(tab) => {
+              navigate({
+                to: "/admin",
+                search: (prev) => ({ ...prev, tab }),
+                replace: true,
+              });
+            }}
+          />
+
+          <TabsContent value="overview" className="space-y-4">
+            <div className="rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-6">
+              <h1 className="text-2xl font-extrabold sm:text-3xl">Admin AI Cockpit — Overview</h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Snapshot généré: {metaSnapshot.generated_at || "non disponible"}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Sources: {sourceSummary.total} · manquantes: {sourceSummary.missing}
+              </p>
+            </div>
+
+            <ReadOnlyBanner />
+
+            <WarningList
+              title="Avertissements snapshot"
+              warnings={[
+                ...metaSnapshot.warnings,
+                ...snapshotWarnings.map((code) => ({ code })),
+              ]}
+            />
+
+            {snapshotLoading ? (
+              <div className="rounded-xl border border-border/70 bg-card/60 p-4 text-sm text-muted-foreground">
+                Chargement du snapshot cockpit…
+              </div>
+            ) : (
+              <>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {overviewKpis.length ? (
+                    overviewKpis.map(([k, v]) => (
+                      <KpiCard key={k} label={k.replaceAll("_", " ")} value={String(v)} />
+                    ))
+                  ) : (
+                    <div className="rounded-xl border border-border/70 bg-card/60 p-4 text-sm text-muted-foreground sm:col-span-2 lg:col-span-3">
+                      Aucun KPI disponible (snapshot absent ou incomplet).
+                    </div>
+                  )}
+                </div>
+
+                {Array.isArray(overviewSnapshot.alerts) && overviewSnapshot.alerts.length > 0 && (
+                  <div className="space-y-2 rounded-xl border border-border/70 bg-card/60 p-4">
+                    <h2 className="text-sm font-bold uppercase tracking-wide text-muted-foreground">
+                      Alertes dérivées
+                    </h2>
+                    <div className="space-y-2">
+                      {overviewSnapshot.alerts.map((alert, idx) => (
+                        <div
+                          key={`${alert.source}-${alert.item}-${idx}`}
+                          className="rounded-lg border border-border/70 p-3"
+                        >
+                          <p className="text-sm font-semibold">
+                            {alert.source} · {alert.item}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {alert.severity} — {alert.reason}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </TabsContent>
+
+          <TabsContent value="legacy" className="space-y-6 mt-0">
         <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <div className="min-w-0">
             <h1 className="text-2xl sm:text-4xl font-extrabold flex flex-wrap items-center gap-2 break-words">
@@ -952,6 +1091,8 @@ function AdminPage() {
             ))
           )}
         </div>
+          </TabsContent>
+        </Tabs>
       </main>
     </div>
   );
