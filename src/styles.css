@@ -60,6 +60,12 @@
   --color-theme-pop-soft: var(--theme-pop-soft);
   --color-theme-tech: var(--theme-tech);
   --color-theme-tech-soft: var(--theme-tech-soft);
+  --color-theme-gaming: var(--theme-gaming);
+  --color-theme-gaming-soft: var(--theme-gaming-soft);
+  --color-theme-trends: var(--theme-trends);
+  --color-theme-trends-soft: var(--theme-trends-soft);
+  --color-theme-relations: var(--theme-relations);
+  --color-theme-relations-soft: var(--theme-relations-soft);
 
   --color-rank-bronze: var(--rank-bronze);
   --color-rank-silver: var(--rank-silver);
@@ -122,6 +128,12 @@
   --theme-pop-soft: #78350f;
   --theme-tech: #22c55e;
   --theme-tech-soft: #14532d;
+  --theme-gaming: #14b8a6;
+  --theme-gaming-soft: #134e4a;
+  --theme-trends: #d946ef;
+  --theme-trends-soft: #86198f;
+  --theme-relations: #fb7185;
+  --theme-relations-soft: #9f1239;
 
   /* Couleurs des paliers (En découverte → Maître du jeu, variables inchangées pour le thème) */
   --rank-bronze: oklch(0.55 0.12 50);
@@ -198,6 +210,12 @@
   --theme-pop-soft: #78350f;
   --theme-tech: #22c55e;
   --theme-tech-soft: #14532d;
+  --theme-gaming: #14b8a6;
+  --theme-gaming-soft: #134e4a;
+  --theme-trends: #d946ef;
+  --theme-trends-soft: #86198f;
+  --theme-relations: #fb7185;
+  --theme-relations-soft: #9f1239;
 
   --rank-bronze: oklch(0.65 0.12 50);
   --rank-silver: oklch(0.8 0.02 250);
@@ -263,6 +281,12 @@ html.dark.high-contrast {
   --theme-pop-soft: #713f12;
   --theme-tech: #86efac;
   --theme-tech-soft: #14532d;
+  --theme-gaming: #5eead4;
+  --theme-gaming-soft: #134e4a;
+  --theme-trends: #e879f9;
+  --theme-trends-soft: #86198f;
+  --theme-relations: #fda4af;
+  --theme-relations-soft: #9f1239;
 
   --sidebar: #000000;
   --sidebar-foreground: #ffffff;

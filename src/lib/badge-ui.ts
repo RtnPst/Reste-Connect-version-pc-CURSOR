@@ -34,8 +34,10 @@ const BADGE_UI: Record<string, BadgeUiCopy> = {
   },
   pop_expert: {
     name: "Culture internet validée",
-    description: "5 quiz Culture internet à 7+ / 10. Mèmes, trends, tu captes le web.",
-    unlockHint: "5 quiz Culture internet à 7+ / 10.",
+    description:
+      "5 parties à 7+ / 10 sur les thèmes culture web (Gaming, Mèmes & trends, Relations) — les anciennes parties « Culture internet » comptent aussi.",
+    unlockHint:
+      "5 quiz à 7+ / 10 en cumulant Gaming, Mèmes & trends, Relations (ou d’anciennes parties enregistrées sous Culture internet).",
   },
   tech_expert: {
     name: "Tech & IA : validé",

@@ -1,5 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
-import type { ThemeKey } from "@/lib/themes";
+import { THEMES, type ThemeKey } from "@/lib/themes";
 
 type PlayableQuestion = {
   id: string;
@@ -37,12 +37,10 @@ export async function getActiveQuestionCounts(): Promise<Record<ThemeKey, number
   const { data, error } = await supabase.rpc("get_active_question_counts");
   if (error) throw error;
 
-  const counts: Record<ThemeKey, number> = {
-    vocabulaire: 0,
-    reseaux_sociaux: 0,
-    culture_pop: 0,
-    tech: 0,
-  };
+  const counts = {} as Record<ThemeKey, number>;
+  for (const k of Object.keys(THEMES) as ThemeKey[]) {
+    counts[k] = 0;
+  }
 
   for (const row of data ?? []) {
     const key = row.theme as ThemeKey;

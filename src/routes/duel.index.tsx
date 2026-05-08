@@ -6,7 +6,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
-import { THEMES, THEME_KEYS, type ThemeKey } from "@/lib/themes";
+import { THEMES, PLAYABLE_THEME_KEYS, type ThemeKey } from "@/lib/themes";
 
 const QUESTION_COUNT = 10;
 
@@ -74,7 +74,7 @@ function DuelHomePage() {
             Le mode Duel arrive bientôt. On prépare les défis entre proches.
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
-            {THEME_KEYS.map((k) => (
+            {PLAYABLE_THEME_KEYS.map((k) => (
               <Button
                 key={k}
                 onClick={() => createDuel(k)}

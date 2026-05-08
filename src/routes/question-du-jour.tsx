@@ -13,6 +13,7 @@ import { checkAnswer } from "@/lib/quiz-security";
 import { speak } from "@/lib/speech";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { toDisplayChoices } from "@/lib/choice-order";
+import { parisCalendarDate } from "@/lib/paris-calendar";
 
 type Q = {
   id: string;
@@ -46,55 +47,92 @@ function DailyQuestionPage() {
   const [xpGained, setXpGained] = useState<number | null>(null);
   /** After answering, sheet “Continuer” reveals the recap (layout-only state). */
   const [dailyRecap, setDailyRecap] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
     (async () => {
-      const today = new Date().toISOString().slice(0, 10);
+      if (!cancelled) setLoading(true);
+      setLoadError(null);
+      const todayParis = parisCalendarDate();
+
       if (user) {
-        const tomorrow = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
+        const since = new Date(Date.now() - 48 * 3600 * 1000).toISOString();
         const { data: attempts } = await supabase
           .from("quiz_attempts")
-          .select("id")
+          .select("completed_at")
           .eq("user_id", user.id)
           .eq("mode", "daily")
-          .gte("completed_at", `${today}T00:00:00.000Z`)
-          .lt("completed_at", `${tomorrow}T00:00:00.000Z`)
-          .limit(1);
-        if ((attempts?.length ?? 0) > 0) {
-          setAlreadyCompletedToday(true);
-          setLoading(false);
+          .gte("completed_at", since)
+          .order("completed_at", { ascending: false })
+          .limit(25);
+        const doneToday = (attempts ?? []).some(
+          (a) => parisCalendarDate(new Date(a.completed_at)) === todayParis,
+        );
+        if (doneToday) {
+          if (!cancelled) {
+            setAlreadyCompletedToday(true);
+            setLoading(false);
+          }
           return;
         }
       }
 
-      const { data: daily } = await supabase
-        .from("daily_questions")
-        .select("question_id")
-        .eq("active_date", today)
-        .maybeSingle();
+      try {
+        const { data: daily, error: dailyErr } = await supabase
+          .from("daily_questions")
+          .select("question_id")
+          .eq("active_date", todayParis)
+          .maybeSingle();
 
-      let questionId = daily?.question_id;
-      if (!questionId) {
-        // Fallback: pick a random question
-        const anyQ = await getPlayableQuestions({ limit: 1 });
-        questionId = anyQ?.[0]?.id;
-      }
+        if (dailyErr) throw dailyErr;
 
-      if (questionId) {
-        const data = await getPlayableQuestions({ ids: [questionId], limit: 1 });
-        if (data[0]) {
-          const row = data[0];
+        const scheduledId = daily?.question_id ?? null;
+
+        /** Resolved only among live/playable rows (RPC filters status = live). */
+        let row:
+          | Awaited<ReturnType<typeof getPlayableQuestions>>[number]
+          | undefined;
+
+        if (scheduledId) {
+          const scheduled = await getPlayableQuestions({ ids: [scheduledId], limit: 1 });
+          row = scheduled[0];
+        }
+
+        // If nothing scheduled today, or scheduled ID is not playable (e.g. archived), pick any playable question.
+        if (!row) {
+          const fallback = await getPlayableQuestions({ limit: 1 });
+          row = fallback[0];
+        }
+
+        if (cancelled) return;
+
+        if (row) {
+          const rawChoices = row.choices;
+          const choicesArr = Array.isArray(rawChoices) ? rawChoices.map(String) : [];
+          if (choicesArr.length === 0) {
+            throw new Error("Question sans choix valides");
+          }
           setQuestion({
             id: row.id,
             theme: row.theme,
             question: row.question,
-            ...toDisplayChoices(row.choices),
+            ...toDisplayChoices(choicesArr),
             explanation: row.explanation,
           });
         }
+      } catch (e) {
+        console.error("Daily question load failed", e);
+        if (!cancelled) {
+          setLoadError(e instanceof Error ? e.message : "Chargement impossible");
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-      setLoading(false);
     })();
+    return () => {
+      cancelled = true;
+    };
   }, [user]);
 
   useEffect(() => {
@@ -251,8 +289,19 @@ function DailyQuestionPage() {
               Rien n’est calé pour aujourd’hui
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              La question du jour n’est pas encore publiée, ou le jeu n’a pas pu charger de contenu. Ce n’est pas lié à
-              ton compte : tu peux quand même t’entraîner en quiz.
+              {loadError ? (
+                <>
+                  <span className="font-semibold text-destructive">{loadError}</span>
+                  <span className="block mt-2">
+                    Vérifie ta connexion ou réessaie. Tu peux aussi lancer un quiz par thème en attendant.
+                  </span>
+                </>
+              ) : (
+                <>
+                  La question du jour n’est pas encore publiée, ou le jeu n’a pas pu charger de contenu. Ce n’est pas
+                  lié à ton compte : tu peux quand même t’entraîner en quiz.
+                </>
+              )}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Button asChild variant="accent" size="lg" className="font-extrabold">

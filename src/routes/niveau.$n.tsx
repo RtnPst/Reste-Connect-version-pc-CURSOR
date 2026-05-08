@@ -75,6 +75,23 @@ function LevelPage() {
   const [levelUpTo, setLevelUpTo] = useState<number | null>(null);
   const [replayKey, setReplayKey] = useState(0);
 
+  // Same route component instance when only $n changes: reset run state or "finished"
+  // stays true and answers from the previous level pair with the new level param.
+  useEffect(() => {
+    setFinished(false);
+    setCurrentIndex(0);
+    setSelectedIndex(null);
+    setRevealedCorrectIndex(null);
+    setCheckingAnswer(false);
+    setAnswerError(null);
+    setAnswers([]);
+    setXpGained(null);
+    setLevelUpTo(null);
+    setError(null);
+    setQuestions([]);
+    setLoading(true);
+  }, [level]);
+
   // Charger les questions
   useEffect(() => {
     if (locked) return;

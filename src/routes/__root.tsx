@@ -77,7 +77,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="min-w-0 overflow-x-clip bg-background pb-20 antialiased md:pb-0">
+      <body className="min-w-0 overflow-x-clip bg-background pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] antialiased md:pb-0">
         {children}
         <Scripts />
       </body>

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/statistiques")({
 
 type Attempt = {
   id: string;
-  theme: ThemeKey | null;
+  theme: string | null;
   score: number;
   total_questions: number;
   completed_at: string;
@@ -71,16 +71,19 @@ function StatsPage() {
   const byTheme: Record<ThemeKey, { count: number; correct: number; total: number }> = {
     vocabulaire: { count: 0, correct: 0, total: 0 },
     reseaux_sociaux: { count: 0, correct: 0, total: 0 },
+    gaming: { count: 0, correct: 0, total: 0 },
+    trends_pop_culture: { count: 0, correct: 0, total: 0 },
+    relations_lifestyle: { count: 0, correct: 0, total: 0 },
     culture_pop: { count: 0, correct: 0, total: 0 },
     tech: { count: 0, correct: 0, total: 0 },
   };
   for (const a of attempts) {
     if (!a.theme) continue;
-    const t = byTheme[a.theme];
-    if (!t) continue;
-    t.count += 1;
-    t.correct += a.score;
-    t.total += a.total_questions;
+    const slot = byTheme[a.theme as ThemeKey];
+    if (!slot) continue;
+    slot.count += 1;
+    slot.correct += a.score;
+    slot.total += a.total_questions;
   }
 
   const last10 = attempts.slice(0, 10).reverse();

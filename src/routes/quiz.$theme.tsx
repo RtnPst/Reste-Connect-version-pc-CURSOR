@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ArrowRight, Home, RotateCcw, Share2 } from "lucide-react";
 import { toast } from "sonner";
@@ -13,14 +13,6 @@ import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare, stopMusic } from "@/lib/sfx";
 import { Confetti } from "@/components/Confetti";
-import {
-  culturePopPisteEmoji,
-  culturePopPisteLabel,
-  getCulturePopPisteForQuestion,
-  parseCulturePopPisteFromSearch,
-  pickCulturePopQuestions,
-  type CulturePopPisteSlug,
-} from "@/lib/culture-pop";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { displayIndexFromOriginal, toDisplayChoices } from "@/lib/choice-order";
 
@@ -38,7 +30,21 @@ const DAILY_XP_BONUS = 20;
 const LUCKY_XP_CHANCE = 0.1;
 
 export const Route = createFileRoute("/quiz/$theme")({
-  validateSearch: (search: Record<string, unknown>) => parseCulturePopPisteFromSearch(search),
+  validateSearch: () => ({}),
+  beforeLoad: ({ params, search }) => {
+    if (params.theme !== "culture_pop") return;
+    const raw = (search as Record<string, unknown>).piste;
+    const piste = typeof raw === "string" ? raw.trim().toLowerCase() : "";
+    let target: ThemeKey = "trends_pop_culture";
+    if (piste === "gaming") target = "gaming";
+    else if (piste === "relations") target = "relations_lifestyle";
+    else if (piste === "internet" || piste === "musique") target = "trends_pop_culture";
+    throw redirect({
+      to: "/quiz/$theme",
+      params: { theme: target },
+      replace: true,
+    });
+  },
   head: ({ params }) => {
     const t = THEMES[params.theme as ThemeKey];
     return {
@@ -55,9 +61,6 @@ function QuizPage() {
   const { theme } = Route.useParams();
   const themeKey = theme as ThemeKey;
   const themeMeta = THEMES[themeKey];
-  const search = Route.useSearch();
-  const culturePiste: CulturePopPisteSlug | undefined =
-    themeKey === "culture_pop" ? search.piste : undefined;
   const navigate = useNavigate();
   const { user, profile, refreshProfile } = useAuth();
 
@@ -86,22 +89,15 @@ function QuizPage() {
       return;
     }
     (async () => {
-      const useBigPool = themeKey === "culture_pop" && Boolean(culturePiste);
-      const fetchLimit = useBigPool ? 100 : QUESTION_COUNT;
-      const data = await getPlayableQuestions({ theme: themeKey, limit: fetchLimit });
+      const data = await getPlayableQuestions({ theme: themeKey, limit: QUESTION_COUNT });
       if (!data.length) {
         setError("Impossible de charger les questions.");
         setLoading(false);
         return;
       }
 
-      const picked =
-        themeKey === "culture_pop"
-          ? pickCulturePopQuestions(data, culturePiste, QUESTION_COUNT)
-          : data;
-
       setQuestions(
-        picked.map((q) => {
+        data.map((q) => {
           const shuffled = toDisplayChoices(q.choices);
           return {
             ...q,
@@ -114,7 +110,7 @@ function QuizPage() {
     })();
 
     return () => stopSpeaking();
-  }, [themeKey, themeMeta, culturePiste]);
+  }, [themeKey, themeMeta]);
 
   const current = questions[currentIndex];
   const progress = useMemo(
@@ -256,7 +252,6 @@ function QuizPage() {
         questions={questions}
         answers={answers}
         themeKey={themeKey}
-        culturePopPiste={culturePiste}
         isLoggedIn={!!user}
         xpGained={xpGained}
         levelUpTo={levelUpTo}
@@ -279,7 +274,6 @@ function QuizPage() {
             navigate({
               to: "/quiz/$theme",
               params: { theme: themeKey },
-              search: culturePiste ? { piste: culturePiste } : {},
             });
           }, 50);
         }}
@@ -301,8 +295,6 @@ function QuizPage() {
       ? "Plus qu'un jour pour battre ton record."
       : "Reviens demain pour continuer ta série.";
 
-  const cultureTagLine =
-    themeKey === "culture_pop" ? getCulturePopPisteForQuestion(current.question) : null;
   const flowStepKey = `${current.id}-${currentIndex}`;
 
   return (
@@ -316,25 +308,12 @@ function QuizPage() {
           <span className="truncate">{themeMeta.short}</span>
         </>
       }
-      headerChip={
-        themeKey === "culture_pop" && culturePiste ? (
-          <span
-            className="hidden max-w-[40%] truncate rounded-full border border-border/80 bg-muted/40 px-2 py-0.5 text-[10px] font-bold sm:inline sm:text-xs"
-            style={{ color: `var(--${themeMeta.colorVar})` }}
-          >
-            {culturePopPisteEmoji(culturePiste)} {culturePopPisteLabel(culturePiste)}
-          </span>
-        ) : undefined
-      }
       streak={streak}
       streakTitle={streakMessage}
       progressPercent={progress}
       stepFraction={`${currentIndex + 1}/${questions.length}`}
       flowStepKey={flowStepKey}
       questionText={current.question}
-      questionSubtitle={
-        cultureTagLine ? <>{culturePopPisteLabel(cultureTagLine)}</> : undefined
-      }
       choices={current.choices}
       selectedIndex={selectedIndex}
       revealedCorrectIndex={revealedCorrectIndex}
@@ -483,7 +462,6 @@ function ResultsScreen({
   questions,
   answers,
   themeKey,
-  culturePopPiste,
   isLoggedIn,
   xpGained,
   levelUpTo,
@@ -496,7 +474,6 @@ function ResultsScreen({
   questions: Question[];
   answers: { questionId: string; chosen: number; correct: number }[];
   themeKey: ThemeKey;
-  culturePopPiste?: CulturePopPisteSlug;
   isLoggedIn: boolean;
   xpGained: number | null;
   levelUpTo: number | null;
@@ -667,10 +644,7 @@ function ResultsScreen({
           </div>
         )}
 
-        <p className="text-center text-sm text-muted-foreground mt-8">
-          Thème : {themeMeta.label}
-          {culturePopPiste ? ` · ${culturePopPisteLabel(culturePopPiste)}` : ""}
-        </p>
+        <p className="text-center text-sm text-muted-foreground mt-8">Thème : {themeMeta.label}</p>
       </main>
     </div>
   );

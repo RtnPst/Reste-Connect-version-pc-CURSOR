@@ -12,7 +12,14 @@ export type AiPreviewQuestion = {
   explanation: string;
 };
 
-type Theme = "vocabulaire" | "reseaux_sociaux" | "culture_pop" | "tech";
+type Theme =
+  | "vocabulaire"
+  | "reseaux_sociaux"
+  | "gaming"
+  | "trends_pop_culture"
+  | "relations_lifestyle"
+  | "culture_pop"
+  | "tech";
 type Difficulty = "facile" | "moyen" | "difficile";
 
 /**
@@ -87,8 +94,11 @@ function missingAiConfigMessage(): string {
 const THEME_LABELS: Record<Theme, string> = {
   vocabulaire: "Vocabulaire des jeunes (mots d'argot, expressions)",
   reseaux_sociaux: "Réseaux sociaux (TikTok, Instagram, Snapchat, BeReal, etc.)",
+  gaming: "Gaming (jeux vidéo, streams, culture joueur)",
+  trends_pop_culture: "Mèmes & culture web viral (trends, musique, drama léger)",
+  relations_lifestyle: "Relations & lifestyle en ligne (love, crush, codes)",
   culture_pop:
-    "Culture internet (mèmes, gaming, musique, tendances web, relations en ligne, créateurs)",
+    "Culture internet — ancien regroupement (mèmes, gaming, musique, tendances, relations)",
   tech: "Tech & IA (smartphones, IA, applis, sécurité, quotidien numérique)",
 };
 

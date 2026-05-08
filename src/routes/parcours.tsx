@@ -101,6 +101,9 @@ function ProfilePage() {
       const byTheme: Record<ThemeKey, { correct: number; total: number; count: number }> = {
         vocabulaire: { correct: 0, total: 0, count: 0 },
         reseaux_sociaux: { correct: 0, total: 0, count: 0 },
+        gaming: { correct: 0, total: 0, count: 0 },
+        trends_pop_culture: { correct: 0, total: 0, count: 0 },
+        relations_lifestyle: { correct: 0, total: 0, count: 0 },
         culture_pop: { correct: 0, total: 0, count: 0 },
         tech: { correct: 0, total: 0, count: 0 },
       };

@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useId, useState } from "react";
 import { Link, useRouter } from "@tanstack/react-router";
 import { LogOut, Settings, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -38,14 +38,14 @@ function HeaderBottomWave() {
   );
 }
 
-function HeaderBrandMark({ compact }: { compact: boolean }) {
+function HeaderBrandMark() {
   const [useFallback, setUseFallback] = useState(false);
   if (useFallback) {
     return (
       <span
         className={cn(
           "inline-flex shrink-0 items-center font-black tracking-tight text-violet-100 drop-shadow-md",
-          compact ? "text-xs" : "text-sm sm:text-base",
+          "text-xs sm:text-sm",
         )}
         aria-hidden
       >
@@ -61,36 +61,22 @@ function HeaderBrandMark({ compact }: { compact: boolean }) {
       height={240}
       decoding="async"
       className={cn(
-        "app-header-logo-img block h-28 w-auto max-w-[min(32rem,calc(100vw-3rem))] shrink-0 bg-transparent object-contain object-center align-middle motion-reduce:transition-none",
+        "app-header-logo-img block h-24 w-auto max-w-[min(30rem,calc(100vw-3rem))] shrink-0 bg-transparent object-contain object-center align-middle motion-reduce:transition-none",
         "transition-transform duration-200 ease-out group-hover:scale-[1.03] motion-reduce:group-hover:scale-100",
-        compact
-          ? "h-20 sm:h-16 sm:max-w-[min(24rem,calc(100vw-5rem))]"
-          : "sm:h-[6.2rem] sm:max-w-[min(30rem,calc(100vw-5rem))] md:h-[6.8rem] md:max-w-[32rem]",
+        "sm:h-[5.3rem] sm:max-w-[min(26.5rem,calc(100vw-5rem))] md:h-[5.9rem] md:max-w-[28.5rem]",
       )}
       onError={() => setUseFallback(true)}
     />
   );
 }
 
-const SCROLL_COMPACT_PX = 36;
-
 export function AppHeader() {
   const { user, profile, signOut } = useAuth();
   const { isAdmin } = useIsAdmin();
   const router = useRouter();
-  const [scrolled, setScrolled] = useState(false);
   const level = Math.floor((profile?.total_xp ?? 0) / 100) + 1;
   const currentLevelXp = (profile?.total_xp ?? 0) % 100;
   const progressPct = currentLevelXp;
-
-  useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > SCROLL_COMPACT_PX);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const handleSignOut = async () => {
     await signOut();
@@ -100,15 +86,13 @@ export function AppHeader() {
   return (
     <header
       className="app-header-cinematic sticky top-0 z-40 overflow-x-clip overflow-y-visible"
-      data-scrolled={scrolled ? "true" : undefined}
     >
       <div className="app-header-cinematic__bg" aria-hidden />
       <div className="app-header-cinematic__stars" aria-hidden />
       <div
         className={cn(
           "relative z-[1] container mx-auto flex w-full min-w-0 max-w-5xl items-center justify-between gap-3 px-3 transition-[min-height,padding] duration-200 ease-out sm:gap-4 sm:px-5 md:px-6",
-          "min-h-[4rem] py-2 sm:min-h-[4.5rem] sm:py-2.5 md:min-h-[4.75rem]",
-          scrolled && "min-h-[3.35rem] py-1.5 sm:min-h-[3.85rem] sm:py-2 md:min-h-[4rem]",
+          "min-h-[3.7rem] py-1.5 sm:min-h-[4.15rem] sm:py-2 md:min-h-[4.35rem]",
           "pt-[max(0.25rem,env(safe-area-inset-top,0px))]",
         )}
       >
@@ -127,7 +111,7 @@ export function AppHeader() {
                 "max-w-[min(48%,calc(100vw-12rem))] sm:max-w-[min(52%,19rem)]",
               )}
             >
-              <HeaderBrandMark compact={scrolled} />
+              <HeaderBrandMark />
               <span className="sr-only">Tu captes ? — Accueil</span>
             </Link>
 
@@ -149,7 +133,7 @@ export function AppHeader() {
                   <p
                     className={cn(
                       "max-w-[7.25rem] truncate text-right font-extrabold leading-tight text-slate-50 transition-[font-size,max-width] duration-300 sm:max-w-[8.5rem]",
-                      scrolled ? "text-[11px] sm:text-xs" : "text-xs sm:text-[13px]",
+                      "text-[11px] sm:text-[12.5px]",
                     )}
                   >
                     {profile?.display_name ?? "Mon profil"}
@@ -157,7 +141,7 @@ export function AppHeader() {
                   <span
                     className={cn(
                       "shrink-0 rounded-full border border-violet-400/35 bg-violet-600/25 px-1.5 py-px font-bold leading-none text-violet-100 shadow-[0_0_10px_rgba(139,92,246,0.25)] transition-[font-size,padding] duration-300",
-                      scrolled ? "text-[9px] sm:text-[10px]" : "text-[10px] sm:text-[11px]",
+                      "text-[10px] sm:text-[10.5px]",
                     )}
                   >
                     Niv. {level}
@@ -166,7 +150,7 @@ export function AppHeader() {
                 <p
                   className={cn(
                     "mt-0.5 text-right font-semibold tabular-nums text-slate-400 transition-[font-size] duration-300",
-                    scrolled ? "text-[10px] sm:text-[11px]" : "text-[11px] sm:text-xs",
+                    "text-[10.5px] sm:text-[11.5px]",
                   )}
                 >
                   {currentLevelXp} / 100 XP
@@ -174,7 +158,7 @@ export function AppHeader() {
                 <div
                   className={cn(
                     "app-header-xp-track ml-auto mt-1 w-full max-w-[8rem] overflow-hidden transition-[height,max-width,margin-top] duration-300 sm:max-w-[9rem]",
-                    scrolled ? "h-1 sm:h-1.5" : "h-1.5 sm:h-2",
+                    "h-[5px] sm:h-[7px]",
                   )}
                 >
                   <div
@@ -186,7 +170,7 @@ export function AppHeader() {
                 <div
                   className={cn(
                     "mt-1 flex items-center justify-end gap-1 border-t border-white/10 pt-1 transition-[gap,padding,margin] duration-300 sm:mt-1.5 sm:pt-1.5",
-                    scrolled ? "sm:gap-1" : "sm:gap-1.5",
+                    "sm:gap-1.25",
                   )}
                 >
                   <Button
@@ -196,7 +180,7 @@ export function AppHeader() {
                     aria-label="Réglages"
                     className={cn(
                       "app-header-icon-ring shrink-0 rounded-full transition-[width,height] duration-300 [&_svg]:size-[1.05rem] sm:[&_svg]:size-[1.1rem]",
-                      scrolled ? "h-7 w-7 sm:h-8 sm:w-8" : "h-8 w-8 sm:h-9 sm:w-9",
+                      "h-[1.9rem] w-[1.9rem] sm:h-[2.1rem] sm:w-[2.1rem]",
                       "hover:bg-violet-500/20 hover:text-foreground",
                     )}
                   >
@@ -212,7 +196,7 @@ export function AppHeader() {
                       aria-label="Administration"
                       className={cn(
                         "app-header-icon-ring shrink-0 rounded-full transition-[width,height] duration-300 [&_svg]:size-[1.05rem] sm:[&_svg]:size-[1.1rem]",
-                        scrolled ? "h-7 w-7 sm:h-8 sm:w-8" : "h-8 w-8 sm:h-9 sm:w-9",
+                        "h-[1.9rem] w-[1.9rem] sm:h-[2.1rem] sm:w-[2.1rem]",
                         "hover:bg-violet-500/20 hover:text-foreground",
                       )}
                     >
@@ -228,7 +212,7 @@ export function AppHeader() {
                     aria-label="Se déconnecter"
                     className={cn(
                       "app-header-icon-ring shrink-0 rounded-full transition-[width,height] duration-300 [&_svg]:size-[1.05rem] sm:[&_svg]:size-[1.1rem]",
-                      scrolled ? "h-7 w-7 sm:h-8 sm:w-8" : "h-8 w-8 sm:h-9 sm:w-9",
+                      "h-[1.9rem] w-[1.9rem] sm:h-[2.1rem] sm:w-[2.1rem]",
                       "text-slate-300 hover:border-orange-400/50 hover:bg-orange-950/30 hover:text-orange-200",
                     )}
                   >
@@ -246,11 +230,10 @@ export function AppHeader() {
               className={cn(
                 "group flex min-w-0 shrink-0 items-center bg-transparent p-0 outline-offset-4 ring-0",
                 "max-w-[min(100%,calc(100vw-6.75rem))] sm:max-w-none",
-                scrolled && "max-w-[min(100%,calc(100vw-6.25rem))] sm:max-w-none",
                 "transition-transform duration-200 ease-out hover:scale-[1.02] active:scale-[0.99] motion-reduce:transition-none motion-reduce:hover:scale-100",
               )}
             >
-              <HeaderBrandMark compact={scrolled} />
+              <HeaderBrandMark />
               <span className="sr-only">Tu captes ? — Accueil</span>
             </Link>
             <nav className="flex min-w-0 flex-1 justify-end overflow-hidden">
@@ -263,7 +246,7 @@ export function AppHeader() {
                   "transition-[height,padding,background-color,border-color,color,transform,box-shadow] duration-200",
                   "hover:border-white/22 hover:bg-zinc-800 hover:text-white hover:shadow-[0_1px_0_0_rgba(255,255,255,0.08)_inset,0_4px_14px_-4px_rgba(0,0,0,0.55)]",
                   "focus-visible:ring-2 focus-visible:ring-white/25 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                  scrolled ? "h-9 sm:h-10 sm:px-4" : "h-10 sm:h-11 sm:px-5",
+                  "h-[2.35rem] sm:h-[2.6rem] sm:px-[1.12rem]",
                 )}
               >
                 <Link to="/connexion">Se connecter</Link>

@@ -39,13 +39,13 @@ function PlayPage() {
             accent="bg-primary-soft text-primary"
           />
           <ModeCard
-            to="/question-du-jour"
-            icon={<Calendar className="size-8" />}
-            title="Daily"
-            description="Une minute pour garder ta série."
-            actionLabel="Faire ma daily"
-            accent="bg-success-soft text-success"
-            actionTone="text-success"
+            to="/quiz"
+            icon={<GraduationCap className="size-8" />}
+            title="Quiz par thème"
+            description="Choisis un thème et enchaîne."
+            actionLabel="Lancer un thème"
+            accent="bg-fuchsia-500/15 text-fuchsia-300"
+            actionTone="text-fuchsia-300"
           />
           <ModeCard
             to="/marathon"
@@ -57,15 +57,6 @@ function PlayPage() {
             actionTone="text-warning"
           />
           <ModeCard
-            to="/quiz"
-            icon={<GraduationCap className="size-8" />}
-            title="Quiz par thème"
-            description="Choisis un thème et enchaîne."
-            actionLabel="Lancer un thème"
-            accent="bg-fuchsia-500/15 text-fuchsia-300"
-            actionTone="text-fuchsia-300"
-          />
-          <ModeCard
             to={user ? "/duel" : "/connexion"}
             icon={<Swords className="size-8" />}
             title="Duel"
@@ -73,8 +64,17 @@ function PlayPage() {
             actionLabel="Lancer un défi"
             accent="bg-cyan-500/15 text-cyan-300"
             actionTone="text-cyan-300"
-            cardClassName="col-span-2 lg:col-span-1"
             kicker="Bientôt dispo !"
+          />
+          <ModeCard
+            to="/question-du-jour"
+            icon={<Calendar className="size-8" />}
+            title="Daily"
+            description="Une minute pour garder ta série."
+            actionLabel="Faire ma daily"
+            accent="bg-success-soft text-success"
+            actionTone="text-success"
+            cardClassName="col-span-2 lg:col-span-1"
           />
         </div>
       </main>

@@ -44,10 +44,12 @@ type AuthContextValue = {
   user: User | null;
   session: Session | null;
   profile: Profile | null;
+  isEmailConfirmed: boolean;
   loading: boolean;
   signUp: (email: string, password: string, displayName: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
+  resendConfirmationEmail: () => Promise<void>;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
   updatePreferences: (
@@ -142,6 +144,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (error) throw error;
   };
 
+  const resendConfirmationEmail = async () => {
+    const email = user?.email?.trim();
+    if (!email) throw new Error("Adresse email introuvable pour ce compte.");
+    const { error } = await supabase.auth.resend({
+      type: "signup",
+      email,
+      options: { emailRedirectTo: `${authRedirectBase}/` },
+    });
+    if (error) throw error;
+  };
+
   const signOut = async () => {
     await supabase.auth.signOut();
     setProfile(null);
@@ -174,10 +187,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         session,
         profile,
+        isEmailConfirmed: Boolean(user?.email_confirmed_at),
         loading,
         signUp,
         signIn,
         signInWithGoogle,
+        resendConfirmationEmail,
         signOut,
         refreshProfile,
         updatePreferences,

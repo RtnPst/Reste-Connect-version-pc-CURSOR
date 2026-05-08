@@ -24,15 +24,25 @@ export const Route = createFileRoute("/reglages")({
 });
 
 function ProfilePage() {
-  const { profile, updatePreferences } = useAuth();
+  const { profile, isEmailConfirmed, resendConfirmationEmail, updatePreferences } = useAuth();
   useRequireAuth();
   const [displayName, setDisplayName] = useState("");
   const [saving, setSaving] = useState(false);
   const avatarSectionRef = useRef<HTMLElement | null>(null);
+  const [resendBusy, setResendBusy] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0);
 
   useEffect(() => {
     if (profile) setDisplayName(profile.display_name ?? "");
   }, [profile]);
+
+  useEffect(() => {
+    if (resendCooldown <= 0) return;
+    const timer = window.setInterval(() => {
+      setResendCooldown((value) => (value > 1 ? value - 1 : 0));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [resendCooldown]);
 
   // Stop ambient music when leaving settings preview
   useEffect(() => () => stopMusic(), []);
@@ -74,6 +84,22 @@ function ProfilePage() {
 
   const jumpToAvatar = () =>
     avatarSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const handleResendConfirmation = async () => {
+    if (resendBusy || resendCooldown > 0) return;
+    setResendBusy(true);
+    try {
+      await resendConfirmationEmail();
+      setResendCooldown(60);
+      toast.success("Email de confirmation renvoyé");
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Impossible de renvoyer l’email pour le moment";
+      toast.error(message);
+    } finally {
+      setResendBusy(false);
+    }
+  };
 
   const currentRank = Math.floor(profile.total_xp / 100) + 1;
   const streak = profile.current_streak ?? 0;
@@ -118,6 +144,35 @@ function ProfilePage() {
         </div>
 
         <div className="space-y-5 sm:space-y-6">
+          {!isEmailConfirmed && (
+            <section className="rounded-2xl border border-violet-300/30 bg-violet-500/8 p-4 shadow-[var(--shadow-soft)] sm:p-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-foreground sm:text-base">
+                    Confirme ton email pour sécuriser ton compte
+                  </p>
+                  <p className="text-xs text-muted-foreground sm:text-sm">
+                    Tu peux jouer normalement pendant la phase de test.
+                  </p>
+                </div>
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  onClick={handleResendConfirmation}
+                  disabled={resendBusy || resendCooldown > 0}
+                  className="shrink-0"
+                >
+                  {resendBusy
+                    ? "Envoi..."
+                    : resendCooldown > 0
+                      ? `Renvoyer (${resendCooldown}s)`
+                      : "Renvoyer l'email"}
+                </Button>
+              </div>
+            </section>
+          )}
+
           <section className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-16px_rgba(15,23,42,0.7)] sm:p-6 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
             <h2 className="text-xl font-extrabold mb-2">Ta progression</h2>
             <p className="text-sm sm:text-base text-muted-foreground">
