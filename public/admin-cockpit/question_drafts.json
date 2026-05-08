@@ -1,0 +1,77 @@
+{
+  "generated_at": "2026-05-08T21:31:59.345Z",
+  "rows": [
+    {
+      "concept_key": "brainrot",
+      "question_type": "context_usage",
+      "suggested_theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "question": "Quel usage de « brainrot » sonne le plus juste ?",
+      "choice_1": "Depuis trois jours je regarde les mêmes edits, mon cerveau est en brainrot.",
+      "choice_2": "Passe-moi le brainrot pour recharger mon téléphone.",
+      "choice_3": "J’ai activé le brainrot pour traduire l’anglais.",
+      "choice_4": "Le brainrot est une appli de banque.",
+      "correct_index": 0,
+      "explanation": "On l’utilise pour parler d’un trop-plein de contenu web qui te hante un peu.",
+      "tone_risk_notes": "intake_confidence=low; intake_risk_flags=definition_needs_review; micro_trend_volatility",
+      "duplicate_collision_notes": "concept_key=brainrot; exact_duplicate_check=pending_editorial_review; semantic_collision_check=pending_editorial_review",
+      "human_decision": "",
+      "human_notes": ""
+    },
+    {
+      "concept_key": "brainrot",
+      "question_type": "definition_style",
+      "suggested_theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "question": "Dans le langage web, « brainrot » désigne surtout…",
+      "choice_1": "Une obsession pour des contenus très répétitifs qui te saturent le cerveau",
+      "choice_2": "Une technique officielle pour mieux mémoriser un cours",
+      "choice_3": "Un réglage d’algorithme qui bloque les pubs",
+      "choice_4": "Un bug de téléphone qui efface les vidéos",
+      "correct_index": 0,
+      "explanation": "« Brainrot » décrit une surconsommation de contenus qui finissent par envahir ton vocabulaire et tes refs.",
+      "tone_risk_notes": "intake_confidence=low; intake_risk_flags=definition_needs_review; micro_trend_volatility",
+      "duplicate_collision_notes": "concept_key=brainrot; exact_duplicate_check=pending_editorial_review; semantic_collision_check=pending_editorial_review",
+      "human_decision": "",
+      "human_notes": ""
+    },
+    {
+      "concept_key": "delulu",
+      "question_type": "context_usage",
+      "suggested_theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "question": "Quel exemple correspond le mieux à « delulu » ?",
+      "choice_1": "Il m’a likée une story, c’est sûr on va se marier : je suis peut-être delulu.",
+      "choice_2": "J’ai vérifié trois sources avant de conclure, je suis delulu.",
+      "choice_3": "J’ai payé mon abonnement, c’est delulu.",
+      "choice_4": "Mon wifi coupe, c’est delulu.",
+      "correct_index": 0,
+      "explanation": "Le terme s’emploie quand on reconnaît une projection un peu irréaliste.",
+      "tone_risk_notes": "intake_confidence=low; intake_risk_flags=definition_needs_review; micro_trend_volatility",
+      "duplicate_collision_notes": "concept_key=delulu; exact_duplicate_check=pending_editorial_review; semantic_collision_check=pending_editorial_review",
+      "human_decision": "",
+      "human_notes": ""
+    },
+    {
+      "concept_key": "delulu",
+      "question_type": "definition_style",
+      "suggested_theme": "reseaux_sociaux",
+      "difficulty": "facile",
+      "question": "« Delulu » veut dire qu’une personne est plutôt…",
+      "choice_1": "Un peu dans son film, avec une vision très optimiste ou irréaliste",
+      "choice_2": "Très méthodique et factuelle dans ses décisions",
+      "choice_3": "Experte en cybersécurité",
+      "choice_4": "Complètement hors ligne des réseaux",
+      "correct_index": 0,
+      "explanation": "« Delulu » vient de « delusional » et s’emploie souvent de façon légère pour dire « tu te racontes une belle histoire ».",
+      "tone_risk_notes": "intake_confidence=low; intake_risk_flags=definition_needs_review; micro_trend_volatility",
+      "duplicate_collision_notes": "concept_key=delulu; exact_duplicate_check=pending_editorial_review; semantic_collision_check=pending_editorial_review",
+      "human_decision": "",
+      "human_notes": ""
+    }
+  ],
+  "stats": {
+    "total_rows": 4,
+    "pending_review_rows": 4
+  }
+}

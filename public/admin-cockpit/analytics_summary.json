@@ -1,0 +1,287 @@
+{
+  "generated_at": "2026-05-08T20:48:22.969Z",
+  "phase0": {
+    "summary": {
+      "total_attempts": 24,
+      "distinct_users_with_attempts": 4,
+      "attempt_date_span_days": 8,
+      "global_accuracy_percent": 94.92
+    },
+    "attempts_over_time": [
+      {
+        "date": "2026-04-30",
+        "attempt_count": 6
+      },
+      {
+        "date": "2026-05-01",
+        "attempt_count": 1
+      },
+      {
+        "date": "2026-05-04",
+        "attempt_count": 2
+      },
+      {
+        "date": "2026-05-06",
+        "attempt_count": 1
+      },
+      {
+        "date": "2026-05-08",
+        "attempt_count": 14
+      }
+    ],
+    "mode_distribution": [
+      {
+        "mode": "theme",
+        "attempt_count": 17,
+        "share_percent": 70.83
+      },
+      {
+        "mode": "daily",
+        "attempt_count": 7,
+        "share_percent": 29.17
+      }
+    ],
+    "theme_popularity": [
+      {
+        "theme": "reseaux_sociaux",
+        "attempt_count": 8,
+        "share_percent": 33.33
+      },
+      {
+        "theme": "vocabulaire",
+        "attempt_count": 6,
+        "share_percent": 25
+      },
+      {
+        "theme": "tech",
+        "attempt_count": 5,
+        "share_percent": 20.83
+      },
+      {
+        "theme": "gaming",
+        "attempt_count": 2,
+        "share_percent": 8.33
+      },
+      {
+        "theme": "trends_pop_culture",
+        "attempt_count": 2,
+        "share_percent": 8.33
+      },
+      {
+        "theme": "relations_lifestyle",
+        "attempt_count": 1,
+        "share_percent": 4.17
+      }
+    ],
+    "accuracy_bands": [
+      {
+        "band": "0-39",
+        "attempt_count": 0,
+        "share_percent": 0
+      },
+      {
+        "band": "40-59",
+        "attempt_count": 0,
+        "share_percent": 0
+      },
+      {
+        "band": "60-79",
+        "attempt_count": 1,
+        "share_percent": 4.17
+      },
+      {
+        "band": "80-100",
+        "attempt_count": 23,
+        "share_percent": 95.83
+      }
+    ],
+    "returning_user_proxy": [
+      {
+        "metric": "users_with_2plus_attempts",
+        "value": 3
+      },
+      {
+        "metric": "users_with_2plus_active_days",
+        "value": 1
+      },
+      {
+        "metric": "returning_rate_by_active_days_percent",
+        "value": 25
+      }
+    ],
+    "profiles_summary": [
+      {
+        "metric": "profile_count",
+        "value": 6,
+        "dimension": "all"
+      },
+      {
+        "metric": "current_streak_p50",
+        "value": 1,
+        "dimension": "all"
+      },
+      {
+        "metric": "current_streak_p90",
+        "value": 3,
+        "dimension": "all"
+      },
+      {
+        "metric": "longest_streak_p50",
+        "value": 1,
+        "dimension": "all"
+      },
+      {
+        "metric": "longest_streak_p90",
+        "value": 3,
+        "dimension": "all"
+      },
+      {
+        "metric": "total_xp_p50",
+        "value": 700,
+        "dimension": "all"
+      },
+      {
+        "metric": "total_xp_p90",
+        "value": 1427,
+        "dimension": "all"
+      }
+    ]
+  },
+  "phase1": {
+    "analytics_events_available": true,
+    "analytics_event_count": 7,
+    "starts_vs_completions_by_mode": [
+      {
+        "mode": "theme",
+        "starts": 0,
+        "completions": 0,
+        "completion_rate_percent": 0
+      },
+      {
+        "mode": "daily",
+        "starts": 0,
+        "completions": 0,
+        "completion_rate_percent": 0
+      },
+      {
+        "mode": "level",
+        "starts": 1,
+        "completions": 0,
+        "completion_rate_percent": 0
+      },
+      {
+        "mode": "marathon",
+        "starts": 4,
+        "completions": 1,
+        "completion_rate_percent": 25
+      }
+    ],
+    "level_pass_fail_summary": [],
+    "marathon_end_distribution": [
+      {
+        "correct_band": "0-4",
+        "ended_sessions": 0
+      },
+      {
+        "correct_band": "5-9",
+        "ended_sessions": 1
+      },
+      {
+        "correct_band": "10-19",
+        "ended_sessions": 0
+      },
+      {
+        "correct_band": "20+",
+        "ended_sessions": 0
+      }
+    ],
+    "cta_clickthrough_summary": [
+      {
+        "mode": "theme",
+        "clicks": 0,
+        "completions": 0,
+        "click_through_percent": 0
+      },
+      {
+        "mode": "daily",
+        "clicks": 0,
+        "completions": 0,
+        "click_through_percent": 0
+      },
+      {
+        "mode": "level",
+        "clicks": 0,
+        "completions": 0,
+        "click_through_percent": 0
+      },
+      {
+        "mode": "marathon",
+        "clicks": 0,
+        "completions": 1,
+        "click_through_percent": 0
+      }
+    ],
+    "event_volume_by_event_name_mode": [
+      {
+        "event_name": "mode_started",
+        "mode": "marathon",
+        "count": 4
+      },
+      {
+        "event_name": "marathon_ended",
+        "mode": "marathon",
+        "count": 1
+      },
+      {
+        "event_name": "mode_completed",
+        "mode": "marathon",
+        "count": 1
+      },
+      {
+        "event_name": "mode_started",
+        "mode": "level",
+        "count": 1
+      }
+    ],
+    "data_quality_checks": [
+      {
+        "metric": "invalid_event_name_rows",
+        "value": 0
+      },
+      {
+        "metric": "invalid_mode_rows",
+        "value": 0
+      },
+      {
+        "metric": "event_props_not_object_rows",
+        "value": 0
+      },
+      {
+        "metric": "level_result_missing_required_props_rows",
+        "value": 0
+      },
+      {
+        "metric": "marathon_ended_missing_required_props_rows",
+        "value": 0
+      },
+      {
+        "metric": "mode_completed_missing_required_props_rows",
+        "value": 0
+      },
+      {
+        "metric": "post_run_cta_clicked_missing_required_props_rows",
+        "value": 0
+      }
+    ]
+  },
+  "blind_spots": [],
+  "safety": {
+    "no_db_writes": true,
+    "no_schema_changes": true,
+    "no_migrations": true,
+    "no_pii_in_outputs": true,
+    "no_user_level_identifiers": true,
+    "no_raw_event_props_dump": true,
+    "external_analytics_used": false
+  }
+}

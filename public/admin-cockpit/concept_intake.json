@@ -1,0 +1,118 @@
+{
+  "generated_at": "2026-05-08T21:31:59.345Z",
+  "rows": [
+    {
+      "raw_term": "aura farming",
+      "suggested_concept_key": "aura_farming",
+      "suggested_theme": "culture_pop",
+      "suggested_difficulty_band": "facile_to_moyen",
+      "short_definition": "Définition à valider pour « aura farming » (draft local).",
+      "aliases": "aura farm",
+      "example_usage": "Il fait de l'aura farming en stream.",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "confidence": "medium",
+      "risk_flags": [
+        "definition_needs_review"
+      ],
+      "duplicate_check_exact_concept_key_match": "no",
+      "duplicate_check_near_existing_concept_key": "",
+      "duplicate_check_possible_semantic_duplicate": "",
+      "human_decision": "watchlist",
+      "human_notes": "Tendance visible mais encore mouvante; confirmer stabilité et sens avant approbation finale.",
+      "decision_status": "resolved"
+    },
+    {
+      "raw_term": "brainrot",
+      "suggested_concept_key": "brainrot",
+      "suggested_theme": "reseaux_sociaux",
+      "suggested_difficulty_band": "facile_to_moyen",
+      "short_definition": "Définition à valider pour « brainrot » (draft local).",
+      "aliases": "brain rot",
+      "example_usage": "Mon feed est full brainrot.",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "confidence": "low",
+      "risk_flags": [
+        "definition_needs_review",
+        "micro_trend_volatility"
+      ],
+      "duplicate_check_exact_concept_key_match": "no",
+      "duplicate_check_near_existing_concept_key": "",
+      "duplicate_check_possible_semantic_duplicate": "",
+      "human_decision": "approve",
+      "human_notes": "Concept largement compris en usage social; pertinent quiz si définition courte et neutre est validée.",
+      "decision_status": "resolved"
+    },
+    {
+      "raw_term": "cooked",
+      "suggested_concept_key": "cooked",
+      "suggested_theme": "culture_pop",
+      "suggested_difficulty_band": "facile_to_moyen",
+      "short_definition": "Définition à valider pour « cooked » (draft local).",
+      "aliases": "im cooked; we are cooked",
+      "example_usage": "Là on est cooked.",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend",
+      "confidence": "low",
+      "risk_flags": [
+        "definition_needs_review",
+        "micro_trend_volatility"
+      ],
+      "duplicate_check_exact_concept_key_match": "no",
+      "duplicate_check_near_existing_concept_key": "",
+      "duplicate_check_possible_semantic_duplicate": "",
+      "human_decision": "watchlist",
+      "human_notes": "Usage très contextuel/polysemique; garder en observation avant production de questions.",
+      "decision_status": "resolved"
+    },
+    {
+      "raw_term": "delulu",
+      "suggested_concept_key": "delulu",
+      "suggested_theme": "reseaux_sociaux",
+      "suggested_difficulty_band": "facile_to_moyen",
+      "short_definition": "Définition à valider pour « delulu » (draft local).",
+      "aliases": "delusional",
+      "example_usage": "C'est un peu delulu comme plan.",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "confidence": "low",
+      "risk_flags": [
+        "definition_needs_review",
+        "micro_trend_volatility"
+      ],
+      "duplicate_check_exact_concept_key_match": "no",
+      "duplicate_check_near_existing_concept_key": "",
+      "duplicate_check_possible_semantic_duplicate": "",
+      "human_decision": "approve",
+      "human_notes": "Terme clair et fréquent dans les usages jeunes; bon candidat sous réserve de validation éditoriale de définition.",
+      "decision_status": "resolved"
+    },
+    {
+      "raw_term": "mog",
+      "suggested_concept_key": "mog",
+      "suggested_theme": "culture_pop",
+      "suggested_difficulty_band": "facile_to_moyen",
+      "short_definition": "Définition à valider pour « mog » (draft local).",
+      "aliases": "mogging",
+      "example_usage": "Il a mog toute la room.",
+      "trend_freshness": "to_review",
+      "trend_durability": "micro_trend",
+      "confidence": "low",
+      "risk_flags": [
+        "definition_needs_review",
+        "short_concept_key_len",
+        "micro_trend_volatility"
+      ],
+      "duplicate_check_exact_concept_key_match": "no",
+      "duplicate_check_near_existing_concept_key": "",
+      "duplicate_check_possible_semantic_duplicate": "",
+      "human_decision": "reject",
+      "human_notes": "Trop niche et volatile à ce stade; risque de confusion/contextes toxiques pour un quiz généraliste.",
+      "decision_status": "resolved"
+    }
+  ],
+  "stats": {
+    "total_rows": 5
+  }
+}

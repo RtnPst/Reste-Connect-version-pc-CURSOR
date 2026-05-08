@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-05-08T21:31:59.345Z",
+  "kpis": {
+    "concept_intake_total": 5,
+    "concept_intake_resolved": 5,
+    "concept_intake_unresolved": 0,
+    "question_drafts_pending_review": 4,
+    "editorial_priority_urgent_review": 0,
+    "freshness_critical_refresh": 3,
+    "needs_refresh_high_severity": 0,
+    "batch2_medium_or_higher_risk": 0,
+    "safe_evergreen_candidates": 1,
+    "analytics_phase0_total_attempts": 24,
+    "analytics_phase1_events_available": true,
+    "analytics_phase1_event_count": 7
+  }
+}

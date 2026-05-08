@@ -51,6 +51,7 @@
     "review:safe-evergreen-v1": "node scripts/build-safe-evergreen-v1.mjs",
     "analytics:phase0": "node scripts/build-analytics-phase0.mjs",
     "analytics:phase1": "node scripts/build-analytics-phase1.mjs",
+    "admin:cockpit:snapshot": "node scripts/build-admin-cockpit-snapshot.mjs",
     "debug:daily": "node scripts/debug-daily-question.mjs",
     "apply:fix-daily-non-live": "node scripts/apply-fix-daily-non-live-refs.mjs",
     "deploy": "node scripts/deploy-worker.mjs"

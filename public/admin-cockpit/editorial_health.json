@@ -1,0 +1,555 @@
+{
+  "generated_at": "2026-05-08T21:31:59.345Z",
+  "priority_queue": {
+    "rows": [
+      {
+        "raw_term": "brainrot",
+        "suggested_concept_key": "brainrot",
+        "suggested_theme": "reseaux_sociaux",
+        "confidence": "low",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "human_decision": "approve",
+        "unresolved_age_days_estimate": 0.07,
+        "priority_bucket": "review_soon",
+        "queue_reason": "needs near-term editorial pass"
+      },
+      {
+        "raw_term": "delulu",
+        "suggested_concept_key": "delulu",
+        "suggested_theme": "reseaux_sociaux",
+        "confidence": "low",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "human_decision": "approve",
+        "unresolved_age_days_estimate": 0.07,
+        "priority_bucket": "review_soon",
+        "queue_reason": "needs near-term editorial pass"
+      },
+      {
+        "raw_term": "aura farming",
+        "suggested_concept_key": "aura_farming",
+        "suggested_theme": "culture_pop",
+        "confidence": "medium",
+        "trend_freshness": "recent",
+        "trend_durability": "seasonal",
+        "risk_flags": [
+          "definition_needs_review"
+        ],
+        "human_decision": "watchlist",
+        "unresolved_age_days_estimate": 0.07,
+        "priority_bucket": "watchlist",
+        "queue_reason": "tracked concept, not production-ready yet"
+      },
+      {
+        "raw_term": "cooked",
+        "suggested_concept_key": "cooked",
+        "suggested_theme": "culture_pop",
+        "confidence": "low",
+        "trend_freshness": "recent",
+        "trend_durability": "micro_trend",
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "human_decision": "watchlist",
+        "unresolved_age_days_estimate": 0.07,
+        "priority_bucket": "watchlist",
+        "queue_reason": "tracked concept, not production-ready yet"
+      },
+      {
+        "raw_term": "mog",
+        "suggested_concept_key": "mog",
+        "suggested_theme": "culture_pop",
+        "confidence": "low",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "risk_flags": [
+          "definition_needs_review",
+          "short_concept_key_len",
+          "micro_trend_volatility"
+        ],
+        "human_decision": "reject",
+        "unresolved_age_days_estimate": 0.07,
+        "priority_bucket": "parked",
+        "queue_reason": "low-priority parked state"
+      }
+    ],
+    "total_rows": 5
+  },
+  "freshness": {
+    "rows": [
+      {
+        "raw_term": "mog",
+        "concept_key": "mog",
+        "confidence": "low",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "human_decision": "reject",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review",
+          "short_concept_key_len",
+          "micro_trend_volatility"
+        ],
+        "freshness_score": 15,
+        "freshness_band": "critical_refresh",
+        "refresh_note": "stale/high-volatility/high-risk concept requiring revalidation"
+      },
+      {
+        "raw_term": "brainrot",
+        "concept_key": "brainrot",
+        "confidence": "low",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "human_decision": "approve",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "freshness_score": 20,
+        "freshness_band": "critical_refresh",
+        "refresh_note": "stale/high-volatility/high-risk concept requiring revalidation"
+      },
+      {
+        "raw_term": "delulu",
+        "concept_key": "delulu",
+        "confidence": "low",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "human_decision": "approve",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "freshness_score": 20,
+        "freshness_band": "critical_refresh",
+        "refresh_note": "stale/high-volatility/high-risk concept requiring revalidation"
+      },
+      {
+        "raw_term": "cooked",
+        "concept_key": "cooked",
+        "confidence": "low",
+        "trend_freshness": "recent",
+        "trend_durability": "micro_trend",
+        "human_decision": "watchlist",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "freshness_score": 50,
+        "freshness_band": "refresh_soon",
+        "refresh_note": "schedule editorial freshness check"
+      },
+      {
+        "raw_term": "aura farming",
+        "concept_key": "aura_farming",
+        "confidence": "medium",
+        "trend_freshness": "recent",
+        "trend_durability": "seasonal",
+        "human_decision": "watchlist",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review"
+        ],
+        "freshness_score": 70,
+        "freshness_band": "monitor",
+        "refresh_note": "keep monitored in periodic review"
+      }
+    ],
+    "total_rows": 5
+  },
+  "needs_refresh": {
+    "rows": [
+      {
+        "raw_term": "brainrot",
+        "concept_key": "brainrot",
+        "human_decision": "approve",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "refresh_reason": "freshness_recheck",
+        "severity": "medium",
+        "action_note": "schedule this concept in next review cycle"
+      },
+      {
+        "raw_term": "cooked",
+        "concept_key": "cooked",
+        "human_decision": "watchlist",
+        "trend_freshness": "recent",
+        "trend_durability": "micro_trend",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "refresh_reason": "risk_flag_followup",
+        "severity": "medium",
+        "action_note": "schedule this concept in next review cycle"
+      },
+      {
+        "raw_term": "delulu",
+        "concept_key": "delulu",
+        "human_decision": "approve",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review",
+          "micro_trend_volatility"
+        ],
+        "refresh_reason": "freshness_recheck",
+        "severity": "medium",
+        "action_note": "schedule this concept in next review cycle"
+      },
+      {
+        "raw_term": "mog",
+        "concept_key": "mog",
+        "human_decision": "reject",
+        "trend_freshness": "to_review",
+        "trend_durability": "micro_trend",
+        "unresolved_age_days_estimate": 0.07,
+        "risk_flags": [
+          "definition_needs_review",
+          "short_concept_key_len",
+          "micro_trend_volatility"
+        ],
+        "refresh_reason": "freshness_recheck",
+        "severity": "medium",
+        "action_note": "schedule this concept in next review cycle"
+      }
+    ],
+    "total_rows": 4
+  },
+  "overexposure": {
+    "rows": [
+      {
+        "concept_key": "brainrot",
+        "draft_count": 2,
+        "draft_definition_count": 1,
+        "draft_contextual_count": 1,
+        "dormant_variant_group_count": 0,
+        "dormant_variant_question_count": 0,
+        "saturation_index": 6,
+        "saturation_risk_band": "watch",
+        "review_note": "monitor concept volume in next draft round"
+      },
+      {
+        "concept_key": "delulu",
+        "draft_count": 2,
+        "draft_definition_count": 1,
+        "draft_contextual_count": 1,
+        "dormant_variant_group_count": 0,
+        "dormant_variant_question_count": 0,
+        "saturation_index": 6,
+        "saturation_risk_band": "watch",
+        "review_note": "monitor concept volume in next draft round"
+      },
+      {
+        "concept_key": "appli",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "askip",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "bluetooth",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "boomer",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "cookie",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "deepfake",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "dm",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "ghoster",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "influenceur",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "manga",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "mdr",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "mot_de_passe_fort",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "oklm",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "podcast",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "qr_code",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "que_signifie_lexpression_avoir_le_seum",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "quelle_est_la_particularite_de_lapplication_bereal",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "quest_ce_que_chatgpt",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "qui_est_squeezie",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "reels",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "scroller",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "stories",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "tagger",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "telecharger",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "vpn",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      },
+      {
+        "concept_key": "wesh",
+        "draft_count": 0,
+        "draft_definition_count": 0,
+        "draft_contextual_count": 0,
+        "dormant_variant_group_count": 1,
+        "dormant_variant_question_count": 1,
+        "saturation_index": 3,
+        "saturation_risk_band": "low",
+        "review_note": "no immediate saturation risk"
+      }
+    ],
+    "total_rows": 28
+  },
+  "safe_evergreen_counts_only": {
+    "total_rows": 1
+  }
+}

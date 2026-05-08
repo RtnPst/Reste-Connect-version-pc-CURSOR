@@ -1,0 +1,102 @@
+{
+  "schema_version": "admin_cockpit_snapshot_v1",
+  "generated_at": "2026-05-08T21:31:59.345Z",
+  "generator": {
+    "script": "scripts/build-admin-cockpit-snapshot.mjs",
+    "npm_command": "npm run admin:cockpit:snapshot",
+    "mode": "read_only_artifact_projection"
+  },
+  "safety": {
+    "no_db_writes": true,
+    "no_supabase_access": true,
+    "no_env_reads": true,
+    "no_raw_analytics_rows": true,
+    "no_user_level_identifiers": true,
+    "no_batch_question_ids": true
+  },
+  "sources": [
+    {
+      "key": "concept_intake",
+      "path": "exports/dedup-audit/concept-intake-v1-review-latest.csv",
+      "exists": true,
+      "row_count": 5,
+      "mtime": "2026-05-08T13:02:52.490Z"
+    },
+    {
+      "key": "concept_decision_summary",
+      "path": "exports/dedup-audit/concept-intake-v1-decision-summary-latest.csv",
+      "exists": true,
+      "row_count": 5,
+      "mtime": "2026-05-08T13:02:55.847Z"
+    },
+    {
+      "key": "editorial_priority",
+      "path": "exports/dedup-audit/editorial-priority-v1-latest.csv",
+      "exists": true,
+      "row_count": 5,
+      "mtime": "2026-05-08T14:43:41.247Z"
+    },
+    {
+      "key": "concept_freshness",
+      "path": "exports/dedup-audit/concept-freshness-v1-latest.csv",
+      "exists": true,
+      "row_count": 5,
+      "mtime": "2026-05-08T14:43:42.107Z"
+    },
+    {
+      "key": "needs_refresh",
+      "path": "exports/dedup-audit/needs-refresh-v1-latest.csv",
+      "exists": true,
+      "row_count": 4,
+      "mtime": "2026-05-08T14:43:43.119Z"
+    },
+    {
+      "key": "concept_overexposure",
+      "path": "exports/dedup-audit/concept-overexposure-v1-latest.csv",
+      "exists": true,
+      "row_count": 28,
+      "mtime": "2026-05-08T14:43:44.080Z"
+    },
+    {
+      "key": "question_drafts",
+      "path": "exports/dedup-audit/question-drafts-v1-review-latest.csv",
+      "exists": true,
+      "row_count": 4,
+      "mtime": "2026-05-08T13:06:48.099Z"
+    },
+    {
+      "key": "batch2_review",
+      "path": "exports/dedup-audit/concept-aware-batch2-review-latest.csv",
+      "exists": true,
+      "row_count": 26,
+      "mtime": "2026-05-08T13:23:13.739Z"
+    },
+    {
+      "key": "batch2_summary_json",
+      "path": "exports/dedup-audit/concept-aware-batch2-review-summary-latest.json",
+      "exists": true,
+      "row_count": 1,
+      "mtime": "2026-05-08T13:23:13.740Z"
+    },
+    {
+      "key": "analytics_phase1_summary",
+      "path": "exports/analytics/phase1-summary-latest.json",
+      "exists": true,
+      "row_count": 1,
+      "mtime": "2026-05-08T20:48:22.973Z"
+    },
+    {
+      "key": "safe_evergreen_optional",
+      "path": "exports/dedup-audit/safe-evergreen-v1-latest.csv",
+      "exists": true,
+      "row_count": 1,
+      "mtime": "2026-05-08T14:43:45.136Z"
+    }
+  ],
+  "warnings": [],
+  "redaction_notes": [
+    "batch_reviews omits raw question_ids and exposes question_count only",
+    "analytics_summary includes aggregate phase summaries only (no raw analytics_events rows)",
+    "no environment variables are read or emitted by this script"
+  ]
+}
