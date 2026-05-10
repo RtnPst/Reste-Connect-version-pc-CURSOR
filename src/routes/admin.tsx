@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Check, Eye, EyeOff, Plus, Pencil, Save, X, Shield, Sparkles, Loader2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, Eye, EyeOff, Plus, Pencil, Save, X, Shield, Sparkles, Loader2, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { AppHeader } from "@/components/AppHeader";
@@ -93,6 +93,7 @@ type Question = {
   era: QuestionEra | null;
   format: QuestionFormat | null;
   editor_notes: string | null;
+  concept_key: string | null;
   canonical_key: string | null;
 };
 
@@ -114,6 +115,7 @@ const EMPTY: Omit<Question, "id"> = {
   era: null,
   format: null,
   editor_notes: null,
+  concept_key: null,
   canonical_key: null,
 };
 
@@ -178,9 +180,12 @@ function AdminPage() {
   const [genTheme, setGenTheme] = useState<ThemeKey>("vocabulaire");
   const [genDifficulty, setGenDifficulty] = useState<"facile" | "moyen" | "difficile">("moyen");
   const [genCount, setGenCount] = useState(10);
+  const [genConcepts, setGenConcepts] = useState("");
   const [generating, setGenerating] = useState(false);
   const [inserting, setInserting] = useState(false);
   const [previewRows, setPreviewRows] = useState<PreviewRow[] | null>(null);
+  const editorRef = useRef<HTMLDivElement | null>(null);
+  const firstQuestionFieldRef = useRef<HTMLTextAreaElement | null>(null);
   const [snapshotLoading, setSnapshotLoading] = useState(true);
   const [metaSnapshot, setMetaSnapshot] = useState<AdminCockpitMeta>(EMPTY_META);
   const [overviewSnapshot, setOverviewSnapshot] = useState<AdminCockpitOverview>(EMPTY_OVERVIEW);
@@ -199,6 +204,18 @@ function AdminPage() {
   const [editorialHealthWarning, setEditorialHealthWarning] = useState<string | null>(null);
   const [analyticsSummaryWarning, setAnalyticsSummaryWarning] = useState<string | null>(null);
   const [batchReviewsWarning, setBatchReviewsWarning] = useState<string | null>(null);
+  const [conceptKeySupported, setConceptKeySupported] = useState(true);
+
+  const normalizeConceptInput = (raw: string): string | null => {
+    const normalized = raw
+      .trim()
+      .toLowerCase()
+      .replace(/['’]/g, "")
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "")
+      .replace(/_{2,}/g, "_");
+    return normalized || null;
+  };
 
   const loadQuestions = async () => {
     setLoadingQ(true);
@@ -217,6 +234,22 @@ function AdminPage() {
 
   useEffect(() => {
     if (isAdmin) loadQuestions();
+  }, [isAdmin]);
+
+  useEffect(() => {
+    if (!isAdmin) return;
+    (async () => {
+      const { error } = await supabase.from("questions").select("concept_key").limit(1);
+      if (error) {
+        setConceptKeySupported(false);
+        toast.message("Champ concept non détecté", {
+          description:
+            "Le mot principal sera conservé localement dans ce formulaire, mais pas enregistré en base tant que concept_key n'est pas disponible.",
+        });
+      } else {
+        setConceptKeySupported(true);
+      }
+    })();
   }, [isAdmin]);
 
   useEffect(() => {
@@ -295,6 +328,11 @@ function AdminPage() {
     setEditingId("new");
     setDraft(EMPTY);
     setAdvancedOpen(false);
+    toast.message("Formulaire nouvelle question ouvert");
+    window.setTimeout(() => {
+      editorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      firstQuestionFieldRef.current?.focus();
+    }, 120);
   };
 
   const startEdit = (q: Question) => {
@@ -315,6 +353,7 @@ function AdminPage() {
       era: q.era,
       format: q.format,
       editor_notes: q.editor_notes,
+      concept_key: q.concept_key ?? null,
       canonical_key: q.canonical_key,
     });
     setAdvancedOpen(
@@ -348,6 +387,7 @@ function AdminPage() {
       status: nextStatus,
       is_active: nextStatus === "live",
       editor_notes: draft.editor_notes?.trim() ? draft.editor_notes.trim() : null,
+      concept_key: conceptKeySupported ? normalizeConceptInput(draft.concept_key ?? "") : undefined,
     };
 
     if (editingId === "new") {
@@ -398,6 +438,7 @@ function AdminPage() {
           theme: genTheme,
           difficulty: genDifficulty,
           count: genCount,
+          concepts: genConcepts.trim() || undefined,
           accessToken: session.access_token,
         },
       });
@@ -474,6 +515,13 @@ function AdminPage() {
   const toggleRowAccepted = (key: string, checked: boolean) => {
     if (!previewRows) return;
     setPreviewRows(previewRows.map((r) => (r.key === key ? { ...r, accepted: checked } : r)));
+  };
+
+  const removePreviewRow = (key: string) => {
+    if (!previewRows) return;
+    const nextRows = previewRows.filter((r) => r.key !== key);
+    setPreviewRows(nextRows.length ? nextRows : null);
+    toast.message("Question retirée de l’aperçu (aucune écriture en base).");
   };
 
   const acceptedCount = previewRows?.filter((r) => r.accepted).length ?? 0;
@@ -649,20 +697,20 @@ function AdminPage() {
               role="status"
               className="rounded-xl border border-destructive/45 bg-destructive/10 px-3 py-2.5 text-xs leading-snug text-foreground sm:px-4 sm:text-sm"
             >
-              <span className="font-bold text-destructive">Zone d&apos;écriture admin</span>
+              <span className="font-bold text-destructive">Zone publication éditoriale</span>
               <span className="text-muted-foreground">
                 {" "}
-                — les actions ici peuvent modifier les questions en base.
+                — les actions ici enregistrent en base. L&apos;aperçu IA reste sans écriture tant que tu ne publies pas.
               </span>
             </div>
 
         <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
           <div className="min-w-0">
             <h1 className="text-2xl sm:text-4xl font-extrabold flex flex-wrap items-center gap-2 break-words">
-              <Shield className="shrink-0 text-primary" /> Quick Generate / Questions
+              <Shield className="shrink-0 text-primary" /> Studio éditorial — Questions
             </h1>
             <p className="text-muted-foreground">
-              Générateur rapide et gestion des questions · {questions.length} questions au total
+              Crée, relis et publie tes questions · {questions.length} questions au total
             </p>
           </div>
           <Button onClick={startNew} size="lg" variant="accent" className="w-full shrink-0 sm:w-auto">
@@ -674,12 +722,14 @@ function AdminPage() {
         <div className="min-w-0 rounded-2xl border-2 border-accent/30 bg-gradient-to-br from-accent-soft/40 to-primary-soft/40 p-4 sm:p-6 space-y-4">
           <div className="flex items-center gap-2">
             <Sparkles className="size-6 text-accent" />
-            <h2 className="text-xl font-extrabold">Générateur de questions Tu captes ?</h2>
+            <h2 className="text-xl font-extrabold">Générateur assisté</h2>
           </div>
           <p className="text-sm text-muted-foreground">
-            L&apos;IA propose un lot de questions au ton du jeu (fun, léger, taquin).{" "}
-            <strong className="text-foreground">Rien n&apos;est publié tant que tu n&apos;as pas validé</strong>{" "}
-            l&apos;aperçu ci-dessous et cliqué sur insérer.
+            L&apos;IA te propose des brouillons de questions au ton du jeu.
+            <strong className="text-foreground">
+              {" "}
+              Rien n&apos;est publié tant que tu ne valides pas l&apos;aperçu.
+            </strong>
           </p>
           <details className="min-w-0 rounded-xl border border-border/80 bg-background/60 px-3 py-3 text-sm sm:px-4">
             <summary className="cursor-pointer font-bold text-foreground outline-none marker:text-primary">
@@ -773,6 +823,18 @@ function AdminPage() {
               />
             </div>
           </div>
+          <div className="min-w-0">
+            <Label>Concepts / mots à cibler (optionnel)</Label>
+            <Input
+              value={genConcepts}
+              onChange={(e) => setGenConcepts(e.target.value)}
+              placeholder="rizz, NPC, ratio, main character energy"
+            />
+            <p className="mt-1 text-xs text-muted-foreground">
+              Optionnel : ces mots servent de fil rouge. L&apos;IA peut proposer plusieurs formulations autour d&apos;un
+              même concept.
+            </p>
+          </div>
           <div className="flex flex-wrap gap-2">
             <Button
               onClick={handleGeneratePreview}
@@ -807,6 +869,10 @@ function AdminPage() {
                   </span>{" "}
                   · {genDifficulty}
                 </p>
+                <p className="text-xs text-muted-foreground">
+                  Cette zone est un brouillon local : rien n&apos;est enregistré tant que tu ne publies pas. Les lignes
+                  décochées ou retirées ne seront pas enregistrées.
+                </p>
               </div>
               <div className="flex min-w-0 flex-wrap gap-2">
                 <Button type="button" variant="outline" size="sm" onClick={() => setAllAccepted(true)}>
@@ -834,7 +900,7 @@ function AdminPage() {
                     <Loader2 className="animate-spin" /> Insertion…
                   </>
                 ) : (
-                  <>Insérer les questions sélectionnées ({acceptedCount})</>
+                  <>Publier les questions cochées ({acceptedCount})</>
                 )}
               </Button>
             </div>
@@ -852,8 +918,25 @@ function AdminPage() {
                       className="mt-1"
                     />
                     <div className="flex-1 min-w-0 space-y-2">
-                      <p className="text-xs font-bold text-muted-foreground">#{idx + 1}</p>
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-xs font-bold text-muted-foreground">#{idx + 1}</p>
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => removePreviewRow(row.key)}
+                          aria-label={`Retirer la question ${idx + 1} de l’aperçu`}
+                        >
+                          <Trash2 className="size-4" /> Retirer de l&apos;aperçu
+                        </Button>
+                      </div>
                       <p className="break-words font-semibold text-base">{row.question}</p>
+                      <p className="text-xs text-muted-foreground">
+                        Mot principal:{" "}
+                        <span className="font-mono text-foreground">
+                          {row.concept_key?.trim() ? row.concept_key : "non détecté"}
+                        </span>
+                      </p>
                       <ol className="list-decimal list-inside text-sm space-y-1 text-muted-foreground">
                         {row.choices.map((c, i) => (
                           <li
@@ -946,7 +1029,7 @@ function AdminPage() {
 
         {/* Editor */}
         {editingId && (
-          <div className="min-w-0 rounded-2xl border-2 border-primary bg-card p-4 sm:p-6 space-y-4">
+          <div ref={editorRef} className="min-w-0 rounded-2xl border-2 border-primary bg-card p-4 sm:p-6 space-y-4">
             <h2 className="text-xl font-bold">
               {editingId === "new" ? "Nouvelle question" : "Modifier la question"}
             </h2>
@@ -1012,8 +1095,26 @@ function AdminPage() {
             </div>
 
             <div>
+              <Label>Mot ou expression principale</Label>
+              <Input
+                value={draft.concept_key ?? ""}
+                onChange={(e) => setDraft({ ...draft, concept_key: e.target.value })}
+                placeholder="rizz, npc, ratio, six_seven"
+              />
+              <p className="mt-1 text-xs text-muted-foreground">
+                Optionnel mais recommandé. Plusieurs questions peuvent partager le même mot principal.
+              </p>
+              {!conceptKeySupported && (
+                <p className="mt-1 text-xs text-warning">
+                  Le champ concept_key n&apos;est pas disponible côté base sur cet environnement.
+                </p>
+              )}
+            </div>
+
+            <div>
               <Label>Question</Label>
               <Textarea
+                ref={firstQuestionFieldRef}
                 value={draft.question}
                 onChange={(e) => setDraft({ ...draft, question: e.target.value })}
                 rows={2}

@@ -10,6 +10,7 @@ export type AiPreviewQuestion = {
   choices: string[];
   correct_index: number;
   explanation: string;
+  concept_key?: string | null;
 };
 
 type Theme =
@@ -106,9 +107,20 @@ const THEME_LABELS: Record<Theme, string> = {
 const MAX_QUESTION_CHARS = 220;
 const MAX_CHOICE_CHARS = 72;
 const MAX_EXPLANATION_CHARS = 300;
+const MAX_CONCEPT_KEY_CHARS = 80;
 
 function normalizeQuestionKey(text: string): string {
   return text.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function normalizeConceptKey(raw: string): string {
+  return raw
+    .trim()
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+    .replace(/_{2,}/g, "_");
 }
 
 /** Tous les libellés de questions existants (normalisés), pour anti-doublon à l’insertion IA. */
@@ -171,9 +183,20 @@ function validateAiQuestion(
     return { ok: false, reason: `explication trop longue (>${MAX_EXPLANATION_CHARS} car.)` };
   }
 
+  const conceptRaw =
+    typeof o.concept_key === "string"
+      ? o.concept_key
+      : typeof o.concept === "string"
+        ? o.concept
+        : "";
+  const concept = conceptRaw.trim() ? normalizeConceptKey(conceptRaw) : null;
+  if (concept && concept.length > MAX_CONCEPT_KEY_CHARS) {
+    return { ok: false, reason: `concept_key trop long (>${MAX_CONCEPT_KEY_CHARS} car.)` };
+  }
+
   return {
     ok: true,
-    data: { question, choices, correct_index: ci, explanation },
+    data: { question, choices, correct_index: ci, explanation, concept_key: concept },
   };
 }
 
@@ -196,7 +219,23 @@ function dedupeBatch(questions: AiPreviewQuestion[]): {
   return { kept, droppedDuplicates };
 }
 
-function buildUserPrompt(count: number, difficulty: Difficulty, themeLabel: string): string {
+function buildConceptFocusBlock(concepts?: string): string {
+  const raw = (concepts ?? "").trim();
+  if (!raw) return "";
+  return `
+Focus concepts (prioritaires pour ce lot) :
+- ${raw}
+- Couvre ces termes explicitement dans les questions/choix/explications quand pertinent.
+- Si un terme est ambigu, garde une formulation grand public et compréhensible.
+- Évite de répéter exactement le même terme dans toutes les questions.`;
+}
+
+function buildUserPrompt(
+  count: number,
+  difficulty: Difficulty,
+  themeLabel: string,
+  concepts?: string,
+): string {
   return `Génère exactement ${count} questions de quiz en français sur le thème: ${themeLabel}.
 
 Niveau demandé pour TOUT le lot: **${difficulty}**
@@ -218,9 +257,14 @@ Règles strictes:
 - Explication: **maximum 2 phrases courtes** au total, ton "OK, maintenant tu captes", utile et léger.
 - Évite l'argot **ringard** ou de **niche** ; reste sur des usages **modernes et réalistes** (réseaux, web, quotidien numérique).
 - **Aucun doublon d'idée** dans ce lot: ne répète pas la même expression / le même fait sous une autre formulation.
+${buildConceptFocusBlock(concepts)}
 
 Format de sortie — JSON **uniquement**, sans markdown, sans texte hors JSON, forme exacte:
-{ "questions": [ { "question": "...", "choices": ["","","",""], "correct_index": 0, "explanation": "..." } ] }`;
+{ "questions": [ { "concept_key": "slug_optionnel", "question": "...", "choices": ["","","",""], "correct_index": 0, "explanation": "..." } ] }
+
+Notes concept_key:
+- concept_key optionnel mais recommandé (ex: "rizz", "ratio", "main_character_energy")
+- style: minuscule + underscore, pas de phrase longue`;
 }
 
 async function verifyAdminAccess(
@@ -355,7 +399,13 @@ function parseAndValidateQuestionsFromAi(raw: string): {
 /** Génère un aperçu — aucune écriture en base. */
 export const generateQuestionsPreview = createServerFn({ method: "POST" })
   .inputValidator(
-    (data: { theme: Theme; difficulty: Difficulty; count: number; accessToken: string }) => {
+    (data: {
+      theme: Theme;
+      difficulty: Difficulty;
+      count: number;
+      accessToken: string;
+      concepts?: string;
+    }) => {
       if (!data.theme || !data.difficulty) throw new Error("Thème et difficulté requis");
       if (data.count < 1 || data.count > 30) throw new Error("Entre 1 et 30 questions");
       if (!data.accessToken) throw new Error("Authentification requise");
@@ -372,7 +422,7 @@ export const generateQuestionsPreview = createServerFn({ method: "POST" })
     }
 
     const themeLabel = THEME_LABELS[data.theme];
-    const userPrompt = buildUserPrompt(data.count, data.difficulty, themeLabel);
+    const userPrompt = buildUserPrompt(data.count, data.difficulty, themeLabel, data.concepts);
     const ai = await callOpenAiCompatibleChat(userPrompt, aiConfig);
     if (!ai.ok) return { ok: false as const, error: ai.error };
 
@@ -466,6 +516,7 @@ export const insertAcceptedGeneratedQuestions = createServerFn({ method: "POST" 
       correct_index: q.correct_index,
       explanation: q.explanation,
       is_active: true,
+      concept_key: q.concept_key ?? null,
     }));
 
     const { error: insertErr } = await admin.from("questions").insert(rows);
