@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       { title: "Tu captes ? — Tu captes vraiment les jeunes ?" },
       {
         name: "description",
-        content: "Teste ton niveau en 2 minutes.",
+        content: "Décrypte le web vivant en quiz — court, net, sans prise de tête.",
       },
     ],
   }),
@@ -29,9 +29,6 @@ function HomePage() {
   const { user, profile } = useAuth();
   const [installPrompt, setInstallPrompt] = useState<Event | null>(null);
   const [dailyCompletedToday, setDailyCompletedToday] = useState<boolean | null>(null);
-  const maxUnlockedLevel = profile?.max_unlocked_level ?? 1;
-  const hasProgression = Boolean(profile && (profile.total_xp > 0 || maxUnlockedLevel > 1));
-
   useEffect(() => {
     maybeShowDailyReminder();
   }, []);
@@ -83,19 +80,19 @@ function HomePage() {
   const shouldProtectStreak = hasStreak && !dailyCompletedToday;
 
   const missionTitle = !user
-    ? "Mission du jour"
+    ? "Par où commencer"
     : dailyCompletedToday
-      ? "Mission validée"
+      ? "Fil du jour : fait"
       : shouldProtectStreak
-        ? "Garde ta série"
-        : "Débloque ton bonus du jour";
+        ? "Série en douceur"
+        : "Culture du jour";
   const missionText = !user
-    ? "Un run rapide pour lancer ta progression."
+    ? "Un run court pour sentir le rythme — zéro engagement."
     : dailyCompletedToday
-      ? "Mission validée. Tu peux enchaîner."
+      ? "Tu as déjà capté le fil du jour. Enchaîne quand tu veux."
       : shouldProtectStreak
-        ? `Passe par la question du jour pour garder tes ${streakCount} jour${streakCount > 1 ? "s" : ""} d’affilée.`
-        : "Réponds à la question du jour — c’est ta mission du moment.";
+        ? `Série : ${streakCount} jour${streakCount > 1 ? "s" : ""}. Un passage par la question du jour prolonge la suite — si l’envie t’y prend.`
+        : "Une question, une lecture : le moment culture à picorer.";
   const missionCtaTo = !user
     ? "/quiz"
     : dailyCompletedToday
@@ -104,8 +101,8 @@ function HomePage() {
   const missionCta = !user
     ? "Lancer mon premier run"
     : dailyCompletedToday
-      ? "Continuer ma progression"
-      : "Valider ma mission";
+      ? "Explorer les niveaux"
+      : "Ouvrir la question du jour";
 
   /** Logged-in flow that opens the same daily run as Jouer → Daily */
   const missionIsDaily = Boolean(user && !dailyCompletedToday);
@@ -118,7 +115,7 @@ function HomePage() {
         <section className="container mx-auto max-w-5xl px-4 pt-4 sm:px-6 sm:pt-6 [@media(max-height:780px)]:pt-2">
           <div className="mx-auto max-w-3xl animate-fade-in space-y-3 rounded-[2rem] border border-border/60 bg-card/70 px-4 py-4 text-center shadow-[var(--shadow-card)] backdrop-blur-sm sm:px-7 sm:py-5 [@media(max-height:780px)]:space-y-2 [@media(max-height:780px)]:rounded-[1.7rem] [@media(max-height:780px)]:px-3 [@media(max-height:780px)]:py-3.5">
             <span className="inline-flex items-center justify-center rounded-full border border-accent/35 bg-accent/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/90 sm:text-[13px]">
-              Quiz culture web
+              Culture web · en quiz
             </span>
             <div className="relative mx-auto w-full max-w-2xl overflow-hidden rounded-3xl border border-violet-400/28 bg-[#111a36]/82 px-4 py-4 shadow-[0_0_0_1px_rgba(139,92,246,0.2),0_16px_34px_-24px_rgba(168,85,247,0.55)] sm:px-6 sm:py-5 [@media(max-height:780px)]:rounded-2xl [@media(max-height:780px)]:px-3.5 [@media(max-height:780px)]:py-3">
               <span
@@ -166,7 +163,7 @@ function HomePage() {
                   <div className="mt-2 flex flex-wrap gap-1.5 [@media(max-height:780px)]:mt-1.5 [@media(max-height:780px)]:gap-1.5">
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-border/55 bg-card/45 px-2.5 py-1 text-xs font-semibold">
                       <Zap className="size-3.5 text-warning" />
-                      <strong>{xpToNextLevel} XP</strong> avant rang suivant
+                      <strong>~{xpToNextLevel} XP</strong> jusqu’au palier suivant
                     </span>
                     {hasStreak && (
                       <span className="inline-flex items-center gap-1.5 rounded-full border border-success/40 bg-success/10 px-2.5 py-1 text-xs font-semibold text-slate-100">

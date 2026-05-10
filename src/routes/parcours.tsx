@@ -32,7 +32,10 @@ export const Route = createFileRoute("/parcours")({
   head: () => ({
     meta: [
       { title: "Ton parcours — Tu captes ?" },
-      { name: "description", content: "Badges, stats et progression — ton game « Tu captes ? »." },
+      {
+        name: "description",
+        content: "Ton fil culturel : moments débloqués, lectures de sessions, progression légère.",
+      },
     ],
   }),
   component: ProfilePage,
@@ -150,7 +153,7 @@ function ProfilePage() {
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
-          <p>On charge ton parcours…</p>
+          <p>On assemble ton fil culturel…</p>
         </main>
       </div>
     );
@@ -168,129 +171,14 @@ function ProfilePage() {
         <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">
           Salut {profile.display_name ?? "toi"} !
         </h1>
-        <p className="text-lg text-muted-foreground mb-6">Voilà ton vrai niveau, aujourd’hui.</p>
+        <p className="text-lg text-muted-foreground mb-6">
+          Où tu décryptes le mieux, pour l’instant — sans vibe tableau de bord.
+        </p>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4 mb-6">
-          <StatCard
-            icon={<Star className="size-7" />}
-            label="Niveau"
-            value={level.toString()}
-            accent="text-primary bg-primary-soft"
-          />
-          <StatCard
-            icon={<Sparkles className="size-7" />}
-            label="Points (XP)"
-            value={profile.total_xp.toString()}
-            accent="text-accent bg-accent-soft"
-          />
-          <StatCard
-            icon={<Flame className="size-7" />}
-            label="Série"
-            value={`${profile.current_streak} j`}
-            accent="text-warning bg-warning-soft"
-          />
-          <StatCard
-            icon={<Trophy className="size-7" />}
-            label="Quiz thème"
-            value={stats.totalAttempts.toString()}
-            accent="text-success bg-success-soft"
-          />
-        </div>
-        {/* Level progress */}
-        <div className="bg-card rounded-3xl border-2 border-border p-5 mb-6">
-          <div className="flex justify-between mb-2">
-            <span className="font-bold">Niveau {level}</span>
-            <span className="text-muted-foreground">{xpInLevel} / 100 XP</span>
-          </div>
-          <div className="relative h-3.5 rounded-full border border-black/45 bg-secondary overflow-hidden shadow-inner">
-            <div className="h-full bg-primary transition-all" style={{ width: `${xpInLevel}%` }} />
-            <span
-              className="pointer-events-none absolute top-1/2 h-4 w-0.5 -translate-y-1/2 bg-black/70 shadow-[0_0_0_1px_rgba(255,255,255,0.22)]"
-              style={{ left: `clamp(2px, ${xpInLevel}%, calc(100% - 2px))` }}
-              aria-hidden
-            />
-          </div>
-          <p className="text-sm text-muted-foreground mt-3">
-            Moyenne quiz thème : <strong>{stats.avgScore}%</strong> · Record :{" "}
-            <strong>{profile.longest_streak} jours</strong>
-          </p>
-        </div>
-
-        {/* Stats fusionnées */}
-        <div className="rounded-3xl border-2 border-border bg-card p-5 mb-6">
-          <h2 className="text-xl font-extrabold">Mes stats de jeu</h2>
-          <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-            <MiniStat
-              icon={<Target className="size-4" />}
-              label="Parties"
-              value={gameStats.totalAttempts.toString()}
-            />
-            <MiniStat
-              icon={<TrendingUp className="size-4" />}
-              label="Score moyen"
-              value={`${gameStats.avgScore}%`}
-            />
-            <MiniStat
-              icon={<Trophy className="size-4" />}
-              label="Tout bon"
-              value={gameStats.perfect.toString()}
-            />
-            <MiniStat
-              icon={<Flame className="size-4" />}
-              label="Record série"
-              value={`${profile.longest_streak} j`}
-            />
-          </div>
-
-          {themeStats.length > 0 && (
-            <div className="mt-4 space-y-2.5">
-              {themeStats.map((item) => (
-                <div key={item.key}>
-                  <div className="mb-1 flex items-center justify-between text-xs">
-                    <span className="font-semibold">
-                      {THEMES[item.key].emoji} {THEMES[item.key].label}
-                    </span>
-                    <span className="text-muted-foreground">
-                      {item.count} quiz · {item.pct}%
-                    </span>
-                  </div>
-                  <div className="h-2 rounded-full bg-muted overflow-hidden">
-                    <div className="h-full bg-primary" style={{ width: `${item.pct}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {recentAttempts.length > 0 && (
-            <div className="mt-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                Dernières parties
-              </p>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {recentAttempts.map((attempt) => (
-                  <span
-                    key={attempt.id}
-                    className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-background/60 px-2.5 py-1 text-xs font-semibold"
-                    title={new Date(attempt.completed_at).toLocaleDateString("fr-FR")}
-                  >
-                    {attempt.score}/{attempt.total_questions}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <p className="mt-4 text-sm text-muted-foreground">
-            XP total tout mode : <strong>{profile.total_xp} XP</strong>
-          </p>
-        </div>
-
-        {/* Badges */}
+        {/* Badges first — moments before numbers */}
         <div className="bg-card rounded-3xl border-2 border-border p-5 sm:p-6 mb-6">
           <div className="mb-4 flex items-center justify-between gap-3">
-            <h2 className="text-2xl font-extrabold">Tes badges ({badges.length})</h2>
+            <h2 className="text-2xl font-extrabold">Moments débloqués ({badges.length})</h2>
             {allBadges.length > previewBadgeCount && (
               <Button type="button" variant="ghost" size="sm" onClick={() => setShowAllBadges((v) => !v)}>
                 {showAllBadges ? "Réduire" : "Voir tous"}
@@ -337,9 +225,132 @@ function ProfilePage() {
           )}
         </div>
 
+        {/* Snapshot */}
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4 mb-6">
+          <StatCard
+            icon={<Star className="size-7" />}
+            label="Palier"
+            value={level.toString()}
+            accent="text-primary bg-primary-soft"
+          />
+          <StatCard
+            icon={<Sparkles className="size-7" />}
+            label="XP (curiosité)"
+            value={profile.total_xp.toString()}
+            accent="text-accent bg-accent-soft"
+          />
+          <StatCard
+            icon={<Flame className="size-7" />}
+            label="Série actuelle"
+            value={`${profile.current_streak} j`}
+            accent="text-warning bg-warning-soft"
+          />
+          <StatCard
+            icon={<Trophy className="size-7" />}
+            label="Runs thème"
+            value={stats.totalAttempts.toString()}
+            accent="text-success bg-success-soft"
+          />
+        </div>
+        {/* Palier en cours */}
+        <div className="bg-card rounded-3xl border-2 border-border p-5 mb-6">
+          <div className="flex justify-between mb-2">
+            <span className="font-bold">Palier {level}</span>
+            <span className="text-muted-foreground">{xpInLevel} / 100 XP</span>
+          </div>
+          <div className="relative h-3.5 rounded-full border border-black/45 bg-secondary overflow-hidden shadow-inner">
+            <div className="h-full bg-primary transition-all" style={{ width: `${xpInLevel}%` }} />
+            <span
+              className="pointer-events-none absolute top-1/2 h-4 w-0.5 -translate-y-1/2 bg-black/70 shadow-[0_0_0_1px_rgba(255,255,255,0.22)]"
+              style={{ left: `clamp(2px, ${xpInLevel}%, calc(100% - 2px))` }}
+              aria-hidden
+            />
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            Précision moyenne (quiz thème) : <strong>{stats.avgScore}%</strong> · Pic série :{" "}
+            <strong>{profile.longest_streak} jours</strong>
+          </p>
+          <p className="text-xs text-muted-foreground/90 mt-2 leading-snug">
+            L’XP récompense l’exploration autant que la bonne réponse — pas besoin de grind.
+          </p>
+        </div>
+
+        {/* Lecture des sessions */}
+        <div className="rounded-3xl border-2 border-border bg-card p-5 mb-6">
+          <h2 className="text-xl font-extrabold">Lecture de tes sessions</h2>
+          <p className="mt-1 text-xs text-muted-foreground leading-snug">
+            Chiffres utiles, sans te réduire à une moyenne froide.
+          </p>
+          <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+            <MiniStat
+              icon={<Target className="size-4" />}
+              label="Sessions"
+              value={gameStats.totalAttempts.toString()}
+            />
+            <MiniStat
+              icon={<TrendingUp className="size-4" />}
+              label="Précision moy."
+              value={`${gameStats.avgScore}%`}
+            />
+            <MiniStat
+              icon={<Trophy className="size-4" />}
+              label="Sans faute"
+              value={gameStats.perfect.toString()}
+            />
+            <MiniStat
+              icon={<Flame className="size-4" />}
+              label="Pic série"
+              value={`${profile.longest_streak} j`}
+            />
+          </div>
+
+          {themeStats.length > 0 && (
+            <div className="mt-4 space-y-2.5">
+              {themeStats.map((item) => (
+                <div key={item.key}>
+                  <div className="mb-1 flex items-center justify-between text-xs">
+                    <span className="font-semibold">
+                      {THEMES[item.key].emoji} {THEMES[item.key].label}
+                    </span>
+                    <span className="text-muted-foreground">
+                      {item.count} run{item.count > 1 ? "s" : ""} · {item.pct}%
+                    </span>
+                  </div>
+                  <div className="h-2 rounded-full bg-muted overflow-hidden">
+                    <div className="h-full bg-primary" style={{ width: `${item.pct}%` }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {recentAttempts.length > 0 && (
+            <div className="mt-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
+                Derniers runs
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {recentAttempts.map((attempt) => (
+                  <span
+                    key={attempt.id}
+                    className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-background/60 px-2.5 py-1 text-xs font-semibold"
+                    title={new Date(attempt.completed_at).toLocaleDateString("fr-FR")}
+                  >
+                    {attempt.score}/{attempt.total_questions}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <p className="mt-4 text-sm text-muted-foreground">
+            XP cumulée (tous modes) : <strong>{profile.total_xp} XP</strong>
+          </p>
+        </div>
+
         <div className="grid gap-3">
           <Button asChild size="xl" variant="default" className="sm:max-w-sm">
-            <Link to="/quiz">Faire un quiz</Link>
+            <Link to="/quiz">Découvrir un quiz</Link>
           </Button>
         </div>
       </main>

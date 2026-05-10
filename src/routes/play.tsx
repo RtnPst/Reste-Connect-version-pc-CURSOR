@@ -9,7 +9,7 @@ export const Route = createFileRoute("/play")({
       { title: "Play — Tu captes ?" },
       {
         name: "description",
-        content: "Choisis ton mode et lance un run en quelques secondes.",
+        content: "Un mode, une intention — run court, thème, ou fil du jour.",
       },
     ],
   }),
@@ -24,9 +24,9 @@ function PlayPage() {
       <AppHeader />
       <main className="container mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
         <section className="mb-4 rounded-3xl border border-violet-400/40 bg-linear-to-br from-violet-950/70 via-indigo-950/60 to-orange-950/30 p-4 sm:p-5">
-          <p className="text-xs font-extrabold uppercase tracking-wide text-violet-200">Jouer maintenant</p>
-          <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight sm:text-3xl">Choisis ton mode</h1>
-          <p className="mt-1 text-sm text-slate-200">Lance un run et enchaîne.</p>
+          <p className="text-xs font-extrabold uppercase tracking-wide text-violet-200">En session</p>
+          <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight sm:text-3xl">Comment tu découpes le web ?</h1>
+          <p className="mt-1 text-sm text-slate-200">Un mode, une intention — court, thème, ou endurance.</p>
         </section>
 
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
@@ -34,7 +34,7 @@ function PlayPage() {
             to="/niveaux"
             icon={<Trophy className="size-8" />}
             title="Run rapide"
-            description="Le plus simple pour reprendre."
+            description="Le raccourci pour te remettre dans le bain."
             actionLabel="Lancer le run"
             accent="bg-primary-soft text-primary"
           />
@@ -42,8 +42,8 @@ function PlayPage() {
             to="/quiz"
             icon={<GraduationCap className="size-8" />}
             title="Quiz par thème"
-            description="Choisis un thème et enchaîne."
-            actionLabel="Lancer un thème"
+            description="Un thème, une vibe — tu décryptes à ton rythme."
+            actionLabel="Choisir un thème"
             accent="bg-fuchsia-500/15 text-fuchsia-300"
             actionTone="text-fuchsia-300"
           />
@@ -51,8 +51,8 @@ function PlayPage() {
             to="/marathon"
             icon={<InfinityIcon className="size-8" />}
             title="Marathon"
-            description="Tu joues tant que tu tiens."
-            actionLabel="Chasser le record"
+            description="Enchaîne tant que ça te dit — sans pression de perf."
+            actionLabel="Tenir la session"
             accent="bg-warning-soft text-warning"
             actionTone="text-warning"
           />
@@ -60,7 +60,7 @@ function PlayPage() {
             to={user ? "/duel" : "/connexion"}
             icon={<Swords className="size-8" />}
             title="Duel"
-            description="Score contre score."
+            description="Face à face, score contre score."
             actionLabel="Lancer un défi"
             accent="bg-cyan-500/15 text-cyan-300"
             actionTone="text-cyan-300"
@@ -69,9 +69,9 @@ function PlayPage() {
           <ModeCard
             to="/question-du-jour"
             icon={<Calendar className="size-8" />}
-            title="Daily"
-            description="Une minute pour garder ta série."
-            actionLabel="Faire ma daily"
+            title="Culture du jour"
+            description="Une question pour capter le moment — la série suit si tu veux."
+            actionLabel="Ouvrir le fil du jour"
             accent="bg-success-soft text-success"
             actionTone="text-success"
             cardClassName="col-span-2 lg:col-span-1"
