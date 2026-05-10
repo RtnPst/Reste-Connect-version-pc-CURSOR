@@ -196,7 +196,7 @@ function QuizPage() {
   const handleSpeakExplanation = () => {
     if (!current || selectedIndex === null) return;
     const isCorrect = selectedIndex === revealedCorrectIndex;
-    speak(`${isCorrect ? "Bonne réponse !" : "Pas tout à fait."} ${current.explanation}`, true);
+    speak(`${isCorrect ? "Bien vu." : "Voici pourquoi ça colle."} ${current.explanation}`, true);
   };
 
   const handleNext = useCallback(async () => {
@@ -388,9 +388,11 @@ function QuizPage() {
   const streak = profile?.current_streak ?? 0;
   const longestStreak = profile?.longest_streak ?? 0;
   const streakMessage =
-    streak > 0 && streak + 1 >= longestStreak
-      ? "Plus qu'un jour pour battre ton record."
-      : "Reviens demain pour continuer ta série.";
+    streak > 0 && longestStreak > 0 && streak + 1 >= longestStreak
+      ? "Encore un jour pour égaler ton record perso sur l’app."
+      : streak > 0
+        ? `Série : ${streak} jour${streak > 1 ? "s" : ""} sur l’app. La question du jour la prolonge si tu veux.`
+        : "Série : la question du jour la fait grandir, à ton rythme.";
 
   const flowStepKey = `${current.id}-${currentIndex}`;
 
@@ -422,7 +424,7 @@ function QuizPage() {
       onSpeakExplanation={handleSpeakExplanation}
       onPrimaryNext={handleNext}
       primaryNextLabel={
-        currentIndex + 1 < questions.length ? "Question suivante" : "Voir mon score"
+        currentIndex + 1 < questions.length ? "La suivante" : "Voir le bilan"
       }
       footerWhenPlaying={
         <Link

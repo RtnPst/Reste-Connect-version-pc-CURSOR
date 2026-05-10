@@ -314,7 +314,7 @@ function LevelPage() {
   const handleSpeakExplanation = () => {
     if (!current || selectedIndex === null) return;
     const isCorrect = selectedIndex === revealedCorrectIndex;
-    speak(`${isCorrect ? "Bonne réponse !" : "Pas tout à fait."} ${current.explanation}`, true);
+    speak(`${isCorrect ? "Bien vu." : "Voici pourquoi ça colle."} ${current.explanation}`, true);
   };
 
   useEffect(() => {
@@ -585,9 +585,11 @@ function LevelPage() {
   const streak = profile?.current_streak ?? 0;
   const longestStreak = profile?.longest_streak ?? 0;
   const streakMessage =
-    streak > 0 && streak + 1 >= longestStreak
-      ? "Plus qu’un jour pour battre ton record."
-      : "Continue comme ça 🔥";
+    streak > 0 && longestStreak > 0 && streak + 1 >= longestStreak
+      ? "Encore un jour pour égaler ton record perso sur l’app."
+      : streak > 0
+        ? `Série : ${streak} jour${streak > 1 ? "s" : ""} sur l’app.`
+        : "Enchaîne à ton rythme — la série suit surtout via la question du jour.";
 
   return (
     <ImmersiveQuizPlay
@@ -634,7 +636,7 @@ function LevelPage() {
       onSpeakExplanation={handleSpeakExplanation}
       onPrimaryNext={handleNext}
       primaryNextLabel={
-        currentIndex + 1 < questions.length ? "Question suivante" : "Voir mon score"
+        currentIndex + 1 < questions.length ? "La suivante" : "Voir le bilan"
       }
       statusMessage={
         checkingAnswer ? (

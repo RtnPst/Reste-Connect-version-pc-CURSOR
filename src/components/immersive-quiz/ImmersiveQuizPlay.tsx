@@ -1,9 +1,14 @@
 import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronLeft, CheckCircle2, Volume2, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+
+/** Short pause before explanation body fades in (ms); skipped when reduced motion is on. */
+const EXPLANATION_REVEAL_DELAY_MS = 150;
 
 const shortScreen = "[@media(max-height:700px)]:";
 
@@ -98,6 +103,22 @@ export function ImmersiveQuizPlay({
 }: ImmersiveQuizPlayProps) {
   const isAnswered = selectedIndex !== null;
   const sheetVisible = sheetOpenProp !== undefined ? sheetOpenProp : isAnswered;
+  const reducedMotion = usePrefersReducedMotion();
+  const [explanationRevealed, setExplanationRevealed] = useState(false);
+
+  useEffect(() => {
+    if (!isAnswered) {
+      setExplanationRevealed(false);
+      return;
+    }
+    if (reducedMotion) {
+      setExplanationRevealed(true);
+      return;
+    }
+    setExplanationRevealed(false);
+    const id = window.setTimeout(() => setExplanationRevealed(true), EXPLANATION_REVEAL_DELAY_MS);
+    return () => window.clearTimeout(id);
+  }, [isAnswered, reducedMotion, flowStepKey]);
 
   return (
     <div className="quiz-immersive flex h-[100dvh] max-h-[100dvh] min-h-0 w-full min-w-0 flex-col overflow-hidden bg-background pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
@@ -242,7 +263,9 @@ export function ImmersiveQuizPlay({
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
-          <SheetTitle className="sr-only">{isCorrect ? "Bonne réponse" : "Explication"}</SheetTitle>
+          <SheetTitle className="sr-only">
+            {isCorrect ? "Réponse correcte" : "Explication et bonne lecture"}
+          </SheetTitle>
           <SheetDescription className="sr-only">{explanation}</SheetDescription>
           <div className="mx-auto flex h-full min-h-0 w-full max-w-3xl flex-1 flex-col px-4 pt-3">
             <div className="mb-3 flex shrink-0 items-center justify-center">
@@ -263,7 +286,7 @@ export function ImmersiveQuizPlay({
               </span>
               <div className="min-w-0 flex-1">
                 <p className="mb-1 text-sm font-extrabold sm:text-base">
-                  {isCorrect ? "✅ Bonne réponse !" : "💡 Pas tout à fait — voici l'explication :"}
+                  {isCorrect ? "Bien vu." : "Voici pourquoi ça colle."}
                 </p>
               </div>
               <Button
@@ -277,7 +300,12 @@ export function ImmersiveQuizPlay({
                 <Volume2 />
               </Button>
             </div>
-            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-0.5 py-2 text-sm leading-relaxed text-foreground/90 sm:text-base">
+            <div
+              className={`min-h-0 flex-1 overflow-y-auto overscroll-contain px-0.5 py-2 text-sm leading-relaxed text-foreground/90 sm:text-base ${
+                reducedMotion ? "" : "transition-opacity duration-200 ease-out"
+              } ${explanationRevealed ? "opacity-100" : "opacity-0"}`}
+              aria-live={explanationRevealed ? "polite" : "off"}
+            >
               {explanation}
             </div>
             <div className="shrink-0 space-y-2 border-t border-border/60 bg-background/95 pt-3 backdrop-blur-sm">

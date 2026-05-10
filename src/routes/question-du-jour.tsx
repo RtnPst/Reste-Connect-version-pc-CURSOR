@@ -230,7 +230,7 @@ function DailyQuestionPage() {
   const handleSpeakExplanation = () => {
     if (!question || selected === null) return;
     const ok = (question.choiceOrder[selected] ?? selected) === revealedCorrectIndex;
-    speak(`${ok ? "Bonne réponse !" : "Pas tout à fait."} ${question.explanation}`, true);
+    speak(`${ok ? "Bien vu." : "Voici pourquoi ça colle."} ${question.explanation}`, true);
   };
 
   const handleSpeakQuestion = () => {
@@ -409,9 +409,11 @@ function DailyQuestionPage() {
   const streak = profile?.current_streak ?? 0;
   const longestStreak = profile?.longest_streak ?? 0;
   const streakMessage =
-    streak > 0 && streak + 1 >= longestStreak
-      ? "Plus qu’un jour pour battre ton record."
-      : "Continue comme ça 🔥";
+    streak > 0 && longestStreak > 0 && streak + 1 >= longestStreak
+      ? "Encore un jour pour égaler ton record perso."
+      : streak > 0
+        ? `Série : ${streak} jour${streak > 1 ? "s" : ""} — merci de tenir le rythme.`
+        : "Une réponse suffit pour avancer ta série aujourd’hui.";
 
   if (!question || alreadyCompletedToday) {
     return null;
@@ -480,7 +482,7 @@ function DailyQuestionPage() {
         explanation={question.explanation}
         onSpeakExplanation={handleSpeakExplanation}
         onPrimaryNext={() => setDailyRecap(true)}
-        primaryNextLabel="Continuer"
+        primaryNextLabel="Voir la suite"
       />
     );
   }

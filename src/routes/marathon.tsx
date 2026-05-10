@@ -262,7 +262,7 @@ function MarathonPage() {
   const handleSpeakExplanation = () => {
     if (!current || selectedIndex === null) return;
     const ok = (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
-    speak(`${ok ? "Bonne réponse !" : "Pas tout à fait."} ${current.explanation}`, true);
+    speak(`${ok ? "Bien vu." : "Voici pourquoi ça colle."} ${current.explanation}`, true);
   };
 
   const handleEndSession = async () => {
@@ -406,7 +406,9 @@ function MarathonPage() {
     (current.choiceOrder[selectedIndex] ?? selectedIndex) === revealedCorrectIndex;
   const streakDays = profile?.current_streak ?? 0;
   const streakHint =
-    streakDays > 0 ? "Ta série sur l’app" : "Connecte-toi pour faire grandir ta série.";
+    streakDays > 0
+      ? "Série en cours sur l’app."
+      : "Connecte-toi pour sauvegarder ta progression.";
 
   if (sessionEnded) {
     const nextAction = getNextActionSuggestion({
@@ -445,10 +447,10 @@ function MarathonPage() {
               +{xpGained} XP gagnés
             </p>
             {streakUpdated ? (
-              <p className="text-sm text-primary mb-6">🔥 Série validée pour aujourd’hui.</p>
+              <p className="text-sm text-primary mb-6">Série du jour validée pour cette session.</p>
             ) : (
               <p className="text-sm text-muted-foreground mb-6">
-                Réponds à au moins 5 questions pour valider ta série.
+                Ce marathon compte pour la série du jour après 5 questions répondues dans la session.
               </p>
             )}
             <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/60 px-4 py-3 text-left">
@@ -563,7 +565,7 @@ function MarathonPage() {
         explanation={current.explanation}
         onSpeakExplanation={handleSpeakExplanation}
         onPrimaryNext={handleNext}
-        primaryNextLabel="Question suivante"
+        primaryNextLabel="La suivante"
         sheetSecondaryAction={{ label: "Terminer la session", onClick: handleEndSession }}
         footerWhenPlaying={
           <div className="flex w-full max-w-md flex-col gap-2 mx-auto">
