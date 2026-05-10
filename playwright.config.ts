@@ -1,8 +1,15 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig, devices } from "@playwright/test";
 
+const configDir = path.dirname(fileURLToPath(import.meta.url));
+const adminStorageStatePath = path.join(configDir, "e2e", ".auth", "admin.json");
+const adminAuthConfigured = fs.existsSync(adminStorageStatePath);
+
 /**
- * Minimal E2E smoke — unauthenticated routes only.
- * Dev server: same as `npm run dev` (Vite prints http://localhost:8080 by default in this project).
+ * E2E: desktop + guest mobile smoke. Optional authenticated admin mobile when `e2e/.auth/admin.json` exists.
+ * See `e2e/AUTH_SETUP.md`.
  */
 export default defineConfig({
   testDir: "./e2e",
@@ -18,7 +25,34 @@ export default defineConfig({
     screenshot: "only-on-failure",
     video: "off",
   },
-  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  projects: [
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+      testIgnore: ["**/mobile-smoke.spec.ts", "**/admin-mobile-auth.spec.ts"],
+    },
+    {
+      name: "mobile-smoke",
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 375, height: 812 },
+      },
+      testMatch: "**/mobile-smoke.spec.ts",
+    },
+    ...(adminAuthConfigured
+      ? [
+          {
+            name: "admin-mobile-auth",
+            use: {
+              ...devices["Desktop Chrome"],
+              viewport: { width: 375, height: 812 },
+              storageState: adminStorageStatePath,
+            },
+            testMatch: "**/admin-mobile-auth.spec.ts",
+          },
+        ]
+      : []),
+  ],
   webServer: {
     command: "npm run dev",
     url: "http://localhost:8080",

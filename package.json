@@ -16,6 +16,7 @@
     "lint": "eslint .",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
+    "test:e2e:save-admin-session": "playwright codegen http://localhost:8080/connexion --save-storage=e2e/.auth/admin.json",
     "format": "prettier --write .",
     "import:new-questions": "node scripts/import-new-questions.mjs",
     "generate:culture-pop-tags": "node scripts/generate-culture-pop-tags.mjs",

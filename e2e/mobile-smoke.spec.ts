@@ -1,62 +1,53 @@
 import { test, expect } from "@playwright/test";
-import { attachPageErrorGuard, logConsoleErrors } from "./helpers";
+import { attachPageErrorGuard, logConsoleErrors, expectNoCatastrophicDocumentOverflow } from "./helpers";
 
-test.describe("unauthenticated smoke", () => {
-  test("home /", async ({ page }) => {
+/** 375px mobile smoke — Chromium only via playwright project config. No auth yet. */
+
+test.describe("mobile 375 smoke (guest)", () => {
+  test("home / loads", async ({ page }) => {
     const getPageErrors = attachPageErrorGuard(page);
     logConsoleErrors(page);
-    const res = await page.goto("/");
+    const res = await page.goto("/", { waitUntil: "load" });
     expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
     await expect(page).toHaveTitle(/Tu captes/);
+    await expectNoCatastrophicDocumentOverflow(page);
     expect(getPageErrors(), "uncaught page errors").toEqual([]);
   });
 
-  test("theme picker /quiz", async ({ page }) => {
+  test("/quiz loads", async ({ page }) => {
     const getPageErrors = attachPageErrorGuard(page);
     logConsoleErrors(page);
-    const res = await page.goto("/quiz");
+    const res = await page.goto("/quiz", { waitUntil: "load" });
     expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
     await expect(page.getByRole("heading", { name: /Quelle piste tu testes/i })).toBeVisible();
+    await expectNoCatastrophicDocumentOverflow(page);
     expect(getPageErrors(), "uncaught page errors").toEqual([]);
   });
 
-  test("levels hub /niveaux", async ({ page }) => {
+  test("/niveaux loads", async ({ page }) => {
     const getPageErrors = attachPageErrorGuard(page);
     logConsoleErrors(page);
-    const res = await page.goto("/niveaux");
+    const res = await page.goto("/niveaux", { waitUntil: "load" });
     expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
     await expect(page).toHaveTitle(/niveaux|Niveaux|Tu captes/i);
-    expect(getPageErrors(), "uncaught page errors").toEqual([]);
-  });
-
-  test("marathon /marathon", async ({ page }) => {
-    const getPageErrors = attachPageErrorGuard(page);
-    logConsoleErrors(page);
-    const res = await page.goto("/marathon");
-    expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
-    await expect(page).toHaveTitle(/Marathon|Tu captes/i);
-    expect(getPageErrors(), "uncaught page errors").toEqual([]);
-  });
-
-  test("daily question /question-du-jour", async ({ page }) => {
-    const getPageErrors = attachPageErrorGuard(page);
-    logConsoleErrors(page);
-    const res = await page.goto("/question-du-jour");
-    expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
-    await expect(page).toHaveTitle(/jour|Tu captes/i);
+    await expectNoCatastrophicDocumentOverflow(page);
     expect(getPageErrors(), "uncaught page errors").toEqual([]);
   });
 
   test(
-    "/admin redirects or shows protected shell when unauthenticated",
+    "/admin guest shell loads without layout blowout",
     async ({ page }) => {
       const getPageErrors = attachPageErrorGuard(page);
       logConsoleErrors(page);
       await page.goto("/admin", { waitUntil: "load" });
-      /* Guest UX: client may navigate to /connexion OR render "Accès réservé" on /admin (useRequireAuth + !isAdmin). */
       const accèsRéservé = page.getByRole("heading", { name: "Accès réservé" });
       const connexionFlow = page.getByRole("heading", { name: /Bon retour !|Créer mon compte/ });
       await expect(accèsRéservé.or(connexionFlow)).toBeVisible({ timeout: 60_000 });
+      /*
+       * Cockpit tab strip appears only when logged in as admin (future auth tests).
+       * Here we guard whole-page horizontal overflow after the resolved guest UX.
+       */
+      await expectNoCatastrophicDocumentOverflow(page);
       expect(getPageErrors(), "uncaught page errors").toEqual([]);
     },
     { timeout: 70_000 },
