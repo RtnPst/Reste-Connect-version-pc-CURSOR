@@ -9,6 +9,11 @@ lerna-debug.log*
 
 node_modules
 dist
+
+# Playwright (local runs; do not commit reports or traces)
+/test-results/
+/playwright-report/
+/playwright/.cache/
 dist-ssr
 .output
 .vinxi
