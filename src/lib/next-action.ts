@@ -24,15 +24,15 @@ export function getNextActionSuggestion(input: NextActionInput): NextActionSugge
       input.passed ?? (input.total > 0 ? (input.score / input.total) * 100 >= 70 : false);
     if (passed && level < totalLevels) {
       return {
-        label: "Continuer au niveau suivant",
+        label: "Ouvrir le palier suivant",
         to: `/niveau/${level + 1}`,
-        reason: "Bon rythme de progression, enchaîne maintenant.",
+        reason: "Le palier suivant est là quand tu as envie de continuer.",
       };
     }
     return {
-      label: "Rejouer ce niveau",
+      label: "Reprendre ce palier",
       to: `/niveau/${level}`,
-      reason: "Renforcer ce palier avant d’avancer.",
+      reason: "Tu peux repasser sur ce fil sans te presser.",
     };
   }
 
@@ -40,30 +40,30 @@ export function getNextActionSuggestion(input: NextActionInput): NextActionSugge
     const accuracy = input.total > 0 ? input.score / input.total : 0;
     if (accuracy >= 0.6 && input.score >= 8) {
       return {
-        label: "Relancer un marathon",
+        label: "Nouvelle session marathon",
         to: "/marathon",
-        reason: "Bonne run, tente un nouveau record.",
+        reason: "Beau fil — une autre session si ça te dit.",
       };
     }
     return {
-      label: input.isLoggedIn ? "Reprendre le parcours" : "Lancer un quiz thème",
+      label: input.isLoggedIn ? "Voir les paliers par niveau" : "Choisir un thème",
       to: input.isLoggedIn ? "/niveaux" : "/quiz",
-      reason: "Session utile, passe sur un format plus structuré.",
+      reason: "Un format plus cadré peut compléter ce moment.",
     };
   }
 
   const percentage = input.total > 0 ? (input.score / input.total) * 100 : 0;
   if (input.isLoggedIn && percentage >= 70) {
     return {
-      label: "Continuer ta progression",
+      label: "Ouvrir les paliers par niveau",
       to: "/niveaux",
-      reason: "Bon score, capitalise avec le mode niveaux.",
+      reason: "Un autre angle : les niveaux mélangent les thèmes.",
     };
   }
   return {
-    label: "Essayer un autre thème",
+    label: "Changer d’angle",
     to: "/quiz",
-    reason: "Varier les thèmes aide à progresser plus vite.",
+    reason: "Un autre thème, une autre lecture du web.",
   };
 }
 

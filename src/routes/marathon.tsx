@@ -51,7 +51,7 @@ export const Route = createFileRoute("/marathon")({
       {
         name: "description",
         content:
-          "Enchaîne les questions sans limite. Jusqu’où tu vas ? Score infini, paliers à célébrer !",
+          "Enchaîne les questions sans limite — tu t’arrêtes quand tu veux. Les XP s’enregistrent en fin de session.",
       },
     ],
   }),
@@ -222,7 +222,7 @@ function MarathonPage() {
         setShowCelebration(true);
         playFanfare(sfxOn);
         toast.success(
-          `🎉 Palier ${newScore} bonnes réponses ! Pense à terminer la session pour enregistrer tes XP.`,
+          `Palier ${newScore} bonnes réponses — chouette. L’XP s’ajoute quand tu termines la session.`,
         );
         setTimeout(() => setShowCelebration(false), 3500);
       }
@@ -435,27 +435,29 @@ function MarathonPage() {
         </header>
         <main className="container mx-auto w-full min-w-0 max-w-2xl flex-1 overflow-y-auto overflow-x-clip px-4 py-8 text-center sm:px-6 sm:py-10">
           <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 shadow-[var(--shadow-card)]">
-            <h1 className="text-3xl font-extrabold mb-2">Session terminée</h1>
+            <h1 className="text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl mb-3">
+              Fin de session — merci d’avoir tenu.
+            </h1>
             <p className="text-muted-foreground mb-1">
-              Questions répondues :{" "}
-              <span className="font-bold text-foreground">{answeredCount}</span>
+              Questions parcourues :{" "}
+              <span className="font-semibold text-foreground">{answeredCount}</span>
             </p>
             <p className="text-muted-foreground mb-4">
-              Bonnes réponses : <span className="font-bold text-foreground">{score}</span>
+              Bonnes réponses : <span className="font-semibold text-foreground">{score}</span>
             </p>
             <p className="text-sm sm:text-base font-semibold text-success mb-2">
               +{xpGained} XP gagnés
             </p>
             {streakUpdated ? (
-              <p className="text-sm text-primary mb-6">Série du jour validée pour cette session.</p>
+              <p className="text-sm text-primary mb-6">Ta série du jour est notée pour cette session.</p>
             ) : (
               <p className="text-sm text-muted-foreground mb-6">
-                Ce marathon compte pour la série du jour après 5 questions répondues dans la session.
+                À partir de 5 questions dans la session, ça compte pour ta série du jour.
               </p>
             )}
-            <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/60 px-4 py-3 text-left">
-              <p className="text-[11px] font-bold uppercase tracking-wide text-primary">
-                Prochaine meilleure action
+            <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/50 px-4 py-3 text-left">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-primary/90">
+                Une idée pour la suite
               </p>
               <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
               <Button asChild size="lg" variant="accent" className="mt-3 w-full">
@@ -490,7 +492,7 @@ function MarathonPage() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/quiz">Faire un quiz complet</Link>
+                <Link to="/quiz">Un quiz thème</Link>
               </Button>
             </div>
           </div>

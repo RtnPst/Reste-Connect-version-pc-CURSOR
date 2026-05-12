@@ -588,16 +588,16 @@ function ResultsScreen({
   const percentage = Math.round((score / total) * 100);
   const message =
     percentage === 100
-      ? "Parfait ! Tu es incollable !"
+      ? "Run bouclé — tout est tombé juste."
       : percentage >= 70
-        ? "Excellent travail !"
+        ? "Tu repars avec une lecture solide sur ce thème."
         : percentage >= 40
-          ? "Pas mal, tu progresses !"
-          : "Continue, ça va venir !";
+          ? "Des accroches à repasser quand tu veux — c’est normal."
+          : "Rien de dramatique : c’est du terrain à explorer.";
   const progressMessage =
     xpGained !== null
-      ? "Tu te rapproches du niveau suivant."
-      : "Chaque quiz te rapproche du niveau suivant.";
+      ? "Tu avances doucement vers le prochain palier."
+      : "Chaque quiz rapproche le prochain palier.";
   const nextAction = getNextActionSuggestion({
     mode: "theme",
     isLoggedIn,
@@ -628,15 +628,9 @@ function ResultsScreen({
       </header>
       <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
         <div className="quiz-result-card bg-card rounded-3xl border-2 border-border p-6 sm:p-10 shadow-[var(--shadow-card)] text-center mb-6 animate-scale-in">
-          <div className="text-6xl sm:text-7xl mb-3">
-            {percentage >= 70 ? "🎉" : percentage >= 40 ? "👍" : "💪"}
-          </div>
-          <p className="inline-flex items-center rounded-full border border-primary/30 bg-primary-soft px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary mb-3 animate-fade-in">
-            Bien joue 🔥
-          </p>
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">{message}</h1>
+          <h1 className="text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight mb-2">{message}</h1>
           <p className="text-xl sm:text-2xl text-muted-foreground mb-4">
-            Ton score :
+            Réponses justes :
             {" "}
             <span className="font-extrabold text-primary animate-fade-in">
               {score} / {total}
@@ -652,25 +646,25 @@ function ResultsScreen({
             <p className="text-sm sm:text-base font-extrabold text-success">+{xpGained ?? 0} XP gagnes</p>
             <p className="mt-1 text-sm font-medium text-foreground/80">{progressMessage}</p>
             {dailyBonusApplied && (
-              <p className="mt-1 text-xs sm:text-sm font-bold text-accent-foreground">
-                🔥 Bonus du jour activé !
+              <p className="mt-1 text-xs sm:text-sm font-semibold text-accent-foreground">
+                Bonus du jour actif.
               </p>
             )}
             {luckyBonusApplied && (
-              <p className="mt-1 text-xs sm:text-sm font-bold text-primary-foreground">
-                🎁 Question bonus ! XP x2
+              <p className="mt-1 text-xs sm:text-sm font-semibold text-primary-foreground">
+                Question bonus : XP doublée sur celle-ci.
               </p>
             )}
           </div>
           {levelUpTo !== null && (
             <p className="text-sm sm:text-base font-semibold text-primary mb-6">
-              Niveau {levelUpTo} atteint !
+              Palier {levelUpTo} débloqué.
             </p>
           )}
 
-          <div className="mx-auto mb-4 max-w-lg rounded-2xl border border-primary/30 bg-primary-soft/70 px-4 py-3 text-left">
-            <p className="text-[11px] font-bold uppercase tracking-wide text-primary">
-              Prochaine meilleure action
+          <div className="mx-auto mb-4 max-w-lg rounded-2xl border border-primary/25 bg-primary-soft/50 px-4 py-3 text-left">
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-primary/90">
+              Une idée pour la suite
             </p>
             <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
             <Button asChild size="lg" variant="accent" className="mt-3 w-full min-w-0 whitespace-normal">
@@ -716,7 +710,7 @@ function ResultsScreen({
                 const url = window.location.origin;
                 const shareData = {
                   title: "Tu captes ?",
-                  text: `J’ai fait ${score}/${total} sur Tu captes ? Tu fais mieux ?`,
+                  text: `J’ai fait un quiz « ${themeMeta.short} » sur Tu captes ? (${score}/${total}).`,
                   url,
                 };
                 try {
@@ -729,7 +723,7 @@ function ResultsScreen({
                 }
                 try {
                   await navigator.clipboard.writeText(`${shareData.text} ${url}`);
-                  toast.success("Lien copié ! Partagez-le 💌");
+                  toast.success("Lien copié dans le presse-papiers");
                 } catch {
                   toast.error("Impossible de copier le lien");
                 }
@@ -739,7 +733,7 @@ function ResultsScreen({
               className="min-w-0 whitespace-normal"
             >
               <Share2 />
-              Partager mon score
+              Partager
             </Button>
             <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
               <Link to="/quiz">Autre thème</Link>
@@ -754,7 +748,9 @@ function ResultsScreen({
 
           {!isLoggedIn && (
             <div className="mt-8 p-4 rounded-2xl bg-accent-soft border-2 border-accent/20">
-              <p className="font-semibold mb-2">💾 Envie de sauvegarder tes progrès ?</p>
+              <p className="font-semibold mb-2">
+                Compte gratuit : garde ton XP et ta série sur l’app.
+              </p>
               <Button asChild variant="accent" size="default">
                 <Link to="/connexion">Créer un compte gratuit</Link>
               </Button>
@@ -763,20 +759,25 @@ function ResultsScreen({
         </div>
 
         {wrong.length > 0 && (
-          <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 animate-soft-rise">
+          <div className="rounded-3xl border border-border/60 bg-muted/25 p-6 sm:p-8 animate-soft-rise">
             <h2 className="text-xl sm:text-2xl font-extrabold mb-4">À retenir ({wrong.length})</h2>
             <div className="space-y-4">
               {wrong.map(({ q }, idx) => (
                 <div
                   key={idx}
-                  className="rounded-2xl bg-warning-soft p-4 border-2 border-warning/30"
+                  className="rounded-2xl border border-border/70 bg-card/90 p-4 shadow-[var(--shadow-soft)]"
                 >
                   <p className="mb-2 break-words font-bold">{q.question}</p>
                   <p className="break-words text-base">
-                    <span className="font-semibold text-success">✅ Bonne réponse :</span>{" "}
-                    {q.choices[displayIndexFromOriginal(q.choiceOrder, wrong[idx].a.correct)]}
+                    <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                      Ce qui colle
+                    </span>
+                    <br />
+                    <span className="font-medium text-foreground">
+                      {q.choices[displayIndexFromOriginal(q.choiceOrder, wrong[idx].a.correct)]}
+                    </span>
                   </p>
-                  <p className="text-sm text-muted-foreground mt-2">{q.explanation}</p>
+                  <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{q.explanation}</p>
                 </div>
               ))}
             </div>

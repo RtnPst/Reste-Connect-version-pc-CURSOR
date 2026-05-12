@@ -14,7 +14,7 @@ export const Route = createFileRoute("/connexion")({
       { title: "Connexion — Tu captes ?" },
       {
         name: "description",
-        content: "Connecte-toi ou crée un compte pour sauvegarder tes quiz.",
+        content: "Crée un compte ou connecte-toi pour retrouver ton XP et ta progression sur l’app.",
       },
     ],
   }),
