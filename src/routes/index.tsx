@@ -87,7 +87,7 @@ function HomePage() {
         ? "Série en douceur"
         : "Culture du jour";
   const missionText = !user
-    ? "Un run court pour sentir le rythme — zéro engagement."
+    ? "Un run court pour sentir le rythme."
     : dailyCompletedToday
       ? "Tu as déjà capté le fil du jour. Enchaîne quand tu veux."
       : shouldProtectStreak
@@ -139,7 +139,7 @@ function HomePage() {
                   </span>
                 </h1>
                 <p className="text-sm font-medium text-slate-300/95 sm:text-base [@media(max-height:780px)]:text-[0.83rem]">
-                  2 minutes pour savoir où t’en es vraiment.
+                  Deux minutes pour croiser un angle du web vivant.
                 </p>
                 <div
                   className={cn(

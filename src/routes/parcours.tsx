@@ -172,7 +172,7 @@ function ProfilePage() {
           Salut {profile.display_name ?? "toi"} !
         </h1>
         <p className="text-lg text-muted-foreground mb-6">
-          Où tu décryptes le mieux, pour l’instant — sans vibe tableau de bord.
+          Où tu décryptes le mieux, pour l’instant.
         </p>
 
         {/* Badges first — moments before numbers */}
@@ -270,17 +270,11 @@ function ProfilePage() {
             Précision moyenne (quiz thème) : <strong>{stats.avgScore}%</strong> · Pic série :{" "}
             <strong>{profile.longest_streak} jours</strong>
           </p>
-          <p className="text-xs text-muted-foreground/90 mt-2 leading-snug">
-            L’XP récompense l’exploration autant que la bonne réponse — pas besoin de grind.
-          </p>
         </div>
 
         {/* Lecture des sessions */}
         <div className="rounded-3xl border-2 border-border bg-card p-5 mb-6">
           <h2 className="text-xl font-extrabold">Lecture de tes sessions</h2>
-          <p className="mt-1 text-xs text-muted-foreground leading-snug">
-            Chiffres utiles, sans te réduire à une moyenne froide.
-          </p>
           <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
             <MiniStat
               icon={<Target className="size-4" />}

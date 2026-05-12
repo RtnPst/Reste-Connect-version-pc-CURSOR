@@ -15,7 +15,7 @@ export const Route = createFileRoute("/quiz/")({
       {
         name: "description",
         content:
-          "Six parcours thématiques (vocabulaire, réseaux, gaming, mèmes & trends, relations, tech) + l’ancien regroupement en stats. Dix questions à chaque fois.",
+          "Six parcours thématiques — gaming, mèmes & trends, relations, tech… Dix questions par run.",
       },
     ],
   }),
@@ -63,8 +63,7 @@ function ThemeSelection() {
           <p className="text-xs font-extrabold uppercase tracking-wide text-violet-200">Quiz par thème</p>
           <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight sm:text-3xl">Quelle piste tu testes ?</h1>
           <p className="mt-1 text-sm text-slate-200">
-            Six parcours ciblés — la culture web est découpée en Gaming, Mèmes & trends et Relations. Les anciennes
-            parties « Culture internet » restent visibles dans tes stats. Dix questions à chaque fois.
+            Six angles — Gaming, Mèmes & trends, Relations, tech… Dix questions par run.
           </p>
         </section>
 
@@ -85,7 +84,7 @@ function ThemeSelection() {
                 </h2>
                 <p className="mt-1 line-clamp-3 text-sm text-muted-foreground">{t.description}</p>
                 <p className="mt-auto pt-2 text-xs font-semibold text-muted-foreground">
-                  {counts[theme]} questions dispo
+                  {counts[theme]} questions dans ce thème
                 </p>
                 <p
                   className="pt-0.5 text-sm font-extrabold opacity-90 transition-opacity group-hover:opacity-100"

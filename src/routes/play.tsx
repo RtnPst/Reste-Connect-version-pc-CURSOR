@@ -42,7 +42,7 @@ function PlayPage() {
             to="/quiz"
             icon={<GraduationCap className="size-8" />}
             title="Quiz par thème"
-            description="Un thème, une vibe — tu décryptes à ton rythme."
+            description="Un thème, une vibe — tu décryptes tranquille."
             actionLabel="Choisir un thème"
             accent="bg-fuchsia-500/15 text-fuchsia-300"
             actionTone="text-fuchsia-300"

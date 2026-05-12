@@ -76,7 +76,7 @@ export function AppHeader() {
   const router = useRouter();
   const level = Math.floor((profile?.total_xp ?? 0) / 100) + 1;
   const currentLevelXp = (profile?.total_xp ?? 0) % 100;
-  const progressPct = currentLevelXp;
+  const xpToNextPalier = currentLevelXp === 0 ? 100 : 100 - currentLevelXp;
 
   const handleSignOut = async () => {
     await signOut();
@@ -144,29 +144,12 @@ export function AppHeader() {
                       "text-[10px] sm:text-[10.5px]",
                     )}
                   >
-                    Niv. {level}
+                    Palier {level}
                   </span>
                 </div>
-                <p
-                  className={cn(
-                    "mt-0.5 text-right font-semibold tabular-nums text-slate-400 transition-[font-size] duration-300",
-                    "text-[10.5px] sm:text-[11.5px]",
-                  )}
-                >
-                  {currentLevelXp} / 100 XP
-                </p>
-                <div
-                  className={cn(
-                    "app-header-xp-track ml-auto mt-1 w-full max-w-[8rem] overflow-hidden transition-[height,max-width,margin-top] duration-300 sm:max-w-[9rem]",
-                    "h-[5px] sm:h-[7px]",
-                  )}
-                >
-                  <div
-                    className="app-header-xp-fill h-full min-w-0 transition-[width] duration-300"
-                    style={{ width: `${progressPct}%` }}
-                    aria-hidden
-                  />
-                </div>
+                <span className="sr-only">
+                  Palier {level}, environ {xpToNextPalier} XP avant le palier suivant.
+                </span>
                 <div
                   className={cn(
                     "mt-1 flex items-center justify-end gap-1 border-t border-white/10 pt-1 transition-[gap,padding,margin] duration-300 sm:mt-1.5 sm:pt-1.5",

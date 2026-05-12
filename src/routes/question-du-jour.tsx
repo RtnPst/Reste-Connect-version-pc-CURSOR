@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { BookOpen, CalendarCheck2, Home, Share2, Sparkles } from "lucide-react";
+import { BookOpen, CalendarCheck2, Flame, Home, Share2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
 import { ImmersiveQuizPlay } from "@/components/immersive-quiz/ImmersiveQuizPlay";
@@ -245,7 +245,7 @@ function DailyQuestionPage() {
     const url = window.location.origin;
     const shareData = {
       title: "Tu captes ?",
-      text: "Je viens de faire la question du jour sur Tu captes ? Tu fais mieux ?",
+      text: "Je viens de faire la question du jour sur Tu captes ?",
       url,
     };
     try {
@@ -259,7 +259,7 @@ function DailyQuestionPage() {
     }
     try {
       await navigator.clipboard.writeText(`${shareData.text} ${url}`);
-      toast.success("Lien copié ! Partagez-le à vos proches 💌");
+      toast.success("Lien copié dans le presse-papiers");
     } catch {
       toast.error("Impossible de copier le lien");
     }
@@ -359,13 +359,13 @@ function DailyQuestionPage() {
               C’est bon pour aujourd’hui
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Tu as déjà répondu à la question du jour. Reviens demain pour enchaîner — ta série et ton XP restent sur
-              ton profil.
+              Tu as déjà fait le fil du jour. Reviens demain si l’envie t’y prend — série et XP restent sur ton profil.
             </p>
             {user ? (
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-warning/30 bg-warning-soft/80 px-3 py-1.5 font-semibold text-foreground">
-                  <span aria-hidden>🔥</span> Série : {streak} jour{streak > 1 ? "s" : ""}
+                  <Flame className="size-4 text-warning" aria-hidden />
+                  Série : {streak} jour{streak > 1 ? "s" : ""}
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-3 py-1.5 font-semibold text-muted-foreground">
                   Record : {longestStreak} jour{longestStreak > 1 ? "s" : ""}
@@ -380,7 +380,7 @@ function DailyQuestionPage() {
               </p>
             )}
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              <Button type="button" onClick={handleShareDone} variant="accent" size="lg" className="font-extrabold">
+              <Button type="button" onClick={handleShareDone} variant="accent" size="lg" className="font-semibold">
                 <Share2 className="size-5" />
                 Partager
               </Button>
@@ -505,7 +505,7 @@ function DailyQuestionPage() {
       </header>
       <main className="container mx-auto flex w-full min-w-0 max-w-3xl flex-1 flex-col overflow-y-auto px-4 py-8 sm:py-10">
         <div className="rounded-2xl border-2 border-success/30 bg-success-soft p-5 sm:p-6 mb-6 text-center">
-          <p className="font-extrabold text-lg">✅ Question du jour validée</p>
+          <p className="font-extrabold text-lg leading-snug">Fil du jour — c’est noté</p>
           {xpGained !== null && (
             <p className="text-sm sm:text-base font-semibold text-success mt-2">+{xpGained} XP gagnés</p>
           )}
@@ -515,13 +515,13 @@ function DailyQuestionPage() {
             onClick={handleShare}
             variant="accent"
             size="lg"
-            className="min-h-[56px] text-base font-extrabold shadow-[var(--shadow-card)]"
+            className="min-h-[56px] text-base font-semibold shadow-[var(--shadow-card)]"
           >
             <Share2 />
             Partager
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link to="/quiz">Faire un quiz complet</Link>
+            <Link to="/quiz">Un quiz thème</Link>
           </Button>
           <Button asChild variant="ghost" size="lg">
             <Link to="/">

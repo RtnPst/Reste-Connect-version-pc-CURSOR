@@ -39,31 +39,33 @@ function tone(
   osc.stop(start + duration + 0.05);
 }
 
+/** Short “got it” chime: clear, warm, not jackpot-loud. */
 export function playCorrect(enabled = true) {
   if (!enabled) return;
-  // C5 -> E5 -> G5 happy arpeggio
-  tone(523.25, 0.12, "triangle", 0.18, 0);
-  tone(659.25, 0.12, "triangle", 0.18, 0.1);
-  tone(783.99, 0.2, "triangle", 0.2, 0.2);
+  tone(523.25, 0.1, "sine", 0.1, 0);
+  tone(659.25, 0.1, "sine", 0.09, 0.085);
+  tone(783.99, 0.14, "sine", 0.085, 0.17);
 }
 
+/** Soft descending cue: readable “not quite” without buzz or punishment. */
 export function playWrong(enabled = true) {
   if (!enabled) return;
-  tone(220, 0.18, "sawtooth", 0.12, 0);
-  tone(180, 0.25, "sawtooth", 0.1, 0.12);
+  tone(392.0, 0.1, "sine", 0.08, 0);
+  tone(329.63, 0.15, "sine", 0.065, 0.09);
 }
 
+/** Light run-end lift: shorter, less bright peak than a full arcade fanfare. */
 export function playFanfare(enabled = true) {
   if (!enabled) return;
-  // Mini fanfare
-  const notes = [523.25, 659.25, 783.99, 1046.5];
-  notes.forEach((f, i) => tone(f, 0.18, "triangle", 0.18, i * 0.12));
-  tone(1046.5, 0.4, "triangle", 0.2, notes.length * 0.12);
+  const notes = [523.25, 659.25, 783.99, 880.0];
+  const step = 0.1;
+  notes.forEach((f, i) => tone(f, 0.12, "triangle", 0.11, i * step));
+  tone(880.0, 0.2, "sine", 0.095, notes.length * step);
 }
 
 export function playClick(enabled = true) {
   if (!enabled) return;
-  tone(600, 0.05, "square", 0.08, 0);
+  tone(520, 0.035, "sine", 0.042, 0);
 }
 
 /* ------------------ Ambient music (gentle loop) ------------------ */

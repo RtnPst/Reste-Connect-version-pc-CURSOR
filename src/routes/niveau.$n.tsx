@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, Home, Lock, RotateCcw } from "lucide-react";
+import { ArrowRight, BookOpen, Home, Lock, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
 import { ImmersiveQuizPlay } from "@/components/immersive-quiz/ImmersiveQuizPlay";
@@ -461,27 +461,32 @@ function LevelPage() {
               {passed ? (
                 <RankBadge rank={rank} level={level} size="lg" />
               ) : (
-                <span className="text-6xl" aria-hidden>
-                  💪
-                </span>
+                <div
+                  className="flex size-16 items-center justify-center rounded-2xl border border-border/60 bg-muted/35 text-muted-foreground"
+                  aria-hidden
+                >
+                  <BookOpen className="size-8" strokeWidth={2} />
+                </div>
               )}
             </div>
-            <h1 className="text-3xl font-extrabold mb-2">
-              {passed ? `Niveau ${level} validé !` : "Presque !"}
+            <h1 className="text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl mb-2">
+              {passed
+                ? `Palier ${level} validé.`
+                : "Pas validé cette fois — tu peux reprendre le run quand tu veux."}
             </h1>
             <p className="text-xl text-muted-foreground mb-2">
-              Score :{" "}
+              Réponses justes :{" "}
               <span className="font-extrabold text-primary">
                 {score} / {questions.length}
               </span>
             </p>
             <p className="text-base text-muted-foreground mb-6">
               {passed
-                ? `Palier « ${rank.label} » : le niveau ${Math.min(level + 1, TOTAL_LEVELS)} s’ouvre.`
-                : `Il faut ${passRequired}/${QUESTIONS_PER_LEVEL} bonnes réponses pour valider.`}
+                ? `« ${rank.label} » — le palier ${Math.min(level + 1, TOTAL_LEVELS)} s’ouvre si tu en as envie.`
+                : `Seuil du palier : au moins ${passRequired} bonnes réponses sur ${QUESTIONS_PER_LEVEL}.`}
             </p>
             <p className="mb-4 text-xs sm:text-sm font-medium text-muted-foreground">
-              Les badges de quiz parfait se débloquent sur les quiz thème.
+              Les badges sans faute se gagnent surtout sur les quiz thème.
             </p>
             {xpGained !== null && (
               <p className="text-sm sm:text-base font-semibold text-success mb-2">
@@ -490,12 +495,12 @@ function LevelPage() {
             )}
             {levelUpTo !== null && (
               <p className="text-sm sm:text-base font-semibold text-primary mb-6">
-                Niveau {levelUpTo} atteint !
+                Palier {levelUpTo} débloqué.
               </p>
             )}
-            <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/60 px-4 py-3 text-left">
-              <p className="text-[11px] font-bold uppercase tracking-wide text-primary">
-                Prochaine meilleure action
+            <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/50 px-4 py-3 text-left">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-primary/90">
+                Une idée pour la suite
               </p>
               <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
             </div>
