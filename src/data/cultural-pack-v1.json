@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "pack_id": "cultural-pack-v1",
-  "golden_batch_id": "v1_core_3",
+  "golden_batch_id": "v1_lot_01_tier_a",
   "locale": "fr-FR",
   "updated_at": "2026-05-20",
   "conventions": {
@@ -11,6 +11,9 @@
     "editorial_status": "golden_reference | approved | draft | rejected",
     "usage_vitality": "observed_irl | living | passive | dated | listed_only | theoretical — optional; drives scene plausibility",
     "surface_forms": "optional; most-observed written/spoken form first",
+    "import_confidence": "high | medium | low | reject — can we produce questions?",
+    "source_tier": "observed_pool | observed_irl | glossary_article | pdf_list | intake_raw",
+    "glossary_only": "boolean — true if mainly list/article without pool proof",
     "authenticity": "Questions must pass: do humans actually talk like this? No pedagogical sketches; listed_only → no improbable speakers",
     "player_facing": "Only question text + explanation in app; never ia_notes or sources"
   },
@@ -100,6 +103,153 @@
       ],
       "ia_notes": "Bon angle : plan entre potes « c’est carré ? ». Piège léger : dire carré alors que rien n’est décidé (ironie). Lien possible avec « validé » sans fusionner les concepts en base.",
       "human_notes": "Distinct de cest_valide comme concept_key si besoin plus tard."
+    },
+    {
+      "concept_key": "ratio",
+      "canonical_label": "Ratio",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["ratio", "se faire ratio", "ratio'd", "en ratio"],
+      "variants": ["ratio", "se faire ratio", "t'as pris un ratio"],
+      "short_definition": "Sur les réseaux, quand une réponse ou un avis « écrase » l'autre en likes ou en réponses — le perdant « prend » le ratio.",
+      "long_definition": "Le « ratio » vient surtout de Twitter/X et des répliques sous TikTok ou Instagram : beaucoup de réponses qui dézinguent un commentaire, ou un tweet qui se fait humilier publiquement. En français oral, on dit souvent « il s'est fait ratio » ou « t'as pris un ratio ». Ce n'est pas un cours de stats : c'est une humiliation sociale légère, parfois drôle, parfois méchante.",
+      "cluster_tags": ["social_validation", "internet_social_code"],
+      "lifecycle": "mainstream",
+      "platforms": ["twitter_x", "tiktok", "instagram"],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "Il s'est fait ratio sous son tweet",
+          "T'as pris un ratio là",
+          "Ratio + L + tu dors"
+        ],
+        "credible_contexts": ["reply_chain", "tweet_polémique", "commentaire_tiktok_massacré", "groupe_qui_rigole"],
+        "avoid_scenes": ["cours_de_maths", "parent_explique_le_ratio_boursier", "journaliste_twitter_expert"],
+        "likely_speakers": ["pote_16_30", "commentateur_en ligne"],
+        "unlikely_speakers": ["prof_de_maths", "grand_parent_sans_reseaux"],
+        "written_vs_oral": { "primary": "written", "notes": "surtout commentaires et captures ; oral entre potes qui commentent une capture" },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Sous sa vanne, y'a 40 réponses « ratio » — il a perdu.",
+          "« T'as pris un ratio » = ta réponse s'est fait démonter en public."
+        ],
+        "plausible_traps": ["confusion_statistiques", "confusion_ratio_tv", "penser_que_c_est_un_compliment"],
+        "adult_errors": ["explication_trop_technique_reseau", "formulation_journalistique_twitter_expert"]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "emotion_reading", "irony_reading"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [{ "id": "pool_existant", "note": "Question live reseaux_sociaux — ratio" }],
+      "ia_notes": "Grand public : humiliation sociale en public, pas jargon crypto. Scène = capture ou « sous son post ». Pas « Que veut dire ratio ». Distracteurs : stats, TV, victoire.",
+      "human_notes": "Lot 01 tier A — éviter ton expert Twitter ; rester conversationnel."
+    },
+    {
+      "concept_key": "red_flag",
+      "canonical_label": "Red flag",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["red flag", "c'est un red flag", "red flag ça"],
+      "variants": ["red flag", "red flags", "gros red flag"],
+      "short_definition": "Signal d'alerte dans une relation ou une situation — un truc qui devrait te faire te méfier.",
+      "long_definition": "« Red flag » = drapeau rouge métaphorique : comportement, phrase ou situation qui sonne faux en amour, en amitié ou en date. Souvent dit entre potes (« c'est un red flag ») sans faire psy : c'est de la prudence sociale partagée, parfois un peu dramatique pour rire.",
+      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "tiktok", "instagram"],
+      "social_vibe": "cautious",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "Frère c'est un red flag",
+          "Red flag le mec répond jamais",
+          "Ça m'envoie des red flags"
+        ],
+        "credible_contexts": ["groupe_whatsapp_crush", "debrief_date", "story_avec_caption", "pote_qui_prend_conseil"],
+        "avoid_scenes": ["therapeute_tiktok_caricature", "cours_de_psy", "drapeau_rouge_litteral_sans_second_degre"],
+        "likely_speakers": ["pote_proche", "meilleure_amie", "groupe_confiance"],
+        "unlikely_speakers": ["professeur", "journaliste_mode_diagnostic"],
+        "written_vs_oral": { "primary": "oral", "notes": "messages vocaux et WhatsApp ; anglicisme gardé en FR" },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Il t'a liké que à 2h du mat, red flag » — alerte entre potes, pas diagnostic.",
+          "Après le date, le groupe demande « des red flags ? »"
+        ],
+        "plausible_traps": ["drapeau_rouge_litteral", "compliment", "green_flag_confusion"],
+        "adult_errors": ["ton_therapeute_tiktok", "liste_de_50_red_flags_article", "pathologiser_sans_contexte"]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "emotion_reading", "social_interpretation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [{ "id": "pool_existant", "note": "Question live culture_pop / dating — red flag" }],
+      "ia_notes": "Conversationnel, pas psy caricatural. Scènes crush / date / groupe. Pas humilier la cible. Distracteur drapeau littéral OK si contexte clair.",
+      "human_notes": "Lot 01 tier A — ton bienveillant Tu Captes ?, pas diagnostic clinique."
+    },
+    {
+      "concept_key": "ghoster",
+      "legacy_concept_keys": ["ghoster_quelquun"],
+      "canonical_label": "Ghoster",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["ghoster", "je ghost", "ghosté", "il m'a ghosté"],
+      "variants": ["ghoster", "ghoster quelqu'un", "se faire ghoster"],
+      "short_definition": "Couper le contact sans explication — la personne disparaît des réponses, des messages, des stories.",
+      "long_definition": "« Ghoster », c'est arrêter de répondre du jour au lendemain : vu sur WhatsApp sans réponse, match qui ne répond plus, pote qui disparaît. Très vécu en dating et en amitié en ligne. Pas besoin d'un long speech : l'absence **est** le message.",
+      "cluster_tags": ["emotion_compressed", "internet_social_code"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "snapchat", "tiktok"],
+      "social_vibe": "vulnerable",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "Il m'a ghosté depuis 3 jours",
+          "Arrête de la ghoster",
+          "Match ghosté, next"
+        ],
+        "credible_contexts": ["vu_sans_reponse", "plan_qui_disparait", "match_dating", "groupe_qui_debrief"],
+        "avoid_scenes": ["fantome_halloween_litteral", "parent_ghosting_au_diner", "definition_dico_longue"],
+        "likely_speakers": ["jeune_en_dating", "pote_qui_debrief", "personne_ghostee"],
+        "unlikely_speakers": ["adulte_qui_decouvre_le_mot_en_conference"],
+        "written_vs_oral": { "primary": "oral", "notes": "WhatsApp et apps de rencontre ; « ghosté » très courant à l'oral" },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Vu à 22h, plus rien » + « il m'a ghosté » = classique.",
+          "« Arrête de ghoster » dans un groupe = pression sociale pour répondre."
+        ],
+        "plausible_traps": ["fantome_costume", "bug_technique_seul", "bloquer_vs_ghoster_nuance"],
+        "adult_errors": ["explication_anglais_ghost_halloween", "moraliser_trop_dans_la_question"]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "emotion_reading", "social_interpretation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Live ghoster_quelquun ; archive ghoster + que_veut_dire_ghoster" }
+      ],
+      "ia_notes": "concept_key canonique ghoster ; legacy ghoster_quelquun pour backfill. Scènes : vu sans réponse, match, plan mort. Pas fantôme Halloween sauf piège évident. Rewrite questions « ça veut dire ghoster ».",
+      "human_notes": "Lot 01 tier A — fusion ghoster_quelquun validée."
     }
   ]
 }
