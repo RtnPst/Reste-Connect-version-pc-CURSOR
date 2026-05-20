@@ -70,8 +70,8 @@ android {
         applicationId "com.npaysant.resteconnecte"
         minSdkVersion 24
         targetSdkVersion 35
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.2"
 
         // The name for the application
         resValue "string", "appName", twaManifest.name
