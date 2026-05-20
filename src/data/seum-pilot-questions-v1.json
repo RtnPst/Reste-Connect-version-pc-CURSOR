@@ -1,0 +1,119 @@
+{
+  "pilot_id": "seum-v1-authenticity",
+  "concept_key": "seum",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote authenticité — pas d'import Supabase. Chaque scène = artefact social plausible.",
+  "questions": [
+    {
+      "concept_key": "seum",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "En vocal après la défaite, ton pote lâche : « J’ai trop le seum là. » Il veut surtout dire qu’il est…",
+      "choices": [
+        "Trop content",
+        "Déçu / frustré",
+        "Enrhumé",
+        "En retard au travail"
+      ],
+      "correct_index": 1,
+      "explanation": "« Avoir le seum » = être déçu ou frustré — là, après la défaite, c’est du dépit, pas une maladie.",
+      "tone": "gaming",
+      "context": "gaming_voice",
+      "trap_intensity": "obvious",
+      "era": "streaming",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote seum #1 — vocal post-match; living usage"
+    },
+    {
+      "concept_key": "seum",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Dans le groupe WhatsApp, quelqu’un balance : « Bon bah j’ai le seum » juste après l’annulation du plan. Ça veut dire…",
+      "choices": [
+        "Il est déçu / frustré",
+        "Il est trop hype",
+        "Il a faim",
+        "Il part en vacances"
+      ],
+      "correct_index": 0,
+      "explanation": "Classique après un plan qui tombe à l’eau : le seum, c’est la frustration du moment.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "obvious",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote seum #2 — message groupe; oral « bon bah »"
+    },
+    {
+      "concept_key": "seum",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Sous une vidéo TikTok, un commentaire : « Le seum est réel » après un pari perdu. Le « seum », c’est surtout…",
+      "choices": [
+        "La déception du perdant",
+        "Un nouveau filtre",
+        "Une marque de sport",
+        "Un bruit de notification"
+      ],
+      "correct_index": 0,
+      "explanation": "Formule vue en commentaires : le perdant « a le seum » = il est vénère/déçu.",
+      "tone": "social",
+      "context": "tiktok_comments",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote seum #3 — commentaire; formule réelle « le seum est réel »"
+    },
+    {
+      "concept_key": "seum",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ton pote t’envoie une capture 0-5 avec : « Seum maximal ce soir ». Tu comprends qu’il est…",
+      "choices": [
+        "Fier de sa perf",
+        "Déçu / frustré par le score",
+        "Malade au lit",
+        "En train de dormir"
+      ],
+      "correct_index": 1,
+      "explanation": "Avec une défaite lourde, « seum » = frustration — souvent dit avec un côté théâtre entre potes.",
+      "tone": "gaming",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "streaming",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote seum #4 — capture + phrase courte; pas définition scolaire"
+    },
+    {
+      "concept_key": "seum",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« J’ai le seum de ouf » — ton pote l’écrit après que son crush l’a vu en ligne sans répondre. Plutôt…",
+      "choices": [
+        "Vexé / frustré",
+        "En pleine forme",
+        "Indifférent total",
+        "En voyage scolaire"
+      ],
+      "correct_index": 0,
+      "explanation": "Là c’est du seum social : vu mais ignoré → frustration légère, pas une maladie.",
+      "tone": "drama",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "expression",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote seum #5 — relations; « de ouf » renforce l’oral, pas le sens médical"
+    }
+  ]
+}

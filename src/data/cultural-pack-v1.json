@@ -9,6 +9,9 @@
     "concept_key": "snake_case, stable, matches questions.concept_key",
     "cluster_tags": "1–3 items; first = primary",
     "editorial_status": "golden_reference | approved | draft | rejected",
+    "usage_vitality": "observed_irl | living | passive | dated | listed_only | theoretical — optional; drives scene plausibility",
+    "surface_forms": "optional; most-observed written/spoken form first",
+    "authenticity": "Questions must pass: do humans actually talk like this? No pedagogical sketches; listed_only → no improbable speakers",
     "player_facing": "Only question text + explanation in app; never ia_notes or sources"
   },
   "concepts": [
@@ -16,47 +19,38 @@
       "concept_key": "magl",
       "canonical_label": "Magl",
       "editorial_tier": "accessible",
-      "editorial_status": "golden_reference",
+      "editorial_status": "draft",
+      "usage_vitality": "listed_only",
+      "surface_forms": ["ma go", "ma gow", "magl"],
       "variants": ["magl", "mon magl", "ma gow", "ma go"],
       "short_definition": "Mon pote, mon proche — mot affectueux pour un ami ou une personne qu’on considère comme « son » pote.",
       "long_definition": "« Magl » circule surtout entre jeunes dans les groupes WhatsApp, les stories ou les réponses complices sur TikTok. Ce n’est pas un statut officiel : c’est de la complicité stylisée, proche de « mon reuf » mais souvent plus doux. Dit par un adulte qui « fait jeune », ça peut sonner faux ; entre potes, c’est en général au premier degré.",
       "cluster_tags": ["emotion_compressed", "social_validation"],
-      "lifecycle": "peak",
+      "lifecycle": "stable_niche",
       "platforms": ["whatsapp", "tiktok", "snapchat"],
       "social_vibe": "affectionate",
       "irony": "literal",
       "cringe_risk": "low",
-      "register_crossing": [
-        {
-          "from": "pairs_proches",
-          "to": "family_irl",
-          "note": "Peut sonner bizarre ou « trop jeune » sans vraie complicité."
-        },
-        {
-          "from": "jeune",
-          "to": "adulte_qui_imite",
-          "note": "Bon piège générationnel — souvent malaise ou second degré."
-        }
-      ],
-      "generativity": "high",
+      "generativity": "low",
       "default_theme_hint": "vocabulaire",
       "quiz_potential": {
         "angles": ["definition_direct", "context_social", "generational_trap"],
         "formats": ["expression", "scenario_text"]
       },
       "sources": [
-        { "id": "lebonbon", "note": "Expressions jeunes — ma go / gow" },
-        { "id": "golden_batch_v1", "note": "Fiche modèle — noyau pack" }
+        { "id": "lebonbon", "note": "Expressions jeunes — ma go / gow (liste)" }
       ],
-      "ia_notes": "Bonne réponse type : pote / proche. Piège : parent qui dit « mon magl ». Distracteurs plausibles : ennemi, prof, star, cousin « officiel ». Une explication = une phrase + exemple WhatsApp max.",
-      "human_notes": "Fiche pilote du pack — valider le ton avant duplication."
+      "ia_notes": "listed_only : pas de scène où tout le monde dit « magl » naturellement. Préférer commentaire TikTok « ma go », ou pote qui traduit. Interdit : parent au bureau, interpellation « Magl » en groupe. Pas golden_reference.",
+      "human_notes": "Pilote quiz a révélé usage faible / orthographe douteuse — watchlist authenticité, pas modèle éditorial."
     },
     {
       "concept_key": "seum",
       "legacy_concept_keys": ["que_signifie_lexpression_avoir_le_seum"],
       "canonical_label": "Avoir le seum",
       "editorial_tier": "accessible",
-      "editorial_status": "approved",
+      "editorial_status": "golden_reference",
+      "usage_vitality": "living",
+      "surface_forms": ["j'ai le seum", "le seum", "seum"],
       "variants": ["seum", "avoir le seum", "je suis en seum"],
       "short_definition": "Être déçu, frustré ou vexé — équivalent familier de « avoir les boules » chez beaucoup de jeunes.",
       "long_definition": "Le « seum » exprime une frustration personnelle : match perdu, message ignoré, plan annulé, vanne qui passe mal. Ce n’est pas de la rage violente : c’est du dépit + de l’énervement mêlés, souvent dit avec un côté théâtral ou auto-dérision. Peut être sincère ou un peu dramatique selon le ton.",
@@ -76,8 +70,8 @@
         { "id": "pool_existant", "note": "Questions archive culture_pop / vocabulaire" },
         { "id": "lebonbon", "note": "Expression jeunes — seum" }
       ],
-      "ia_notes": "Ne pas confondre avec tristesse profonde ou colère physique. Scène forte : sport, jeu, groupe qui rigole. Distracteurs : joie, indifférence totale, « grande fatigue ».",
-      "human_notes": "Concept_key cible : seum (pas clé question-shaped du dedup)."
+      "ia_notes": "living : scènes = vocal court, message WhatsApp, réaction post-match/jeu/plan raté. Test : « des humains parlent-ils vraiment comme ça ? » Pas sketch pédagogique. Distracteurs = confusions réelles (joie, indifférence, fatigue), pas absurdes.",
+      "human_notes": "Référence éditoriale pack V1 (structure + authenticité). concept_key seum ; legacy pour backfill."
     },
     {
       "concept_key": "carre",
