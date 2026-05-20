@@ -3,73 +3,73 @@
   "concept_key": "ratio",
   "pack_ref": "cultural-pack-v1.json",
   "status": "draft_review",
-  "notes": "Pilote ratio — pas d'import Supabase. Réseaux sociaux, pas cours Twitter ni définition scolaire.",
+  "notes": "Pilote ratio — pas d'import Supabase. Réseaux sociaux, pas cours Twitter ni définition scolaire. Distracteurs corrigés post-review Sonnet.",
   "questions": [
     {
       "concept_key": "ratio",
       "theme": "reseaux_sociaux",
       "difficulty": "facile",
       "status": "draft",
-      "question": "Ton pote t’envoie une capture : sous le tweet du mec, plein de « ratio » et « L ». Il ajoute : « Là il s’est fait ratio ». Le mec qui a posté, c’est surtout lui qui…",
+      "question": "Ton pote t'envoie une capture : sous le tweet du mec, plein de « ratio » et « L ». Il ajoute : « Là il s'est fait ratio ». Le mec qui a posté, c'est surtout lui qui…",
       "choices": [
         "A gagné le débat",
-        "S’est fait descendre en public dans les réponses",
+        "S'est fait descendre en public dans les réponses",
         "A eu le plus de likes du fil",
         "A été vérifié par la plateforme"
       ],
       "correct_index": 1,
-      "explanation": "« Se faire ratio », c’est se faire écraser par les réponses — humiliation sociale en ligne, pas une victoire.",
+      "explanation": "« Se faire ratio », c'est se faire écraser par les réponses — humiliation sociale en ligne, pas une victoire.",
       "tone": "social",
       "context": "group_chat",
       "trap_intensity": "obvious",
       "era": "tiktok",
       "format": "scenario_text",
       "internet_level": "debutant",
-      "editor_notes": "Pilote ratio #1 — capture + lecture qui perd ; context_pack reply_chain"
+      "editor_notes": "Pilote ratio #1 — golden candidate. Capture + lecture qui perd ; 'L + ratio' authentique. Distracteurs OK : 'A eu le plus de likes' = confusion engagement positif/négatif plausible ; 'A été vérifié' = confusion prestige plateforme plausible."
     },
     {
       "concept_key": "ratio",
       "theme": "reseaux_sociaux",
       "difficulty": "moyen",
       "status": "draft",
-      "question": "Sous un commentaire déjà moqué, quelqu’un poste juste : « ratio ». Dans ce contexte, « ratio » veut surtout dire que…",
+      "question": "Sous un commentaire déjà moqué, quelqu'un poste juste : « ratio ». Dans ce contexte, « ratio » veut surtout dire que…",
       "choices": [
-        "Le commentaire d’origine se fait ridiculiser / perd",
-        "C’est un compliment pour l’auteur",
+        "Le commentaire d'origine se fait ridiculiser / perd",
+        "C'est un compliment pour l'auteur",
         "On parle de statistiques officielles du compte",
-        "Le post va être sponsorisé"
+        "Le commentaire va être mis en avant / épinglé"
       ],
       "correct_index": 0,
-      "explanation": "« Ratio » en reply, c’est souvent « t’as perdu » : la meute répond pour clouer le commentaire.",
+      "explanation": "« Ratio » en reply, c'est souvent « t'as perdu » : la meute répond pour clouer le commentaire.",
       "tone": "social",
       "context": "tiktok_comments",
       "trap_intensity": "soft_trap",
       "era": "tiktok",
       "format": "scenario_text",
       "internet_level": "initie",
-      "editor_notes": "Pilote ratio #2 — lecture commentaire/reply ; credible_messages du pack"
+      "editor_notes": "Pilote ratio #2 — lecture commentaire/reply. Correction : 'Le post va être sponsorisé' (absurde) → 'Le commentaire va être mis en avant / épinglé' — confusion plausible : quelqu'un qui pense que 'ratio' signale une mise en avant algorithmique, pas une démolition sociale."
     },
     {
       "concept_key": "ratio",
       "theme": "reseaux_sociaux",
       "difficulty": "moyen",
       "status": "draft",
-      "question": "Dans le groupe : « J’ai un ratio 3 pour 1 en maths » — puis un autre : « T’as pris un ratio sous ton tweet hier ». Ce deuxième « ratio », c’est plutôt…",
+      "question": "Dans le groupe : « J'ai un ratio 3 pour 1 en maths » — puis un autre : « T'as pris un ratio sous ton tweet hier ». Ce deuxième « ratio », c'est plutôt…",
       "choices": [
         "Un exercice de maths",
-        "Le format 16:9 d’une vidéo",
-        "Une défaite sociale en ligne (réponses qui t’enterrent)",
+        "Le format 16:9 d'une vidéo",
+        "Une défaite sociale en ligne (réponses qui t'enterrent)",
         "Un abonnement premium"
       ],
       "correct_index": 2,
-      "explanation": "Ratio maths = calcul. Ratio internet = ta prise s’est fait démonter en public — deux mondes.",
+      "explanation": "Ratio maths = calcul. Ratio internet = ta prise s'est fait démonter en public — deux mondes.",
       "tone": "funny",
       "context": "group_chat",
       "trap_intensity": "soft_trap",
       "era": "tiktok",
       "format": "scenario_text",
       "internet_level": "debutant",
-      "editor_notes": "Pilote ratio #3 — piège stats vs ratio social ; plausible_traps confusion_statistiques"
+      "editor_notes": "Pilote ratio #3 — golden candidate. Piège dualité maths vs ratio social. 'Le format 16:9' = confusion technique 'ratio' plausible (terme courant en image/vidéo). 'Un exercice de maths' = ancrage premier sens. 'Un abonnement premium' reste faible mais acceptable ici car les deux vrais distracteurs (maths + 16:9) portent déjà la confusion principale."
     }
   ]
 }
