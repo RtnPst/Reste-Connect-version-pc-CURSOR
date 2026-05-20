@@ -250,6 +250,167 @@
       ],
       "ia_notes": "concept_key canonique ghoster ; legacy ghoster_quelquun pour backfill. Scènes : vu sans réponse, match, plan mort. Pas fantôme Halloween sauf piège évident. Rewrite questions « ça veut dire ghoster ».",
       "human_notes": "Lot 01 tier A — fusion ghoster_quelquun validée."
+    },
+    {
+      "concept_key": "forceur",
+      "canonical_label": "Forceur",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["il force", "tu forces", "le forceur", "forcer"],
+      "variants": ["forceur", "le forceur", "il force", "arrête de forcer", "tu forces trop"],
+      "short_definition": "Quelqu'un qui en fait trop — insiste, exagère ou s'impose là où ce n'est pas le bienvenu.",
+      "long_definition": "« Forcer » au sens internet, c'est dépasser les bornes sociales implicites : imposer une vanne qui ne passe pas, insister sur une drague non bienvenue, s'incruster dans un groupe gaming ou une conv sans y être invité. Le « forceur » n'est pas forcément malveillant — il peut manquer de lecture sociale plus que vouloir s'imposer. Souvent dit avec exaspération légère, parfois avec auto-dérision si on se reconnaît dedans. Mot d'origine française — pas un import direct.",
+      "cluster_tags": ["internet_social_code", "social_validation"],
+      "lifecycle": "peak",
+      "platforms": ["discord", "whatsapp", "tiktok"],
+      "social_vibe": "judgmental",
+      "irony": "literal",
+      "cringe_risk": "medium",
+      "generativity": "high",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "Il force à mort ce mec",
+          "Arrête de forcer",
+          "T'es le forceur du groupe",
+          "Il force sa vanne depuis 10 minutes",
+          "Là il force un peu non ?"
+        ],
+        "credible_contexts": [
+          "gaming_vocal_squad",
+          "groupe_qui_debrief_social",
+          "vanne_qui_ne_passe_pas",
+          "drague_non_bienvenue",
+          "incruste_dans_une_conv"
+        ],
+        "avoid_scenes": [
+          "forcer_physiquement_quelquun",
+          "parent_qui_explique_forceur",
+          "definition_academique_du_terme"
+        ],
+        "likely_speakers": [
+          "pote_en_vocal_gaming",
+          "groupe_qui_observe_la_situation",
+          "personne_qui_subit_l_insistance"
+        ],
+        "unlikely_speakers": [
+          "adulte_seul_qui_definit_le_mot",
+          "enseignant",
+          "journaliste"
+        ],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "Très courant en vocal gaming et à l'oral entre potes ; écrit aussi dans groupes WhatsApp"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Il force à mort ses vannes, c'est gênant » = ses blagues ne passent pas mais il insiste.",
+          "« T'es le forceur de la session » = tu t'imposes trop dans le jeu / la conv."
+        ],
+        "plausible_traps": [
+          "forcer_positif_entrainement_sport",
+          "force_physique_musculation",
+          "confusion_avec_entete_obstiné"
+        ],
+        "adult_errors": [
+          "interpreter_forcer_comme_travail_acharné_positif",
+          "lire_forceur_comme_personne_physiquement_forte",
+          "penser_que_forcer_veut_dire_s_entrainer_dur"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "social_interpretation", "emotion_reading", "dialogue_interpretation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "observed_pool", "note": "Usage oral gaming et groupes — attesté régulièrement en conversations FR" }
+      ],
+      "ia_notes": "Mutation sociale française — pas import anglophone. Angles riches : gaming (forceur de squad), humour (vanne qui force), social (incruste), drague (insistance). Piège principal : forcer = effort positif chez l'adulte. Pas de scènes avec coercition physique — sens social uniquement. Distracteurs idéaux : entêté/persévérant (positif), physiquement fort, fatigué.",
+      "human_notes": "Lot 02 tier A priorité 1. France-first : verbe français utilisé comme identité sociale. Aucun risque glossaire-TikTok US. Distinction importante : 'forcer' négatif (social) vs 'forcer' positif (effort physique/travail) — faire vivre ce faux ami dans les distracteurs."
+    },
+    {
+      "concept_key": "flex",
+      "canonical_label": "Flex",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["flex", "je flex", "c'est le flex", "flexer"],
+      "variants": ["flex", "flexer", "je flex", "un beau flex", "petit flex", "c'est le flex"],
+      "short_definition": "Étaler quelque chose dont on est fier pour impressionner — une possession, une perf, ou même un truc banal transformé en petite victoire.",
+      "long_definition": "« Flex » vient du rap/hip-hop anglophone mais s'est naturellement intégré en français. En 2025-2026, deux usages coexistent : le flex sincère (j'ai quelque chose de cool et je l'affiche — nouvelles baskets, résultats, etc.) et le flex ironique/auto-dérisoire (transformer un truc banal en 'victoire' pour rire — « petit flex : j'ai pas raté mon bus »). Le deuxième est devenu dominant dans les groupes et les commentaires. Savoir lire lequel c'est, c'est de la fluidité culturelle — un adulte ne verra souvent que le premier sens.",
+      "cluster_tags": ["social_validation", "humor_absurd"],
+      "lifecycle": "mainstream",
+      "platforms": ["instagram", "tiktok", "whatsapp"],
+      "social_vibe": "hype",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "Petit flex : j'ai trouvé une place de parking direct",
+          "C'est le flex de l'année",
+          "Je flex mais j'assume",
+          "Il flex avec ses nouvelles pompes",
+          "Mon flex du soir : j'ai pas raté mon bus"
+        ],
+        "credible_contexts": [
+          "groupe_whatsapp_petite_victoire",
+          "story_instagram_possession",
+          "vocal_potes_auto_derision",
+          "commentaire_tiktok_absurde",
+          "capture_partagée_moquerie_affectueuse"
+        ],
+        "avoid_scenes": [
+          "influenceur_millionnaire_ferrari",
+          "flex_de_luxe_uniquement",
+          "flex_litteralement_musculaire_comme_scene_principale"
+        ],
+        "likely_speakers": [
+          "pote_de_groupe",
+          "personne_fiere_d_un_detail_anodin",
+          "quelqu_un_qui_commente_une_story"
+        ],
+        "unlikely_speakers": [
+          "influenceur_caricatural_sans_second_degre",
+          "parent_serieux"
+        ],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "Surtout commentaires, captions de story, groupes WhatsApp ; à l'oral aussi mais moins fréquent"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Petit flex : j'ai réussi à dormir 8h » = auto-dérision sur une victoire banale.",
+          "« Il flex avec ses nouvelles pompes » = il montre fièrement ses nouvelles baskets."
+        ],
+        "plausible_traps": [
+          "flexibilite_physique_yoga_sport",
+          "flex_travail_dur_effort",
+          "ne_pas_reconnaître_le_flex_ironique_comme_tel"
+        ],
+        "adult_errors": [
+          "interpreter_le_flex_ironique_comme_sincere_et_pretentieux",
+          "ne_voir_que_le_sens_frime_de_riche",
+          "confondre_avec_flexibilite_physique"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["irony_reading", "context_social", "social_interpretation", "definition_direct"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "observed_pool", "note": "Usage large FR observé — TikTok, Instagram, groupes WhatsApp" }
+      ],
+      "ia_notes": "Angle prioritaire : flex ironique / auto-dérisoire — distinguer du flex sincère. Scènes idéales : petite victoire banale transformée en flex, pas influenceur Ferrari. Distracteurs : flexibilité physique (piège phonétique crédible), effort/travail (lire 'flex' comme 'je travaille dur'). Éviter les questions sur le flex de luxe pur — trop caricatural, éloigné du 35–55.",
+      "human_notes": "Lot 02 tier A secondaire. Import anglophone mais bien ancré en FR. Richesse principale : dualité flex sincère / flex ironique — c'est l'angle différenciant. Le flex absurde du quotidien est plus fort éditorialement que le flex de richesse."
     }
   ]
 }
