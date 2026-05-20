@@ -1,10 +1,10 @@
-const CACHE_NAME = "tu-captes-pwa-v4";
+const CACHE_NAME = "tu-captes-pwa-v5";
 const APP_SHELL = [
   "/",
-  "/manifest.json?v=4",
-  "/manifest.webmanifest?v=4",
-  "/icon-192.png?v=4",
-  "/icon-512.png?v=4",
+  "/manifest.json?v=5",
+  "/manifest.webmanifest?v=5",
+  "/icon-192.png?v=5",
+  "/icon-512.png?v=5",
 ];
 
 self.addEventListener("install", (event) => {
@@ -23,6 +23,23 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+/** Hashed build assets: network-first so deploys are picked up without a full app reinstall. */
+function isBuildAsset(pathname) {
+  return pathname.startsWith("/assets/");
+}
+
+function networkFirst(request) {
+  return fetch(request)
+    .then((response) => {
+      if (response && response.status === 200 && response.type === "basic") {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+      }
+      return response;
+    })
+    .catch(() => caches.match(request).then((cached) => cached || Response.error()));
+}
+
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
@@ -35,18 +52,23 @@ self.addEventListener("fetch", (event) => {
       fetch(request)
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put("/", copy));
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           return response;
         })
         .catch(async () => {
-          const cachedHome = await caches.match("/");
-          return cachedHome || Response.error();
+          const cached = await caches.match(request);
+          return cached || caches.match("/") || Response.error();
         }),
     );
     return;
   }
 
   if (!isSameOrigin) return;
+
+  if (isBuildAsset(url.pathname)) {
+    event.respondWith(networkFirst(request));
+    return;
+  }
 
   event.respondWith(
     caches.match(request).then((cached) => {
