@@ -1,0 +1,75 @@
+{
+  "pilot_id": "ghoster-v1-authenticity",
+  "concept_key": "ghoster",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote ghoster — pas d'import Supabase. Disparition sociale implicite, pas Halloween ni définition scolaire.",
+  "questions": [
+    {
+      "concept_key": "ghoster",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Sur WhatsApp : « vu » sur tes trois derniers messages, plus aucune réponse depuis mardi. Ton pote balance : « Là il t’a ghosté ». Ça veut surtout dire qu’il…",
+      "choices": [
+        "Est un fantôme de film",
+        "Ne répond plus / coupe le contact sans explication",
+        "A supprimé WhatsApp par erreur système",
+        "Te répond demain obligatoirement"
+      ],
+      "correct_index": 1,
+      "explanation": "Ghoster = disparition silencieuse dans les messages. Le « vu » sans suite, c’est souvent ça.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "obvious",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote ghoster #1 — ghosting évident ; vu_sans_reponse ; pack example_usage"
+    },
+    {
+      "concept_key": "ghoster",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ton match ne répond plus depuis deux jours. Tu cries « je suis ghosté », mais il revient : « désolé, j’étais sans réseau au ski ». En vrai, tu avais surtout…",
+      "choices": [
+        "Raison de croire à un vrai ghosting trop vite",
+        "La preuve qu’il te ghoste encore plus",
+        "Un problème de fantôme sur l’appli",
+        "Un signe qu’il faut le bloquer sans lui parler"
+      ],
+      "correct_index": 0,
+      "explanation": "Silence court ≠ toujours ghosting. Là il revient avec une raison — tu avais interprété trop fort.",
+      "tone": "social",
+      "context": "dating_app",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote ghoster #2 — faux ghosting / sur-interprétation ; plausible_traps bug vs ghost"
+    },
+    {
+      "concept_key": "ghoster",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Plan prévu samedi : il disait « ouais carré ». Samedi, radio silence, story en boîte sans message. Dans le groupe : « Il t’a ghosté le plan ». Ça décrit surtout…",
+      "choices": [
+        "Qu’il a annulé sans le dire et a disparu de la conv",
+        "Qu’il est allé à un concert de musique classique",
+        "Qu’il porte un costume de fantôme",
+        "Qu’il a gagné au loto"
+      ],
+      "correct_index": 0,
+      "explanation": "Ghoster un plan = plus de nouvelles, pas d’annulation claire — tu te retrouves seul sans explication.",
+      "tone": "drama",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote ghoster #3 — lecture implicite plan + story ; plan_qui_disparait ; lien carré sans fusionner concept"
+    }
+  ]
+}
