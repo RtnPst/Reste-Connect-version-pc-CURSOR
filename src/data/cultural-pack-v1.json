@@ -4,6 +4,7 @@
   "golden_batch_id": "v1_lot_01_tier_a",
   "locale": "fr-FR",
   "updated_at": "2026-05-20",
+  "lot_03_batch_id": "v1_lot_03_tier_a",
   "conventions": {
     "taxonomy": "V1 closed lists (cluster_tags, lifecycle, platforms, social_vibe, irony, cringe_risk) — enums in this file only",
     "concept_key": "snake_case, stable, matches questions.concept_key",
@@ -411,6 +412,221 @@
       ],
       "ia_notes": "Angle prioritaire : flex ironique / auto-dérisoire — distinguer du flex sincère. Scènes idéales : petite victoire banale transformée en flex, pas influenceur Ferrari. Distracteurs : flexibilité physique (piège phonétique crédible), effort/travail (lire 'flex' comme 'je travaille dur'). Éviter les questions sur le flex de luxe pur — trop caricatural, éloigné du 35–55.",
       "human_notes": "Lot 02 tier A secondaire. Import anglophone mais bien ancré en FR. Richesse principale : dualité flex sincère / flex ironique — c'est l'angle différenciant. Le flex absurde du quotidien est plus fort éditorialement que le flex de richesse."
+    },
+    {
+      "concept_key": "bail",
+      "legacy_concept_keys": ["un_bail"],
+      "canonical_label": "Bail",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["un bail", "c'est un bail", "quel bail", "grave le bail", "le bail"],
+      "variants": ["un bail", "c'est quel bail", "grave le bail", "t'as vu le bail", "c'est le bail"],
+      "short_definition": "Une affaire, une histoire, un plan ou une situation — pas le contrat de location, sauf piège volontaire.",
+      "long_definition": "« Un bail » ou « c'est quel bail ? » désigne surtout le sujet en cours : une galère, une anecdote, un plan foireux, une histoire à raconter. Très oral en France (banlieue / jeunes / groupes), mais compris bien au-delà. Le piège adulte classique : entendre « bail » et penser bail locatif ou juridique — en contexte potes, c'est presque toujours l'affaire humaine.",
+      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "discord", "tiktok"],
+      "social_vibe": "hype",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "C'est quel bail là ?",
+          "Il m'a raconté un bail de ouf",
+          "Grave le bail, on se capte demain",
+          "Le bail c'est qu'on part à 18h"
+        ],
+        "credible_contexts": [
+          "groupe_whatsapp_plan",
+          "debrief_histoire",
+          "vocal_qui_demande_precision",
+          "galere_du_jour"
+        ],
+        "avoid_scenes": [
+          "agence_immobiliere_sans_second_degre",
+          "cours_de_droit_seul",
+          "definition_dico_bail_locatif"
+        ],
+        "likely_speakers": ["pote_proche", "groupe_entre_amis", "quelqu_un_qui_raconte"],
+        "unlikely_speakers": ["notaire_qui_parle_aux_jeunes", "parent_qui_definit_le_mot"],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "Très oral ; écrit en SMS/WhatsApp avec graphies variables"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« C'est quel bail ? » = de quoi on parle / quel est le plan exact.",
+          "« Il m'a sorti un bail » = il m'a raconté une histoire (souvent folle ou compliquée)."
+        ],
+        "plausible_traps": [
+          "bail_locatif_immobilier",
+          "contrat_juridique",
+          "bail_judiciaire_liberte"
+        ],
+        "adult_errors": [
+          "interpreter_bail_comme_location_appartement",
+          "demander_si_c_est_un_document_a_signer",
+          "ignorer_que_c_est_le_sujet_ou_le_plan"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "dialogue_interpretation", "generational_trap"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Question live vocabulaire — un_bail ; legacy un_bail" }
+      ],
+      "ia_notes": "France-first oral. Angle « c'est quel bail » = plan / sujet. Piège adulte bail locatif = feature (distracteur crédible), pas scène principale agence immo. Pas « Un bail, c'est… » scolaire. Scènes WhatsApp / vocal / debrief histoire.",
+      "human_notes": "Lot 03 tier A priorité 1. concept_key bail ; legacy un_bail pour backfill."
+    },
+    {
+      "concept_key": "askip",
+      "canonical_label": "Askip",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["askip", "a skip", "à skip"],
+      "variants": ["askip", "askip que", "askip il", "askip y'a"],
+      "short_definition": "À ce qu'il paraît — rumeur, info pas confirmée, souvent dans les groupes.",
+      "long_definition": "« Askip » est la contraction orale de « à ce qu'il paraît » : on répète une info entendue sans la garantir. Très WhatsApp / vocal entre potes (« askip il revient avec son ex »). Ce n'est pas une leçon de grammaire ni un SOS : c'est le registre de la rumeur sociale légère.",
+      "cluster_tags": ["internet_social_code", "social_validation"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "snapchat", "discord"],
+      "social_vibe": "cautious",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Askip il a démissionné",
+          "Askip y'a plus de places pour le concert",
+          "Askip ils sont ensemble maintenant",
+          "Askip le resto ferme"
+        ],
+        "credible_contexts": [
+          "groupe_whatsapp_rumeur",
+          "vocal_debrief",
+          "info_non_confirmee",
+          "chaine_de_potins"
+        ],
+        "avoid_scenes": [
+          "cours_de_francais_contraction",
+          "askip_comme_sos",
+          "parent_qui_demande_la_definition"
+        ],
+        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_transmet_une_info"],
+        "unlikely_speakers": ["professeur", "journaliste_sans_contexte"],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "SMS/WhatsApp ; prononcé « a skip » à l'oral"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Askip il revient » = j'ai entendu dire, pas confirmé.",
+          "« Askip c'est fermé » = rumeur / info de seconde main avant vérif."
+        ],
+        "plausible_traps": [
+          "au_secours_sos",
+          "information_confirmee",
+          "a_skip_comme_verbe_anglais"
+        ],
+        "adult_errors": [
+          "lire_askip_comme_appel_a_l_aide",
+          "croire_que_c_est_officiel",
+          "expliquer_seulement_la_contraction_scolaire"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "dialogue_interpretation", "social_interpretation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archive Que veut dire askip — rewrite obligatoire" }
+      ],
+      "ia_notes": "Très France-first (contraction FR). Rumeur groupe, pas cours. Piège SOS = distracteur adulte crédible. Explication peut mentionner « à ce qu'il paraît » sans format dico. Pas scène parent.",
+      "human_notes": "Lot 03 tier A priorité 2. Golden candidate potentiel si scène rumeur crush / plan."
+    },
+    {
+      "concept_key": "mdr",
+      "canonical_label": "MDR",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["mdr", "mdrrr", "MDR"],
+      "variants": ["mdr", "mdrr", "mdrrr", "ptdr", "lol"],
+      "short_definition": "Réaction écrite — souvent du rire, parfois de l'ironie, du passif-agressif ou du « je rigole jaune » selon le contexte.",
+      "long_definition": "« MDR » = mort de rire à l'origine, mais en message c'est une **lecture de ton** : vrai rire, moquerie légère, ironie froide, ou passif-agressif (« mdr » après une vanne qui pique). L'intensité varie (mdr vs mdrrr). Un adulte qui ne lit que l'acronyme peut se tromper sur l'émotion réelle — surtout quand ce n'est pas drôle du tout.",
+      "cluster_tags": ["emotion_compressed", "humor_absurd"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "instagram", "discord"],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "mdr",
+          "mdr t'abuses",
+          "mdrrr",
+          "mdr ok"
+        ],
+        "credible_contexts": [
+          "reponse_message_court",
+          "reaction_vanne",
+          "passif_agressif_leger",
+          "rire_sincere_groupe"
+        ],
+        "avoid_scenes": [
+          "cours_acronyme_mort_de_rire_seul",
+          "definition_dico_sans_contexte",
+          "parent_qui_demande_ce_que_veut_mdr"
+        ],
+        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_reagit"],
+        "unlikely_speakers": ["adulte_qui_definit_l_acronyme_en_scene"],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "Réaction message ; rarement dit « emme-de-erre » à l'oral"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« mdr » après une blague = ça m'a fait rire (sincère ou léger).",
+          "« mdr t'abuses » après une attaque = souvent ironie / passif-agressif, pas joie."
+        ],
+        "plausible_traps": [
+          "maman_des_reves",
+          "mort_de_rire_seul_sans_ton",
+          "colere_ou_tristesse_ignorees",
+          "acronyme_medical_ou_administratif"
+        ],
+        "adult_errors": [
+          "decoder_mdr_comme_definition_scolaire_uniquement",
+          "croire_toujours_que_c_est_du_vrai_rire",
+          "ne_pas_voir_le_passif_agressif"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["emotion_reading", "irony_reading", "context_social"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archive Que veut dire mdr / MDR — rewrite obligatoire" }
+      ],
+      "ia_notes": "Angle = lecture de ton en message, pas acronyme cours. Passif-agressif et ironie prioritaires sur « mort de rire » seul. Piège Maman des rêves = distracteur classique adulte. Symétrie qualité seum (émotion/message). Pas TikTok caricature.",
+      "human_notes": "Lot 03 tier A priorité 3. Golden candidate si question double ton (mdr sincère vs froid)."
     }
   ]
 }

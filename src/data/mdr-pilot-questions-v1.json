@@ -1,0 +1,75 @@
+{
+  "pilot_id": "mdr-v1-authenticity",
+  "concept_key": "mdr",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote mdr — pas d'import Supabase. Lecture de ton en message : rire, ironie, passif-agressif. Distracteurs et explications corrigés post-review Sonnet.",
+  "questions": [
+    {
+      "concept_key": "mdr",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Ton pote envoie une vanne et tu réponds juste : « mdr ». Là, « mdr », c'est surtout…",
+      "choices": [
+        "Ça m'a fait rire / je trouve ça drôle",
+        "Je dis ça pour être poli — je ne suis pas vraiment en train de rire",
+        "Je valide ce qu'il a dit / je suis d'accord avec lui",
+        "Je suis gêné / je ne sais pas quoi répondre d'autre"
+      ],
+      "correct_index": 0,
+      "explanation": "Après une blague qui passe, « mdr » = rire écrit sincère — pas un simple « ok », pas de la politesse vide ni une sortie de conversation.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote mdr #1 — baseline sincère. Correction Sonnet : distracteurs colère/incompréhension/rejet → filler / approbation / deflection (vraies lectures adultes de mdr sans rire). trap_intensity soft_trap."
+    },
+    {
+      "concept_key": "mdr",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Après ton message sérieux (« j'ai besoin qu'on en parle »), il répond uniquement : « mdr ». Tu comprends surtout qu'il…",
+      "choices": [
+        "Minimise / répond sur un ton moqueur ou passif-agressif",
+        "Est mort de rire parce que c'est hilarant",
+        "Est d'accord pour en parler tout de suite",
+        "Cherche à détendre l'atmosphère avant d'en parler"
+      ],
+      "correct_index": 0,
+      "explanation": "« Mdr » après un message lourd, c'est souvent de l'ironie froide — pas du rire sincère, pas un « on en parle » et pas une dédramatisation bienveillante.",
+      "tone": "drama",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote mdr #2 — golden candidate. Correction Sonnet : index 3 « n'a pas vu » (incohérent) → détendre l'atmosphère (hésitation adulte crédible)."
+    },
+    {
+      "concept_key": "mdr",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Capture partagée : sous l'annonce « le festival est annulé », quelqu'un a posté « MDR ». Ta tante commente : « MDR, c'est Maman des rêves ? » En réalité, ce « MDR » sous ce post, c'était surtout…",
+      "choices": [
+        "Mort de rire — réaction mal placée ou second degré gênant",
+        "Maman des rêves — une association caritative",
+        "Un signe d'indifférence — cette personne s'en fiche",
+        "Un encouragement maladroit / du soutien mal formulé"
+      ],
+      "correct_index": 0,
+      "explanation": "L'acronyme reste « mort de rire » — le malaise vient du contexte (mauvaise nouvelle). Ça peut être un réflexe automatique, du second degré sur l'absurdité, ou une vraie réaction mal placée — pas une association, ni de l'indifférence ni un « courage » mal écrit.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote mdr #3 — golden candidate. Correction Sonnet : index 2 organisateur → indifférence ; index 3 merci → soutien mal formulé ; explication enrichie (réflexe / second degré / mal placé)."
+    }
+  ]
+}

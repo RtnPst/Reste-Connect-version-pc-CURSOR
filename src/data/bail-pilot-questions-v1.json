@@ -1,0 +1,97 @@
+{
+  "pilot_id": "bail-v1-authenticity",
+  "concept_key": "bail",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote bail — pas d'import Supabase. France-first oral : plan / histoire / galère. Distracteurs et context corrigés post-review Sonnet (diversification pièges bail locatif).",
+  "questions": [
+    {
+      "concept_key": "bail",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Dans le groupe WhatsApp : « Bon, c'est quel bail pour samedi ? » Tu comprends surtout qu'on te demande…",
+      "choices": [
+        "Quel est le plan exact / de quoi il s'agit",
+        "Quel contrat de location il faut signer",
+        "Vers quelle heure tu dois arriver",
+        "Combien ça va coûter pour l'appart"
+      ],
+      "correct_index": 0,
+      "explanation": "« C'est quel bail ? » = quel est le plan, qu'est-ce qu'on fait — pas un document d'appart ni une simple question d'horaire.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote bail #1 — golden candidate. Piège locatif (index 1) + logistique heure (index 2) — pas trois fois bail locatif. Correction Sonnet : index 2 juridique → heure."
+    },
+    {
+      "concept_key": "bail",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Ton pote t'écrit : « Il m'a sorti un bail de ouf au taf. » Il parle surtout d'une…",
+      "choices": [
+        "Histoire / situation qu'on lui a racontée",
+        "Amende ou convocation officielle",
+        "Excuse ou mensonge farfelu qu'il a inventé",
+        "Panique parce qu'il doit déménager"
+      ],
+      "correct_index": 0,
+      "explanation": "« Un bail » ici = une affaire, une anecdote — souvent compliquée ou folle. « Il m'a sorti » peut aussi évoquer une excuse, mais le « de ouf » pointe vers une histoire racontée.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote bail #2 — angle histoire/galère. Correction Sonnet : index 2 promotion signée → excuse/mensonge (ambiguïté « il m'a sorti »)."
+    },
+    {
+      "concept_key": "bail",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "En vocal, après 5 minutes de détails : « OK grave le bail, on se capte à 19h devant le ciné. » « Le bail », c'est surtout…",
+      "choices": [
+        "Ce qu'on vient de caler comme plan",
+        "Le contrat qu'on doit lire avant d'entrer",
+        "La caution qu'il faut payer sur place",
+        "L'heure exacte à laquelle tout le monde doit arriver"
+      ],
+      "correct_index": 0,
+      "explanation": "« Grave le bail » valide le plan qu'on vient de poser — rendez-vous, heure, lieu — pas un document ni seulement l'horaire de passage.",
+      "tone": "social",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote bail #3 — vocal sortie ciné. Correction Sonnet : context gaming_voice → social_voice ; index 3 dispute → heure d'arrivée."
+    },
+    {
+      "concept_key": "bail",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Groupe famille : ton neveu dit « C'est un bail, on part en Espagne en juillet ». Ta sœur répond tout de suite : « Tu parles du bail de l'appart ? » Ton neveu voulait surtout parler…",
+      "choices": [
+        "D'un projet / plan de voyage entre potes",
+        "Du renouvellement du bail locatif en France",
+        "D'un litige avec le propriétaire",
+        "Que ça va prendre du temps / que c'est un engagement long"
+      ],
+      "correct_index": 0,
+      "explanation": "Pour lui, « c'est un bail » = c'est le projet, le truc prévu — pas le contrat d'appart. La sœur a entendu location ; lui parlait du voyage.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote bail #4 — golden candidate. Correction Sonnet : index 3 assurance → engagement long (second sens social du mot, sans changer la bonne réponse plan)."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "pilot_id": "askip-v1-authenticity",
+  "concept_key": "askip",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote askip — pas d'import Supabase. Rumeur WhatsApp / à ce qu'il paraît. Distracteurs corrigés post-review Sonnet : piège SOS une seule fois (Q1).",
+  "questions": [
+    {
+      "concept_key": "askip",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Dans le groupe : « Askip il revient avec son ex. » « Askip », ça veut surtout dire…",
+      "choices": [
+        "J'ai entendu dire / à ce qu'il paraît — pas sûr",
+        "Au secours, c'est urgent",
+        "C'est confirmé, j'ai la preuve",
+        "C'est confirmé depuis ce matin — il l'a dit lui-même"
+      ],
+      "correct_index": 0,
+      "explanation": "« Askip » = rumeur, info de seconde main — pas un SOS, pas une certitude, pas une info venue directement de lui.",
+      "tone": "drama",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote askip #1 — golden candidate. SOS ici uniquement (première exposition). Correction Sonnet : index 3 heure précise → source directe vs ouï-dire."
+    },
+    {
+      "concept_key": "askip",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Message reçu : « Askip y'a plus de places pour le concert, vérifie avant d'acheter. » Ton pote te demande surtout de…",
+      "choices": [
+        "Vérifier une info qu'il a entendue sans la garantir",
+        "Lui faire confiance — il l'a appris en direct depuis la billetterie",
+        "Acheter tout de suite avant la fermeture des ventes",
+        "Annuler parce que le concert est officiellement annulé"
+      ],
+      "correct_index": 0,
+      "explanation": "« Askip » + « vérifie » = on te transmet une rumeur prudente — pas une info de première main ni une annulation confirmée.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote askip #2 — plan concert + prudence. Correction Sonnet : index 1 SOS → témoin direct / billetterie (rumeur vs certitude)."
+    },
+    {
+      "concept_key": "askip",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "En vocal, quelqu'un balance : « Askip la boîte ferme plus tôt ce soir. » Un autre répond : « Vas-y, on check sur Maps. » Le premier « askip », c'était surtout…",
+      "choices": [
+        "Une info entendue qu'il fallait confirmer",
+        "Une info qu'il a vérifiée lui-même sur place",
+        "La règle officielle affichée à l'entrée",
+        "Une blague pour faire peur au groupe"
+      ],
+      "correct_index": 0,
+      "explanation": "Réaction « on check » = personne ne prend « askip » pour parole d'évangile — c'est du « j'ai entendu dire », pas une certitude perso ni l'affiche officielle.",
+      "tone": "social",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote askip #3 — vocal + Maps. Correction Sonnet : index 1 SOS → info vérifiée sur place (contraste index 2 = règle institutionnelle)."
+    }
+  ]
+}
