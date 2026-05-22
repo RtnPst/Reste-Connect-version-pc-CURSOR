@@ -1,0 +1,97 @@
+{
+  "pilot_id": "flop-v1-authenticity",
+  "concept_key": "flop",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote flop — pas d'import Supabase. Hype ratée / échec social. Frontières seum / cringe. Zéro adulte groupe.",
+  "questions": [
+    {
+      "concept_key": "flop",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Debrief : « On s'était hypés pour ce resto… file d'attente 2h, plat tiède. C'était le flop. » « Flop », ici, c'est surtout…",
+      "choices": [
+        "L'expérience a raté — en dessous de l'attente",
+        "Il a le seum personnellement contre le serveur",
+        "C'était cringe — gênant socialement pour le groupe",
+        "Le resto a fermé définitivement"
+      ],
+      "correct_index": 0,
+      "explanation": "Attente vs réalité = jugement sur la soirée — pas seum du pote, pas malaise cringe, ni fermeture définitive.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "whatsapp",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote flop #1 — golden candidate potentiel. Hype vs réalité explicite."
+    },
+    {
+      "concept_key": "flop",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Groupe : un pote poste son TikTok « annonce big »… 48 vues après 24h. Réaction : « Sah… flop de ouf le post. » « Flop », c'est surtout…",
+      "choices": [
+        "Le contenu n'a pas marché — attente vs perf",
+        "Il se moque du pote personnellement (seum du posteur)",
+        "La vidéo est cringe — gênante à regarder",
+        "Le TikTok a été supprimé par la modération"
+      ],
+      "correct_index": 0,
+      "explanation": "Big annonce + 48 vues = échec du post — pas attaque perso seum, pas cringe esthétique, ni modération.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote flop #2 — chiffres concrets en scène."
+    },
+    {
+      "concept_key": "flop",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Vocal : vanne préparée depuis une heure… silence, puis un « mdr » poli. « Bon bah flop la vanne. » « Flop la vanne », c'est surtout…",
+      "choices": [
+        "La blague n'a pas pris — elle est tombée à plat",
+        "Il est en seum parce que personne n'a ri",
+        "C'était cringe — malaise pour tout le monde",
+        "Il est dead — en fait il a trop ri"
+      ],
+      "correct_index": 0,
+      "explanation": "Silence + mdr poli = vanne ratée — pas seum du vanneur seul, pas cringe collectif obligatoire, ni dead.",
+      "tone": "funny",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "discord",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote flop #3 — golden candidate potentiel. Signal comportemental silence."
+    },
+    {
+      "concept_key": "flop",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Fil : « J'ai le seum, on a perdu le match » — « Ouais mais ton montage hier c'était le flop ». Le « flop » du second message, c'est surtout…",
+      "choices": [
+        "Jugement sur le montage — il n'a pas marché",
+        "La même chose que le seum — déception perso",
+        "C'était cringe — gênant à montrer",
+        "Bien vu quand même — reconnaissance du move"
+      ],
+      "correct_index": 0,
+      "explanation": "« Seum » = émotion perso match ; « flop » = le montage a raté — pas même registre, pas cringe, ni bien vu.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "discord",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote flop #4 — golden candidate potentiel. Double-concept seum / flop."
+    }
+  ]
+}
