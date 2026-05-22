@@ -1,0 +1,97 @@
+{
+  "pilot_id": "abuse-v1-authenticity",
+  "concept_key": "abuse",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote abuse (oral « abusé ») — pas d'import Supabase. Distracteurs corrigés post-review Sonnet. Piège légal ancré en Q1 seulement.",
+  "questions": [
+    {
+      "concept_key": "abuse",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Capture du ticket : « 8 € le thé… c'est abusé ». « C'est abusé », c'est surtout…",
+      "choices": [
+        "C'est trop / pas juste pour ce que c'est",
+        "C'est une infraction pénale",
+        "C'est relou mais sans juger le prix",
+        "C'est abusé comme compliment — niveau impressionnant"
+      ],
+      "correct_index": 0,
+      "explanation": "Sur un ticket, « abusé » = prix excessif — pas crime, pas simple relou, et pas l'abusé-intensificateur positif.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote abuse #1 — golden candidate confirmé. Correction Sonnet : index 3 compliment thin → abusé positif (hésitation adulte)."
+    },
+    {
+      "concept_key": "abuse",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Vocal : « 50 minutes d'attente au resto, franchement c'est abusé. » « Abusé », ici, c'est surtout…",
+      "choices": [
+        "Le délai est excessif — réaction d'injustice légère",
+        "C'est désagréable mais normal pour un resto populaire",
+        "Sa soirée est gâchée — ça va au-delà de l'attente",
+        "Il n'avait juste pas envie d'attendre (flemme)"
+      ],
+      "correct_index": 0,
+      "explanation": "50 minutes = jugement sur le délai — pas « c'est normal », pas toute la soirée gâchée, pas flemme personnelle.",
+      "tone": "social",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote abuse #2. Correction Sonnet : index 1 violence → disproportionné ; index 2 galère mois → soirée gâchée (point vs global)."
+    },
+    {
+      "concept_key": "abuse",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Groupe : après la 6e vanne limite du même pote, quelqu'un lâche : « Frérot tu abuses là. » « Tu abuses », c'est surtout…",
+      "choices": [
+        "Il pousse trop loin — ça dépasse ce qui passe entre potes",
+        "Il insiste pour faire rire sans voir qu'il dérange (forceur)",
+        "Il est déçu que ses vannes ne fassent pas l'effet (seum)",
+        "Il est en PLS et veut arrêter la soirée"
+      ],
+      "correct_index": 0,
+      "explanation": "« Tu abuses » = tu franchis une ligne sociale — pas maladresse (forceur), pas seum du vanneur, pas KO corps.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote abuse #3. Correction Sonnet : index 1 violence → forceur ; index 2 seum sujet corrigé (vanneur déçu)."
+    },
+    {
+      "concept_key": "abuse",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Messages : « C'est relou les travaux dans le quartier » puis « Le loyer annoncé c'est abusé par contre ». Le « abusé », c'est surtout…",
+      "choices": [
+        "Jugement sur le montant — injuste / excessif",
+        "La même chose que relou — juste pénible",
+        "C'est dans la norme du quartier — il exagère la colère",
+        "Il est déçu émotionnellement (seum)"
+      ],
+      "correct_index": 0,
+      "explanation": "« Relou » = pénible à vivre ; « abusé » sur le loyer = trop cher / pas juste — pas synonyme, pas « c'est le marché », pas seum.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote abuse #4 — golden candidate confirmé. Correction Sonnet : index 3 plainte (répétition légal) → norme du marché vs colère."
+    }
+  ]
+}

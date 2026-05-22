@@ -1,0 +1,97 @@
+{
+  "pilot_id": "valide-v1-authenticity",
+  "concept_key": "valide",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote valide — pas d'import Supabase. Stamp d'approbation sociale, ironie possible. Distracteurs corrigés post-review Sonnet.",
+  "questions": [
+    {
+      "concept_key": "valide",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Groupe : « On part sur le resto italien ? » — « Ouais validé pour moi. » « Validé », ici, c'est surtout…",
+      "choices": [
+        "Il approuve / il est partant",
+        "Le resto a reçu une certification officielle",
+        "Ça lui est égal — il n'a pas d'avis fort",
+        "C'est réglé au sens horaire précis — tout est signé"
+      ],
+      "correct_index": 0,
+      "explanation": "« Validé » = oui, ça me va — accord actif, pas une certification, pas de l'indifférence ni un « c'est carré » logistique.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote valide #1. Correction Sonnet : index 2 refus (pur contraire) → indifférence vs approbation active."
+    },
+    {
+      "concept_key": "valide",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Fil de plans : « On se capte vers 20h… ou 21h… ou on verra » — quelqu'un balance quand même : « Validé alors 😂 ». Ce « validé », c'est surtout…",
+      "choices": [
+        "De l'ironie — feu vert moqueur alors que rien n'est fixé",
+        "Un accord sincère — c'est carré pour de bon",
+        "Il est agacé — il voulait des horaires clairs et ça traîne",
+        "Il confirme sa présence même si l'heure n'est pas encore fixée"
+      ],
+      "correct_index": 0,
+      "explanation": "Horaires flous + 😂 = « validé » second degré — pas un vrai OK, pas de la colère passive-agressive ni un « je serais là quand même » sincère.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote valide #2 — golden candidate confirmé. Correction Sonnet : index 2 indifférence → agacé ; index 3 manager → présence vague malgré flou."
+    },
+    {
+      "concept_key": "valide",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Story : photo de la tenue. Message : « Validé ? » avant de sortir. « Validé ? », c'est surtout…",
+      "choices": [
+        "Il demande un avis / une approbation sur le look",
+        "Il annonce que la soirée est officiellement autorisée",
+        "Il vérifie que le plan de soirée tient encore",
+        "Il confirme qu'il a déjà payé l'entrée"
+      ],
+      "correct_index": 0,
+      "explanation": "« Validé ? » sur la tenue = tu valides mon style — pas l'autorisation de sortir, ni le plan global, ni le billet.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "instagram",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote valide #3. Correction Sonnet : index 2 météo (thin) → plan de soirée tient encore."
+    },
+    {
+      "concept_key": "valide",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Messages : « C'est carré pour samedi, on tient les horaires » puis « Ouais validé, j'ai hâte ». Le « validé » du deuxième message, c'est surtout…",
+      "choices": [
+        "Enthousiasme / feu vert social — pas re-redire le planning",
+        "Il revalide les horaires une deuxième fois",
+        "Il dit que tout est calme et sans stress (oklm)",
+        "Il est partant seulement si les horaires tiennent vraiment"
+      ],
+      "correct_index": 0,
+      "explanation": "« Carré » = plan réglé ; « validé, j'ai hâte » = hype — pas re-calendrier, pas oklm, ni un « OK sous condition » prudent.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote valide #4 — golden candidate confirmé. Correction Sonnet : index 3 annulation (placeholder) → accord conditionnel vs enthousiasme."
+    }
+  ]
+}

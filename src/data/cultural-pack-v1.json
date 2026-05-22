@@ -8,6 +8,7 @@
   "lot_04_batch_id": "v1_lot_04a_tier_a",
   "lot_04b_batch_id": "v1_lot_04b_tier_a",
   "lot_05_batch_id": "v1_lot_05a_tier_a",
+  "lot_05b_batch_id": "v1_lot_05b_tier_a",
   "conventions": {
     "taxonomy": "V1 closed lists (cluster_tags, lifecycle, platforms, social_vibe, irony, cringe_risk) — enums in this file only",
     "concept_key": "snake_case, stable, matches questions.concept_key",
@@ -1285,6 +1286,229 @@
       ],
       "ia_notes": "Métaphore KO momentané. Frontières seum / galere / flemme dans pièges. Pas SAMU, pas adulte groupe, pas pur contraire. Scènes debrief potes / messages.",
       "human_notes": "Lot 05a priorité 3. legacy etre_en_pls pour backfill. Ne pas fusionner avec galère ni seum."
+    },
+    {
+      "concept_key": "valide",
+      "legacy_concept_keys": ["cest_valide"],
+      "canonical_label": "Validé",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["c'est validé", "validé", "validé pour moi", "t'as validé ?", "ok validé"],
+      "variants": ["validé", "c'est validé", "validé de ouf", "t'as validé le plan ?"],
+      "short_definition": "Approbation sociale — « c'est bon pour moi », souvent avec énergie hype ; peut être sincère ou ironique selon le contexte.",
+      "long_definition": "« Validé » (ou « c'est validé ») est un stamp d'accord : le resto, le look, l'idée, le plan. Ce n'est pas une validation administrative ni un document signé — c'est entre potes, en message ou en vocal. Peut être au premier degré (« ouais je suis partant ») ou au second degré quand rien n'est vraiment acté (« validé » alors que les horaires sont encore flous). Distinct de « c'est carré » : validé = feu vert social ; carré = version des faits / plan réglé.",
+      "cluster_tags": ["social_validation"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "tiktok", "instagram"],
+      "social_vibe": "hype",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Validé pour le resto",
+          "C'est validé ?",
+          "Ok validé",
+          "T'as validé la date ?"
+        ],
+        "credible_contexts": [
+          "accord_plan_sortie",
+          "validation_look_story",
+          "ironie_rien_decide",
+          "question_cherche_confirmation"
+        ],
+        "avoid_scenes": [
+          "validation_administrative_bureau",
+          "parent_dans_groupe",
+          "cours_validé_approuvé_officiel",
+          "tiktok_caricature"
+        ],
+        "likely_speakers": ["pote", "groupe", "commentateur"],
+        "unlikely_speakers": ["rh_validateur_officiel", "journaliste"],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "Messages courts + « validé ? » à l'oral"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Validé » après une proposition = oui, je suis partant.",
+          "« Validé » alors que rien n'est fixé = ironie / feu vert moqueur."
+        ],
+        "plausible_traps": [
+          "validation_officielle_admin",
+          "refus_cache",
+          "indifference",
+          "confusion_carre_plan_regle",
+          "confusion_oklm_calme"
+        ],
+        "adult_errors": [
+          "lire_validé_comme_document_signé",
+          "manquer_ironie",
+          "fusionner_avec_carre_sans_contexte"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "irony_reading", "social_validation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archive C'est validé — rewrite ; pool live" }
+      ],
+      "ia_notes": "Angle stamp social, pas admin. Ironie prioritaire en moyen/difficile. Frontière carre / oklm / chaud. Double-concept en fil avec carre possible. Pas adulte groupe.",
+      "human_notes": "Lot 05b priorité 1. Distinct carre (approved) — ne pas fusionner les clés."
+    },
+    {
+      "concept_key": "abuse",
+      "canonical_label": "Abusé",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "medium",
+      "source_tier": "observed_irl",
+      "glossary_only": false,
+      "surface_forms": ["c'est abusé", "abusé", "t'abuses", "c'est abusé le prix", "abusé de ouf"],
+      "variants": ["abusé", "c'est abusé", "t'abuses là", "le délai c'est abusé"],
+      "short_definition": "C'est trop — prix, délai, effort ou vanne qui dépasse ce qui semble juste ; réaction d'injustice légère ou d'exagération.",
+      "long_definition": "« C'est abusé » (ou « t'abuses ») dit qu'une situation est excessive : 12 € le café, 45 min d'attente, une vanne qui va trop loin. Ce n'est pas une accusation judiciaire ni du harcèlement au sens grave — c'est un jugement oral entre potes, souvent avec humour ou indignation légère. Peut viser un prix, un comportement, un timing. Distinct de relou (pénible), galère (situation dure), seum (dépit).",
+      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "tiktok", "snapchat"],
+      "social_vibe": "judgmental",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "C'est abusé le prix",
+          "T'abuses avec tes blagues",
+          "Abusé le délai",
+          "Non mais c'est abusé"
+        ],
+        "credible_contexts": [
+          "reaction_prix_ou_attente",
+          "vanne_qui_pousse_trop",
+          "debrief_injustice_legere",
+          "story_reaction"
+        ],
+        "avoid_scenes": [
+          "violence_reelle_harcèlement_grave",
+          "plainte_penale",
+          "parent_dans_groupe",
+          "abus_sexuel_patho"
+        ],
+        "likely_speakers": ["pote", "groupe", "client_mefiant"],
+        "unlikely_speakers": ["avocat_plainte", "enseignant_morale"],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "Très message / vocal ; « c'est abusé » spontané"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« C'est abusé » sur un ticket = trop cher / pas juste.",
+          "« T'abuses » après 5 vannes d'affilée = tu pousses trop, pas qu'il est dangereux."
+        ],
+        "plausible_traps": [
+          "crime_harcèlement_judiciaire",
+          "relou_simple",
+          "galere_durable",
+          "seum_deception",
+          "compliment_positif"
+        ],
+        "adult_errors": [
+          "lire_abusé_comme_infraction_penale",
+          "confondre_avec_relou_ou_galere",
+          "moraliser_violence_inexistante_en_scene"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "emotion_reading", "boundary_reading"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "observed_irl", "note": "Oral FR fort ; peu de lignes pool — scènes type prix/délai/vanne" }
+      ],
+      "ia_notes": "concept_key abuse = oral « abusé » (pas harcèlement EN). Réaction « c'est trop ». Pas violence réelle, pas patho. Frontières relou/galere/seum. Pas pur contraire « c'est normal ».",
+      "human_notes": "Lot 05b priorité 2. Clé ASCII abuse pour abusé ; surface_forms avec accent."
+    },
+    {
+      "concept_key": "sus",
+      "canonical_label": "Sus",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "medium",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["c'est sus", "sus", "un peu sus", "t'es sus"],
+      "variants": ["sus", "c'est un peu sus", "suspect", "cheater sus"],
+      "short_definition": "Louche, suspect au sens léger — comportement ou vibe qui incite au doute, sans accusation grave.",
+      "long_definition": "« Sus » (héritage Among Us + chat FR) signifie « ça pue » / « c'est suspect » entre potes : compte bizarre, excuse floue, vibe off. Ce n'est pas un red flag relationnel lourd ni une accusation pénale — c'est un doute social léger, souvent en vanne. Le joueur lit le ton : moquerie, méfiance soft, gaming.",
+      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["discord", "whatsapp", "tiktok"],
+      "social_vibe": "judgmental",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "C'est sus son excuse",
+          "Un peu sus ce compte",
+          "Sus…",
+          "Frérot t'es sus"
+        ],
+        "credible_contexts": [
+          "gaming_among_us_héritage",
+          "debrief_comportement_bizarre",
+          "story_compte_neuf",
+          "plan_qui_sent_flou"
+        ],
+        "avoid_scenes": [
+          "accusation_crime_grave",
+          "diagnostic_psy_toxique",
+          "parent_dans_groupe",
+          "cours_sus_mot_anglais"
+        ],
+        "likely_speakers": ["pote", "groupe_gaming", "commentateur"],
+        "unlikely_speakers": ["procureur", "therapeute_tiktok"],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "Chat + vocal court ; gaming et social"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« C'est sus » sur une excuse = ça sonne faux, pas encore une alerte relation.",
+          "« Sus » en gaming = je te soupçonne (souvent vanne), pas un procès."
+        ],
+        "plausible_traps": [
+          "red_flag_alerte_relation",
+          "accusation_penale",
+          "sympa_sus_game_only",
+          "sauce_sus_lexical",
+          "danger_vital"
+        ],
+        "adult_errors": [
+          "fusionner_sus_et_red_flag",
+          "lire_sus_comme_crime",
+          "ne_connaître_que_among_us_sans_social"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "irony_reading", "boundary_reading"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archive Sus — rewrite ; pool live" }
+      ],
+      "ia_notes": "Frontière red_flag obligatoire : sus = louche léger, red_flag = alerte comportement. Pas accusation grave, pas psy. Héritage gaming OK en une scène max. Pas adulte groupe.",
+      "human_notes": "Lot 05b priorité 3. Among Us = angle secondaire, pas toute la scène."
     }
   ]
 }
