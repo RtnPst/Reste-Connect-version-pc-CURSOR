@@ -1,0 +1,97 @@
+{
+  "pilot_id": "relou-v1-authenticity",
+  "concept_key": "relou",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote relou — pas d'import Supabase. Contrainte / annoyance FR oral. Distracteurs corrigés post-review Sonnet (anti placeholders, piège verlan-lourd).",
+  "questions": [
+    {
+      "concept_key": "relou",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Dans le groupe : « Finalement on bouge le resto à 21h, c'est relou. » « C'est relou », ça veut surtout dire que c'est…",
+      "choices": [
+        "Pénible / chiant — ça complique le plan",
+        "Physiquement lourd / difficile à gérer",
+        "Vraiment grave — gros problème pour le plan",
+        "Pratique — ça arrange tout le monde"
+      ],
+      "correct_index": 0,
+      "explanation": "« Relou » = contraignant, agaçant — là, le changement d'horaire embête, pas lourd au sens physique ni un drame.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote relou #1 — plan WhatsApp. Correction Sonnet : bruyant/danger/super cool → verlan-lourd / upscale grave / pratique (anti pur contraire)."
+    },
+    {
+      "concept_key": "relou",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "En vocal : « Les démarches pour le remboursement, c'est trop relou. » Il parle surtout de démarches…",
+      "choices": [
+        "Pénibles / longues à gérer",
+        "Physiquement lourdes à porter",
+        "Illégales ou risquées",
+        "Très compliquées — difficiles à faire sans erreur"
+      ],
+      "correct_index": 0,
+      "explanation": "« Relou » = ras-le-bol administratif — pénible, pas un carton à porter ni un obstacle quasi impossible.",
+      "tone": "social",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote relou #2 — admin. Correction Sonnet : index 3 argent → compliquées sans erreur (friction vs obstacle)."
+    },
+    {
+      "concept_key": "relou",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ta pote t'écrit après la soirée : « Le mec était relou, il lâchait rien. » Elle veut dire qu'il était surtout…",
+      "choices": [
+        "Pénible — insistait ou compliquait l'ambiance",
+        "Très insistant — il draguait fort sans s'arrêter",
+        "En difficulté / avait besoin d'aide",
+        "Ivre au point de ne plus tenir debout"
+      ],
+      "correct_index": 0,
+      "explanation": "« Relou » = il agace ou gêne — pas une drague intense réussie, ni une détresse ni l'alcool seul.",
+      "tone": "drama",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote relou #3 — social. Correction Sonnet : attirant → insistant/drague (frontière forceur, vraie hésitation)."
+    },
+    {
+      "concept_key": "relou",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Message : « J'ai le seum pour le match mais le trajet en deuxième classe c'est relou. » Les deux mots ne disent pas la même chose : « relou » ici, c'est surtout…",
+      "choices": [
+        "La contrainte pénible du trajet",
+        "La déception émotionnelle du match",
+        "La fatigue d'un long trajet — il est épuisé",
+        "Un problème pratique avec la réservation / les billets"
+      ],
+      "correct_index": 0,
+      "explanation": "Seum = dépit sur le match ; relou = le trajet est chiant à subir — pas la même émotion ni un souci de billets.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "streaming",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote relou #4 — golden candidate confirmé. Correction Sonnet : fierté/peur → fatigue trajet / billets ; tone gaming → social. Distinction seum/relou."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "pilot_id": "chaud-v1-authenticity",
+  "concept_key": "chaud",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote chaud — pas d'import Supabase. Caméléon : partant, tension, talent. Distracteurs corrigés post-review Sonnet (anti absurdes, anti talent hors contexte).",
+  "questions": [
+    {
+      "concept_key": "chaud",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Message : « T'es chaud pour le ciné ce soir ? » « T'es chaud », ça veut surtout dire…",
+      "choices": [
+        "Tu es partant / motivé pour le plan",
+        "Tu as trop chaud — canicule",
+        "Tu es en colère",
+        "Tu es disponible / libre ce soir"
+      ],
+      "correct_index": 0,
+      "explanation": "« T'es chaud pour… ? » = tu es partant — envie et dispo implicites, pas la météo ni seulement l'agenda.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote chaud #1 — partant. Correction Sonnet : talent cinéma → disponible/libre (motivation vs agenda)."
+    },
+    {
+      "concept_key": "chaud",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Debrief vocal : « Après la vanne sur son ex, c'est chaud dans le groupe, on évite le sujet. » « C'est chaud », c'est surtout…",
+      "choices": [
+        "Tendu / malaisant — ambiance délicate",
+        "Physiquement très chaud dans la pièce",
+        "Animé — l'ambiance est montée",
+        "Confirmé — tout est réglé"
+      ],
+      "correct_index": 0,
+      "explanation": "« C'est chaud » après un sujet sensible = tension — pas la température, ni la fête, ni un « c'est carré ».",
+      "tone": "drama",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote chaud #2 — golden candidate confirmé. Correction Sonnet : festif → animé/montée (ambiguïté tension vs énergie)."
+    },
+    {
+      "concept_key": "chaud",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Sous la vidéo du guitariste : « Il est chaud ce mec. » Dans ce commentaire, « il est chaud », c'est surtout…",
+      "choices": [
+        "Il est fort / talentueux",
+        "Il a chaud — il transpire",
+        "Il est dangereux",
+        "Survolté / hyped — trop d'énergie"
+      ],
+      "correct_index": 0,
+      "explanation": "« Il est chaud » sur une perf = il assure — talent, pas transpiration, menace ni simple excitation.",
+      "tone": "social",
+      "context": "tiktok_comments",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote chaud #3 — talent. Correction Sonnet : bâtiment brûle → survolté/hyped (anti absurde)."
+    },
+    {
+      "concept_key": "chaud",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Groupe : « Chaud pour 20h au resto ? » — ton oncle répond dans le fil : « Oui, il fera 28°C, prévois léger. » Le « chaud » du message d'origine, c'était surtout…",
+      "choices": [
+        "Partant pour le rendez-vous à 20h",
+        "Un bulletin météo pour la soirée",
+        "Que le resto sert des plats épicés",
+        "Quelqu'un n'est pas à l'aise / ça peut chauffer"
+      ],
+      "correct_index": 0,
+      "explanation": "« Chaud pour 20h » = proposition de plan — l'oncle a entendu météo ; le groupe parlait de dispo.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote chaud #4 — golden candidate confirmé. Correction Sonnet : soirée risquée → tension interpersonnelle (humain vs abstrait)."
+    }
+  ]
+}

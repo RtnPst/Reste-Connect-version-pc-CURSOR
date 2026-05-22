@@ -5,6 +5,7 @@
   "locale": "fr-FR",
   "updated_at": "2026-05-20",
   "lot_03_batch_id": "v1_lot_03_tier_a",
+  "lot_04_batch_id": "v1_lot_04a_tier_a",
   "conventions": {
     "taxonomy": "V1 closed lists (cluster_tags, lifecycle, platforms, social_vibe, irony, cringe_risk) — enums in this file only",
     "concept_key": "snake_case, stable, matches questions.concept_key",
@@ -627,6 +628,222 @@
       ],
       "ia_notes": "Angle = lecture de ton en message, pas acronyme cours. Passif-agressif et ironie prioritaires sur « mort de rire » seul. Piège Maman des rêves = distracteur classique adulte. Symétrie qualité seum (émotion/message). Pas TikTok caricature.",
       "human_notes": "Lot 03 tier A priorité 3. Golden candidate si question double ton (mdr sincère vs froid)."
+    },
+    {
+      "concept_key": "relou",
+      "canonical_label": "Relou",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["c'est relou", "relou", "trop relou", "relou de ouf"],
+      "variants": ["relou", "c'est relou", "trop relou", "relou ce truc"],
+      "short_definition": "C'est pénible, chiant, contraignant — une contrainte ou une situation qui agace.",
+      "long_definition": "« Relou » (verlan de « lourd ») dit qu'une situation, une démarche ou une personne est énervante ou fatigante à gérer — pas forcément une grosse émotion comme le seum, plutôt l'ennui + la contrainte. Très courant à l'oral et sur WhatsApp (« c'est relou ce changement de plan »). Ce n'est pas un cours de verlan : c'est un jugement social léger sur quelque chose qui complique la vie.",
+      "cluster_tags": ["emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "discord", "tiktok"],
+      "social_vibe": "judgmental",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "C'est relou ce changement de plan",
+          "Trop relou les démarches",
+          "Il est relou ce mec",
+          "Relou la file d'attente"
+        ],
+        "credible_contexts": [
+          "groupe_whatsapp_plan_annule",
+          "vocal_plainte_legere",
+          "admin_paperasse",
+          "contrainte_logistique"
+        ],
+        "avoid_scenes": [
+          "cours_verlan_lourd",
+          "parent_qui_explique_relou",
+          "relou_comme_bruit_fort_sans_contexte"
+        ],
+        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_rale"],
+        "unlikely_speakers": ["professeur_de_francais", "journaliste"],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "WhatsApp et vocal ; graphie relou stable"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« C'est relou » = c'est pénible / ça m'embête, pas « j'ai le seum ».",
+          "« Il est relou » = il complique la vie ou agace, pas « il est lourd » physiquement."
+        ],
+        "plausible_traps": [
+          "lourd_physique_poids",
+          "bruyant_relou_homophonie",
+          "positif_genial",
+          "danger_grave"
+        ],
+        "adult_errors": [
+          "expliquer_verlan_au_lieu_de_lire_la_scene",
+          "confondre_relou_et_seum",
+          "lire_relou_comme_volume_sonore"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "emotion_reading", "dialogue_interpretation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archives Que veut dire relou / verlan — rewrite obligatoire" }
+      ],
+      "ia_notes": "Angle contrainte / annoyance, pas dépit match. Distinct seum. Pas cours verlan en question. Pièges : lourd physique, bruyant, positif. Scènes plan relou, vocal, admin.",
+      "human_notes": "Lot 04a priorité 1. France-first oral. Ne pas fusionner avec lourd comme concept_key."
+    },
+    {
+      "concept_key": "flemme",
+      "canonical_label": "Flemme",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["j'ai la flemme", "grave la flemme", "flemme de", "pas la flemme"],
+      "variants": ["j'ai la flemme", "flemme de sortir", "j'ai grave la flemme", "zero flemme"],
+      "short_definition": "Pas envie, pas d'énergie pour faire quelque chose — fatigue ou flemme du moment, pas forcément de la paresse grave.",
+      "long_definition": "« Avoir la flemme » = manquer d'envie pour une action précise (sortir, répondre, bouger, commencer un truc). Souvent dit avec humour ou auto-dérision entre potes. Peut frôler la fatigue réelle après une grosse journée — ce n'est pas un diagnostic. Très FR, très message / vocal.",
+      "cluster_tags": ["emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "snapchat", "discord"],
+      "social_vibe": "vulnerable",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "J'ai la flemme de sortir",
+          "Flemme de répondre là",
+          "J'ai grave la flemme ce soir",
+          "Zero flemme pour les courses"
+        ],
+        "credible_contexts": [
+          "message_soiree_annulee",
+          "paresse_legere_groupe",
+          "fatigue_apres_travail",
+          "repondre_plus_tard"
+        ],
+        "avoid_scenes": [
+          "caricature_paresseux_permanent",
+          "parent_moralise_flemme",
+          "cours_definition_les_jeunes_disent"
+        ],
+        "likely_speakers": ["pote", "groupe", "quelqu_un_fatigue"],
+        "unlikely_speakers": ["adulte_qui_fait_la_lecon", "psy_en_direct"],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "Messages courts ; « j'ai la flemme » très naturel à l'oral"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« J'ai la flemme de sortir » = pas envie ce soir, pas un drame.",
+          "« Flemme de répondre » = je repousse, pas « je t'ignore par méchanceté »."
+        ],
+        "plausible_traps": [
+          "maladie_flemme_medical",
+          "depression_clinique",
+          "paresse_morale_absolue",
+          "refus_hostile"
+        ],
+        "adult_errors": [
+          "pathologiser_flemme_du_moment",
+          "confondre_flemme_et_flemme_medicale",
+          "lire_refus_social_comme_insulte"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "emotion_reading", "social_interpretation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archives J'ai la flemme — rewrite obligatoire" }
+      ],
+      "ia_notes": "Pas caricature fainéant. Nuance fatigue légitime vs pas envie. Pièges maladie / dépression lourde = distracteurs, pas moraliser dans explication. Distinct ghoster (pas répondre) = flemme pas hostility.",
+      "human_notes": "Lot 04a priorité 2. Ultra France-first. Golden candidate si scène flemme de répondre vs ghosting."
+    },
+    {
+      "concept_key": "chaud",
+      "canonical_label": "Chaud",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["t'es chaud", "je suis chaud", "c'est chaud", "trop chaud", "chaud pour"],
+      "variants": ["t'es chaud", "c'est chaud", "chaud pour ce soir", "il est chaud", "ça chauffe"],
+      "short_definition": "Mot caméléon — motivé, partant, doué, ou situation tendue / intense selon le contexte.",
+      "long_definition": "« Chaud » change de sens selon la phrase : « t'es chaud ce soir ? » = tu es partant ; « c'est chaud » = situation délicate ou tendue ; « il est chaud » peut dire qu'il est fort / talentueux. La température n'est qu'un piège parmi d'autres — en contexte social FR actuel, le sens humain prime. Lecture du contexte = cœur du gameplay.",
+      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "discord", "tiktok"],
+      "social_vibe": "hype",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "T'es chaud pour demain ?",
+          "C'est chaud là entre eux",
+          "Il est chaud ce DJ",
+          "Chaud pour 20h ?"
+        ],
+        "credible_contexts": [
+          "plan_entre_potes",
+          "dispute_tension",
+          "compliment_perf",
+          "message_ambigu_plan_vs_meteo"
+        ],
+        "avoid_scenes": [
+          "meteo_seule_sans_ambiguite",
+          "cours_chez_les_jeunes",
+          "parent_qui_demande_definition_chaud"
+        ],
+        "likely_speakers": ["pote", "groupe", "commentateur_sport_or_musique"],
+        "unlikely_speakers": ["meteo_presentateur_seul"],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "Plans et réactions ; écrit court sur WhatsApp"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« T'es chaud ? » = tu es partant pour le plan.",
+          "« C'est chaud » après une engueulade = ambiance tendue, pas canicule."
+        ],
+        "plausible_traps": [
+          "temperature_canicule",
+          "piment_epice",
+          "competence_vs_disponibilite",
+          "danger_physique"
+        ],
+        "adult_errors": [
+          "lire_chaud_comme_meteo_par_defaut",
+          "manquer_sens_partant",
+          "confondre_tension_sociale_et_chaleur"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "dialogue_interpretation", "irony_reading", "generational_trap"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archive être chaud conversation informelle — rewrite" }
+      ],
+      "ia_notes": "Caméléon = plusieurs questions distinctes par sens, pas une définition. Température max 1 question facile avec contexte fort ailleurs. Golden : double lecture plan/météo ou tension vs chaleur. Pas glossaire jeunes.",
+      "human_notes": "Lot 04a priorité 3. Meilleur potentiel gameplay lot 04a. Distinct carre (accord) et seum."
     }
   ]
 }
