@@ -3,7 +3,7 @@
   "concept_key": "flop",
   "pack_ref": "cultural-pack-v1.json",
   "status": "draft_review",
-  "notes": "Pilote flop — pas d'import Supabase. Hype ratée / échec social. Frontières seum / cringe. Zéro adulte groupe.",
+  "notes": "Pilote flop — pas d'import Supabase. Distracteurs corrigés post-review Sonnet LOT 6b.",
   "questions": [
     {
       "concept_key": "flop",
@@ -15,17 +15,17 @@
         "L'expérience a raté — en dessous de l'attente",
         "Il a le seum personnellement contre le serveur",
         "C'était cringe — gênant socialement pour le groupe",
-        "Le resto a fermé définitivement"
+        "C'était une galère — dur à vivre pour tout le monde"
       ],
       "correct_index": 0,
-      "explanation": "Attente vs réalité = jugement sur la soirée — pas seum du pote, pas malaise cringe, ni fermeture définitive.",
+      "explanation": "Hype vs réalité = jugement sur l'expérience — pas seum perso, pas cringe, ni galère vécue seule.",
       "tone": "social",
       "context": "group_chat",
       "trap_intensity": "soft_trap",
       "era": "whatsapp",
       "format": "scenario_text",
       "internet_level": "debutant",
-      "editor_notes": "Pilote flop #1 — golden candidate potentiel. Hype vs réalité explicite."
+      "editor_notes": "Pilote flop #1. Correction Sonnet : fermeture définitive → galère vs gap attente-réalité."
     },
     {
       "concept_key": "flop",
@@ -37,17 +37,17 @@
         "Le contenu n'a pas marché — attente vs perf",
         "Il se moque du pote personnellement (seum du posteur)",
         "La vidéo est cringe — gênante à regarder",
-        "Le TikTok a été supprimé par la modération"
+        "Il suggère de supprimer la vidéo — c'est embarrassant"
       ],
       "correct_index": 0,
-      "explanation": "Big annonce + 48 vues = échec du post — pas attaque perso seum, pas cringe esthétique, ni modération.",
+      "explanation": "Big annonce + 48 vues = échec perf — pas attaque perso, pas cringe esthétique, ni conseil de suppression seul.",
       "tone": "funny",
       "context": "group_chat",
       "trap_intensity": "soft_trap",
       "era": "tiktok",
       "format": "scenario_text",
       "internet_level": "initie",
-      "editor_notes": "Pilote flop #2 — chiffres concrets en scène."
+      "editor_notes": "Pilote flop #2 — golden candidate confirmé. Correction Sonnet : modération → supprimer (flop perf vs cringe)."
     },
     {
       "concept_key": "flop",
@@ -59,17 +59,17 @@
         "La blague n'a pas pris — elle est tombée à plat",
         "Il est en seum parce que personne n'a ri",
         "C'était cringe — malaise pour tout le monde",
-        "Il est dead — en fait il a trop ri"
+        "La vanne était prévisible — personne n'est surpris du silence"
       ],
       "correct_index": 0,
-      "explanation": "Silence + mdr poli = vanne ratée — pas seum du vanneur seul, pas cringe collectif obligatoire, ni dead.",
+      "explanation": "Hype vanne + silence = gap déçu — pas seum du vanneur seul, pas cringe collectif, ni échec attendu sans surprise.",
       "tone": "funny",
       "context": "social_voice",
       "trap_intensity": "soft_trap",
       "era": "discord",
       "format": "scenario_text",
       "internet_level": "debutant",
-      "editor_notes": "Pilote flop #3 — golden candidate potentiel. Signal comportemental silence."
+      "editor_notes": "Pilote flop #3 — golden candidate confirmé. Correction Sonnet : dead → échec prévisible vs gap hype."
     },
     {
       "concept_key": "flop",
@@ -81,17 +81,17 @@
         "Jugement sur le montage — il n'a pas marché",
         "La même chose que le seum — déception perso",
         "C'était cringe — gênant à montrer",
-        "Bien vu quand même — reconnaissance du move"
+        "Il ratio son pote — humiliation publique sur le montage"
       ],
       "correct_index": 0,
-      "explanation": "« Seum » = émotion perso match ; « flop » = le montage a raté — pas même registre, pas cringe, ni bien vu.",
+      "explanation": "« Seum » = émotion match ; « flop » = le montage a raté — pas même registre, pas cringe, ni ratio social.",
       "tone": "social",
       "context": "group_chat",
       "trap_intensity": "hard_trap",
       "era": "discord",
       "format": "scenario_text",
       "internet_level": "initie",
-      "editor_notes": "Pilote flop #4 — golden candidate potentiel. Double-concept seum / flop."
+      "editor_notes": "Pilote flop #4 — golden candidate confirmé. Correction Sonnet : bien_vu → ratio (1er distractor inter-concept pack)."
     }
   ]
 }

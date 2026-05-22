@@ -3,7 +3,7 @@
   "concept_key": "sah",
   "pack_ref": "cultural-pack-v1.json",
   "status": "draft_review",
-  "notes": "Pilote sah — pas d'import Supabase. Insistance sincère / je te jure. Frontière valide / bien_vu. Zéro adulte groupe.",
+  "notes": "Pilote sah — pas d'import Supabase. Distracteurs corrigés post-review Sonnet LOT 6b.",
   "questions": [
     {
       "concept_key": "sah",
@@ -13,19 +13,19 @@
       "question": "Discord debrief : « Il a vraiment sauté par-dessus la barrière ? » — « Sah il l'a fait, j'étais là. » « Sah », ici, c'est surtout…",
       "choices": [
         "Insistance sincère — « je te jure, c'est vrai »",
-        "Il valide le plan de sortie (validé)",
+        "Il est lui-même surpris — il n'en revient toujours pas",
         "Il signe une promesse formelle / engagement officiel",
         "Il dit ça pour rien — formule vide sans conviction"
       ],
       "correct_index": 0,
-      "explanation": "Après un doute, « sah il l'a fait » = je te le jure — pas feu vert plan, pas contrat, ni formule creuse.",
+      "explanation": "« J'étais là » + « sah il l'a fait » = je te le jure — pas stupéfaction seule, serment officiel, ni formule creuse.",
       "tone": "social",
       "context": "group_chat",
       "trap_intensity": "soft_trap",
       "era": "discord",
       "format": "scenario_text",
       "internet_level": "debutant",
-      "editor_notes": "Pilote sah #1 — golden candidate potentiel. Témoin oculaire + doute."
+      "editor_notes": "Pilote sah #1. Correction Sonnet : validé → surprise / émerveillement vs serment."
     },
     {
       "concept_key": "sah",
@@ -36,18 +36,18 @@
       "choices": [
         "Validation émotionnelle forte — il insiste sur l'intensité vécue",
         "Il approuve la date du prochain concert (validé)",
-        "Il reconnaît un bon move logistique (bien vu)",
+        "Il exprime sa jalousie de ne pas y avoir été",
         "Il exagère à dessein — il n'y était pas vraiment"
       ],
       "correct_index": 0,
-      "explanation": "Concert surprise + 😭 = insister sur l'émotion réelle — pas accord plan, pas bien vu move, ni mensonge évident sans indice.",
+      "explanation": "Concert surprise + 😭 = insister sur l'émotion vécue — pas accord plan, pas FOMO seule, ni mensonge sans indice.",
       "tone": "social",
       "context": "group_chat",
       "trap_intensity": "soft_trap",
       "era": "instagram",
       "format": "scenario_text",
       "internet_level": "initie",
-      "editor_notes": "Pilote sah #2 — émotion + insistance."
+      "editor_notes": "Pilote sah #2. Correction Sonnet : bien vu → jalousie / FOMO vs témoignage vécu."
     },
     {
       "concept_key": "sah",
@@ -57,19 +57,19 @@
       "question": "Groupe : « T'es sûr qu'il t'a ghosté ? » — « Sah sah, il m'a laissé en vu trois jours d'affilée. » Le « sah sah », c'est surtout…",
       "choices": [
         "Double insistance — il confirme vraiment, pas de doute",
-        "Il dit que c'est oklm — ça va, pas grave",
+        "Il est en colère — il en veut à celui qui l'a ghosté",
         "Il lance une alerte red flag relationnelle",
         "Il plaisante — en fait il n'est pas sûr"
       ],
       "correct_index": 0,
-      "explanation": "« Sah sah » + fait précis (3 jours en vu) = je te jure que oui — pas oklm, pas red flag ici, ni blague sans indice.",
+      "explanation": "« Sah sah » + 3 jours en vu = je te jure que oui — pas colère seule, pas red flag ici, ni blague sans indice.",
       "tone": "drama",
       "context": "group_chat",
       "trap_intensity": "soft_trap",
       "era": "snapchat",
       "format": "scenario_text",
       "internet_level": "initie",
-      "editor_notes": "Pilote sah #3 — répétition sah sah = insistance."
+      "editor_notes": "Pilote sah #3 — golden candidate confirmé. Correction Sonnet : oklm → colère vs insistance."
     },
     {
       "concept_key": "sah",
@@ -80,18 +80,18 @@
       "choices": [
         "Renfort émotionnel sincère — soulagement / hype, pas re-valider l'horaire",
         "Il re-confirme l'horaire une deuxième fois (carré)",
-        "Il reconnaît un bon move de planification (bien vu)",
+        "Il est soulagé que ça tienne — c'est oklm pour lui finalement",
         "Il dit oui par politesse sans vraiment être partant"
       ],
       "correct_index": 0,
-      "explanation": "« Validé » = plan posé ; « sah ouais j'suis chaud » = insister sur l'enthousiasme — pas re-calendrier, pas bien vu, ni politesse froide.",
+      "explanation": "« Validé » = plan posé ; « sah ouais j'suis chaud » = insister sur l'enthousiasme — pas re-calendrier, oklm calme, ni politesse froide.",
       "tone": "social",
       "context": "group_chat",
       "trap_intensity": "hard_trap",
       "era": "whatsapp",
       "format": "scenario_text",
       "internet_level": "initie",
-      "editor_notes": "Pilote sah #4 — golden candidate potentiel. Double-concept validé / sah."
+      "editor_notes": "Pilote sah #4 — golden candidate confirmé. Correction Sonnet : bien_vu → oklm vs sah hype."
     }
   ]
 }
