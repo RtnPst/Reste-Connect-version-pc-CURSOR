@@ -1,0 +1,97 @@
+{
+  "pilot_id": "cringe-v1-authenticity",
+  "concept_key": "cringe",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote cringe — pas d'import Supabase. Malaise social, second degré. Distracteurs corrigés post-review Sonnet (anti pur contraire, anti patho, anti placeholders).",
+  "questions": [
+    {
+      "concept_key": "cringe",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "En vocal, quelqu'un fait une vanne qui ne passe pas. Silence. Puis : « OK c'est cringe, on passe. » « C'est cringe », ça veut surtout dire…",
+      "choices": [
+        "Gênant / malaise social — ça fait grimacer",
+        "Embarrassant pour toi seul·e — les autres trouvent ça drôle",
+        "Un peu trop chargé — mais ça reste dans les clous",
+        "C'est validé — on continue comme si de rien"
+      ],
+      "correct_index": 0,
+      "explanation": "« Cringe » après une vanne ratée = malaise collectif — pas honte solo, pas « c'est carré », pas une vanne juste un peu forte.",
+      "tone": "social",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote cringe #1 — vanne plateau. Correction Sonnet : drôle/dangereux → honte solo / trop chargé (frontière relou)."
+    },
+    {
+      "concept_key": "cringe",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Sous une story où quelqu'un reposte une photo de 2016 avec un filtre bizarre, un commentaire : « Arrête c'est trop cringe. » Ici, « cringe », c'est surtout…",
+      "choices": [
+        "Ça fait grimacer — comportement ou post malaisant",
+        "C'est nostalgique et touchant",
+        "Un taquinage affectueux — les potes se moquent gentiment",
+        "Qu'il faut supprimer la photo pour protéger son image en ligne"
+      ],
+      "correct_index": 0,
+      "explanation": "« Trop cringe » = malaise esthétique en ligne — pas nostalgie sincère, pas chamboule gentil, pas conseil réputation seul.",
+      "tone": "social",
+      "context": "tiktok_comments",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote cringe #2 — story 2016. Correction Sonnet : compliment/règles app → chamboule affectueux / image en ligne."
+    },
+    {
+      "concept_key": "cringe",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Message : « Bon j'assume le cringe, la vidéo est nulle mais ça me fait rire. » « J'assume le cringe », ça veut surtout dire qu'il…",
+      "choices": [
+        "Sait que c'est gênant et le revendique avec humour",
+        "Se moque de la vidéo — il pense que c'est nul et le dit",
+        "Pense que ça va gêner les autres et s'en excuse",
+        "Pense que c'est une vidéo parfaite et sérieuse"
+      ],
+      "correct_index": 0,
+      "explanation": "« Assumer le cringe » = second degré, on sait que c'est malaisant — pas critique externe, pas excuse morale, pas fierté sincère.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote cringe #3 — golden candidate confirmé. Refonte Sonnet : deux distracteurs patho → moquerie externe / assumer comme excuse."
+    },
+    {
+      "concept_key": "cringe",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Groupe famille : ta nièce dit « c'était cringe » après un discours de mariage trop long. Ta tante : « Cringe, c'est quoi ? C'est une honte morale ? » En contexte potes/TikTok, « cringe », c'est surtout…",
+      "choices": [
+        "Un malaise social — gênant, ridicule, qui fait grimacer",
+        "Une faute morale grave",
+        "Un terme de psychologie / mot pour dire trop timide en société",
+        "Une réaction de jeune exagérée — le discours était bien, elle surinterprète"
+      ],
+      "correct_index": 0,
+      "explanation": "« Cringe » = malaise social — pas morale, pas psy scolaire, pas « les jeunes exagèrent » (même si un adulte peut le penser).",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote cringe #4 — golden candidate confirmé. Correction Sonnet : diagnostic timidité/fier → psy lifestyle / rejet générationnel."
+    }
+  ]
+}

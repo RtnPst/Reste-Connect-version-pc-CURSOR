@@ -1,0 +1,75 @@
+{
+  "pilot_id": "galere-v1-authenticity",
+  "concept_key": "galere",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote galere — pas d'import Supabase. Situation pénible / difficulté. Distracteurs corrigés post-review Sonnet (frontière bail/relou, pièges mal placés).",
+  "questions": [
+    {
+      "concept_key": "galere",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Message du matin : « T'as vu la galère pour le train ? Retard + correspondance ratée. » « La galère », c'est surtout…",
+      "choices": [
+        "La situation pénible / compliquée à gérer",
+        "Une expo ou une visite de galerie",
+        "Une bonne anecdote à raconter au groupe",
+        "Un simple coup de mauvaise humeur passager"
+      ],
+      "correct_index": 0,
+      "explanation": "« La galère » = c'est dur là, galère transport/admin — pas une visite culturelle ni une histoire « bail » à raconter.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote galere #1 — transport. Conservé tel quel post-Sonnet. Piège galerie ; confusion bail ; sous-lecture humeur."
+    },
+    {
+      "concept_key": "galere",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Debrief vocal : « Franchement c'était la galère hier soir — file, pluie, on a tout raté. » « C'était la galère », ça veut surtout dire que la soirée était…",
+      "choices": [
+        "Pénible / compliquée à vivre",
+        "Vraiment catastrophique — il s'est passé quelque chose de grave",
+        "Annulée officiellement par l'organisateur",
+        "Juste un peu relou mais sans gravité"
+      ],
+      "correct_index": 0,
+      "explanation": "« La galère » = la soirée a été dure à gérer (file, pluie, raté) — pas une catastrophe, pas une annulation, plus fort qu'un simple « relou ».",
+      "tone": "social",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote galere #2 — soirée foireuse. Correction Sonnet : géniale → catastrophe (borne haute vs relou borne basse)."
+    },
+    {
+      "concept_key": "galere",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Groupe : « Mon pote a une galère avec la CAF en ce moment » puis « Il m'a aussi sorti un bail de ouf au taf ». Le premier message parle surtout d'une…",
+      "choices": [
+        "Difficulté / galère administrative en cours",
+        "Histoire ou situation qu'il raconte au travail",
+        "Une urgence / un gros problème qui a tout bloqué",
+        "Une simple démarche un peu longue mais qu'il gère bien"
+      ],
+      "correct_index": 0,
+      "explanation": "« Une galère avec la CAF » = pénible en cours, pas une crise totale ni une formalité légère — « un bail de ouf » = l'anecdote, autre mot.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote galere #3 — golden candidate confirmé. Correction Sonnet : bail locatif/rumeur (mal placés) → urgence vs démarche gérable."
+    }
+  ]
+}

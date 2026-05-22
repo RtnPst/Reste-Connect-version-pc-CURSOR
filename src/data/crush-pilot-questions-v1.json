@@ -1,0 +1,75 @@
+{
+  "pilot_id": "crush-v1-authenticity",
+  "concept_key": "crush",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote crush — pas d'import Supabase. Attirance / debrief. Distracteurs corrigés post-review Sonnet (anti répétition écraser/ex, anti redondance).",
+  "questions": [
+    {
+      "concept_key": "crush",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Après la soirée, dans le groupe : « Bon, c'est ton crush ou juste un pote sympa ? » « Crush », ici, c'est surtout…",
+      "choices": [
+        "La personne qui te plaît / attirance",
+        "Quelqu'un que tu écrases ou domines",
+        "La personne dont tu es vraiment amoureux·se",
+        "Un ex officiel avec qui c'est vraiment fini"
+      ],
+      "correct_index": 0,
+      "explanation": "« Crush » = attirance légère, pas encore « amoureux·se » — ni le verbe anglais « crush », ni un ex réglé.",
+      "tone": "drama",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote crush #1 — debrief. Correction Sonnet : meilleur ami (redondant avec pote sympa) → crush vs amour."
+    },
+    {
+      "concept_key": "crush",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ta pote t'envoie : « J'ai croisé mon crush au frigo, j'ai paniqué, j'ai rien dit 😭 » Elle parle surtout de…",
+      "choices": [
+        "Quelqu'un qui lui plaît et qu'elle a vu par hasard",
+        "Quelqu'un qu'elle évitait / fuyait activement",
+        "Quelqu'un avec qui elle avait déjà quelque chose d'officieux",
+        "Une célébrité qu'elle ne connaît pas"
+      ],
+      "correct_index": 0,
+      "explanation": "« Mon crush » + panique = gêne romantique en croisant la personne — pas fuite, pas relation déjà en cours, pas star.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "instagram",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote crush #2 — golden candidate confirmé. Correction Sonnet : écraser/ex répétés → évitement / relation officieuse."
+    },
+    {
+      "concept_key": "crush",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ton oncle lit ton message : « Mon crush m'a répondu ». Il demande : « Ça veut dire qu'il t'a écrasé ? » En réalité, « crush », c'est surtout…",
+      "choices": [
+        "La personne qui te plaît",
+        "Quelqu'un qui t'a broyé ou humilié",
+        "La personne que tu suis / ton idole",
+        "Quelqu'un qui te plaisait avant mais plus maintenant"
+      ],
+      "correct_index": 0,
+      "explanation": "L'oncle lit « to crush » — en FR oral « mon crush » = attirance actuelle, pas idole ni ex du passé.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote crush #3 — faux-ami oncle (6e scène intergénérationnelle pipeline — varier lot 5+). Correction Sonnet : force physique/boisson → idole / ex-crush passé."
+    }
+  ]
+}
