@@ -3,12 +3,13 @@
   "pack_id": "cultural-pack-v1",
   "golden_batch_id": "v1_lot_01_tier_a",
   "locale": "fr-FR",
-  "updated_at": "2026-05-22",
+  "updated_at": "2026-05-23",
   "lot_03_batch_id": "v1_lot_03_tier_a",
   "lot_04_batch_id": "v1_lot_04a_tier_a",
   "lot_04b_batch_id": "v1_lot_04b_tier_a",
   "lot_05_batch_id": "v1_lot_05a_tier_a",
   "lot_05b_batch_id": "v1_lot_05b_tier_a",
+  "lot_06a_batch_id": "v1_lot_06a_tier_a",
   "conventions": {
     "taxonomy": "V1 closed lists (cluster_tags, lifecycle, platforms, social_vibe, irony, cringe_risk) — enums in this file only",
     "concept_key": "snake_case, stable, matches questions.concept_key",
@@ -1509,6 +1510,228 @@
       ],
       "ia_notes": "Frontière red_flag obligatoire : sus = louche léger, red_flag = alerte comportement. Pas accusation grave, pas psy. Héritage gaming OK en une scène max. Pas adulte groupe.",
       "human_notes": "Lot 05b priorité 3. Among Us = angle secondaire, pas toute la scène."
+    },
+    {
+      "concept_key": "bien_vu",
+      "canonical_label": "Bien vu",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_irl",
+      "glossary_only": false,
+      "surface_forms": ["bien vu", "bien vu pour ça", "bien vu chef", "gg bien vu", "bien vu le move"],
+      "variants": ["bien vu", "bien vu frérot", "bien vu pour le lien", "bien vu…"],
+      "short_definition": "Reconnaissance d'un bon move — tu as bien fait / bon réflexe, souvent court et complice.",
+      "long_definition": "« Bien vu » valide une action précise (info utile, bonne vanne, astuce, bon timing) — pas un feu vert sur tout un plan comme « validé ». Entre potes, en message ou en vocal : ton complice, parfois ironique (« bien vu… » quand c'est moyen). Distinct de « bonne idée » scolaire : c'est social, immédiat, souvent après coup.",
+      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "discord", "snapchat"],
+      "social_vibe": "affectionate",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Bien vu pour le lien",
+          "Bien vu chef",
+          "Gg bien vu",
+          "Bien vu…"
+        ],
+        "credible_contexts": [
+          "reponse_info_utile",
+          "vanne_qui_passe",
+          "bon_reflexe_logistique",
+          "ironie_move_moyen"
+        ],
+        "avoid_scenes": [
+          "cours_bonne_idee_pedagogique",
+          "parent_dans_groupe",
+          "feedback_quiz_app_meta",
+          "tiktok_caricature"
+        ],
+        "likely_speakers": ["pote", "groupe", "coéquipier"],
+        "unlikely_speakers": ["prof_cours_francais", "rh_evaluation"],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "Message court + vocal « bien vu » après un move"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Bien vu pour le lien » = merci, bon réflexe — pas « le plan entier est validé ».",
+          "« Bien vu… » avec pause = souvent second degré sur un move bof."
+        ],
+        "plausible_traps": [
+          "confusion_valide_plan_global",
+          "confusion_carre_logistique",
+          "bonne_idee_cours",
+          "refus_cache",
+          "compliment_excessif_hype"
+        ],
+        "adult_errors": [
+          "lire_bien_vu_comme_validation_officielle",
+          "confondre_avec_valide_ou_carre",
+          "manquer_ironie_apres_points_de_suspension"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "irony_reading", "dialogue_interpretation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "observed_irl", "note": "Oral FR massif WhatsApp/Discord ; pas ligne pool dédiée" }
+      ],
+      "ia_notes": "Angle reconnaissance move précis, pas stamp plan. Ironie en moyen/difficile. Frontière valide/carre. Double-concept Q4 avec valide possible. Pas scène méta-app « Bien vu » quiz.",
+      "human_notes": "Lot 06a priorité 1. Micro-ton reconnaissance."
+    },
+    {
+      "concept_key": "cest_quelque_chose",
+      "canonical_label": "C'est quelque chose",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_irl",
+      "glossary_only": false,
+      "surface_forms": ["c'est quelque chose", "franchement c'est quelque chose", "c'est quelque chose lui", "c'est quelque chose quand même"],
+      "variants": ["c'est quelque chose", "c'est vraiment quelque chose", "c'est quelque chose…", "lui c'est quelque chose"],
+      "short_definition": "Admiration ou commentaire social ambigu — souvent sobre, parfois ironique ; le ton fait tout.",
+      "long_definition": "« C'est quelque chose » peut saluer une perf, une audace ou une vibe (« il gère ») au premier degré, ou glisser vers le second degré (« c'est quelque chose… » après un look discutable). Ce n'est pas un cours de grammaire ni un « c'est bien » neutre : c'est une formule de lecture sociale, souvent sous-entendue. Proche de bien vu pour le compliment discret, mais plus large (personne, moment, niveau).",
+      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "tiktok", "instagram"],
+      "social_vibe": "hype",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Franchement c'est quelque chose",
+          "C'est quelque chose lui",
+          "C'est quelque chose quand même",
+          "C'est quelque chose…"
+        ],
+        "credible_contexts": [
+          "admiration_discrete",
+          "ironie_look_ou_vanne",
+          "debrief_perf_ou_audace",
+          "sous_entendu_social"
+        ],
+        "avoid_scenes": [
+          "definition_quelque_chose_grammaire",
+          "parent_dans_groupe",
+          "tiktok_caricature",
+          "scene_sans_indice_ton"
+        ],
+        "likely_speakers": ["pote", "groupe", "spectateur"],
+        "unlikely_speakers": ["enseignant_grammaire", "journaliste_litote_explicative"],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "Vocal + message ; points de suspension = signal ironie"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Après une perf : « c'est quelque chose » = respect / hype sobre.",
+          "Après un look raté : « c'est quelque chose… » = ironie douce, pas insulte frontale."
+        ],
+        "plausible_traps": [
+          "neutre_c_est_bien",
+          "insulte_frontale",
+          "confusion_bien_vu_move_precis",
+          "confusion_valide_stamp",
+          "confusion_dead_rire"
+        ],
+        "adult_errors": [
+          "lire_toujours_comme_compliment",
+          "manquer_ironie_sans_contexte",
+          "traduire_comme_bonne_idee"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["irony_reading", "emotion_reading", "context_social"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "observed_irl", "note": "Formule conversationnelle FR ; ton = gameplay principal" }
+      ],
+      "ia_notes": "Priorité lecture de ton (sincère vs ironie). Scènes avec indices comportementaux (perf, look, vanne). Frontière bien_vu / valide / dead / cringe. Q4 double-concept premium. Pas glossaire.",
+      "human_notes": "Lot 06a priorité 2. Cœur micro-ton LOT 6."
+    },
+    {
+      "concept_key": "ca_part",
+      "canonical_label": "Ça part",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_irl",
+      "glossary_only": false,
+      "surface_forms": ["ça part", "bon ça part", "ça part loin", "ça part en couille", "ça part vite"],
+      "variants": ["ça part", "ok ça part", "là ça part", "ça part en couille là"],
+      "short_definition": "Ça se lance, ça dérape ou ça circule — selon la scène : départ, escalade ou rumeur qui part.",
+      "long_definition": "« Ça part » est une micro-formule de mouvement : on lance le plan (« bon ça part »), une situation dérape (« ça part en couille »), ou une info se propage (« ça part vite »). Ce n'est pas « chaud » au sens tension interpersonnelle ni météo : c'est l'idée que quelque chose est en train de partir / d'accélérer. Le contexte (avant sortie, chaos, rumeur) fixe le sens.",
+      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "snapchat", "discord"],
+      "social_vibe": "hype",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Bon ça part",
+          "Ça part en couille",
+          "Ça part loin",
+          "Ça part vite dans le groupe"
+        ],
+        "credible_contexts": [
+          "lancement_plan_sortie",
+          "escalade_chaos_soiree",
+          "rumeur_qui_circule",
+          "vanne_qui_derape"
+        ],
+        "avoid_scenes": [
+          "depart_physique_seul_sans_contexte",
+          "chaud_temperature",
+          "parent_dans_groupe",
+          "tiktok_caricature"
+        ],
+        "likely_speakers": ["pote", "groupe", "organisateur"],
+        "unlikely_speakers": ["conducteur_bus_pedagogue", "meteo_presentateur"],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "Vocal + messages ; « en couille » / « loin » = indices escalade"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Bon ça part » avant de sortir = on lance le plan.",
+          "« Ça part en couille » = la soirée dérape — pas « il fait chaud »."
+        ],
+        "plausible_traps": [
+          "confusion_chaud_tension",
+          "depart_voiture_litteral_seul",
+          "viral_tiktok_sans_contexte",
+          "annulation_plan",
+          "relou_simple"
+        ],
+        "adult_errors": [
+          "lire_ca_part_comme_temperature",
+          "fusionner_avec_chaud_sans_lire_scene",
+          "ne_voir_que_depart_physique"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "dialogue_interpretation", "boundary_reading"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "observed_irl", "note": "Double/triple sens contextuel — scène obligatoire" }
+      ],
+      "ia_notes": "Lecture contextuelle : lancement vs escalade vs rumeur. Frontière chaud (tension) / carre (plan réglé) / relou. Q4 double-concept chaud/ca_part recommandé. Pas pur contraire « ça s'arrête ».",
+      "human_notes": "Lot 06a priorité 3. Ambiguïté contrôlée par indices scène."
     }
   ]
 }

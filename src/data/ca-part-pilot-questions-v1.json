@@ -1,0 +1,97 @@
+{
+  "pilot_id": "ca-part-v1-authenticity",
+  "concept_key": "ca_part",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote ca_part — pas d'import Supabase. Distracteurs corrigés post-review Sonnet LOT 6a. Zéro piège annulation.",
+  "questions": [
+    {
+      "concept_key": "ca_part",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Groupe : tout le monde est devant le hall, manteaux enfilés. « Bon allez ça part ? » — « Ouais ça part. » « Ça part », ici, c'est surtout…",
+      "choices": [
+        "On lance la sortie — on y va",
+        "Il fait très chaud dehors (chaud météo)",
+        "Il est impatient — il veut partir avant les autres",
+        "Une rumeur se répand sur le groupe"
+      ],
+      "correct_index": 0,
+      "explanation": "Devant le hall, manteaux = départ collectif du plan — pas météo, pas départ solo pressé, ni rumeur.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "whatsapp",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote ca_part #1 — golden candidate confirmé. Correction Sonnet : annulée → impatient départ solo."
+    },
+    {
+      "concept_key": "ca_part",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Vocal : « Tu savais pour eux deux ? Bah là ça part vite dans tout le lycée. » « Ça part vite », c'est surtout…",
+      "choices": [
+        "L'info / la rumeur circule rapidement",
+        "Ils partent en voiture tout de suite",
+        "La situation devient tendue entre eux (chaud)",
+        "La situation s'emballe — ça devient incontrôlable"
+      ],
+      "correct_index": 0,
+      "explanation": "« Dans tout le lycée » = propagation de l'info — pas départ voiture, tension chaud, ni escalade totale.",
+      "tone": "drama",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote ca_part #2. Correction Sonnet : relou → emballe (propagation vs escalade)."
+    },
+    {
+      "concept_key": "ca_part",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Soirée : quelqu'un commande une tournée générale, la musique monte, deux potes se disputent déjà. « Ok là ça part en couille. » « Ça part en couille », c'est surtout…",
+      "choices": [
+        "La soirée dérape / escalade vers le chaos",
+        "Le taxi part sans eux",
+        "La soirée est tendue mais peut encore se rattraper (chaud)",
+        "Le groupe va se séparer — chacun rentre de son côté"
+      ],
+      "correct_index": 0,
+      "explanation": "Tournée + dispute = seuil de non-retour — pas taxi, pas simple tension gérable, ni dispersion du groupe.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "whatsapp",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote ca_part #3 — golden candidate confirmé. Correction Sonnet : carré/chaud salle → chaud gérable / groupe se sépare."
+    },
+    {
+      "concept_key": "ca_part",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Messages : « C'est chaud entre eux depuis tout à l'heure » — « Ouais mais bon ça part quand même, on avait dit le bar à 22h ». Le « ça part » du second message, c'est surtout…",
+      "choices": [
+        "Le plan se lance malgré la tension — on avance quand même",
+        "La dispute va exploser encore plus (chaud)",
+        "Le bar à 22h c'est trop tôt — quelqu'un veut reporter",
+        "La rumeur sur eux deux part dans le lycée"
+      ],
+      "correct_index": 0,
+      "explanation": "« Chaud » = tension ; « ça part quand même » + 22h = on lance le RDV — pas explosion, report, ni rumeur lycée.",
+      "tone": "drama",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote ca_part #4 — golden candidate confirmé. Correction Sonnet : annulent → reporter l'heure."
+    }
+  ]
+}
