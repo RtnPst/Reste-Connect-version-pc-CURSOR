@@ -1,0 +1,97 @@
+{
+  "pilot_id": "dead-v1-authenticity",
+  "concept_key": "dead",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote dead — pas d'import Supabase. Hilarité KO / 💀. Frontière mdr. Distracteurs corrigés post-review Sonnet.",
+  "questions": [
+    {
+      "concept_key": "dead",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Sous une vidéo débile, ton pote commente : « Non je suis dead 💀 ». Là, « dead », c'est surtout…",
+      "choices": [
+        "Il est plié de rire — hilarité extrême",
+        "Il trouve ça nul / il est blasé — la vidéo ne le fait pas rire",
+        "Il est vraiment fatigué et veut dormir",
+        "C'est à peu près comme un mdr — même intensité"
+      ],
+      "correct_index": 0,
+      "explanation": "« Dead » sous un mème = KO de rire — pas du blasé, pas de la fatigue, et plus fort qu'un « mdr » dans ce fil.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote dead #1. Correction Sonnet : index 2 triste/déprimé → blasé/boredom ; index 3 « mdr poli » → même intensité (formulation neutre). Ordre pièges réordonné."
+    },
+    {
+      "concept_key": "dead",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "En vocal, entre deux éclats de rire : « Arrête je suis dead, je peux plus parler. » « Je suis dead », c'est surtout…",
+      "choices": [
+        "Il est KO de rire — il n'arrive plus à parler tellement ça l'éclate",
+        "Il veut que vous arrêtiez parce que ça l'énerve",
+        "Il se sent mal physiquement et doit raccrocher",
+        "Il coupe le vocal sans avoir ri — il est vexé"
+      ],
+      "correct_index": 0,
+      "explanation": "Entre deux rires, « dead » = overflow hilarité — pas de la colère, pas un malaise médical ni une vexation.",
+      "tone": "funny",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote dead #2 — conservé tel quel post-Sonnet. Vocal + « je peux plus parler » = scène forte."
+    },
+    {
+      "concept_key": "dead",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Fil de réactions sous un reel : trois « mdr », un « DEAD 💀 », un « j'ai crié ». Le « DEAD 💀 », comparé aux « mdr », c'est surtout…",
+      "choices": [
+        "Encore plus plié — réaction plus forte que le mdr",
+        "À peu près la même intensité — juste une autre graphie",
+        "Il trouve la vidéo gênante, pas drôle",
+        "Il réagit avec choc ou horreur — ce n'est pas une réaction de joie"
+      ],
+      "correct_index": 0,
+      "explanation": "Dans un fil, « dead » / 💀 sort du lot des « mdr » — hilarité forte. Pas équivalent, pas cringe, et le 💀 ici = rire, pas horreur.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote dead #3 — golden candidate confirmé. Correction Sonnet : index 3 unfollow placeholder → 💀 lu comme choc/horreur vs joie."
+    },
+    {
+      "concept_key": "dead",
+      "theme": "relations_lifestyle",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Groupe : « Cette vidéo m'a tué » puis « Moi je suis dead depuis dix minutes ». Le deuxième message, c'est surtout…",
+      "choices": [
+        "Il est encore en mode hilarité forte — pas sorti du rire",
+        "Il a eu une mauvaise nouvelle liée à la vidéo",
+        "Il n'arrive plus à suivre — ça l'a ennuyé après le coup d'effet initial",
+        "Il n'a juste pas la flemme de continuer à regarder"
+      ],
+      "correct_index": 0,
+      "explanation": "« Dead depuis dix minutes » = le rire dure encore — pas une mauvaise nouvelle, pas l'ennui qui s'installe, pas la flemme d'arrêter.",
+      "tone": "funny",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote dead #4 — golden candidate confirmé. Correction Sonnet : index 2 seum (contexte inventé) → ennui/désengagement après l'effet initial."
+    }
+  ]
+}

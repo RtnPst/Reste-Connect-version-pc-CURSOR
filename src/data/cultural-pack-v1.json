@@ -3,10 +3,11 @@
   "pack_id": "cultural-pack-v1",
   "golden_batch_id": "v1_lot_01_tier_a",
   "locale": "fr-FR",
-  "updated_at": "2026-05-20",
+  "updated_at": "2026-05-22",
   "lot_03_batch_id": "v1_lot_03_tier_a",
   "lot_04_batch_id": "v1_lot_04a_tier_a",
   "lot_04b_batch_id": "v1_lot_04b_tier_a",
+  "lot_05_batch_id": "v1_lot_05a_tier_a",
   "conventions": {
     "taxonomy": "V1 closed lists (cluster_tags, lifecycle, platforms, social_vibe, irony, cringe_risk) — enums in this file only",
     "concept_key": "snake_case, stable, matches questions.concept_key",
@@ -1060,6 +1061,230 @@
       ],
       "ia_notes": "concept_key cringe ≠ metadata cringe_risk (risque éditorial question). Angle malaise social + second degré, pas leçon « cringe = gênant ». Surface gênant OK en scène FR. Pas psy caricatural.",
       "human_notes": "Lot 04b priorité 3. Anglicisme ancré TikTok FR. Prudence : ne pas sur-produire vs red_flag."
+    },
+    {
+      "concept_key": "oklm",
+      "canonical_label": "OKLM",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "passive",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["oklm", "c'est oklm", "t'inquiète oklm", "oklm pour ce soir"],
+      "variants": ["oklm", "c'est oklm", "ok oklm", "t'inquiète c'est oklm"],
+      "short_definition": "C'est calme, tranquille — pas de stress, on gère ; réassurance légère entre potes (« t'inquiète »).",
+      "long_definition": "« OKLM » (verlan d'« au calme ») rassure : la situation est gérable, pas besoin de paniquer. Ce n'est pas un « tout va bien dans la vie » ni une validation officielle — c'est du relatif (« pour ce plan / ce soir, ça va »). Souvent écrit en message ou dit en vocal après un petit stress. Les 35–55 le reconnaissent surtout à l'écrit ; peu le disent spontanément à l'oral sans sonner faux.",
+      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "snapchat", "discord"],
+      "social_vibe": "reassuring",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "T'inquiète oklm pour le plan",
+          "C'est oklm maintenant",
+          "Oklm on gère"
+        ],
+        "credible_contexts": [
+          "reassurance_apres_micro_stress",
+          "plan_qui_se_debloque",
+          "vocal_trop_de_bruit_puis_calme",
+          "groupe_qui_rassure_un_pote"
+        ],
+        "avoid_scenes": [
+          "decryptage_lettre_O_K_L_M",
+          "parent_dans_groupe_whatsapp",
+          "oklm_comme_tout_va_bien_absolu",
+          "cours_verlan_au_calme"
+        ],
+        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_rassure"],
+        "unlikely_speakers": ["adulte_qui_fait_jeune", "professeur", "journaliste"],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "Souvent message ; vocal « c'est oklm » après tension légère"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« T'inquiète oklm » après un retard = ça reste jouable, pas la fin du monde.",
+          "« C'est oklm » ≠ « tout est parfait » — juste : plus de panique utile là."
+        ],
+        "plausible_traps": [
+          "tout_va_bien_absolu",
+          "validation_officielle_bureaucratique",
+          "indifference_froide",
+          "urgence_cachee",
+          "decryptage_acronyme_en_scene"
+        ],
+        "adult_errors": [
+          "lire_oklm_comme_zero_probleme_global",
+          "decoder_O_K_L_M_au_lieu_du_contexte",
+          "confondre_avec_politesse_vide_ok"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "emotion_reading", "dialogue_interpretation"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archive Que veut dire OKLM — rewrite ; pas décryptage lettres" }
+      ],
+      "ia_notes": "Angle réassurance relative (calme / t'inquiète), pas bonheur total. Pièges : indifférence, formalisme, urgence — pas pur contraire « catastrophe ». Zéro adulte dans le groupe. Pas scène cours acronyme.",
+      "human_notes": "Lot 05a priorité 1. Frontière : oklm = stress retombé ; pas flemme (envie), pas galère (situation dure)."
+    },
+    {
+      "concept_key": "dead",
+      "canonical_label": "Dead",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["dead", "je suis dead", "💀", "mort de rire"],
+      "variants": ["dead", "je suis dead", "deads", "💀💀", "je suis mort"],
+      "short_definition": "Réaction d'hilarité extrême — « je suis KO » de rire, souvent à l'écrit (parfois 💀).",
+      "long_definition": "« Dead » (ou « je suis dead ») exprime qu'on est plié de rire — plus fort qu'un « mdr » court, souvent sous un mème, une story ou un fil de commentaires. Ce n'est pas la mort, ni la tristesse, ni la fatigue seule : c'est l'overflow du rire. Peut être sincère ou auto-dérision (« cette vanne m'a tué »). Distinct de « mdr » : intensité et contexte (commentaire public, réaction explosive).",
+      "cluster_tags": ["emotion_compressed", "humor_absurd"],
+      "lifecycle": "mainstream",
+      "platforms": ["instagram", "tiktok", "whatsapp", "discord"],
+      "social_vibe": "hype",
+      "irony": "often_ironic",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Je suis dead",
+          "DEAD 💀",
+          "Arrête je suis dead",
+          "Cette vidéo m'a dead"
+        ],
+        "credible_contexts": [
+          "commentaire_sous_meme",
+          "story_reaction",
+          "vocal_entre_rires",
+          "groupe_partage_video"
+        ],
+        "avoid_scenes": [
+          "deces_litteral_facile",
+          "cours_anglicisme_dead",
+          "parent_oncle_tante_groupe",
+          "fatigue_seule_sans_rire",
+          "tiktok_caricature"
+        ],
+        "likely_speakers": ["pote", "commentateur", "groupe"],
+        "unlikely_speakers": ["adulte_qui_demande_definition", "presentateur_tv"],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "Écrit + 💀 ; vocal « je suis dead » entre deux rires"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Je suis dead » sous une vidéo = plié, pas triste.",
+          "« mdr » = rire message ; « dead » / 💀 = souvent plus fort, réaction publique."
+        ],
+        "plausible_traps": [
+          "deces_litteral",
+          "fatigue_physique_sans_rire",
+          "tristesse_deprime",
+          "equivalence_mdr_toujours",
+          "colere_stop"
+        ],
+        "adult_errors": [
+          "lire_dead_comme_mort_ou_danger",
+          "croire_identique_a_mdr",
+          "ne_pas_voir_le_registre_commentaire"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["emotion_reading", "context_social", "intensity_reading"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archive dead / je suis dead — rewrite ; borner mdr" }
+      ],
+      "ia_notes": "Angle hilarité KO, pas décès ni déprime. Frontière mdr obligatoire en distracteurs. Scènes commentaires / vocaux / potes. Pas adulte groupe. Pièges = confusions réelles (fatigue, tristesse, mdr équivalent) — pas absurdes.",
+      "human_notes": "Lot 05a priorité 2. legacy optionnel si backfill ; pas fusionner avec mdr."
+    },
+    {
+      "concept_key": "pls",
+      "legacy_concept_keys": ["etre_en_pls"],
+      "canonical_label": "Être en PLS",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "high",
+      "source_tier": "observed_pool",
+      "glossary_only": false,
+      "surface_forms": ["en PLS", "je suis en PLS", "PLS de ouf", "être en PLS"],
+      "variants": ["en pls", "je suis en pls", "PLS", "en PLS ce soir"],
+      "short_definition": "KO du moment — fatigué, dépassé ou à plat (souvent après effort, émotion ou soirée), métaphore du « à terre ».",
+      "long_definition": "« Être en PLS » reprend l'acronyme médical en métaphore jeune : on est affaibli, vidé, « plus en état » sur le moment — pas une urgence SAMU en conversation entre potes. Distinct du seum (dépit/vexation), de la galère (situation pénible qui dure) et de la flemme (pas envie, plus léger). Très message / vocal après boulot, soirée ou week-end intense.",
+      "cluster_tags": ["emotion_compressed"],
+      "lifecycle": "mainstream",
+      "platforms": ["whatsapp", "snapchat", "tiktok"],
+      "social_vibe": "vulnerable",
+      "irony": "literal",
+      "cringe_risk": "low",
+      "generativity": "high",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Je suis en PLS ce soir",
+          "PLS de ouf là",
+          "Laisse-moi en PLS deux minutes"
+        ],
+        "credible_contexts": [
+          "soiree_longue_epuisee",
+          "journee_boulot_intense",
+          "emotion_forte_epuisee",
+          "vocal_debrief_ko"
+        ],
+        "avoid_scenes": [
+          "cours_SAMU_position_laterale",
+          "parent_groupe_whatsapp",
+          "pls_comme_flemme_seule",
+          "urgence_medicale_reelle",
+          "vacances_concert_pur_contraire"
+        ],
+        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_debrief"],
+        "unlikely_speakers": ["pompier_pedagogue", "adulte_qui_explique_SAMU"],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "Message et vocal ; métaphore, pas lexique secours"
+        },
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "« Je suis en PLS » après la soirée = vidé sur le moment, pas une galère administrative.",
+          "« J'ai le seum » = déçu ; « en PLS » = à plat / KO sans forcément être vexé."
+        ],
+        "plausible_traps": [
+          "position_laterale_secours",
+          "flemme_pas_envie",
+          "seum_deception",
+          "galere_situation_duree",
+          "simple_mauvaise_humeur"
+        ],
+        "adult_errors": [
+          "expliquer_SAMU_en_question",
+          "confondre_pls_et_flemme",
+          "confondre_pls_et_galere",
+          "lire_comme_deces_ou_urgence"
+        ]
+      },
+      "quiz_potential": {
+        "angles": ["context_social", "emotion_reading", "boundary_reading"],
+        "formats": ["scenario_text", "expression"]
+      },
+      "sources": [
+        { "id": "pool_existant", "note": "Archive être en PLS — rewrite ; jamais cours SAMU en scène" }
+      ],
+      "ia_notes": "Métaphore KO momentané. Frontières seum / galere / flemme dans pièges. Pas SAMU, pas adulte groupe, pas pur contraire. Scènes debrief potes / messages.",
+      "human_notes": "Lot 05a priorité 3. legacy etre_en_pls pour backfill. Ne pas fusionner avec galère ni seum."
     }
   ]
 }

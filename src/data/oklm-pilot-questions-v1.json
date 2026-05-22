@@ -1,0 +1,75 @@
+{
+  "pilot_id": "oklm-v1-authenticity",
+  "concept_key": "oklm",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote oklm — pas d'import Supabase. Réassurance calme / t'inquiète. Distracteurs corrigés post-review Sonnet.",
+  "questions": [
+    {
+      "concept_key": "oklm",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Message après un bug de paiement : « Y'a eu un souci mais t'inquiète c'est oklm maintenant. » « C'est oklm », ça veut surtout dire que…",
+      "choices": [
+        "C'est gérable — plus besoin de paniquer sur ce point",
+        "Tout est officiellement validé et réglé par l'administration",
+        "La personne s'en fiche et ne suivra plus le sujet",
+        "Il faudra tout recommencer demain — rien n'est réglé"
+      ],
+      "correct_index": 0,
+      "explanation": "« Oklm » rassure sur ce plan précis — ça se débloque, respire. Pas une validation formelle, pas de l'indifférence ni un déni total.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote oklm #1 — golden candidate confirmé. Correction Sonnet : aucun changement — pièges bureaucratie / indifférence / méfiance crédible."
+    },
+    {
+      "concept_key": "oklm",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Vocal dans le groupe : « Bon le retard c'était chaud mais oklm on aura le train. » « Oklm » ici, c'est surtout…",
+      "choices": [
+        "Ça reste jouable — on ne part pas en stress inutile",
+        "Le train est garanti à l'heure, c'est confirmé",
+        "Il est encore stressé mais fait semblant d'être calme pour ne pas alarmer le groupe",
+        "En fait c'était grave et ils font semblant que non"
+      ],
+      "correct_index": 0,
+      "explanation": "Après un stress, « oklm » = on peut encore y arriver sans dramatiser — pas une garantie horaire. Entre façade pour le groupe et déni sur la situation, la bonne lecture reste : c'est gérable.",
+      "tone": "social",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote oklm #2. Correction Sonnet : index 2 abandon trajet → façade interpersonnelle (vs index 3 déni collectif)."
+    },
+    {
+      "concept_key": "oklm",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ton pote stressé pour un oral demain. Dans le groupe, un autre balance : « Oklm tu gères, arrête de te prendre la tête. » Il veut surtout lui dire que…",
+      "choices": [
+        "Ça va aller — pas besoin de paniquer à ce point",
+        "Son oral est déjà réussi / c'est dans la poche",
+        "Il lui dit qu'il va l'aider concrètement à préparer l'oral",
+        "Son stress est ridicule et il exagère volontairement"
+      ],
+      "correct_index": 0,
+      "explanation": "« Oklm tu gères » = réassurance sur le stress du moment — pas une promesse de résultat, pas une aide concrète annoncée, et pas une moquerie.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote oklm #3. Correction Sonnet : index 2 galère boulot (mauvais sujet) → aide concrète à préparer ; ambiguïté sur « tu gères »."
+    }
+  ]
+}

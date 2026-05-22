@@ -1,0 +1,97 @@
+{
+  "pilot_id": "pls-v1-authenticity",
+  "concept_key": "pls",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Pilote pls — pas d'import Supabase. KO momentané. Frontières seum / galere / flemme. Distracteurs corrigés post-review Sonnet (SAMU non répété).",
+  "questions": [
+    {
+      "concept_key": "pls",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Message du soir : « Je suis en PLS, zéro batterie humaine après cette journée. » « En PLS », c'est surtout…",
+      "choices": [
+        "À plat / vidé sur le moment — KO fatigue ou dépassement",
+        "En position latérale de sécurité — geste de premiers secours",
+        "Il n'a pas envie de sortir ce soir (flemme)",
+        "Il est déçu de sa journée — ça ne s'est pas passé comme prévu"
+      ],
+      "correct_index": 0,
+      "explanation": "« En PLS » = métaphore « je suis à terre » après la journée — pas le SAMU, pas la flemme, et pas du seum (déception) : ici c'est l'épuisement.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote pls #1 — golden candidate confirmé. Correction Sonnet : index 3 galère chronique → seum de journée (frontière émotion)."
+    },
+    {
+      "concept_key": "pls",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Vocal debrief : « Franchement je suis en PLS, la soirée m'a retourné le cerveau. » « En PLS » après cette soirée, c'est surtout…",
+      "choices": [
+        "Épuisé / dépassé sur le moment — corps et tête à plat",
+        "Déçu ou vexé (comme un seum)",
+        "Juste pas le mood pour continuer (flemme)",
+        "Sa galère de fond refait surface — la soirée a empiré quelque chose qui durait"
+      ],
+      "correct_index": 0,
+      "explanation": "Après une soirée intense, « en PLS » = vidé maintenant — pas du seum, pas une simple flemme, et pas la reprise d'une galère de fond seule.",
+      "tone": "social",
+      "context": "social_voice",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilote pls #2. Correction Sonnet : index 3 urgence médicale (doublon SAMU Q1) → galère de fond vs PLS ponctuel."
+    },
+    {
+      "concept_key": "pls",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Groupe : « Lui il a le seum depuis le match » — « Moi je suis en PLS, j'ai rien mangé et j'ai zéro énergie. » Le « en PLS », c'est surtout…",
+      "choices": [
+        "À plat physiquement / socialement — pas le même registre que le seum",
+        "La même chose que le seum — déception du match",
+        "Il refuse de manger par paresse (flemme)",
+        "Il est déprimé — ça va au-delà d'une soirée, c'est un état qui dure"
+      ],
+      "correct_index": 0,
+      "explanation": "« Seum » = dépit match ; « en PLS » ici = vidé, pas mangé — KO du moment, pas la même émotion ni une sur-lecture « état qui dure ».",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote pls #3 — golden candidate confirmé. Correction Sonnet : index 3 galère travail (thin) → sur-lecture état qui dure (piège gradation, pas diagnostic)."
+    },
+    {
+      "concept_key": "pls",
+      "theme": "vocabulaire",
+      "difficulty": "difficile",
+      "status": "draft",
+      "question": "Messages : « Cette semaine c'est la galère au boulot » puis, le soir même, « Là je suis en PLS, bonne nuit les gens ». Le « en PLS » du soir, c'est surtout…",
+      "choices": [
+        "Son état du moment — KO ce soir, pas la galère de la semaine",
+        "La galère au boulot continue exactement pareil",
+        "Il a la flemme de répondre au groupe",
+        "Il est soulagé — la semaine difficile est enfin terminée"
+      ],
+      "correct_index": 0,
+      "explanation": "« Galère » = situation dure qui traîne ; « en PLS » le soir = à plat maintenant — pas la même chose, pas la flemme, et pas un soulagement victorieux.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "hard_trap",
+      "era": "snapchat",
+      "format": "scenario_text",
+      "internet_level": "initie",
+      "editor_notes": "Pilote pls #4. Correction Sonnet : index 3 « parler toute la nuit » (évident) → PLS lu comme soulagement de fin de semaine vs KO."
+    }
+  ]
+}
