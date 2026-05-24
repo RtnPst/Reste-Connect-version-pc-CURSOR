@@ -13,6 +13,7 @@ import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare, stopMusic } from "@/lib/sfx";
 import { ConceptCaptureEcho } from "@/components/immersive-quiz/ConceptCaptureEcho";
+import { ReturnToFilCard, RETURN_TO_FIL_HINT } from "@/components/ReturnToFilCard";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { displayIndexFromOriginal, toDisplayChoices } from "@/lib/choice-order";
 import {
@@ -734,7 +735,13 @@ function ResultsScreen({
             </Button>
           </div>
 
-          <div className="mx-auto mt-4 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+          <ReturnToFilCard
+            hint={RETURN_TO_FIL_HINT.theme}
+            className="mx-auto mt-6 max-w-lg"
+            showSecondaryLinks={false}
+          />
+
+          <div className="mx-auto mt-3 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
             <button
               type="button"
               onClick={() => void handleShare()}
@@ -743,24 +750,8 @@ function ResultsScreen({
               <Share2 className="size-3.5" aria-hidden />
               Partager
             </button>
-            <Link
-              to="/quiz"
-              className="underline-offset-4 hover:text-foreground hover:underline"
-            >
+            <Link to="/quiz" className="underline-offset-4 hover:text-foreground hover:underline">
               Autre thème
-            </Link>
-            <Link
-              to="/play"
-              className="underline-offset-4 hover:text-foreground hover:underline"
-            >
-              Reprendre le fil
-            </Link>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-1 underline-offset-4 hover:text-foreground hover:underline"
-            >
-              <Home className="size-3.5" aria-hidden />
-              Accueil
             </Link>
           </div>
 

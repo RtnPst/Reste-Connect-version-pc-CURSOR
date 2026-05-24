@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { getBadgeUiCopy, badgeUnlockHintOrDefault } from "@/lib/badge-ui";
+import { formatPassageLabel, type RecentPassage } from "@/lib/session-passage";
 import { THEMES, THEME_KEYS, type ThemeKey } from "@/lib/themes";
 
 type EarnedBadge = {
@@ -25,7 +26,7 @@ type BadgeCatalog = {
 };
 type Stats = { totalAttempts: number; avgScore: number };
 type ThemeStat = { key: ThemeKey; pct: number; count: number };
-type RecentAttempt = { id: string; score: number; total_questions: number; completed_at: string };
+type RecentAttempt = RecentPassage;
 type GameStats = { totalAttempts: number; avgScore: number; perfect: number };
 
 export const Route = createFileRoute("/parcours")({
@@ -126,7 +127,7 @@ function ProfilePage() {
 
       const { data: allAttempts } = await supabase
         .from("quiz_attempts")
-        .select("id, score, total_questions, completed_at, theme")
+        .select("id, mode, score, total_questions, completed_at, theme")
         .eq("user_id", user.id)
         .order("completed_at", { ascending: false });
 
@@ -140,6 +141,8 @@ function ProfilePage() {
       setRecentAttempts(
         all.slice(0, 6).map((item) => ({
           id: item.id,
+          mode: item.mode,
+          theme: item.theme,
           score: item.score,
           total_questions: item.total_questions,
           completed_at: item.completed_at,
@@ -191,6 +194,30 @@ function ProfilePage() {
             Série {profile.current_streak} jour{profile.current_streak > 1 ? "s" : ""}
             {profile.longest_streak > 0 ? ` · record ${profile.longest_streak} j` : null}
           </p>
+        </section>
+
+        <section className="journey-panel mb-6 p-4 sm:p-5" aria-labelledby="recent-passages-heading">
+          <h2 id="recent-passages-heading" className="text-sm font-extrabold sm:text-base">
+            Derniers passages
+          </h2>
+          <p className="mt-1 text-xs text-muted-foreground">Les lectures récentes sur ton fil — sans classement.</p>
+          {recentAttempts.length === 0 ? (
+            <p className="mt-3 text-sm text-muted-foreground">Tes sessions apparaîtront ici après un passage.</p>
+          ) : (
+            <ul className="mt-3 space-y-2.5">
+              {recentAttempts.slice(0, 5).map((passage) => (
+                <li
+                  key={passage.id}
+                  className="flex items-baseline justify-between gap-3 border-b border-border/40 pb-2.5 text-sm last:border-0 last:pb-0"
+                >
+                  <span className="min-w-0 font-medium leading-snug">{formatPassageLabel(passage)}</span>
+                  <span className="shrink-0 text-[11px] tabular-nums text-muted-foreground/65">
+                    {passage.score}/{passage.total_questions}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
 
         <div className="journey-panel mb-6 p-5 sm:p-6">

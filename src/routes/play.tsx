@@ -57,10 +57,12 @@ function PlayPage() {
       <AppHeader />
       <main className="container mx-auto w-full max-w-lg flex-1 px-4 py-5 sm:px-6 sm:py-7">
         <header className="mb-6 animate-fade-in">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Ton espace</p>
-          <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">Jouer</h1>
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Le carrefour</p>
+          <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
+            Ton fil culturel
+          </h1>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Un fil à la fois — tu reviens ici entre deux passages.
+            Culture du jour, un angle, ou un run rapide — une intention à la fois.
           </p>
         </header>
 
@@ -104,6 +106,8 @@ function PlayPage() {
           </Link>
         )}
 
+        <div className="journey-connector" aria-hidden />
+
         <section className="animate-soft-rise" aria-labelledby="play-explore-heading">
           <h2
             id="play-explore-heading"
@@ -134,7 +138,9 @@ function PlayPage() {
           </Link>
         </section>
 
-        <section className="mt-8 animate-soft-rise" aria-labelledby="play-shortcuts-heading">
+        <div className="journey-connector" aria-hidden />
+
+        <section className="mt-2 animate-soft-rise" aria-labelledby="play-shortcuts-heading">
           <h2
             id="play-shortcuts-heading"
             className="mb-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground"

@@ -4,6 +4,7 @@ import { BookOpen, CalendarCheck2, Flame, Home, Share2, Sparkles } from "lucide-
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
 import { ImmersiveQuizPlay } from "@/components/immersive-quiz/ImmersiveQuizPlay";
+import { ReturnToFilCard, RETURN_TO_FIL_HINT } from "@/components/ReturnToFilCard";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -553,20 +554,11 @@ function DailyQuestionPage() {
           ) : null}
         </div>
         <div className="flex flex-col gap-2.5">
-          <Button asChild variant="accent" size="lg" className="min-h-[56px]">
-            <Link to="/play">Reprendre le fil</Link>
-          </Button>
           <Button onClick={handleShare} variant="outline" size="lg" className="min-h-[52px]">
             <Share2 />
             Partager ce moment
           </Button>
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center gap-1 py-2 text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-          >
-            <Home className="size-3.5" aria-hidden />
-            Accueil
-          </Link>
+          <ReturnToFilCard hint={RETURN_TO_FIL_HINT.daily} className="mt-2" />
         </div>
       </main>
     </div>

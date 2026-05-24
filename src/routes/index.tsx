@@ -96,11 +96,11 @@ function HomePage() {
   const missionIsDaily = Boolean(user && !dailyCompletedToday);
   const missionIsDone = Boolean(user && dailyCompletedToday);
 
-  const continueTo = !user ? "/quiz" : missionCtaTo;
+  const continueTo = !user ? "/quiz" : dailyCompletedToday ? "/play" : missionCtaTo;
   const continueLabel = !user
     ? "Je teste"
     : dailyCompletedToday
-      ? "Découvrir un thème"
+      ? "Reprendre le fil"
       : "Ouvrir la question du jour";
 
   const ctaClassName = missionIsDone
@@ -172,6 +172,21 @@ function HomePage() {
                       : "Ton moment culture"}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">{missionText}</p>
+                <div className="mt-4">
+                  <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                    <span>Fil du jour</span>
+                    <span className={dailyCompletedToday ? "text-success" : shouldProtectStreak ? "text-primary" : ""}>
+                      {dailyCompletedToday ? "Capté" : shouldProtectStreak ? "Série active" : "À picorer"}
+                    </span>
+                  </div>
+                  <div className="journey-filament mt-1.5" aria-hidden>
+                    <span
+                      style={{
+                        width: dailyCompletedToday ? "100%" : shouldProtectStreak ? "45%" : "12%",
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
             )}
 
@@ -185,12 +200,24 @@ function HomePage() {
                 </Link>
               </Button>
               {user ? (
-                <Link
-                  to="/parcours"
-                  className="text-xs font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline sm:text-sm"
-                >
-                  Série et progression → Parcours
-                </Link>
+                <p className="max-w-sm text-center text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                  Tu reviens quand tu veux — le carrefour est sur{" "}
+                  <Link to="/play" className="font-semibold text-primary underline-offset-2 hover:underline">
+                    Jouer
+                  </Link>
+                  {hasStreak ? (
+                    <>
+                      {" "}
+                      ·{" "}
+                      <Link
+                        to="/parcours"
+                        className="font-medium underline-offset-2 hover:text-foreground hover:underline"
+                      >
+                        Parcours
+                      </Link>
+                    </>
+                  ) : null}
+                </p>
               ) : null}
             </div>
 

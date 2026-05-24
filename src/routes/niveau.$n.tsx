@@ -13,6 +13,7 @@ import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
 import { RankBadge } from "@/components/RankBadge";
+import { ReturnToFilCard, RETURN_TO_FIL_HINT } from "@/components/ReturnToFilCard";
 import { selectLevelQuestions } from "@/lib/levels-selector";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { toDisplayChoices } from "@/lib/choice-order";
@@ -594,27 +595,10 @@ function LevelPage() {
               )}
             </div>
 
-            <div className="mx-auto mt-4 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
-              <Link
-                to="/niveaux"
-                className="underline-offset-4 hover:text-foreground hover:underline"
-              >
-                Parcours
-              </Link>
-              <Link
-                to="/play"
-                className="underline-offset-4 hover:text-foreground hover:underline"
-              >
-                Jouer
-              </Link>
-              <Link
-                to="/"
-                className="inline-flex items-center gap-1 underline-offset-4 hover:text-foreground hover:underline"
-              >
-                <Home className="size-3.5" aria-hidden />
-                Accueil
-              </Link>
-            </div>
+            <ReturnToFilCard
+              hint={RETURN_TO_FIL_HINT.level}
+              className="mx-auto mt-6 max-w-lg"
+            />
           </div>
         </main>
       </div>

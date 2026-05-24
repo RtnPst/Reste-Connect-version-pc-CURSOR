@@ -11,7 +11,7 @@ import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
-import { Confetti } from "@/components/Confetti";
+import { ReturnToFilCard, RETURN_TO_FIL_HINT } from "@/components/ReturnToFilCard";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { isMarathonMilestone } from "@/lib/levels";
 import { toDisplayChoices } from "@/lib/choice-order";
@@ -68,7 +68,6 @@ function MarathonPage() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [revealedCorrectIndex, setRevealedCorrectIndex] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
-  const [showCelebration, setShowCelebration] = useState(false);
   const [sessionEnded, setSessionEnded] = useState(false);
   const [xpGained, setXpGained] = useState<number>(0);
   const [streakUpdated, setStreakUpdated] = useState(false);
@@ -219,12 +218,10 @@ function MarathonPage() {
       setStreak(newStreak);
       playCorrect(sfxOn);
       if (isMarathonMilestone(newScore)) {
-        setShowCelebration(true);
         playFanfare(sfxOn);
         toast.success(
           `${newScore} bonnes réponses d’affilée — la progression s’enregistre en fin de session.`,
         );
-        setTimeout(() => setShowCelebration(false), 3500);
       }
     } else {
       setStreak(0);
@@ -490,25 +487,15 @@ function MarathonPage() {
               </Button>
             </div>
 
-            <div className="mx-auto mt-4 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
-              <Link
-                to="/play"
-                className="underline-offset-4 hover:text-foreground hover:underline"
-              >
-                Jouer
-              </Link>
-              <Link
-                to="/quiz"
-                className="underline-offset-4 hover:text-foreground hover:underline"
-              >
+            <ReturnToFilCard
+              hint={RETURN_TO_FIL_HINT.marathon}
+              className="mx-auto mt-6 max-w-lg"
+              showSecondaryLinks={false}
+            />
+
+            <div className="mx-auto mt-3 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+              <Link to="/quiz" className="underline-offset-4 hover:text-foreground hover:underline">
                 Un thème
-              </Link>
-              <Link
-                to="/"
-                className="inline-flex items-center gap-1 underline-offset-4 hover:text-foreground hover:underline"
-              >
-                <Home className="size-3.5" aria-hidden />
-                Accueil
               </Link>
             </div>
           </div>
@@ -519,7 +506,6 @@ function MarathonPage() {
 
   return (
     <div className="relative flex min-h-[100dvh] min-w-0 flex-col overflow-hidden bg-background">
-      <Confetti active={showCelebration} />
       <ImmersiveQuizPlay
         quitHref="/"
         quitAriaLabel="Quitter le marathon"
