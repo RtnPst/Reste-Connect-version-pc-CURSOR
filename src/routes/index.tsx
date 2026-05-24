@@ -2,10 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Download } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
+import { FilRepriseEcho } from "@/components/FilRepriseEcho";
 import { JourneyPage } from "@/components/JourneyPage";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { fetchRecentCapturedConcepts } from "@/lib/recent-captured-concepts";
 import { maybeShowDailyReminder } from "@/lib/reminders";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +28,7 @@ function HomePage() {
   const { user, profile } = useAuth();
   const [installPrompt, setInstallPrompt] = useState<Event | null>(null);
   const [dailyCompletedToday, setDailyCompletedToday] = useState<boolean | null>(null);
+  const [lastCapturedLabel, setLastCapturedLabel] = useState<string | null>(null);
   useEffect(() => {
     maybeShowDailyReminder();
   }, []);
@@ -70,6 +73,21 @@ function HomePage() {
     };
   }, [user]);
 
+  useEffect(() => {
+    if (!user) {
+      setLastCapturedLabel(null);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      const captured = await fetchRecentCapturedConcepts(user.id, 1);
+      if (!cancelled) setLastCapturedLabel(captured[0]?.label ?? null);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
+
   const streakCount = profile?.current_streak ?? 0;
   const hasStreak = streakCount > 0;
   const shouldProtectStreak = hasStreak && !dailyCompletedToday;
@@ -77,17 +95,19 @@ function HomePage() {
   const missionTitle = !user
     ? "Par où commencer"
     : dailyCompletedToday
-      ? "Capté pour aujourd’hui"
+      ? "Reprise du fil"
       : shouldProtectStreak
-        ? "Série en douceur"
-        : "Culture du jour";
+        ? "Fil du jour"
+        : "Fil du jour";
   const missionText = !user
     ? "Un passage court pour sentir le rythme — sans pression."
     : dailyCompletedToday
-      ? "Le fil du jour est dans la poche. Un thème ou un run rapide, quand tu veux."
+      ? lastCapturedLabel
+        ? "Le fil du jour est capté. La suite continue au carrefour — même fil, autre angle."
+        : "Le fil du jour est capté. Reprends au carrefour quand tu veux."
       : shouldProtectStreak
-        ? `Série : ${streakCount} jour${streakCount > 1 ? "s" : ""}. La question du jour prolonge la suite — si l’envie t’y prend.`
-        : "Une question, une lecture : le moment culture à picorer.";
+        ? `Série : ${streakCount} jour${streakCount > 1 ? "s" : ""}. Le fil du jour prolonge la suite — si l’envie t’y prend.`
+        : "Une question pour capter le fil du moment — le même voyage, un passage à la fois.";
   const missionCtaTo = !user
     ? "/quiz"
     : dailyCompletedToday
@@ -98,10 +118,10 @@ function HomePage() {
 
   const continueTo = !user ? "/quiz" : dailyCompletedToday ? "/play" : missionCtaTo;
   const continueLabel = !user
-    ? "Je teste"
+    ? "Entrer sur le fil"
     : dailyCompletedToday
       ? "Reprendre le fil"
-      : "Ouvrir la question du jour";
+      : "Ouvrir le fil du jour";
 
   const ctaClassName = missionIsDone
     ? "h-auto min-h-[3.2rem] w-full max-w-[min(100%,22.5rem)] min-w-0 rounded-full border border-border/60 bg-card px-4 py-3 text-center font-bold text-foreground shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)] active:translate-y-px motion-reduce:hover:translate-y-0 sm:min-h-[3.4rem] sm:max-w-[23rem] sm:px-6"
@@ -115,7 +135,7 @@ function HomePage() {
         <section className="container mx-auto max-w-lg px-4 pt-4 sm:px-6 sm:pt-6 [@media(max-height:780px)]:pt-2">
           <div className="journey-panel mx-auto animate-fade-in space-y-4 px-4 py-5 text-center sm:px-7 sm:py-6 [@media(max-height:780px)]:space-y-3 [@media(max-height:780px)]:px-3 [@media(max-height:780px)]:py-4">
             <span className="inline-flex items-center justify-center rounded-full border border-accent/35 bg-accent/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/90 sm:text-[13px]">
-              Culture web
+              Le fil culturel
             </span>
 
             {!user ? (
@@ -166,12 +186,13 @@ function HomePage() {
                 </p>
                 <p className="mt-3 text-lg font-extrabold leading-snug tracking-tight text-foreground sm:text-xl">
                   {dailyCompletedToday
-                    ? "La suite, à ton rythme"
+                    ? "Tu reprends où tu t’es arrêté"
                     : shouldProtectStreak
                       ? "Un passage par le fil du jour"
-                      : "Ton moment culture"}
+                      : "Ton fil reprend ici"}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">{missionText}</p>
+                {lastCapturedLabel && user ? <FilRepriseEcho label={lastCapturedLabel} /> : null}
                 <div className="mt-4">
                   <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
                     <span>Fil du jour</span>
@@ -201,22 +222,17 @@ function HomePage() {
               </Button>
               {user ? (
                 <p className="max-w-sm text-center text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                  Tu reviens quand tu veux — le carrefour est sur{" "}
+                  Le carrefour du fil est sur{" "}
                   <Link to="/play" className="font-semibold text-primary underline-offset-2 hover:underline">
                     Jouer
                   </Link>
-                  {hasStreak ? (
-                    <>
-                      {" "}
-                      ·{" "}
-                      <Link
-                        to="/parcours"
-                        className="font-medium underline-offset-2 hover:text-foreground hover:underline"
-                      >
-                        Parcours
-                      </Link>
-                    </>
-                  ) : null}
+                  {" · "}
+                  <Link
+                    to="/parcours"
+                    className="font-medium underline-offset-2 hover:text-foreground hover:underline"
+                  >
+                    Tes traces
+                  </Link>
                 </p>
               ) : null}
             </div>

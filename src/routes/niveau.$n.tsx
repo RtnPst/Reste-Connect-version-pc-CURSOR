@@ -613,6 +613,7 @@ function LevelPage() {
             <ReturnToFilCard
               hint={RETURN_TO_FIL_HINT.level}
               className="mx-auto mt-6 max-w-lg"
+              variant="strip"
             />
           </div>
         </main>

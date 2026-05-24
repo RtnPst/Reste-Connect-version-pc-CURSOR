@@ -504,6 +504,7 @@ function MarathonPage() {
             <ReturnToFilCard
               hint={RETURN_TO_FIL_HINT.marathon}
               className="mx-auto mt-6 max-w-lg"
+              variant="strip"
               showSecondaryLinks={false}
             />
 

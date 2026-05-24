@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AppHeader } from "@/components/AppHeader";
+import { FilTracesSection } from "@/components/FilTracesSection";
 import { JourneyPage } from "@/components/JourneyPage";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
@@ -11,7 +12,7 @@ import {
   fetchRecentCapturedConcepts,
   type RecentCapturedConcept,
 } from "@/lib/recent-captured-concepts";
-import { formatPassageLabel, type RecentPassage } from "@/lib/session-passage";
+import { type RecentPassage } from "@/lib/session-passage";
 import { THEMES, THEME_KEYS, type ThemeKey } from "@/lib/themes";
 
 type EarnedBadge = {
@@ -36,12 +37,11 @@ type GameStats = { totalAttempts: number; avgScore: number; perfect: number };
 export const Route = createFileRoute("/parcours")({
   head: () => ({
     meta: [
-      { title: "Ton parcours — Tu captes ?" },
+      { title: "Traces sur ton fil — Tu captes ?" },
       {
         name: "description",
-        content: "Ton fil culturel : moments débloqués, lectures de sessions, progression légère.",
-      },
-    ],
+        content: "Les traces de ton fil culturel — passages récents et concepts captés.",
+      },    ],
   }),
   component: ProfilePage,
 });
@@ -171,7 +171,6 @@ function ProfilePage() {
   }
 
   const level = Math.floor(profile.total_xp / 100) + 1;
-  const xpInLevel = profile.total_xp % 100;
   const previewBadgeCount = 3;
   const visibleBadges = showAllBadges ? allBadges : allBadges.slice(0, previewBadgeCount);
 
@@ -180,87 +179,40 @@ function ProfilePage() {
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-lg flex-1 overflow-x-clip px-4 py-5 sm:px-6 sm:py-7">
         <header className="mb-6 animate-fade-in">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Ton fil</p>
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Mémoire du fil</p>
           <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
-            {profile.display_name ? `Salut ${profile.display_name}` : "Ton parcours"}
+            {profile.display_name ? `${profile.display_name} — ton fil` : "Traces sur ton fil"}
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Une trace de ce que tu captes — pas un tableau de score.
+            Ce que tu as parcouru et capté — une ligne de lecture, pas un tableau.
           </p>
         </header>
 
         <section className="journey-panel mb-6 p-4 sm:p-5">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Où tu en es</p>
-          <p className="mt-2 text-lg font-extrabold leading-snug">
-            Niveau {level}
-            <span className="font-medium text-muted-foreground"> · {xpInLevel} % vers la suite</span>
+          <p className="text-[11px] font-bold uppercase tracking-widest text-primary/75">Position sur le fil</p>
+          <p className="mt-2 text-base font-extrabold leading-snug">
+            Série {profile.current_streak} jour{profile.current_streak > 1 ? "s" : ""}
+            {profile.longest_streak > 0 ? (
+              <span className="font-medium text-muted-foreground"> · record {profile.longest_streak} j</span>
+            ) : null}
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Le chemin et tes captures s’ajoutent ici — sans classement.
           </p>
           <div className="journey-filament mt-3" aria-hidden>
-            <span style={{ width: `${xpInLevel}%` }} />
+            <span
+              style={{
+                width: `${Math.min(100, recentAttempts.length * 12 + recentCaptured.length * 8)}%`,
+              }}
+            />
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Série {profile.current_streak} jour{profile.current_streak > 1 ? "s" : ""}
-            {profile.longest_streak > 0 ? ` · record ${profile.longest_streak} j` : null}
-          </p>
         </section>
 
-        <section className="journey-panel mb-6 p-4 sm:p-5" aria-labelledby="recent-passages-heading">
-          <h2 id="recent-passages-heading" className="text-sm font-extrabold sm:text-base">
-            Derniers passages
-          </h2>
-          <p className="mt-1 text-xs text-muted-foreground">Les lectures récentes sur ton fil — sans classement.</p>
-          {recentAttempts.length === 0 ? (
-            <p className="mt-3 text-sm text-muted-foreground">Tes sessions apparaîtront ici après un passage.</p>
-          ) : (
-            <ul className="mt-3 space-y-2.5">
-              {recentAttempts.slice(0, 5).map((passage) => (
-                <li
-                  key={passage.id}
-                  className="flex items-baseline justify-between gap-3 border-b border-border/40 pb-2.5 text-sm last:border-0 last:pb-0"
-                >
-                  <span className="min-w-0 font-medium leading-snug">{formatPassageLabel(passage)}</span>
-                  <span className="shrink-0 text-[11px] tabular-nums text-muted-foreground/65">
-                    {passage.score}/{passage.total_questions}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
-
-        {recentCaptured.length > 0 ? (
-          <section
-            className="journey-panel mb-6 p-4 sm:p-5"
-            aria-labelledby="recent-captured-concepts-heading"
-          >
-            <h2 id="recent-captured-concepts-heading" className="text-sm font-extrabold sm:text-base">
-              Derniers concepts captés
-            </h2>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Ce que tu as accroché récemment — pas un inventaire complet.
-            </p>
-            <ul className="mt-3 space-y-2.5">
-              {recentCaptured.map((item) => (
-                <li
-                  key={`${item.label}-${item.lastSeenAt}`}
-                  className="flex items-baseline justify-between gap-3 border-b border-border/40 pb-2.5 text-sm last:border-0 last:pb-0"
-                >
-                  <span className="min-w-0 font-medium leading-snug">{item.label}</span>
-                  <span className="shrink-0 text-[11px] text-muted-foreground/70">
-                    {new Date(item.lastSeenAt).toLocaleDateString("fr-FR", {
-                      day: "numeric",
-                      month: "short",
-                    })}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
+        <FilTracesSection passages={recentAttempts} concepts={recentCaptured} />
 
         <div className="journey-panel mb-6 p-5 sm:p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
-            <h2 className="text-xl font-extrabold sm:text-2xl">Moments débloqués ({badges.length})</h2>
+            <h2 className="text-xl font-extrabold sm:text-2xl">Moments sur le fil ({badges.length})</h2>
             {allBadges.length > previewBadgeCount && (
               <Button type="button" variant="ghost" size="sm" onClick={() => setShowAllBadges((v) => !v)}>
                 {showAllBadges ? "Réduire" : "Voir tous"}
@@ -308,8 +260,8 @@ function ProfilePage() {
         </div>
 
         {themeStats.length > 0 ? (
-          <section className="journey-panel mb-6 p-4 sm:p-5">
-            <h2 className="text-sm font-extrabold">Tes angles favoris</h2>
+          <details className="mb-6 rounded-2xl border border-border/60 bg-card/50 px-4 py-3 text-sm">
+            <summary className="cursor-pointer font-semibold text-foreground/90">Angles parcourus</summary>
             <div className="mt-3 space-y-2.5">
               {themeStats.slice(0, 4).map((item) => (
                 <div key={item.key}>
@@ -325,33 +277,25 @@ function ProfilePage() {
                 </div>
               ))}
             </div>
-          </section>
+          </details>
         ) : null}
 
         <details className="mb-6 rounded-2xl border border-border/60 bg-card/50 px-4 py-3 text-sm">
-          <summary className="cursor-pointer font-semibold text-foreground/90">Détail des sessions</summary>
+          <summary className="cursor-pointer font-semibold text-foreground/90">Chiffres du fil</summary>
           <p className="mt-3 text-muted-foreground">
-            {gameStats.totalAttempts} session{gameStats.totalAttempts > 1 ? "s" : ""} · moyenne{" "}
-            {gameStats.avgScore}% de bonnes réponses · {gameStats.perfect} sans faute · {profile.total_xp} XP au total
+            Niveau {level} · {gameStats.totalAttempts} passage{gameStats.totalAttempts > 1 ? "s" : ""} ·{" "}
+            {profile.total_xp} XP cumulés
           </p>
-          {recentAttempts.length > 0 ? (
-            <div className="mt-2 flex flex-wrap gap-2">
-              {recentAttempts.map((attempt) => (
-                <span
-                  key={attempt.id}
-                  className="inline-flex rounded-full border border-border/70 bg-background/50 px-2.5 py-1 text-xs font-medium"
-                  title={new Date(attempt.completed_at).toLocaleDateString("fr-FR")}
-                >
-                  {attempt.score}/{attempt.total_questions}
-                </span>
-              ))}
-            </div>
-          ) : null}
         </details>
 
-        <Button asChild size="lg" variant="accent" className="w-full">
-          <Link to="/play">Reprendre le fil</Link>
-        </Button>
+        <div className="flex flex-col gap-2">
+          <Button asChild size="lg" variant="accent" className="w-full">
+            <Link to="/play">Reprendre le fil</Link>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="w-full">
+            <Link to="/niveaux">Le chemin</Link>
+          </Button>
+        </div>
       </main>
     </JourneyPage>
   );

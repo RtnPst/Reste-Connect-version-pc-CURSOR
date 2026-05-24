@@ -702,7 +702,7 @@ function ResultsScreen({
             ) : null}
           </p>
           {levelUpTo !== null ? (
-            <p className="mt-1.5 text-[11px] text-primary/85">Niveau {levelUpTo} — nouvelle étape sur ton parcours.</p>
+            <p className="mt-1.5 text-[11px] text-primary/85">Nouvelle étape sur Le chemin.</p>
           ) : null}
 
           <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-2.5">
@@ -738,7 +738,7 @@ function ResultsScreen({
           <ReturnToFilCard
             hint={RETURN_TO_FIL_HINT.theme}
             className="mx-auto mt-6 max-w-lg"
-            showSecondaryLinks={false}
+            variant="strip"
           />
 
           <div className="mx-auto mt-3 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">

@@ -686,6 +686,50 @@ main {
   padding-top: 0.75rem;
 }
 
+/* Fil continu — shared thread language */
+.fil-continuity-rail {
+  position: relative;
+  padding-left: 0.65rem;
+  border-left: 2px solid color-mix(in oklab, var(--primary) 22%, transparent);
+}
+
+.fil-traces-list {
+  position: relative;
+  padding-left: 0.35rem;
+}
+
+.fil-traces-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 55%, transparent);
+}
+
+.fil-traces-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.fil-traces-dot {
+  margin-top: 0.35rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  shrink: 0;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--primary) 75%, var(--card));
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 15%, transparent);
+}
+
+.fil-traces-dot--passage {
+  background: color-mix(in oklab, var(--border) 85%, var(--card));
+  box-shadow: none;
+}
+
+.fil-traces-item--capture .fil-traces-dot {
+  background: color-mix(in oklab, var(--primary) 88%, white);
+}
+
 .quiz-immersive {
   background:
     radial-gradient(ellipse 100% 45% at 50% 0%, color-mix(in oklab, var(--primary) 10%, transparent), transparent),
