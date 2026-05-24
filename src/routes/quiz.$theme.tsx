@@ -12,7 +12,7 @@ import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare, stopMusic } from "@/lib/sfx";
-import { Confetti } from "@/components/Confetti";
+import { ConceptCaptureEcho } from "@/components/immersive-quiz/ConceptCaptureEcho";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { displayIndexFromOriginal, toDisplayChoices } from "@/lib/choice-order";
 import {
@@ -20,6 +20,7 @@ import {
   rankCandidatesByConceptFreshness,
   wouldRepeatConceptTooSoon,
 } from "@/lib/concept-runtime";
+import { pickSessionCapturedConceptLabel } from "@/lib/concept-capture";
 import { excerptExplanation, getConceptLabel } from "@/lib/concept-labels";
 import { recordConceptSeen } from "@/lib/concept-memory";
 import { getNextActionSuggestion } from "@/lib/next-action";
@@ -621,6 +622,7 @@ function ResultsScreen({
   const focalQuestion = wrong[0]?.q ?? questions[questions.length - 1];
   const takeawayLabel = focalQuestion ? getConceptLabel(focalQuestion.conceptKey) : null;
   const takeawayText = focalQuestion ? excerptExplanation(focalQuestion.explanation, 180) : null;
+  const sessionCapturedLabel = pickSessionCapturedConceptLabel(questions, answers);
 
   const handleShare = async () => {
     const url = window.location.origin;
@@ -647,7 +649,6 @@ function ResultsScreen({
 
   return (
     <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
-      <Confetti active={percentage >= 70} />
       <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm supports-[backdrop-filter]:bg-background/85">
         <Button variant="ghost" size="sm" className="shrink-0 gap-1 px-2" asChild>
           <Link to="/" className="flex items-center font-semibold text-muted-foreground">
@@ -670,6 +671,7 @@ function ResultsScreen({
           <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
             {message}
           </h1>
+          {sessionCapturedLabel ? <ConceptCaptureEcho label={sessionCapturedLabel} /> : null}
           {takeawayLabel ? (
             <p className="mx-auto mt-4 max-w-md text-lg font-extrabold leading-snug text-foreground sm:text-xl">
               {takeawayLabel}

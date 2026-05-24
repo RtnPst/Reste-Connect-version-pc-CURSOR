@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { ConceptCaptureBeat } from "@/components/immersive-quiz/ConceptCaptureBeat";
 import { buildConceptCaptureCopy } from "@/lib/concept-capture";
+import { shouldUseCompactChoiceGrid } from "@/lib/immersive-choice-layout";
 
 /** Short pause before explanation body fades in (ms); skipped when reduced motion is on. */
 const EXPLANATION_REVEAL_DELAY_MS = 150;
@@ -36,6 +37,14 @@ function immersiveAnswerTextClasses(choice: string): string {
     return `text-[15px] font-semibold leading-snug sm:text-base sm:leading-normal ${sh}text-sm ${sh}leading-snug`;
   }
   return `line-clamp-4 text-sm font-semibold leading-snug sm:text-[15px] sm:leading-normal ${sh}text-[13px] ${sh}leading-tight`;
+}
+
+function compactAnswerTextClasses(choice: string): string {
+  const n = choice.length;
+  if (n <= 22) {
+    return "line-clamp-3 text-sm font-semibold leading-snug sm:text-[15px]";
+  }
+  return "line-clamp-3 text-[13px] font-semibold leading-snug sm:text-sm";
 }
 
 export type ImmersiveQuizPlayProps = {
@@ -169,6 +178,8 @@ export function ImmersiveQuizPlay({
     ? feedbackLine(FEEDBACK_CORRECT, flowStepKey)
     : feedbackLine(FEEDBACK_INCORRECT, `${flowStepKey}-miss`);
 
+  const compactChoices = shouldUseCompactChoiceGrid(choices, questionText);
+
   return (
     <div className="quiz-immersive flex h-[100dvh] max-h-[100dvh] min-h-0 w-full min-w-0 flex-col overflow-hidden bg-background pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-1.5 backdrop-blur-sm supports-[backdrop-filter]:bg-background/85 [@media(max-height:700px)]:min-h-[2.75rem] [@media(max-height:700px)]:px-1.5 [@media(max-height:700px)]:py-1">
@@ -240,7 +251,11 @@ export function ImmersiveQuizPlay({
 
         <div
           key={`choices-${flowStepKey}`}
-          className="grid min-h-0 flex-1 grid-rows-4 gap-2 pb-1 pt-2 [@media(max-height:700px)]:gap-1.5 [@media(max-height:700px)]:pt-1 [@media(max-height:700px)]:pb-0"
+          className={
+            compactChoices
+              ? "grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-2 pb-1 pt-2 [@media(max-height:700px)]:gap-1.5 [@media(max-height:700px)]:pt-1 [@media(max-height:700px)]:pb-0"
+              : "grid min-h-0 flex-1 grid-rows-4 gap-2 pb-1 pt-2 [@media(max-height:700px)]:gap-1.5 [@media(max-height:700px)]:pt-1 [@media(max-height:700px)]:pb-0"
+          }
         >
           {choices.map((choice, idx) => {
             const isSelected = selectedIndex === idx;
@@ -264,32 +279,60 @@ export function ImmersiveQuizPlay({
               }
             }
 
+            const letterBadge = (
+              <span
+                className={`flex shrink-0 items-center justify-center rounded-full font-extrabold ${
+                  compactChoices
+                    ? `size-7 text-sm ${shortScreen}size-6 ${shortScreen}text-xs`
+                    : `size-8 sm:size-10 sm:text-lg ${shortScreen}size-7 ${shortScreen}text-sm`
+                } ${
+                  isAnswered && isCorrectChoice
+                    ? "bg-success text-success-foreground"
+                    : isAnswered && isSelected
+                      ? "bg-destructive text-destructive-foreground"
+                      : "bg-secondary text-secondary-foreground"
+                }`}
+                aria-hidden
+              >
+                {String.fromCharCode(65 + idx)}
+              </span>
+            );
+
             return (
               <button
                 key={idx}
                 type="button"
                 onClick={() => onSelectChoice(idx)}
                 disabled={isAnswered || choicesDisabled}
-                className={`flex min-h-0 min-w-0 max-w-full items-center gap-2 overflow-hidden rounded-xl px-3 py-2.5 text-left transition-all disabled:cursor-default sm:min-h-[3.25rem] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3 ${choiceClass} [@media(max-height:700px)]:gap-1.5 [@media(max-height:700px)]:rounded-lg [@media(max-height:700px)]:px-2.5 [@media(max-height:700px)]:py-2`}
+                className={`min-h-0 min-w-0 max-w-full overflow-hidden rounded-xl text-left transition-all disabled:cursor-default ${choiceClass} ${
+                  compactChoices
+                    ? "flex min-h-[4.5rem] flex-col items-start justify-between gap-2 p-3 sm:min-h-[5rem] sm:p-3.5 [@media(max-height:700px)]:min-h-[3.75rem] [@media(max-height:700px)]:p-2.5"
+                    : `flex items-center gap-2 px-3 py-2.5 sm:min-h-[3.25rem] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3 [@media(max-height:700px)]:gap-1.5 [@media(max-height:700px)]:rounded-lg [@media(max-height:700px)]:px-2.5 [@media(max-height:700px)]:py-2`
+                }`}
               >
-                <span
-                  className={`flex size-8 shrink-0 items-center justify-center rounded-full font-extrabold sm:size-10 sm:text-lg ${shortScreen}size-7 ${shortScreen}text-sm ${
-                    isAnswered && isCorrectChoice
-                      ? "bg-success text-success-foreground"
-                      : isAnswered && isSelected
-                        ? "bg-destructive text-destructive-foreground"
-                        : "bg-secondary text-secondary-foreground"
-                  }`}
-                  aria-hidden
-                >
-                  {String.fromCharCode(65 + idx)}
-                </span>
-                <span
-                  className={`min-h-0 min-w-0 flex-1 break-words text-left ${immersiveAnswerTextClasses(choice)}`}
-                >
-                  {choice}
-                </span>
-                {icon}
+                {compactChoices ? (
+                  <>
+                    <div className="flex w-full items-center justify-between gap-1">
+                      {letterBadge}
+                      {icon ? <span className="shrink-0">{icon}</span> : null}
+                    </div>
+                    <span
+                      className={`w-full break-words text-left ${compactAnswerTextClasses(choice)}`}
+                    >
+                      {choice}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    {letterBadge}
+                    <span
+                      className={`min-h-0 min-w-0 flex-1 break-words text-left ${immersiveAnswerTextClasses(choice)}`}
+                    >
+                      {choice}
+                    </span>
+                    {icon}
+                  </>
+                )}
               </button>
             );
           })}

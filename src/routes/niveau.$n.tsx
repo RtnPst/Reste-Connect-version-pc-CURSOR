@@ -12,7 +12,6 @@ import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
-import { Confetti } from "@/components/Confetti";
 import { RankBadge } from "@/components/RankBadge";
 import { selectLevelQuestions } from "@/lib/levels-selector";
 import { THEMES, type ThemeKey } from "@/lib/themes";
@@ -476,7 +475,6 @@ function LevelPage() {
 
     return (
       <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
-        <Confetti active={passed} />
         <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm supports-[backdrop-filter]:bg-background/85">
           <Button variant="ghost" size="sm" className="shrink-0 gap-1 px-2" asChild>
             <Link to="/" className="flex items-center font-semibold text-muted-foreground">

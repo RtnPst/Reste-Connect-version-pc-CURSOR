@@ -18,3 +18,16 @@ export function buildConceptCaptureCopy(
     : excerptExplanation(explanation, 150);
   return { conceptLabel, editorialLine };
 }
+
+/** First concept label from questions the player answered correctly (session recap echo). */
+export function pickSessionCapturedConceptLabel(
+  items: ReadonlyArray<{ conceptKey: string | null }>,
+  answers: ReadonlyArray<{ chosen: number; correct: number }>,
+): string | null {
+  for (let i = 0; i < answers.length; i++) {
+    if (answers[i].chosen !== answers[i].correct) continue;
+    const label = getConceptLabel(items[i]?.conceptKey);
+    if (label) return label;
+  }
+  return null;
+}
