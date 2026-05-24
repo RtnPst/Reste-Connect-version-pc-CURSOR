@@ -423,9 +423,7 @@ function QuizPage() {
       explanation={current.explanation}
       onSpeakExplanation={handleSpeakExplanation}
       onPrimaryNext={handleNext}
-      primaryNextLabel={
-        currentIndex + 1 < questions.length ? "La suivante" : "Voir le bilan"
-      }
+      primaryNextLabel={currentIndex + 1 < questions.length ? "Suite" : "Voir la suite"}
       footerWhenPlaying={
         <Link
           to="/quiz"

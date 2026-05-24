@@ -564,7 +564,7 @@ function MarathonPage() {
         explanation={current.explanation}
         onSpeakExplanation={handleSpeakExplanation}
         onPrimaryNext={handleNext}
-        primaryNextLabel="La suivante"
+        primaryNextLabel="Suite"
         sheetSecondaryAction={{ label: "Terminer la session", onClick: handleEndSession }}
         footerWhenPlaying={
           <div className="flex w-full max-w-md flex-col gap-2 mx-auto">

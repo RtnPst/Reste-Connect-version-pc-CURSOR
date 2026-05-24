@@ -10,6 +10,15 @@ import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 /** Short pause before explanation body fades in (ms); skipped when reduced motion is on. */
 const EXPLANATION_REVEAL_DELAY_MS = 150;
 
+const FEEDBACK_CORRECT = ["Ça colle.", "Bien capté.", "Oui, là.", "Exact."] as const;
+const FEEDBACK_INCORRECT = ["Pas tout à fait.", "Le bon fil.", "À retenir.", "Voici la lecture."] as const;
+
+function feedbackLine(lines: readonly string[], key: string): string {
+  let hash = 0;
+  for (let i = 0; i < key.length; i++) hash = (hash + key.charCodeAt(i)) | 0;
+  return lines[Math.abs(hash) % lines.length] ?? lines[0];
+}
+
 const shortScreen = "[@media(max-height:700px)]:";
 
 /** Larger type for short answers; step down only when text is long enough to risk overflow. */
@@ -73,7 +82,7 @@ export type ImmersiveQuizPlayProps = {
 
 export function ImmersiveQuizPlay({
   quitHref,
-  quitAriaLabel = "Quitter le quiz",
+  quitAriaLabel = "Fermer et revenir",
   headerCenter,
   headerChip,
   streak,
@@ -120,13 +129,17 @@ export function ImmersiveQuizPlay({
     return () => window.clearTimeout(id);
   }, [isAnswered, reducedMotion, flowStepKey]);
 
+  const feedbackHeadline = isCorrect
+    ? feedbackLine(FEEDBACK_CORRECT, flowStepKey)
+    : feedbackLine(FEEDBACK_INCORRECT, `${flowStepKey}-miss`);
+
   return (
     <div className="quiz-immersive flex h-[100dvh] max-h-[100dvh] min-h-0 w-full min-w-0 flex-col overflow-hidden bg-background pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-1.5 backdrop-blur-sm supports-[backdrop-filter]:bg-background/85 [@media(max-height:700px)]:min-h-[2.75rem] [@media(max-height:700px)]:px-1.5 [@media(max-height:700px)]:py-1">
         <Button variant="ghost" size="sm" className="shrink-0 gap-0.5 px-2 text-muted-foreground" asChild>
           <Link to={quitHref} className="flex items-center font-semibold" aria-label={quitAriaLabel}>
             <ChevronLeft className="size-4" aria-hidden />
-            <span className="hidden sm:inline">Quitter</span>
+            <span className="hidden sm:inline">Fermer</span>
           </Link>
         </Button>
         <div className="min-w-0 flex-1 text-center">
@@ -135,13 +148,15 @@ export function ImmersiveQuizPlay({
             {headerChip}
           </div>
         </div>
-        <span
-          className="inline-flex shrink-0 items-center gap-1 rounded-full border border-warning/25 bg-warning-soft/60 px-2 py-0.5 text-[10px] font-bold text-foreground sm:text-xs"
-          title={streakTitle}
-        >
-          <span aria-hidden>🔥</span>
-          <span>{streak}</span>
-        </span>
+        {streak > 0 ? (
+          <span
+            className="inline-flex shrink-0 items-center gap-1 rounded-full border border-warning/25 bg-warning-soft/60 px-2 py-0.5 text-[10px] font-bold text-foreground sm:text-xs"
+            title={streakTitle}
+          >
+            <span aria-hidden>🔥</span>
+            <span>{streak}</span>
+          </span>
+        ) : null}
         <span className="shrink-0 tabular-nums text-sm font-extrabold text-foreground sm:text-base">
           {stepFraction}
         </span>
@@ -272,22 +287,24 @@ export function ImmersiveQuizPlay({
               <span className="h-1 w-10 rounded-full bg-muted-foreground/35" aria-hidden />
             </div>
             <div
-              className={`flex shrink-0 items-start gap-2 rounded-xl border-2 px-3 py-2.5 sm:px-4 sm:py-3 ${
-                isCorrect ? "border-success/35 bg-success-soft" : "border-warning/40 bg-warning-soft"
+              className={`flex shrink-0 items-start gap-2 rounded-xl border px-3 py-2.5 sm:px-4 sm:py-3 ${
+                isCorrect
+                  ? "border-success/35 bg-success-soft/90"
+                  : "border-border/70 bg-muted/35"
               }`}
             >
               <span
                 className={`mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-extrabold sm:size-8 sm:text-sm ${
-                  isCorrect ? "bg-success text-success-foreground" : "bg-warning text-warning-foreground"
+                  isCorrect
+                    ? "bg-success text-success-foreground"
+                    : "bg-muted text-muted-foreground"
                 }`}
                 aria-hidden
               >
-                {isCorrect ? "✓" : "!"}
+                {isCorrect ? "✓" : "·"}
               </span>
               <div className="min-w-0 flex-1">
-                <p className="mb-1 text-sm font-extrabold sm:text-base">
-                  {isCorrect ? "Bien vu." : "Voici pourquoi ça colle."}
-                </p>
+                <p className="text-sm font-extrabold leading-snug sm:text-base">{feedbackHeadline}</p>
               </div>
               <Button
                 onClick={onSpeakExplanation}
@@ -301,12 +318,13 @@ export function ImmersiveQuizPlay({
               </Button>
             </div>
             <div
-              className={`min-h-0 flex-1 overflow-y-auto overscroll-contain px-0.5 py-2 text-sm leading-relaxed text-foreground/90 sm:text-base ${
+              className={`min-h-0 flex-1 overflow-y-auto overscroll-contain px-0.5 py-2 ${
                 reducedMotion ? "" : "transition-opacity duration-200 ease-out"
               } ${explanationRevealed ? "opacity-100" : "opacity-0"}`}
               aria-live={explanationRevealed ? "polite" : "off"}
             >
-              {explanation}
+              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Le décode</p>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/90 sm:text-base">{explanation}</p>
             </div>
             <div className="shrink-0 space-y-2 border-t border-border/60 bg-background/95 pt-3 backdrop-blur-sm">
               <Button

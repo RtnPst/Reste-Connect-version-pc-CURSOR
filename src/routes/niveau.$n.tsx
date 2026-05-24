@@ -637,9 +637,7 @@ function LevelPage() {
       explanation={current.explanation}
       onSpeakExplanation={handleSpeakExplanation}
       onPrimaryNext={handleNext}
-      primaryNextLabel={
-        currentIndex + 1 < questions.length ? "La suivante" : "Voir le bilan"
-      }
+      primaryNextLabel={currentIndex + 1 < questions.length ? "Suite" : "Voir la suite"}
       statusMessage={
         checkingAnswer ? (
           <span className="text-muted-foreground">Vérification…</span>
