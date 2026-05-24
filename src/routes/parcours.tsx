@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Flame, Sparkles, Star, Target, TrendingUp, Trophy } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
@@ -167,18 +166,36 @@ function ProfilePage() {
   return (
     <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
-      <main className="container mx-auto w-full min-w-0 max-w-4xl flex-1 overflow-x-clip px-4 py-7 sm:px-6 sm:py-10">
-        <h1 className="text-3xl sm:text-4xl font-extrabold mb-2">
-          Salut {profile.display_name ?? "toi"} !
-        </h1>
-        <p className="text-lg text-muted-foreground mb-6">
-          Où tu décryptes le mieux, pour l’instant.
-        </p>
+      <main className="container mx-auto w-full min-w-0 max-w-lg flex-1 overflow-x-clip px-4 py-5 sm:px-6 sm:py-7">
+        <header className="mb-6">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Ton fil</p>
+          <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
+            {profile.display_name ? `Salut ${profile.display_name}` : "Ton parcours"}
+          </h1>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Ce que tu as capté — la progression reste discrète.
+          </p>
+        </header>
 
-        {/* Badges first — moments before numbers */}
-        <div className="bg-card rounded-3xl border-2 border-border p-5 sm:p-6 mb-6">
+        <section className="mb-6 rounded-2xl border border-border/80 bg-card/90 p-4 sm:p-5">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">En ce moment</p>
+          <p className="mt-2 text-lg font-extrabold leading-snug">
+            Palier {level}
+            <span className="font-medium text-muted-foreground"> · {xpInLevel} / 100 vers le suivant</span>
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Série {profile.current_streak} jour{profile.current_streak > 1 ? "s" : ""}
+            {profile.longest_streak > 0 ? ` · record ${profile.longest_streak} j` : null}
+            {stats.totalAttempts > 0 ? ` · ${stats.avgScore}% de précision (thèmes)` : null}
+          </p>
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted/50">
+            <div className="h-full bg-primary/80 transition-all" style={{ width: `${xpInLevel}%` }} />
+          </div>
+        </section>
+
+        <div className="mb-6 rounded-3xl border border-border/80 bg-card/90 p-5 sm:p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
-            <h2 className="text-2xl font-extrabold">Moments débloqués ({badges.length})</h2>
+            <h2 className="text-xl font-extrabold sm:text-2xl">Moments débloqués ({badges.length})</h2>
             {allBadges.length > previewBadgeCount && (
               <Button type="button" variant="ghost" size="sm" onClick={() => setShowAllBadges((v) => !v)}>
                 {showAllBadges ? "Réduire" : "Voir tous"}
@@ -225,171 +242,53 @@ function ProfilePage() {
           )}
         </div>
 
-        {/* Snapshot */}
-        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4 mb-6">
-          <StatCard
-            icon={<Star className="size-7" />}
-            label="Palier"
-            value={level.toString()}
-            accent="text-primary bg-primary-soft"
-          />
-          <StatCard
-            icon={<Sparkles className="size-7" />}
-            label="XP (curiosité)"
-            value={profile.total_xp.toString()}
-            accent="text-accent bg-accent-soft"
-          />
-          <StatCard
-            icon={<Flame className="size-7" />}
-            label="Série actuelle"
-            value={`${profile.current_streak} j`}
-            accent="text-warning bg-warning-soft"
-          />
-          <StatCard
-            icon={<Trophy className="size-7" />}
-            label="Runs thème"
-            value={stats.totalAttempts.toString()}
-            accent="text-success bg-success-soft"
-          />
-        </div>
-        {/* Palier en cours */}
-        <div className="bg-card rounded-3xl border-2 border-border p-5 mb-6">
-          <div className="flex justify-between mb-2">
-            <span className="font-bold">Palier {level}</span>
-            <span className="text-muted-foreground">{xpInLevel} / 100 XP</span>
-          </div>
-          <div className="relative h-3.5 rounded-full border border-black/45 bg-secondary overflow-hidden shadow-inner">
-            <div className="h-full bg-primary transition-all" style={{ width: `${xpInLevel}%` }} />
-            <span
-              className="pointer-events-none absolute top-1/2 h-4 w-0.5 -translate-y-1/2 bg-black/70 shadow-[0_0_0_1px_rgba(255,255,255,0.22)]"
-              style={{ left: `clamp(2px, ${xpInLevel}%, calc(100% - 2px))` }}
-              aria-hidden
-            />
-          </div>
-          <p className="text-sm text-muted-foreground mt-3">
-            Précision moyenne (quiz thème) : <strong>{stats.avgScore}%</strong> · Pic série :{" "}
-            <strong>{profile.longest_streak} jours</strong>
-          </p>
-        </div>
-
-        {/* Lecture des sessions */}
-        <div className="rounded-3xl border-2 border-border bg-card p-5 mb-6">
-          <h2 className="text-xl font-extrabold">Lecture de tes sessions</h2>
-          <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-            <MiniStat
-              icon={<Target className="size-4" />}
-              label="Sessions"
-              value={gameStats.totalAttempts.toString()}
-            />
-            <MiniStat
-              icon={<TrendingUp className="size-4" />}
-              label="Précision moy."
-              value={`${gameStats.avgScore}%`}
-            />
-            <MiniStat
-              icon={<Trophy className="size-4" />}
-              label="Sans faute"
-              value={gameStats.perfect.toString()}
-            />
-            <MiniStat
-              icon={<Flame className="size-4" />}
-              label="Pic série"
-              value={`${profile.longest_streak} j`}
-            />
-          </div>
-
-          {themeStats.length > 0 && (
-            <div className="mt-4 space-y-2.5">
-              {themeStats.map((item) => (
+        {themeStats.length > 0 ? (
+          <section className="mb-6 rounded-2xl border border-border/70 bg-muted/15 p-4 sm:p-5">
+            <h2 className="text-sm font-extrabold">Tes angles favoris</h2>
+            <div className="mt-3 space-y-2.5">
+              {themeStats.slice(0, 4).map((item) => (
                 <div key={item.key}>
                   <div className="mb-1 flex items-center justify-between text-xs">
                     <span className="font-semibold">
                       {THEMES[item.key].emoji} {THEMES[item.key].label}
                     </span>
-                    <span className="text-muted-foreground">
-                      {item.count} run{item.count > 1 ? "s" : ""} · {item.pct}%
-                    </span>
+                    <span className="text-muted-foreground">{item.pct}%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-muted overflow-hidden">
-                    <div className="h-full bg-primary" style={{ width: `${item.pct}%` }} />
+                  <div className="h-1.5 overflow-hidden rounded-full bg-muted/60">
+                    <div className="h-full bg-primary/70" style={{ width: `${item.pct}%` }} />
                   </div>
                 </div>
               ))}
             </div>
-          )}
+          </section>
+        ) : null}
 
-          {recentAttempts.length > 0 && (
-            <div className="mt-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                Derniers runs
-              </p>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {recentAttempts.map((attempt) => (
-                  <span
-                    key={attempt.id}
-                    className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-background/60 px-2.5 py-1 text-xs font-semibold"
-                    title={new Date(attempt.completed_at).toLocaleDateString("fr-FR")}
-                  >
-                    {attempt.score}/{attempt.total_questions}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <p className="mt-4 text-sm text-muted-foreground">
-            XP cumulée (tous modes) : <strong>{profile.total_xp} XP</strong>
+        <details className="mb-6 rounded-2xl border border-border/60 bg-card/50 px-4 py-3 text-sm">
+          <summary className="cursor-pointer font-semibold text-foreground/90">Détail des sessions</summary>
+          <p className="mt-3 text-muted-foreground">
+            {gameStats.totalAttempts} session{gameStats.totalAttempts > 1 ? "s" : ""} · précision moyenne{" "}
+            {gameStats.avgScore}% · {gameStats.perfect} sans faute · {profile.total_xp} XP au total
           </p>
-        </div>
+          {recentAttempts.length > 0 ? (
+            <div className="mt-2 flex flex-wrap gap-2">
+              {recentAttempts.map((attempt) => (
+                <span
+                  key={attempt.id}
+                  className="inline-flex rounded-full border border-border/70 bg-background/50 px-2.5 py-1 text-xs font-medium"
+                  title={new Date(attempt.completed_at).toLocaleDateString("fr-FR")}
+                >
+                  {attempt.score}/{attempt.total_questions}
+                </span>
+              ))}
+            </div>
+          ) : null}
+        </details>
 
-        <div className="grid gap-3">
-          <Button asChild size="xl" variant="default" className="sm:max-w-sm">
-            <Link to="/quiz">Découvrir un quiz</Link>
-          </Button>
-        </div>
+        <Button asChild size="lg" variant="accent" className="w-full">
+          <Link to="/play">Découvrir un thème</Link>
+        </Button>
       </main>
     </div>
   );
 }
 
-function MiniStat({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="rounded-xl border border-border/70 bg-background/50 px-2.5 py-2">
-      <p className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-        {icon}
-        {label}
-      </p>
-      <p className="mt-1 text-base font-extrabold leading-tight">{value}</p>
-    </div>
-  );
-}
-
-function StatCard({
-  icon,
-  label,
-  value,
-  accent,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  accent: string;
-}) {
-  return (
-    <div className="bg-card rounded-2xl border-2 border-border p-3 flex items-center gap-2.5">
-      <div className={`size-9 rounded-xl flex items-center justify-center ${accent}`}>{icon}</div>
-      <div>
-        <p className="text-xs text-muted-foreground font-semibold leading-tight">{label}</p>
-        <p className="text-lg font-extrabold leading-tight">{value}</p>
-      </div>
-    </div>
-  );
-}

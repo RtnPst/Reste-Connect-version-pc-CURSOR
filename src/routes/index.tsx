@@ -118,7 +118,7 @@ function HomePage() {
             </span>
 
             {!user ? (
-              <div className="relative mx-auto w-full overflow-hidden rounded-3xl border border-violet-400/28 bg-[#111a36]/82 px-4 py-4 shadow-[0_0_0_1px_rgba(139,92,246,0.2),0_16px_34px_-24px_rgba(168,85,247,0.55)] sm:px-6 sm:py-5 [@media(max-height:780px)]:rounded-2xl [@media(max-height:780px)]:px-3.5 [@media(max-height:780px)]:py-3">
+              <div className="relative mx-auto w-full overflow-hidden rounded-3xl border border-violet-400/22 bg-[#1c2640]/90 px-4 py-4 shadow-[var(--shadow-soft)] sm:px-6 sm:py-5 [@media(max-height:780px)]:rounded-2xl [@media(max-height:780px)]:px-3.5 [@media(max-height:780px)]:py-3">
                 <span
                   className="pointer-events-none absolute -right-12 top-0 size-[11rem] rounded-full bg-fuchsia-500/[0.12] blur-3xl"
                   aria-hidden

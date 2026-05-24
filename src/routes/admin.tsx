@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { AdminSimplePanel } from "@/components/admin-cockpit/AdminSimplePanel";
 import { CockpitTabs } from "@/components/admin-cockpit/CockpitTabs";
 import { KpiCard } from "@/components/admin-cockpit/KpiCard";
 import { ReadOnlyBanner } from "@/components/admin-cockpit/ReadOnlyBanner";
@@ -205,6 +206,8 @@ function AdminPage() {
   const [analyticsSummaryWarning, setAnalyticsSummaryWarning] = useState<string | null>(null);
   const [batchReviewsWarning, setBatchReviewsWarning] = useState<string | null>(null);
   const [conceptKeySupported, setConceptKeySupported] = useState(true);
+  const [adminMode, setAdminMode] = useState<"simple" | "expert">("simple");
+  const [pendingNewQuestion, setPendingNewQuestion] = useState(false);
 
   const normalizeConceptInput = (raw: string): string | null => {
     const normalized = raw
@@ -334,6 +337,12 @@ function AdminPage() {
       firstQuestionFieldRef.current?.focus();
     }, 120);
   };
+
+  useEffect(() => {
+    if (!isAdmin || !pendingNewQuestion || search.tab !== "legacy") return;
+    startNew();
+    setPendingNewQuestion(false);
+  }, [isAdmin, pendingNewQuestion, search.tab]);
 
   const startEdit = (q: Question) => {
     setEditingId(q.id);
@@ -543,10 +552,41 @@ function AdminPage() {
     missing: metaSnapshot.sources.filter((s) => !s.exists).length,
   };
 
+  const goAdminTab = (tab: CockpitTabId) => {
+    navigate({
+      to: "/admin",
+      search: (prev) => ({ ...prev, tab }),
+      replace: true,
+    });
+  };
+
   return (
     <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-5xl overflow-x-clip px-3 py-8 sm:px-6">
+        {adminMode === "simple" ? (
+          <AdminSimplePanel
+            loading={snapshotLoading}
+            kpis={overviewSnapshot.kpis ?? {}}
+            onAddQuestion={() => {
+              setAdminMode("expert");
+              setPendingNewQuestion(true);
+              goAdminTab("legacy");
+            }}
+            onManageQuestions={() => {
+              setAdminMode("expert");
+              goAdminTab("legacy");
+            }}
+            onOpenExpert={() => setAdminMode("expert")}
+          />
+        ) : (
+          <>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <Button type="button" variant="ghost" size="sm" onClick={() => setAdminMode("simple")}>
+                ← Mode simple
+              </Button>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Mode expert</p>
+            </div>
         <Tabs
           value={search.tab}
           onValueChange={(next) => {
@@ -1337,6 +1377,8 @@ function AdminPage() {
         </div>
           </TabsContent>
         </Tabs>
+          </>
+        )}
       </main>
     </div>
   );
