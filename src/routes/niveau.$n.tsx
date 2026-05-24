@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, BookOpen, Home, Lock, RotateCcw } from "lucide-react";
+import { ArrowRight, Home, Lock, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
 import { ImmersiveQuizPlay } from "@/components/immersive-quiz/ImmersiveQuizPlay";
@@ -438,74 +438,95 @@ function LevelPage() {
       level,
       totalLevels: TOTAL_LEVELS,
     });
+    const editorialMessage = passed
+      ? percent === 100
+        ? `Palier ${level} — fil tenu de bout en bout.`
+        : `Palier ${level} — tu repars avec une lecture solide.`
+      : "Pas de pression : ce palier attendra ton prochain passage.";
+    const primaryIsNextLevel = passed && level < TOTAL_LEVELS;
+
+    const replayRun = () => {
+      void trackEvent({
+        event_name: "post_run_cta_clicked",
+        user_id: user?.id,
+        mode: "level",
+        run_id: runId,
+        event_props: {
+          cta_id: "replay",
+          source_mode: "level",
+          destination: `/niveau/${level}`,
+          score_context: score,
+          total_context: questions.length,
+        },
+      });
+      setQuestions([]);
+      setCurrentIndex(0);
+      setSelectedIndex(null);
+      setRevealedCorrectIndex(null);
+      setAnswerError(null);
+      setCheckingAnswer(false);
+      setError(null);
+      setAnswers([]);
+      setXpGained(null);
+      setLevelUpTo(null);
+      setFinished(false);
+      setLoading(true);
+      setReplayKey((k) => k + 1);
+    };
+
     return (
       <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
         <Confetti active={passed} />
-        <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm">
+        <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm supports-[backdrop-filter]:bg-background/85">
           <Button variant="ghost" size="sm" className="shrink-0 gap-1 px-2" asChild>
             <Link to="/" className="flex items-center font-semibold text-muted-foreground">
               <Home className="size-4 shrink-0" aria-hidden />
               <span className="hidden sm:inline">Accueil</span>
             </Link>
           </Button>
-          <span className="min-w-0 flex-1 truncate text-center text-xs font-extrabold text-foreground sm:text-sm">
-            Résultat · Niveau {level}
+          <span className="min-w-0 flex-1 truncate text-center text-xs font-semibold text-muted-foreground sm:text-sm">
+            Ce que tu retiens · Palier {level}
           </span>
           <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
             <Link to="/niveaux">Parcours</Link>
           </Button>
         </header>
-        <main className="container mx-auto w-full min-w-0 max-w-2xl flex-1 overflow-y-auto overflow-x-clip px-4 py-8 text-center sm:py-10">
-          <div className="bg-card rounded-3xl border-2 border-border p-8 shadow-[var(--shadow-card)] animate-scale-in">
-            <div className="mb-4 flex justify-center">
-              {passed ? (
-                <RankBadge rank={rank} level={level} size="lg" />
-              ) : (
-                <div
-                  className="flex size-16 items-center justify-center rounded-2xl border border-border/60 bg-muted/35 text-muted-foreground"
-                  aria-hidden
-                >
-                  <BookOpen className="size-8" strokeWidth={2} />
-                </div>
-              )}
-            </div>
-            <h1 className="text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl mb-2">
-              {passed
-                ? `Palier ${level} validé.`
-                : "Pas validé cette fois — tu peux reprendre le run quand tu veux."}
+        <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
+          <div className="quiz-result-card mb-6 animate-scale-in rounded-3xl border-2 border-border bg-card p-6 text-center shadow-[var(--shadow-card)] sm:p-10">
+            {passed ? (
+              <div className="mb-4 flex justify-center">
+                <RankBadge rank={rank} level={level} size="md" />
+              </div>
+            ) : null}
+            <h1 className="mx-auto max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+              {editorialMessage}
             </h1>
-            <p className="text-xl text-muted-foreground mb-2">
-              Réponses justes :{" "}
-              <span className="font-extrabold text-primary">
-                {score} / {questions.length}
-              </span>
-            </p>
-            <p className="text-base text-muted-foreground mb-6">
-              {passed
-                ? `« ${rank.label} » — le palier ${Math.min(level + 1, TOTAL_LEVELS)} s’ouvre si tu en as envie.`
-                : `Seuil du palier : au moins ${passRequired} bonnes réponses sur ${QUESTIONS_PER_LEVEL}.`}
-            </p>
-            <p className="mb-4 text-xs sm:text-sm font-medium text-muted-foreground">
-              Les badges sans faute se gagnent surtout sur les quiz thème.
-            </p>
-            {xpGained !== null && (
-              <p className="text-sm sm:text-base font-semibold text-success mb-2">
-                +{xpGained} XP gagnés
-              </p>
-            )}
-            {levelUpTo !== null && (
-              <p className="text-sm sm:text-base font-semibold text-primary mb-6">
-                Palier {levelUpTo} débloqué.
-              </p>
-            )}
-            <p className="mb-4 text-sm font-medium leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-foreground/90 sm:text-base">
               {nextAction.reason}
             </p>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {passed && level < TOTAL_LEVELS ? (
+            <p className="mt-5 text-xs font-medium text-muted-foreground sm:text-sm">
+              {score} / {questions.length} bonnes réponses
+              {xpGained !== null ? <> · +{xpGained} XP</> : null}
+              {passed ? (
+                <>
+                  {" "}
+                  · {rank.label}
+                  {level < TOTAL_LEVELS ? ` · palier ${level + 1} ouvert` : null}
+                </>
+              ) : (
+                <> · seuil {passRequired}/{QUESTIONS_PER_LEVEL}</>
+              )}
+            </p>
+            {levelUpTo !== null ? (
+              <p className="mt-2 text-xs font-medium text-primary/90">Palier {levelUpTo} débloqué.</p>
+            ) : null}
+
+            <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-3">
+              {primaryIsNextLevel ? (
                 <Button
                   size="lg"
                   variant="accent"
+                  className="min-w-0 whitespace-normal"
                   onClick={() => {
                     void trackEvent({
                       event_name: "post_run_cta_clicked",
@@ -523,52 +544,81 @@ function LevelPage() {
                     navigate({ to: "/niveau/$n", params: { n: String(level + 1) } });
                   }}
                 >
-                  Niveau suivant
-                  <ArrowRight />
+                  Palier suivant
+                  <ArrowRight className="size-4" />
+                </Button>
+              ) : passed ? (
+                <Button asChild size="lg" variant="accent" className="min-w-0 whitespace-normal">
+                  <Link
+                    to={nextAction.to}
+                    onClick={() => {
+                      void trackEvent({
+                        event_name: "post_run_cta_clicked",
+                        user_id: user?.id,
+                        mode: "level",
+                        run_id: runId,
+                        event_props: {
+                          cta_id: "next_action_primary",
+                          source_mode: "level",
+                          destination: nextAction.to,
+                          score_context: score,
+                          total_context: questions.length,
+                        },
+                      });
+                    }}
+                  >
+                    {nextAction.label}
+                    <ArrowRight className="size-4" />
+                  </Link>
                 </Button>
               ) : (
                 <Button
                   size="lg"
                   variant="accent"
-                  onClick={() => {
-                    void trackEvent({
-                      event_name: "post_run_cta_clicked",
-                      user_id: user?.id,
-                      mode: "level",
-                      run_id: runId,
-                      event_props: {
-                        cta_id: "next_action_primary",
-                        source_mode: "level",
-                        destination: `/niveau/${level}`,
-                        score_context: score,
-                        total_context: questions.length,
-                      },
-                    });
-                    setQuestions([]);
-                    setCurrentIndex(0);
-                    setSelectedIndex(null);
-                    setRevealedCorrectIndex(null);
-                    setAnswerError(null);
-                    setCheckingAnswer(false);
-                    setError(null);
-                    setAnswers([]);
-                    setXpGained(null);
-                    setLevelUpTo(null);
-                    setFinished(false);
-                    setLoading(true);
-                    setReplayKey((k) => k + 1);
-                  }}
+                  className="min-w-0 whitespace-normal"
+                  onClick={replayRun}
                 >
                   <RotateCcw />
-                  Rejouer
+                  Rejouer ce palier
                 </Button>
               )}
-              <Button asChild size="lg" variant="outline">
-                <Link to="/niveaux">
-                  <Home />
-                  Parcours
-                </Link>
-              </Button>
+              {primaryIsNextLevel || passed ? (
+                <Button
+                  onClick={replayRun}
+                  size="lg"
+                  variant="outline"
+                  className="min-w-0 whitespace-normal"
+                >
+                  <RotateCcw />
+                  Rejouer ce palier
+                </Button>
+              ) : (
+                <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
+                  <Link to="/niveaux">Voir le parcours</Link>
+                </Button>
+              )}
+            </div>
+
+            <div className="mx-auto mt-5 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
+              <Link
+                to="/niveaux"
+                className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                Parcours
+              </Link>
+              <Link
+                to="/play"
+                className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                Jouer
+              </Link>
+              <Link
+                to="/"
+                className="inline-flex items-center gap-1 font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                <Home className="size-3.5" aria-hidden />
+                Accueil
+              </Link>
             </div>
           </div>
         </main>

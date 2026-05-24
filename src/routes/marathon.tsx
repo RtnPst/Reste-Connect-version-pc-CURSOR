@@ -417,48 +417,51 @@ function MarathonPage() {
       score,
       total: answeredCount,
     });
+    const accuracy = answeredCount > 0 ? score / answeredCount : 0;
+    const editorialMessage =
+      accuracy >= 0.7
+        ? "Beau fil — tu repars avec de la matière."
+        : accuracy >= 0.4
+          ? "Session posée : le rythme marathon, c’est aussi s’arrêter."
+          : "Rien de grave — un autre angle t’attend quand tu veux.";
+
     return (
       <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
-        <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm">
+        <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm supports-[backdrop-filter]:bg-background/85">
           <Button variant="ghost" size="sm" className="shrink-0 gap-1 px-2" asChild>
             <Link to="/" className="flex items-center font-semibold text-muted-foreground">
               <Home className="size-4 shrink-0" aria-hidden />
               <span className="hidden sm:inline">Accueil</span>
             </Link>
           </Button>
-          <span className="min-w-0 flex-1 truncate text-center text-xs font-extrabold sm:text-sm">
-            Session marathon
+          <span className="min-w-0 flex-1 truncate text-center text-xs font-semibold text-muted-foreground sm:text-sm">
+            Ce que tu retiens · Marathon
           </span>
           <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
-            <Link to="/quiz">Quiz</Link>
+            <Link to="/play">Jouer</Link>
           </Button>
         </header>
-        <main className="container mx-auto w-full min-w-0 max-w-2xl flex-1 overflow-y-auto overflow-x-clip px-4 py-8 text-center sm:px-6 sm:py-10">
-          <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 shadow-[var(--shadow-card)]">
-            <h1 className="text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl mb-3">
-              Fin de session — merci d’avoir tenu.
+        <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
+          <div className="quiz-result-card animate-scale-in rounded-3xl border-2 border-border bg-card p-6 text-center shadow-[var(--shadow-card)] sm:p-10">
+            <h1 className="mx-auto max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+              {editorialMessage}
             </h1>
-            <p className="text-muted-foreground mb-1">
-              Questions parcourues :{" "}
-              <span className="font-semibold text-foreground">{answeredCount}</span>
-            </p>
-            <p className="text-muted-foreground mb-4">
-              Bonnes réponses : <span className="font-semibold text-foreground">{score}</span>
-            </p>
-            <p className="text-sm sm:text-base font-semibold text-success mb-2">
-              +{xpGained} XP gagnés
-            </p>
-            {streakUpdated ? (
-              <p className="text-sm text-primary mb-6">Ta série du jour est notée pour cette session.</p>
-            ) : (
-              <p className="text-sm text-muted-foreground mb-6">
-                À partir de 5 questions dans la session, ça compte pour ta série du jour.
-              </p>
-            )}
-            <p className="mb-3 text-sm font-medium leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-foreground/90 sm:text-base">
               {nextAction.reason}
             </p>
-              <Button asChild size="lg" variant="accent" className="mb-4 w-full">
+            <p className="mt-5 text-xs font-medium text-muted-foreground sm:text-sm">
+              {score} / {answeredCount} bonnes réponses
+              {xpGained !== null ? <> · +{xpGained} XP</> : null}
+              {streakUpdated ? " · série du jour notée" : null}
+            </p>
+            {!streakUpdated && answeredCount < 5 ? (
+              <p className="mt-1 text-[11px] text-muted-foreground/80">
+                À partir de 5 questions, la session compte pour la série du jour.
+              </p>
+            ) : null}
+
+            <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-3">
+              <Button asChild size="lg" variant="accent" className="min-w-0 whitespace-normal">
                 <Link
                   to={nextAction.to}
                   onClick={() => {
@@ -478,19 +481,34 @@ function MarathonPage() {
                   }}
                 >
                   {nextAction.label}
-                  <ArrowRight />
+                  <ArrowRight className="size-4" />
                 </Link>
               </Button>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Button asChild size="lg" variant="accent">
-                <Link to="/">
-                  <Home />
-                  Retour à l'accueil
-                </Link>
+              <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
+                <Link to="/marathon">Nouvelle session</Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link to="/quiz">Un quiz thème</Link>
-              </Button>
+            </div>
+
+            <div className="mx-auto mt-5 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
+              <Link
+                to="/play"
+                className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                Jouer
+              </Link>
+              <Link
+                to="/quiz"
+                className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                Un thème
+              </Link>
+              <Link
+                to="/"
+                className="inline-flex items-center gap-1 font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                <Home className="size-3.5" aria-hidden />
+                Accueil
+              </Link>
             </div>
           </div>
         </main>
