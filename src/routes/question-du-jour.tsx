@@ -366,7 +366,7 @@ function DailyQuestionPage() {
             </span>
             <p className="text-xs font-bold uppercase tracking-widest text-success/90">Question du jour</p>
             <h1 className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
-              C’est bon pour aujourd’hui
+              Capté pour aujourd’hui
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
               Tu as déjà fait le fil du jour. Reviens demain si l’envie t’y prend — série et XP restent sur ton profil.
@@ -558,7 +558,7 @@ function DailyQuestionPage() {
             Partager
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link to="/niveaux">Explorer</Link>
+            <Link to="/play">Découvrir un thème</Link>
           </Button>
           <Button asChild variant="ghost" size="lg">
             <Link to="/">

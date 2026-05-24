@@ -455,12 +455,10 @@ function MarathonPage() {
                 À partir de 5 questions dans la session, ça compte pour ta série du jour.
               </p>
             )}
-            <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/50 px-4 py-3 text-left">
-              <p className="text-[11px] font-semibold uppercase tracking-wide text-primary/90">
-                Une idée pour la suite
-              </p>
-              <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
-              <Button asChild size="lg" variant="accent" className="mt-3 w-full">
+            <p className="mb-3 text-sm font-medium leading-relaxed text-muted-foreground">
+              {nextAction.reason}
+            </p>
+              <Button asChild size="lg" variant="accent" className="mb-4 w-full">
                 <Link
                   to={nextAction.to}
                   onClick={() => {
@@ -483,7 +481,6 @@ function MarathonPage() {
                   <ArrowRight />
                 </Link>
               </Button>
-            </div>
             <div className="grid gap-3 sm:grid-cols-2">
               <Button asChild size="lg" variant="accent">
                 <Link to="/">

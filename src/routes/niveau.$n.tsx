@@ -498,12 +498,9 @@ function LevelPage() {
                 Palier {levelUpTo} débloqué.
               </p>
             )}
-            <div className="mb-4 rounded-2xl border border-primary/25 bg-primary-soft/50 px-4 py-3 text-left">
-              <p className="text-[11px] font-semibold uppercase tracking-wide text-primary/90">
-                Une idée pour la suite
-              </p>
-              <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
-            </div>
+            <p className="mb-4 text-sm font-medium leading-relaxed text-muted-foreground">
+              {nextAction.reason}
+            </p>
             <div className="grid gap-3 sm:grid-cols-2">
               {passed && level < TOTAL_LEVELS ? (
                 <Button

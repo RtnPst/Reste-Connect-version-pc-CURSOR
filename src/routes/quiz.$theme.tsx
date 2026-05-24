@@ -609,6 +609,29 @@ function ResultsScreen({
     .map((a, i) => ({ a, q: questions[i] }))
     .filter(({ a }) => a.chosen !== a.correct);
 
+  const handleShare = async () => {
+    const url = window.location.origin;
+    const shareData = {
+      title: "Tu captes ?",
+      text: `J’ai fait un quiz « ${themeMeta.short} » sur Tu captes ? (${score}/${total}).`,
+      url,
+    };
+    try {
+      if (navigator.share && navigator.canShare?.(shareData)) {
+        await navigator.share(shareData);
+        return;
+      }
+    } catch (e) {
+      if ((e as Error).name === "AbortError") return;
+    }
+    try {
+      await navigator.clipboard.writeText(`${shareData.text} ${url}`);
+      toast.success("Lien copié dans le presse-papiers");
+    } catch {
+      toast.error("Impossible de copier le lien");
+    }
+  };
+
   return (
     <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       <Confetti active={percentage >= 70} />
@@ -619,8 +642,8 @@ function ResultsScreen({
             <span className="hidden sm:inline">Accueil</span>
           </Link>
         </Button>
-        <span className="min-w-0 flex-1 truncate text-center text-xs font-extrabold text-foreground sm:text-sm">
-          Résultats · {themeMeta.emoji} {themeMeta.short}
+        <span className="min-w-0 flex-1 truncate text-center text-xs font-semibold text-muted-foreground sm:text-sm">
+          Ce que tu retiens · {themeMeta.emoji} {themeMeta.short}
         </span>
         <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
           <Link to="/quiz">Thèmes</Link>
@@ -628,46 +651,32 @@ function ResultsScreen({
       </header>
       <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
         <div className="quiz-result-card bg-card rounded-3xl border-2 border-border p-6 sm:p-10 shadow-[var(--shadow-card)] text-center mb-6 animate-scale-in">
-          <h1 className="text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight mb-2">{message}</h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-4">
-            Réponses justes :
-            {" "}
-            <span className="font-extrabold text-primary animate-fade-in">
-              {score} / {total}
-            </span>
+          <h1 className="mx-auto max-w-lg text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
+            {message}
+          </h1>
+          <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-foreground/90 sm:text-base">
+            {nextAction.reason}
           </p>
-          <div
-            className={`mx-auto mb-6 max-w-md rounded-2xl border px-4 py-3 animate-fade-in ${
-              dailyBonusApplied
-                ? "border-accent/60 bg-accent-soft/70 shadow-[0_0_0_1px_rgba(245,158,11,0.35),0_14px_24px_-20px_rgba(245,158,11,0.75)]"
-                : "border-success/35 bg-success-soft/70"
-            }`}
-          >
-            <p className="text-sm sm:text-base font-extrabold text-success">+{xpGained ?? 0} XP gagnes</p>
-            <p className="mt-1 text-sm font-medium text-foreground/80">{progressMessage}</p>
-            {dailyBonusApplied && (
-              <p className="mt-1 text-xs sm:text-sm font-semibold text-accent-foreground">
-                Bonus du jour actif.
-              </p>
-            )}
-            {luckyBonusApplied && (
-              <p className="mt-1 text-xs sm:text-sm font-semibold text-primary-foreground">
-                Question bonus : XP doublée sur celle-ci.
-              </p>
-            )}
-          </div>
-          {levelUpTo !== null && (
-            <p className="text-sm sm:text-base font-semibold text-primary mb-6">
-              Palier {levelUpTo} débloqué.
-            </p>
-          )}
+          <p className="mt-5 text-xs font-medium text-muted-foreground sm:text-sm">
+            {score} / {total} bonnes réponses
+            {xpGained !== null ? (
+              <>
+                {" "}
+                · +{xpGained} XP
+                {dailyBonusApplied ? " · bonus du jour" : null}
+                {luckyBonusApplied ? " · question bonus" : null}
+              </>
+            ) : null}
+          </p>
+          {xpGained !== null ? (
+            <p className="mt-1 text-[11px] text-muted-foreground/80">{progressMessage}</p>
+          ) : null}
+          {levelUpTo !== null ? (
+            <p className="mt-2 text-xs font-medium text-primary/90">Palier {levelUpTo} débloqué.</p>
+          ) : null}
 
-          <div className="mx-auto mb-4 max-w-lg rounded-2xl border border-primary/25 bg-primary-soft/50 px-4 py-3 text-left">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-primary/90">
-              Une idée pour la suite
-            </p>
-            <p className="mt-1 text-sm font-semibold text-foreground">{nextAction.reason}</p>
-            <Button asChild size="lg" variant="accent" className="mt-3 w-full min-w-0 whitespace-normal">
+          <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-3">
+            <Button asChild size="lg" variant="accent" className="min-w-0 whitespace-normal">
               <Link
                 to={nextAction.to}
                 onClick={() => {
@@ -690,60 +699,34 @@ function ResultsScreen({
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
-          </div>
-
-          <div className="mx-auto mb-3 grid min-w-0 max-w-lg grid-cols-1 gap-3 sm:grid-cols-2">
-            <Button onClick={onReplay} size="lg" variant="accent" className="min-w-0 whitespace-normal">
+            <Button onClick={onReplay} size="lg" variant="outline" className="min-w-0 whitespace-normal">
               <RotateCcw />
               Rejouer
             </Button>
-            <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
-              <Link to="/quiz">
-                Continuer
-                <ArrowRight className="size-4" />
-              </Link>
-            </Button>
           </div>
-          <div className="mx-auto mb-3 grid min-w-0 max-w-lg grid-cols-1 gap-3 sm:grid-cols-2">
-            <Button
-              onClick={async () => {
-                const url = window.location.origin;
-                const shareData = {
-                  title: "Tu captes ?",
-                  text: `J’ai fait un quiz « ${themeMeta.short} » sur Tu captes ? (${score}/${total}).`,
-                  url,
-                };
-                try {
-                  if (navigator.share && navigator.canShare?.(shareData)) {
-                    await navigator.share(shareData);
-                    return;
-                  }
-                } catch (e) {
-                  if ((e as Error).name === "AbortError") return;
-                }
-                try {
-                  await navigator.clipboard.writeText(`${shareData.text} ${url}`);
-                  toast.success("Lien copié dans le presse-papiers");
-                } catch {
-                  toast.error("Impossible de copier le lien");
-                }
-              }}
-              size="lg"
-              variant="default"
-              className="min-w-0 whitespace-normal"
+
+          <div className="mx-auto mt-5 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
+            <button
+              type="button"
+              onClick={() => void handleShare()}
+              className="inline-flex items-center gap-1.5 font-semibold text-primary underline-offset-4 hover:underline"
             >
-              <Share2 />
+              <Share2 className="size-3.5" aria-hidden />
               Partager
-            </Button>
-            <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
-              <Link to="/quiz">Autre thème</Link>
-            </Button>
-            <Button asChild size="lg" variant="ghost" className="min-w-0 whitespace-normal">
-              <Link to="/">
-                <Home />
-                Accueil
-              </Link>
-            </Button>
+            </button>
+            <Link
+              to="/quiz"
+              className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            >
+              Autre thème
+            </Link>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1 font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            >
+              <Home className="size-3.5" aria-hidden />
+              Accueil
+            </Link>
           </div>
 
           {!isLoggedIn && (

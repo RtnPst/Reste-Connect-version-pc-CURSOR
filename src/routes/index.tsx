@@ -82,7 +82,7 @@ function HomePage() {
   const missionTitle = !user
     ? "Par où commencer"
     : dailyCompletedToday
-      ? "Fil du jour : fait"
+      ? "Capté pour aujourd’hui"
       : shouldProtectStreak
         ? "Série en douceur"
         : "Culture du jour";
@@ -96,7 +96,7 @@ function HomePage() {
   const missionCtaTo = !user
     ? "/quiz"
     : dailyCompletedToday
-      ? "/niveaux"
+      ? "/play"
       : "/question-du-jour";
   /** Logged-in flow that opens the same daily run as Jouer → Daily */
   const missionIsDaily = Boolean(user && !dailyCompletedToday);
@@ -105,7 +105,7 @@ function HomePage() {
   const continueLabel = !user
     ? "Je teste"
     : dailyCompletedToday
-      ? "Explorer les niveaux"
+      ? "Découvrir un thème"
       : "Ouvrir la question du jour";
 
   return (
@@ -116,7 +116,7 @@ function HomePage() {
         <section className="container mx-auto max-w-5xl px-4 pt-4 sm:px-6 sm:pt-6 [@media(max-height:780px)]:pt-2">
           <div className="mx-auto max-w-3xl animate-fade-in space-y-3 rounded-[2rem] border border-border/60 bg-card/70 px-4 py-4 text-center shadow-[var(--shadow-card)] backdrop-blur-sm sm:px-7 sm:py-5 [@media(max-height:780px)]:space-y-2 [@media(max-height:780px)]:rounded-[1.7rem] [@media(max-height:780px)]:px-3 [@media(max-height:780px)]:py-3.5">
             <span className="inline-flex items-center justify-center rounded-full border border-accent/35 bg-accent/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/90 sm:text-[13px]">
-              Culture web · en quiz
+              Culture web
             </span>
             <div className="relative mx-auto w-full max-w-2xl overflow-hidden rounded-3xl border border-violet-400/28 bg-[#111a36]/82 px-4 py-4 shadow-[0_0_0_1px_rgba(139,92,246,0.2),0_16px_34px_-24px_rgba(168,85,247,0.55)] sm:px-6 sm:py-5 [@media(max-height:780px)]:rounded-2xl [@media(max-height:780px)]:px-3.5 [@media(max-height:780px)]:py-3">
               <span
