@@ -98,12 +98,6 @@ function HomePage() {
     : dailyCompletedToday
       ? "/niveaux"
       : "/question-du-jour";
-  const missionCta = !user
-    ? "Lancer mon premier run"
-    : dailyCompletedToday
-      ? "Explorer les niveaux"
-      : "Ouvrir la question du jour";
-
   /** Logged-in flow that opens the same daily run as Jouer → Daily */
   const missionIsDaily = Boolean(user && !dailyCompletedToday);
 
@@ -185,20 +179,6 @@ function HomePage() {
                       </span>
                     )}
                   </div>
-              <div className="mt-2.5 [@media(max-height:780px)]:mt-2">
-                <Button
-                  asChild
-                  size="sm"
-                  variant="default"
-                  className={cn(
-                    "rounded-full px-4",
-                    missionIsDaily &&
-                      "border border-emerald-800/55 bg-linear-to-br from-emerald-950 via-emerald-600 to-emerald-950 text-emerald-50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.16),0_0_0_1px_rgba(4,120,87,0.32),0_0_26px_-8px_rgba(52,211,153,0.32),0_4px_14px_-8px_rgba(6,78,59,0.55)] hover:via-emerald-500 hover:brightness-[1.04] hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.18),0_0_0_1px_rgba(4,120,87,0.38),0_0_32px_-6px_rgba(52,211,153,0.28)] active:brightness-95",
-                  )}
-                >
-                  <Link to={missionCtaTo}>{missionCta}</Link>
-                </Button>
-              </div>
                 </div>
               </div>
             </div>
