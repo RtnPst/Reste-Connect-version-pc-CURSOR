@@ -406,7 +406,7 @@ function LevelPage() {
               : "Termine les niveaux précédents pour ouvrir celui-ci."}
           </p>
           <Button asChild variant="accent" size="lg">
-            <Link to="/niveaux">Retour au parcours</Link>
+            <Link to="/niveaux">Retour au chemin</Link>
           </Button>
         </main>
       </div>
@@ -431,7 +431,7 @@ function LevelPage() {
         <main className="flex min-w-0 w-full flex-1 flex-col items-center justify-center gap-4 overflow-x-clip px-4">
           <p className="text-lg text-destructive">{error}</p>
           <Button asChild variant="outline">
-            <Link to="/niveaux">Retour au parcours</Link>
+            <Link to="/niveaux">Retour au chemin</Link>
           </Button>
         </main>
       </div>
@@ -501,7 +501,7 @@ function LevelPage() {
             Ce que tu retiens · Niveau {level}
           </span>
           <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
-            <Link to="/niveaux">Parcours</Link>
+            <Link to="/niveaux">Le chemin</Link>
           </Button>
         </header>
         <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
@@ -605,7 +605,7 @@ function LevelPage() {
                 </Button>
               ) : (
                 <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
-                  <Link to="/niveaux">Voir le parcours</Link>
+                  <Link to="/niveaux">Voir le chemin</Link>
                 </Button>
               )}
             </div>
@@ -699,7 +699,7 @@ function LevelPage() {
           to="/niveaux"
           className="text-xs text-muted-foreground underline-offset-4 hover:underline sm:text-sm"
         >
-          Retour au parcours
+          Retour au chemin
         </Link>
       }
     />

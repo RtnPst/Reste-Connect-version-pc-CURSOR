@@ -1,100 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ChevronRight, Lock, Star } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
 import { JourneyPage } from "@/components/JourneyPage";
+import { PathTrail } from "@/components/PathTrail";
 import { Button } from "@/components/ui/button";
-import { RankBadge } from "@/components/RankBadge";
 import { useAuth } from "@/contexts/AuthContext";
 import {
   TOTAL_LEVELS,
   QUESTIONS_PER_LEVEL,
-  RANKS,
   getEffectiveUnlockedLevel,
+  getRankForLevel,
   loadProgress,
   mergeProgress,
   saveProgress,
   type LevelProgress,
-  type Rank,
 } from "@/lib/levels";
 
 export const Route = createFileRoute("/niveaux")({
   head: () => ({
     meta: [
-      { title: "Parcours par niveaux — Tu captes ?" },
+      { title: "Le chemin — Tu captes ?" },
       {
         name: "description",
         content:
-          "Avance niveau par niveau, tous thèmes mélangés — une progression calme, sans pression.",
+          "Avance étape par étape sur un fil culturel — progression calme, tous thèmes mélangés.",
       },
     ],
   }),
   component: LevelsPage,
 });
-
-function LevelCard({
-  n,
-  rank,
-  progress,
-}: {
-  n: number;
-  rank: Rank;
-  progress: LevelProgress;
-}) {
-  const isUnlocked = n <= progress.unlocked;
-  const best = progress.best[n] ?? 0;
-  const stars =
-    best >= QUESTIONS_PER_LEVEL
-      ? 3
-      : best >= 4
-        ? 2
-        : best >= Math.ceil(QUESTIONS_PER_LEVEL * 0.7)
-          ? 1
-          : 0;
-
-  const content = (
-    <div
-      className={`relative flex aspect-square flex-col items-center justify-center rounded-2xl border p-3 text-center transition-colors duration-200 sm:p-3.5 ${
-        isUnlocked
-          ? "cursor-pointer border-border bg-card hover:border-primary/35"
-          : "cursor-not-allowed border-border/60 bg-card/40 opacity-55"
-      }`}
-      style={
-        isUnlocked
-          ? {
-              borderColor: `color-mix(in oklab, var(--${rank.colorVar}) 28%, var(--border))`,
-            }
-          : undefined
-      }
-    >
-      <RankBadge rank={rank} level={n} size="sm" className="mb-1" />
-      <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-        N{n}
-      </span>
-      {!isUnlocked && (
-        <Lock className="absolute top-2 right-2 size-3.5 text-muted-foreground" aria-hidden />
-      )}
-      {isUnlocked && stars > 0 && (
-        <div className="mt-1 flex gap-0.5">
-          {[1, 2, 3].map((s) => (
-            <Star
-              key={s}
-              className={`size-3 ${s <= stars ? "fill-warning text-warning" : "text-muted-foreground/25"}`}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-
-  return isUnlocked ? (
-    <Link to="/niveau/$n" params={{ n: String(n) }} aria-label={`Niveau ${n} (${rank.label})`}>
-      {content}
-    </Link>
-  ) : (
-    <div aria-label={`Niveau ${n}, verrouillé`}>{content}</div>
-  );
-}
 
 function LevelsPage() {
   const { user, profile } = useAuth();
@@ -114,83 +49,61 @@ function LevelsPage() {
     setProgress(merged);
   }, [user, profile]);
 
-  const current = getEffectiveUnlockedLevel(!!user, profile);
+  const frontier = getEffectiveUnlockedLevel(!!user, profile);
+  const rankHere = getRankForLevel(frontier);
 
   return (
     <JourneyPage>
       <AppHeader />
       <main className="container mx-auto w-full max-w-lg flex-1 px-4 py-5 sm:px-6 sm:py-7">
-        <header className="mb-6 animate-fade-in">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Progression</p>
+        <header className="mb-5 animate-fade-in">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Le fil</p>
           <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
             Le chemin
           </h1>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            {QUESTIONS_PER_LEVEL} questions, tous les thèmes. Quatre bonnes réponses ouvrent la suite — à ton rythme.
+            Tu avances sur une ligne d’étapes — pas un tableau de score. {QUESTIONS_PER_LEVEL} questions par
+            passage, tous les angles du web.
           </p>
-          <div className="journey-panel mt-4 p-3.5 sm:p-4">
-            <p className="text-xs font-semibold text-muted-foreground">Tu es ici</p>
-            <p className="mt-1 text-base font-extrabold text-foreground">
-              Étape {current}{" "}
-              <span className="font-medium text-muted-foreground">/ {TOTAL_LEVELS}</span>
+          <div className="journey-panel mt-4 px-4 py-3.5 sm:px-5 sm:py-4">
+            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-primary/80">Position</p>
+            <p className="mt-1 text-base font-extrabold leading-snug text-foreground">
+              {rankHere.label}
+              <span className="font-medium text-muted-foreground"> · étape {frontier}</span>
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {frontier >= TOTAL_LEVELS
+                ? "Tu as atteint l’horizon prévu — rejoue une étape si tu veux affiner."
+                : "La suite se dévoile en douceur, une étape à la fois."}
             </p>
             <div className="journey-filament mt-2.5" aria-hidden>
-              <span style={{ width: `${Math.round((current / TOTAL_LEVELS) * 100)}%` }} />
+              <span style={{ width: `${Math.round((frontier / TOTAL_LEVELS) * 100)}%` }} />
             </div>
           </div>
           {!user && (
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-              Sans compte, tu commences au niveau 1. Connecte-toi pour retrouver ta progression.
+              Sans compte, tu commences à l’étape 1. Connecte-toi pour retrouver ta position sur le chemin.
             </p>
           )}
         </header>
 
-        <div className="space-y-8">
-          {RANKS.map((rank) => {
-            const levels = Array.from(
-              { length: rank.toLevel - rank.fromLevel + 1 },
-              (_, i) => rank.fromLevel + i,
-            );
-            const v = rank.colorVar;
+        <PathTrail progress={progress} frontierLevel={frontier} />
 
-            return (
-              <section key={rank.key} aria-labelledby={`rank-heading-${rank.key}`}>
-                <div
-                  className="journey-panel mb-3 px-3 py-2.5 text-center"
-                  style={{
-                    borderColor: `color-mix(in oklab, var(--${v}) 24%, var(--border))`,
-                    backgroundColor: `color-mix(in oklab, var(--${v}) 8%, var(--card))`,
-                  }}
-                >
-                  <h2
-                    id={`rank-heading-${rank.key}`}
-                    title={rank.hint}
-                    className="text-base font-bold tracking-tight sm:text-lg"
-                    style={{ color: `var(--${v})` }}
-                  >
-                    {rank.label}
-                    <span className="ml-1.5 text-sm font-medium text-muted-foreground">
-                      N{rank.fromLevel}–{rank.toLevel}
-                    </span>
-                  </h2>
-                </div>
-
-                <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-5">
-                  {levels.map((n) => (
-                    <LevelCard key={n} n={n} rank={rank} progress={progress} />
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
-
-        <div className="mt-8 pb-4">
+        <div className="mt-6 flex flex-col gap-2 pb-4">
+          <Button asChild variant="accent" size="lg" className="w-full min-h-[52px]">
+            <Link to="/niveau/$n" params={{ n: String(frontier) }}>
+              Continuer l’étape {frontier}
+              <ChevronRight className="size-4" aria-hidden />
+            </Link>
+          </Button>
           <Button variant="outline" className="w-full justify-between" asChild>
             <Link to="/play">
-              Retour à Jouer
+              Retour au carrefour
               <ChevronRight className="size-4 opacity-70" aria-hidden />
             </Link>
+          </Button>
+          <Button variant="ghost" className="w-full text-muted-foreground" asChild>
+            <Link to="/parcours">Voir ton parcours</Link>
           </Button>
         </div>
       </main>
