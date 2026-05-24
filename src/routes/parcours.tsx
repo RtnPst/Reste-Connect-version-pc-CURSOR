@@ -180,13 +180,13 @@ function ProfilePage() {
         <section className="mb-6 rounded-2xl border border-border/80 bg-card/90 p-4 sm:p-5">
           <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">En ce moment</p>
           <p className="mt-2 text-lg font-extrabold leading-snug">
-            Palier {level}
-            <span className="font-medium text-muted-foreground"> · {xpInLevel} / 100 vers le suivant</span>
+            Niveau {level}
+            <span className="font-medium text-muted-foreground"> · {xpInLevel} / 100 vers la suite</span>
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
             Série {profile.current_streak} jour{profile.current_streak > 1 ? "s" : ""}
             {profile.longest_streak > 0 ? ` · record ${profile.longest_streak} j` : null}
-            {stats.totalAttempts > 0 ? ` · ${stats.avgScore}% de précision (thèmes)` : null}
+            {stats.totalAttempts > 0 ? ` · ${stats.avgScore}% de bonnes réponses (thèmes)` : null}
           </p>
           <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted/50">
             <div className="h-full bg-primary/80 transition-all" style={{ width: `${xpInLevel}%` }} />
@@ -266,8 +266,8 @@ function ProfilePage() {
         <details className="mb-6 rounded-2xl border border-border/60 bg-card/50 px-4 py-3 text-sm">
           <summary className="cursor-pointer font-semibold text-foreground/90">Détail des sessions</summary>
           <p className="mt-3 text-muted-foreground">
-            {gameStats.totalAttempts} session{gameStats.totalAttempts > 1 ? "s" : ""} · précision moyenne{" "}
-            {gameStats.avgScore}% · {gameStats.perfect} sans faute · {profile.total_xp} XP au total
+            {gameStats.totalAttempts} session{gameStats.totalAttempts > 1 ? "s" : ""} · moyenne{" "}
+            {gameStats.avgScore}% de bonnes réponses · {gameStats.perfect} sans faute · {profile.total_xp} XP au total
           </p>
           {recentAttempts.length > 0 ? (
             <div className="mt-2 flex flex-wrap gap-2">

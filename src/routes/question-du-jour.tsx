@@ -515,7 +515,7 @@ function DailyQuestionPage() {
           Question du jour
         </span>
         <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
-          <Link to="/quiz">Quiz</Link>
+          <Link to="/play">Jouer</Link>
         </Button>
       </header>
       <main className="container mx-auto flex w-full min-w-0 max-w-3xl flex-1 flex-col overflow-y-auto px-4 py-8 sm:py-10">
@@ -544,28 +544,24 @@ function DailyQuestionPage() {
             {decodeText}
           </p>
           {xpGained !== null ? (
-            <p className="mt-5 text-xs font-medium text-muted-foreground">+{xpGained} XP</p>
+            <p className="mt-6 text-[11px] text-muted-foreground/75">+{xpGained} XP gagnés</p>
           ) : null}
         </div>
-        <div className="grid gap-3 sm:grid-cols-3">
-          <Button
-            onClick={handleShare}
-            variant="accent"
-            size="lg"
-            className="min-h-[56px] text-base font-semibold shadow-[var(--shadow-card)]"
-          >
-            <Share2 />
-            Partager
-          </Button>
-          <Button asChild variant="outline" size="lg">
+        <div className="flex flex-col gap-2.5">
+          <Button asChild variant="accent" size="lg" className="min-h-[56px]">
             <Link to="/play">Découvrir un thème</Link>
           </Button>
-          <Button asChild variant="ghost" size="lg">
-            <Link to="/">
-              <Home />
-              Accueil
-            </Link>
+          <Button onClick={handleShare} variant="outline" size="lg" className="min-h-[52px]">
+            <Share2 />
+            Partager ce moment
           </Button>
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center gap-1 py-2 text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+          >
+            <Home className="size-3.5" aria-hidden />
+            Accueil
+          </Link>
         </div>
       </main>
     </div>

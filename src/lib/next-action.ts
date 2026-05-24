@@ -24,13 +24,13 @@ export function getNextActionSuggestion(input: NextActionInput): NextActionSugge
       input.passed ?? (input.total > 0 ? (input.score / input.total) * 100 >= 70 : false);
     if (passed && level < totalLevels) {
       return {
-        label: "Ouvrir le palier suivant",
+        label: "Passer au niveau suivant",
         to: `/niveau/${level + 1}`,
-        reason: "Le palier suivant est là quand tu as envie de continuer.",
+        reason: "Le niveau suivant t’attend quand tu veux continuer.",
       };
     }
     return {
-      label: "Reprendre ce palier",
+      label: "Revoir ce niveau",
       to: `/niveau/${level}`,
       reason: "Tu peux repasser sur ce fil sans te presser.",
     };
@@ -46,7 +46,7 @@ export function getNextActionSuggestion(input: NextActionInput): NextActionSugge
       };
     }
     return {
-      label: input.isLoggedIn ? "Voir les paliers par niveau" : "Choisir un thème",
+      label: input.isLoggedIn ? "Parcours par niveaux" : "Choisir un thème",
       to: input.isLoggedIn ? "/niveaux" : "/quiz",
       reason: "Un format plus cadré peut compléter ce moment.",
     };
@@ -55,7 +55,7 @@ export function getNextActionSuggestion(input: NextActionInput): NextActionSugge
   const percentage = input.total > 0 ? (input.score / input.total) * 100 : 0;
   if (input.isLoggedIn && percentage >= 70) {
     return {
-      label: "Ouvrir les paliers par niveau",
+      label: "Parcours par niveaux",
       to: "/niveaux",
       reason: "Un autre angle : les niveaux mélangent les thèmes.",
     };

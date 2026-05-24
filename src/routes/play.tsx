@@ -148,7 +148,7 @@ function PlayPage() {
             </span>
             <span className="min-w-0 flex-1 text-left">
               <p className="text-sm font-bold">Run rapide</p>
-              <p className="text-xs text-muted-foreground">Paliers mélangés — sans choisir un thème.</p>
+              <p className="text-xs text-muted-foreground">Niveaux mélangés — sans choisir un thème.</p>
             </span>
             <ChevronRight
               className="size-4 shrink-0 text-muted-foreground/70 transition-transform group-hover:translate-x-0.5"

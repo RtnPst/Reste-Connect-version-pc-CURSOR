@@ -222,7 +222,7 @@ function MarathonPage() {
         setShowCelebration(true);
         playFanfare(sfxOn);
         toast.success(
-          `Palier ${newScore} bonnes réponses — chouette. L’XP s’ajoute quand tu termines la session.`,
+          `${newScore} bonnes réponses d’affilée — la progression s’enregistre en fin de session.`,
         );
         setTimeout(() => setShowCelebration(false), 3500);
       }
@@ -442,25 +442,26 @@ function MarathonPage() {
           </Button>
         </header>
         <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
-          <div className="quiz-result-card animate-scale-in rounded-3xl border-2 border-border bg-card p-6 text-center shadow-[var(--shadow-card)] sm:p-10">
-            <h1 className="mx-auto max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+          <div className="quiz-result-card animate-scale-in rounded-3xl border border-border/80 bg-card p-6 text-center shadow-[var(--shadow-soft)] sm:p-10">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Marathon</p>
+            <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
               {editorialMessage}
             </h1>
-            <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-foreground/90 sm:text-base">
+            <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
               {nextAction.reason}
             </p>
-            <p className="mt-5 text-xs font-medium text-muted-foreground sm:text-sm">
+            <p className="mt-6 text-[11px] leading-relaxed text-muted-foreground/75">
               {score} / {answeredCount} bonnes réponses
-              {xpGained !== null ? <> · +{xpGained} XP</> : null}
+              {xpGained !== null ? <> · +{xpGained} XP gagnés</> : null}
               {streakUpdated ? " · série du jour notée" : null}
             </p>
             {!streakUpdated && answeredCount < 5 ? (
-              <p className="mt-1 text-[11px] text-muted-foreground/80">
+              <p className="mt-1 text-[11px] text-muted-foreground/70">
                 À partir de 5 questions, la session compte pour la série du jour.
               </p>
             ) : null}
 
-            <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-3">
+            <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-2.5">
               <Button asChild size="lg" variant="accent" className="min-w-0 whitespace-normal">
                 <Link
                   to={nextAction.to}
@@ -489,22 +490,22 @@ function MarathonPage() {
               </Button>
             </div>
 
-            <div className="mx-auto mt-5 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
+            <div className="mx-auto mt-4 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
               <Link
                 to="/play"
-                className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                className="underline-offset-4 hover:text-foreground hover:underline"
               >
                 Jouer
               </Link>
               <Link
                 to="/quiz"
-                className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                className="underline-offset-4 hover:text-foreground hover:underline"
               >
                 Un thème
               </Link>
               <Link
                 to="/"
-                className="inline-flex items-center gap-1 font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                className="inline-flex items-center gap-1 underline-offset-4 hover:text-foreground hover:underline"
               >
                 <Home className="size-3.5" aria-hidden />
                 Accueil

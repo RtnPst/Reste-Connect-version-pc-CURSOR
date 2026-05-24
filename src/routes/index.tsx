@@ -188,7 +188,7 @@ function HomePage() {
                   to="/parcours"
                   className="text-xs font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline sm:text-sm"
                 >
-                  Série et palier → Parcours
+                  Série et progression → Parcours
                 </Link>
               ) : null}
             </div>

@@ -24,7 +24,7 @@ export const Route = createFileRoute("/niveaux")({
       {
         name: "description",
         content:
-          "Avance palier par palier, tous thèmes mélangés — une progression calme, sans pression.",
+          "Avance niveau par niveau, tous thèmes mélangés — une progression calme, sans pression.",
       },
     ],
   }),

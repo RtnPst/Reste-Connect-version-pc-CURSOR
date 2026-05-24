@@ -20,6 +20,7 @@ import {
   rankCandidatesByConceptFreshness,
   wouldRepeatConceptTooSoon,
 } from "@/lib/concept-runtime";
+import { excerptExplanation, getConceptLabel } from "@/lib/concept-labels";
 import { getNextActionSuggestion } from "@/lib/next-action";
 import { createAnalyticsRunId, trackEvent } from "@/lib/analytics";
 
@@ -30,6 +31,7 @@ type Question = {
   choices: string[];
   choiceOrder: number[];
   explanation: string;
+  conceptKey: string | null;
 };
 
 const QUESTION_COUNT = 10;
@@ -222,7 +224,7 @@ function QuizPage() {
           setDailyBonusApplied(progression.dailyBonusApplied);
           setLuckyBonusApplied(progression.luckyBonusApplied);
           if (progression.levelUpTo !== null) {
-            toast.success(`Niveau ${progression.levelUpTo} atteint !`);
+            toast.success(`Niveau ${progression.levelUpTo} — nouvelle étape sur ton parcours.`);
           }
           if (progression.dailyBonusApplied) {
             toast.success("🔥 Bonus du jour activé !");
@@ -586,16 +588,12 @@ function ResultsScreen({
   const percentage = Math.round((score / total) * 100);
   const message =
     percentage === 100
-      ? "Run bouclé — tout est tombé juste."
+      ? "Tu as tout capté sur ce fil."
       : percentage >= 70
-        ? "Tu repars avec une lecture solide sur ce thème."
+        ? "Tu repars avec une lecture solide."
         : percentage >= 40
           ? "Des accroches à repasser quand tu veux — c’est normal."
           : "Rien de dramatique : c’est du terrain à explorer.";
-  const progressMessage =
-    xpGained !== null
-      ? "Tu avances doucement vers le prochain palier."
-      : "Chaque quiz rapproche le prochain palier.";
   const nextAction = getNextActionSuggestion({
     mode: "theme",
     isLoggedIn,
@@ -607,11 +605,15 @@ function ResultsScreen({
     .map((a, i) => ({ a, q: questions[i] }))
     .filter(({ a }) => a.chosen !== a.correct);
 
+  const focalQuestion = wrong[0]?.q ?? questions[questions.length - 1];
+  const takeawayLabel = focalQuestion ? getConceptLabel(focalQuestion.conceptKey) : null;
+  const takeawayText = focalQuestion ? excerptExplanation(focalQuestion.explanation, 180) : null;
+
   const handleShare = async () => {
     const url = window.location.origin;
     const shareData = {
       title: "Tu captes ?",
-      text: `J’ai fait un quiz « ${themeMeta.short} » sur Tu captes ? (${score}/${total}).`,
+      text: `J’ai exploré « ${themeMeta.short} » sur Tu captes ?.`,
       url,
     };
     try {
@@ -648,32 +650,46 @@ function ResultsScreen({
         </Button>
       </header>
       <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
-        <div className="quiz-result-card bg-card rounded-3xl border-2 border-border p-6 sm:p-10 shadow-[var(--shadow-card)] text-center mb-6 animate-scale-in">
-          <h1 className="mx-auto max-w-lg text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
+        <div className="quiz-result-card mb-6 animate-scale-in rounded-3xl border border-border/80 bg-card p-6 text-center shadow-[var(--shadow-soft)] sm:p-10">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+            {themeMeta.emoji} {themeMeta.short}
+          </p>
+          <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
             {message}
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-foreground/90 sm:text-base">
+          {takeawayLabel ? (
+            <p className="mx-auto mt-4 max-w-md text-lg font-extrabold leading-snug text-foreground sm:text-xl">
+              {takeawayLabel}
+            </p>
+          ) : null}
+          {takeawayText ? (
+            <p
+              className={`mx-auto max-w-md text-sm leading-relaxed sm:text-base ${
+                takeawayLabel ? "mt-2 text-muted-foreground" : "mt-4 font-medium text-foreground/90"
+              }`}
+            >
+              {takeawayText}
+            </p>
+          ) : null}
+          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
             {nextAction.reason}
           </p>
-          <p className="mt-5 text-xs font-medium text-muted-foreground sm:text-sm">
+          <p className="mt-6 text-[11px] leading-relaxed text-muted-foreground/75">
             {score} / {total} bonnes réponses
             {xpGained !== null ? (
               <>
                 {" "}
-                · +{xpGained} XP
+                · +{xpGained} XP gagnés
                 {dailyBonusApplied ? " · bonus du jour" : null}
-                {luckyBonusApplied ? " · question bonus" : null}
+                {luckyBonusApplied ? " · bonus session" : null}
               </>
             ) : null}
           </p>
-          {xpGained !== null ? (
-            <p className="mt-1 text-[11px] text-muted-foreground/80">{progressMessage}</p>
-          ) : null}
           {levelUpTo !== null ? (
-            <p className="mt-2 text-xs font-medium text-primary/90">Palier {levelUpTo} débloqué.</p>
+            <p className="mt-1.5 text-[11px] text-primary/85">Niveau {levelUpTo} — nouvelle étape sur ton parcours.</p>
           ) : null}
 
-          <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-3">
+          <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-2.5">
             <Button asChild size="lg" variant="accent" className="min-w-0 whitespace-normal">
               <Link
                 to={nextAction.to}
@@ -699,28 +715,28 @@ function ResultsScreen({
             </Button>
             <Button onClick={onReplay} size="lg" variant="outline" className="min-w-0 whitespace-normal">
               <RotateCcw />
-              Rejouer
+              Rejouer ce thème
             </Button>
           </div>
 
-          <div className="mx-auto mt-5 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
+          <div className="mx-auto mt-4 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
             <button
               type="button"
               onClick={() => void handleShare()}
-              className="inline-flex items-center gap-1.5 font-semibold text-primary underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-1.5 text-primary underline-offset-4 hover:underline"
             >
               <Share2 className="size-3.5" aria-hidden />
               Partager
             </button>
             <Link
               to="/quiz"
-              className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              className="underline-offset-4 hover:text-foreground hover:underline"
             >
               Autre thème
             </Link>
             <Link
               to="/"
-              className="inline-flex items-center gap-1 font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              className="inline-flex items-center gap-1 underline-offset-4 hover:text-foreground hover:underline"
             >
               <Home className="size-3.5" aria-hidden />
               Accueil
@@ -728,9 +744,9 @@ function ResultsScreen({
           </div>
 
           {!isLoggedIn && (
-            <div className="mt-8 p-4 rounded-2xl bg-accent-soft border-2 border-accent/20">
-              <p className="font-semibold mb-2">
-                Compte gratuit : garde ton XP et ta série sur l’app.
+            <div className="mt-8 rounded-2xl border border-accent/20 bg-accent-soft/80 p-4">
+              <p className="mb-2 font-semibold text-sm">
+                Compte gratuit : garde ta progression et ta série sur l’app.
               </p>
               <Button asChild variant="accent" size="default">
                 <Link to="/connexion">Créer un compte gratuit</Link>
@@ -740,8 +756,8 @@ function ResultsScreen({
         </div>
 
         {wrong.length > 0 && (
-          <div className="rounded-3xl border border-border/60 bg-muted/25 p-6 sm:p-8 animate-soft-rise">
-            <h2 className="text-xl sm:text-2xl font-extrabold mb-4">À retenir ({wrong.length})</h2>
+          <div className="animate-soft-rise rounded-3xl border border-border/60 bg-muted/20 p-6 sm:p-8">
+            <h2 className="mb-4 text-lg font-extrabold sm:text-xl">Le décode ({wrong.length})</h2>
             <div className="space-y-4">
               {wrong.map(({ q }, idx) => (
                 <div
@@ -765,7 +781,7 @@ function ResultsScreen({
           </div>
         )}
 
-        <p className="text-center text-sm text-muted-foreground mt-8">Thème : {themeMeta.label}</p>
+        <p className="mt-8 text-center text-xs text-muted-foreground/70">{themeMeta.label}</p>
       </main>
     </div>
   );

@@ -144,11 +144,11 @@ export function AppHeader() {
                       "text-[10px] sm:text-[10.5px]",
                     )}
                   >
-                    Palier {level}
+                    Niveau {level}
                   </span>
                 </div>
                 <span className="sr-only">
-                  Palier {level}, environ {xpToNextPalier} XP avant le palier suivant.
+                  Niveau {level}, environ {xpToNextPalier} XP avant la suite du parcours.
                 </span>
                 <div
                   className={cn(

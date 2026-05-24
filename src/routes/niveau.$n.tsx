@@ -440,9 +440,9 @@ function LevelPage() {
     });
     const editorialMessage = passed
       ? percent === 100
-        ? `Palier ${level} — fil tenu de bout en bout.`
-        : `Palier ${level} — tu repars avec une lecture solide.`
-      : "Pas de pression : ce palier attendra ton prochain passage.";
+        ? `Niveau ${level} — fil tenu de bout en bout.`
+        : `Niveau ${level} — tu repars avec une lecture solide.`
+      : "Pas de pression : ce niveau t’attendra pour un prochain passage.";
     const primaryIsNextLevel = passed && level < TOTAL_LEVELS;
 
     const replayRun = () => {
@@ -485,43 +485,40 @@ function LevelPage() {
             </Link>
           </Button>
           <span className="min-w-0 flex-1 truncate text-center text-xs font-semibold text-muted-foreground sm:text-sm">
-            Ce que tu retiens · Palier {level}
+            Ce que tu retiens · Niveau {level}
           </span>
           <Button variant="ghost" size="sm" className="shrink-0 px-2 font-semibold" asChild>
             <Link to="/niveaux">Parcours</Link>
           </Button>
         </header>
         <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
-          <div className="quiz-result-card mb-6 animate-scale-in rounded-3xl border-2 border-border bg-card p-6 text-center shadow-[var(--shadow-card)] sm:p-10">
+          <div className="quiz-result-card mb-6 animate-scale-in rounded-3xl border border-border/80 bg-card p-6 text-center shadow-[var(--shadow-soft)] sm:p-10">
             {passed ? (
-              <div className="mb-4 flex justify-center">
+              <div className="mb-3 flex justify-center">
                 <RankBadge rank={rank} level={level} size="md" />
               </div>
             ) : null}
-            <h1 className="mx-auto max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+              Niveau {level}
+            </p>
+            <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
               {editorialMessage}
             </h1>
-            <p className="mx-auto mt-4 max-w-md text-sm font-medium leading-relaxed text-foreground/90 sm:text-base">
+            <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
               {nextAction.reason}
             </p>
-            <p className="mt-5 text-xs font-medium text-muted-foreground sm:text-sm">
+            <p className="mt-6 text-[11px] leading-relaxed text-muted-foreground/75">
               {score} / {questions.length} bonnes réponses
-              {xpGained !== null ? <> · +{xpGained} XP</> : null}
-              {passed ? (
-                <>
-                  {" "}
-                  · {rank.label}
-                  {level < TOTAL_LEVELS ? ` · palier ${level + 1} ouvert` : null}
-                </>
-              ) : (
-                <> · seuil {passRequired}/{QUESTIONS_PER_LEVEL}</>
-              )}
+              {xpGained !== null ? <> · +{xpGained} XP gagnés</> : null}
+              {passed && level < TOTAL_LEVELS ? <> · niveau {level + 1} ouvert</> : null}
             </p>
             {levelUpTo !== null ? (
-              <p className="mt-2 text-xs font-medium text-primary/90">Palier {levelUpTo} débloqué.</p>
+              <p className="mt-1.5 text-[11px] text-primary/85">
+                Niveau {levelUpTo} — nouvelle étape sur ton parcours.
+              </p>
             ) : null}
 
-            <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-3">
+            <div className="mx-auto mt-8 flex min-w-0 max-w-lg flex-col gap-2.5">
               {primaryIsNextLevel ? (
                 <Button
                   size="lg"
@@ -544,7 +541,7 @@ function LevelPage() {
                     navigate({ to: "/niveau/$n", params: { n: String(level + 1) } });
                   }}
                 >
-                  Palier suivant
+                  Niveau suivant
                   <ArrowRight className="size-4" />
                 </Button>
               ) : passed ? (
@@ -579,7 +576,7 @@ function LevelPage() {
                   onClick={replayRun}
                 >
                   <RotateCcw />
-                  Rejouer ce palier
+                  Rejouer ce niveau
                 </Button>
               )}
               {primaryIsNextLevel || passed ? (
@@ -590,7 +587,7 @@ function LevelPage() {
                   className="min-w-0 whitespace-normal"
                 >
                   <RotateCcw />
-                  Rejouer ce palier
+                  Rejouer ce niveau
                 </Button>
               ) : (
                 <Button asChild size="lg" variant="outline" className="min-w-0 whitespace-normal">
@@ -599,22 +596,22 @@ function LevelPage() {
               )}
             </div>
 
-            <div className="mx-auto mt-5 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm">
+            <div className="mx-auto mt-4 flex min-w-0 max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
               <Link
                 to="/niveaux"
-                className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                className="underline-offset-4 hover:text-foreground hover:underline"
               >
                 Parcours
               </Link>
               <Link
                 to="/play"
-                className="font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                className="underline-offset-4 hover:text-foreground hover:underline"
               >
                 Jouer
               </Link>
               <Link
                 to="/"
-                className="inline-flex items-center gap-1 font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                className="inline-flex items-center gap-1 underline-offset-4 hover:text-foreground hover:underline"
               >
                 <Home className="size-3.5" aria-hidden />
                 Accueil
