@@ -245,6 +245,13 @@ function ProfilePage() {
             </section>
           </div>
 
+          <p className="mt-6 text-center text-xs text-muted-foreground sm:text-sm">
+            <Link to="/marathon" className="font-semibold text-primary underline-offset-4 hover:underline">
+              Session marathon
+            </Link>
+            <span className="text-muted-foreground/90"> — mode long, en dehors du fil principal.</span>
+          </p>
+
         </div>
       </main>
     </div>

@@ -1,13 +1,15 @@
 import { supabase } from "@/integrations/supabase/client";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 
-type PlayableQuestion = {
+export type PlayableQuestion = {
   id: string;
   theme: ThemeKey;
   difficulty: "facile" | "moyen" | "difficile";
   question: string;
   choices: string[];
   explanation: string;
+  /** Editorial semantic key; null when not tagged in DB. */
+  conceptKey: string | null;
 };
 
 export async function getPlayableQuestions(params: {
@@ -30,6 +32,7 @@ export async function getPlayableQuestions(params: {
     question: q.question,
     choices: q.choices as string[],
     explanation: q.explanation,
+    conceptKey: q.concept_key ?? null,
   }));
 }
 

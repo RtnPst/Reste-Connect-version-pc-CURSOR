@@ -107,6 +107,13 @@ function HomePage() {
   /** Logged-in flow that opens the same daily run as Jouer → Daily */
   const missionIsDaily = Boolean(user && !dailyCompletedToday);
 
+  const continueTo = !user ? "/quiz" : missionCtaTo;
+  const continueLabel = !user
+    ? "Je teste"
+    : dailyCompletedToday
+      ? "Explorer les niveaux"
+      : "Ouvrir la question du jour";
+
   return (
     <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
@@ -203,10 +210,10 @@ function HomePage() {
                 className="h-auto min-h-[3.35rem] w-full max-w-[min(100%,22.5rem)] min-w-0 rounded-full border border-fuchsia-200/45 bg-linear-to-r from-violet-600 via-fuchsia-500 to-orange-400 px-4 py-3 text-center text-white shadow-[0_0_0_1px_rgba(244,114,182,0.3),0_0_26px_-12px_rgba(236,72,153,0.72),0_18px_34px_-18px_rgba(249,115,22,0.62)] transition-[transform,box-shadow,filter] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:scale-[1.02] hover:brightness-105 hover:shadow-[0_0_0_1px_rgba(244,114,182,0.4),0_0_32px_-10px_rgba(236,72,153,0.82),0_22px_40px_-16px_rgba(249,115,22,0.76)] active:translate-y-[1px] active:scale-[0.985] active:brightness-95 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 sm:min-h-[3.6rem] sm:max-w-[23rem] sm:px-6 sm:py-3.5 [@media(max-height:780px)]:min-h-[3rem] [@media(max-height:780px)]:px-4 [@media(max-height:780px)]:py-2.5"
               >
                 <Link
-                  to={user ? "/play" : "/quiz"}
+                  to={continueTo}
                   className="flex min-h-[2.5rem] w-full min-w-0 max-w-full items-center justify-center whitespace-normal break-words py-0.5 text-center text-[1.05rem] font-bold leading-none tracking-[-0.02em] [text-wrap:balance] sm:min-h-[2.7rem] sm:text-[1.15rem] sm:tracking-[-0.025em] [@media(max-height:780px)]:min-h-[2.2rem] [@media(max-height:780px)]:text-[0.98rem]"
                 >
-                  {user ? "Je continue" : "Je teste"}
+                  {continueLabel}
                 </Link>
               </Button>
             </div>

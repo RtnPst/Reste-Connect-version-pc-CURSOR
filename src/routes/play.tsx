@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Calendar, GraduationCap, Infinity as InfinityIcon, Swords, Trophy } from "lucide-react";
+import { Calendar, GraduationCap, Trophy } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
-import { useAuth } from "@/contexts/AuthContext";
 
 export const Route = createFileRoute("/play")({
   head: () => ({
@@ -9,7 +8,7 @@ export const Route = createFileRoute("/play")({
       { title: "Play — Tu captes ?" },
       {
         name: "description",
-        content: "Un mode, une intention — run court, thème, ou fil du jour.",
+        content: "Culture du jour, run rapide ou un thème — une intention à la fois.",
       },
     ],
   }),
@@ -17,22 +16,37 @@ export const Route = createFileRoute("/play")({
 });
 
 function PlayPage() {
-  const { user } = useAuth();
-
   return (
     <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
       <main className="container mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
-        <section className="mb-4 rounded-3xl border border-violet-400/40 bg-linear-to-br from-violet-950/70 via-indigo-950/60 to-orange-950/30 p-4 sm:p-5">
-          <p className="text-xs font-extrabold uppercase tracking-wide text-violet-200">En session</p>
-          <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight sm:text-3xl">Comment tu découpes le web ?</h1>
-          <p className="mt-1 text-sm text-slate-200">Un mode, une intention — court, thème, ou endurance.</p>
+        <section className="mb-5 rounded-3xl border border-violet-400/35 bg-linear-to-br from-violet-950/70 via-indigo-950/60 to-orange-950/25 p-4 sm:p-5">
+          <p className="text-xs font-extrabold uppercase tracking-wide text-violet-200">Jouer</p>
+          <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight sm:text-3xl">Par où tu entres ?</h1>
+          <p className="mt-1 text-sm text-slate-200">Un fil culturel, puis le reste si tu veux.</p>
         </section>
 
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+        <Link
+          to="/question-du-jour"
+          className="group mb-5 flex flex-col rounded-3xl border-2 border-success/45 bg-linear-to-br from-emerald-950/50 via-success/10 to-card/90 p-5 shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-success/60 sm:p-6"
+        >
+          <div className="mb-3 inline-flex size-12 items-center justify-center rounded-2xl bg-success-soft text-success">
+            <Calendar className="size-7" aria-hidden />
+          </div>
+          <p className="text-xs font-extrabold uppercase tracking-wide text-success">Moment culture</p>
+          <h2 className="mt-1 text-xl font-extrabold leading-tight sm:text-2xl">Culture du jour</h2>
+          <p className="mt-2 max-w-md text-sm text-muted-foreground">
+            Une question pour capter le fil du moment — la série suit si tu veux.
+          </p>
+          <p className="mt-4 text-sm font-extrabold text-success">
+            Ouvrir le fil du jour <span aria-hidden>→</span>
+          </p>
+        </Link>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <ModeCard
             to="/niveaux"
-            icon={<Trophy className="size-8" />}
+            icon={<Trophy className="size-7" />}
             title="Run rapide"
             description="Le raccourci pour te remettre dans le bain."
             actionLabel="Lancer le run"
@@ -40,41 +54,12 @@ function PlayPage() {
           />
           <ModeCard
             to="/quiz"
-            icon={<GraduationCap className="size-8" />}
-            title="Quiz par thème"
-            description="Un thème, une vibe — tu décryptes tranquille."
+            icon={<GraduationCap className="size-7" />}
+            title="Un thème"
+            description="Un angle du web — sans parcourir un catalogue."
             actionLabel="Choisir un thème"
             accent="bg-fuchsia-500/15 text-fuchsia-300"
             actionTone="text-fuchsia-300"
-          />
-          <ModeCard
-            to="/marathon"
-            icon={<InfinityIcon className="size-8" />}
-            title="Marathon"
-            description="Enchaîne tant que ça te dit — sans pression de perf."
-            actionLabel="Tenir la session"
-            accent="bg-warning-soft text-warning"
-            actionTone="text-warning"
-          />
-          <ModeCard
-            to={user ? "/duel" : "/connexion"}
-            icon={<Swords className="size-8" />}
-            title="Duel"
-            description="Face à face, score contre score."
-            actionLabel="Lancer un défi"
-            accent="bg-cyan-500/15 text-cyan-300"
-            actionTone="text-cyan-300"
-            kicker="Bientôt dispo !"
-          />
-          <ModeCard
-            to="/question-du-jour"
-            icon={<Calendar className="size-8" />}
-            title="Culture du jour"
-            description="Une question pour capter le moment — la série suit si tu veux."
-            actionLabel="Ouvrir le fil du jour"
-            accent="bg-success-soft text-success"
-            actionTone="text-success"
-            cardClassName="col-span-2 lg:col-span-1"
           />
         </div>
       </main>
@@ -90,8 +75,6 @@ function ModeCard({
   actionLabel,
   accent,
   actionTone,
-  cardClassName,
-  kicker,
 }: {
   to: string;
   icon: React.ReactNode;
@@ -100,19 +83,12 @@ function ModeCard({
   actionLabel: string;
   accent: string;
   actionTone?: string;
-  cardClassName?: string;
-  kicker?: string;
 }) {
   return (
     <Link
       to={to}
-      className={`group flex min-h-[10.75rem] flex-col rounded-2xl border border-border/70 bg-card/85 p-4 shadow-[var(--shadow-soft)] transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_14px_28px_-14px_rgba(15,23,42,0.75)] ${cardClassName ?? ""}`}
+      className="group flex min-h-[9.5rem] flex-col rounded-2xl border border-border/70 bg-card/85 p-4 shadow-[var(--shadow-soft)] transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_14px_28px_-14px_rgba(15,23,42,0.75)]"
     >
-      {kicker && (
-        <p className="mb-2 text-xs font-extrabold uppercase tracking-wide text-fuchsia-300">
-          {kicker}
-        </p>
-      )}
       <div className={`mb-2 inline-flex size-10 items-center justify-center rounded-xl ${accent}`}>
         {icon}
       </div>

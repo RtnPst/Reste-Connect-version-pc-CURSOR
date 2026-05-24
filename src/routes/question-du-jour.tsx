@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { fetchUserBadgeIds, listNewBadgeNames } from "@/lib/badge-diff";
+import { excerptExplanation, getConceptLabel } from "@/lib/concept-labels";
+import { recordConceptSeen } from "@/lib/concept-memory";
 import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { speak } from "@/lib/speech";
@@ -22,6 +24,7 @@ type Q = {
   choices: string[];
   choiceOrder: number[];
   explanation: string;
+  conceptKey: string | null;
 };
 
 export const Route = createFileRoute("/question-du-jour")({
@@ -119,6 +122,7 @@ function DailyQuestionPage() {
             question: row.question,
             ...toDisplayChoices(choicesArr),
             explanation: row.explanation,
+            conceptKey: row.conceptKey,
           });
         }
       } catch (e) {
@@ -164,6 +168,12 @@ function DailyQuestionPage() {
         answers: [
           { questionId: question.id, chosen: chosenOriginalIndex, correct: result.correct_index },
         ],
+      });
+
+      void recordConceptSeen({
+        conceptKey: question.conceptKey,
+        wasCorrect: result.correct,
+        source: "daily",
       });
 
       try {
@@ -487,6 +497,11 @@ function DailyQuestionPage() {
     );
   }
 
+  const conceptLabel = getConceptLabel(question.conceptKey);
+  const decodeText = excerptExplanation(question.explanation);
+  const recapTitle = isCorrect ? "Tu as capté" : "Pas encore";
+  const recapKicker = isCorrect ? null : "Voici le décode";
+
   return (
     <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
       <header className="flex min-h-[3rem] shrink-0 items-center gap-2 border-b border-border/70 bg-background/95 px-2 py-2 backdrop-blur-sm">
@@ -504,11 +519,33 @@ function DailyQuestionPage() {
         </Button>
       </header>
       <main className="container mx-auto flex w-full min-w-0 max-w-3xl flex-1 flex-col overflow-y-auto px-4 py-8 sm:py-10">
-        <div className="rounded-2xl border-2 border-success/30 bg-success-soft p-5 sm:p-6 mb-6 text-center">
-          <p className="font-extrabold text-lg leading-snug">Fil du jour — c’est noté</p>
-          {xpGained !== null && (
-            <p className="text-sm sm:text-base font-semibold text-success mt-2">+{xpGained} XP gagnés</p>
-          )}
+        <div
+          className={`mb-6 rounded-2xl border-2 p-5 text-center sm:p-7 ${
+            isCorrect ? "border-success/35 bg-success-soft/80" : "border-border/80 bg-card/90"
+          }`}
+        >
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+            Question du jour
+          </p>
+          <h1 className="mt-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">{recapTitle}</h1>
+          {recapKicker ? (
+            <p className="mt-1 text-sm font-semibold text-foreground/85 sm:text-base">{recapKicker}</p>
+          ) : null}
+          {conceptLabel ? (
+            <p className="mt-4 text-lg font-extrabold leading-snug text-foreground sm:text-xl">{conceptLabel}</p>
+          ) : null}
+          <p
+            className={`mt-3 text-sm leading-relaxed sm:text-base ${
+              conceptLabel
+                ? "mx-auto max-w-md text-muted-foreground"
+                : "mx-auto max-w-lg font-medium text-foreground/90"
+            }`}
+          >
+            {decodeText}
+          </p>
+          {xpGained !== null ? (
+            <p className="mt-5 text-xs font-medium text-muted-foreground">+{xpGained} XP</p>
+          ) : null}
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
           <Button
@@ -521,7 +558,7 @@ function DailyQuestionPage() {
             Partager
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link to="/quiz">Un quiz thème</Link>
+            <Link to="/niveaux">Explorer</Link>
           </Button>
           <Button asChild variant="ghost" size="lg">
             <Link to="/">

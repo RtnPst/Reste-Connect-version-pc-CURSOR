@@ -6,6 +6,8 @@
   "scripts": {
     "check:culture-pop-tags": "node scripts/check-culture-pop-tags.mjs",
     "check:supabase": "node scripts/check-supabase-connection.mjs",
+    "verify:concept-foundation": "node scripts/verify-concept-foundation.mjs",
+    "audit:concept-key-coverage": "node scripts/audit-concept-key-coverage.mjs",
     "predev": "npm run check:culture-pop-tags",
     "prebuild": "npm run check:culture-pop-tags",
     "dev": "vite dev",

@@ -13,7 +13,16 @@ export function AppBottomNav() {
 
   const tabs = [
     { to: "/", label: "Accueil", icon: Home, active: pathname === "/" },
-    { to: "/play", label: "Jouer", icon: Play, active: pathname === "/play" || pathname.startsWith("/quiz") || pathname.startsWith("/niveaux") || pathname.startsWith("/duel") || pathname.startsWith("/marathon") || pathname.startsWith("/question-du-jour") },
+    {
+      to: "/play",
+      label: "Jouer",
+      icon: Play,
+      active:
+        pathname === "/play" ||
+        pathname.startsWith("/quiz") ||
+        pathname.startsWith("/niveaux") ||
+        pathname.startsWith("/question-du-jour"),
+    },
     { to: user ? "/parcours" : "/connexion", label: "Parcours", icon: Trophy, active: pathname.startsWith("/parcours") || pathname.startsWith("/statistiques") },
     { to: user ? "/reglages" : "/connexion", label: "Profil", icon: User, active: pathname.startsWith("/reglages") || pathname.startsWith("/connexion") },
   ] as const;
