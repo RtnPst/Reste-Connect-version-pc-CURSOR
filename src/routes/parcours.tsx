@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { AppHeader } from "@/components/AppHeader";
+import { JourneyPage } from "@/components/JourneyPage";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
@@ -149,12 +150,12 @@ function ProfilePage() {
 
   if (loading || !user || !profile) {
     return (
-      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+      <JourneyPage>
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
           <p>On assemble ton fil culturel…</p>
         </main>
-      </div>
+      </JourneyPage>
     );
   }
 
@@ -164,36 +165,35 @@ function ProfilePage() {
   const visibleBadges = showAllBadges ? allBadges : allBadges.slice(0, previewBadgeCount);
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+    <JourneyPage>
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-lg flex-1 overflow-x-clip px-4 py-5 sm:px-6 sm:py-7">
-        <header className="mb-6">
+        <header className="mb-6 animate-fade-in">
           <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Ton fil</p>
           <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
             {profile.display_name ? `Salut ${profile.display_name}` : "Ton parcours"}
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Ce que tu as capté — la progression reste discrète.
+            Une trace de ce que tu captes — pas un tableau de score.
           </p>
         </header>
 
-        <section className="mb-6 rounded-2xl border border-border/80 bg-card/90 p-4 sm:p-5">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">En ce moment</p>
+        <section className="journey-panel mb-6 p-4 sm:p-5">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Où tu en es</p>
           <p className="mt-2 text-lg font-extrabold leading-snug">
             Niveau {level}
-            <span className="font-medium text-muted-foreground"> · {xpInLevel} / 100 vers la suite</span>
+            <span className="font-medium text-muted-foreground"> · {xpInLevel} % vers la suite</span>
           </p>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <div className="journey-filament mt-3" aria-hidden>
+            <span style={{ width: `${xpInLevel}%` }} />
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
             Série {profile.current_streak} jour{profile.current_streak > 1 ? "s" : ""}
             {profile.longest_streak > 0 ? ` · record ${profile.longest_streak} j` : null}
-            {stats.totalAttempts > 0 ? ` · ${stats.avgScore}% de bonnes réponses (thèmes)` : null}
           </p>
-          <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted/50">
-            <div className="h-full bg-primary/80 transition-all" style={{ width: `${xpInLevel}%` }} />
-          </div>
         </section>
 
-        <div className="mb-6 rounded-3xl border border-border/80 bg-card/90 p-5 sm:p-6">
+        <div className="journey-panel mb-6 p-5 sm:p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
             <h2 className="text-xl font-extrabold sm:text-2xl">Moments débloqués ({badges.length})</h2>
             {allBadges.length > previewBadgeCount && (
@@ -243,7 +243,7 @@ function ProfilePage() {
         </div>
 
         {themeStats.length > 0 ? (
-          <section className="mb-6 rounded-2xl border border-border/70 bg-muted/15 p-4 sm:p-5">
+          <section className="journey-panel mb-6 p-4 sm:p-5">
             <h2 className="text-sm font-extrabold">Tes angles favoris</h2>
             <div className="mt-3 space-y-2.5">
               {themeStats.slice(0, 4).map((item) => (
@@ -285,10 +285,10 @@ function ProfilePage() {
         </details>
 
         <Button asChild size="lg" variant="accent" className="w-full">
-          <Link to="/play">Découvrir un thème</Link>
+          <Link to="/play">Reprendre le fil</Link>
         </Button>
       </main>
-    </div>
+    </JourneyPage>
   );
 }
 

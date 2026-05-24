@@ -42,9 +42,9 @@ function immersiveAnswerTextClasses(choice: string): string {
 function compactAnswerTextClasses(choice: string): string {
   const n = choice.length;
   if (n <= 22) {
-    return "line-clamp-3 text-sm font-semibold leading-snug sm:text-[15px]";
+    return "line-clamp-4 text-[15px] font-semibold leading-snug sm:text-base sm:leading-snug";
   }
-  return "line-clamp-3 text-[13px] font-semibold leading-snug sm:text-sm";
+  return "line-clamp-4 text-sm font-semibold leading-snug sm:text-[15px] sm:leading-snug";
 }
 
 export type ImmersiveQuizPlayProps = {
@@ -306,21 +306,23 @@ export function ImmersiveQuizPlay({
                 disabled={isAnswered || choicesDisabled}
                 className={`min-h-0 min-w-0 max-w-full overflow-hidden rounded-xl text-left transition-all disabled:cursor-default ${choiceClass} ${
                   compactChoices
-                    ? "flex min-h-[4.5rem] flex-col items-start justify-between gap-2 p-3 sm:min-h-[5rem] sm:p-3.5 [@media(max-height:700px)]:min-h-[3.75rem] [@media(max-height:700px)]:p-2.5"
-                    : `flex items-center gap-2 px-3 py-2.5 sm:min-h-[3.25rem] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3 [@media(max-height:700px)]:gap-1.5 [@media(max-height:700px)]:rounded-lg [@media(max-height:700px)]:px-2.5 [@media(max-height:700px)]:py-2`
+                    ? "quiz-answer-card--compact flex h-full min-h-0 flex-col"
+                    : `flex min-h-[3.75rem] items-center gap-2.5 px-3.5 py-3 sm:min-h-[4rem] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3.5 [@media(max-height:700px)]:min-h-[3.35rem] [@media(max-height:700px)]:gap-2 [@media(max-height:700px)]:rounded-lg [@media(max-height:700px)]:px-3 [@media(max-height:700px)]:py-2.5`
                 }`}
               >
                 {compactChoices ? (
                   <>
-                    <div className="flex w-full items-center justify-between gap-1">
+                    <div className="flex w-full shrink-0 items-center justify-between gap-2">
                       {letterBadge}
                       {icon ? <span className="shrink-0">{icon}</span> : null}
                     </div>
-                    <span
-                      className={`w-full break-words text-left ${compactAnswerTextClasses(choice)}`}
-                    >
-                      {choice}
-                    </span>
+                    <div className="flex min-h-0 flex-1 flex-col justify-center py-1">
+                      <span
+                        className={`w-full break-words text-left ${compactAnswerTextClasses(choice)}`}
+                      >
+                        {choice}
+                      </span>
+                    </div>
                   </>
                 ) : (
                   <>

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Download } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
+import { JourneyPage } from "@/components/JourneyPage";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -107,12 +108,12 @@ function HomePage() {
     : "h-auto min-h-[3.35rem] w-full max-w-[min(100%,22.5rem)] min-w-0 rounded-full border border-fuchsia-200/45 bg-linear-to-r from-violet-600 via-fuchsia-500 to-orange-400 px-4 py-3 text-center text-white shadow-[0_0_0_1px_rgba(244,114,182,0.3),0_0_26px_-12px_rgba(236,72,153,0.72),0_18px_34px_-18px_rgba(249,115,22,0.62)] transition-[transform,box-shadow,filter] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:scale-[1.02] hover:brightness-105 hover:shadow-[0_0_0_1px_rgba(244,114,182,0.4),0_0_32px_-10px_rgba(236,72,153,0.82),0_22px_40px_-16px_rgba(249,115,22,0.76)] active:translate-y-[1px] active:scale-[0.985] active:brightness-95 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 sm:min-h-[3.6rem] sm:max-w-[23rem] sm:px-6 sm:py-3.5";
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+    <JourneyPage>
       <AppHeader />
 
-      <main className="min-w-0 w-full flex-1 overflow-x-clip">
+      <main className="min-w-0 w-full flex-1 overflow-x-clip pb-2">
         <section className="container mx-auto max-w-lg px-4 pt-4 sm:px-6 sm:pt-6 [@media(max-height:780px)]:pt-2">
-          <div className="mx-auto animate-fade-in space-y-4 rounded-[2rem] border border-border/60 bg-card/70 px-4 py-5 text-center shadow-[var(--shadow-card)] backdrop-blur-sm sm:px-7 sm:py-6 [@media(max-height:780px)]:space-y-3 [@media(max-height:780px)]:rounded-[1.7rem] [@media(max-height:780px)]:px-3 [@media(max-height:780px)]:py-4">
+          <div className="journey-panel mx-auto animate-fade-in space-y-4 px-4 py-5 text-center sm:px-7 sm:py-6 [@media(max-height:780px)]:space-y-3 [@media(max-height:780px)]:px-3 [@media(max-height:780px)]:py-4">
             <span className="inline-flex items-center justify-center rounded-full border border-accent/35 bg-accent/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/90 sm:text-[13px]">
               Culture web
             </span>
@@ -224,6 +225,6 @@ function HomePage() {
           </div>
         </section>
       </main>
-    </div>
+    </JourneyPage>
   );
 }

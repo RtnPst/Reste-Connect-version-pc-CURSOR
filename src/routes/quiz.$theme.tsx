@@ -750,6 +750,12 @@ function ResultsScreen({
               Autre thème
             </Link>
             <Link
+              to="/play"
+              className="underline-offset-4 hover:text-foreground hover:underline"
+            >
+              Reprendre le fil
+            </Link>
+            <Link
               to="/"
               className="inline-flex items-center gap-1 underline-offset-4 hover:text-foreground hover:underline"
             >

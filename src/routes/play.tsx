@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Calendar, CalendarCheck2, ChevronRight, GraduationCap, Trophy } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
+import { JourneyPage } from "@/components/JourneyPage";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
@@ -52,13 +53,14 @@ function PlayPage() {
   const dailyDone = Boolean(user && dailyCompletedToday);
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+    <JourneyPage>
       <AppHeader />
       <main className="container mx-auto w-full max-w-lg flex-1 px-4 py-5 sm:px-6 sm:py-7">
         <header className="mb-6 animate-fade-in">
-          <h1 className="text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">Jouer</h1>
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Ton espace</p>
+          <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">Jouer</h1>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Un fil culturel d’abord — le reste quand tu veux.
+            Un fil à la fois — tu reviens ici entre deux passages.
           </p>
         </header>
 
@@ -107,12 +109,12 @@ function PlayPage() {
             id="play-explore-heading"
             className="mb-3 text-[11px] font-bold uppercase tracking-widest text-muted-foreground"
           >
-            Explorer
+            Explorer un angle
           </h2>
           <Link
             to="/quiz"
             className={cn(
-              "group flex min-h-[4.75rem] items-center gap-4 rounded-2xl border border-border/80 bg-card/90 p-4 shadow-[var(--shadow-soft)] transition-[transform,border-color,box-shadow] duration-300",
+              "journey-panel group flex min-h-[4.75rem] items-center gap-4 p-4 transition-[transform,border-color,box-shadow] duration-300",
               dailyDone
                 ? "border-primary/35 ring-1 ring-primary/15 hover:border-primary/50"
                 : "hover:border-primary/35",
@@ -141,7 +143,7 @@ function PlayPage() {
           </h2>
           <Link
             to="/niveaux"
-            className="group flex min-h-[3.75rem] items-center gap-3 rounded-xl border border-border/50 bg-muted/20 px-4 py-3 transition-colors hover:border-border hover:bg-muted/35"
+            className="journey-panel group flex min-h-[3.75rem] items-center gap-3 px-4 py-3 transition-[transform,border-color] duration-300 hover:border-primary/25"
           >
             <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
               <Trophy className="size-5" aria-hidden />
@@ -157,6 +159,6 @@ function PlayPage() {
           </Link>
         </section>
       </main>
-    </div>
+    </JourneyPage>
   );
 }

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronRight, Lock, Star } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
+import { JourneyPage } from "@/components/JourneyPage";
 import { Button } from "@/components/ui/button";
 import { RankBadge } from "@/components/RankBadge";
 import { useAuth } from "@/contexts/AuthContext";
@@ -116,23 +117,27 @@ function LevelsPage() {
   const current = getEffectiveUnlockedLevel(!!user, profile);
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+    <JourneyPage>
       <AppHeader />
       <main className="container mx-auto w-full max-w-lg flex-1 px-4 py-5 sm:px-6 sm:py-7">
         <header className="mb-6 animate-fade-in">
-          <h1 className="text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
-            Niveaux
+          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Progression</p>
+          <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
+            Le chemin
           </h1>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            {QUESTIONS_PER_LEVEL} questions, tous les thèmes. Quatre bonnes réponses suffisent pour
-            ouvrir la suite — à ton rythme.
+            {QUESTIONS_PER_LEVEL} questions, tous les thèmes. Quatre bonnes réponses ouvrent la suite — à ton rythme.
           </p>
-          <p className="mt-3 text-sm text-foreground/90">
-            Tu es au niveau{" "}
-            <span className="font-semibold text-primary">
-              {current} / {TOTAL_LEVELS}
-            </span>
-          </p>
+          <div className="journey-panel mt-4 p-3.5 sm:p-4">
+            <p className="text-xs font-semibold text-muted-foreground">Tu es ici</p>
+            <p className="mt-1 text-base font-extrabold text-foreground">
+              Étape {current}{" "}
+              <span className="font-medium text-muted-foreground">/ {TOTAL_LEVELS}</span>
+            </p>
+            <div className="journey-filament mt-2.5" aria-hidden>
+              <span style={{ width: `${Math.round((current / TOTAL_LEVELS) * 100)}%` }} />
+            </div>
+          </div>
           {!user && (
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
               Sans compte, tu commences au niveau 1. Connecte-toi pour retrouver ta progression.
@@ -151,7 +156,7 @@ function LevelsPage() {
             return (
               <section key={rank.key} aria-labelledby={`rank-heading-${rank.key}`}>
                 <div
-                  className="mb-3 rounded-xl border px-3 py-2.5 text-center"
+                  className="journey-panel mb-3 px-3 py-2.5 text-center"
                   style={{
                     borderColor: `color-mix(in oklab, var(--${v}) 24%, var(--border))`,
                     backgroundColor: `color-mix(in oklab, var(--${v}) 8%, var(--card))`,
@@ -189,6 +194,6 @@ function LevelsPage() {
           </Button>
         </div>
       </main>
-    </div>
+    </JourneyPage>
   );
 }

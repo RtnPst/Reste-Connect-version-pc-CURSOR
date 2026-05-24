@@ -2,11 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
+import { JourneyPage } from "@/components/JourneyPage";
 import { getActiveQuestionCounts } from "@/lib/quiz-api";
 import { PLAYABLE_THEME_KEYS, THEMES, type ThemeKey } from "@/lib/themes";
 
 const themeCardBase =
-  "group flex min-h-[9.5rem] min-w-0 flex-col rounded-2xl border border-border/70 bg-card/90 p-4 shadow-[var(--shadow-soft)] transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-[0_14px_28px_-14px_rgba(15,23,42,0.75)] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+  "journey-panel group flex min-h-[9.5rem] min-w-0 flex-col p-4 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-primary/35 motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 export const Route = createFileRoute("/quiz/")({
   head: () => ({
@@ -55,7 +56,7 @@ function ThemeSelection() {
   }, []);
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+    <JourneyPage>
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-lg flex-1 overflow-x-clip px-4 py-5 sm:px-6 sm:py-7">
         <Link
@@ -101,6 +102,6 @@ function ThemeSelection() {
           })}
         </div>
       </main>
-    </div>
+    </JourneyPage>
   );
 }

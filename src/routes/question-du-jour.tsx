@@ -554,7 +554,7 @@ function DailyQuestionPage() {
         </div>
         <div className="flex flex-col gap-2.5">
           <Button asChild variant="accent" size="lg" className="min-h-[56px]">
-            <Link to="/play">Découvrir un thème</Link>
+            <Link to="/play">Reprendre le fil</Link>
           </Button>
           <Button onClick={handleShare} variant="outline" size="lg" className="min-h-[52px]">
             <Share2 />
