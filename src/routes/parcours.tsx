@@ -7,6 +7,10 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { getBadgeUiCopy, badgeUnlockHintOrDefault } from "@/lib/badge-ui";
+import {
+  fetchRecentCapturedConcepts,
+  type RecentCapturedConcept,
+} from "@/lib/recent-captured-concepts";
 import { formatPassageLabel, type RecentPassage } from "@/lib/session-passage";
 import { THEMES, THEME_KEYS, type ThemeKey } from "@/lib/themes";
 
@@ -52,6 +56,7 @@ function ProfilePage() {
   const [gameStats, setGameStats] = useState<GameStats>({ totalAttempts: 0, avgScore: 0, perfect: 0 });
   const [themeStats, setThemeStats] = useState<ThemeStat[]>([]);
   const [recentAttempts, setRecentAttempts] = useState<RecentAttempt[]>([]);
+  const [recentCaptured, setRecentCaptured] = useState<RecentCapturedConcept[]>([]);
   const [showAllBadges, setShowAllBadges] = useState(false);
 
   useEffect(() => {
@@ -148,6 +153,9 @@ function ProfilePage() {
           completed_at: item.completed_at,
         })),
       );
+
+      const captured = await fetchRecentCapturedConcepts(user.id, 4);
+      setRecentCaptured(captured);
     })();
   }, [user]);
 
@@ -219,6 +227,36 @@ function ProfilePage() {
             </ul>
           )}
         </section>
+
+        {recentCaptured.length > 0 ? (
+          <section
+            className="journey-panel mb-6 p-4 sm:p-5"
+            aria-labelledby="recent-captured-concepts-heading"
+          >
+            <h2 id="recent-captured-concepts-heading" className="text-sm font-extrabold sm:text-base">
+              Derniers concepts captés
+            </h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Ce que tu as accroché récemment — pas un inventaire complet.
+            </p>
+            <ul className="mt-3 space-y-2.5">
+              {recentCaptured.map((item) => (
+                <li
+                  key={`${item.label}-${item.lastSeenAt}`}
+                  className="flex items-baseline justify-between gap-3 border-b border-border/40 pb-2.5 text-sm last:border-0 last:pb-0"
+                >
+                  <span className="min-w-0 font-medium leading-snug">{item.label}</span>
+                  <span className="shrink-0 text-[11px] text-muted-foreground/70">
+                    {new Date(item.lastSeenAt).toLocaleDateString("fr-FR", {
+                      day: "numeric",
+                      month: "short",
+                    })}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
 
         <div className="journey-panel mb-6 p-5 sm:p-6">
           <div className="mb-4 flex items-center justify-between gap-3">

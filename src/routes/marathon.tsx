@@ -12,6 +12,7 @@ import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
 import { ReturnToFilCard, RETURN_TO_FIL_HINT } from "@/components/ReturnToFilCard";
+import { recordConceptSeen } from "@/lib/concept-memory";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { isMarathonMilestone } from "@/lib/levels";
 import { toDisplayChoices } from "@/lib/choice-order";
@@ -31,6 +32,7 @@ type Question = {
   choices: string[];
   choiceOrder: number[];
   explanation: string;
+  conceptKey: string | null;
 };
 
 const MARATHON_BEST_LS = "marathon_best_score";
@@ -100,7 +102,12 @@ function MarathonPage() {
         data.map((q) => {
           const choiceData = toDisplayChoices(q.choices);
           return {
-            ...q,
+            id: q.id,
+            theme: q.theme,
+            difficulty: q.difficulty,
+            question: q.question,
+            explanation: q.explanation,
+            conceptKey: q.conceptKey ?? null,
             choices: choiceData.choices,
             choiceOrder: choiceData.choiceOrder,
           };
@@ -217,6 +224,13 @@ function MarathonPage() {
       setScore(newScore);
       setStreak(newStreak);
       playCorrect(sfxOn);
+      if (user) {
+        void recordConceptSeen({
+          conceptKey: current.conceptKey,
+          wasCorrect: true,
+          source: "marathon",
+        });
+      }
       if (isMarathonMilestone(newScore)) {
         playFanfare(sfxOn);
         toast.success(
@@ -570,6 +584,11 @@ function MarathonPage() {
         onSpeakExplanation={handleSpeakExplanation}
         onPrimaryNext={handleNext}
         primaryNextLabel="Suite"
+        conceptCapture={
+          isCorrect && current.conceptKey
+            ? { conceptKey: current.conceptKey, explanation: current.explanation }
+            : undefined
+        }
         sheetSecondaryAction={{ label: "Terminer la session", onClick: handleEndSession }}
         footerWhenPlaying={
           <div className="flex w-full max-w-md flex-col gap-2 mx-auto">

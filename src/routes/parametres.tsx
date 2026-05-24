@@ -229,6 +229,9 @@ function SettingsPage() {
           <section className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-6">
             <h2 className="text-xl font-extrabold mb-4">Compte</h2>
             <div className="grid gap-3">
+              <Button asChild variant="outline" size="lg" className="w-full sm:max-w-sm justify-start">
+                <Link to="/parcours">Ton parcours — passages et concepts captés</Link>
+              </Button>
               <Button onClick={handleLogout} variant="outline" size="lg" className="w-full sm:max-w-sm">
                 Se déconnecter
               </Button>

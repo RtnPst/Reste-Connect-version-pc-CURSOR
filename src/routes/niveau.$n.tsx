@@ -12,8 +12,11 @@ import { getPlayableQuestions } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { speak, stopSpeaking } from "@/lib/speech";
 import { playCorrect, playWrong, playFanfare } from "@/lib/sfx";
+import { ConceptCaptureEcho } from "@/components/immersive-quiz/ConceptCaptureEcho";
 import { RankBadge } from "@/components/RankBadge";
 import { ReturnToFilCard, RETURN_TO_FIL_HINT } from "@/components/ReturnToFilCard";
+import { pickSessionCapturedConceptLabel } from "@/lib/concept-capture";
+import { recordConceptSeen } from "@/lib/concept-memory";
 import { selectLevelQuestions } from "@/lib/levels-selector";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { toDisplayChoices } from "@/lib/choice-order";
@@ -38,6 +41,7 @@ type Question = {
   choices: string[];
   choiceOrder: number[];
   explanation: string;
+  conceptKey: string | null;
 };
 
 export const Route = createFileRoute("/niveau/$n")({
@@ -134,6 +138,7 @@ function LevelPage() {
               choices: choiceData.choices,
               choiceOrder: choiceData.choiceOrder,
               explanation: q.explanation,
+              conceptKey: q.conceptKey ?? null,
             };
           }),
         );
@@ -168,8 +173,16 @@ function LevelPage() {
       setRevealedCorrectIndex(result.correct_index);
       setAnswers((p) => [...p, { chosen: chosenOriginalIndex, correct: result.correct_index }]);
       const sfxOn = profile?.sfx_enabled ?? true;
-      if (result.correct) playCorrect(sfxOn);
-      else playWrong(sfxOn);
+      if (result.correct) {
+        playCorrect(sfxOn);
+        if (user) {
+          void recordConceptSeen({
+            conceptKey: current.conceptKey,
+            wasCorrect: true,
+            source: "level",
+          });
+        }
+      } else playWrong(sfxOn);
     } catch {
       setAnswerError(
         "Une erreur est survenue pendant la vérification. Réessayez dans quelques secondes.",
@@ -444,6 +457,7 @@ function LevelPage() {
         : `Niveau ${level} — tu repars avec une lecture solide.`
       : "Pas de pression : ce niveau t’attendra pour un prochain passage.";
     const primaryIsNextLevel = passed && level < TOTAL_LEVELS;
+    const sessionCapturedLabel = pickSessionCapturedConceptLabel(questions, answers);
 
     const replayRun = () => {
       void trackEvent({
@@ -503,6 +517,7 @@ function LevelPage() {
             <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
               {editorialMessage}
             </h1>
+            {sessionCapturedLabel ? <ConceptCaptureEcho label={sessionCapturedLabel} /> : null}
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
               {nextAction.reason}
             </p>
@@ -667,6 +682,11 @@ function LevelPage() {
       onSpeakExplanation={handleSpeakExplanation}
       onPrimaryNext={handleNext}
       primaryNextLabel={currentIndex + 1 < questions.length ? "Suite" : "Voir la suite"}
+      conceptCapture={
+        isCorrect && current.conceptKey
+          ? { conceptKey: current.conceptKey, explanation: current.explanation }
+          : undefined
+      }
       statusMessage={
         checkingAnswer ? (
           <span className="text-muted-foreground">Vérification…</span>
