@@ -60,6 +60,7 @@ exports/culture-pop-pool/culture-pop-live-review-prefilled-20*.csv
 .gradle/
 app/build/
 android/build/
+releases/*.apk
 local.properties
 *.iml
 

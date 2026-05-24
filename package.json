@@ -59,7 +59,8 @@
     "admin:cockpit:snapshot": "node scripts/build-admin-cockpit-snapshot.mjs",
     "debug:daily": "node scripts/debug-daily-question.mjs",
     "apply:fix-daily-non-live": "node scripts/apply-fix-daily-non-live-refs.mjs",
-    "deploy": "node scripts/deploy-worker.mjs"
+    "deploy": "node scripts/deploy-worker.mjs",
+    "build:apk": "node scripts/build-twa-apk.mjs"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
