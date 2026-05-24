@@ -21,6 +21,7 @@ import {
   wouldRepeatConceptTooSoon,
 } from "@/lib/concept-runtime";
 import { excerptExplanation, getConceptLabel } from "@/lib/concept-labels";
+import { recordConceptSeen } from "@/lib/concept-memory";
 import { getNextActionSuggestion } from "@/lib/next-action";
 import { createAnalyticsRunId, trackEvent } from "@/lib/analytics";
 
@@ -188,11 +189,18 @@ function QuizPage() {
         const sfxOn = profile?.sfx_enabled ?? true;
         if (result.correct) playCorrect(sfxOn);
         else playWrong(sfxOn);
+        if (user && result.correct) {
+          void recordConceptSeen({
+            conceptKey: current.conceptKey,
+            wasCorrect: true,
+            source: "theme",
+          });
+        }
       } catch {
         toast.error("Impossible de verifier la reponse");
       }
     },
-    [selectedIndex, current, profile?.sfx_enabled],
+    [selectedIndex, current, profile?.sfx_enabled, user],
   );
 
   const handleSpeakExplanation = () => {
@@ -426,6 +434,11 @@ function QuizPage() {
       onSpeakExplanation={handleSpeakExplanation}
       onPrimaryNext={handleNext}
       primaryNextLabel={currentIndex + 1 < questions.length ? "Suite" : "Voir la suite"}
+      conceptCapture={
+        isCorrect
+          ? { conceptKey: current.conceptKey, explanation: current.explanation }
+          : undefined
+      }
       footerWhenPlaying={
         <Link
           to="/quiz"

@@ -408,6 +408,8 @@ main {
 
 .quiz-answer-card {
   transform: translateZ(0);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   transition:
     transform 140ms ease,
     background-color 180ms ease,
@@ -416,8 +418,29 @@ main {
     opacity 180ms ease;
 }
 
-.quiz-answer-card:active {
-  transform: scale(0.985);
+.quiz-answer-card:active:not(:disabled) {
+  transform: scale(0.982);
+}
+
+@keyframes concept-capture-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.concept-capture-beat {
+  animation: concept-capture-in 420ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concept-capture-beat {
+    animation: none;
+  }
 }
 
 .quiz-answer-card--correct {

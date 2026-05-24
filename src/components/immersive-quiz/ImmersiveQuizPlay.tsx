@@ -6,9 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { ConceptCaptureBeat } from "@/components/immersive-quiz/ConceptCaptureBeat";
+import { buildConceptCaptureCopy } from "@/lib/concept-capture";
 
 /** Short pause before explanation body fades in (ms); skipped when reduced motion is on. */
 const EXPLANATION_REVEAL_DELAY_MS = 150;
+/** Calm recognition beat before “Le décode” (correct + concept capture enabled). */
+const CONCEPT_CAPTURE_BEAT_MS = 1700;
 
 const FEEDBACK_CORRECT = ["Ça colle.", "Bien capté.", "Oui, là.", "Exact."] as const;
 const FEEDBACK_INCORRECT = ["Pas tout à fait.", "Le bon fil.", "À retenir.", "Voici la lecture."] as const;
@@ -78,6 +82,11 @@ export type ImmersiveQuizPlayProps = {
    * Use for flows where the sheet must stay closed after a local “continue” step (e.g. question du jour).
    */
   sheetOpen?: boolean;
+  /** When set, a brief “Tu as capté” beat plays on correct answers before Le décode. */
+  conceptCapture?: {
+    conceptKey: string | null;
+    explanation: string;
+  };
 };
 
 export function ImmersiveQuizPlay({
@@ -109,14 +118,41 @@ export function ImmersiveQuizPlay({
   statusMessage,
   belowProgressSlot,
   sheetOpen: sheetOpenProp,
+  conceptCapture,
 }: ImmersiveQuizPlayProps) {
   const isAnswered = selectedIndex !== null;
   const sheetVisible = sheetOpenProp !== undefined ? sheetOpenProp : isAnswered;
   const reducedMotion = usePrefersReducedMotion();
   const [explanationRevealed, setExplanationRevealed] = useState(false);
+  const [captureBeatDone, setCaptureBeatDone] = useState(false);
+
+  const captureActive = Boolean(conceptCapture && isCorrect && isAnswered);
+  const captureCopy = conceptCapture
+    ? buildConceptCaptureCopy(conceptCapture.conceptKey, conceptCapture.explanation)
+    : null;
+  const showCaptureBeat = captureActive && !captureBeatDone && captureCopy !== null;
 
   useEffect(() => {
-    if (!isAnswered) {
+    setCaptureBeatDone(false);
+    setExplanationRevealed(false);
+  }, [flowStepKey]);
+
+  useEffect(() => {
+    if (!captureActive) {
+      setCaptureBeatDone(false);
+      return;
+    }
+    if (reducedMotion) {
+      setCaptureBeatDone(true);
+      return;
+    }
+    setCaptureBeatDone(false);
+    const id = window.setTimeout(() => setCaptureBeatDone(true), CONCEPT_CAPTURE_BEAT_MS);
+    return () => window.clearTimeout(id);
+  }, [captureActive, reducedMotion, flowStepKey]);
+
+  useEffect(() => {
+    if (!isAnswered || showCaptureBeat) {
       setExplanationRevealed(false);
       return;
     }
@@ -127,7 +163,7 @@ export function ImmersiveQuizPlay({
     setExplanationRevealed(false);
     const id = window.setTimeout(() => setExplanationRevealed(true), EXPLANATION_REVEAL_DELAY_MS);
     return () => window.clearTimeout(id);
-  }, [isAnswered, reducedMotion, flowStepKey]);
+  }, [isAnswered, reducedMotion, flowStepKey, showCaptureBeat]);
 
   const feedbackHeadline = isCorrect
     ? feedbackLine(FEEDBACK_CORRECT, flowStepKey)
@@ -234,7 +270,7 @@ export function ImmersiveQuizPlay({
                 type="button"
                 onClick={() => onSelectChoice(idx)}
                 disabled={isAnswered || choicesDisabled}
-                className={`flex min-h-0 min-w-0 max-w-full items-center gap-2 overflow-hidden rounded-xl px-3 py-2.5 text-left transition-all active:scale-[0.985] disabled:cursor-default sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3 ${choiceClass} [@media(max-height:700px)]:gap-1.5 [@media(max-height:700px)]:rounded-lg [@media(max-height:700px)]:px-2.5 [@media(max-height:700px)]:py-2`}
+                className={`flex min-h-0 min-w-0 max-w-full items-center gap-2 overflow-hidden rounded-xl px-3 py-2.5 text-left transition-all disabled:cursor-default sm:min-h-[3.25rem] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3 ${choiceClass} [@media(max-height:700px)]:gap-1.5 [@media(max-height:700px)]:rounded-lg [@media(max-height:700px)]:px-2.5 [@media(max-height:700px)]:py-2`}
               >
                 <span
                   className={`flex size-8 shrink-0 items-center justify-center rounded-full font-extrabold sm:size-10 sm:text-lg ${shortScreen}size-7 ${shortScreen}text-sm ${
@@ -286,46 +322,54 @@ export function ImmersiveQuizPlay({
             <div className="mb-3 flex shrink-0 items-center justify-center">
               <span className="h-1 w-10 rounded-full bg-muted-foreground/35" aria-hidden />
             </div>
-            <div
-              className={`flex shrink-0 items-start gap-2 rounded-xl border px-3 py-2.5 sm:px-4 sm:py-3 ${
-                isCorrect
-                  ? "border-success/35 bg-success-soft/90"
-                  : "border-border/70 bg-muted/35"
-              }`}
-            >
-              <span
-                className={`mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-extrabold sm:size-8 sm:text-sm ${
-                  isCorrect
-                    ? "bg-success text-success-foreground"
-                    : "bg-muted text-muted-foreground"
-                }`}
-                aria-hidden
-              >
-                {isCorrect ? "✓" : "·"}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-extrabold leading-snug sm:text-base">{feedbackHeadline}</p>
-              </div>
-              <Button
-                onClick={onSpeakExplanation}
-                variant="ghost"
-                size="icon"
-                aria-label="Écouter l'explication"
-                title="Écouter l'explication"
-                className="size-9 shrink-0"
-              >
-                <Volume2 />
-              </Button>
-            </div>
-            <div
-              className={`min-h-0 flex-1 overflow-y-auto overscroll-contain px-0.5 py-2 ${
-                reducedMotion ? "" : "transition-opacity duration-200 ease-out"
-              } ${explanationRevealed ? "opacity-100" : "opacity-0"}`}
-              aria-live={explanationRevealed ? "polite" : "off"}
-            >
-              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Le décode</p>
-              <p className="mt-2 text-sm leading-relaxed text-foreground/90 sm:text-base">{explanation}</p>
-            </div>
+            {showCaptureBeat ? (
+              <ConceptCaptureBeat copy={captureCopy!} />
+            ) : (
+              <>
+                <div
+                  className={`flex shrink-0 items-start gap-2 rounded-xl border px-3 py-2.5 sm:px-4 sm:py-3 ${
+                    isCorrect
+                      ? "border-success/35 bg-success-soft/90"
+                      : "border-border/70 bg-muted/35"
+                  }`}
+                >
+                  <span
+                    className={`mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-extrabold sm:size-8 sm:text-sm ${
+                      isCorrect
+                        ? "bg-success text-success-foreground"
+                        : "bg-muted text-muted-foreground"
+                    }`}
+                    aria-hidden
+                  >
+                    {isCorrect ? "✓" : "·"}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-extrabold leading-snug sm:text-base">{feedbackHeadline}</p>
+                  </div>
+                  <Button
+                    onClick={onSpeakExplanation}
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Écouter l'explication"
+                    title="Écouter l'explication"
+                    className="size-9 shrink-0"
+                  >
+                    <Volume2 />
+                  </Button>
+                </div>
+                <div
+                  className={`min-h-0 flex-1 overflow-y-auto overscroll-contain px-0.5 py-2 ${
+                    reducedMotion ? "" : "transition-opacity duration-200 ease-out"
+                  } ${explanationRevealed ? "opacity-100" : "opacity-0"}`}
+                  aria-live={explanationRevealed ? "polite" : "off"}
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    Le décode
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/90 sm:text-base">{explanation}</p>
+                </div>
+              </>
+            )}
             <div className="shrink-0 space-y-2 border-t border-border/60 bg-background/95 pt-3 backdrop-blur-sm">
               <Button
                 onClick={() => void onPrimaryNext()}

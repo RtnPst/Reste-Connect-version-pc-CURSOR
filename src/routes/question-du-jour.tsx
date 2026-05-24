@@ -493,6 +493,11 @@ function DailyQuestionPage() {
         onSpeakExplanation={handleSpeakExplanation}
         onPrimaryNext={() => setDailyRecap(true)}
         primaryNextLabel="Voir la suite"
+        conceptCapture={
+          isCorrect
+            ? { conceptKey: question.conceptKey, explanation: question.explanation }
+            : undefined
+        }
       />
     );
   }
