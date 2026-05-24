@@ -3,8 +3,8 @@
   "short_name": "Tu Captes",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#4f46e5",
-  "theme_color": "#4f46e5",
+  "background_color": "#171f31",
+  "theme_color": "#5b52e8",
   "orientation": "portrait",
   "icons": [
     {
