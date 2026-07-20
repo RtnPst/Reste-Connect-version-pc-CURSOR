@@ -42,7 +42,7 @@ export function FilTracesSection({ passages, concepts }: FilTracesSectionProps) 
           <li key={`c-${item.label}-${item.lastSeenAt}`} className="fil-traces-item fil-traces-item--capture">
             <span className="fil-traces-dot" aria-hidden />
             <span className="min-w-0 flex-1">
-              <span className="block text-[10px] font-bold uppercase tracking-wider text-primary/75">
+              <span className="block text-[11px] font-medium tracking-wide text-primary/75">
                 Capté
               </span>
               <span className="mt-0.5 block font-medium leading-snug">{item.label}</span>

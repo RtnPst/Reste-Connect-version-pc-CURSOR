@@ -22,20 +22,14 @@ Full vision: `docs/product/PRODUCT_VISION.md`
 
 ## Current priority (execute in order)
 
-1. Content Density **phase 1b+** — small editorial batches (labels + keys together), no mass-tagging
-2. Smoke named capture + Accueil echo + parcours Capté after each deploy
-3. Light emotional polish (copy / empty states) — **no** new heavy UI
-4. Tech theme tagging only after vernacular density feels solid
+1. Emotional polish Accueil / Parcours / capture (in progress — light copy only)
+2. Smoke named capture on device after deploys
+3. No more concept-key tagging unless new live questions appear
+4. Tech theme **bulk activation** only with explicit OK
 
 ## Density status (2026-07)
 
-- density-1 applied (~10 vernacular keys)
-- density-1b applied (18 social/lifestyle/vocab keys + labels)
-- density-1c applied (16 trends/pop-culture keys + labels) — live coverage ~47% (61/129)
-- density-1d applied (16 gaming keys + labels) — live coverage ~60% (77/129)
-- density-1e applied (18 vocab/réseaux keys + labels) — live coverage ~74% (95/129)
-- density-1f applied (16 culture leftovers) + density-1g tech cultural names (12) — ~95% (123/129)
-- density-1h applied (final 6) — **100%** live named coverage (129/129)
+- density-1 → 1h applied — **100%** live named coverage (129/129)
 - Next focus: emotional polish / smoke named capture (not more tagging)
 
 ## Hard guardrails

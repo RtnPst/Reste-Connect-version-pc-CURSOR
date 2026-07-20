@@ -41,7 +41,8 @@ export const Route = createFileRoute("/parcours")({
       {
         name: "description",
         content: "Les traces de ton fil culturel — passages récents et concepts captés.",
-      },    ],
+      },
+    ],
   }),
   component: ProfilePage,
 });
@@ -179,8 +180,8 @@ function ProfilePage() {
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-lg flex-1 overflow-x-clip px-4 py-5 sm:px-6 sm:py-7">
         <header className="mb-6 animate-fade-in">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Mémoire du fil</p>
-          <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
+          <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Mémoire du fil</p>
+          <h1 className="mt-1.5 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
             {profile.display_name ? `${profile.display_name} — ton fil` : "Traces sur ton fil"}
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -189,15 +190,23 @@ function ProfilePage() {
         </header>
 
         <section className="journey-panel mb-6 p-4 sm:p-5">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-primary/75">Position sur le fil</p>
+          <p className="text-[11px] font-medium tracking-[0.1em] text-primary/75">Position sur le fil</p>
           <p className="mt-2 text-base font-extrabold leading-snug">
-            Série {profile.current_streak} jour{profile.current_streak > 1 ? "s" : ""}
-            {profile.longest_streak > 0 ? (
-              <span className="font-medium text-muted-foreground"> · record {profile.longest_streak} j</span>
-            ) : null}
+            {profile.current_streak > 0 ? (
+              <>
+                Série {profile.current_streak} jour{profile.current_streak > 1 ? "s" : ""}
+                {profile.longest_streak > 0 ? (
+                  <span className="font-medium text-muted-foreground"> · record {profile.longest_streak} j</span>
+                ) : null}
+              </>
+            ) : (
+              "Le fil commence à la prochaine ouverture"
+            )}
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Le chemin et tes captures s’ajoutent ici — sans classement.
+            {profile.current_streak > 0
+              ? "Le chemin et tes captures s’ajoutent ici — sans classement."
+              : "Pas de pression : un passage suffit pour laisser une première trace."}
           </p>
           <div className="journey-filament mt-3" aria-hidden>
             <span
@@ -246,7 +255,7 @@ function ProfilePage() {
                     <div className="min-w-0">
                       <p className="font-bold text-[15px] leading-tight">
                         {displayName}{" "}
-                        {!isEarned && <span className="text-xs font-semibold">(pas encore)</span>}
+                        {!isEarned && <span className="text-xs font-medium text-muted-foreground">· bientôt</span>}
                       </p>
                       <p className="mt-0.5 text-xs text-muted-foreground">
                         {isEarned ? earnedDescription : lockedHint}

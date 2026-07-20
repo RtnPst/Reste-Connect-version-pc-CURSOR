@@ -106,7 +106,7 @@ function HomePage() {
         ? "Le fil du jour est capté. La suite continue au carrefour — même fil, autre angle."
         : "Le fil du jour est capté. Reprends au carrefour quand tu veux."
       : shouldProtectStreak
-        ? `Série : ${streakCount} jour${streakCount > 1 ? "s" : ""}. Le fil du jour prolonge la suite — si l’envie t’y prend.`
+        ? `Tu es déjà sur ${streakCount} jour${streakCount > 1 ? "s" : ""} de fil. Le passage du jour prolonge la suite — si l’envie t’y prend.`
         : "Une question pour capter le fil du moment — le même voyage, un passage à la fois.";
   const missionCtaTo = !user
     ? "/quiz"
@@ -134,7 +134,7 @@ function HomePage() {
       <main className="min-w-0 w-full flex-1 overflow-x-clip pb-2">
         <section className="container mx-auto max-w-lg px-4 pt-4 sm:px-6 sm:pt-6 [@media(max-height:780px)]:pt-2">
           <div className="journey-panel mx-auto animate-fade-in space-y-4 px-4 py-5 text-center sm:px-7 sm:py-6 [@media(max-height:780px)]:space-y-3 [@media(max-height:780px)]:px-3 [@media(max-height:780px)]:py-4">
-            <span className="inline-flex items-center justify-center rounded-full border border-accent/35 bg-accent/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/90 sm:text-[13px]">
+            <span className="inline-flex items-center justify-center rounded-full border border-accent/35 bg-accent/12 px-4 py-2 text-xs font-semibold tracking-[0.08em] text-foreground/90 sm:text-[13px]">
               Le fil culturel
             </span>
 
@@ -174,7 +174,7 @@ function HomePage() {
               >
                 <p
                   className={cn(
-                    "inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-bold uppercase tracking-widest",
+                    "inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em]",
                     missionIsDone
                       ? "border-success/40 bg-success/10 text-success"
                       : missionIsDaily
@@ -186,7 +186,9 @@ function HomePage() {
                 </p>
                 <p className="mt-3 text-lg font-extrabold leading-snug tracking-tight text-foreground sm:text-xl">
                   {dailyCompletedToday
-                    ? "Tu reprends où tu t’es arrêté"
+                    ? lastCapturedLabel
+                      ? "Tu as capté — le fil continue"
+                      : "Tu reprends où tu t’es arrêté"
                     : shouldProtectStreak
                       ? "Un passage par le fil du jour"
                       : "Ton fil reprend ici"}
@@ -194,10 +196,10 @@ function HomePage() {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">{missionText}</p>
                 {lastCapturedLabel && user ? <FilRepriseEcho label={lastCapturedLabel} /> : null}
                 <div className="mt-4">
-                  <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <div className="flex items-center justify-between text-[11px] font-medium tracking-wide text-muted-foreground">
                     <span>Fil du jour</span>
                     <span className={dailyCompletedToday ? "text-success" : shouldProtectStreak ? "text-primary" : ""}>
-                      {dailyCompletedToday ? "Capté" : shouldProtectStreak ? "Série active" : "À picorer"}
+                      {dailyCompletedToday ? "Capté" : shouldProtectStreak ? "En cours" : "À ouvrir"}
                     </span>
                   </div>
                   <div className="journey-filament mt-1.5" aria-hidden>

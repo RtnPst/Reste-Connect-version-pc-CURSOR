@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, Play, Trophy, User } from "lucide-react";
+import { Home, Play, Footprints, User } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 const HIDE_ON_PATHS = [/^\/quiz\/[^/]+$/, /^\/niveau\/[^/]+$/, /^\/duel\/[^/]+$/, /^\/marathon$/, /^\/question-du-jour$/];
@@ -23,7 +23,7 @@ export function AppBottomNav() {
         pathname.startsWith("/niveaux") ||
         pathname.startsWith("/question-du-jour"),
     },
-    { to: user ? "/parcours" : "/connexion", label: "Parcours", icon: Trophy, active: pathname.startsWith("/parcours") || pathname.startsWith("/statistiques") },
+    { to: user ? "/parcours" : "/connexion", label: "Parcours", icon: Footprints, active: pathname.startsWith("/parcours") || pathname.startsWith("/statistiques") },
     { to: user ? "/reglages" : "/connexion", label: "Profil", icon: User, active: pathname.startsWith("/reglages") || pathname.startsWith("/connexion") },
   ] as const;
 

@@ -44,7 +44,7 @@ export function ReturnToFilCard({
   if (variant === "strip") {
     return (
       <div className={cn("fil-return-strip journey-panel px-4 py-3.5 text-center sm:px-5", className)}>
-        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary/75">Le fil continue</p>
+        <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">Le fil continue</p>
         <p className="mx-auto mt-1.5 max-w-sm text-sm leading-relaxed text-muted-foreground">{hint}</p>
         <Link
           to="/play"
@@ -60,7 +60,7 @@ export function ReturnToFilCard({
 
   return (
     <div className={cn("journey-panel px-4 py-4 text-center sm:px-5 sm:py-5", className)}>
-      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary/75">Le fil continue</p>
+      <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">Le fil continue</p>
       <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">{hint}</p>
       <Button asChild variant="accent" size="lg" className="mt-4 w-full min-h-[52px] text-base font-extrabold">
         <Link to="/play">
