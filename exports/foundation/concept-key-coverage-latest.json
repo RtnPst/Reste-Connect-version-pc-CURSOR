@@ -1,27 +1,21 @@
 {
-  "audited_at": "2026-07-21T01:35:00.000Z",
-  "source": "supabase_mcp_after_density_1d",
+  "audited_at": "2026-07-21T01:40:00.000Z",
+  "source": "supabase_mcp_after_density_1e",
   "live_total": 129,
-  "live_with_concept_key": 77,
-  "coverage_percent": 59.7,
+  "live_with_concept_key": 95,
+  "coverage_percent": 73.6,
   "batches": {
     "density_1": { "rows": 10, "applied": true },
     "density_1b": { "rows": 18, "applied": true },
-    "density_1c": {
-      "rows": 16,
+    "density_1c": { "rows": 16, "applied": true },
+    "density_1d": { "rows": 16, "applied": true },
+    "density_1e": {
+      "rows": 18,
       "applied": true,
       "keys": [
-        "npc", "clickbait", "drama", "spoiler", "roast", "troll",
-        "based", "hater", "meme", "buzz", "banger", "fail",
-        "leak", "fake_news", "trend", "inside_joke"
-      ]
-    },
-    "density_1d": {
-      "rows": 16,
-      "applied": true,
-      "keys": [
-        "afk", "boss", "farm", "meta", "lag", "gg", "rage_quit", "noob",
-        "carry", "respawn", "loot", "spawn", "skin", "level_up", "buff", "nerf"
+        "lit", "slay", "wesh", "matrixe", "high_key", "cap", "clean",
+        "filtre", "compte_verifie", "influenceur", "challenge", "viral",
+        "poster", "unfollow", "fake_account", "viewer", "repost", "compte_prive"
       ]
     }
   }
