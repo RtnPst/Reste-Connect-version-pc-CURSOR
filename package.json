@@ -14,6 +14,8 @@
     "apply:density-1c": "node scripts/apply-density-1c-concept-keys.mjs",
     "apply:density-1d": "node scripts/apply-density-1d-concept-keys.mjs",
     "apply:density-1e": "node scripts/apply-density-1e-concept-keys.mjs",
+    "apply:density-1f": "node scripts/apply-density-1f-concept-keys.mjs",
+    "apply:density-1g": "node scripts/apply-density-1g-concept-keys.mjs",
     "smoke:visual": "node scripts/smoke-visual-screenshots.mjs",
     "predev": "npm run check:culture-pop-tags",
     "prebuild": "npm run check:culture-pop-tags",
