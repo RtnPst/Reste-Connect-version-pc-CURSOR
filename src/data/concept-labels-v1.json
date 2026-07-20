@@ -80,5 +80,21 @@
   "leak": "Leak",
   "fake_news": "Fake news",
   "trend": "Trend",
-  "inside_joke": "Inside joke"
+  "inside_joke": "Inside joke",
+  "afk": "AFK",
+  "boss": "Boss",
+  "farm": "Farm",
+  "meta": "Meta",
+  "lag": "Lag",
+  "gg": "GG",
+  "rage_quit": "Rage quit",
+  "noob": "Noob",
+  "carry": "Carry",
+  "respawn": "Respawn",
+  "loot": "Loot",
+  "spawn": "Spawn",
+  "skin": "Skin",
+  "level_up": "Level up",
+  "buff": "Buff",
+  "nerf": "Nerf"
 }
