@@ -1,25 +1,19 @@
 {
-  "audited_at": "2026-07-20T22:55:00.000Z",
-  "source": "supabase_mcp_execute_sql_after_density_1_apply",
+  "audited_at": "2026-07-20T23:20:00.000Z",
+  "source": "supabase_mcp_after_density_1b",
   "live_total": 129,
-  "live_with_concept_key": 27,
-  "coverage_percent": 20.9,
-  "density_1_batch": {
-    "applied": true,
-    "rows": 10,
-    "keys": [
-      "red_flag",
-      "crush",
-      "ratio",
-      "ghoster",
-      "flex",
-      "sus",
-      "bail",
-      "dead",
-      "valide",
-      "carre"
-    ],
-    "note": "Applied with trg_sync_question_editorial_fields temporarily disabled to avoid canonical_key collisions with archived twins."
-  },
-  "project_status_note": "Project was INACTIVE after ~2 months idle; restored to ACTIVE_HEALTHY before apply."
+  "live_with_concept_key": 45,
+  "coverage_percent": 34.9,
+  "batches": {
+    "density_1": { "rows": 10, "applied": true },
+    "density_1b": {
+      "rows": 18,
+      "applied": true,
+      "keys": [
+        "seen", "simp", "situationship", "dm", "story", "shadowban",
+        "feed", "follow", "block", "mute", "live", "thread",
+        "fomo", "goat", "no_cap", "mid", "salty", "pov"
+      ]
+    }
+  }
 }

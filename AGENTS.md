@@ -22,10 +22,16 @@ Full vision: `docs/product/PRODUCT_VISION.md`
 
 ## Current priority (execute in order)
 
-1. Deploy frontend if labels Track B not live yet (`npm run build` && `npm run deploy` — needs Wrangler login)
-2. Smoke named capture + Accueil echo + parcours Capté + empty `user_concepts_seen`
-3. Content Density **phase 1b** — small editorial label/key batches only (no mass-tagging)
-4. Light emotional polish (copy / empty states) — **no** new heavy UI
+1. Content Density **phase 1b+** — small editorial batches (labels + keys together), no mass-tagging
+2. Smoke named capture + Accueil echo + parcours Capté after each deploy
+3. Light emotional polish (copy / empty states) — **no** new heavy UI
+4. Tech theme tagging only after vernacular density feels solid
+
+## Density status (2026-07)
+
+- density-1 applied (~10 vernacular keys)
+- density-1b applied (18 social/lifestyle/vocab keys + labels)
+- Target: keep raising **named** capture rate, not raw % alone
 
 ## Hard guardrails
 

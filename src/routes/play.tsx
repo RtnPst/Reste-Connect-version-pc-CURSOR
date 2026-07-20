@@ -62,7 +62,7 @@ function PlayPage() {
             Reprendre le fil
           </h1>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Fil du jour, un angle, ou Le chemin — trois façons d’avancer sur le même fil.
+            Choisis où reprendre — c’est toujours le même fil culturel.
           </p>
           <div className="journey-filament mt-4 max-w-xs" aria-hidden>
             <span style={{ width: dailyDone ? "100%" : "28%" }} />
