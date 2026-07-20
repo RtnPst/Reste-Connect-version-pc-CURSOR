@@ -68,3 +68,6 @@ local.properties
 android.keystore
 keystore.properties
 *.jks
+
+# Agent visual smoke (regenerated)
+exports/smoke-visual/
