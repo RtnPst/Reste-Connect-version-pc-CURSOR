@@ -1,32 +1,25 @@
 {
-  "audited_at": "2026-05-24T19:14:31.298Z",
+  "audited_at": "2026-07-20T22:55:00.000Z",
+  "source": "supabase_mcp_execute_sql_after_density_1_apply",
   "live_total": 129,
-  "live_with_concept_key": 19,
-  "coverage_percent": 14.7,
-  "by_theme": {
-    "tech": {
-      "live": 18,
-      "with_concept_key": 0
-    },
-    "gaming": {
-      "live": 20,
-      "with_concept_key": 2
-    },
-    "trends_pop_culture": {
-      "live": 33,
-      "with_concept_key": 3
-    },
-    "relations_lifestyle": {
-      "live": 12,
-      "with_concept_key": 7
-    },
-    "vocabulaire": {
-      "live": 19,
-      "with_concept_key": 3
-    },
-    "reseaux_sociaux": {
-      "live": 27,
-      "with_concept_key": 4
-    }
-  }
+  "live_with_concept_key": 27,
+  "coverage_percent": 20.9,
+  "density_1_batch": {
+    "applied": true,
+    "rows": 10,
+    "keys": [
+      "red_flag",
+      "crush",
+      "ratio",
+      "ghoster",
+      "flex",
+      "sus",
+      "bail",
+      "dead",
+      "valide",
+      "carre"
+    ],
+    "note": "Applied with trg_sync_question_editorial_fields temporarily disabled to avoid canonical_key collisions with archived twins."
+  },
+  "project_status_note": "Project was INACTIVE after ~2 months idle; restored to ACTIVE_HEALTHY before apply."
 }

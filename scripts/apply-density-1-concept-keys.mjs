@@ -2,6 +2,14 @@
  * Apply density-1-daily-core-vernacular concept_key updates (10 live rows).
  * Uses SUPABASE_SERVICE_ROLE_KEY from .env — idempotent.
  *
+ * NOTE: Live rows often share normalized question text with archived twins.
+ * BEFORE UPDATE trigger sync_question_editorial_fields recomputes canonical_key
+ * and can hit idx_questions_canonical_key_unique. Prefer applying via SQL:
+ *
+ *   ALTER TABLE public.questions DISABLE TRIGGER trg_sync_question_editorial_fields;
+ *   -- UPDATEs below
+ *   ALTER TABLE public.questions ENABLE TRIGGER trg_sync_question_editorial_fields;
+ *
  * Usage: npm run apply:density-1
  */
 import { readFileSync, existsSync } from "node:fs";
@@ -70,6 +78,9 @@ for (const row of UPDATES) {
 
   if (readErr) {
     console.error("Read failed", row.id, readErr.message);
+    console.error(
+      "If project was paused (INACTIVE), restore it in Supabase dashboard first.",
+    );
     process.exit(1);
   }
   if (!existing || existing.status !== "live") {
@@ -91,6 +102,9 @@ for (const row of UPDATES) {
 
   if (updErr) {
     console.error("Update failed", row.id, updErr.message);
+    console.error(
+      "Likely canonical_key unique conflict from trigger. Apply via SQL with trigger temporarily disabled (see file header).",
+    );
     process.exit(1);
   }
   console.log("Updated:", row.id, existing.concept_key ?? "null", "→", row.concept_key);
