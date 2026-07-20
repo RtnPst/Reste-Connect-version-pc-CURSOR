@@ -142,5 +142,11 @@
   "assistant_vocal": "Assistant vocal",
   "bot": "Bot",
   "algo": "Algo",
-  "hack": "Hack"
+  "hack": "Hack",
+  "email_suspect": "Email suspect",
+  "ecran_tactile": "Écran tactile",
+  "iphone_android": "iPhone / Android",
+  "stockage": "Mo / Go / To",
+  "google_maps": "Google Maps",
+  "mise_a_jour": "Mise à jour"
 }

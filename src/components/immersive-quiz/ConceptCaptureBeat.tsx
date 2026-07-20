@@ -14,7 +14,7 @@ export function ConceptCaptureBeat({ copy }: ConceptCaptureBeatProps) {
       role="status"
       aria-live="polite"
     >
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/75">Moment capté</p>
+      <p className="text-[11px] font-medium tracking-[0.12em] text-primary/70">Sur le fil</p>
       {copy.conceptLabel ? (
         <>
           <p className="mt-4 text-sm font-semibold text-muted-foreground">Tu as capté</p>

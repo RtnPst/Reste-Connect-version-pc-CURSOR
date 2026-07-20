@@ -35,7 +35,8 @@ Full vision: `docs/product/PRODUCT_VISION.md`
 - density-1d applied (16 gaming keys + labels) — live coverage ~60% (77/129)
 - density-1e applied (18 vocab/réseaux keys + labels) — live coverage ~74% (95/129)
 - density-1f applied (16 culture leftovers) + density-1g tech cultural names (12) — ~95% (123/129)
-- Target: keep raising **named** capture rate, not raw % alone
+- density-1h applied (final 6) — **100%** live named coverage (129/129)
+- Next focus: emotional polish / smoke named capture (not more tagging)
 
 ## Hard guardrails
 

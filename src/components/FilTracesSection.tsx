@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { formatPassageLabel, type RecentPassage } from "@/lib/session-passage";
 import type { RecentCapturedConcept } from "@/lib/recent-captured-concepts";
 
@@ -19,6 +20,12 @@ export function FilTracesSection({ passages, concepts }: FilTracesSectionProps) 
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Tes passages et captures apparaîtront ici — une ligne de lecture, pas un classement.
+        </p>
+        <p className="mt-3 text-sm text-muted-foreground/90">
+          <Link to="/play" className="font-medium text-primary/90 underline-offset-2 hover:underline">
+            Ouvre le fil
+          </Link>
+          {" "}pour laisser une première trace.
         </p>
       </section>
     );

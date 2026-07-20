@@ -505,8 +505,8 @@ function DailyQuestionPage() {
 
   const conceptLabel = getConceptLabel(question.conceptKey);
   const decodeText = excerptExplanation(question.explanation);
-  const recapTitle = isCorrect ? "Tu as capté" : "Pas encore";
-  const recapKicker = isCorrect ? null : "Voici le décode";
+  const recapTitle = isCorrect ? "Tu as capté" : "Pas encore capté";
+  const recapKicker = isCorrect ? null : "Le fil continue — voici le décode";
 
   return (
     <div className="flex min-h-[100dvh] min-w-0 flex-col overflow-x-clip bg-background pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
@@ -550,7 +550,7 @@ function DailyQuestionPage() {
             {decodeText}
           </p>
           {xpGained !== null ? (
-            <p className="mt-6 text-[11px] text-muted-foreground/75">+{xpGained} XP gagnés</p>
+            <p className="mt-6 text-[11px] text-muted-foreground/70">+{xpGained} XP — un pas de plus sur le fil</p>
           ) : null}
         </div>
         <div className="flex flex-col gap-2.5">
