@@ -1,9 +1,9 @@
 {
-  "audited_at": "2026-07-20T23:20:00.000Z",
-  "source": "supabase_mcp_after_density_1b",
+  "audited_at": "2026-07-21T01:30:00.000Z",
+  "source": "supabase_mcp_after_density_1c",
   "live_total": 129,
-  "live_with_concept_key": 45,
-  "coverage_percent": 34.9,
+  "live_with_concept_key": 61,
+  "coverage_percent": 47.3,
   "batches": {
     "density_1": { "rows": 10, "applied": true },
     "density_1b": {
@@ -13,6 +13,15 @@
         "seen", "simp", "situationship", "dm", "story", "shadowban",
         "feed", "follow", "block", "mute", "live", "thread",
         "fomo", "goat", "no_cap", "mid", "salty", "pov"
+      ]
+    },
+    "density_1c": {
+      "rows": 16,
+      "applied": true,
+      "keys": [
+        "npc", "clickbait", "drama", "spoiler", "roast", "troll",
+        "based", "hater", "meme", "buzz", "banger", "fail",
+        "leak", "fake_news", "trend", "inside_joke"
       ]
     }
   }

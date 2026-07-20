@@ -693,6 +693,33 @@ main {
   border-left: 2px solid color-mix(in oklab, var(--primary) 22%, transparent);
 }
 
+.fil-continuity-rail--soft {
+  border-left-color: color-mix(in oklab, var(--primary) 14%, transparent);
+  padding-left: 0.85rem;
+}
+
+.fil-passage {
+  border-radius: 1rem;
+  margin-left: -0.15rem;
+  padding-left: 0.15rem;
+}
+
+.fil-passage--accent {
+  border-radius: 1.15rem;
+  background: color-mix(in oklab, var(--success) 8%, transparent);
+  padding-left: 0.45rem;
+  margin-left: -0.45rem;
+  padding-right: 0.35rem;
+}
+
+.fil-passage--next {
+  background: color-mix(in oklab, var(--primary) 6%, transparent);
+  border-radius: 1rem;
+  padding-left: 0.45rem;
+  margin-left: -0.45rem;
+  padding-right: 0.35rem;
+}
+
 .fil-traces-list {
   position: relative;
   padding-left: 0.35rem;

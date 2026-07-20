@@ -64,5 +64,21 @@
   "no_cap": "No cap",
   "mid": "Mid",
   "salty": "Salty",
-  "pov": "POV"
+  "pov": "POV",
+  "npc": "NPC",
+  "clickbait": "Clickbait",
+  "drama": "Drama",
+  "spoiler": "Spoiler",
+  "roast": "Roast",
+  "troll": "Troll",
+  "based": "Based",
+  "hater": "Hater",
+  "meme": "Mème",
+  "buzz": "Buzz",
+  "banger": "Banger",
+  "fail": "Fail",
+  "leak": "Leak",
+  "fake_news": "Fake news",
+  "trend": "Trend",
+  "inside_joke": "Inside joke"
 }
