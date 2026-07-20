@@ -1,0 +1,29 @@
+---
+description: Tu Captes product north star and execution guardrails for all agents
+alwaysApply: true
+---
+
+# Tu Captes — core agent rule
+
+You are building **Tu Captes**: a calm cultural journey through web codes, powered by quiz mechanics — **not** a quiz-app product.
+
+## Always
+
+- Optimize for **named concept capture** and emotional return to the **fil**
+- Keep bottom nav **« Jouer »**
+- Prefer Content Density / editorial substance over new UI surfaces
+- Read `AGENTS.md` and `docs/product/PRODUCT_VISION.md` when unsure
+
+## Never (without explicit user OK)
+
+- Schema migrations / new tables
+- Mascot, map, 3D world, visible territory taxonomies
+- Mass auto-tagging of `concept_key`
+- Heavy gamification (guilt streaks, scoreboard-first UX)
+- Reworking Fil Continu (already shipped)
+
+## Execution bias
+
+- Creator is often non-technical now: **implement**, then summarize briefly
+- One wave at a time; stop and ask only on schema or irreversible prod risk
+- Visual QA: use screenshots / Playwright — do not claim the UI “looks good” without evidence
