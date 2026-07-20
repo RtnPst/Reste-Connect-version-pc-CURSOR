@@ -1,0 +1,10 @@
+question_id,theme,daily_eligible,action,current_concept_key,suggested_concept_key,display_label,confidence,reason,needs_manual_editorial_review,duplicate_canonical_warning,question_preview
+b0032b43-ad1b-41d7-82ea-b0857cf00907,relations_lifestyle,false,SET_KEY,,red_flag,Red flag,high,quoted_term_maps_to_existing_label,false,duplicate_group_ok:exact_af5b97ba9027_size_2,"“Red flag”, en dating, c’est…"
+c3aaaab2-4e74-4752-a554-7aa4a475baa8,relations_lifestyle,false,SET_KEY,,crush,Crush,high,quoted_term_maps_to_existing_label,false,duplicate_group_ok:exact_933ad71b7e53_size_2,"“Crush”, ça veut dire…"
+addb39c7-cf2f-48a2-ba8a-d5fb496de474,reseaux_sociaux,false,SET_KEY,,ratio,Ratio,high,quoted_term_maps_to_existing_label,false,duplicate_group_ok:exact_8e847d1df024_size_2,"“Ratio”, sur les réseaux, ça veut dire…"
+ee012de3-f0ac-43df-b30f-475f42b4f1c9,relations_lifestyle,false,UPDATE_KEY,ghoster_quelquun,ghoster,Ghoster,high,retag_to_canonical_label_slug,true,duplicate_group_ok:exact_3a1df31a1902_size_2,"“Ghoster quelqu’un”, ça veut dire…"
+023882fa-4f05-4c02-81af-0891403be434,vocabulaire,false,SET_KEY,,flex,Flex,high,quoted_term_maps_to_existing_label,false,duplicate_group_ok:exact_1320e7cf671b_size_2,"“Flex”, ça veut dire…"
+ff2dea3b-d1d7-4e66-b043-4e05a61c4341,vocabulaire,false,SET_KEY,,sus,Sus,high,quoted_term_maps_to_existing_label,false,duplicate_group_ok:exact_4898c581f937_size_2,"“Sus”, ça veut dire…"
+cd55919d-8510-4348-8339-98941c4e378b,vocabulaire,false,SET_KEY,,bail,Bail,high,quoted_term_maps_to_existing_label,false,duplicate_group_ok:exact_d29741bd62c3_size_2,"“Un bail”, dans le langage courant, c’est…"
+7acb5233-6a7f-4d44-88a8-1c1f15927477,trends_pop_culture,false,SET_KEY,,dead,Dead,high,quoted_term_maps_to_existing_label,false,duplicate_group_ok:exact_ad4289f71752_size_2,"Quand quelqu’un écrit “dead”, ça veut dire…"
+80a20c26-6399-401f-9be4-707408886d0a,vocabulaire,false,UPDATE_KEY,cest_valide,valide,Validé,high,retag_to_canonical_label_slug,true,duplicate_group_ok:exact_3d2b6518ecd6_size_2,"“C’est validé”, ça veut dire…"

@@ -1,0 +1,327 @@
+{
+  "batch_name": "density-1-daily-core-vernacular",
+  "generated_at": "2026-05-24T19:15:05.522Z",
+  "policy": "preview_only_no_db_writes",
+  "current_live_total": 129,
+  "current_live_tagged": 19,
+  "current_coverage_percent": 14.7,
+  "batch_size": 9,
+  "batch_target": "25-30",
+  "target_met": false,
+  "projected_live_tagged": 26,
+  "projected_coverage_percent": 20.2,
+  "existing_labels_used": 9,
+  "new_labels_required": 0,
+  "daily_eligible_in_batch": 0,
+  "needs_manual_review_count": 2,
+  "duplicate_warnings_count": 0,
+  "priority_theme_count": 4,
+  "retag_count": 2,
+  "new_tag_count": 7,
+  "label_debt_live_rows": 19,
+  "risks": [
+    "Batch has 9 rows vs target 25–30 with existing-label-only guardrails.",
+    "19 live rows already have concept_key but zero label JSON — fix label file in parallel for immediate emotional impact.",
+    "Retag and alias rows flagged for manual editorial review."
+  ],
+  "candidates": [
+    {
+      "question_id": "b0032b43-ad1b-41d7-82ea-b0857cf00907",
+      "theme": "relations_lifestyle",
+      "question_preview": "“Red flag”, en dating, c’est…",
+      "current_concept_key": null,
+      "suggested_concept_key": "red_flag",
+      "display_label": "Red flag",
+      "confidence": "high",
+      "reason": "quoted_term_maps_to_existing_label",
+      "surface_term": "Red flag",
+      "needs_manual_editorial_review": false,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_af5b97ba9027_size_2",
+      "daily_eligible": false,
+      "action": "SET_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 75
+    },
+    {
+      "question_id": "c3aaaab2-4e74-4752-a554-7aa4a475baa8",
+      "theme": "relations_lifestyle",
+      "question_preview": "“Crush”, ça veut dire…",
+      "current_concept_key": null,
+      "suggested_concept_key": "crush",
+      "display_label": "Crush",
+      "confidence": "high",
+      "reason": "quoted_term_maps_to_existing_label",
+      "surface_term": "Crush",
+      "needs_manual_editorial_review": false,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_933ad71b7e53_size_2",
+      "daily_eligible": false,
+      "action": "SET_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 75
+    },
+    {
+      "question_id": "addb39c7-cf2f-48a2-ba8a-d5fb496de474",
+      "theme": "reseaux_sociaux",
+      "question_preview": "“Ratio”, sur les réseaux, ça veut dire…",
+      "current_concept_key": null,
+      "suggested_concept_key": "ratio",
+      "display_label": "Ratio",
+      "confidence": "high",
+      "reason": "quoted_term_maps_to_existing_label",
+      "surface_term": "Ratio",
+      "needs_manual_editorial_review": false,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_8e847d1df024_size_2",
+      "daily_eligible": false,
+      "action": "SET_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 75
+    },
+    {
+      "question_id": "ee012de3-f0ac-43df-b30f-475f42b4f1c9",
+      "theme": "relations_lifestyle",
+      "question_preview": "“Ghoster quelqu’un”, ça veut dire…",
+      "current_concept_key": "ghoster_quelquun",
+      "suggested_concept_key": "ghoster",
+      "display_label": "Ghoster",
+      "confidence": "high",
+      "reason": "retag_to_canonical_label_slug",
+      "surface_term": "Ghoster quelqu’un",
+      "needs_manual_editorial_review": true,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_3a1df31a1902_size_2",
+      "daily_eligible": false,
+      "action": "UPDATE_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 60
+    },
+    {
+      "question_id": "023882fa-4f05-4c02-81af-0891403be434",
+      "theme": "vocabulaire",
+      "question_preview": "“Flex”, ça veut dire…",
+      "current_concept_key": null,
+      "suggested_concept_key": "flex",
+      "display_label": "Flex",
+      "confidence": "high",
+      "reason": "quoted_term_maps_to_existing_label",
+      "surface_term": "Flex",
+      "needs_manual_editorial_review": false,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_1320e7cf671b_size_2",
+      "daily_eligible": false,
+      "action": "SET_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 60
+    },
+    {
+      "question_id": "ff2dea3b-d1d7-4e66-b043-4e05a61c4341",
+      "theme": "vocabulaire",
+      "question_preview": "“Sus”, ça veut dire…",
+      "current_concept_key": null,
+      "suggested_concept_key": "sus",
+      "display_label": "Sus",
+      "confidence": "high",
+      "reason": "quoted_term_maps_to_existing_label",
+      "surface_term": "Sus",
+      "needs_manual_editorial_review": false,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_4898c581f937_size_2",
+      "daily_eligible": false,
+      "action": "SET_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 60
+    },
+    {
+      "question_id": "cd55919d-8510-4348-8339-98941c4e378b",
+      "theme": "vocabulaire",
+      "question_preview": "“Un bail”, dans le langage courant, c’est…",
+      "current_concept_key": null,
+      "suggested_concept_key": "bail",
+      "display_label": "Bail",
+      "confidence": "high",
+      "reason": "quoted_term_maps_to_existing_label",
+      "surface_term": "Un bail",
+      "needs_manual_editorial_review": false,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_d29741bd62c3_size_2",
+      "daily_eligible": false,
+      "action": "SET_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 60
+    },
+    {
+      "question_id": "7acb5233-6a7f-4d44-88a8-1c1f15927477",
+      "theme": "trends_pop_culture",
+      "question_preview": "Quand quelqu’un écrit “dead”, ça veut dire…",
+      "current_concept_key": null,
+      "suggested_concept_key": "dead",
+      "display_label": "Dead",
+      "confidence": "high",
+      "reason": "quoted_term_maps_to_existing_label",
+      "surface_term": "dead",
+      "needs_manual_editorial_review": false,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_ad4289f71752_size_2",
+      "daily_eligible": false,
+      "action": "SET_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 55
+    },
+    {
+      "question_id": "80a20c26-6399-401f-9be4-707408886d0a",
+      "theme": "vocabulaire",
+      "question_preview": "“C’est validé”, ça veut dire…",
+      "current_concept_key": "cest_valide",
+      "suggested_concept_key": "valide",
+      "display_label": "Validé",
+      "confidence": "high",
+      "reason": "retag_to_canonical_label_slug",
+      "surface_term": "C’est validé",
+      "needs_manual_editorial_review": true,
+      "duplicate_canonical_warning": "duplicate_group_ok:exact_3d2b6518ecd6_size_2",
+      "daily_eligible": false,
+      "action": "UPDATE_KEY",
+      "uses_existing_label": true,
+      "requires_new_label": false,
+      "score": 45
+    }
+  ],
+  "label_debt_queue": [
+    {
+      "question_id": "703d600c-7663-4bd7-b2c7-45da6493b944",
+      "theme": "relations_lifestyle",
+      "concept_key": "friendzone",
+      "question_preview": "“Friendzone”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "c4b9f3fd-cbff-44a8-8221-e7a7c77a332a",
+      "theme": "relations_lifestyle",
+      "concept_key": "breadcrumbing",
+      "question_preview": "“Breadcrumbing”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "d2ba9a5c-f680-4c3b-a425-7fa201a700d8",
+      "theme": "relations_lifestyle",
+      "concept_key": "double_text",
+      "question_preview": "“Double text”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "e9ad9253-d1e4-43e0-8e94-0a214c0cc7b7",
+      "theme": "relations_lifestyle",
+      "concept_key": "ship_deux_personnes",
+      "question_preview": "“Ship deux personnes”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "ee012de3-f0ac-43df-b30f-475f42b4f1c9",
+      "theme": "relations_lifestyle",
+      "concept_key": "ghoster_quelquun",
+      "question_preview": "“Ghoster quelqu’un”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "f319ce64-54ae-4983-8bb0-34785df164e2",
+      "theme": "relations_lifestyle",
+      "concept_key": "love_bombing",
+      "question_preview": "“Love bombing”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "fce2fd7f-5f9f-4c64-9842-0ac9afa12aa3",
+      "theme": "trends_pop_culture",
+      "concept_key": "cursed",
+      "question_preview": "“Cursed”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "1ca61163-daeb-4c32-a6d5-1947fa40417b",
+      "theme": "gaming",
+      "concept_key": "tryhard",
+      "question_preview": "“Tryhard”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "16e1a672-2f63-49b6-a0b4-fbd0aacfe1c6",
+      "theme": "vocabulaire",
+      "concept_key": "boujee",
+      "question_preview": "“Boujee”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "80a20c26-6399-401f-9be4-707408886d0a",
+      "theme": "vocabulaire",
+      "concept_key": "cest_valide",
+      "question_preview": "“C’est validé”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "191559b5-9b40-441b-9b0f-41470d805448",
+      "theme": "reseaux_sociaux",
+      "concept_key": "contenu_sponsorise",
+      "question_preview": "“Contenu sponsorisé”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "69dbfdb6-1fa6-45dd-bc52-04d2924af2bc",
+      "theme": "trends_pop_culture",
+      "concept_key": "side_eye",
+      "question_preview": "“Side eye”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "88036ce7-a2fd-429d-836c-8256a12f5387",
+      "theme": "trends_pop_culture",
+      "concept_key": "triggered",
+      "question_preview": "“Triggered”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "223ad5ae-5148-4066-90c0-9ed52bf80083",
+      "theme": "relations_lifestyle",
+      "concept_key": "texting",
+      "question_preview": "“Texting”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "28e32e91-0f5c-43ed-a935-99065c611090",
+      "theme": "gaming",
+      "concept_key": "clutch",
+      "question_preview": "“Clutch”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "7b718039-8bf4-4d7a-b7b6-76440ae581c9",
+      "theme": "vocabulaire",
+      "concept_key": "low_key",
+      "question_preview": "“Low-key”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "2875c8fa-5b64-4e31-bbb2-0b1f90b38541",
+      "theme": "reseaux_sociaux",
+      "concept_key": "streamer",
+      "question_preview": "“Streamer”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "9e87cf94-fc89-44df-8c3f-649719e6b8e8",
+      "theme": "reseaux_sociaux",
+      "concept_key": "scroll",
+      "question_preview": "“Scroll”, ça veut dire…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    },
+    {
+      "question_id": "b3b6d229-6375-47f1-8c65-2d1eb2bda46d",
+      "theme": "reseaux_sociaux",
+      "concept_key": "unfollow_follow",
+      "question_preview": "“Unfollow + follow”, c’est souvent pour…",
+      "note": "Has concept_key but no entry in concept-labels-v1.json — memory UI will not surface until label added"
+    }
+  ],
+  "honest_capacity_note": "Under guardrails (existing labels only, no tech), live pool yields ~10 high-confidence concept_key assignments. Reaching 25–30 requires Phase 1b: add editorial labels for already-keyed rows and/or new label slugs for social vernacular."
+}

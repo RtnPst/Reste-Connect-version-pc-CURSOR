@@ -1,0 +1,32 @@
+{
+  "audited_at": "2026-05-24T19:14:31.298Z",
+  "live_total": 129,
+  "live_with_concept_key": 19,
+  "coverage_percent": 14.7,
+  "by_theme": {
+    "tech": {
+      "live": 18,
+      "with_concept_key": 0
+    },
+    "gaming": {
+      "live": 20,
+      "with_concept_key": 2
+    },
+    "trends_pop_culture": {
+      "live": 33,
+      "with_concept_key": 3
+    },
+    "relations_lifestyle": {
+      "live": 12,
+      "with_concept_key": 7
+    },
+    "vocabulaire": {
+      "live": 19,
+      "with_concept_key": 3
+    },
+    "reseaux_sociaux": {
+      "live": 27,
+      "with_concept_key": 4
+    }
+  }
+}

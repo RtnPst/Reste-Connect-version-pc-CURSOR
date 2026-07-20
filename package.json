@@ -8,6 +8,8 @@
     "check:supabase": "node scripts/check-supabase-connection.mjs",
     "verify:concept-foundation": "node scripts/verify-concept-foundation.mjs",
     "audit:concept-key-coverage": "node scripts/audit-concept-key-coverage.mjs",
+    "preview:density-1": "node scripts/build-density-1-candidates-preview.mjs",
+    "apply:density-1": "node scripts/apply-density-1-concept-keys.mjs",
     "predev": "npm run check:culture-pop-tags",
     "prebuild": "npm run check:culture-pop-tags",
     "dev": "vite dev",
