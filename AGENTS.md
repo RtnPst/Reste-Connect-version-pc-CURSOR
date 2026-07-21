@@ -17,13 +17,14 @@ Full vision: `docs/product/PRODUCT_VISION.md`
 
 - Fil Continu Wave (`1001338`) — Accueil reprise, `/play` rail, parcours traces, ReturnToFilCard
 - Living home, Path / Le chemin, Continuity capture, Capture beat
-- Density-1 DB keys applied (10 vernacular) — coverage ~20.9% live tagged
+- Content Density 1→1h — **100%** live named coverage (129/129)
+- Emotional polish wave (Accueil, Jouer, Parcours, Connexion, Profil, Paramètres)
 - Prod: https://tanstack-start-ts.npaysant.workers.dev
 
 ## Current priority (execute in order)
 
-1. Emotional polish Accueil / Parcours / capture (in progress — light copy only)
-2. Smoke named capture on device after deploys
+1. Human visual check checklist (creator)
+2. Smoke named capture on device
 3. No more concept-key tagging unless new live questions appear
 4. Tech theme **bulk activation** only with explicit OK
 

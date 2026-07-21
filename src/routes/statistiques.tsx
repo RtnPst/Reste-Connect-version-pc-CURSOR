@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowLeft, BarChart3, Flame, Target, Trophy, TrendingUp } from "lucide-react";
+import { ArrowLeft, Flame, Target, Trophy, TrendingUp } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
@@ -11,11 +11,10 @@ import { THEMES, THEME_KEYS, type ThemeKey } from "@/lib/themes";
 export const Route = createFileRoute("/statistiques")({
   head: () => ({
     meta: [
-      { title: "Tes stats — Tu captes ?" },
+      { title: "Chiffres du fil — Tu captes ?" },
       {
         name: "description",
-        content:
-          "Scores, thèmes où tu cartonnes, série de jours, badges : tout ton game en un coup d'œil.",
+        content: "Quelques chiffres de tes passages — en soutien au fil, pas un classement.",
       },
       { name: "robots", content: "noindex" },
     ],
@@ -55,7 +54,7 @@ function StatsPage() {
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
-          <p>On sort tes stats…</p>
+          <p>On assemble tes passages…</p>
         </main>
       </div>
     );
@@ -93,69 +92,69 @@ function StatsPage() {
     <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-4xl flex-1 overflow-x-clip px-4 py-8 sm:px-6 sm:py-12">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-3xl sm:text-4xl font-extrabold flex items-center gap-3">
-            <BarChart3 className="text-primary size-8" />
-            Tes stats
-          </h1>
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Mémoire du fil</p>
+            <h1 className="mt-1 text-2xl font-extrabold sm:text-3xl">Chiffres du fil</h1>
+            <p className="mt-1 text-sm text-muted-foreground">En soutien — le vrai fil, c’est tes captures.</p>
+          </div>
           <Button asChild variant="ghost" size="sm">
             <Link to="/parcours">
-              <ArrowLeft /> Parcours
+              <ArrowLeft /> Traces
             </Link>
           </Button>
         </div>
 
         {totalAttempts === 0 ? (
-          <div className="bg-card rounded-3xl border-2 border-border p-10 text-center">
-            <p className="text-lg text-muted-foreground mb-4">
-              Rien enregistré pour l’instant. Un quiz thème ou la question du jour, et ça démarre.
+          <div className="rounded-3xl border border-border/80 bg-card/90 p-10 text-center">
+            <p className="mb-4 text-lg text-muted-foreground">
+              Pas encore de passages enregistrés ici. Ouvre le fil pour laisser une trace.
             </p>
             <Button asChild variant="accent" size="lg">
-              <Link to="/quiz">Lancer un quiz</Link>
+              <Link to="/play">Reprendre le fil</Link>
             </Button>
           </div>
         ) : (
           <div className="space-y-6">
             {/* KPI grid */}
             <div>
-              <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
                 <Kpi
                   icon={<Target className="size-6" />}
-                  label="Parties enregistrées"
+                  label="Passages notés"
                   value={totalAttempts.toString()}
                   color="bg-primary-soft text-primary"
                 />
                 <Kpi
                   icon={<TrendingUp className="size-6" />}
-                  label="Score moyen"
+                  label="Lecture moyenne"
                   value={`${avgScore}%`}
                   color="bg-accent-soft text-accent"
                 />
                 <Kpi
                   icon={<Trophy className="size-6" />}
-                  label="Tout bon"
+                  label="Passages nets"
                   value={perfect.toString()}
                   color="bg-success-soft text-success"
                 />
                 <Kpi
                   icon={<Flame className="size-6" />}
-                  label="Meilleure série"
+                  label="Plus long fil"
                   value={`${profile.longest_streak}j`}
                   color="bg-warning-soft text-warning"
                 />
               </div>
-              <p className="text-xs text-muted-foreground mt-3 max-w-3xl">
-                Basé sur les tentatives enregistrées (ex. quiz thème, question du jour). Marathon,
-                duels et mode niveaux ne créent pas ces lignes — donc tu ne les vois pas ici, même si
-                ton XP a bougé ailleurs.
+              <p className="mt-3 max-w-3xl text-xs text-muted-foreground">
+                Basé sur les tentatives enregistrées (angles, fil du jour). Marathon et chemin
+                vivent ailleurs — ce n’est pas un classement.
               </p>
             </div>
 
             {/* Per-theme breakdown */}
-            <div className="bg-card rounded-3xl border-2 border-border p-6 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-16px_rgba(15,23,42,0.7)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-              <h2 className="text-xl font-extrabold mb-2">Perf par thème</h2>
-              <p className="text-sm text-muted-foreground mb-4">
-                Uniquement les parties où un thème est relié (souvent quiz thème + daily).
+            <div className="rounded-3xl border border-border/80 bg-card/90 p-6 shadow-[var(--shadow-soft)]">
+              <h2 className="mb-2 text-xl font-extrabold">Angles parcourus</h2>
+              <p className="mb-4 text-sm text-muted-foreground">
+                Là où tu as déjà croisé le fil — sans pression de perf.
               </p>
               <div className="space-y-4">
                 {THEME_KEYS.map((k) => {

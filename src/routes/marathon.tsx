@@ -53,7 +53,7 @@ export const Route = createFileRoute("/marathon")({
       {
         name: "description",
         content:
-          "Enchaîne les questions sans limite — tu t’arrêtes quand tu veux. Les XP s’enregistrent en fin de session.",
+          "Session libre hors du fil principal — tu t’arrêtes quand tu veux.",
       },
     ],
   }),
@@ -454,7 +454,7 @@ function MarathonPage() {
         </header>
         <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
           <div className="quiz-result-card animate-scale-in rounded-3xl border border-border/80 bg-card p-6 text-center shadow-[var(--shadow-soft)] sm:p-10">
-            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Marathon</p>
+            <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Hors fil principal</p>
             <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
               {editorialMessage}
             </h1>
@@ -462,9 +462,9 @@ function MarathonPage() {
               {nextAction.reason}
             </p>
             <p className="mt-6 text-[11px] leading-relaxed text-muted-foreground/75">
-              {score} / {answeredCount} bonnes réponses
-              {xpGained !== null ? <> · +{xpGained} XP gagnés</> : null}
-              {streakUpdated ? " · série du jour notée" : null}
+              {score} / {answeredCount} bonnes lectures
+              {xpGained !== null ? <> · +{xpGained} XP sur le chemin</> : null}
+              {streakUpdated ? " · fil du jour noté" : null}
             </p>
             {!streakUpdated && answeredCount < 5 ? (
               <p className="mt-1 text-[11px] text-muted-foreground/70">
