@@ -1,0 +1,53 @@
+{
+  "pilot_id": "brainrot-intake-promote-v1",
+  "concept_key": "brainrot",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "brainrot",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ton pote te dit : « J’ai scrollé 3h d’edits, je suis en plein brainrot. » Il parle surtout de…",
+      "choices": [
+        "Un trop-plein de contenus qui lui tourne encore dans la tête",
+        "Un virus qui efface ses apps",
+        "Une méthode pour réviser plus vite",
+        "Un réglage qui coupe les notifs"
+      ],
+      "correct_index": 0,
+      "explanation": "« Brainrot », c’est le sentiment d’avoir le cerveau saturé par des contenus ultra-répétitifs — pas un bug technique.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Brainrot — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "brainrot",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message sonne le plus naturel avec « brainrot » ?",
+      "choices": [
+        "Mon feed est full brainrot depuis ce matin.",
+        "Active le brainrot dans les réglages Wi-Fi.",
+        "Le brainrot est une appli bancaire.",
+        "Brainrot = traduction automatique."
+      ],
+      "correct_index": 0,
+      "explanation": "On l’utilise pour parler d’un feed / d’une session qui te « pourrit » un peu le cerveau.",
+      "tone": "social",
+      "context": "story_reply",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Brainrot — authenticity scene check required before live."
+    }
+  ]
+}

@@ -1,0 +1,2892 @@
+{
+  "generated_at": "2026-07-21T01:00:40.535Z",
+  "sources": {
+    "labels": 152,
+    "pack": 31,
+    "csv_files": 3,
+    "live": 129,
+    "live_fetch": "ok"
+  },
+  "key_count": 320,
+  "keys": [
+    "2fa",
+    "5g",
+    "a_skip",
+    "abuse",
+    "abuse_de_ouf",
+    "afk",
+    "album_drop",
+    "algo",
+    "appli",
+    "askip",
+    "assistant_vocal",
+    "bail",
+    "banger",
+    "based",
+    "bien_vu",
+    "bien_vu_chef",
+    "bien_vu_le_move",
+    "bien_vu_pour_ca",
+    "block",
+    "block_quelquun",
+    "bluetooth",
+    "bon_ca_part",
+    "boomer",
+    "boss",
+    "bot",
+    "boujee",
+    "brain_rot",
+    "brainrot",
+    "breadcrumbing",
+    "buff",
+    "buzz",
+    "ca_part",
+    "ca_part_en_couille",
+    "ca_part_loin",
+    "ca_part_vite",
+    "cap",
+    "carre",
+    "carry",
+    "carry_une_partie",
+    "cest_abuse",
+    "cest_abuse_le_prix",
+    "cest_carre",
+    "cest_chaud",
+    "cest_clean",
+    "cest_cringe",
+    "cest_la_galere",
+    "cest_le_flex",
+    "cest_le_flop",
+    "cest_mon_crush",
+    "cest_oklm",
+    "cest_quelque_chose",
+    "cest_quelque_chose_lui",
+    "cest_quelque_chose_quand_meme",
+    "cest_relou",
+    "cest_sah",
+    "cest_sus",
+    "cest_un_bail",
+    "cest_un_red_flag",
+    "cest_valide",
+    "challenge",
+    "chaud",
+    "chaud_pour",
+    "clean",
+    "clickbait",
+    "cloud",
+    "clutch",
+    "commentaire_epingle",
+    "compte_prive",
+    "compte_verifie",
+    "contenu_sponsorise",
+    "cookie",
+    "cooldown",
+    "cringe",
+    "crush",
+    "crush_sur",
+    "cursed",
+    "dead",
+    "deepfake",
+    "delulu",
+    "delusional",
+    "discord_est_principalement_utilise_pour",
+    "dm",
+    "dm_quelquun",
+    "double_text",
+    "drama",
+    "drop",
+    "ecran_tactile",
+    "email_suspect",
+    "en_pls",
+    "en_ratio",
+    "era_flop",
+    "etre_en_pls",
+    "fail",
+    "fake_account",
+    "fake_news",
+    "farm",
+    "feat",
+    "feed",
+    "filtre",
+    "flemme",
+    "flemme_de",
+    "flex",
+    "flexer",
+    "flop",
+    "flop_de_ouf",
+    "flop_total",
+    "follow",
+    "follow_quelquun",
+    "fomo",
+    "forcer",
+    "forceur",
+    "fort",
+    "franchement_cest_quelque_chose",
+    "friendzone",
+    "galere",
+    "genant",
+    "gg",
+    "gg_bien_vu",
+    "ghoste",
+    "ghoster",
+    "ghoster_quelquun",
+    "goat",
+    "google_maps",
+    "grave_la_flemme",
+    "grave_la_galere",
+    "grave_le_bail",
+    "hack",
+    "hater",
+    "high_key",
+    "hit",
+    "ia",
+    "il_force",
+    "il_ma_ghoste",
+    "influenceur",
+    "inside_joke",
+    "iphone_android",
+    "jai_la_flemme",
+    "jai_le_seum",
+    "jai_un_crush",
+    "je_flex",
+    "je_ghost",
+    "je_suis_chaud",
+    "je_suis_cringe",
+    "je_suis_dead",
+    "je_suis_en_pls",
+    "jen_peux_plus",
+    "jpp",
+    "jpp_de_ouf",
+    "jpp_la",
+    "lag",
+    "le_bail",
+    "le_forceur",
+    "le_seum",
+    "leak",
+    "level_up",
+    "lit",
+    "live",
+    "loot",
+    "love_bombing",
+    "low_key",
+    "ma_go",
+    "ma_gow",
+    "magl",
+    "manga",
+    "matrixe",
+    "mdr",
+    "mdrrr",
+    "meme",
+    "meme_mort",
+    "meme_template",
+    "meme_viral",
+    "meta",
+    "mid",
+    "mise_a_jour",
+    "mode_avion",
+    "mon_crush",
+    "mort_de_rire",
+    "mot_de_passe_fort",
+    "mute",
+    "muter_quelquun",
+    "nerf",
+    "no_cap",
+    "noob",
+    "npc",
+    "ok_valide",
+    "oklm",
+    "oklm_pour_ce_soir",
+    "os",
+    "pas_la_flemme",
+    "phishing",
+    "ping",
+    "pls",
+    "pls_de_ouf",
+    "podcast",
+    "poster",
+    "pov",
+    "qr_code",
+    "que_signifie_lexpression_avoir_le_seum",
+    "quel_bail",
+    "quelle_est_la_particularite_de_lapplication_bereal",
+    "quelle_galere",
+    "quest_ce_que_chatgpt",
+    "qui_est_squeezie",
+    "rage_quit",
+    "ratio",
+    "ratiod",
+    "reaction",
+    "red_flag",
+    "red_flag_ca",
+    "reel",
+    "reels",
+    "relou",
+    "relou_de_ouf",
+    "remix",
+    "repost",
+    "respawn",
+    "roast",
+    "sah",
+    "sah_frerot",
+    "sah_jte_jure",
+    "sah_sah",
+    "salty",
+    "scroll",
+    "scroller",
+    "se_faire_ratio",
+    "seen",
+    "seum",
+    "shadowban",
+    "ship_deux_personnes",
+    "side_eye",
+    "simp",
+    "situationship",
+    "skin",
+    "slay",
+    "son",
+    "spammer",
+    "spawn",
+    "spoiler",
+    "stockage",
+    "stories",
+    "story",
+    "streamer",
+    "sus",
+    "tabuses",
+    "tagger",
+    "tas_valide",
+    "telecharger",
+    "tes_chaud",
+    "tes_sus",
+    "texting",
+    "thread",
+    "tinquiete_oklm",
+    "trend",
+    "triggered",
+    "troll",
+    "trop_chaud",
+    "trop_cringe",
+    "trop_relou",
+    "tryhard",
+    "tu_forces",
+    "tuto",
+    "un_album_drop",
+    "un_algo",
+    "un_bail",
+    "un_banger",
+    "un_bot",
+    "un_buff",
+    "un_buzz",
+    "un_challenge",
+    "un_commentaire_epingle",
+    "un_compte_prive",
+    "un_compte_verifie",
+    "un_contenu_viral_court",
+    "un_cooldown",
+    "un_drop",
+    "un_fail",
+    "un_fake_account",
+    "un_feat",
+    "un_feed",
+    "un_filtre",
+    "un_hack",
+    "un_hater",
+    "un_hit",
+    "un_influenceur",
+    "un_inside_joke",
+    "un_leak",
+    "un_live",
+    "un_meme",
+    "un_meme_mort",
+    "un_meme_template",
+    "un_meme_viral",
+    "un_nerf",
+    "un_noob",
+    "un_peu_sus",
+    "un_ping",
+    "un_post_viral",
+    "un_reaction",
+    "un_remix",
+    "un_repost",
+    "un_roast",
+    "un_skin",
+    "un_son",
+    "un_spoiler",
+    "un_thread",
+    "un_troll",
+    "un_tuto",
+    "un_viewer",
+    "une_fake_news",
+    "une_galere",
+    "une_story",
+    "unfollow",
+    "unfollow_follow",
+    "unfollow_quelquun",
+    "valide",
+    "valide_pour_moi",
+    "viewer",
+    "viral",
+    "vpn",
+    "wesh",
+    "wifi"
+  ],
+  "entries": [
+    {
+      "concept_key": "2fa",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "2FA"
+    },
+    {
+      "concept_key": "5g",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "5G"
+    },
+    {
+      "concept_key": "a_skip",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "abuse",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Abusé",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "abuse_de_ouf",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "afk",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "AFK"
+    },
+    {
+      "concept_key": "album_drop",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Album drop"
+    },
+    {
+      "concept_key": "algo",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Algo"
+    },
+    {
+      "concept_key": "appli",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "askip",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "Askip",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "assistant_vocal",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Assistant vocal"
+    },
+    {
+      "concept_key": "bail",
+      "sources": [
+        "labels",
+        "live_db",
+        "pack"
+      ],
+      "label": "Bail",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "banger",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Banger"
+    },
+    {
+      "concept_key": "based",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Based"
+    },
+    {
+      "concept_key": "bien_vu",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Bien vu",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "bien_vu_chef",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "bien_vu_le_move",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "bien_vu_pour_ca",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "block",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Block"
+    },
+    {
+      "concept_key": "block_quelquun",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "bluetooth",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "bon_ca_part",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "boomer",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "boss",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Boss"
+    },
+    {
+      "concept_key": "bot",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Bot"
+    },
+    {
+      "concept_key": "boujee",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Boujee"
+    },
+    {
+      "concept_key": "brain_rot",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "brainrot",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Brainrot",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "breadcrumbing",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Breadcrumbing"
+    },
+    {
+      "concept_key": "buff",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Buff"
+    },
+    {
+      "concept_key": "buzz",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Buzz"
+    },
+    {
+      "concept_key": "ca_part",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Ça part",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "ca_part_en_couille",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "ca_part_loin",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "ca_part_vite",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cap",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Cap"
+    },
+    {
+      "concept_key": "carre",
+      "sources": [
+        "labels",
+        "live_db",
+        "pack"
+      ],
+      "label": "Carré",
+      "editorial_status": "approved",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "carry",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Carry"
+    },
+    {
+      "concept_key": "carry_une_partie",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "cest_abuse",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_abuse_le_prix",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_carre",
+      "sources": [
+        "group_review_csv",
+        "pack_legacy",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "cest_chaud",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_clean",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "cest_cringe",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_la_galere",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_le_flex",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_le_flop",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_mon_crush",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_oklm",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_quelque_chose",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "C'est quelque chose",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "cest_quelque_chose_lui",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_quelque_chose_quand_meme",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_relou",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_sah",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_sus",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_un_bail",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_un_red_flag",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cest_valide",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "pack_legacy",
+        "pack_surface",
+        "suggestions_csv"
+      ],
+      "label": "Validé"
+    },
+    {
+      "concept_key": "challenge",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Challenge"
+    },
+    {
+      "concept_key": "chaud",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Chaud",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "chaud_pour",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "clean",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Clean"
+    },
+    {
+      "concept_key": "clickbait",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Clickbait"
+    },
+    {
+      "concept_key": "cloud",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Cloud"
+    },
+    {
+      "concept_key": "clutch",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Clutch"
+    },
+    {
+      "concept_key": "commentaire_epingle",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Commentaire épinglé"
+    },
+    {
+      "concept_key": "compte_prive",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Compte privé"
+    },
+    {
+      "concept_key": "compte_verifie",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Compte vérifié"
+    },
+    {
+      "concept_key": "contenu_sponsorise",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Contenu sponsorisé"
+    },
+    {
+      "concept_key": "cookie",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "cooldown",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Cooldown"
+    },
+    {
+      "concept_key": "cringe",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Cringe",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "crush",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "Crush",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "crush_sur",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "cursed",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Cursed"
+    },
+    {
+      "concept_key": "dead",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "Dead",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "deepfake",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "delulu",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Delulu",
+      "usage_vitality": "observed_irl",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "delusional",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "discord_est_principalement_utilise_pour",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "dm",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "DM"
+    },
+    {
+      "concept_key": "dm_quelquun",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "double_text",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Double text"
+    },
+    {
+      "concept_key": "drama",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Drama"
+    },
+    {
+      "concept_key": "drop",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Drop"
+    },
+    {
+      "concept_key": "ecran_tactile",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Écran tactile"
+    },
+    {
+      "concept_key": "email_suspect",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Email suspect"
+    },
+    {
+      "concept_key": "en_pls",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "en_ratio",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "era_flop",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "etre_en_pls",
+      "sources": [
+        "pack_legacy",
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "fail",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Fail"
+    },
+    {
+      "concept_key": "fake_account",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Fake account"
+    },
+    {
+      "concept_key": "fake_news",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Fake news"
+    },
+    {
+      "concept_key": "farm",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Farm"
+    },
+    {
+      "concept_key": "feat",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Feat"
+    },
+    {
+      "concept_key": "feed",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Feed"
+    },
+    {
+      "concept_key": "filtre",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Filtre"
+    },
+    {
+      "concept_key": "flemme",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Flemme",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "flemme_de",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "flex",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "Flex",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "flexer",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "flop",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Flop",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "flop_de_ouf",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "flop_total",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "follow",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Follow"
+    },
+    {
+      "concept_key": "follow_quelquun",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "fomo",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "FOMO"
+    },
+    {
+      "concept_key": "forcer",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "forceur",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Forceur",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "fort",
+      "sources": [
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "franchement_cest_quelque_chose",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "friendzone",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Friendzone"
+    },
+    {
+      "concept_key": "galere",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Galère",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "genant",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "gg",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "GG"
+    },
+    {
+      "concept_key": "gg_bien_vu",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "ghoste",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "ghoster",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "Ghoster",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "ghoster_quelquun",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "pack_legacy",
+        "suggestions_csv"
+      ],
+      "label": "Ghoster"
+    },
+    {
+      "concept_key": "goat",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "GOAT"
+    },
+    {
+      "concept_key": "google_maps",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Google Maps"
+    },
+    {
+      "concept_key": "grave_la_flemme",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "grave_la_galere",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "grave_le_bail",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "hack",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Hack"
+    },
+    {
+      "concept_key": "hater",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Hater"
+    },
+    {
+      "concept_key": "high_key",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "High-key"
+    },
+    {
+      "concept_key": "hit",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Hit"
+    },
+    {
+      "concept_key": "ia",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "il_force",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "il_ma_ghoste",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "influenceur",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Influenceur"
+    },
+    {
+      "concept_key": "inside_joke",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Inside joke"
+    },
+    {
+      "concept_key": "iphone_android",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "iPhone / Android"
+    },
+    {
+      "concept_key": "jai_la_flemme",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "jai_le_seum",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "jai_un_crush",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "je_flex",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "je_ghost",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "je_suis_chaud",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "je_suis_cringe",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "je_suis_dead",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "je_suis_en_pls",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "jen_peux_plus",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "jpp",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "JPP",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "jpp_de_ouf",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "jpp_la",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "lag",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Lag"
+    },
+    {
+      "concept_key": "le_bail",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "le_forceur",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "le_seum",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "leak",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Leak"
+    },
+    {
+      "concept_key": "level_up",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Level up"
+    },
+    {
+      "concept_key": "lit",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Lit"
+    },
+    {
+      "concept_key": "live",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Live"
+    },
+    {
+      "concept_key": "loot",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Loot"
+    },
+    {
+      "concept_key": "love_bombing",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Love bombing"
+    },
+    {
+      "concept_key": "low_key",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Low-key"
+    },
+    {
+      "concept_key": "ma_go",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "ma_gow",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "magl",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Magl",
+      "usage_vitality": "listed_only",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "manga",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "matrixe",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Matrixé"
+    },
+    {
+      "concept_key": "mdr",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "MDR",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "mdrrr",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "meme",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Mème"
+    },
+    {
+      "concept_key": "meme_mort",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Mème mort"
+    },
+    {
+      "concept_key": "meme_template",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Mème template"
+    },
+    {
+      "concept_key": "meme_viral",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Mème viral"
+    },
+    {
+      "concept_key": "meta",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Meta"
+    },
+    {
+      "concept_key": "mid",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Mid"
+    },
+    {
+      "concept_key": "mise_a_jour",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Mise à jour"
+    },
+    {
+      "concept_key": "mode_avion",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Mode avion"
+    },
+    {
+      "concept_key": "mon_crush",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "mort_de_rire",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "mot_de_passe_fort",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv"
+      ]
+    },
+    {
+      "concept_key": "mute",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Mute"
+    },
+    {
+      "concept_key": "muter_quelquun",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "nerf",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Nerf"
+    },
+    {
+      "concept_key": "no_cap",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "No cap"
+    },
+    {
+      "concept_key": "noob",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Noob"
+    },
+    {
+      "concept_key": "npc",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "NPC"
+    },
+    {
+      "concept_key": "ok_valide",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "oklm",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "OKLM",
+      "usage_vitality": "passive",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "oklm_pour_ce_soir",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "os",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "OS"
+    },
+    {
+      "concept_key": "pas_la_flemme",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "phishing",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Phishing"
+    },
+    {
+      "concept_key": "ping",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Ping"
+    },
+    {
+      "concept_key": "pls",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Être en PLS",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "pls_de_ouf",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "podcast",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "poster",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Poster"
+    },
+    {
+      "concept_key": "pov",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "POV"
+    },
+    {
+      "concept_key": "qr_code",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "QR code"
+    },
+    {
+      "concept_key": "que_signifie_lexpression_avoir_le_seum",
+      "sources": [
+        "group_review_csv",
+        "pack_legacy",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "quel_bail",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "quelle_est_la_particularite_de_lapplication_bereal",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "quelle_galere",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "quest_ce_que_chatgpt",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "qui_est_squeezie",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "rage_quit",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Rage quit"
+    },
+    {
+      "concept_key": "ratio",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "Ratio",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "ratiod",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "reaction",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Reaction"
+    },
+    {
+      "concept_key": "red_flag",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "Red flag",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "red_flag_ca",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "reel",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Reel"
+    },
+    {
+      "concept_key": "reels",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "relou",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Relou",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "relou_de_ouf",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "remix",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Remix"
+    },
+    {
+      "concept_key": "repost",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Repost"
+    },
+    {
+      "concept_key": "respawn",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Respawn"
+    },
+    {
+      "concept_key": "roast",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Roast"
+    },
+    {
+      "concept_key": "sah",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Sah",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "sah_frerot",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "sah_jte_jure",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "sah_sah",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "salty",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Salty"
+    },
+    {
+      "concept_key": "scroll",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Scroll"
+    },
+    {
+      "concept_key": "scroller",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "se_faire_ratio",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "seen",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Seen"
+    },
+    {
+      "concept_key": "seum",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Avoir le seum",
+      "usage_vitality": "living",
+      "editorial_status": "golden_reference",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "shadowban",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Shadowban"
+    },
+    {
+      "concept_key": "ship_deux_personnes",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Ship"
+    },
+    {
+      "concept_key": "side_eye",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Side eye"
+    },
+    {
+      "concept_key": "simp",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Simp"
+    },
+    {
+      "concept_key": "situationship",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Situationship"
+    },
+    {
+      "concept_key": "skin",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Skin"
+    },
+    {
+      "concept_key": "slay",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Slay"
+    },
+    {
+      "concept_key": "son",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Son"
+    },
+    {
+      "concept_key": "spammer",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Spammer"
+    },
+    {
+      "concept_key": "spawn",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Spawn"
+    },
+    {
+      "concept_key": "spoiler",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Spoiler"
+    },
+    {
+      "concept_key": "stockage",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Mo / Go / To"
+    },
+    {
+      "concept_key": "stories",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "story",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Story"
+    },
+    {
+      "concept_key": "streamer",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Streamer"
+    },
+    {
+      "concept_key": "sus",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "pack",
+        "suggestions_csv"
+      ],
+      "label": "Sus",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "tabuses",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "tagger",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "tas_valide",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "telecharger",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "tes_chaud",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "tes_sus",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "texting",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Texting"
+    },
+    {
+      "concept_key": "thread",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Thread"
+    },
+    {
+      "concept_key": "tinquiete_oklm",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "trend",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Trend"
+    },
+    {
+      "concept_key": "triggered",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Triggered"
+    },
+    {
+      "concept_key": "troll",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Troll"
+    },
+    {
+      "concept_key": "trop_chaud",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "trop_cringe",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "trop_relou",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "tryhard",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Tryhard"
+    },
+    {
+      "concept_key": "tu_forces",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "tuto",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Tuto"
+    },
+    {
+      "concept_key": "un_album_drop",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_algo",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_bail",
+      "sources": [
+        "group_review_csv",
+        "pack_legacy",
+        "pack_surface",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_banger",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_bot",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_buff",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_buzz",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_challenge",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_commentaire_epingle",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_compte_prive",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_compte_verifie",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_contenu_viral_court",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_cooldown",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_drop",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_fail",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_fake_account",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_feat",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_feed",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_filtre",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_hack",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_hater",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_hit",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_influenceur",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_inside_joke",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_leak",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_live",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_meme",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_meme_mort",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_meme_template",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_meme_viral",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_nerf",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_noob",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_peu_sus",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "un_ping",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_post_viral",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_reaction",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_remix",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_repost",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_roast",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_skin",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_son",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_spoiler",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_thread",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_troll",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_tuto",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "un_viewer",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "une_fake_news",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "une_galere",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "une_story",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "unfollow",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Unfollow"
+    },
+    {
+      "concept_key": "unfollow_follow",
+      "sources": [
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Unfollow + follow"
+    },
+    {
+      "concept_key": "unfollow_quelquun",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "valide",
+      "sources": [
+        "labels",
+        "live_db",
+        "pack"
+      ],
+      "label": "Validé",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "valide_pour_moi",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "viewer",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Viewer"
+    },
+    {
+      "concept_key": "viral",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Viral"
+    },
+    {
+      "concept_key": "vpn",
+      "sources": [
+        "group_review_csv",
+        "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "wesh",
+      "sources": [
+        "backfill_csv",
+        "group_review_csv",
+        "labels",
+        "live_db",
+        "suggestions_csv"
+      ],
+      "label": "Wesh"
+    },
+    {
+      "concept_key": "wifi",
+      "sources": [
+        "labels",
+        "live_db"
+      ],
+      "label": "Wi-Fi"
+    }
+  ]
+}

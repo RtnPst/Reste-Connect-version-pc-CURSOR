@@ -3,7 +3,7 @@
   "pack_id": "cultural-pack-v1",
   "golden_batch_id": "v1_lot_01_tier_a",
   "locale": "fr-FR",
-  "updated_at": "2026-05-20",
+  "updated_at": "2026-07-21",
   "lot_03_batch_id": "v1_lot_03_tier_a",
   "lot_04_batch_id": "v1_lot_04a_tier_a",
   "lot_04b_batch_id": "v1_lot_04b_tier_a",
@@ -31,82 +31,163 @@
       "editorial_tier": "accessible",
       "editorial_status": "draft",
       "usage_vitality": "listed_only",
-      "surface_forms": ["ma go", "ma gow", "magl"],
-      "variants": ["magl", "mon magl", "ma gow", "ma go"],
+      "surface_forms": [
+        "ma go",
+        "ma gow",
+        "magl"
+      ],
+      "variants": [
+        "magl",
+        "mon magl",
+        "ma gow",
+        "ma go"
+      ],
       "short_definition": "Mon pote, mon proche — mot affectueux pour un ami ou une personne qu’on considère comme « son » pote.",
       "long_definition": "« Magl » circule surtout entre jeunes dans les groupes WhatsApp, les stories ou les réponses complices sur TikTok. Ce n’est pas un statut officiel : c’est de la complicité stylisée, proche de « mon reuf » mais souvent plus doux. Dit par un adulte qui « fait jeune », ça peut sonner faux ; entre potes, c’est en général au premier degré.",
-      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "social_validation"
+      ],
       "lifecycle": "stable_niche",
-      "platforms": ["whatsapp", "tiktok", "snapchat"],
+      "platforms": [
+        "whatsapp",
+        "tiktok",
+        "snapchat"
+      ],
       "social_vibe": "affectionate",
       "irony": "literal",
       "cringe_risk": "low",
       "generativity": "low",
       "default_theme_hint": "vocabulaire",
       "quiz_potential": {
-        "angles": ["definition_direct", "context_social", "generational_trap"],
-        "formats": ["expression", "scenario_text"]
+        "angles": [
+          "definition_direct",
+          "context_social",
+          "generational_trap"
+        ],
+        "formats": [
+          "expression",
+          "scenario_text"
+        ]
       },
       "sources": [
-        { "id": "lebonbon", "note": "Expressions jeunes — ma go / gow (liste)" }
+        {
+          "id": "lebonbon",
+          "note": "Expressions jeunes — ma go / gow (liste)"
+        }
       ],
       "ia_notes": "listed_only : pas de scène où tout le monde dit « magl » naturellement. Préférer commentaire TikTok « ma go », ou pote qui traduit. Interdit : parent au bureau, interpellation « Magl » en groupe. Pas golden_reference.",
       "human_notes": "Pilote quiz a révélé usage faible / orthographe douteuse — watchlist authenticité, pas modèle éditorial."
     },
     {
       "concept_key": "seum",
-      "legacy_concept_keys": ["que_signifie_lexpression_avoir_le_seum"],
+      "legacy_concept_keys": [
+        "que_signifie_lexpression_avoir_le_seum"
+      ],
       "canonical_label": "Avoir le seum",
       "editorial_tier": "accessible",
       "editorial_status": "golden_reference",
       "usage_vitality": "living",
-      "surface_forms": ["j'ai le seum", "le seum", "seum"],
-      "variants": ["seum", "avoir le seum", "je suis en seum"],
+      "surface_forms": [
+        "j'ai le seum",
+        "le seum",
+        "seum"
+      ],
+      "variants": [
+        "seum",
+        "avoir le seum",
+        "je suis en seum"
+      ],
       "short_definition": "Être déçu, frustré ou vexé — équivalent familier de « avoir les boules » chez beaucoup de jeunes.",
       "long_definition": "Le « seum » exprime une frustration personnelle : match perdu, message ignoré, plan annulé, vanne qui passe mal. Ce n’est pas de la rage violente : c’est du dépit + de l’énervement mêlés, souvent dit avec un côté théâtral ou auto-dérision. Peut être sincère ou un peu dramatique selon le ton.",
-      "cluster_tags": ["emotion_compressed"],
+      "cluster_tags": [
+        "emotion_compressed"
+      ],
       "lifecycle": "peak",
-      "platforms": ["tiktok", "whatsapp", "school"],
+      "platforms": [
+        "tiktok",
+        "whatsapp",
+        "school"
+      ],
       "social_vibe": "vulnerable",
       "irony": "literal",
       "cringe_risk": "low",
       "generativity": "high",
       "default_theme_hint": "vocabulaire",
       "quiz_potential": {
-        "angles": ["definition_direct", "context_social", "emotion_reading"],
-        "formats": ["expression", "scenario_text"]
+        "angles": [
+          "definition_direct",
+          "context_social",
+          "emotion_reading"
+        ],
+        "formats": [
+          "expression",
+          "scenario_text"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Questions archive culture_pop / vocabulaire" },
-        { "id": "lebonbon", "note": "Expression jeunes — seum" }
+        {
+          "id": "pool_existant",
+          "note": "Questions archive culture_pop / vocabulaire"
+        },
+        {
+          "id": "lebonbon",
+          "note": "Expression jeunes — seum"
+        }
       ],
       "ia_notes": "living : scènes = vocal court, message WhatsApp, réaction post-match/jeu/plan raté. Test : « des humains parlent-ils vraiment comme ça ? » Pas sketch pédagogique. Distracteurs = confusions réelles (joie, indifférence, fatigue), pas absurdes.",
       "human_notes": "Référence éditoriale pack V1 (structure + authenticité). concept_key seum ; legacy pour backfill."
     },
     {
       "concept_key": "carre",
-      "legacy_concept_keys": ["cest_carre"],
+      "legacy_concept_keys": [
+        "cest_carre"
+      ],
       "canonical_label": "Carré",
       "editorial_tier": "accessible",
       "editorial_status": "approved",
-      "variants": ["carré", "c'est carré", "carré pour moi", "c'est carré de ouf"],
+      "variants": [
+        "carré",
+        "c'est carré",
+        "carré pour moi",
+        "c'est carré de ouf"
+      ],
       "short_definition": "C’est validé, c’est bon pour moi — accord ou approbation sans prise de tête.",
       "long_definition": "« Carré » (souvent « c’est carré ») valide un plan, une explication ou une version des faits : on est d’accord, c’est réglé, on peut avancer. Proche de « ok parfait » ou « validé » avec une énergie un peu 2020s TikTok / Twitter FR. Peut sonner ironique si tout est en fait flou.",
-      "cluster_tags": ["social_validation"],
+      "cluster_tags": [
+        "social_validation"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["tiktok", "whatsapp", "twitter_x"],
+      "platforms": [
+        "tiktok",
+        "whatsapp",
+        "twitter_x"
+      ],
       "social_vibe": "hype",
       "irony": "often_ironic",
       "cringe_risk": "low",
       "generativity": "medium",
       "default_theme_hint": "vocabulaire",
       "quiz_potential": {
-        "angles": ["definition_direct", "context_social", "irony_reading"],
-        "formats": ["expression", "scenario_text"]
+        "angles": [
+          "definition_direct",
+          "context_social",
+          "irony_reading"
+        ],
+        "formats": [
+          "expression",
+          "scenario_text"
+        ]
       },
       "sources": [
-        { "id": "index_existant", "note": "cest_carre / c'est validé — famille proche" },
-        { "id": "lebonbon", "note": "Carré — super / validé" }
+        {
+          "id": "index_existant",
+          "note": "cest_carre / c'est validé — famille proche"
+        },
+        {
+          "id": "lebonbon",
+          "note": "Carré — super / validé"
+        }
       ],
       "ia_notes": "Bon angle : plan entre potes « c’est carré ? ». Piège léger : dire carré alors que rien n’est décidé (ironie). Lien possible avec « validé » sans fusionner les concepts en base.",
       "human_notes": "Distinct de cest_valide comme concept_key si besoin plus tard."
@@ -120,13 +201,29 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["ratio", "se faire ratio", "ratio'd", "en ratio"],
-      "variants": ["ratio", "se faire ratio", "t'as pris un ratio"],
+      "surface_forms": [
+        "ratio",
+        "se faire ratio",
+        "ratio'd",
+        "en ratio"
+      ],
+      "variants": [
+        "ratio",
+        "se faire ratio",
+        "t'as pris un ratio"
+      ],
       "short_definition": "Sur les réseaux, quand une réponse ou un avis « écrase » l'autre en likes ou en réponses — le perdant « prend » le ratio.",
       "long_definition": "Le « ratio » vient surtout de Twitter/X et des répliques sous TikTok ou Instagram : beaucoup de réponses qui dézinguent un commentaire, ou un tweet qui se fait humilier publiquement. En français oral, on dit souvent « il s'est fait ratio » ou « t'as pris un ratio ». Ce n'est pas un cours de stats : c'est une humiliation sociale légère, parfois drôle, parfois méchante.",
-      "cluster_tags": ["social_validation", "internet_social_code"],
+      "cluster_tags": [
+        "social_validation",
+        "internet_social_code"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["twitter_x", "tiktok", "instagram"],
+      "platforms": [
+        "twitter_x",
+        "tiktok",
+        "instagram"
+      ],
       "social_vibe": "ironic",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -138,24 +235,61 @@
           "T'as pris un ratio là",
           "Ratio + L + tu dors"
         ],
-        "credible_contexts": ["reply_chain", "tweet_polémique", "commentaire_tiktok_massacré", "groupe_qui_rigole"],
-        "avoid_scenes": ["cours_de_maths", "parent_explique_le_ratio_boursier", "journaliste_twitter_expert"],
-        "likely_speakers": ["pote_16_30", "commentateur_en ligne"],
-        "unlikely_speakers": ["prof_de_maths", "grand_parent_sans_reseaux"],
-        "written_vs_oral": { "primary": "written", "notes": "surtout commentaires et captures ; oral entre potes qui commentent une capture" },
+        "credible_contexts": [
+          "reply_chain",
+          "tweet_polémique",
+          "commentaire_tiktok_massacré",
+          "groupe_qui_rigole"
+        ],
+        "avoid_scenes": [
+          "cours_de_maths",
+          "parent_explique_le_ratio_boursier",
+          "journaliste_twitter_expert"
+        ],
+        "likely_speakers": [
+          "pote_16_30",
+          "commentateur_en ligne"
+        ],
+        "unlikely_speakers": [
+          "prof_de_maths",
+          "grand_parent_sans_reseaux"
+        ],
+        "written_vs_oral": {
+          "primary": "written",
+          "notes": "surtout commentaires et captures ; oral entre potes qui commentent une capture"
+        },
         "real_vs_glossary": "real",
         "example_usage": [
           "Sous sa vanne, y'a 40 réponses « ratio » — il a perdu.",
           "« T'as pris un ratio » = ta réponse s'est fait démonter en public."
         ],
-        "plausible_traps": ["confusion_statistiques", "confusion_ratio_tv", "penser_que_c_est_un_compliment"],
-        "adult_errors": ["explication_trop_technique_reseau", "formulation_journalistique_twitter_expert"]
+        "plausible_traps": [
+          "confusion_statistiques",
+          "confusion_ratio_tv",
+          "penser_que_c_est_un_compliment"
+        ],
+        "adult_errors": [
+          "explication_trop_technique_reseau",
+          "formulation_journalistique_twitter_expert"
+        ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "irony_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "irony_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
-      "sources": [{ "id": "pool_existant", "note": "Question live reseaux_sociaux — ratio" }],
+      "sources": [
+        {
+          "id": "pool_existant",
+          "note": "Question live reseaux_sociaux — ratio"
+        }
+      ],
       "ia_notes": "Grand public : humiliation sociale en public, pas jargon crypto. Scène = capture ou « sous son post ». Pas « Que veut dire ratio ». Distracteurs : stats, TV, victoire.",
       "human_notes": "Lot 01 tier A — éviter ton expert Twitter ; rester conversationnel."
     },
@@ -168,13 +302,28 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["red flag", "c'est un red flag", "red flag ça"],
-      "variants": ["red flag", "red flags", "gros red flag"],
+      "surface_forms": [
+        "red flag",
+        "c'est un red flag",
+        "red flag ça"
+      ],
+      "variants": [
+        "red flag",
+        "red flags",
+        "gros red flag"
+      ],
       "short_definition": "Signal d'alerte dans une relation ou une situation — un truc qui devrait te faire te méfier.",
       "long_definition": "« Red flag » = drapeau rouge métaphorique : comportement, phrase ou situation qui sonne faux en amour, en amitié ou en date. Souvent dit entre potes (« c'est un red flag ») sans faire psy : c'est de la prudence sociale partagée, parfois un peu dramatique pour rire.",
-      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "cluster_tags": [
+        "social_validation",
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "tiktok", "instagram"],
+      "platforms": [
+        "whatsapp",
+        "tiktok",
+        "instagram"
+      ],
       "social_vibe": "cautious",
       "irony": "literal",
       "cringe_risk": "low",
@@ -186,30 +335,71 @@
           "Red flag le mec répond jamais",
           "Ça m'envoie des red flags"
         ],
-        "credible_contexts": ["groupe_whatsapp_crush", "debrief_date", "story_avec_caption", "pote_qui_prend_conseil"],
-        "avoid_scenes": ["therapeute_tiktok_caricature", "cours_de_psy", "drapeau_rouge_litteral_sans_second_degre"],
-        "likely_speakers": ["pote_proche", "meilleure_amie", "groupe_confiance"],
-        "unlikely_speakers": ["professeur", "journaliste_mode_diagnostic"],
-        "written_vs_oral": { "primary": "oral", "notes": "messages vocaux et WhatsApp ; anglicisme gardé en FR" },
+        "credible_contexts": [
+          "groupe_whatsapp_crush",
+          "debrief_date",
+          "story_avec_caption",
+          "pote_qui_prend_conseil"
+        ],
+        "avoid_scenes": [
+          "therapeute_tiktok_caricature",
+          "cours_de_psy",
+          "drapeau_rouge_litteral_sans_second_degre"
+        ],
+        "likely_speakers": [
+          "pote_proche",
+          "meilleure_amie",
+          "groupe_confiance"
+        ],
+        "unlikely_speakers": [
+          "professeur",
+          "journaliste_mode_diagnostic"
+        ],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "messages vocaux et WhatsApp ; anglicisme gardé en FR"
+        },
         "real_vs_glossary": "real",
         "example_usage": [
           "« Il t'a liké que à 2h du mat, red flag » — alerte entre potes, pas diagnostic.",
           "Après le date, le groupe demande « des red flags ? »"
         ],
-        "plausible_traps": ["drapeau_rouge_litteral", "compliment", "green_flag_confusion"],
-        "adult_errors": ["ton_therapeute_tiktok", "liste_de_50_red_flags_article", "pathologiser_sans_contexte"]
+        "plausible_traps": [
+          "drapeau_rouge_litteral",
+          "compliment",
+          "green_flag_confusion"
+        ],
+        "adult_errors": [
+          "ton_therapeute_tiktok",
+          "liste_de_50_red_flags_article",
+          "pathologiser_sans_contexte"
+        ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "social_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "social_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
-      "sources": [{ "id": "pool_existant", "note": "Question live culture_pop / dating — red flag" }],
+      "sources": [
+        {
+          "id": "pool_existant",
+          "note": "Question live culture_pop / dating — red flag"
+        }
+      ],
       "ia_notes": "Conversationnel, pas psy caricatural. Scènes crush / date / groupe. Pas humilier la cible. Distracteur drapeau littéral OK si contexte clair.",
       "human_notes": "Lot 01 tier A — ton bienveillant Tu Captes ?, pas diagnostic clinique."
     },
     {
       "concept_key": "ghoster",
-      "legacy_concept_keys": ["ghoster_quelquun"],
+      "legacy_concept_keys": [
+        "ghoster_quelquun"
+      ],
       "canonical_label": "Ghoster",
       "editorial_tier": "accessible",
       "editorial_status": "draft",
@@ -217,13 +407,29 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["ghoster", "je ghost", "ghosté", "il m'a ghosté"],
-      "variants": ["ghoster", "ghoster quelqu'un", "se faire ghoster"],
+      "surface_forms": [
+        "ghoster",
+        "je ghost",
+        "ghosté",
+        "il m'a ghosté"
+      ],
+      "variants": [
+        "ghoster",
+        "ghoster quelqu'un",
+        "se faire ghoster"
+      ],
       "short_definition": "Couper le contact sans explication — la personne disparaît des réponses, des messages, des stories.",
       "long_definition": "« Ghoster », c'est arrêter de répondre du jour au lendemain : vu sur WhatsApp sans réponse, match qui ne répond plus, pote qui disparaît. Très vécu en dating et en amitié en ligne. Pas besoin d'un long speech : l'absence **est** le message.",
-      "cluster_tags": ["emotion_compressed", "internet_social_code"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "internet_social_code"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "snapchat", "tiktok"],
+      "platforms": [
+        "whatsapp",
+        "snapchat",
+        "tiktok"
+      ],
       "social_vibe": "vulnerable",
       "irony": "literal",
       "cringe_risk": "low",
@@ -235,25 +441,60 @@
           "Arrête de la ghoster",
           "Match ghosté, next"
         ],
-        "credible_contexts": ["vu_sans_reponse", "plan_qui_disparait", "match_dating", "groupe_qui_debrief"],
-        "avoid_scenes": ["fantome_halloween_litteral", "parent_ghosting_au_diner", "definition_dico_longue"],
-        "likely_speakers": ["jeune_en_dating", "pote_qui_debrief", "personne_ghostee"],
-        "unlikely_speakers": ["adulte_qui_decouvre_le_mot_en_conference"],
-        "written_vs_oral": { "primary": "oral", "notes": "WhatsApp et apps de rencontre ; « ghosté » très courant à l'oral" },
+        "credible_contexts": [
+          "vu_sans_reponse",
+          "plan_qui_disparait",
+          "match_dating",
+          "groupe_qui_debrief"
+        ],
+        "avoid_scenes": [
+          "fantome_halloween_litteral",
+          "parent_ghosting_au_diner",
+          "definition_dico_longue"
+        ],
+        "likely_speakers": [
+          "jeune_en_dating",
+          "pote_qui_debrief",
+          "personne_ghostee"
+        ],
+        "unlikely_speakers": [
+          "adulte_qui_decouvre_le_mot_en_conference"
+        ],
+        "written_vs_oral": {
+          "primary": "oral",
+          "notes": "WhatsApp et apps de rencontre ; « ghosté » très courant à l'oral"
+        },
         "real_vs_glossary": "real",
         "example_usage": [
           "« Vu à 22h, plus rien » + « il m'a ghosté » = classique.",
           "« Arrête de ghoster » dans un groupe = pression sociale pour répondre."
         ],
-        "plausible_traps": ["fantome_costume", "bug_technique_seul", "bloquer_vs_ghoster_nuance"],
-        "adult_errors": ["explication_anglais_ghost_halloween", "moraliser_trop_dans_la_question"]
+        "plausible_traps": [
+          "fantome_costume",
+          "bug_technique_seul",
+          "bloquer_vs_ghoster_nuance"
+        ],
+        "adult_errors": [
+          "explication_anglais_ghost_halloween",
+          "moraliser_trop_dans_la_question"
+        ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "social_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "social_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Live ghoster_quelquun ; archive ghoster + que_veut_dire_ghoster" }
+        {
+          "id": "pool_existant",
+          "note": "Live ghoster_quelquun ; archive ghoster + que_veut_dire_ghoster"
+        }
       ],
       "ia_notes": "concept_key canonique ghoster ; legacy ghoster_quelquun pour backfill. Scènes : vu sans réponse, match, plan mort. Pas fantôme Halloween sauf piège évident. Rewrite questions « ça veut dire ghoster ».",
       "human_notes": "Lot 01 tier A — fusion ghoster_quelquun validée."
@@ -267,13 +508,31 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["il force", "tu forces", "le forceur", "forcer"],
-      "variants": ["forceur", "le forceur", "il force", "arrête de forcer", "tu forces trop"],
+      "surface_forms": [
+        "il force",
+        "tu forces",
+        "le forceur",
+        "forcer"
+      ],
+      "variants": [
+        "forceur",
+        "le forceur",
+        "il force",
+        "arrête de forcer",
+        "tu forces trop"
+      ],
       "short_definition": "Quelqu'un qui en fait trop — insiste, exagère ou s'impose là où ce n'est pas le bienvenu.",
       "long_definition": "« Forcer » au sens internet, c'est dépasser les bornes sociales implicites : imposer une vanne qui ne passe pas, insister sur une drague non bienvenue, s'incruster dans un groupe gaming ou une conv sans y être invité. Le « forceur » n'est pas forcément malveillant — il peut manquer de lecture sociale plus que vouloir s'imposer. Souvent dit avec exaspération légère, parfois avec auto-dérision si on se reconnaît dedans. Mot d'origine française — pas un import direct.",
-      "cluster_tags": ["internet_social_code", "social_validation"],
+      "cluster_tags": [
+        "internet_social_code",
+        "social_validation"
+      ],
       "lifecycle": "peak",
-      "platforms": ["discord", "whatsapp", "tiktok"],
+      "platforms": [
+        "discord",
+        "whatsapp",
+        "tiktok"
+      ],
       "social_vibe": "judgmental",
       "irony": "literal",
       "cringe_risk": "medium",
@@ -330,11 +589,22 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "social_interpretation", "emotion_reading", "dialogue_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "social_interpretation",
+          "emotion_reading",
+          "dialogue_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_pool", "note": "Usage oral gaming et groupes — attesté régulièrement en conversations FR" }
+        {
+          "id": "observed_pool",
+          "note": "Usage oral gaming et groupes — attesté régulièrement en conversations FR"
+        }
       ],
       "ia_notes": "Mutation sociale française — pas import anglophone. Angles riches : gaming (forceur de squad), humour (vanne qui force), social (incruste), drague (insistance). Piège principal : forcer = effort positif chez l'adulte. Pas de scènes avec coercition physique — sens social uniquement. Distracteurs idéaux : entêté/persévérant (positif), physiquement fort, fatigué.",
       "human_notes": "Lot 02 tier A priorité 1. France-first : verbe français utilisé comme identité sociale. Aucun risque glossaire-TikTok US. Distinction importante : 'forcer' négatif (social) vs 'forcer' positif (effort physique/travail) — faire vivre ce faux ami dans les distracteurs."
@@ -348,13 +618,32 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["flex", "je flex", "c'est le flex", "flexer"],
-      "variants": ["flex", "flexer", "je flex", "un beau flex", "petit flex", "c'est le flex"],
+      "surface_forms": [
+        "flex",
+        "je flex",
+        "c'est le flex",
+        "flexer"
+      ],
+      "variants": [
+        "flex",
+        "flexer",
+        "je flex",
+        "un beau flex",
+        "petit flex",
+        "c'est le flex"
+      ],
       "short_definition": "Étaler quelque chose dont on est fier pour impressionner — une possession, une perf, ou même un truc banal transformé en petite victoire.",
       "long_definition": "« Flex » vient du rap/hip-hop anglophone mais s'est naturellement intégré en français. En 2025-2026, deux usages coexistent : le flex sincère (j'ai quelque chose de cool et je l'affiche — nouvelles baskets, résultats, etc.) et le flex ironique/auto-dérisoire (transformer un truc banal en 'victoire' pour rire — « petit flex : j'ai pas raté mon bus »). Le deuxième est devenu dominant dans les groupes et les commentaires. Savoir lire lequel c'est, c'est de la fluidité culturelle — un adulte ne verra souvent que le premier sens.",
-      "cluster_tags": ["social_validation", "humor_absurd"],
+      "cluster_tags": [
+        "social_validation",
+        "humor_absurd"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["instagram", "tiktok", "whatsapp"],
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "whatsapp"
+      ],
       "social_vibe": "hype",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -410,18 +699,31 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["irony_reading", "context_social", "social_interpretation", "definition_direct"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "irony_reading",
+          "context_social",
+          "social_interpretation",
+          "definition_direct"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_pool", "note": "Usage large FR observé — TikTok, Instagram, groupes WhatsApp" }
+        {
+          "id": "observed_pool",
+          "note": "Usage large FR observé — TikTok, Instagram, groupes WhatsApp"
+        }
       ],
       "ia_notes": "Angle prioritaire : flex ironique / auto-dérisoire — distinguer du flex sincère. Scènes idéales : petite victoire banale transformée en flex, pas influenceur Ferrari. Distracteurs : flexibilité physique (piège phonétique crédible), effort/travail (lire 'flex' comme 'je travaille dur'). Éviter les questions sur le flex de luxe pur — trop caricatural, éloigné du 35–55.",
       "human_notes": "Lot 02 tier A secondaire. Import anglophone mais bien ancré en FR. Richesse principale : dualité flex sincère / flex ironique — c'est l'angle différenciant. Le flex absurde du quotidien est plus fort éditorialement que le flex de richesse."
     },
     {
       "concept_key": "bail",
-      "legacy_concept_keys": ["un_bail"],
+      "legacy_concept_keys": [
+        "un_bail"
+      ],
       "canonical_label": "Bail",
       "editorial_tier": "accessible",
       "editorial_status": "draft",
@@ -429,13 +731,32 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["un bail", "c'est un bail", "quel bail", "grave le bail", "le bail"],
-      "variants": ["un bail", "c'est quel bail", "grave le bail", "t'as vu le bail", "c'est le bail"],
+      "surface_forms": [
+        "un bail",
+        "c'est un bail",
+        "quel bail",
+        "grave le bail",
+        "le bail"
+      ],
+      "variants": [
+        "un bail",
+        "c'est quel bail",
+        "grave le bail",
+        "t'as vu le bail",
+        "c'est le bail"
+      ],
       "short_definition": "Une affaire, une histoire, un plan ou une situation — pas le contrat de location, sauf piège volontaire.",
       "long_definition": "« Un bail » ou « c'est quel bail ? » désigne surtout le sujet en cours : une galère, une anecdote, un plan foireux, une histoire à raconter. Très oral en France (banlieue / jeunes / groupes), mais compris bien au-delà. Le piège adulte classique : entendre « bail » et penser bail locatif ou juridique — en contexte potes, c'est presque toujours l'affaire humaine.",
-      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "social_validation"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "discord", "tiktok"],
+      "platforms": [
+        "whatsapp",
+        "discord",
+        "tiktok"
+      ],
       "social_vibe": "hype",
       "irony": "literal",
       "cringe_risk": "low",
@@ -459,8 +780,15 @@
           "cours_de_droit_seul",
           "definition_dico_bail_locatif"
         ],
-        "likely_speakers": ["pote_proche", "groupe_entre_amis", "quelqu_un_qui_raconte"],
-        "unlikely_speakers": ["notaire_qui_parle_aux_jeunes", "parent_qui_definit_le_mot"],
+        "likely_speakers": [
+          "pote_proche",
+          "groupe_entre_amis",
+          "quelqu_un_qui_raconte"
+        ],
+        "unlikely_speakers": [
+          "notaire_qui_parle_aux_jeunes",
+          "parent_qui_definit_le_mot"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Très oral ; écrit en SMS/WhatsApp avec graphies variables"
@@ -482,11 +810,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "dialogue_interpretation", "generational_trap"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "dialogue_interpretation",
+          "generational_trap"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Question live vocabulaire — un_bail ; legacy un_bail" }
+        {
+          "id": "pool_existant",
+          "note": "Question live vocabulaire — un_bail ; legacy un_bail"
+        }
       ],
       "ia_notes": "France-first oral. Angle « c'est quel bail » = plan / sujet. Piège adulte bail locatif = feature (distracteur crédible), pas scène principale agence immo. Pas « Un bail, c'est… » scolaire. Scènes WhatsApp / vocal / debrief histoire.",
       "human_notes": "Lot 03 tier A priorité 1. concept_key bail ; legacy un_bail pour backfill."
@@ -500,13 +838,29 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["askip", "a skip", "à skip"],
-      "variants": ["askip", "askip que", "askip il", "askip y'a"],
+      "surface_forms": [
+        "askip",
+        "a skip",
+        "à skip"
+      ],
+      "variants": [
+        "askip",
+        "askip que",
+        "askip il",
+        "askip y'a"
+      ],
       "short_definition": "À ce qu'il paraît — rumeur, info pas confirmée, souvent dans les groupes.",
       "long_definition": "« Askip » est la contraction orale de « à ce qu'il paraît » : on répète une info entendue sans la garantir. Très WhatsApp / vocal entre potes (« askip il revient avec son ex »). Ce n'est pas une leçon de grammaire ni un SOS : c'est le registre de la rumeur sociale légère.",
-      "cluster_tags": ["internet_social_code", "social_validation"],
+      "cluster_tags": [
+        "internet_social_code",
+        "social_validation"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "snapchat", "discord"],
+      "platforms": [
+        "whatsapp",
+        "snapchat",
+        "discord"
+      ],
       "social_vibe": "cautious",
       "irony": "literal",
       "cringe_risk": "low",
@@ -530,8 +884,15 @@
           "askip_comme_sos",
           "parent_qui_demande_la_definition"
         ],
-        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_transmet_une_info"],
-        "unlikely_speakers": ["professeur", "journaliste_sans_contexte"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "quelqu_un_qui_transmet_une_info"
+        ],
+        "unlikely_speakers": [
+          "professeur",
+          "journaliste_sans_contexte"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "SMS/WhatsApp ; prononcé « a skip » à l'oral"
@@ -553,11 +914,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "dialogue_interpretation", "social_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "dialogue_interpretation",
+          "social_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archive Que veut dire askip — rewrite obligatoire" }
+        {
+          "id": "pool_existant",
+          "note": "Archive Que veut dire askip — rewrite obligatoire"
+        }
       ],
       "ia_notes": "Très France-first (contraction FR). Rumeur groupe, pas cours. Piège SOS = distracteur adulte crédible. Explication peut mentionner « à ce qu'il paraît » sans format dico. Pas scène parent.",
       "human_notes": "Lot 03 tier A priorité 2. Golden candidate potentiel si scène rumeur crush / plan."
@@ -571,13 +942,30 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["mdr", "mdrrr", "MDR"],
-      "variants": ["mdr", "mdrr", "mdrrr", "ptdr", "lol"],
+      "surface_forms": [
+        "mdr",
+        "mdrrr",
+        "MDR"
+      ],
+      "variants": [
+        "mdr",
+        "mdrr",
+        "mdrrr",
+        "ptdr",
+        "lol"
+      ],
       "short_definition": "Réaction écrite — souvent du rire, parfois de l'ironie, du passif-agressif ou du « je rigole jaune » selon le contexte.",
       "long_definition": "« MDR » = mort de rire à l'origine, mais en message c'est une **lecture de ton** : vrai rire, moquerie légère, ironie froide, ou passif-agressif (« mdr » après une vanne qui pique). L'intensité varie (mdr vs mdrrr). Un adulte qui ne lit que l'acronyme peut se tromper sur l'émotion réelle — surtout quand ce n'est pas drôle du tout.",
-      "cluster_tags": ["emotion_compressed", "humor_absurd"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "humor_absurd"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "instagram", "discord"],
+      "platforms": [
+        "whatsapp",
+        "instagram",
+        "discord"
+      ],
       "social_vibe": "ironic",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -601,8 +989,14 @@
           "definition_dico_sans_contexte",
           "parent_qui_demande_ce_que_veut_mdr"
         ],
-        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_reagit"],
-        "unlikely_speakers": ["adulte_qui_definit_l_acronyme_en_scene"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "quelqu_un_qui_reagit"
+        ],
+        "unlikely_speakers": [
+          "adulte_qui_definit_l_acronyme_en_scene"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "Réaction message ; rarement dit « emme-de-erre » à l'oral"
@@ -625,11 +1019,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["emotion_reading", "irony_reading", "context_social"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "emotion_reading",
+          "irony_reading",
+          "context_social"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archive Que veut dire mdr / MDR — rewrite obligatoire" }
+        {
+          "id": "pool_existant",
+          "note": "Archive Que veut dire mdr / MDR — rewrite obligatoire"
+        }
       ],
       "ia_notes": "Angle = lecture de ton en message, pas acronyme cours. Passif-agressif et ironie prioritaires sur « mort de rire » seul. Piège Maman des rêves = distracteur classique adulte. Symétrie qualité seum (émotion/message). Pas TikTok caricature.",
       "human_notes": "Lot 03 tier A priorité 3. Golden candidate si question double ton (mdr sincère vs froid)."
@@ -643,13 +1047,29 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["c'est relou", "relou", "trop relou", "relou de ouf"],
-      "variants": ["relou", "c'est relou", "trop relou", "relou ce truc"],
+      "surface_forms": [
+        "c'est relou",
+        "relou",
+        "trop relou",
+        "relou de ouf"
+      ],
+      "variants": [
+        "relou",
+        "c'est relou",
+        "trop relou",
+        "relou ce truc"
+      ],
       "short_definition": "C'est pénible, chiant, contraignant — une contrainte ou une situation qui agace.",
       "long_definition": "« Relou » (verlan de « lourd ») dit qu'une situation, une démarche ou une personne est énervante ou fatigante à gérer — pas forcément une grosse émotion comme le seum, plutôt l'ennui + la contrainte. Très courant à l'oral et sur WhatsApp (« c'est relou ce changement de plan »). Ce n'est pas un cours de verlan : c'est un jugement social léger sur quelque chose qui complique la vie.",
-      "cluster_tags": ["emotion_compressed"],
+      "cluster_tags": [
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "discord", "tiktok"],
+      "platforms": [
+        "whatsapp",
+        "discord",
+        "tiktok"
+      ],
       "social_vibe": "judgmental",
       "irony": "literal",
       "cringe_risk": "low",
@@ -673,8 +1093,15 @@
           "parent_qui_explique_relou",
           "relou_comme_bruit_fort_sans_contexte"
         ],
-        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_rale"],
-        "unlikely_speakers": ["professeur_de_francais", "journaliste"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "quelqu_un_qui_rale"
+        ],
+        "unlikely_speakers": [
+          "professeur_de_francais",
+          "journaliste"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "WhatsApp et vocal ; graphie relou stable"
@@ -697,11 +1124,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "dialogue_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "dialogue_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archives Que veut dire relou / verlan — rewrite obligatoire" }
+        {
+          "id": "pool_existant",
+          "note": "Archives Que veut dire relou / verlan — rewrite obligatoire"
+        }
       ],
       "ia_notes": "Angle contrainte / annoyance, pas dépit match. Distinct seum. Pas cours verlan en question. Pièges : lourd physique, bruyant, positif. Scènes plan relou, vocal, admin.",
       "human_notes": "Lot 04a priorité 1. France-first oral. Ne pas fusionner avec lourd comme concept_key."
@@ -715,13 +1152,29 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["j'ai la flemme", "grave la flemme", "flemme de", "pas la flemme"],
-      "variants": ["j'ai la flemme", "flemme de sortir", "j'ai grave la flemme", "zero flemme"],
+      "surface_forms": [
+        "j'ai la flemme",
+        "grave la flemme",
+        "flemme de",
+        "pas la flemme"
+      ],
+      "variants": [
+        "j'ai la flemme",
+        "flemme de sortir",
+        "j'ai grave la flemme",
+        "zero flemme"
+      ],
       "short_definition": "Pas envie, pas d'énergie pour faire quelque chose — fatigue ou flemme du moment, pas forcément de la paresse grave.",
       "long_definition": "« Avoir la flemme » = manquer d'envie pour une action précise (sortir, répondre, bouger, commencer un truc). Souvent dit avec humour ou auto-dérision entre potes. Peut frôler la fatigue réelle après une grosse journée — ce n'est pas un diagnostic. Très FR, très message / vocal.",
-      "cluster_tags": ["emotion_compressed"],
+      "cluster_tags": [
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "snapchat", "discord"],
+      "platforms": [
+        "whatsapp",
+        "snapchat",
+        "discord"
+      ],
       "social_vibe": "vulnerable",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -745,8 +1198,15 @@
           "parent_moralise_flemme",
           "cours_definition_les_jeunes_disent"
         ],
-        "likely_speakers": ["pote", "groupe", "quelqu_un_fatigue"],
-        "unlikely_speakers": ["adulte_qui_fait_la_lecon", "psy_en_direct"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "quelqu_un_fatigue"
+        ],
+        "unlikely_speakers": [
+          "adulte_qui_fait_la_lecon",
+          "psy_en_direct"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Messages courts ; « j'ai la flemme » très naturel à l'oral"
@@ -769,11 +1229,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "social_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "social_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archives J'ai la flemme — rewrite obligatoire" }
+        {
+          "id": "pool_existant",
+          "note": "Archives J'ai la flemme — rewrite obligatoire"
+        }
       ],
       "ia_notes": "Pas caricature fainéant. Nuance fatigue légitime vs pas envie. Pièges maladie / dépression lourde = distracteurs, pas moraliser dans explication. Distinct ghoster (pas répondre) = flemme pas hostility.",
       "human_notes": "Lot 04a priorité 2. Ultra France-first. Golden candidate si scène flemme de répondre vs ghosting."
@@ -787,13 +1257,32 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["t'es chaud", "je suis chaud", "c'est chaud", "trop chaud", "chaud pour"],
-      "variants": ["t'es chaud", "c'est chaud", "chaud pour ce soir", "il est chaud", "ça chauffe"],
+      "surface_forms": [
+        "t'es chaud",
+        "je suis chaud",
+        "c'est chaud",
+        "trop chaud",
+        "chaud pour"
+      ],
+      "variants": [
+        "t'es chaud",
+        "c'est chaud",
+        "chaud pour ce soir",
+        "il est chaud",
+        "ça chauffe"
+      ],
       "short_definition": "Mot caméléon — motivé, partant, doué, ou situation tendue / intense selon le contexte.",
       "long_definition": "« Chaud » change de sens selon la phrase : « t'es chaud ce soir ? » = tu es partant ; « c'est chaud » = situation délicate ou tendue ; « il est chaud » peut dire qu'il est fort / talentueux. La température n'est qu'un piège parmi d'autres — en contexte social FR actuel, le sens humain prime. Lecture du contexte = cœur du gameplay.",
-      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "cluster_tags": [
+        "social_validation",
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "discord", "tiktok"],
+      "platforms": [
+        "whatsapp",
+        "discord",
+        "tiktok"
+      ],
       "social_vibe": "hype",
       "irony": "literal",
       "cringe_risk": "low",
@@ -817,8 +1306,14 @@
           "cours_chez_les_jeunes",
           "parent_qui_demande_definition_chaud"
         ],
-        "likely_speakers": ["pote", "groupe", "commentateur_sport_or_musique"],
-        "unlikely_speakers": ["meteo_presentateur_seul"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "commentateur_sport_or_musique"
+        ],
+        "unlikely_speakers": [
+          "meteo_presentateur_seul"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Plans et réactions ; écrit court sur WhatsApp"
@@ -841,11 +1336,22 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "dialogue_interpretation", "irony_reading", "generational_trap"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "dialogue_interpretation",
+          "irony_reading",
+          "generational_trap"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archive être chaud conversation informelle — rewrite" }
+        {
+          "id": "pool_existant",
+          "note": "Archive être chaud conversation informelle — rewrite"
+        }
       ],
       "ia_notes": "Caméléon = plusieurs questions distinctes par sens, pas une définition. Température max 1 question facile avec contexte fort ailleurs. Golden : double lecture plan/météo ou tension vs chaleur. Pas glossaire jeunes.",
       "human_notes": "Lot 04a priorité 3. Meilleur potentiel gameplay lot 04a. Distinct carre (accord) et seum."
@@ -859,13 +1365,29 @@
       "import_confidence": "medium",
       "source_tier": "observed_irl",
       "glossary_only": false,
-      "surface_forms": ["c'est la galère", "quelle galère", "une galère", "grave la galère"],
-      "variants": ["la galère", "quelle galère", "une galère avec", "c'était la galère"],
+      "surface_forms": [
+        "c'est la galère",
+        "quelle galère",
+        "une galère",
+        "grave la galère"
+      ],
+      "variants": [
+        "la galère",
+        "quelle galère",
+        "une galère avec",
+        "c'était la galère"
+      ],
       "short_definition": "Une situation pénible, compliquée ou fatigante à vivre — pas une histoire à raconter ni un plan.",
       "long_definition": "« C'est la galère » ou « quelle galère » décrit la difficulté du moment : admin, transport, soirée foireuse, paperasse. Très oral en France. À distinguer de « bail » (le sujet / l'histoire / le plan) et de « relou » (agaçant) : la galère, c'est surtout « là c'est dur à gérer ».",
-      "cluster_tags": ["emotion_compressed"],
+      "cluster_tags": [
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "tiktok", "discord"],
+      "platforms": [
+        "whatsapp",
+        "tiktok",
+        "discord"
+      ],
       "social_vibe": "vulnerable",
       "irony": "literal",
       "cringe_risk": "low",
@@ -889,8 +1411,14 @@
           "fusion_avec_bail_comme_synonyme",
           "cours_definition_galere"
         ],
-        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_debrief"],
-        "unlikely_speakers": ["guide_touristique_galerie"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "quelqu_un_qui_debrief"
+        ],
+        "unlikely_speakers": [
+          "guide_touristique_galerie"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "WhatsApp et vocal ; graphie galere/galère"
@@ -913,11 +1441,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "dialogue_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "dialogue_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_irl", "note": "Oral FR attesté ; cité dans fiche bail — pas de ligne pool dédiée" }
+        {
+          "id": "observed_irl",
+          "note": "Oral FR attesté ; cité dans fiche bail — pas de ligne pool dédiée"
+        }
       ],
       "ia_notes": "Frontière bail : bail = sujet/plan/histoire à raconter ; galère = difficulté vécue. Frontière relou : relou = agaçant ; galère = situation dure. Piège galerie (art) crédible phonétique. import_confidence medium : valider à l'usage, pas glossaire seul.",
       "human_notes": "Lot 04b priorité 1. Prudence doublon bail — une ligne frontière dans les deux fiches."
@@ -931,13 +1469,30 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["mon crush", "c'est mon crush", "j'ai un crush", "crush sur"],
-      "variants": ["mon crush", "j'ai un crush", "crush sur lui", "mon crush de cours"],
+      "surface_forms": [
+        "mon crush",
+        "c'est mon crush",
+        "j'ai un crush",
+        "crush sur"
+      ],
+      "variants": [
+        "mon crush",
+        "j'ai un crush",
+        "crush sur lui",
+        "mon crush de cours"
+      ],
       "short_definition": "La personne qui te plaît — attirance, souvent pas (encore) en couple avec elle.",
       "long_definition": "« Crush » est un mot anglais très intégré en français oral : la personne qui fait battre le cœur, qu'on surveille un peu sur les réseaux ou qu'on cite en debrief. Ce n'est pas « écraser » au sens physique — piège classique pour un adulte qui traduit mot à mot.",
-      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "social_validation"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "instagram", "tiktok"],
+      "platforms": [
+        "whatsapp",
+        "instagram",
+        "tiktok"
+      ],
       "social_vibe": "vulnerable",
       "irony": "literal",
       "cringe_risk": "low",
@@ -961,8 +1516,14 @@
           "cours_dico_crush",
           "parent_qui_demande_que_veut_crush"
         ],
-        "likely_speakers": ["pote", "meilleure_amie", "groupe_debrief"],
-        "unlikely_speakers": ["professeur_anglais"],
+        "likely_speakers": [
+          "pote",
+          "meilleure_amie",
+          "groupe_debrief"
+        ],
+        "unlikely_speakers": [
+          "professeur_anglais"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Très courant à l'oral et en message ; garde l'anglicisme"
@@ -984,11 +1545,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "social_interpretation", "emotion_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "social_interpretation",
+          "emotion_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Question live culture_pop — Crush ça veut dire ; rewrite obligatoire" }
+        {
+          "id": "pool_existant",
+          "note": "Question live culture_pop — Crush ça veut dire ; rewrite obligatoire"
+        }
       ],
       "ia_notes": "Debrief relationnel, pas définition. Piège écraser/broyer = distracteur star adulte. Distinct red_flag (alerte) et ghoster (disparition). Pas scène « Que veut dire crush ».",
       "human_notes": "Lot 04b priorité 2. Anglicisme mais V1 publique utile. 1 live pool."
@@ -1002,13 +1573,32 @@
       "import_confidence": "medium",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["c'est cringe", "trop cringe", "cringe", "je suis cringe", "gênant"],
-      "variants": ["cringe", "trop cringe", "c'est trop cringe", "cringe de ouf", "assume le cringe"],
+      "surface_forms": [
+        "c'est cringe",
+        "trop cringe",
+        "cringe",
+        "je suis cringe",
+        "gênant"
+      ],
+      "variants": [
+        "cringe",
+        "trop cringe",
+        "c'est trop cringe",
+        "cringe de ouf",
+        "assume le cringe"
+      ],
       "short_definition": "Malaise social — quelque chose de gênant, ridicule ou qui met mal à l'aise (souvent dit avec second degré).",
       "long_definition": "« Cringe » (souvent proche de « c'est gênant » en français) désigne une scène, une vanne ou un comportement qui fait grimacer — malaise pour soi ou pour les autres. Peut être sincère (« c'est insupportable ») ou assumé (« je assume le cringe »). Ce n'est pas le champ technique `cringe_risk` du pack (taxonomie éditoriale), c'est le mot vécu en conversation et en commentaires TikTok FR.",
-      "cluster_tags": ["emotion_compressed", "humor_absurd"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "humor_absurd"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["tiktok", "whatsapp", "instagram"],
+      "platforms": [
+        "tiktok",
+        "whatsapp",
+        "instagram"
+      ],
       "social_vibe": "judgmental",
       "irony": "often_ironic",
       "cringe_risk": "medium",
@@ -1032,8 +1622,14 @@
           "confusion_avec_champ_cringe_risk",
           "parent_psy_diagnostic"
         ],
-        "likely_speakers": ["pote", "groupe", "commentateur"],
-        "unlikely_speakers": ["therapeute_tiktok_caricature"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "commentateur"
+        ],
+        "unlikely_speakers": [
+          "therapeute_tiktok_caricature"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Commentaires et messages ; « gênant » en surface_form FR"
@@ -1056,11 +1652,22 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "irony_reading", "emotion_reading", "social_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "irony_reading",
+          "emotion_reading",
+          "social_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archives Que veut dire cringe / quand un jeune dit cringe — rewrite" }
+        {
+          "id": "pool_existant",
+          "note": "Archives Que veut dire cringe / quand un jeune dit cringe — rewrite"
+        }
       ],
       "ia_notes": "concept_key cringe ≠ metadata cringe_risk (risque éditorial question). Angle malaise social + second degré, pas leçon « cringe = gênant ». Surface gênant OK en scène FR. Pas psy caricatural.",
       "human_notes": "Lot 04b priorité 3. Anglicisme ancré TikTok FR. Prudence : ne pas sur-produire vs red_flag."
@@ -1074,13 +1681,30 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["oklm", "c'est oklm", "t'inquiète oklm", "oklm pour ce soir"],
-      "variants": ["oklm", "c'est oklm", "ok oklm", "t'inquiète c'est oklm"],
+      "surface_forms": [
+        "oklm",
+        "c'est oklm",
+        "t'inquiète oklm",
+        "oklm pour ce soir"
+      ],
+      "variants": [
+        "oklm",
+        "c'est oklm",
+        "ok oklm",
+        "t'inquiète c'est oklm"
+      ],
       "short_definition": "C'est calme, tranquille — pas de stress, on gère ; réassurance légère entre potes (« t'inquiète »).",
       "long_definition": "« OKLM » (verlan d'« au calme ») rassure : la situation est gérable, pas besoin de paniquer. Ce n'est pas un « tout va bien dans la vie » ni une validation officielle — c'est du relatif (« pour ce plan / ce soir, ça va »). Souvent écrit en message ou dit en vocal après un petit stress. Les 35–55 le reconnaissent surtout à l'écrit ; peu le disent spontanément à l'oral sans sonner faux.",
-      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "cluster_tags": [
+        "social_validation",
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "snapchat", "discord"],
+      "platforms": [
+        "whatsapp",
+        "snapchat",
+        "discord"
+      ],
       "social_vibe": "reassuring",
       "irony": "literal",
       "cringe_risk": "low",
@@ -1104,8 +1728,16 @@
           "oklm_comme_tout_va_bien_absolu",
           "cours_verlan_au_calme"
         ],
-        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_rassure"],
-        "unlikely_speakers": ["adulte_qui_fait_jeune", "professeur", "journaliste"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "quelqu_un_qui_rassure"
+        ],
+        "unlikely_speakers": [
+          "adulte_qui_fait_jeune",
+          "professeur",
+          "journaliste"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "Souvent message ; vocal « c'est oklm » après tension légère"
@@ -1129,11 +1761,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "dialogue_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "dialogue_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archive Que veut dire OKLM — rewrite ; pas décryptage lettres" }
+        {
+          "id": "pool_existant",
+          "note": "Archive Que veut dire OKLM — rewrite ; pas décryptage lettres"
+        }
       ],
       "ia_notes": "Angle réassurance relative (calme / t'inquiète), pas bonheur total. Pièges : indifférence, formalisme, urgence — pas pur contraire « catastrophe ». Zéro adulte dans le groupe. Pas scène cours acronyme.",
       "human_notes": "Lot 05a priorité 1. Frontière : oklm = stress retombé ; pas flemme (envie), pas galère (situation dure)."
@@ -1147,13 +1789,32 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["dead", "je suis dead", "💀", "mort de rire"],
-      "variants": ["dead", "je suis dead", "deads", "💀💀", "je suis mort"],
+      "surface_forms": [
+        "dead",
+        "je suis dead",
+        "💀",
+        "mort de rire"
+      ],
+      "variants": [
+        "dead",
+        "je suis dead",
+        "deads",
+        "💀💀",
+        "je suis mort"
+      ],
       "short_definition": "Réaction d'hilarité extrême — « je suis KO » de rire, souvent à l'écrit (parfois 💀).",
       "long_definition": "« Dead » (ou « je suis dead ») exprime qu'on est plié de rire — plus fort qu'un « mdr » court, souvent sous un mème, une story ou un fil de commentaires. Ce n'est pas la mort, ni la tristesse, ni la fatigue seule : c'est l'overflow du rire. Peut être sincère ou auto-dérision (« cette vanne m'a tué »). Distinct de « mdr » : intensité et contexte (commentaire public, réaction explosive).",
-      "cluster_tags": ["emotion_compressed", "humor_absurd"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "humor_absurd"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["instagram", "tiktok", "whatsapp", "discord"],
+      "platforms": [
+        "instagram",
+        "tiktok",
+        "whatsapp",
+        "discord"
+      ],
       "social_vibe": "hype",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -1179,8 +1840,15 @@
           "fatigue_seule_sans_rire",
           "tiktok_caricature"
         ],
-        "likely_speakers": ["pote", "commentateur", "groupe"],
-        "unlikely_speakers": ["adulte_qui_demande_definition", "presentateur_tv"],
+        "likely_speakers": [
+          "pote",
+          "commentateur",
+          "groupe"
+        ],
+        "unlikely_speakers": [
+          "adulte_qui_demande_definition",
+          "presentateur_tv"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "Écrit + 💀 ; vocal « je suis dead » entre deux rires"
@@ -1204,18 +1872,30 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["emotion_reading", "context_social", "intensity_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "emotion_reading",
+          "context_social",
+          "intensity_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archive dead / je suis dead — rewrite ; borner mdr" }
+        {
+          "id": "pool_existant",
+          "note": "Archive dead / je suis dead — rewrite ; borner mdr"
+        }
       ],
       "ia_notes": "Angle hilarité KO, pas décès ni déprime. Frontière mdr obligatoire en distracteurs. Scènes commentaires / vocaux / potes. Pas adulte groupe. Pièges = confusions réelles (fatigue, tristesse, mdr équivalent) — pas absurdes.",
       "human_notes": "Lot 05a priorité 2. legacy optionnel si backfill ; pas fusionner avec mdr."
     },
     {
       "concept_key": "pls",
-      "legacy_concept_keys": ["etre_en_pls"],
+      "legacy_concept_keys": [
+        "etre_en_pls"
+      ],
       "canonical_label": "Être en PLS",
       "editorial_tier": "accessible",
       "editorial_status": "draft",
@@ -1223,13 +1903,29 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["en PLS", "je suis en PLS", "PLS de ouf", "être en PLS"],
-      "variants": ["en pls", "je suis en pls", "PLS", "en PLS ce soir"],
+      "surface_forms": [
+        "en PLS",
+        "je suis en PLS",
+        "PLS de ouf",
+        "être en PLS"
+      ],
+      "variants": [
+        "en pls",
+        "je suis en pls",
+        "PLS",
+        "en PLS ce soir"
+      ],
       "short_definition": "KO du moment — fatigué, dépassé ou à plat (souvent après effort, émotion ou soirée), métaphore du « à terre ».",
       "long_definition": "« Être en PLS » reprend l'acronyme médical en métaphore jeune : on est affaibli, vidé, « plus en état » sur le moment — pas une urgence SAMU en conversation entre potes. Distinct du seum (dépit/vexation), de la galère (situation pénible qui dure) et de la flemme (pas envie, plus léger). Très message / vocal après boulot, soirée ou week-end intense.",
-      "cluster_tags": ["emotion_compressed"],
+      "cluster_tags": [
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "snapchat", "tiktok"],
+      "platforms": [
+        "whatsapp",
+        "snapchat",
+        "tiktok"
+      ],
       "social_vibe": "vulnerable",
       "irony": "literal",
       "cringe_risk": "low",
@@ -1254,8 +1950,15 @@
           "urgence_medicale_reelle",
           "vacances_concert_pur_contraire"
         ],
-        "likely_speakers": ["pote", "groupe", "quelqu_un_qui_debrief"],
-        "unlikely_speakers": ["pompier_pedagogue", "adulte_qui_explique_SAMU"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "quelqu_un_qui_debrief"
+        ],
+        "unlikely_speakers": [
+          "pompier_pedagogue",
+          "adulte_qui_explique_SAMU"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Message et vocal ; métaphore, pas lexique secours"
@@ -1280,18 +1983,30 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "boundary_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "boundary_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archive être en PLS — rewrite ; jamais cours SAMU en scène" }
+        {
+          "id": "pool_existant",
+          "note": "Archive être en PLS — rewrite ; jamais cours SAMU en scène"
+        }
       ],
       "ia_notes": "Métaphore KO momentané. Frontières seum / galere / flemme dans pièges. Pas SAMU, pas adulte groupe, pas pur contraire. Scènes debrief potes / messages.",
       "human_notes": "Lot 05a priorité 3. legacy etre_en_pls pour backfill. Ne pas fusionner avec galère ni seum."
     },
     {
       "concept_key": "valide",
-      "legacy_concept_keys": ["cest_valide"],
+      "legacy_concept_keys": [
+        "cest_valide"
+      ],
       "canonical_label": "Validé",
       "editorial_tier": "accessible",
       "editorial_status": "draft",
@@ -1299,13 +2014,30 @@
       "import_confidence": "high",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["c'est validé", "validé", "validé pour moi", "t'as validé ?", "ok validé"],
-      "variants": ["validé", "c'est validé", "validé de ouf", "t'as validé le plan ?"],
+      "surface_forms": [
+        "c'est validé",
+        "validé",
+        "validé pour moi",
+        "t'as validé ?",
+        "ok validé"
+      ],
+      "variants": [
+        "validé",
+        "c'est validé",
+        "validé de ouf",
+        "t'as validé le plan ?"
+      ],
       "short_definition": "Approbation sociale — « c'est bon pour moi », souvent avec énergie hype ; peut être sincère ou ironique selon le contexte.",
       "long_definition": "« Validé » (ou « c'est validé ») est un stamp d'accord : le resto, le look, l'idée, le plan. Ce n'est pas une validation administrative ni un document signé — c'est entre potes, en message ou en vocal. Peut être au premier degré (« ouais je suis partant ») ou au second degré quand rien n'est vraiment acté (« validé » alors que les horaires sont encore flous). Distinct de « c'est carré » : validé = feu vert social ; carré = version des faits / plan réglé.",
-      "cluster_tags": ["social_validation"],
+      "cluster_tags": [
+        "social_validation"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "tiktok", "instagram"],
+      "platforms": [
+        "whatsapp",
+        "tiktok",
+        "instagram"
+      ],
       "social_vibe": "hype",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -1330,8 +2062,15 @@
           "cours_validé_approuvé_officiel",
           "tiktok_caricature"
         ],
-        "likely_speakers": ["pote", "groupe", "commentateur"],
-        "unlikely_speakers": ["rh_validateur_officiel", "journaliste"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "commentateur"
+        ],
+        "unlikely_speakers": [
+          "rh_validateur_officiel",
+          "journaliste"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "Messages courts + « validé ? » à l'oral"
@@ -1355,11 +2094,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "irony_reading", "social_validation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "irony_reading",
+          "social_validation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archive C'est validé — rewrite ; pool live" }
+        {
+          "id": "pool_existant",
+          "note": "Archive C'est validé — rewrite ; pool live"
+        }
       ],
       "ia_notes": "Angle stamp social, pas admin. Ironie prioritaire en moyen/difficile. Frontière carre / oklm / chaud. Double-concept en fil avec carre possible. Pas adulte groupe.",
       "human_notes": "Lot 05b priorité 1. Distinct carre (approved) — ne pas fusionner les clés."
@@ -1373,13 +2122,31 @@
       "import_confidence": "medium",
       "source_tier": "observed_irl",
       "glossary_only": false,
-      "surface_forms": ["c'est abusé", "abusé", "t'abuses", "c'est abusé le prix", "abusé de ouf"],
-      "variants": ["abusé", "c'est abusé", "t'abuses là", "le délai c'est abusé"],
+      "surface_forms": [
+        "c'est abusé",
+        "abusé",
+        "t'abuses",
+        "c'est abusé le prix",
+        "abusé de ouf"
+      ],
+      "variants": [
+        "abusé",
+        "c'est abusé",
+        "t'abuses là",
+        "le délai c'est abusé"
+      ],
       "short_definition": "C'est trop — prix, délai, effort ou vanne qui dépasse ce qui semble juste ; réaction d'injustice légère ou d'exagération.",
       "long_definition": "« C'est abusé » (ou « t'abuses ») dit qu'une situation est excessive : 12 € le café, 45 min d'attente, une vanne qui va trop loin. Ce n'est pas une accusation judiciaire ni du harcèlement au sens grave — c'est un jugement oral entre potes, souvent avec humour ou indignation légère. Peut viser un prix, un comportement, un timing. Distinct de relou (pénible), galère (situation dure), seum (dépit).",
-      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "social_validation"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "tiktok", "snapchat"],
+      "platforms": [
+        "whatsapp",
+        "tiktok",
+        "snapchat"
+      ],
       "social_vibe": "judgmental",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -1404,8 +2171,15 @@
           "parent_dans_groupe",
           "abus_sexuel_patho"
         ],
-        "likely_speakers": ["pote", "groupe", "client_mefiant"],
-        "unlikely_speakers": ["avocat_plainte", "enseignant_morale"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "client_mefiant"
+        ],
+        "unlikely_speakers": [
+          "avocat_plainte",
+          "enseignant_morale"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Très message / vocal ; « c'est abusé » spontané"
@@ -1429,11 +2203,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "boundary_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "boundary_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_irl", "note": "Oral FR fort ; peu de lignes pool — scènes type prix/délai/vanne" }
+        {
+          "id": "observed_irl",
+          "note": "Oral FR fort ; peu de lignes pool — scènes type prix/délai/vanne"
+        }
       ],
       "ia_notes": "concept_key abuse = oral « abusé » (pas harcèlement EN). Réaction « c'est trop ». Pas violence réelle, pas patho. Frontières relou/galere/seum. Pas pur contraire « c'est normal ».",
       "human_notes": "Lot 05b priorité 2. Clé ASCII abuse pour abusé ; surface_forms avec accent."
@@ -1447,13 +2231,30 @@
       "import_confidence": "medium",
       "source_tier": "observed_pool",
       "glossary_only": false,
-      "surface_forms": ["c'est sus", "sus", "un peu sus", "t'es sus"],
-      "variants": ["sus", "c'est un peu sus", "suspect", "cheater sus"],
+      "surface_forms": [
+        "c'est sus",
+        "sus",
+        "un peu sus",
+        "t'es sus"
+      ],
+      "variants": [
+        "sus",
+        "c'est un peu sus",
+        "suspect",
+        "cheater sus"
+      ],
       "short_definition": "Louche, suspect au sens léger — comportement ou vibe qui incite au doute, sans accusation grave.",
       "long_definition": "« Sus » (héritage Among Us + chat FR) signifie « ça pue » / « c'est suspect » entre potes : compte bizarre, excuse floue, vibe off. Ce n'est pas un red flag relationnel lourd ni une accusation pénale — c'est un doute social léger, souvent en vanne. Le joueur lit le ton : moquerie, méfiance soft, gaming.",
-      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "cluster_tags": [
+        "social_validation",
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["discord", "whatsapp", "tiktok"],
+      "platforms": [
+        "discord",
+        "whatsapp",
+        "tiktok"
+      ],
       "social_vibe": "judgmental",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -1478,8 +2279,15 @@
           "parent_dans_groupe",
           "cours_sus_mot_anglais"
         ],
-        "likely_speakers": ["pote", "groupe_gaming", "commentateur"],
-        "unlikely_speakers": ["procureur", "therapeute_tiktok"],
+        "likely_speakers": [
+          "pote",
+          "groupe_gaming",
+          "commentateur"
+        ],
+        "unlikely_speakers": [
+          "procureur",
+          "therapeute_tiktok"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "Chat + vocal court ; gaming et social"
@@ -1503,11 +2311,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "irony_reading", "boundary_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "irony_reading",
+          "boundary_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "pool_existant", "note": "Archive Sus — rewrite ; pool live" }
+        {
+          "id": "pool_existant",
+          "note": "Archive Sus — rewrite ; pool live"
+        }
       ],
       "ia_notes": "Frontière red_flag obligatoire : sus = louche léger, red_flag = alerte comportement. Pas accusation grave, pas psy. Héritage gaming OK en une scène max. Pas adulte groupe.",
       "human_notes": "Lot 05b priorité 3. Among Us = angle secondaire, pas toute la scène."
@@ -1521,13 +2339,31 @@
       "import_confidence": "high",
       "source_tier": "observed_irl",
       "glossary_only": false,
-      "surface_forms": ["bien vu", "bien vu pour ça", "bien vu chef", "gg bien vu", "bien vu le move"],
-      "variants": ["bien vu", "bien vu frérot", "bien vu pour le lien", "bien vu…"],
+      "surface_forms": [
+        "bien vu",
+        "bien vu pour ça",
+        "bien vu chef",
+        "gg bien vu",
+        "bien vu le move"
+      ],
+      "variants": [
+        "bien vu",
+        "bien vu frérot",
+        "bien vu pour le lien",
+        "bien vu…"
+      ],
       "short_definition": "Reconnaissance d'un bon move — tu as bien fait / bon réflexe, souvent court et complice.",
       "long_definition": "« Bien vu » valide une action précise (info utile, bonne vanne, astuce, bon timing) — pas un feu vert sur tout un plan comme « validé ». Entre potes, en message ou en vocal : ton complice, parfois ironique (« bien vu… » quand c'est moyen). Distinct de « bonne idée » scolaire : c'est social, immédiat, souvent après coup.",
-      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "cluster_tags": [
+        "social_validation",
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "discord", "snapchat"],
+      "platforms": [
+        "whatsapp",
+        "discord",
+        "snapchat"
+      ],
       "social_vibe": "affectionate",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -1552,8 +2388,15 @@
           "feedback_quiz_app_meta",
           "tiktok_caricature"
         ],
-        "likely_speakers": ["pote", "groupe", "coéquipier"],
-        "unlikely_speakers": ["prof_cours_francais", "rh_evaluation"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "coéquipier"
+        ],
+        "unlikely_speakers": [
+          "prof_cours_francais",
+          "rh_evaluation"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "Message court + vocal « bien vu » après un move"
@@ -1577,11 +2420,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "irony_reading", "dialogue_interpretation"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "irony_reading",
+          "dialogue_interpretation"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_irl", "note": "Oral FR massif WhatsApp/Discord ; pas ligne pool dédiée" }
+        {
+          "id": "observed_irl",
+          "note": "Oral FR massif WhatsApp/Discord ; pas ligne pool dédiée"
+        }
       ],
       "ia_notes": "Angle reconnaissance move précis, pas stamp plan. Ironie en moyen/difficile. Frontière valide/carre. Double-concept Q4 avec valide possible. Pas scène méta-app « Bien vu » quiz.",
       "human_notes": "Lot 06a priorité 1. Micro-ton reconnaissance."
@@ -1595,13 +2448,30 @@
       "import_confidence": "high",
       "source_tier": "observed_irl",
       "glossary_only": false,
-      "surface_forms": ["c'est quelque chose", "franchement c'est quelque chose", "c'est quelque chose lui", "c'est quelque chose quand même"],
-      "variants": ["c'est quelque chose", "c'est vraiment quelque chose", "c'est quelque chose…", "lui c'est quelque chose"],
+      "surface_forms": [
+        "c'est quelque chose",
+        "franchement c'est quelque chose",
+        "c'est quelque chose lui",
+        "c'est quelque chose quand même"
+      ],
+      "variants": [
+        "c'est quelque chose",
+        "c'est vraiment quelque chose",
+        "c'est quelque chose…",
+        "lui c'est quelque chose"
+      ],
       "short_definition": "Admiration ou commentaire social ambigu — souvent sobre, parfois ironique ; le ton fait tout.",
       "long_definition": "« C'est quelque chose » peut saluer une perf, une audace ou une vibe (« il gère ») au premier degré, ou glisser vers le second degré (« c'est quelque chose… » après un look discutable). Ce n'est pas un cours de grammaire ni un « c'est bien » neutre : c'est une formule de lecture sociale, souvent sous-entendue. Proche de bien vu pour le compliment discret, mais plus large (personne, moment, niveau).",
-      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "cluster_tags": [
+        "social_validation",
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "tiktok", "instagram"],
+      "platforms": [
+        "whatsapp",
+        "tiktok",
+        "instagram"
+      ],
       "social_vibe": "hype",
       "irony": "often_ironic",
       "cringe_risk": "medium",
@@ -1626,8 +2496,15 @@
           "tiktok_caricature",
           "scene_sans_indice_ton"
         ],
-        "likely_speakers": ["pote", "groupe", "spectateur"],
-        "unlikely_speakers": ["enseignant_grammaire", "journaliste_litote_explicative"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "spectateur"
+        ],
+        "unlikely_speakers": [
+          "enseignant_grammaire",
+          "journaliste_litote_explicative"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Vocal + message ; points de suspension = signal ironie"
@@ -1651,11 +2528,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["irony_reading", "emotion_reading", "context_social"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "irony_reading",
+          "emotion_reading",
+          "context_social"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_irl", "note": "Formule conversationnelle FR ; ton = gameplay principal" }
+        {
+          "id": "observed_irl",
+          "note": "Formule conversationnelle FR ; ton = gameplay principal"
+        }
       ],
       "ia_notes": "Priorité lecture de ton (sincère vs ironie). Scènes avec indices comportementaux (perf, look, vanne). Frontière bien_vu / valide / dead / cringe. Q4 double-concept premium. Pas glossaire.",
       "human_notes": "Lot 06a priorité 2. Cœur micro-ton LOT 6."
@@ -1669,13 +2556,31 @@
       "import_confidence": "high",
       "source_tier": "observed_irl",
       "glossary_only": false,
-      "surface_forms": ["ça part", "bon ça part", "ça part loin", "ça part en couille", "ça part vite"],
-      "variants": ["ça part", "ok ça part", "là ça part", "ça part en couille là"],
+      "surface_forms": [
+        "ça part",
+        "bon ça part",
+        "ça part loin",
+        "ça part en couille",
+        "ça part vite"
+      ],
+      "variants": [
+        "ça part",
+        "ok ça part",
+        "là ça part",
+        "ça part en couille là"
+      ],
       "short_definition": "Ça se lance, ça dérape ou ça circule — selon la scène : départ, escalade ou rumeur qui part.",
       "long_definition": "« Ça part » est une micro-formule de mouvement : on lance le plan (« bon ça part »), une situation dérape (« ça part en couille »), ou une info se propage (« ça part vite »). Ce n'est pas « chaud » au sens tension interpersonnelle ni météo : c'est l'idée que quelque chose est en train de partir / d'accélérer. Le contexte (avant sortie, chaos, rumeur) fixe le sens.",
-      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "social_validation"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "snapchat", "discord"],
+      "platforms": [
+        "whatsapp",
+        "snapchat",
+        "discord"
+      ],
       "social_vibe": "hype",
       "irony": "literal",
       "cringe_risk": "low",
@@ -1700,8 +2605,15 @@
           "parent_dans_groupe",
           "tiktok_caricature"
         ],
-        "likely_speakers": ["pote", "groupe", "organisateur"],
-        "unlikely_speakers": ["conducteur_bus_pedagogue", "meteo_presentateur"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "organisateur"
+        ],
+        "unlikely_speakers": [
+          "conducteur_bus_pedagogue",
+          "meteo_presentateur"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Vocal + messages ; « en couille » / « loin » = indices escalade"
@@ -1725,11 +2637,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "dialogue_interpretation", "boundary_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "dialogue_interpretation",
+          "boundary_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_irl", "note": "Double/triple sens contextuel — scène obligatoire" }
+        {
+          "id": "observed_irl",
+          "note": "Double/triple sens contextuel — scène obligatoire"
+        }
       ],
       "ia_notes": "Lecture contextuelle : lancement vs escalade vs rumeur. Frontière chaud (tension) / carre (plan réglé) / relou. Q4 double-concept chaud/ca_part recommandé. Pas pur contraire « ça s'arrête ».",
       "human_notes": "Lot 06a priorité 3. Ambiguïté contrôlée par indices scène."
@@ -1743,13 +2665,31 @@
       "import_confidence": "high",
       "source_tier": "observed_irl",
       "glossary_only": false,
-      "surface_forms": ["jpp", "jpp là", "j'en peux plus", "jpp de ouf", "jpp 😂"],
-      "variants": ["jpp", "jpp là", "j'en peux plus / jpp", "jpp frérot"],
+      "surface_forms": [
+        "jpp",
+        "jpp là",
+        "j'en peux plus",
+        "jpp de ouf",
+        "jpp 😂"
+      ],
+      "variants": [
+        "jpp",
+        "jpp là",
+        "j'en peux plus / jpp",
+        "jpp frérot"
+      ],
       "short_definition": "J'en peux plus — saturation du moment : trop de rire, trop de drama, trop de répétitions ; exaspération légère ou théâtre.",
       "long_definition": "« JPP » (j'en peux plus) dit qu'on atteint sa limite sur le moment — pas forcément un KO physique comme « en PLS », ni du rire pur comme « dead ». Ça peut venir d'un flood de memes, d'une vanne qui tourne en boucle, d'un drama qui s'éternise. Très écrit (WhatsApp, Discord) avec parfois 😂 pour adoucir. Distinct du seum (dépit ciblé) : jpp = « stop / trop là » plus que « j'ai les boules ».",
-      "cluster_tags": ["emotion_compressed", "humor_absurd"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "humor_absurd"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["whatsapp", "discord", "snapchat"],
+      "platforms": [
+        "whatsapp",
+        "discord",
+        "snapchat"
+      ],
       "social_vibe": "vulnerable",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -1775,8 +2715,15 @@
           "tiktok_caricature",
           "annulation_plan_pur_contraire"
         ],
-        "likely_speakers": ["pote", "groupe", "commentateur"],
-        "unlikely_speakers": ["medecin_urgence", "rh_evaluation"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "commentateur"
+        ],
+        "unlikely_speakers": [
+          "medecin_urgence",
+          "rh_evaluation"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "Très message ; vocal théâtral possible"
@@ -1800,11 +2747,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["emotion_reading", "context_social", "boundary_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "emotion_reading",
+          "context_social",
+          "boundary_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_irl", "note": "Oral FR écrit fort ; peu de lignes pool" }
+        {
+          "id": "observed_irl",
+          "note": "Oral FR écrit fort ; peu de lignes pool"
+        }
       ],
       "ia_notes": "Saturation momentanée — pas KO corps (pls), pas hilarité seule (dead), pas dépit match (seum). Ironie/drama léger OK. Q4 double-concept pls/dead possible. Pas annulé, pas pur contraire.",
       "human_notes": "Lot 06b priorité 1. Frontières pls/dead/seum obligatoires en pièges."
@@ -1818,13 +2775,31 @@
       "import_confidence": "medium",
       "source_tier": "observed_irl",
       "glossary_only": false,
-      "surface_forms": ["sah", "sah sah", "c'est sah", "sah frérot", "sah j'te jure"],
-      "variants": ["sah", "sah sah", "c'est sah pour moi", "sah c'était ouf"],
+      "surface_forms": [
+        "sah",
+        "sah sah",
+        "c'est sah",
+        "sah frérot",
+        "sah j'te jure"
+      ],
+      "variants": [
+        "sah",
+        "sah sah",
+        "c'est sah pour moi",
+        "sah c'était ouf"
+      ],
       "short_definition": "Insistance sincère — « je te jure », « c'est vrai », validation émotionnelle du moment ; le ton fait tout.",
       "long_definition": "« Sah » (registre oral TikTok / Discord FR) insiste sur la sincérité : « sah c'était ouf », « sah il l'a vraiment fait ». Ce n'est pas une promesse contractuelle ni un feu vert logistique comme « validé » — c'est « je te le dis vraiment ». Peut renforcer une émotion (surprise, admiration) ou un fait incroyable. Distinct de bien vu (reconnaissance d'un move) et de validé (accord sur un plan).",
-      "cluster_tags": ["social_validation", "emotion_compressed"],
+      "cluster_tags": [
+        "social_validation",
+        "emotion_compressed"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["tiktok", "discord", "whatsapp"],
+      "platforms": [
+        "tiktok",
+        "discord",
+        "whatsapp"
+      ],
       "social_vibe": "hype",
       "irony": "often_ironic",
       "cringe_risk": "low",
@@ -1850,8 +2825,15 @@
           "tiktok_caricature",
           "fusion_cap_no_cap_us"
         ],
-        "likely_speakers": ["pote", "groupe", "story_reaction"],
-        "unlikely_speakers": ["notaire", "journaliste_officiel"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "story_reaction"
+        ],
+        "unlikely_speakers": [
+          "notaire",
+          "journaliste_officiel"
+        ],
         "written_vs_oral": {
           "primary": "oral",
           "notes": "Message et vocal ; répétition sah sah = insistance"
@@ -1875,11 +2857,21 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["irony_reading", "context_social", "emotion_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "irony_reading",
+          "context_social",
+          "emotion_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_irl", "note": "Registre TikTok-Discord FR ; trend mais oral réel" }
+        {
+          "id": "observed_irl",
+          "note": "Registre TikTok-Discord FR ; trend mais oral réel"
+        }
       ],
       "ia_notes": "Angle insistance sincère / je te jure — pas promesse RH, pas validé plan. Ton prioritaire. Q4 double-concept valide/sah possible. Pas glossaire, pas adulte caricature.",
       "human_notes": "Lot 06b priorité 2. Risque faux-jeune si sur-joué — scènes potes naturelles."
@@ -1893,13 +2885,31 @@
       "import_confidence": "medium",
       "source_tier": "observed_irl",
       "glossary_only": false,
-      "surface_forms": ["flop", "c'est le flop", "flop total", "flop de ouf", "era flop"],
-      "variants": ["flop", "c'est le flop", "flop annoncé", "gros flop"],
+      "surface_forms": [
+        "flop",
+        "c'est le flop",
+        "flop total",
+        "flop de ouf",
+        "era flop"
+      ],
+      "variants": [
+        "flop",
+        "c'est le flop",
+        "flop annoncé",
+        "gros flop"
+      ],
       "short_definition": "Échec social ou hype ratée — la soirée, la vanne, le post ou la sortie n'a pas tenu ses promesses.",
       "long_definition": "« Flop » dit qu'une attente s'est effondrée : soirée décevante, TikTok qui ne part pas, vanne qui tombe à plat, projet sur-vendu. Ce n'est pas le seum personnel (dépit du perdant) ni le cringe (malaise gênant) — c'est le jugement sur la chose ou l'événement. Très commentaire entre potes ou debrief. Distinct du ratio (humiliation sous un post) : flop = la chose a raté, pas qu'on s'est fait écraser en réponses.",
-      "cluster_tags": ["emotion_compressed", "social_validation"],
+      "cluster_tags": [
+        "emotion_compressed",
+        "social_validation"
+      ],
       "lifecycle": "mainstream",
-      "platforms": ["tiktok", "instagram", "whatsapp"],
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
       "social_vibe": "judgmental",
       "irony": "literal",
       "cringe_risk": "low",
@@ -1925,8 +2935,15 @@
           "annulation_pur_contraire",
           "flop_comme_insulte_personnelle_grave"
         ],
-        "likely_speakers": ["pote", "groupe", "commentateur"],
-        "unlikely_speakers": ["directeur_marketing", "presentateur_business"],
+        "likely_speakers": [
+          "pote",
+          "groupe",
+          "commentateur"
+        ],
+        "unlikely_speakers": [
+          "directeur_marketing",
+          "presentateur_business"
+        ],
         "written_vs_oral": {
           "primary": "written",
           "notes": "Debrief message + commentaires"
@@ -1950,14 +2967,156 @@
         ]
       },
       "quiz_potential": {
-        "angles": ["context_social", "emotion_reading", "boundary_reading"],
-        "formats": ["scenario_text", "expression"]
+        "angles": [
+          "context_social",
+          "emotion_reading",
+          "boundary_reading"
+        ],
+        "formats": [
+          "scenario_text",
+          "expression"
+        ]
       },
       "sources": [
-        { "id": "observed_irl", "note": "Anglicisme ancré FR jeunes ; scènes debrief" }
+        {
+          "id": "observed_irl",
+          "note": "Anglicisme ancré FR jeunes ; scènes debrief"
+        }
       ],
       "ia_notes": "Jugement sur chose/événement — pas seum (émotion perso), pas cringe (malaise). Attente vs réalité en scène. Q4 double-concept seum/flop recommandé. Pas annulé, pas pur contraire « génial ».",
       "human_notes": "Lot 06b priorité 3. Frontière ratio en watchlist, pas en Q1."
+    },
+    {
+      "concept_key": "brainrot",
+      "canonical_label": "Brainrot",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "brainrot",
+        "brain rot"
+      ],
+      "variants": [
+        "brainrot"
+      ],
+      "short_definition": "Saturation du cerveau par des contenus ultra-répétitifs / absurdes en ligne.",
+      "long_definition": "Saturation du cerveau par des contenus ultra-répétitifs / absurdes en ligne.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "Mon feed est full brainrot."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Mon feed est full brainrot."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Concept largement compris en usage social; pertinent quiz si définition courte et neutre est validée."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Concept largement compris en usage social; pertinent quiz si définition courte et neutre est validée."
+    },
+    {
+      "concept_key": "delulu",
+      "canonical_label": "Delulu",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "delulu",
+        "delusional"
+      ],
+      "variants": [
+        "delulu"
+      ],
+      "short_definition": "Un peu dans son film : vision trop optimiste ou irréaliste (souvent auto-dérision).",
+      "long_definition": "Un peu dans son film : vision trop optimiste ou irréaliste (souvent auto-dérision).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "C'est un peu delulu comme plan."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "C'est un peu delulu comme plan."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Terme clair et fréquent dans les usages jeunes; bon candidat sous réserve de validation éditoriale de définition."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Terme clair et fréquent dans les usages jeunes; bon candidat sous réserve de validation éditoriale de définition."
     }
   ]
 }

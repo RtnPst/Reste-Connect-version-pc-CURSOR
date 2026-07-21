@@ -1,0 +1,180 @@
+{
+  "generated_for": "concept_intake_v1_manual_seed",
+  "notes": "Manual local-first input only. No scraping required for v1. Discovery batches may append with discovery_source. | Discovery batch merged 2026-07-21",
+  "raw_signals": [
+    {
+      "raw_term": "aura farming",
+      "aliases": [
+        "aura farm"
+      ],
+      "example_usage": "Il fait de l'aura farming en stream.",
+      "short_definition": "Chercher à gagner en prestige / présence charismatique de façon un peu calculée.",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend"
+    },
+    {
+      "raw_term": "cooked",
+      "aliases": [
+        "im cooked",
+        "we are cooked"
+      ],
+      "example_usage": "Là on est cooked.",
+      "short_definition": "On est mort / c’est foutu — situation compromise, souvent humoristique.",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend"
+    },
+    {
+      "raw_term": "mog",
+      "aliases": [
+        "mogging"
+      ],
+      "example_usage": "Il a mog toute la room.",
+      "short_definition": "Éclipser quelqu’un (look / présence) — usage niche, souvent toxique.",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend"
+    },
+    {
+      "raw_term": "delulu",
+      "aliases": [
+        "delusional"
+      ],
+      "example_usage": "C'est un peu delulu comme plan.",
+      "short_definition": "Un peu dans son film : vision trop optimiste ou irréaliste (souvent auto-dérision).",
+      "suggested_theme": "reseaux_sociaux",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal"
+    },
+    {
+      "raw_term": "brainrot",
+      "aliases": [
+        "brain rot"
+      ],
+      "example_usage": "Mon feed est full brainrot.",
+      "short_definition": "Saturation du cerveau par des contenus ultra-répétitifs / absurdes en ligne.",
+      "suggested_theme": "reseaux_sociaux",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal"
+    },
+    {
+      "raw_term": "rizz",
+      "aliases": [
+        "avoir du rizz"
+      ],
+      "example_usage": "Il a trop de rizz en story, tout le monde répond.",
+      "short_definition": "Charisme / talent pour draguer ou captiver, souvent en ligne ou IRL léger.",
+      "suggested_theme": "reseaux_sociaux",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "iykyk",
+      "aliases": [
+        "if you know you know"
+      ],
+      "example_usage": "La ref du week-end… iykyk.",
+      "short_definition": "Connivence : « ceux qui savent savent » — exclut gentiment.",
+      "suggested_theme": "reseaux_sociaux",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "ate",
+      "aliases": [
+        "ate that",
+        "she ate"
+      ],
+      "example_usage": "La tenue ? She ate.",
+      "short_definition": "Réussite stylée / performance réussie (« elle a tout cartonnné »).",
+      "suggested_theme": "culture_pop",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "touch grass",
+      "aliases": [
+        "touch some grass"
+      ],
+      "example_usage": "T’es trop en ligne, go touch grass.",
+      "short_definition": "Sors un peu / reconnecte au réel — vanne anti-addiction écrans.",
+      "suggested_theme": "reseaux_sociaux",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "main character",
+      "aliases": [
+        "main character energy"
+      ],
+      "example_usage": "Elle arrive en main character energy au resto.",
+      "short_definition": "Se mettre au centre du récit, attitude « héros du film ».",
+      "suggested_theme": "relations_lifestyle",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "beige flag",
+      "aliases": [
+        "beige flags"
+      ],
+      "example_usage": "Il range ses chaussettes par couleur… beige flag ?",
+      "short_definition": "Trait ni red ni green : bizarre / mignon / neutre, un peu odd.",
+      "suggested_theme": "relations_lifestyle",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "soft launch",
+      "aliases": [
+        "soft launch relation"
+      ],
+      "example_usage": "Elle a soft launch son mec en story (juste les mains).",
+      "short_definition": "Révéler quelqu’un / un projet en douceur, sans annonce claire.",
+      "suggested_theme": "reseaux_sociaux",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "hard launch",
+      "aliases": [
+        "hard launch couple"
+      ],
+      "example_usage": "Hard launch : photo de couple en face cam.",
+      "short_definition": "Annonce publique claire d’une relation / projet.",
+      "suggested_theme": "reseaux_sociaux",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "glaze",
+      "aliases": [
+        "glazing"
+      ],
+      "example_usage": "Arrête de glaze le mec, c’est gênant.",
+      "short_definition": "Complimenter / fanboyiser de façon excessive.",
+      "suggested_theme": "reseaux_sociaux",
+      "trend_freshness": "recent",
+      "trend_durability": "micro_trend",
+      "discovery_source": "propose_concept_discovery_v1"
+    },
+    {
+      "raw_term": "locked in",
+      "aliases": [
+        "lock in"
+      ],
+      "example_usage": "Là je suis locked in sur mon dossier jusqu’à vendredi.",
+      "short_definition": "Hyper concentré / en mode focus total.",
+      "suggested_theme": "culture_pop",
+      "trend_freshness": "recent",
+      "trend_durability": "seasonal",
+      "discovery_source": "propose_concept_discovery_v1"
+    }
+  ]
+}

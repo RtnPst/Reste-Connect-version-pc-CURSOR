@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-07-21T01:00:20.784Z",
+  "mode": "apply",
+  "policy": "promote_approved_v1_no_db",
+  "planned_count": 2,
+  "planned": [
+    {
+      "concept_key": "brainrot",
+      "label": "Brainrot",
+      "actions": {
+        "add_label": true,
+        "add_pack_draft": true,
+        "skip_reason": ""
+      },
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "living"
+    },
+    {
+      "concept_key": "delulu",
+      "label": "Delulu",
+      "actions": {
+        "add_label": true,
+        "add_pack_draft": true,
+        "skip_reason": ""
+      },
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl"
+    }
+  ]
+}

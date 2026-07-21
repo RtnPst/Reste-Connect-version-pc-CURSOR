@@ -1,0 +1,191 @@
+{
+  "generated_at": "2026-07-21T01:01:30.084Z",
+  "policy": "concept_intake_v1_review_only",
+  "input": "exports/dedup-audit/concept-intake-v1-review-latest.csv",
+  "counts": {
+    "total": 15,
+    "approved": 2,
+    "rejected": 1,
+    "watchlist": 2,
+    "merge": 0,
+    "unresolved": 10
+  },
+  "approved_concepts_summary": [
+    {
+      "raw_term": "brainrot",
+      "suggested_concept_key": "brainrot",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "Concept largement compris en usage social; pertinent quiz si définition courte et neutre est validée.",
+      "decision_status": "resolved"
+    },
+    {
+      "raw_term": "delulu",
+      "suggested_concept_key": "delulu",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "Terme clair et fréquent dans les usages jeunes; bon candidat sous réserve de validation éditoriale de définition.",
+      "decision_status": "resolved"
+    }
+  ],
+  "rejected_concepts_summary": [
+    {
+      "raw_term": "mog",
+      "suggested_concept_key": "mog",
+      "suggested_theme": "culture_pop",
+      "confidence": "low",
+      "risk_flags": "short_concept_key_len; micro_trend_volatility",
+      "human_decision": "reject",
+      "human_notes": "Trop niche et volatile à ce stade; risque de confusion/contextes toxiques pour un quiz généraliste.",
+      "decision_status": "resolved"
+    }
+  ],
+  "merge_watchlist_summary": [
+    {
+      "raw_term": "aura farming",
+      "suggested_concept_key": "aura_farming",
+      "suggested_theme": "culture_pop",
+      "confidence": "medium",
+      "risk_flags": "micro_trend_volatility",
+      "human_decision": "watchlist",
+      "human_notes": "Tendance visible mais encore mouvante; confirmer stabilité et sens avant approbation finale.",
+      "decision_status": "resolved"
+    },
+    {
+      "raw_term": "cooked",
+      "suggested_concept_key": "cooked",
+      "suggested_theme": "culture_pop",
+      "confidence": "medium",
+      "risk_flags": "micro_trend_volatility",
+      "human_decision": "watchlist",
+      "human_notes": "Usage très contextuel/polysemique; garder en observation avant production de questions.",
+      "decision_status": "resolved"
+    }
+  ],
+  "unresolved_rows": [
+    {
+      "raw_term": "ate",
+      "suggested_concept_key": "ate",
+      "suggested_theme": "culture_pop",
+      "confidence": "low",
+      "risk_flags": "short_concept_key_len; micro_trend_volatility",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "beige flag",
+      "suggested_concept_key": "beige_flag",
+      "suggested_theme": "relations_lifestyle",
+      "confidence": "medium",
+      "risk_flags": "micro_trend_volatility",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "glaze",
+      "suggested_concept_key": "glaze",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "medium",
+      "risk_flags": "micro_trend_volatility",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "hard launch",
+      "suggested_concept_key": "hard_launch",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "iykyk",
+      "suggested_concept_key": "iykyk",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "locked in",
+      "suggested_concept_key": "locked_in",
+      "suggested_theme": "culture_pop",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "main character",
+      "suggested_concept_key": "main_character",
+      "suggested_theme": "relations_lifestyle",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "rizz",
+      "suggested_concept_key": "rizz",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "soft launch",
+      "suggested_concept_key": "soft_launch",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    },
+    {
+      "raw_term": "touch grass",
+      "suggested_concept_key": "touch_grass",
+      "suggested_theme": "reseaux_sociaux",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "",
+      "human_notes": "",
+      "decision_status": "unresolved_empty"
+    }
+  ],
+  "risk_summary": [
+    {
+      "risk_flag": "micro_trend_volatility",
+      "count": 6
+    },
+    {
+      "risk_flag": "short_concept_key_len",
+      "count": 2
+    }
+  ],
+  "outputs": {
+    "decision_summary_csv": [
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-intake-v1-decision-summary-2026-07-21T01-01-30-077Z.csv",
+      "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-intake-v1-decision-summary-latest.csv"
+    ]
+  },
+  "no_db_writes": true,
+  "no_imports": true,
+  "no_question_generation": true,
+  "no_automatic_publishing": true
+}

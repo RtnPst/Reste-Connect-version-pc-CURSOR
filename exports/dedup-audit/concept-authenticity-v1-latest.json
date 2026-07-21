@@ -1,0 +1,162 @@
+{
+  "generated_at": "2026-07-21T01:00:25.099Z",
+  "policy": "authenticity_gate_v1_no_scrape",
+  "counts": {
+    "total": 15,
+    "pass_with_review": 15,
+    "needs_human": 0,
+    "block_drafts": 0
+  },
+  "rows": [
+    {
+      "raw_term": "aura farming",
+      "suggested_concept_key": "aura_farming",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "micro_trend_volatility",
+      "scene_cue": "no",
+      "example_usage": "Il fait de l'aura farming en stream.",
+      "short_definition": "Chercher à gagner en prestige / présence charismatique de façon un peu calculée."
+    },
+    {
+      "raw_term": "cooked",
+      "suggested_concept_key": "cooked",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "micro_trend_volatility",
+      "scene_cue": "no",
+      "example_usage": "Là on est cooked.",
+      "short_definition": "On est mort / c’est foutu — situation compromise, souvent humoristique."
+    },
+    {
+      "raw_term": "mog",
+      "suggested_concept_key": "mog",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "micro_trend_volatility",
+      "scene_cue": "no",
+      "example_usage": "Il a mog toute la room.",
+      "short_definition": "Éclipser quelqu’un (look / présence) — usage niche, souvent toxique."
+    },
+    {
+      "raw_term": "delulu",
+      "suggested_concept_key": "delulu",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "",
+      "scene_cue": "no",
+      "example_usage": "C'est un peu delulu comme plan.",
+      "short_definition": "Un peu dans son film : vision trop optimiste ou irréaliste (souvent auto-dérision)."
+    },
+    {
+      "raw_term": "brainrot",
+      "suggested_concept_key": "brainrot",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "living",
+      "authenticity_flags": "",
+      "scene_cue": "yes",
+      "example_usage": "Mon feed est full brainrot.",
+      "short_definition": "Saturation du cerveau par des contenus ultra-répétitifs / absurdes en ligne."
+    },
+    {
+      "raw_term": "rizz",
+      "suggested_concept_key": "rizz",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "living",
+      "authenticity_flags": "",
+      "scene_cue": "yes",
+      "example_usage": "Il a trop de rizz en story, tout le monde répond.",
+      "short_definition": "Charisme / talent pour draguer ou captiver, souvent en ligne ou IRL léger."
+    },
+    {
+      "raw_term": "iykyk",
+      "suggested_concept_key": "iykyk",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "",
+      "scene_cue": "no",
+      "example_usage": "La ref du week-end… iykyk.",
+      "short_definition": "Connivence : « ceux qui savent savent » — exclut gentiment."
+    },
+    {
+      "raw_term": "ate",
+      "suggested_concept_key": "ate",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "micro_trend_volatility",
+      "scene_cue": "no",
+      "example_usage": "La tenue ? She ate.",
+      "short_definition": "Réussite stylée / performance réussie (« elle a tout cartonnné »)."
+    },
+    {
+      "raw_term": "touch grass",
+      "suggested_concept_key": "touch_grass",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "",
+      "scene_cue": "no",
+      "example_usage": "T’es trop en ligne, go touch grass.",
+      "short_definition": "Sors un peu / reconnecte au réel — vanne anti-addiction écrans."
+    },
+    {
+      "raw_term": "main character",
+      "suggested_concept_key": "main_character",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "",
+      "scene_cue": "no",
+      "example_usage": "Elle arrive en main character energy au resto.",
+      "short_definition": "Se mettre au centre du récit, attitude « héros du film »."
+    },
+    {
+      "raw_term": "beige flag",
+      "suggested_concept_key": "beige_flag",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "micro_trend_volatility",
+      "scene_cue": "no",
+      "example_usage": "Il range ses chaussettes par couleur… beige flag ?",
+      "short_definition": "Trait ni red ni green : bizarre / mignon / neutre, un peu odd."
+    },
+    {
+      "raw_term": "soft launch",
+      "suggested_concept_key": "soft_launch",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "living",
+      "authenticity_flags": "",
+      "scene_cue": "yes",
+      "example_usage": "Elle a soft launch son mec en story (juste les mains).",
+      "short_definition": "Révéler quelqu’un / un projet en douceur, sans annonce claire."
+    },
+    {
+      "raw_term": "hard launch",
+      "suggested_concept_key": "hard_launch",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "",
+      "scene_cue": "no",
+      "example_usage": "Hard launch : photo de couple en face cam.",
+      "short_definition": "Annonce publique claire d’une relation / projet."
+    },
+    {
+      "raw_term": "glaze",
+      "suggested_concept_key": "glaze",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "micro_trend_volatility",
+      "scene_cue": "no",
+      "example_usage": "Arrête de glaze le mec, c’est gênant.",
+      "short_definition": "Complimenter / fanboyiser de façon excessive."
+    },
+    {
+      "raw_term": "locked in",
+      "suggested_concept_key": "locked_in",
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl",
+      "authenticity_flags": "",
+      "scene_cue": "no",
+      "example_usage": "Là je suis locked in sur mon dossier jusqu’à vendredi.",
+      "short_definition": "Hyper concentré / en mode focus total."
+    }
+  ]
+}

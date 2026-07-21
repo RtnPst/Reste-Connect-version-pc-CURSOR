@@ -1,0 +1,53 @@
+{
+  "pilot_id": "delulu-intake-promote-v1",
+  "concept_key": "delulu",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "delulu",
+      "theme": "reseaux_sociaux",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Elle dit : « Il a liké ma story, on va se marier — ok je suis un peu delulu. » Delulu, c’est plutôt…",
+      "choices": [
+        "Se raconter un film un peu trop beau / irréaliste",
+        "Vérifier trois sources avant de conclure",
+        "Être experte cybersécurité",
+        "Couper complètement les réseaux"
+      ],
+      "correct_index": 0,
+      "explanation": "« Delulu » (de delusional) = tu te racontes une belle histoire, souvent dit avec auto-dérision.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Delulu — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "delulu",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel usage de « delulu » colle le mieux ?",
+      "choices": [
+        "Il m’a répondu « lol », c’est sûr qu’il kiffe — je suis peut-être delulu.",
+        "J’ai payé mon abonnement, c’est delulu.",
+        "Mon wifi coupe, c’est delulu.",
+        "J’ai relu le contrat deux fois, je suis delulu."
+      ],
+      "correct_index": 0,
+      "explanation": "Le mot pointe une projection amoureuse / sociale un peu fantasmée.",
+      "tone": "social",
+      "context": "dating_debrief",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Delulu — authenticity scene check required before live."
+    }
+  ]
+}
