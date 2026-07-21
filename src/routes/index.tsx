@@ -166,9 +166,9 @@ function HomePage() {
                 className={cn(
                   "mx-auto w-full rounded-3xl border px-5 py-5 text-left sm:px-6 sm:py-6",
                   missionIsDone
-                    ? "border-success/30 bg-linear-to-br from-success-soft/25 via-card/95 to-card/90"
+                    ? "border-primary/30 bg-linear-to-br from-primary-soft/35 via-card/95 to-card/90"
                     : missionIsDaily
-                      ? "border-success/35 bg-linear-to-br from-success-soft/30 via-card/95 to-card/90 shadow-[inset_0_0_0_1px_rgba(34,197,94,0.1)]"
+                      ? "border-primary/35 bg-linear-to-br from-primary-soft/40 via-card/95 to-card/90 shadow-[inset_0_0_0_1px_color-mix(in_oklab,var(--primary)_12%,transparent)]"
                       : "border-border/70 bg-card/95",
                 )}
               >
@@ -176,10 +176,10 @@ function HomePage() {
                   className={cn(
                     "inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em]",
                     missionIsDone
-                      ? "border-success/40 bg-success/10 text-success"
+                      ? "border-primary/40 bg-primary/10 text-primary"
                       : missionIsDaily
-                        ? "border-success/45 bg-success/15 text-success"
-                        : "border-sky-300/40 bg-sky-500/15 text-sky-100",
+                        ? "border-primary/45 bg-primary/15 text-primary"
+                        : "border-primary/35 bg-primary-soft/40 text-primary",
                   )}
                 >
                   {missionTitle}
@@ -198,7 +198,7 @@ function HomePage() {
                 <div className="mt-4">
                   <div className="flex items-center justify-between text-[11px] font-medium tracking-wide text-muted-foreground">
                     <span>Fil du jour</span>
-                    <span className={dailyCompletedToday ? "text-success" : shouldProtectStreak ? "text-primary" : ""}>
+                    <span className={dailyCompletedToday || shouldProtectStreak ? "text-primary" : ""}>
                       {dailyCompletedToday ? "Capté" : shouldProtectStreak ? "En cours" : "À ouvrir"}
                     </span>
                   </div>

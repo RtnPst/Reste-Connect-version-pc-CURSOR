@@ -234,7 +234,7 @@ function MarathonPage() {
       if (isMarathonMilestone(newScore)) {
         playFanfare(sfxOn);
         toast.success(
-          `${newScore} bonnes réponses d’affilée — la progression s’enregistre en fin de session.`,
+          `${newScore} lectures d’affilée — la progression s’enregistre en fin de session.`,
         );
       }
     } else {
@@ -346,7 +346,7 @@ function MarathonPage() {
 
           setXpGained(grantedXp);
           if (newLevel > oldLevel) {
-            toast.success(`Niveau ${newLevel} atteint !`);
+            toast.success(`Niveau ${newLevel} — nouvelle étape sur ton parcours.`);
           }
 
           setStreakUpdated(didUpdateStreak);
@@ -455,7 +455,7 @@ function MarathonPage() {
         <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
           <div className="quiz-result-card animate-scale-in rounded-3xl border border-border/80 bg-card p-6 text-center shadow-[var(--shadow-soft)] sm:p-10">
             <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Hors fil principal</p>
-            <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+            <h1 className="mx-auto mt-2 max-w-lg text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
               {editorialMessage}
             </h1>
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
@@ -542,18 +542,18 @@ function MarathonPage() {
           <div className="space-y-2">
             <div className="grid grid-cols-3 gap-1.5 text-center [@media(max-height:700px)]:gap-1">
               <div className="rounded-xl bg-primary-soft/90 py-1.5 text-primary">
-                <div className="text-[9px] font-bold uppercase opacity-80">Bonnes</div>
-                <div className="text-lg font-extrabold leading-tight sm:text-xl">{score}</div>
+                <div className="text-[9px] font-medium tracking-[0.08em] opacity-80">Captées</div>
+                <div className="text-lg font-bold leading-tight sm:text-xl">{score}</div>
               </div>
-              <div className="rounded-xl bg-warning-soft/90 py-1.5 text-warning-foreground">
-                <div className="flex items-center justify-center gap-0.5 text-[9px] font-bold uppercase opacity-80">
-                  <Heart className="size-3 fill-warning text-warning" aria-hidden /> Série
+              <div className="rounded-xl bg-accent-soft/40 py-1.5 text-foreground">
+                <div className="flex items-center justify-center gap-0.5 text-[9px] font-medium tracking-[0.08em] text-muted-foreground">
+                  <Heart className="size-3 fill-accent text-accent" aria-hidden /> Fil
                 </div>
-                <div className="text-lg font-extrabold leading-tight sm:text-xl">{streak}</div>
+                <div className="text-lg font-bold leading-tight sm:text-xl">{streak}</div>
               </div>
-              <div className="rounded-xl bg-success-soft/90 py-1.5 text-success-foreground">
-                <div className="text-[9px] font-bold uppercase opacity-80">Record</div>
-                <div className="text-lg font-extrabold leading-tight sm:text-xl">{recordDisplay}</div>
+              <div className="rounded-xl bg-muted/70 py-1.5 text-foreground">
+                <div className="text-[9px] font-medium tracking-[0.08em] text-muted-foreground">Record</div>
+                <div className="text-lg font-bold leading-tight sm:text-xl">{recordDisplay}</div>
               </div>
             </div>
             <div className="flex justify-center">

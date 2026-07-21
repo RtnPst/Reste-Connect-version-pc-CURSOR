@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Swords, Trophy } from "lucide-react";
+import { Trophy } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
@@ -29,8 +29,11 @@ function generateCode() {
 export const Route = createFileRoute("/duel/")({
   head: () => ({
     meta: [
-      { title: "Mode duel — Tu captes ?" },
-      { name: "description", content: "Défie un proche sur un quiz et compare les scores !" },
+      { title: "Duel sur le fil — Tu captes ?" },
+      {
+        name: "description",
+        content: "Bientôt : croiser le fil avec un proche, mêmes questions, même lecture.",
+      },
     ],
   }),
   component: DuelHomePage,
@@ -45,11 +48,11 @@ function DuelHomePage() {
 
   const createDuel = async (theme: ThemeKey) => {
     void theme;
-    toast.info("Le mode Duel arrive bientôt. On prépare les défis entre proches.");
+    toast.info("Le duel arrive bientôt — on prépare les défis entre proches.");
   };
 
   const joinDuel = () => {
-    toast.info("Le mode Duel arrive bientôt. On prépare les défis entre proches.");
+    toast.info("Le duel arrive bientôt — on prépare les défis entre proches.");
   };
 
   return (
@@ -57,21 +60,19 @@ function DuelHomePage() {
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-4xl overflow-x-clip px-4 py-8 sm:px-6 space-y-8">
         <div className="text-center space-y-3">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warning-soft text-warning-foreground font-bold">
-            <Swords className="size-4" /> Nouveau !
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold">Mode duel</h1>
+          <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">Sur le fil</p>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Duel</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Lance un défi : mêmes questions pour tout le monde (bientôt dispo), puis comparaison
-            des scores. Idéal entre grands-parents et petits-enfants !
+            Bientôt : mêmes questions pour deux, puis comparer ce que chacun a capté. Idéal entre
+            proches — grands-parents et petits-enfants compris.
           </p>
         </div>
 
         {/* Create */}
-        <section className="rounded-3xl border-2 border-border bg-card p-6 space-y-4">
-          <h2 className="text-xl font-bold">1. Choisis un thème pour le défi</h2>
+        <section className="rounded-3xl border border-border/80 bg-card p-6 space-y-4 shadow-[var(--shadow-soft)]">
+          <h2 className="text-xl font-bold">1. Choisis un angle</h2>
           <p className="text-sm text-muted-foreground">
-            Le mode Duel arrive bientôt. On prépare les défis entre proches.
+            Le duel n’est pas encore ouvert. On prépare les défis entre proches.
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {PLAYABLE_THEME_KEYS.map((k) => (
@@ -96,10 +97,10 @@ function DuelHomePage() {
         </section>
 
         {/* Join */}
-        <section className="rounded-3xl border-2 border-border bg-card p-6 space-y-4">
-          <h2 className="text-xl font-bold">Ou rejoignez un défi</h2>
+        <section className="rounded-3xl border border-border/80 bg-card p-6 space-y-4 shadow-[var(--shadow-soft)]">
+          <h2 className="text-xl font-bold">Ou rejoins un fil partagé</h2>
           <p className="text-muted-foreground">
-            Le mode Duel arrive bientôt. On prépare les défis entre proches.
+            Le duel n’est pas encore ouvert. On prépare les défis entre proches.
           </p>
           <div className="flex gap-2 flex-wrap">
             <input
@@ -108,7 +109,7 @@ function DuelHomePage() {
               onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
               maxLength={6}
               placeholder="ABC123"
-              className="flex-1 min-w-0 h-14 rounded-xl border-2 border-border px-4 text-2xl font-mono font-bold tracking-widest text-center uppercase bg-background"
+              className="flex-1 min-w-0 h-14 rounded-xl border border-border px-4 text-2xl font-mono font-bold tracking-widest text-center uppercase bg-background"
               disabled
             />
             <Button onClick={joinDuel} size="xl" variant="accent" disabled>
@@ -120,10 +121,10 @@ function DuelHomePage() {
         {/* History */}
         <section className="space-y-3">
           <h2 className="text-xl font-bold flex items-center gap-2">
-            <Trophy className="text-primary" /> Mes derniers duels
+            <Trophy className="text-primary" /> Tes derniers duels
           </h2>
-          <div className="rounded-xl border-2 border-border bg-card p-4 text-sm text-muted-foreground">
-            L'historique des duels sera disponible dès l'activation du mode.
+          <div className="rounded-xl border border-border/80 bg-card p-4 text-sm text-muted-foreground">
+            L’historique apparaîtra dès que le duel sera ouvert.
           </div>
         </section>
       </main>

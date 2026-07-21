@@ -77,28 +77,28 @@ function PlayPage() {
               to="/quiz"
               className="fil-passage group flex min-h-[4.75rem] items-center gap-3.5 py-3.5 pr-1 transition-transform duration-300 active:scale-[0.99] motion-reduce:active:scale-100"
             >
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-success/15 text-success ring-1 ring-success/25">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary ring-1 ring-primary/25">
                 <CalendarCheck2 className="size-5" strokeWidth={2.25} aria-hidden />
               </span>
               <span className="min-w-0 flex-1 text-left">
-                <p className="text-base font-extrabold leading-snug">Capté pour aujourd’hui</p>
+                <p className="text-base font-bold leading-snug">Capté pour aujourd’hui</p>
                 <p className="mt-0.5 text-sm text-muted-foreground">Continue avec un angle sur le fil.</p>
               </span>
-              <ChevronRight className="size-4 shrink-0 text-success/80 opacity-70" aria-hidden />
+              <ChevronRight className="size-4 shrink-0 text-primary/70 opacity-70" aria-hidden />
             </Link>
           ) : (
             <Link
               to="/question-du-jour"
               className="fil-passage fil-passage--accent group flex min-h-[4.75rem] items-center gap-3.5 py-3.5 pr-1 transition-transform duration-300 active:scale-[0.99] motion-reduce:active:scale-100"
             >
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-success-soft text-success">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary ring-1 ring-primary/20">
                 <Calendar className="size-5" aria-hidden />
               </span>
               <span className="min-w-0 flex-1 text-left">
-                <p className="text-base font-extrabold leading-snug">Ouvrir le fil du jour</p>
+                <p className="text-base font-bold leading-snug">Ouvrir le fil du jour</p>
                 <p className="mt-0.5 text-sm text-muted-foreground">Le passage qui ouvre la journée.</p>
               </span>
-              <ChevronRight className="size-4 shrink-0 text-success opacity-80" aria-hidden />
+              <ChevronRight className="size-4 shrink-0 text-primary opacity-80" aria-hidden />
             </Link>
           )}
 
@@ -111,11 +111,11 @@ function PlayPage() {
               dailyDone && "fil-passage--next",
             )}
           >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sky-500/12 text-sky-300">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/12 text-primary">
               <Compass className="size-5" aria-hidden />
             </span>
             <span className="min-w-0 flex-1 text-left">
-              <p className="text-base font-extrabold leading-tight">Un angle</p>
+              <p className="text-base font-bold leading-tight">Un angle</p>
               <p className="mt-0.5 text-sm text-muted-foreground">Six lectures courtes — autre thème, même fil.</p>
             </span>
             <ChevronRight className="size-4 shrink-0 text-muted-foreground/50" aria-hidden />

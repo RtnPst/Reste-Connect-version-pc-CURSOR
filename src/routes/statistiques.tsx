@@ -135,13 +135,13 @@ function StatsPage() {
                   icon={<Trophy className="size-6" />}
                   label="Passages nets"
                   value={perfect.toString()}
-                  color="bg-success-soft text-success"
+                  color="bg-primary-soft text-primary"
                 />
                 <Kpi
                   icon={<Flame className="size-6" />}
                   label="Plus long fil"
                   value={`${profile.longest_streak}j`}
-                  color="bg-warning-soft text-warning"
+                  color="bg-accent-soft text-accent"
                 />
               </div>
               <p className="mt-3 max-w-3xl text-xs text-muted-foreground">
@@ -187,18 +187,16 @@ function StatsPage() {
 
             {/* Last 10 attempts mini chart */}
             <div className="bg-card rounded-3xl border-2 border-border p-6 shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-16px_rgba(15,23,42,0.7)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-              <h2 className="text-xl font-extrabold mb-4">
-                Tes {last10.length} dernières parties
-              </h2>
+              <h2 className="mb-4 text-xl font-bold">Tes {last10.length} derniers passages</h2>
               <div className="flex items-end justify-between gap-2 h-40">
                 {last10.map((a, i) => {
                   const h = Math.max(8, (a.score / maxScore) * 100);
-                  const good = a.score >= 7;
+                  const strong = a.score >= 7;
                   return (
                     <div key={a.id} className="flex flex-col items-center flex-1 group">
                       <div className="text-xs font-bold mb-1">{a.score}</div>
                       <div
-                        className={`w-full rounded-t-lg transition-all ${good ? "bg-success" : "bg-warning"}`}
+                        className={`w-full rounded-t-lg transition-all ${strong ? "bg-primary" : "bg-accent/80"}`}
                         style={{ height: `${h}%` }}
                         title={`${a.score}/${a.total_questions} le ${new Date(a.completed_at).toLocaleDateString("fr-FR")}`}
                       />
@@ -239,8 +237,8 @@ function Kpi({
       >
         {icon}
       </div>
-      <div className="text-2xl font-extrabold">{value}</div>
-      <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wide">
+      <div className="text-2xl font-bold">{value}</div>
+      <div className="text-xs text-muted-foreground font-medium tracking-[0.06em]">
         {label}
       </div>
     </div>

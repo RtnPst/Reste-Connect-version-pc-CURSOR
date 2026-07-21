@@ -268,13 +268,13 @@ function DuelPage() {
               <p>
                 👤 <strong>{duel.creator_name}</strong>{" "}
                 {duel.creator_score !== null && (
-                  <span className="text-success">— {duel.creator_score}/10 ✓</span>
+                  <span className="text-primary">— {duel.creator_score}/10 ✓</span>
                 )}
               </p>
               <p>
                 👤 <strong>{duel.opponent_name ?? "En attente d'un adversaire…"}</strong>{" "}
                 {duel.opponent_score !== null && (
-                  <span className="text-success">— {duel.opponent_score}/10 ✓</span>
+                  <span className="text-primary">— {duel.opponent_score}/10 ✓</span>
                 )}
               </p>
             </div>
@@ -367,9 +367,9 @@ function DuelPage() {
                 const isThisSelected = i === selectedIndex;
                 let cls = "border-border hover:border-primary hover:bg-primary-soft/40";
                 if (showFeedback) {
-                  if (isThisCorrect) cls = "border-success bg-success-soft text-success-foreground";
+                  if (isThisCorrect) cls = "border-primary/55 bg-primary-soft/45 text-foreground";
                   else if (isThisSelected)
-                    cls = "border-destructive bg-destructive/10 text-destructive";
+                    cls = "border-accent/40 bg-accent-soft/25 text-foreground";
                   else cls = "border-border opacity-60";
                 }
                 return (
@@ -395,13 +395,22 @@ function DuelPage() {
             </div>
 
             {showFeedback && (
-              <div className="rounded-xl bg-accent-soft p-4 space-y-3">
-                <p className="font-bold">
-                  {isCorrect ? "Bravo, c'est juste !" : "Pas tout à fait."}
+              <div
+                className={`rounded-xl border p-4 space-y-3 ${
+                  isCorrect
+                    ? "border-primary/35 bg-primary-soft/45"
+                    : "border-accent/30 bg-accent-soft/30"
+                }`}
+              >
+                <p className="text-[11px] font-medium tracking-[0.1em] text-muted-foreground/90">
+                  {isCorrect ? "Sur le fil" : "Le décode"}
                 </p>
-                <p className="text-base leading-relaxed">{currentQ.explanation}</p>
+                <p className="font-bold">
+                  {isCorrect ? "Tu as capté." : "Pas encore capté."}
+                </p>
+                <p className="text-base leading-relaxed text-foreground/90">{currentQ.explanation}</p>
                 <Button onClick={next} size="lg" variant="accent" className="w-full">
-                  {currentIndex + 1 >= questions.length ? "Voir mon score" : "Question suivante"}{" "}
+                  {currentIndex + 1 >= questions.length ? "Voir le duel" : "Suite"}{" "}
                   <ArrowRight />
                 </Button>
               </div>
@@ -428,7 +437,8 @@ function DuelPage() {
       <main className="container mx-auto w-full min-w-0 max-w-2xl overflow-x-clip px-4 py-8 space-y-6">
         <div className="rounded-3xl border-2 border-border bg-card p-6 sm:p-8 text-center space-y-5">
           <Trophy className="mx-auto size-16 text-primary" />
-          <h1 className="text-2xl sm:text-3xl font-extrabold">Résultat du duel</h1>
+          <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">Duel</p>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Ce que ça donne</h1>
 
           <div className="grid sm:grid-cols-2 gap-4">
             <ScoreCard
@@ -445,7 +455,7 @@ function DuelPage() {
 
           {both ? (
             <p className="text-xl font-bold">
-              {tie ? "Égalité parfaite ! 🤝" : `${winner} l'emporte ! 🎉`}
+              {tie ? "Égalité — même lecture des deux côtés." : `${winner} a capté un peu plus.`}
             </p>
           ) : (
             <p className="text-muted-foreground">
@@ -490,10 +500,10 @@ function ScoreCard({
 }) {
   return (
     <div
-      className={`rounded-2xl border-2 p-5 ${highlight ? "border-success bg-success-soft" : "border-border bg-muted/30"}`}
+      className={`rounded-2xl border-2 p-5 ${highlight ? "border-primary/45 bg-primary-soft/50" : "border-border bg-muted/30"}`}
     >
       <p className="text-sm font-semibold text-muted-foreground">{name}</p>
-      <p className="text-4xl font-extrabold mt-1">{score === null ? "—" : `${score}/10`}</p>
+      <p className="text-4xl font-bold mt-1">{score === null ? "—" : `${score}/10`}</p>
     </div>
   );
 }

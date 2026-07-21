@@ -289,7 +289,7 @@ function LevelPage() {
             setXpGained(xpGain);
             if (newLevel > oldLevel) {
               setLevelUpTo(newLevel);
-              toast.success(`Niveau ${newLevel} atteint !`);
+              toast.success(`Niveau ${newLevel} — nouvelle étape sur ton parcours.`);
             } else {
               setLevelUpTo(null);
             }
@@ -305,8 +305,8 @@ function LevelPage() {
           if (names.length > 0) {
             toast.success(
               names.length === 1
-                ? `Badge « ${names[0]} » débloqué !`
-                : `Badges débloqués : ${names.join(" · ")}`,
+                ? `Trace « ${names[0]} » ajoutée à ton fil.`
+                : `Traces ajoutées : ${names.join(" · ")}`,
             );
           }
         } catch (err) {
@@ -511,10 +511,10 @@ function LevelPage() {
                 <RankBadge rank={rank} level={level} size="md" />
               </div>
             ) : null}
-            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+            <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">
               Niveau {level}
             </p>
-            <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+            <h1 className="mx-auto mt-2 max-w-lg text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
               {editorialMessage}
             </h1>
             {sessionCapturedLabel ? <ConceptCaptureEcho label={sessionCapturedLabel} /> : null}
@@ -522,8 +522,8 @@ function LevelPage() {
               {nextAction.reason}
             </p>
             <p className="mt-6 text-[11px] leading-relaxed text-muted-foreground/75">
-              {score} / {questions.length} bonnes réponses
-              {xpGained !== null ? <> · +{xpGained} XP gagnés</> : null}
+              {score} / {questions.length} lectures captées
+              {xpGained !== null ? <> · +{xpGained} XP sur le fil</> : null}
               {passed && level < TOTAL_LEVELS ? <> · niveau {level + 1} ouvert</> : null}
             </p>
             {levelUpTo !== null ? (

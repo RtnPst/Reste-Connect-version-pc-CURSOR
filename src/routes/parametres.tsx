@@ -122,7 +122,7 @@ function SettingsPage() {
                       Effets sonores
                     </Label>
                     <p className="text-sm sm:text-base text-muted-foreground mt-1">
-                      Sons de validation et de fin de quiz.
+                      Sons de capture et de fin de passage.
                     </p>
                   </div>
                   <Switch
@@ -135,10 +135,10 @@ function SettingsPage() {
                 {profile.sfx_enabled && (
                   <div className="flex flex-wrap gap-2 pt-2 border-t border-border">
                     <Button onClick={() => playCorrect(true)} variant="outline" size="sm">
-                      <Volume2 className="size-4" /> Bonne réponse
+                      <Volume2 className="size-4" /> Tu as capté
                     </Button>
                     <Button onClick={() => playFanfare(true)} variant="outline" size="sm">
-                      <Volume2 className="size-4" /> Fanfare
+                      <Volume2 className="size-4" /> Fin de fil
                     </Button>
                   </div>
                 )}

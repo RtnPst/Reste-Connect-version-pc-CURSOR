@@ -14,16 +14,16 @@ export function ConceptCaptureBeat({ copy }: ConceptCaptureBeatProps) {
       role="status"
       aria-live="polite"
     >
-      <p className="text-[11px] font-medium tracking-[0.12em] text-primary/70">Sur le fil</p>
+      <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">Sur le fil</p>
       {copy.conceptLabel ? (
         <>
-          <p className="mt-4 text-sm font-semibold text-muted-foreground">Tu as capté</p>
-          <h2 className="mt-1 max-w-md text-[1.35rem] font-extrabold leading-snug tracking-tight text-foreground sm:text-2xl">
+          <p className="mt-4 text-sm font-medium text-muted-foreground">Tu as capté</p>
+          <h2 className="mt-1 max-w-md text-[1.45rem] font-bold leading-snug tracking-tight text-primary sm:text-2xl">
             {copy.conceptLabel}
           </h2>
         </>
       ) : (
-        <h2 className="mt-4 max-w-md text-[1.35rem] font-extrabold leading-snug tracking-tight text-foreground sm:text-2xl">
+        <h2 className="mt-4 max-w-md text-[1.45rem] font-bold leading-snug tracking-tight text-foreground sm:text-2xl">
           Tu as capté
         </h2>
       )}

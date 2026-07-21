@@ -237,18 +237,18 @@ function QuizPage() {
             toast.success(`Niveau ${progression.levelUpTo} — nouvelle étape sur ton parcours.`);
           }
           if (progression.dailyBonusApplied) {
-            toast.success("🔥 Bonus du jour activé !");
+            toast.success("Bonus du jour activé sur ce passage.");
           }
           if (progression.luckyBonusApplied) {
-            toast.success("🎁 Question bonus ! XP x2");
+            toast.success("Bonus de session — XP doublés sur cette question.");
           }
         }
         if (progression.newBadgeNames.length > 0) {
           const n = progression.newBadgeNames;
           toast.success(
             n.length === 1
-              ? `Badge « ${n[0]} » débloqué !`
-              : `Badges débloqués : ${n.join(" · ")}`,
+              ? `Trace « ${n[0]} » ajoutée à ton fil.`
+              : `Traces ajoutées : ${n.join(" · ")}`,
           );
         }
       }
@@ -666,15 +666,15 @@ function ResultsScreen({
       </header>
       <main className="container mx-auto w-full min-w-0 max-w-3xl flex-1 overflow-x-clip overflow-y-auto px-4 py-6 sm:px-6 sm:py-10">
         <div className="quiz-result-card mb-6 animate-scale-in rounded-3xl border border-border/80 bg-card p-6 text-center shadow-[var(--shadow-soft)] sm:p-10">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+          <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">
             {themeMeta.emoji} {themeMeta.short}
           </p>
-          <h1 className="mx-auto mt-2 max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+          <h1 className="mx-auto mt-2 max-w-lg text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
             {message}
           </h1>
           {sessionCapturedLabel ? <ConceptCaptureEcho label={sessionCapturedLabel} /> : null}
           {takeawayLabel ? (
-            <p className="mx-auto mt-4 max-w-md text-lg font-extrabold leading-snug text-foreground sm:text-xl">
+            <p className="mx-auto mt-4 max-w-md text-lg font-bold leading-snug text-primary sm:text-xl">
               {takeawayLabel}
             </p>
           ) : null}
@@ -691,11 +691,11 @@ function ResultsScreen({
             {nextAction.reason}
           </p>
           <p className="mt-6 text-[11px] leading-relaxed text-muted-foreground/75">
-            {score} / {total} bonnes réponses
+            {score} / {total} lectures captées
             {xpGained !== null ? (
               <>
                 {" "}
-                · +{xpGained} XP gagnés
+                · +{xpGained} XP sur le fil
                 {dailyBonusApplied ? " · bonus du jour" : null}
                 {luckyBonusApplied ? " · bonus session" : null}
               </>
@@ -769,7 +769,7 @@ function ResultsScreen({
 
         {wrong.length > 0 && (
           <div className="animate-soft-rise rounded-3xl border border-border/60 bg-muted/20 p-6 sm:p-8">
-            <h2 className="mb-4 text-lg font-extrabold sm:text-xl">Le décode ({wrong.length})</h2>
+            <h2 className="mb-4 text-lg font-bold sm:text-xl">Le décode ({wrong.length})</h2>
             <div className="space-y-4">
               {wrong.map(({ q }, idx) => (
                 <div
@@ -778,8 +778,8 @@ function ResultsScreen({
                 >
                   <p className="mb-2 break-words font-bold">{q.question}</p>
                   <p className="break-words text-base">
-                    <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      Ce qui colle
+                    <span className="text-[11px] font-medium tracking-[0.1em] text-primary/75">
+                      La bonne lecture
                     </span>
                     <br />
                     <span className="font-medium text-foreground">

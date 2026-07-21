@@ -214,7 +214,7 @@ function DailyQuestionPage() {
 
           setXpGained(xpGain);
           if (newLevel > oldLevel) {
-            toast.success(`Niveau ${newLevel} atteint !`);
+            toast.success(`Niveau ${newLevel} — nouvelle étape sur ton parcours.`);
           }
           await refreshProfile();
         }
@@ -228,8 +228,8 @@ function DailyQuestionPage() {
         if (names.length > 0) {
           toast.success(
             names.length === 1
-              ? `Badge « ${names[0]} » débloqué !`
-              : `Badges débloqués : ${names.join(" · ")}`,
+              ? `Trace « ${names[0]} » ajoutée à ton fil.`
+              : `Traces ajoutées : ${names.join(" · ")}`,
           );
         }
       } catch (e) {
@@ -361,12 +361,12 @@ function DailyQuestionPage() {
       <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 flex-col items-center justify-center overflow-x-clip px-4 py-10 sm:py-14">
-          <div className="w-full max-w-lg rounded-3xl border-2 border-success/25 bg-gradient-to-b from-success-soft/80 to-card px-6 py-10 text-center shadow-[var(--shadow-soft)] sm:px-10 sm:py-12">
-            <span className="mx-auto mb-5 flex size-16 items-center justify-center rounded-2xl bg-success/15 text-success ring-1 ring-success/20">
+          <div className="w-full max-w-lg rounded-3xl border border-primary/30 bg-gradient-to-b from-primary-soft/55 to-card px-6 py-10 text-center shadow-[var(--shadow-soft)] sm:px-10 sm:py-12">
+            <span className="mx-auto mb-5 flex size-16 items-center justify-center rounded-2xl bg-primary/15 text-primary ring-1 ring-primary/25">
               <CalendarCheck2 className="size-9" strokeWidth={2.25} aria-hidden />
             </span>
-            <p className="text-xs font-bold uppercase tracking-widest text-success/90">Question du jour</p>
-            <h1 className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">
+            <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">Fil du jour</p>
+            <h1 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
               Capté pour aujourd’hui
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -526,19 +526,21 @@ function DailyQuestionPage() {
       </header>
       <main className="container mx-auto flex w-full min-w-0 max-w-3xl flex-1 flex-col overflow-y-auto px-4 py-8 sm:py-10">
         <div
-          className={`mb-6 rounded-2xl border-2 p-5 text-center sm:p-7 ${
-            isCorrect ? "border-success/35 bg-success-soft/80" : "border-border/80 bg-card/90"
+          className={`mb-6 rounded-2xl border p-5 text-center sm:p-7 ${
+            isCorrect
+              ? "border-primary/35 bg-primary-soft/50"
+              : "border-accent/30 bg-accent-soft/25"
           }`}
         >
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
-            Question du jour
+          <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">
+            Fil du jour
           </p>
-          <h1 className="mt-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">{recapTitle}</h1>
+          <h1 className="mt-2 text-2xl font-bold leading-tight tracking-tight sm:text-3xl">{recapTitle}</h1>
           {recapKicker ? (
-            <p className="mt-1 text-sm font-semibold text-foreground/85 sm:text-base">{recapKicker}</p>
+            <p className="mt-1 text-sm font-medium text-muted-foreground sm:text-base">{recapKicker}</p>
           ) : null}
           {conceptLabel ? (
-            <p className="mt-4 text-lg font-extrabold leading-snug text-foreground sm:text-xl">{conceptLabel}</p>
+            <p className="mt-4 text-lg font-bold leading-snug text-primary sm:text-xl">{conceptLabel}</p>
           ) : null}
           <p
             className={`mt-3 text-sm leading-relaxed sm:text-base ${

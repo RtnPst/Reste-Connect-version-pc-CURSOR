@@ -15,8 +15,8 @@ const EXPLANATION_REVEAL_DELAY_MS = 150;
 /** Calm recognition beat before “Le décode” (correct + concept capture enabled). */
 const CONCEPT_CAPTURE_BEAT_MS = 1700;
 
-const FEEDBACK_CORRECT = ["Ça colle.", "Bien capté.", "Oui, là.", "Exact."] as const;
-const FEEDBACK_INCORRECT = ["Pas tout à fait.", "Le bon fil.", "À retenir.", "Voici la lecture."] as const;
+const FEEDBACK_CORRECT = ["Tu as capté.", "Bien vu.", "Ça colle.", "Oui, là."] as const;
+const FEEDBACK_INCORRECT = ["Pas encore capté.", "Le bon fil est ailleurs.", "À garder.", "Voici la lecture."] as const;
 
 function feedbackLine(lines: readonly string[], key: string): string {
   let hash = 0;
@@ -197,14 +197,14 @@ export function ImmersiveQuizPlay({
         </div>
         {streak > 0 ? (
           <span
-            className="inline-flex shrink-0 items-center gap-1 rounded-full border border-warning/25 bg-warning-soft/60 px-2 py-0.5 text-[10px] font-bold text-foreground sm:text-xs"
+            className="inline-flex shrink-0 items-center gap-1 rounded-full border border-primary/25 bg-primary-soft/50 px-2 py-0.5 text-[10px] font-semibold text-primary sm:text-xs"
             title={streakTitle}
           >
             <span aria-hidden>🔥</span>
             <span>{streak}</span>
           </span>
         ) : null}
-        <span className="shrink-0 tabular-nums text-sm font-extrabold text-foreground sm:text-base">
+        <span className="shrink-0 tabular-nums text-sm font-bold text-muted-foreground sm:text-base">
           {stepFraction}
         </span>
       </header>
@@ -225,13 +225,13 @@ export function ImmersiveQuizPlay({
           key={`question-${flowStepKey}`}
           className={`quiz-immersive-question shrink-0 ${shortScreen}max-h-[30vh] ${shortScreen}min-h-0 ${shortScreen}overflow-y-auto`}
         >
-          <div className="animate-soft-rise rounded-2xl border-2 border-border bg-card p-3 shadow-[var(--shadow-soft)] sm:p-4 [@media(max-height:700px)]:p-2.5 [@media(max-height:700px)]:rounded-xl">
+          <div className="animate-soft-rise rounded-2xl border border-primary/20 bg-card/95 p-3 shadow-[var(--shadow-soft)] sm:p-4 [@media(max-height:700px)]:rounded-xl [@media(max-height:700px)]:p-2.5">
             {questionSubtitle ? (
-              <div className="mb-1 text-[10px] font-semibold text-muted-foreground">{questionSubtitle}</div>
+              <div className="mb-1 text-[11px] font-medium tracking-[0.08em] text-primary/75">{questionSubtitle}</div>
             ) : null}
             <div className="flex min-w-0 items-start gap-2">
               <h1
-                className={`min-w-0 flex-1 break-words font-extrabold leading-snug tracking-tight ${shortScreen}text-sm ${shortScreen}leading-tight sm:text-lg md:text-xl`}
+                className={`min-w-0 flex-1 break-words font-bold leading-snug tracking-tight text-foreground ${shortScreen}text-sm ${shortScreen}leading-tight sm:text-lg md:text-xl`}
               >
                 {questionText}
               </h1>
@@ -262,35 +262,35 @@ export function ImmersiveQuizPlay({
             const isCorrectChoice = (choiceOrder[idx] ?? idx) === revealedCorrectIndex;
 
             let choiceClass =
-              "quiz-answer-card border-2 border-border bg-card hover:border-primary hover:bg-primary-soft/30 shadow-sm hover:shadow-md";
+              "quiz-answer-card border border-border/80 bg-card/90 hover:border-primary/50 hover:bg-primary-soft/25 shadow-sm hover:shadow-md";
             let icon: React.ReactNode = null;
 
             if (isAnswered) {
               if (isCorrectChoice) {
                 choiceClass =
-                  "quiz-answer-card quiz-answer-card--correct border-2 border-success bg-success-soft text-foreground ring-2 ring-success/25";
-                icon = <CheckCircle2 className="size-5 shrink-0 text-success sm:size-6" />;
+                  "quiz-answer-card quiz-answer-card--correct border-2 border-primary/55 bg-primary-soft/45 text-foreground ring-2 ring-primary/20";
+                icon = <CheckCircle2 className="size-5 shrink-0 text-primary sm:size-6" />;
               } else if (isSelected) {
                 choiceClass =
-                  "quiz-answer-card quiz-answer-card--wrong border-2 border-destructive bg-destructive/10 text-foreground ring-2 ring-destructive/20";
-                icon = <XCircle className="size-5 shrink-0 text-destructive sm:size-6" />;
+                  "quiz-answer-card quiz-answer-card--wrong border-2 border-accent/40 bg-accent-soft/25 text-foreground ring-1 ring-accent/15";
+                icon = <XCircle className="size-5 shrink-0 text-orange-300/90 sm:size-6" />;
               } else {
-                choiceClass = "border-2 border-border bg-card opacity-65";
+                choiceClass = "border border-border/60 bg-card/70 opacity-55";
               }
             }
 
             const letterBadge = (
               <span
-                className={`flex shrink-0 items-center justify-center rounded-full font-extrabold ${
+                className={`flex shrink-0 items-center justify-center rounded-full font-bold ${
                   compactChoices
                     ? `size-7 text-sm ${shortScreen}size-6 ${shortScreen}text-xs`
                     : `size-8 sm:size-10 sm:text-lg ${shortScreen}size-7 ${shortScreen}text-sm`
                 } ${
                   isAnswered && isCorrectChoice
-                    ? "bg-success text-success-foreground"
+                    ? "bg-primary text-primary-foreground"
                     : isAnswered && isSelected
-                      ? "bg-destructive text-destructive-foreground"
-                      : "bg-secondary text-secondary-foreground"
+                      ? "bg-accent text-accent-foreground"
+                      : "bg-muted text-muted-foreground"
                 }`}
                 aria-hidden
               >
@@ -360,12 +360,12 @@ export function ImmersiveQuizPlay({
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
           <SheetTitle className="sr-only">
-            {isCorrect ? "Réponse correcte" : "Explication et bonne lecture"}
+            {isCorrect ? "Tu as capté" : "Le décode"}
           </SheetTitle>
           <SheetDescription className="sr-only">{explanation}</SheetDescription>
           <div className="mx-auto flex h-full min-h-0 w-full max-w-3xl flex-1 flex-col px-4 pt-3">
             <div className="mb-3 flex shrink-0 items-center justify-center">
-              <span className="h-1 w-10 rounded-full bg-muted-foreground/35" aria-hidden />
+              <span className="h-1 w-10 rounded-full bg-primary/35" aria-hidden />
             </div>
             {showCaptureBeat ? (
               <ConceptCaptureBeat copy={captureCopy!} />
@@ -374,22 +374,27 @@ export function ImmersiveQuizPlay({
                 <div
                   className={`flex shrink-0 items-start gap-2 rounded-xl border px-3 py-2.5 sm:px-4 sm:py-3 ${
                     isCorrect
-                      ? "border-success/35 bg-success-soft/90"
-                      : "border-border/70 bg-muted/35"
+                      ? "border-primary/35 bg-primary-soft/55"
+                      : "border-accent/30 bg-accent-soft/30"
                   }`}
                 >
                   <span
-                    className={`mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-extrabold sm:size-8 sm:text-sm ${
+                    className={`mt-0.5 inline-flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold sm:size-8 sm:text-sm ${
                       isCorrect
-                        ? "bg-success text-success-foreground"
-                        : "bg-muted text-muted-foreground"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-accent text-accent-foreground"
                     }`}
                     aria-hidden
                   >
                     {isCorrect ? "✓" : "·"}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-extrabold leading-snug sm:text-base">{feedbackHeadline}</p>
+                    <p className="text-[11px] font-medium tracking-[0.1em] text-muted-foreground/90">
+                      {isCorrect ? "Sur le fil" : "Le décode"}
+                    </p>
+                    <p className="mt-0.5 text-sm font-bold leading-snug text-foreground sm:text-base">
+                      {feedbackHeadline}
+                    </p>
                   </div>
                   <Button
                     onClick={onSpeakExplanation}
@@ -408,19 +413,21 @@ export function ImmersiveQuizPlay({
                   } ${explanationRevealed ? "opacity-100" : "opacity-0"}`}
                   aria-live={explanationRevealed ? "polite" : "off"}
                 >
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                    Le décode
+                  <p className="text-[11px] font-medium tracking-[0.12em] text-primary/75">
+                    {isCorrect ? "Le décode" : "La bonne lecture"}
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground/90 sm:text-base">{explanation}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/90 sm:text-[15px] sm:leading-relaxed">
+                    {explanation}
+                  </p>
                 </div>
               </>
             )}
-            <div className="shrink-0 space-y-2 border-t border-border/60 bg-background/95 pt-3 backdrop-blur-sm">
+            <div className="shrink-0 space-y-2 border-t border-border/50 bg-background/95 pt-3 backdrop-blur-sm">
               <Button
                 onClick={() => void onPrimaryNext()}
                 size="xl"
                 variant="accent"
-                className="w-full min-h-[52px] text-base font-extrabold shadow-[var(--shadow-card)]"
+                className="w-full min-h-[52px] text-base font-bold shadow-[var(--shadow-card)]"
               >
                 {primaryNextLabel}
                 <ArrowRight />
