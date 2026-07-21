@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { AppHeader } from "@/components/AppHeader";
+import { JourneyPage } from "@/components/JourneyPage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/contexts/AuthContext";
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/reglages")({
       { title: "Profil — Tu captes ?" },
       {
         name: "description",
-        content: "Ton profil : avatar, pseudo et compte.",
+        content: "Ton profil sur le fil : avatar, pseudo et compte.",
       },
     ],
   }),
@@ -47,12 +48,12 @@ function ProfilePage() {
 
   if (!profile) {
     return (
-      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+      <JourneyPage>
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
           <p className="text-muted-foreground">On prépare ton profil…</p>
         </main>
-      </div>
+      </JourneyPage>
     );
   }
 
@@ -87,7 +88,7 @@ function ProfilePage() {
   const streak = profile.current_streak ?? 0;
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+    <JourneyPage>
       <AppHeader />
       <main className="container mx-auto w-full min-w-0 max-w-lg flex-1 overflow-x-clip px-4 py-5 sm:px-6 sm:py-7">
         <header className="mb-6 flex items-center gap-4">
@@ -95,12 +96,14 @@ function ProfilePage() {
             {profile.avatar}
           </span>
           <div className="min-w-0">
-            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Profil</p>
+            <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Sur le fil</p>
             <h1 className="truncate text-xl font-extrabold tracking-tight sm:text-2xl">
               {displayName?.trim() || "Sans pseudo"}
             </h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              {streak > 0 ? `Série : ${streak} jour${streak > 1 ? "s" : ""}` : "Ton identité sur l’app"}
+              {streak > 0
+                ? `${streak} jour${streak > 1 ? "s" : ""} de fil — sans pression`
+                : "Ton identité sur le fil culturel"}
             </p>
           </div>
         </header>
@@ -167,7 +170,10 @@ function ProfilePage() {
           <h2 className="text-sm font-extrabold">Raccourcis</h2>
           <div className="mt-3 flex flex-col gap-2">
             <Button asChild variant="outline" size="lg" className="w-full justify-start">
-              <Link to="/parcours">Voir mon parcours</Link>
+              <Link to="/play">Reprendre le fil</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="w-full justify-start">
+              <Link to="/parcours">Voir mes traces</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full justify-start">
               <Link to="/parametres">Paramètres (son, accessibilité…)</Link>
@@ -182,6 +188,6 @@ function ProfilePage() {
           <span> — hors du fil principal.</span>
         </p>
       </main>
-    </div>
+    </JourneyPage>
   );
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Bell, Volume2 } from "lucide-react";
 import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
+import { JourneyPage } from "@/components/JourneyPage";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/parametres")({
       { title: "Paramètres — Tu captes ?" },
       {
         name: "description",
-        content: "Réglages d'accessibilité, audio, notifications et compte.",
+        content: "Confort, sons, notifications et compte — pour lire le fil à ton rythme.",
       },
     ],
   }),
@@ -45,12 +46,12 @@ function SettingsPage() {
 
   if (!profile) {
     return (
-      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+      <JourneyPage>
         <AppHeader />
         <main className="flex min-w-0 w-full flex-1 items-center justify-center overflow-x-clip px-4">
           <p>On prépare tes paramètres…</p>
         </main>
-      </div>
+      </JourneyPage>
     );
   }
 
@@ -79,19 +80,20 @@ function SettingsPage() {
   };
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+    <JourneyPage>
       <AppHeader />
-      <main className="container mx-auto w-full min-w-0 max-w-5xl flex-1 overflow-x-clip px-4 py-6 sm:px-6 sm:py-10">
-        <div className="mb-5 rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:mb-6 sm:p-6">
-          <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Paramètres</h1>
-          <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-            Ajuste le confort de jeu, les sons, les notifications et le compte.
+      <main className="container mx-auto w-full min-w-0 max-w-lg flex-1 overflow-x-clip px-4 py-5 sm:px-6 sm:py-7">
+        <header className="mb-5">
+          <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Confort</p>
+          <h1 className="mt-1.5 text-2xl font-extrabold tracking-tight sm:text-3xl">Paramètres</h1>
+          <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Ajuste le rythme du fil : texte, sons, rappels, compte.
           </p>
-        </div>
+        </header>
 
         <div className="space-y-5 sm:space-y-6">
-          <section className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-6">
-            <h2 className="text-xl font-extrabold mb-4">Préférences</h2>
+          <section className="journey-panel p-5 sm:p-6">
+            <h2 className="mb-4 text-lg font-extrabold">Préférences</h2>
             <div className="space-y-4">
               <div>
                 <Label className="text-base sm:text-lg font-extrabold">Taille du texte</Label>
@@ -163,9 +165,9 @@ function SettingsPage() {
             </div>
           </section>
 
-          <div className="grid gap-5 lg:grid-cols-2">
-            <section className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-6">
-              <h2 className="text-xl font-extrabold mb-4">Accessibilité</h2>
+          <div className="grid gap-5">
+            <section className="journey-panel p-5 sm:p-6">
+              <h2 className="mb-4 text-lg font-extrabold">Accessibilité</h2>
               <div className="rounded-2xl border border-border/70 p-4 sm:p-5">
                 <div className="flex items-center justify-between gap-4">
                   <div>
@@ -187,8 +189,8 @@ function SettingsPage() {
             </section>
 
             {notifSupported && (
-              <section className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-6">
-                <h2 className="text-xl font-extrabold mb-4">Notifications</h2>
+              <section className="journey-panel p-5 sm:p-6">
+                <h2 className="mb-4 text-lg font-extrabold">Notifications</h2>
                 <div className="rounded-2xl border border-border/70 p-4 sm:p-5">
                   <div className="flex items-center justify-between gap-4">
                     <div>
@@ -226,18 +228,18 @@ function SettingsPage() {
             )}
           </div>
 
-          <section className="rounded-3xl border-2 border-border bg-card p-5 shadow-[var(--shadow-soft)] sm:p-6">
-            <h2 className="text-xl font-extrabold mb-4">Compte</h2>
+          <section className="journey-panel p-5 sm:p-6">
+            <h2 className="mb-4 text-lg font-extrabold">Compte</h2>
             <div className="grid gap-3">
-              <Button asChild variant="outline" size="lg" className="w-full sm:max-w-sm justify-start">
-                <Link to="/parcours">Ton parcours — passages et concepts captés</Link>
+              <Button asChild variant="outline" size="lg" className="w-full justify-start">
+                <Link to="/parcours">Tes traces sur le fil</Link>
               </Button>
-              <Button onClick={handleLogout} variant="outline" size="lg" className="w-full sm:max-w-sm">
+              <Button onClick={handleLogout} variant="outline" size="lg" className="w-full">
                 Se déconnecter
               </Button>
             </div>
             <div className="mt-5 border-t border-border pt-4">
-              <h3 className="text-sm font-extrabold uppercase tracking-wide text-muted-foreground">
+              <h3 className="text-sm font-semibold tracking-wide text-muted-foreground">
                 Informations légales
               </h3>
               <div className="mt-3 flex flex-col gap-2 text-sm sm:text-base">
@@ -255,6 +257,6 @@ function SettingsPage() {
           </section>
         </div>
       </main>
-    </div>
+    </JourneyPage>
   );
 }

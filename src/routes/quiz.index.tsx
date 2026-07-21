@@ -63,16 +63,16 @@ function ThemeSelection() {
           to="/play"
           className="mb-4 inline-flex min-h-[2.75rem] items-center text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
         >
-          ← Jouer
+          ← Carrefour du fil
         </Link>
 
         <header className="mb-6">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Explorer</p>
-          <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
+          <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Un angle</p>
+          <h1 className="mt-1.5 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
             Une lecture du web
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Chaque angle, un run court — sans catalogue ni pression de score.
+            Chaque angle, un passage court — même fil, autre lumière.
           </p>
         </header>
 

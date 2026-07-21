@@ -1,20 +1,9 @@
 {
-  "audited_at": "2026-07-21T01:55:00.000Z",
-  "source": "supabase_mcp_after_density_1h",
+  "audited_at": "2026-07-21T02:05:00.000Z",
   "live_total": 129,
   "live_with_concept_key": 129,
+  "distinct_keys": 129,
+  "labels_missing_for_live_keys": 0,
   "coverage_percent": 100,
-  "batches": {
-    "density_1_through_1g": { "applied": true },
-    "density_1h": {
-      "rows": 6,
-      "applied": true,
-      "keys": [
-        "email_suspect", "ecran_tactile", "iphone_android",
-        "stockage", "google_maps", "mise_a_jour"
-      ]
-    }
-  },
-  "untagged_remaining": 0,
-  "note": "Named coverage complete for current live pool; quality of names > raw % going forward."
+  "note": "All live concept_key values resolve in concept-labels-v1.json"
 }

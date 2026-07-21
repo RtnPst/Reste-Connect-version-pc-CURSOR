@@ -242,7 +242,7 @@ function HomePage() {
             {installPrompt && (
               <div className="pt-1">
                 <div className="rounded-2xl border border-border/40 bg-muted/25 p-3.5 text-left sm:p-4">
-                  <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <p className="mb-2 text-[11px] font-medium tracking-wide text-muted-foreground">
                     Sur ton téléphone
                   </p>
                   <Button

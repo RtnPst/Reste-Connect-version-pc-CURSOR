@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AppHeader } from "@/components/AppHeader";
+import { JourneyPage } from "@/components/JourneyPage";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/connexion")({
       { title: "Connexion — Tu captes ?" },
       {
         name: "description",
-        content: "Crée un compte ou connecte-toi pour retrouver ton XP et ta progression sur l’app.",
+        content: "Connecte-toi pour garder tes traces et reprises sur le fil culturel.",
       },
     ],
   }),
@@ -54,18 +55,16 @@ function AuthPage() {
       if (mode === "signup") {
         const pseudo = (displayName || fallbackPseudoFromEmail(email)).trim();
         await signUp(email, password, pseudo);
-        toast.success(`Bienvenue à toi ${pseudo} !`);
-        // After signup auto-confirm may be on; try navigating home
+        toast.success(`Bienvenue sur le fil, ${pseudo}`);
         navigate({ to: "/" });
       } else {
         await signIn(email, password);
         const pseudo = await getPseudoFromProfile(email);
-        toast.success(`Bon retour parmi nous ${pseudo} !`);
+        toast.success(`Bon retour sur le fil, ${pseudo}`);
         navigate({ to: "/" });
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : "Une erreur est survenue.";
-      // Friendly French messages for common errors
       if (message.toLowerCase().includes("invalid login")) {
         toast.error("Email ou mot de passe incorrect.");
       } else if (
@@ -93,18 +92,21 @@ function AuthPage() {
   };
 
   return (
-    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
+    <JourneyPage>
       <AppHeader />
       <main className="flex min-w-0 w-full max-w-full flex-1 items-center justify-center overflow-x-clip px-4 py-10">
         <div className="w-full min-w-0 max-w-md">
-          <div className="bg-card rounded-3xl border-2 border-border p-6 sm:p-8 shadow-[var(--shadow-card)]">
-            <h1 className="text-2xl sm:text-3xl font-extrabold mb-2 text-center">
-              {mode === "signin" ? "Bon retour !" : "Créer mon compte"}
+          <div className="journey-panel bg-card/95 p-6 sm:p-8">
+            <p className="text-center text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">
+              Sur le fil
+            </p>
+            <h1 className="mt-2 text-center text-2xl font-extrabold sm:text-3xl">
+              {mode === "signin" ? "Reprendre ton fil" : "Garder ton fil"}
             </h1>
-            <p className="text-center text-muted-foreground mb-6">
+            <p className="mb-6 mt-2 text-center text-sm leading-relaxed text-muted-foreground">
               {mode === "signin"
-                ? "Connecte-toi pour retrouver ta progression."
-                : "Badges et série sauvegardés sur ton compte."}
+                ? "Tes captures et reprises t’attendent — sans pression."
+                : "Un compte pour retrouver tes traces et le fil du jour."}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -167,9 +169,9 @@ function AuthPage() {
             </form>
 
             <div className="my-6 flex items-center gap-3">
-              <div className="h-px bg-border flex-1" />
+              <div className="h-px flex-1 bg-border" />
               <span className="text-sm text-muted-foreground">ou</span>
-              <div className="h-px bg-border flex-1" />
+              <div className="h-px flex-1 bg-border" />
             </div>
 
             <Button onClick={handleGoogle} size="lg" variant="outline" className="w-full">
@@ -197,15 +199,17 @@ function AuthPage() {
             <div className="mt-6 text-center text-base">
               {mode === "signin" ? (
                 <button
+                  type="button"
                   onClick={() => setMode("signup")}
-                  className="text-primary font-semibold underline-offset-4 hover:underline"
+                  className="font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   Pas encore de compte ? Créer un compte
                 </button>
               ) : (
                 <button
+                  type="button"
                   onClick={() => setMode("signin")}
-                  className="text-primary font-semibold underline-offset-4 hover:underline"
+                  className="font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   Déjà un compte ? Me connecter
                 </button>
@@ -215,14 +219,14 @@ function AuthPage() {
 
           <div className="mt-6 text-center">
             <Link
-              to="/quiz"
+              to="/play"
               className="text-base text-muted-foreground underline-offset-4 hover:underline"
             >
-              Ou jouer en invité, sans compte →
+              Ou entrer sur le fil sans compte →
             </Link>
           </div>
         </div>
       </main>
-    </div>
+    </JourneyPage>
   );
 }

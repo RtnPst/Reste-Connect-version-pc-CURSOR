@@ -57,8 +57,8 @@ function LevelsPage() {
       <AppHeader />
       <main className="container mx-auto w-full max-w-lg flex-1 px-4 py-5 sm:px-6 sm:py-7">
         <header className="mb-5 animate-fade-in">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Le fil</p>
-          <h1 className="mt-1 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
+          <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Sur le fil</p>
+          <h1 className="mt-1.5 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
             Le chemin
           </h1>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -66,7 +66,7 @@ function LevelsPage() {
             passage, tous les angles du web.
           </p>
           <div className="journey-panel mt-4 px-4 py-3.5 sm:px-5 sm:py-4">
-            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-primary/80">Position</p>
+            <p className="text-[11px] font-medium tracking-[0.1em] text-primary/75">Tu es ici</p>
             <p className="mt-1 text-base font-extrabold leading-snug text-foreground">
               {rankHere.label}
               <span className="font-medium text-muted-foreground"> · étape {frontier}</span>
