@@ -5,12 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system "Reste Connecté" — intergénérationnel et accessible
+ * Design system « Tu Captes ? » — fil culturel
  *
- * Philosophie : chaleureux, lisible, rassurant, jamais infantilisant.
- * Palette : bleu confiance + accent orange chaleureux + vert/rouge doux pour le feedback.
- * Typo : grande taille par défaut (18px+), excellente lisibilité.
- * Boutons : minimum 56px de haut, espacement généreux.
+ * ADN : encre nocturne + bleu Captes (logo) + orange point d’interrogation.
+ * Moins « lobby quiz violet », plus magazine culturel calme.
+ * Typo : Outfit (UI claire) + Fraunces (titres avec caractère).
  */
 
 @theme inline {
@@ -74,66 +73,66 @@
   --color-rank-diamond: var(--rank-diamond);
   --color-rank-master: var(--rank-master);
 
-  --font-sans: "Nunito", "Segoe UI", system-ui, sans-serif;
-  --font-display: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Fraunces", "Georgia", "Times New Roman", serif;
 }
 
 :root {
   --radius: 1rem;
 
-  /* Tu captes? — crépuscule culturel (lisible, moins « lobby quiz nuit ») */
-  --background: #171f31;
-  --foreground: #f1f5f9;
+  /* Tu Captes — encre + bleu logo + ambre « ? » */
+  --background: #121820;
+  --foreground: #f2f5f8;
 
-  --card: #243044;
-  --card-foreground: #f1f5f9;
-  --popover: #243044;
-  --popover-foreground: #f1f5f9;
+  --card: #1c2533;
+  --card-foreground: #f2f5f8;
+  --popover: #1c2533;
+  --popover-foreground: #f2f5f8;
 
-  --primary: #5b52e8;
+  --primary: #3d8bfd;
   --primary-foreground: #f8fafc;
-  --primary-soft: #3730a3;
+  --primary-soft: #1a3a66;
 
-  --secondary: #7c6df0;
-  --secondary-foreground: #f8fafc;
+  --secondary: #5ba3ff;
+  --secondary-foreground: #0b1220;
 
-  --muted: #3d4f66;
-  --muted-foreground: #b8c5d6;
+  --muted: #2a3545;
+  --muted-foreground: #a8b4c4;
 
-  --accent: #f59e0b;
-  --accent-foreground: #0f172a;
-  --accent-soft: #78350f;
+  --accent: #ff8a3d;
+  --accent-foreground: #1a0f08;
+  --accent-soft: #7a3b12;
 
-  --success: #22c55e;
-  --success-foreground: #0f172a;
+  --success: #3ecf8e;
+  --success-foreground: #0a1a12;
   --success-soft: #14532d;
 
-  --warning: #f59e0b;
-  --warning-foreground: #0f172a;
-  --warning-soft: #78350f;
+  --warning: #ff8a3d;
+  --warning-foreground: #1a0f08;
+  --warning-soft: #7a3b12;
 
   --destructive: #ef4444;
   --destructive-foreground: #f8fafc;
 
-  --border: #3f5268;
-  --input: #3f5268;
-  --ring: #8b7cf8;
+  --border: #2f3d4f;
+  --input: #2f3d4f;
+  --ring: #5ba3ff;
 
-  /* Per-theme accent colors */
-  --theme-vocab: #7c3aed;
-  --theme-vocab-soft: #3b0764;
-  --theme-social: #4f46e5;
-  --theme-social-soft: #312e81;
-  --theme-pop: #f59e0b;
-  --theme-pop-soft: #78350f;
-  --theme-tech: #22c55e;
+  /* Per-theme accent colors — less purple-default */
+  --theme-vocab: #5b9cff;
+  --theme-vocab-soft: #1a3a66;
+  --theme-social: #3d8bfd;
+  --theme-social-soft: #1a3a66;
+  --theme-pop: #ff8a3d;
+  --theme-pop-soft: #7a3b12;
+  --theme-tech: #3ecf8e;
   --theme-tech-soft: #14532d;
-  --theme-gaming: #14b8a6;
+  --theme-gaming: #2dd4bf;
   --theme-gaming-soft: #134e4a;
-  --theme-trends: #d946ef;
-  --theme-trends-soft: #86198f;
-  --theme-relations: #fb7185;
-  --theme-relations-soft: #9f1239;
+  --theme-trends: #ff6b7a;
+  --theme-trends-soft: #7f1d2d;
+  --theme-relations: #f0a0b0;
+  --theme-relations-soft: #7a2e3d;
 
   /* Couleurs des paliers (En découverte → Maître du jeu, variables inchangées pour le thème) */
   --rank-bronze: oklch(0.55 0.12 50);
@@ -151,71 +150,71 @@
   --chart-5: oklch(0.65 0.17 200);
 
   /* Sidebar (rarely used here, kept for shadcn compatibility) */
-  --sidebar: #171f31;
+  --sidebar: #121820;
   --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #4f46e5;
+  --sidebar-primary: #3d8bfd;
   --sidebar-primary-foreground: #f8fafc;
-  --sidebar-accent: #1e293b;
+  --sidebar-accent: #1c2533;
   --sidebar-accent-foreground: #f8fafc;
-  --sidebar-border: #334155;
-  --sidebar-ring: #7c3aed;
+  --sidebar-border: #2f3d4f;
+  --sidebar-ring: #5ba3ff;
 
-  --shadow-soft: 0 6px 20px -8px rgb(8 15 30 / 38%);
-  --shadow-card: 0 12px 32px -12px rgb(8 15 30 / 48%);
+  --shadow-soft: 0 6px 20px -8px rgb(6 12 22 / 42%);
+  --shadow-card: 0 12px 32px -12px rgb(6 12 22 / 52%);
 }
 
 .dark {
-  --background: #171f31;
-  --foreground: #f1f5f9;
+  --background: #121820;
+  --foreground: #f2f5f8;
 
-  --card: #243044;
-  --card-foreground: #f1f5f9;
-  --popover: #243044;
-  --popover-foreground: #f1f5f9;
+  --card: #1c2533;
+  --card-foreground: #f2f5f8;
+  --popover: #1c2533;
+  --popover-foreground: #f2f5f8;
 
-  --primary: #5b52e8;
+  --primary: #3d8bfd;
   --primary-foreground: #f8fafc;
-  --primary-soft: #3730a3;
+  --primary-soft: #1a3a66;
 
-  --secondary: #7c6df0;
-  --secondary-foreground: #f8fafc;
+  --secondary: #5ba3ff;
+  --secondary-foreground: #0b1220;
 
-  --muted: #3d4f66;
-  --muted-foreground: #b8c5d6;
+  --muted: #2a3545;
+  --muted-foreground: #a8b4c4;
 
-  --accent: #f59e0b;
-  --accent-foreground: #0f172a;
-  --accent-soft: #78350f;
+  --accent: #ff8a3d;
+  --accent-foreground: #1a0f08;
+  --accent-soft: #7a3b12;
 
-  --success: #22c55e;
-  --success-foreground: #0f172a;
+  --success: #3ecf8e;
+  --success-foreground: #0a1a12;
   --success-soft: #14532d;
 
-  --warning: #f59e0b;
-  --warning-foreground: #0f172a;
-  --warning-soft: #78350f;
+  --warning: #ff8a3d;
+  --warning-foreground: #1a0f08;
+  --warning-soft: #7a3b12;
 
   --destructive: #ef4444;
   --destructive-foreground: #f8fafc;
 
-  --border: #3f5268;
-  --input: #3f5268;
-  --ring: #8b7cf8;
+  --border: #2f3d4f;
+  --input: #2f3d4f;
+  --ring: #5ba3ff;
 
-  --theme-vocab: #7c3aed;
-  --theme-vocab-soft: #3b0764;
-  --theme-social: #4f46e5;
-  --theme-social-soft: #312e81;
-  --theme-pop: #f59e0b;
-  --theme-pop-soft: #78350f;
-  --theme-tech: #22c55e;
+  --theme-vocab: #5b9cff;
+  --theme-vocab-soft: #1a3a66;
+  --theme-social: #3d8bfd;
+  --theme-social-soft: #1a3a66;
+  --theme-pop: #ff8a3d;
+  --theme-pop-soft: #7a3b12;
+  --theme-tech: #3ecf8e;
   --theme-tech-soft: #14532d;
-  --theme-gaming: #14b8a6;
+  --theme-gaming: #2dd4bf;
   --theme-gaming-soft: #134e4a;
-  --theme-trends: #d946ef;
-  --theme-trends-soft: #86198f;
-  --theme-relations: #fb7185;
-  --theme-relations-soft: #9f1239;
+  --theme-trends: #ff6b7a;
+  --theme-trends-soft: #7f1d2d;
+  --theme-relations: #f0a0b0;
+  --theme-relations-soft: #7a2e3d;
 
   --rank-bronze: oklch(0.65 0.12 50);
   --rank-silver: oklch(0.8 0.02 250);
@@ -340,9 +339,10 @@ html.font-xlarge {
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
+    font-weight: 700;
+    font-optical-sizing: auto;
+    letter-spacing: -0.025em;
+    line-height: 1.18;
   }
 
   /* Smooth interactive transitions across the app */

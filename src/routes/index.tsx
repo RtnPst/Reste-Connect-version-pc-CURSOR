@@ -125,7 +125,7 @@ function HomePage() {
 
   const ctaClassName = missionIsDone
     ? "h-auto min-h-[3.2rem] w-full max-w-[min(100%,22.5rem)] min-w-0 rounded-full border border-border/60 bg-card px-4 py-3 text-center font-bold text-foreground shadow-[var(--shadow-soft)] transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card)] active:translate-y-px motion-reduce:hover:translate-y-0 sm:min-h-[3.4rem] sm:max-w-[23rem] sm:px-6"
-    : "h-auto min-h-[3.35rem] w-full max-w-[min(100%,22.5rem)] min-w-0 rounded-full border border-fuchsia-200/45 bg-linear-to-r from-violet-600 via-fuchsia-500 to-orange-400 px-4 py-3 text-center text-white shadow-[0_0_0_1px_rgba(244,114,182,0.3),0_0_26px_-12px_rgba(236,72,153,0.72),0_18px_34px_-18px_rgba(249,115,22,0.62)] transition-[transform,box-shadow,filter] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:scale-[1.02] hover:brightness-105 hover:shadow-[0_0_0_1px_rgba(244,114,182,0.4),0_0_32px_-10px_rgba(236,72,153,0.82),0_22px_40px_-16px_rgba(249,115,22,0.76)] active:translate-y-[1px] active:scale-[0.985] active:brightness-95 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 sm:min-h-[3.6rem] sm:max-w-[23rem] sm:px-6 sm:py-3.5";
+    : "h-auto min-h-[3.35rem] w-full max-w-[min(100%,22.5rem)] min-w-0 rounded-full border border-sky-200/35 bg-linear-to-r from-sky-600 via-blue-500 to-orange-400 px-4 py-3 text-center text-white shadow-[0_0_0_1px_rgba(56,189,248,0.28),0_0_26px_-12px_rgba(59,130,246,0.55),0_18px_34px_-18px_rgba(249,115,22,0.55)] transition-[transform,box-shadow,filter] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:scale-[1.02] hover:brightness-105 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.4),0_0_32px_-10px_rgba(59,130,246,0.65),0_22px_40px_-16px_rgba(249,115,22,0.7)] active:translate-y-[1px] active:scale-[0.985] active:brightness-95 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 sm:min-h-[3.6rem] sm:max-w-[23rem] sm:px-6 sm:py-3.5";
 
   return (
     <JourneyPage>
@@ -141,17 +141,17 @@ function HomePage() {
             {!user ? (
               <div className="relative mx-auto w-full overflow-hidden rounded-3xl border border-border bg-card px-4 py-4 shadow-[var(--shadow-soft)] sm:px-6 sm:py-5 [@media(max-height:780px)]:rounded-2xl [@media(max-height:780px)]:px-3.5 [@media(max-height:780px)]:py-3">
                 <span
-                  className="pointer-events-none absolute -right-12 top-0 size-[11rem] rounded-full bg-fuchsia-500/[0.12] blur-3xl"
+                  className="pointer-events-none absolute -right-12 top-0 size-[11rem] rounded-full bg-sky-400/[0.12] blur-3xl"
                   aria-hidden
                 />
                 <span
-                  className="pointer-events-none absolute -bottom-16 -left-10 size-[13rem] rounded-full bg-violet-500/[0.1] blur-3xl"
+                  className="pointer-events-none absolute -bottom-16 -left-10 size-[13rem] rounded-full bg-orange-400/[0.1] blur-3xl"
                   aria-hidden
                 />
                 <div className="relative z-[1] mx-auto w-full max-w-[30rem] space-y-2">
                   <h1 className="text-balance text-2xl font-extrabold leading-[1.12] tracking-tight sm:text-3xl">
                     <span className="block text-slate-50">T’es sûr de capter…</span>
-                    <span className="mt-1 block bg-linear-to-r from-fuchsia-300 via-violet-300 to-orange-300 bg-clip-text text-transparent">
+                    <span className="mt-1 block bg-linear-to-r from-sky-300 via-blue-300 to-orange-300 bg-clip-text text-transparent">
                       ou t’es un peu mytho ?
                     </span>
                   </h1>
@@ -179,7 +179,7 @@ function HomePage() {
                       ? "border-success/40 bg-success/10 text-success"
                       : missionIsDaily
                         ? "border-success/45 bg-success/15 text-success"
-                        : "border-violet-300/40 bg-violet-500/15 text-violet-200",
+                        : "border-sky-300/40 bg-sky-500/15 text-sky-100",
                   )}
                 >
                   {missionTitle}

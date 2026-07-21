@@ -111,7 +111,7 @@ function PlayPage() {
               dailyDone && "fil-passage--next",
             )}
           >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-fuchsia-500/12 text-fuchsia-300">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-sky-500/12 text-sky-300">
               <Compass className="size-5" aria-hidden />
             </span>
             <span className="min-w-0 flex-1 text-left">

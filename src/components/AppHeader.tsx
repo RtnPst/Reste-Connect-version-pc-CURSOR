@@ -44,7 +44,7 @@ function HeaderBrandMark() {
     return (
       <span
         className={cn(
-          "inline-flex shrink-0 items-center font-black tracking-tight text-violet-100 drop-shadow-md",
+          "inline-flex shrink-0 items-center font-black tracking-tight text-sky-100 drop-shadow-md",
           "text-xs sm:text-sm",
         )}
         aria-hidden
@@ -117,7 +117,7 @@ export function AppHeader() {
 
             <span
               aria-hidden
-              className="h-20 w-[2px] shrink-0 rounded-full bg-linear-to-b from-violet-300/0 via-violet-300/45 to-violet-300/0 shadow-[0_0_12px_rgba(139,92,246,0.24)] sm:h-24"
+              className="h-20 w-[2px] shrink-0 rounded-full bg-linear-to-b from-sky-300/0 via-sky-300/45 to-sky-300/0 shadow-[0_0_12px_rgba(56,189,248,0.22)] sm:h-24"
             />
 
             <div className="flex min-w-0 items-center gap-2">
@@ -126,7 +126,7 @@ export function AppHeader() {
                   <Link
                     to="/reglages"
                     aria-label="Mon profil"
-                    className="mr-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-violet-300/35 bg-violet-600/20 text-base shadow-[0_0_10px_rgba(139,92,246,0.2)] transition-transform hover:scale-105 sm:h-8 sm:w-8 sm:text-lg"
+                    className="mr-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-sky-300/35 bg-sky-600/20 text-base shadow-[0_0_10px_rgba(56,189,248,0.18)] transition-transform hover:scale-105 sm:h-8 sm:w-8 sm:text-lg"
                   >
                     {profile?.avatar ?? "🙂"}
                   </Link>
@@ -140,7 +140,7 @@ export function AppHeader() {
                   </p>
                   <span
                     className={cn(
-                      "shrink-0 rounded-full border border-violet-400/35 bg-violet-600/25 px-1.5 py-px font-bold leading-none text-violet-100 shadow-[0_0_10px_rgba(139,92,246,0.25)] transition-[font-size,padding] duration-300",
+                      "shrink-0 rounded-full border border-sky-400/35 bg-sky-600/25 px-1.5 py-px font-bold leading-none text-sky-100 shadow-[0_0_10px_rgba(56,189,248,0.22)] transition-[font-size,padding] duration-300",
                       "text-[10px] sm:text-[10.5px]",
                     )}
                   >
@@ -164,7 +164,7 @@ export function AppHeader() {
                     className={cn(
                       "app-header-icon-ring shrink-0 rounded-full transition-[width,height] duration-300 [&_svg]:size-[1.05rem] sm:[&_svg]:size-[1.1rem]",
                       "h-[1.9rem] w-[1.9rem] sm:h-[2.1rem] sm:w-[2.1rem]",
-                      "hover:bg-violet-500/20 hover:text-foreground",
+                      "hover:bg-sky-500/20 hover:text-foreground",
                     )}
                   >
                     <Link to="/reglages">
@@ -180,7 +180,7 @@ export function AppHeader() {
                       className={cn(
                         "app-header-icon-ring shrink-0 rounded-full transition-[width,height] duration-300 [&_svg]:size-[1.05rem] sm:[&_svg]:size-[1.1rem]",
                         "h-[1.9rem] w-[1.9rem] sm:h-[2.1rem] sm:w-[2.1rem]",
-                        "hover:bg-violet-500/20 hover:text-foreground",
+                        "hover:bg-sky-500/20 hover:text-foreground",
                       )}
                     >
                       <Link to="/admin">
