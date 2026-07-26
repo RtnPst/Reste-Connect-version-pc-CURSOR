@@ -4856,6 +4856,609 @@
       ],
       "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
       "human_notes": "FR ado (≠ anglais « go ») — piège de sens utile."
+    },
+    {
+      "concept_key": "kiffer",
+      "canonical_label": "Kiffer",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "kiffer",
+        "je kiffe",
+        "kiff"
+      ],
+      "variants": [
+        "kiffer"
+      ],
+      "short_definition": "Aimer beaucoup / apprécier fort.",
+      "long_definition": "Aimer beaucoup / apprécier fort.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Je kiffe trop cette série."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Je kiffe trop cette série."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "FR oral classique encore massif — cœur 35–55."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "FR oral classique encore massif — cœur 35–55."
+    },
+    {
+      "concept_key": "peinard",
+      "canonical_label": "Peinard",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "peinard",
+        "être peinard",
+        "tranquille peinard"
+      ],
+      "variants": [
+        "peinard"
+      ],
+      "short_definition": "Tranquille / sans stress / bien installé.",
+      "long_definition": "Tranquille / sans stress / bien installé.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Laisse, je suis peinard."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Laisse, je suis peinard."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Argot FR durable — scène pote / famille."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Argot FR durable — scène pote / famille."
+    },
+    {
+      "concept_key": "thune",
+      "canonical_label": "Thune",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "thune",
+        "la thune",
+        "pas de thune"
+      ],
+      "variants": [
+        "thune"
+      ],
+      "short_definition": "Argent.",
+      "long_definition": "Argent.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "J’ai plus de thune ce mois-ci."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "J’ai plus de thune ce mois-ci."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Argot FR universel — utile décennie + aujourd’hui."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Argot FR universel — utile décennie + aujourd’hui."
+    },
+    {
+      "concept_key": "waz",
+      "canonical_label": "Waz",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "waz",
+        "wesh waz",
+        "wazaaa"
+      ],
+      "variants": [
+        "waz"
+      ],
+      "short_definition": "Salut / appel informel (proche de wesh).",
+      "long_definition": "Salut / appel informel (proche de wesh).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Waz, ça va ?"
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Waz, ça va ?"
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Oral cité FR ; voisin de wesh déjà live."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Oral cité FR ; voisin de wesh déjà live."
+    },
+    {
+      "concept_key": "dz",
+      "canonical_label": "Dz",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "dz",
+        "la dz",
+        "dz team"
+      ],
+      "variants": [
+        "dz"
+      ],
+      "short_definition": "Algérien / lié à l’Algérie (code d’appartenance).",
+      "long_definition": "Algérien / lié à l’Algérie (code d’appartenance).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Il est dz de ouf."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Il est dz de ouf."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Code FR / diaspora — scènes sociales réelles (prudence ton respectueux)."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Code FR / diaspora — scènes sociales réelles (prudence ton respectueux)."
+    },
+    {
+      "concept_key": "chelou",
+      "canonical_label": "Chelou",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "chelou",
+        "c’est chelou",
+        "trop chelou"
+      ],
+      "variants": [
+        "chelou"
+      ],
+      "short_definition": "Bizarre / louche (verlan de louche).",
+      "long_definition": "Bizarre / louche (verlan de louche).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Son message est chelou."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Son message est chelou."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Verlan FR incontournable."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Verlan FR incontournable."
+    },
+    {
+      "concept_key": "venere",
+      "canonical_label": "Vénère",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "vénère",
+        "je suis vénère",
+        "trop vénère"
+      ],
+      "variants": [
+        "vénère"
+      ],
+      "short_definition": "Énervé / en colère (verlan d’énervé).",
+      "long_definition": "Énervé / en colère (verlan d’énervé).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Là je suis vénère."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Là je suis vénère."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Verlan FR classique."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Verlan FR classique."
+    },
+    {
+      "concept_key": "boloss",
+      "canonical_label": "Boloss",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "boloss",
+        "gros boloss",
+        "bolosse"
+      ],
+      "variants": [
+        "boloss"
+      ],
+      "short_definition": "Quelqu’un de naïf / ridicule / facile à avoir.",
+      "long_definition": "Quelqu’un de naïf / ridicule / facile à avoir.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Arrête de faire le boloss."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Arrête de faire le boloss."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "FR années 2000–aujourd’hui — pont décennies."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "FR années 2000–aujourd’hui — pont décennies."
+    },
+    {
+      "concept_key": "ouf",
+      "canonical_label": "Ouf",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "ouf",
+        "de ouf",
+        "c’est ouf"
+      ],
+      "variants": [
+        "ouf"
+      ],
+      "short_definition": "Fou / impressionnant (verlan de fou).",
+      "long_definition": "Fou / impressionnant (verlan de fou).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "La soirée était de ouf."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "La soirée était de ouf."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Verlan FR quotidien — scènes claires."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Verlan FR quotidien — scènes claires."
     }
   ]
 }

@@ -1,0 +1,53 @@
+{
+  "pilot_id": "boloss-intake-promote-v1",
+  "concept_key": "boloss",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "boloss",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« Arrête de faire le boloss. » Boloss désigne plutôt…",
+      "choices": [
+        "Quelqu’un de naïf / ridicule / facile à avoir",
+        "Un expert cybersécurité",
+        "Un abonnement premium",
+        "Un filtre beauté"
+      ],
+      "correct_index": 0,
+      "explanation": "Boloss = personne un peu « loser » / naïve dans le jugement social.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Boloss — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "boloss",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel usage sonne juste avec « boloss » ?",
+      "choices": [
+        "Il a cru à l’arnaque : gros boloss.",
+        "J’ai installé boloss.",
+        "Boloss est une banque.",
+        "Boloss = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "Jugement social, pas une appli.",
+      "tone": "social",
+      "context": "story_reply",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Boloss — authenticity scene check required before live."
+    }
+  ]
+}

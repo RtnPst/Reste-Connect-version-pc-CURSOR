@@ -1,0 +1,53 @@
+{
+  "pilot_id": "waz-intake-promote-v1",
+  "concept_key": "waz",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "waz",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quelqu’un t’écrit « Waz, ça va ? » Waz sert surtout à…",
+      "choices": [
+        "Saluer / appeler de façon informelle",
+        "Demander le code Wi-Fi",
+        "Valider un paiement",
+        "Couper les notifs"
+      ],
+      "correct_index": 0,
+      "explanation": "Waz ≈ salut (voisin de wesh).",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Waz — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "waz",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel usage de « waz » sonne naturel ?",
+      "choices": [
+        "Waz, t’es où ?",
+        "J’ai mis waz en 5G.",
+        "Waz est une banque.",
+        "Waz = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "Formule d’appel, pas un outil.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Waz — authenticity scene check required before live."
+    }
+  ]
+}

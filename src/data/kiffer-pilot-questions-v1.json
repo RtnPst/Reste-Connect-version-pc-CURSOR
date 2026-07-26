@@ -1,0 +1,53 @@
+{
+  "pilot_id": "kiffer-intake-promote-v1",
+  "concept_key": "kiffer",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "kiffer",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Je kiffe trop cette série. » Kiffer, c’est…",
+      "choices": [
+        "Aimer beaucoup / apprécier fort",
+        "Désinstaller une appli",
+        "Couper le Wi-Fi",
+        "Réviser pour un contrôle"
+      ],
+      "correct_index": 0,
+      "explanation": "Kiffer = aimer fort (du « kif »).",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Kiffer — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "kiffer",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message colle avec « kiffer » ?",
+      "choices": [
+        "Je kiffe grave ta playlist.",
+        "J’ai activé kiffer en 5G.",
+        "Kiffer est une banque.",
+        "Kiffer = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "Verbe d’appréciation, pas un outil.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Kiffer — authenticity scene check required before live."
+    }
+  ]
+}

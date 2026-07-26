@@ -442,7 +442,124 @@
       "source": "fr_first_discovery_v1",
       "fr_fit": "strong",
       "placement": "theme_pool"
+    },
+    {
+      "raw_term": "kiffer",
+      "aliases": [
+        "je kiffe",
+        "kiff"
+      ],
+      "example_usage": "Je kiffe trop cette série.",
+      "short_definition": "Aimer beaucoup / apprécier fort.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "peinard",
+      "aliases": [
+        "être peinard",
+        "tranquille peinard"
+      ],
+      "example_usage": "Laisse, je suis peinard.",
+      "short_definition": "Tranquille / sans stress / bien installé.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "thune",
+      "aliases": [
+        "la thune",
+        "pas de thune"
+      ],
+      "example_usage": "J’ai plus de thune ce mois-ci.",
+      "short_definition": "Argent.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "waz",
+      "aliases": [
+        "wesh waz",
+        "wazaaa"
+      ],
+      "example_usage": "Waz, ça va ?",
+      "short_definition": "Salut / appel informel (proche de wesh).",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "dz",
+      "aliases": [
+        "la dz",
+        "dz team"
+      ],
+      "example_usage": "Il est dz de ouf.",
+      "short_definition": "Algérien / lié à l’Algérie (code d’appartenance).",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "chelou",
+      "aliases": [
+        "c’est chelou",
+        "trop chelou"
+      ],
+      "example_usage": "Son message est chelou.",
+      "short_definition": "Bizarre / louche (verlan de louche).",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "vénère",
+      "aliases": [
+        "je suis vénère",
+        "trop vénère"
+      ],
+      "example_usage": "Là je suis vénère.",
+      "short_definition": "Énervé / en colère (verlan d’énervé).",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "boloss",
+      "aliases": [
+        "gros boloss",
+        "bolosse"
+      ],
+      "example_usage": "Arrête de faire le boloss.",
+      "short_definition": "Quelqu’un de naïf / ridicule / facile à avoir.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "ouf",
+      "aliases": [
+        "de ouf",
+        "c’est ouf"
+      ],
+      "example_usage": "La soirée était de ouf.",
+      "short_definition": "Fou / impressionnant (verlan de fou).",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1_batch3",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
     }
   ],
-  "updated_at": "2026-07-26T23:38:37.593Z"
+  "updated_at": "2026-07-26T23:46:55.349Z"
 }

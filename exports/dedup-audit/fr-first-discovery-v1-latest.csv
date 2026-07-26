@@ -1,17 +1,11 @@
 raw_term,suggested_concept_key,suggested_theme,short_definition,fr_fit,placement,novelty_status,recommendation,human_decision,discovery_note
-askip,askip,vocabulaire,Apparemment / à ce qu’il paraît.,strong,theme_pool,already_known,skip_already_known,reject,Abréviation FR ultra courante SMS / Snap — cœur cible 35–55.
-wallah,wallah,vocabulaire,Serment / affirmation forte (« je te jure »).,strong,theme_pool,novel_candidate,approve_fr_first,approve,Oral cité FR ; variante walpa. Scène famille / pote.
-jsp,jsp,vocabulaire,Je ne sais pas (abrégé).,strong,theme_pool,novel_candidate,approve_fr_first,approve,SMS FR basique — utile pour décoder le fil sans jargon US.
-charo,charo,relations_lifestyle,Personne qui enchaîne les conquêtes / trop « chasse ».,strong,theme_pool,novel_candidate,approve_fr_first,approve,FR ado / Parents.fr & glossaires 2025 — scène relationnelle claire.
-cringe,cringe,culture_pop,Gênant / malaisant au point d’être inconfortable.,strong,theme_pool,already_known,skip_already_known,reject,Anglicisme mais oral FR massif — garder avec scènes FR.
-sauce,sauce,vocabulaire,Dans la galère / embêté ; « saucé » = sous le charme.,strong,theme_pool,novel_candidate,approve_fr_first,approve,Deux sens FR (galère vs crush) — excellent piège quiz.
-gênance,genance,vocabulaire,Situation très gênante / malaise collectif.,strong,theme_pool,novel_candidate,approve_fr_first,approve,FR oral TikTok / presse régionale — proche de cringe mais natif.
-charbonner,charbonner,vocabulaire,Travailler dur / enchaîner le travail.,strong,theme_pool,novel_candidate,approve_fr_first,approve,FR cité / rap / ado — pas un anglicisme.
-daron,daron,vocabulaire,Père (daronne = mère) ; les parents.,strong,theme_pool,novel_candidate,approve_fr_first,approve,Verlan / argot FR classique encore vivant.
-bg,bg,relations_lifestyle,Beau gosse / quelqu’un d’attirant ou stylé.,strong,theme_pool,novel_candidate,approve_fr_first,approve,Abréviation FR scolaire / Snap — prioritaire pool FR.
-relou,relou,vocabulaire,Lourd / agaçant / pénible (verlan de « lourd »).,strong,theme_pool,already_known,skip_already_known,reject,Verlan FR incontournable pour le public cible.
-y’a pas H,ya_pas_h,vocabulaire,"Y’a pas de souci / c’est clair, go.",medium,theme_pool,novel_candidate,approve_or_watchlist,approve,FR oral ; déjà en discovery — à shipper en questions.
-flemme,flemme,vocabulaire,Pas envie / paresse du moment.,strong,theme_pool,already_known,skip_already_known,reject,"FR quotidien — label déjà en catalogue, manquait le live."
-osef,osef,vocabulaire,On s’en fout / ça n’a aucune importance.,strong,theme_pool,novel_candidate,approve_fr_first,approve,Abréviation FR chat — très utile pour 35–55.
-quoicoubeh,quoicoubeh,trends_pop_culture,Réplique absurde / mème ado (proche six-seven en esprit).,meme_mode,daily_friendly,novel_candidate,approve_daily_friendly,approve,"Classique FR cour de récré — daily / tendances, pas 10 Q pool."
-go,go,relations_lifestyle,Petite amie / copine.,strong,theme_pool,novel_candidate,approve_fr_first,approve,FR ado (≠ anglais « go ») — piège de sens utile.
+kiffer,kiffer,vocabulaire,Aimer beaucoup / apprécier fort.,strong,theme_pool,novel_candidate,approve_fr_first,approve,FR oral classique encore massif — cœur 35–55.
+peinard,peinard,vocabulaire,Tranquille / sans stress / bien installé.,strong,theme_pool,novel_candidate,approve_fr_first,approve,Argot FR durable — scène pote / famille.
+thune,thune,vocabulaire,Argent.,strong,theme_pool,novel_candidate,approve_fr_first,approve,Argot FR universel — utile décennie + aujourd’hui.
+waz,waz,vocabulaire,Salut / appel informel (proche de wesh).,strong,theme_pool,novel_candidate,approve_fr_first,approve,Oral cité FR ; voisin de wesh déjà live.
+dz,dz,vocabulaire,Algérien / lié à l’Algérie (code d’appartenance).,strong,theme_pool,novel_candidate,approve_fr_first,approve,Code FR / diaspora — scènes sociales réelles (prudence ton respectueux).
+chelou,chelou,vocabulaire,Bizarre / louche (verlan de louche).,strong,theme_pool,novel_candidate,approve_fr_first,approve,Verlan FR incontournable.
+seum,seum,vocabulaire,Avoir la rage / être vexé / déçu.,strong,theme_pool,already_known,skip_already_known,reject,FR ado/jeune adulte massif — excellent pour 35–55.
+vénère,venere,vocabulaire,Énervé / en colère (verlan d’énervé).,strong,theme_pool,novel_candidate,approve_fr_first,approve,Verlan FR classique.
+boloss,boloss,vocabulaire,Quelqu’un de naïf / ridicule / facile à avoir.,strong,theme_pool,novel_candidate,approve_fr_first,approve,FR années 2000–aujourd’hui — pont décennies.
+ouf,ouf,vocabulaire,Fou / impressionnant (verlan de fou).,strong,theme_pool,novel_candidate,approve_fr_first,approve,Verlan FR quotidien — scènes claires.

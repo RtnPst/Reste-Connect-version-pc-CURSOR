@@ -1,0 +1,53 @@
+{
+  "pilot_id": "thune-intake-promote-v1",
+  "concept_key": "thune",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "thune",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« J’ai plus de thune ce mois-ci. » Thune = …",
+      "choices": [
+        "Argent",
+        "Batterie",
+        "Données mobiles",
+        "Abonnement Netflix"
+      ],
+      "correct_index": 0,
+      "explanation": "La thune = l’argent.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Thune — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "thune",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message colle avec « thune » ?",
+      "choices": [
+        "Ce week-end j’économise : plus trop de thune.",
+        "J’ai activé thune dans les réglages.",
+        "Thune est une cryptomonnaie officielle.",
+        "Thune = code Wi-Fi."
+      ],
+      "correct_index": 0,
+      "explanation": "Argot pour l’argent, pas un réglage.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Thune — authenticity scene check required before live."
+    }
+  ]
+}

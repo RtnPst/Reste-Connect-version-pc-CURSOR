@@ -1,0 +1,53 @@
+{
+  "pilot_id": "venere-intake-promote-v1",
+  "concept_key": "venere",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "venere",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Là je suis vénère. » Ça veut dire…",
+      "choices": [
+        "Énervé / en colère",
+        "Très amoureux",
+        "En mode avion",
+        "Sans batterie"
+      ],
+      "correct_index": 0,
+      "explanation": "Vénère = verlan d’énervé.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Vénère — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "venere",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message colle avec « vénère » ?",
+      "choices": [
+        "Il a spoil la fin : je suis trop vénère.",
+        "J’ai mis vénère en 5G.",
+        "Vénère est un forfait.",
+        "Vénère = code Wi-Fi."
+      ],
+      "correct_index": 0,
+      "explanation": "État d’énervement, pas un réglage.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Vénère — authenticity scene check required before live."
+    }
+  ]
+}

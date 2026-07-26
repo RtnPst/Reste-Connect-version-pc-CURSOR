@@ -1,0 +1,53 @@
+{
+  "pilot_id": "chelou-intake-promote-v1",
+  "concept_key": "chelou",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "chelou",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Son message est chelou. » Chelou veut dire…",
+      "choices": [
+        "Bizarre / louche",
+        "Très clair",
+        "Trop long",
+        "En anglais uniquement"
+      ],
+      "correct_index": 0,
+      "explanation": "Chelou = verlan de louche.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Chelou — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "chelou",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message colle avec « chelou » ?",
+      "choices": [
+        "Il a liké à 3h du mat’ : un peu chelou.",
+        "J’ai installé chelou.",
+        "Chelou est un forfait.",
+        "Chelou = 5G."
+      ],
+      "correct_index": 0,
+      "explanation": "Jugement sur quelque chose d’étrange.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Chelou — authenticity scene check required before live."
+    }
+  ]
+}

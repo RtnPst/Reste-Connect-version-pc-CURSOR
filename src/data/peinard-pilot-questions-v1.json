@@ -1,0 +1,53 @@
+{
+  "pilot_id": "peinard-intake-promote-v1",
+  "concept_key": "peinard",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "peinard",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Laisse, je suis peinard. » Ça veut dire…",
+      "choices": [
+        "Tranquille / sans stress",
+        "En panne de batterie",
+        "En retard au boulot",
+        "En train de streame"
+      ],
+      "correct_index": 0,
+      "explanation": "Être peinard = être cool, bien installé, sans souci.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Peinard — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "peinard",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel usage de « peinard » sonne juste ?",
+      "choices": [
+        "Dimanche après-midi, canapé, je suis peinard.",
+        "J’ai installé peinard.",
+        "Peinard est un forfait.",
+        "Peinard = mode avion."
+      ],
+      "correct_index": 0,
+      "explanation": "État de tranquillité, pas un produit.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Peinard — authenticity scene check required before live."
+    }
+  ]
+}

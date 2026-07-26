@@ -1,0 +1,53 @@
+{
+  "pilot_id": "ouf-intake-promote-v1",
+  "concept_key": "ouf",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "ouf",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« La soirée était de ouf. » Ça veut dire…",
+      "choices": [
+        "Impressionnant / dingue / très fort",
+        "Très ennuyeux",
+        "Sans musique",
+        "Sans réseau"
+      ],
+      "correct_index": 0,
+      "explanation": "Ouf = verlan de fou ; « de ouf » = de fou.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Ouf — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "ouf",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message colle avec « ouf » ?",
+      "choices": [
+        "Le but en prolongation : c’était ouf.",
+        "J’ai activé ouf dans les réglages.",
+        "Ouf est un forfait.",
+        "Ouf = mode avion."
+      ],
+      "correct_index": 0,
+      "explanation": "Exclamation d’intensité, pas un outil.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Ouf — authenticity scene check required before live."
+    }
+  ]
+}

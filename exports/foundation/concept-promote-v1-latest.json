@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-07-26T23:38:39.367Z",
+  "generated_at": "2026-07-26T23:46:57.061Z",
   "mode": "apply",
   "policy": "promote_approved_v1_no_db",
-  "planned_count": 12,
+  "planned_count": 9,
   "planned": [
     {
-      "concept_key": "ya_pas_h",
-      "label": "Y’a pas H",
+      "concept_key": "kiffer",
+      "label": "Kiffer",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -16,8 +16,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "wallah",
-      "label": "Wallah",
+      "concept_key": "peinard",
+      "label": "Peinard",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -27,8 +27,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "jsp",
-      "label": "Jsp",
+      "concept_key": "thune",
+      "label": "Thune",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -38,8 +38,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "charo",
-      "label": "Charo",
+      "concept_key": "waz",
+      "label": "Waz",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -49,8 +49,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "sauce",
-      "label": "Sauce",
+      "concept_key": "dz",
+      "label": "Dz",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -60,8 +60,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "genance",
-      "label": "Gênance",
+      "concept_key": "chelou",
+      "label": "Chelou",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -71,8 +71,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "charbonner",
-      "label": "Charbonner",
+      "concept_key": "venere",
+      "label": "Vénère",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -82,8 +82,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "daron",
-      "label": "Daron",
+      "concept_key": "boloss",
+      "label": "Boloss",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -93,41 +93,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "bg",
-      "label": "Bg",
-      "actions": {
-        "add_label": true,
-        "add_pack_draft": true,
-        "skip_reason": ""
-      },
-      "authenticity_gate": "pass_with_review",
-      "suggested_usage_vitality": "observed_irl"
-    },
-    {
-      "concept_key": "osef",
-      "label": "Osef",
-      "actions": {
-        "add_label": true,
-        "add_pack_draft": true,
-        "skip_reason": ""
-      },
-      "authenticity_gate": "pass_with_review",
-      "suggested_usage_vitality": "observed_irl"
-    },
-    {
-      "concept_key": "quoicoubeh",
-      "label": "Quoicoubeh",
-      "actions": {
-        "add_label": true,
-        "add_pack_draft": true,
-        "skip_reason": ""
-      },
-      "authenticity_gate": "pass_with_review",
-      "suggested_usage_vitality": "observed_irl"
-    },
-    {
-      "concept_key": "go",
-      "label": "Go",
+      "concept_key": "ouf",
+      "label": "Ouf",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
