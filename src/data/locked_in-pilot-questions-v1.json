@@ -1,0 +1,53 @@
+{
+  "pilot_id": "locked_in-intake-promote-v1",
+  "concept_key": "locked_in",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "locked_in",
+      "theme": "culture_pop",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« Là je suis locked in jusqu’à vendredi. » Ça veut surtout dire…",
+      "choices": [
+        "Hyper concentré / en mode focus total",
+        "Bloqué hors de son compte",
+        "En couple officiel",
+        "En mode avion permanent"
+      ],
+      "correct_index": 0,
+      "explanation": "Locked in = focus intense (dossier, sport, étude) — pas un verrouillage de compte.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Locked in — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "locked_in",
+      "theme": "culture_pop",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel message sonne juste avec « locked in » ?",
+      "choices": [
+        "Exam lundi : je suis locked in ce week-end.",
+        "J’ai activé locked in dans les réglages Bluetooth.",
+        "Locked in est une banque.",
+        "Locked in = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "On parle d’état de concentration, pas d’un réglage.",
+      "tone": "social",
+      "context": "study",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Locked in — authenticity scene check required before live."
+    }
+  ]
+}

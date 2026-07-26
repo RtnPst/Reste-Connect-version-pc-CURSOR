@@ -27,8 +27,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "intake_candidate",
       "discovery_note": "Usage oral FR courant chez 15–30 ; scène story/groupe crédible.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "approve",
+      "human_notes": "Usage FR vivant, scène story crédible — bon candidat 35–55."
     },
     {
       "raw_term": "no cap",
@@ -47,8 +47,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "skip_already_known",
       "discovery_note": "Anglicisme très ancré ; attention piège « cap » seul.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "reject",
+      "human_notes": "Déjà couvert / near cap — skip."
     },
     {
       "raw_term": "iykyk",
@@ -67,8 +67,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "intake_candidate",
       "discovery_note": "Bon angle reconnaissance sociale, pas définition scolaire.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "approve",
+      "human_notes": "Connivence sociale ; angle reconnaissance pas glossaire."
     },
     {
       "raw_term": "ate",
@@ -87,8 +87,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "watchlist_likely",
       "discovery_note": "Micro-tendance EN ; vérifier si assez ancré FR avant approve.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "watchlist",
+      "human_notes": "Micro-tendance EN — ancrage FR à confirmer."
     },
     {
       "raw_term": "slay",
@@ -107,8 +107,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "skip_already_known",
       "discovery_note": "Très spread ; risque satiété — angles scènes > glossaire.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "reject",
+      "human_notes": "Déjà dans labels — skip novelty."
     },
     {
       "raw_term": "mid",
@@ -127,8 +127,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "skip_already_known",
       "discovery_note": "Usage vivant FR ; bon distracteur vs « nul / ouf ».",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "reject",
+      "human_notes": "Déjà dans labels — skip novelty."
     },
     {
       "raw_term": "touch grass",
@@ -147,8 +147,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "intake_candidate",
       "discovery_note": "Scène pote → pote ; éviter parent moralisateur.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "approve",
+      "human_notes": "Vanne pote→pote anti-écran ; éviter angle moralisateur."
     },
     {
       "raw_term": "main character",
@@ -167,8 +167,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "intake_candidate",
       "discovery_note": "Bon angle lifestyle ; piège : narcissisme vs fun.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "approve",
+      "human_notes": "Lifestyle reconnaissable ; piège narcissisme vs fun."
     },
     {
       "raw_term": "beige flag",
@@ -187,8 +187,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "watchlist_likely",
       "discovery_note": "Complète red_flag déjà live ; vérifier saturation.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "watchlist",
+      "human_notes": "Complète red_flag mais micro_trend — watchlist."
     },
     {
       "raw_term": "situationship",
@@ -207,8 +207,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "skip_already_known",
       "discovery_note": "Très demandé 35–55 qui entendent le mot ; déjà proche du thème relations.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "reject",
+      "human_notes": "Déjà live — skip."
     },
     {
       "raw_term": "soft launch",
@@ -227,8 +227,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "intake_candidate",
       "discovery_note": "Scène Instagram/story très claire.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "approve",
+      "human_notes": "Scène Instagram très claire ; paire soft/hard utile."
     },
     {
       "raw_term": "hard launch",
@@ -247,8 +247,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "intake_candidate",
       "discovery_note": "Paire naturelle avec soft launch.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "approve",
+      "human_notes": "Complète soft launch ; lecture publique vs douce."
     },
     {
       "raw_term": "npc",
@@ -267,8 +267,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "skip_already_known",
       "discovery_note": "Pont gaming → social ; éviter mépris gratuit.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "reject",
+      "human_notes": "Déjà dans labels — skip."
     },
     {
       "raw_term": "glaze",
@@ -287,8 +287,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "watchlist_likely",
       "discovery_note": "Plus récent / niche — watchlist probable.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "watchlist",
+      "human_notes": "Niche / récent — observer avant production."
     },
     {
       "raw_term": "locked in",
@@ -307,8 +307,8 @@
       "already_in_raw_signals": "no",
       "recommendation": "intake_candidate",
       "discovery_note": "Usage studytok / sport / boulot ; scène crédible.",
-      "human_decision": "",
-      "human_notes": ""
+      "human_decision": "approve",
+      "human_notes": "Focus study/sport/boulot — scène crédible."
     }
   ]
 }

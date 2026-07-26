@@ -3,7 +3,7 @@
   "pack_id": "cultural-pack-v1",
   "golden_batch_id": "v1_lot_01_tier_a",
   "locale": "fr-FR",
-  "updated_at": "2026-07-21",
+  "updated_at": "2026-07-26",
   "lot_03_batch_id": "v1_lot_03_tier_a",
   "lot_04_batch_id": "v1_lot_04a_tier_a",
   "lot_04b_batch_id": "v1_lot_04b_tier_a",
@@ -3117,6 +3117,468 @@
       ],
       "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
       "human_notes": "Terme clair et fréquent dans les usages jeunes; bon candidat sous réserve de validation éditoriale de définition."
+    },
+    {
+      "concept_key": "hard_launch",
+      "canonical_label": "Hard launch",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "hard launch",
+        "hard launch couple"
+      ],
+      "variants": [
+        "hard launch"
+      ],
+      "short_definition": "Annonce publique claire d’une relation / projet.",
+      "long_definition": "Annonce publique claire d’une relation / projet.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "Hard launch : photo de couple en face cam."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Hard launch : photo de couple en face cam."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Complète soft launch ; lecture publique vs douce."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Complète soft launch ; lecture publique vs douce."
+    },
+    {
+      "concept_key": "iykyk",
+      "canonical_label": "IYKYK",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "iykyk",
+        "if you know you know"
+      ],
+      "variants": [
+        "iykyk"
+      ],
+      "short_definition": "Connivence : « ceux qui savent savent » — exclut gentiment.",
+      "long_definition": "Connivence : « ceux qui savent savent » — exclut gentiment.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "La ref du week-end… iykyk."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "La ref du week-end… iykyk."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Connivence sociale ; angle reconnaissance pas glossaire."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Connivence sociale ; angle reconnaissance pas glossaire."
+    },
+    {
+      "concept_key": "locked_in",
+      "canonical_label": "Locked in",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "locked in",
+        "lock in"
+      ],
+      "variants": [
+        "locked in"
+      ],
+      "short_definition": "Hyper concentré / en mode focus total.",
+      "long_definition": "Hyper concentré / en mode focus total.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "culture_pop",
+      "context_pack": {
+        "credible_messages": [
+          "Là je suis locked in sur mon dossier jusqu’à vendredi."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Là je suis locked in sur mon dossier jusqu’à vendredi."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Focus study/sport/boulot — scène crédible."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Focus study/sport/boulot — scène crédible."
+    },
+    {
+      "concept_key": "main_character",
+      "canonical_label": "Main character",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "main character",
+        "main character energy"
+      ],
+      "variants": [
+        "main character"
+      ],
+      "short_definition": "Se mettre au centre du récit, attitude « héros du film ».",
+      "long_definition": "Se mettre au centre du récit, attitude « héros du film ».",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "Elle arrive en main character energy au resto."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Elle arrive en main character energy au resto."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Lifestyle reconnaissable ; piège narcissisme vs fun."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Lifestyle reconnaissable ; piège narcissisme vs fun."
+    },
+    {
+      "concept_key": "rizz",
+      "canonical_label": "Rizz",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "rizz",
+        "avoir du rizz"
+      ],
+      "variants": [
+        "rizz"
+      ],
+      "short_definition": "Charisme / talent pour draguer ou captiver, souvent en ligne ou IRL léger.",
+      "long_definition": "Charisme / talent pour draguer ou captiver, souvent en ligne ou IRL léger.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "Il a trop de rizz en story, tout le monde répond."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Il a trop de rizz en story, tout le monde répond."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Usage FR vivant, scène story crédible — bon candidat 35–55."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Usage FR vivant, scène story crédible — bon candidat 35–55."
+    },
+    {
+      "concept_key": "soft_launch",
+      "canonical_label": "Soft launch",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "living",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "soft launch",
+        "soft launch relation"
+      ],
+      "variants": [
+        "soft launch"
+      ],
+      "short_definition": "Révéler quelqu’un / un projet en douceur, sans annonce claire.",
+      "long_definition": "Révéler quelqu’un / un projet en douceur, sans annonce claire.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "Elle a soft launch son mec en story (juste les mains)."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Elle a soft launch son mec en story (juste les mains)."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Scène Instagram très claire ; paire soft/hard utile."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Scène Instagram très claire ; paire soft/hard utile."
+    },
+    {
+      "concept_key": "touch_grass",
+      "canonical_label": "Touch grass",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "touch grass",
+        "touch some grass"
+      ],
+      "variants": [
+        "touch grass"
+      ],
+      "short_definition": "Sors un peu / reconnecte au réel — vanne anti-addiction écrans.",
+      "long_definition": "Sors un peu / reconnecte au réel — vanne anti-addiction écrans.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "reseaux_sociaux",
+      "context_pack": {
+        "credible_messages": [
+          "T’es trop en ligne, go touch grass."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "T’es trop en ligne, go touch grass."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Vanne pote→pote anti-écran ; éviter angle moralisateur."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Vanne pote→pote anti-écran ; éviter angle moralisateur."
     }
   ]
 }

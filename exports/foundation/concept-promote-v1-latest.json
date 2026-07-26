@@ -1,12 +1,56 @@
 {
-  "generated_at": "2026-07-21T01:00:20.784Z",
+  "generated_at": "2026-07-26T23:17:50.988Z",
   "mode": "apply",
   "policy": "promote_approved_v1_no_db",
-  "planned_count": 2,
+  "planned_count": 7,
   "planned": [
     {
-      "concept_key": "brainrot",
-      "label": "Brainrot",
+      "concept_key": "hard_launch",
+      "label": "Hard launch",
+      "actions": {
+        "add_label": true,
+        "add_pack_draft": true,
+        "skip_reason": ""
+      },
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl"
+    },
+    {
+      "concept_key": "iykyk",
+      "label": "Iykyk",
+      "actions": {
+        "add_label": true,
+        "add_pack_draft": true,
+        "skip_reason": ""
+      },
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl"
+    },
+    {
+      "concept_key": "locked_in",
+      "label": "Locked in",
+      "actions": {
+        "add_label": true,
+        "add_pack_draft": true,
+        "skip_reason": ""
+      },
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl"
+    },
+    {
+      "concept_key": "main_character",
+      "label": "Main character",
+      "actions": {
+        "add_label": true,
+        "add_pack_draft": true,
+        "skip_reason": ""
+      },
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "observed_irl"
+    },
+    {
+      "concept_key": "rizz",
+      "label": "Rizz",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -16,8 +60,19 @@
       "suggested_usage_vitality": "living"
     },
     {
-      "concept_key": "delulu",
-      "label": "Delulu",
+      "concept_key": "soft_launch",
+      "label": "Soft launch",
+      "actions": {
+        "add_label": true,
+        "add_pack_draft": true,
+        "skip_reason": ""
+      },
+      "authenticity_gate": "pass_with_review",
+      "suggested_usage_vitality": "living"
+    },
+    {
+      "concept_key": "touch_grass",
+      "label": "Touch grass",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,

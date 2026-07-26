@@ -1,0 +1,53 @@
+{
+  "pilot_id": "rizz-intake-promote-v1",
+  "concept_key": "rizz",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "rizz",
+      "theme": "reseaux_sociaux",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Dans le groupe : « Il a trop de rizz en story, tout le monde répond. » « Rizz », c’est surtout…",
+      "choices": [
+        "Du charisme / un talent pour captiver (souvent pour draguer)",
+        "Un filtre Instagram officiel",
+        "Un bug de notifications",
+        "Un abonnement premium"
+      ],
+      "correct_index": 0,
+      "explanation": "Avoir du « rizz », c’est avoir du charme / de la game — pas un réglage d’app.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Rizz — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "rizz",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message sonne le plus juste avec « rizz » ?",
+      "choices": [
+        "T’as mis une story simple et tout le monde a répondu — t’as du rizz.",
+        "J’ai activé le rizz dans les réglages Wi-Fi.",
+        "Le rizz est une appli de banque.",
+        "Rizz = traduction automatique."
+      ],
+      "correct_index": 0,
+      "explanation": "On parle d’effet social / charisme, pas d’un outil technique.",
+      "tone": "social",
+      "context": "story_reply",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Rizz — authenticity scene check required before live."
+    }
+  ]
+}

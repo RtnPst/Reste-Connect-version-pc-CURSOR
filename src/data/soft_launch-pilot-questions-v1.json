@@ -1,0 +1,53 @@
+{
+  "pilot_id": "soft_launch-intake-promote-v1",
+  "concept_key": "soft_launch",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "soft_launch",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Elle poste une story avec juste deux mains qui tiennent un café. Un pote : « Soft launch ? » Ça veut dire…",
+      "choices": [
+        "Elle laisse entendre quelqu’un / un projet sans l’annoncer clairement",
+        "Elle lance une appli en beta technique",
+        "Elle supprime son compte",
+        "Elle active le mode avion"
+      ],
+      "correct_index": 0,
+      "explanation": "Un soft launch, c’est révéler en douceur (souvent une relation) — pas une annonce face cam.",
+      "tone": "social",
+      "context": "instagram_story",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Soft launch — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "soft_launch",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quelle différence colle le mieux entre soft launch et hard launch ?",
+      "choices": [
+        "Soft launch = indices discrets ; hard launch = photo de couple face cam claire",
+        "Soft launch = payer ; hard launch = gratuit",
+        "Soft launch = Wi-Fi ; hard launch = 5G",
+        "Soft launch = mute ; hard launch = volume max"
+      ],
+      "correct_index": 0,
+      "explanation": "Soft = en douceur. Hard = annonce publique nette.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Soft launch — authenticity scene check required before live."
+    }
+  ]
+}

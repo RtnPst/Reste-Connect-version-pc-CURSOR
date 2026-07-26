@@ -96,6 +96,208 @@ const LOTS = {
       },
     ],
   },
+  rizz: {
+    concept_key: "rizz",
+    theme: "reseaux_sociaux",
+    label: "Rizz",
+    questions: [
+      {
+        difficulty: "facile",
+        question:
+          "Dans le groupe : « Il a trop de rizz en story, tout le monde répond. » « Rizz », c’est surtout…",
+        choices: [
+          "Du charisme / un talent pour captiver (souvent pour draguer)",
+          "Un filtre Instagram officiel",
+          "Un bug de notifications",
+          "Un abonnement premium",
+        ],
+        correct_index: 0,
+        explanation: "Avoir du « rizz », c’est avoir du charme / de la game — pas un réglage d’app.",
+        context: "group_chat",
+      },
+      {
+        difficulty: "moyen",
+        question: "Quel message sonne le plus juste avec « rizz » ?",
+        choices: [
+          "T’as mis une story simple et tout le monde a répondu — t’as du rizz.",
+          "J’ai activé le rizz dans les réglages Wi-Fi.",
+          "Le rizz est une appli de banque.",
+          "Rizz = traduction automatique.",
+        ],
+        correct_index: 0,
+        explanation: "On parle d’effet social / charisme, pas d’un outil technique.",
+        context: "story_reply",
+      },
+    ],
+  },
+  soft_launch: {
+    concept_key: "soft_launch",
+    theme: "reseaux_sociaux",
+    label: "Soft launch",
+    questions: [
+      {
+        difficulty: "moyen",
+        question:
+          "Elle poste une story avec juste deux mains qui tiennent un café. Un pote : « Soft launch ? » Ça veut dire…",
+        choices: [
+          "Elle laisse entendre quelqu’un / un projet sans l’annoncer clairement",
+          "Elle lance une appli en beta technique",
+          "Elle supprime son compte",
+          "Elle active le mode avion",
+        ],
+        correct_index: 0,
+        explanation:
+          "Un soft launch, c’est révéler en douceur (souvent une relation) — pas une annonce face cam.",
+        context: "instagram_story",
+      },
+      {
+        difficulty: "moyen",
+        question: "Quelle différence colle le mieux entre soft launch et hard launch ?",
+        choices: [
+          "Soft launch = indices discrets ; hard launch = photo de couple face cam claire",
+          "Soft launch = payer ; hard launch = gratuit",
+          "Soft launch = Wi-Fi ; hard launch = 5G",
+          "Soft launch = mute ; hard launch = volume max",
+        ],
+        correct_index: 0,
+        explanation: "Soft = en douceur. Hard = annonce publique nette.",
+        context: "group_chat",
+      },
+    ],
+  },
+  touch_grass: {
+    concept_key: "touch_grass",
+    theme: "reseaux_sociaux",
+    label: "Touch grass",
+    questions: [
+      {
+        difficulty: "moyen",
+        question: "Ton pote te dit : « T’es trop en ligne, go touch grass. » Il te dit surtout de…",
+        choices: [
+          "Décrocher un peu / retrouver le réel",
+          "Tondre la pelouse demain",
+          "Changer de forfait mobile",
+          "Activer le mode développeur",
+        ],
+        correct_index: 0,
+        explanation: "« Touch grass » = sors un peu d’internet — vanne entre potes, pas un conseil jardinage.",
+        context: "group_chat",
+      },
+      {
+        difficulty: "facile",
+        question: "Quel usage sonne le plus naturel avec « touch grass » ?",
+        choices: [
+          "Tu scrolles depuis 4h : go touch grass.",
+          "J’ai installé touch grass sur mon téléphone.",
+          "Touch grass est un antivirus.",
+          "Touch grass = code Wi-Fi.",
+        ],
+        correct_index: 0,
+        explanation: "C’est une vanne sociale anti-addiction écrans.",
+        context: "dm",
+      },
+    ],
+  },
+  main_character: {
+    concept_key: "main_character",
+    theme: "relations_lifestyle",
+    label: "Main character",
+    questions: [
+      {
+        difficulty: "moyen",
+        question:
+          "« Elle arrive en main character energy au resto. » Ça décrit surtout quelqu’un qui…",
+        choices: [
+          "Se met au centre du récit, comme le héros du film",
+          "Paie l’addition pour tout le monde",
+          "Refuse de commander",
+          "Travaille en cuisine",
+        ],
+        correct_index: 0,
+        explanation: "Main character energy = attitude « c’est mon film » — présence / mise en scène de soi.",
+        context: "group_chat",
+      },
+      {
+        difficulty: "facile",
+        question: "Quel exemple colle le mieux avec « main character » ?",
+        choices: [
+          "Il entre avec une playlist qui match son fit : main character.",
+          "Il a oublié ses clés : main character.",
+          "Le wifi coupe : main character.",
+          "Il a mis à jour iOS : main character.",
+        ],
+        correct_index: 0,
+        explanation: "Ça parle d’une posture / d’une vibe, pas d’un incident technique.",
+        context: "lifestyle",
+      },
+    ],
+  },
+  locked_in: {
+    concept_key: "locked_in",
+    theme: "culture_pop",
+    label: "Locked in",
+    questions: [
+      {
+        difficulty: "moyen",
+        question: "« Là je suis locked in jusqu’à vendredi. » Ça veut surtout dire…",
+        choices: [
+          "Hyper concentré / en mode focus total",
+          "Bloqué hors de son compte",
+          "En couple officiel",
+          "En mode avion permanent",
+        ],
+        correct_index: 0,
+        explanation: "Locked in = focus intense (dossier, sport, étude) — pas un verrouillage de compte.",
+        context: "group_chat",
+      },
+      {
+        difficulty: "facile",
+        question: "Quel message sonne juste avec « locked in » ?",
+        choices: [
+          "Exam lundi : je suis locked in ce week-end.",
+          "J’ai activé locked in dans les réglages Bluetooth.",
+          "Locked in est une banque.",
+          "Locked in = antivirus.",
+        ],
+        correct_index: 0,
+        explanation: "On parle d’état de concentration, pas d’un réglage.",
+        context: "study",
+      },
+    ],
+  },
+  iykyk: {
+    concept_key: "iykyk",
+    theme: "reseaux_sociaux",
+    label: "IYKYK",
+    questions: [
+      {
+        difficulty: "moyen",
+        question: "Sous une story cryptique : « iykyk ». Ça veut dire…",
+        choices: [
+          "Ceux qui savent savent — connivence entre initiés",
+          "Une erreur de frappe pour « ok »",
+          "Un code promo",
+          "Un réglage de confidentialité",
+        ],
+        correct_index: 0,
+        explanation: "IYKYK = If You Know, You Know : clin d’œil à ceux qui ont la ref.",
+        context: "instagram_story",
+      },
+      {
+        difficulty: "facile",
+        question: "Quel usage de « iykyk » colle le mieux ?",
+        choices: [
+          "La blague du week-end… iykyk.",
+          "J’ai payé en iykyk.",
+          "Iykyk est un navigateur.",
+          "Iykyk = 5G.",
+        ],
+        correct_index: 0,
+        explanation: "C’est de la connivence sociale, pas un produit.",
+        context: "group_chat",
+      },
+    ],
+  },
 };
 
 const outDir = resolve(root, "exports/dedup-audit");

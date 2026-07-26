@@ -1,0 +1,53 @@
+{
+  "pilot_id": "main_character-intake-promote-v1",
+  "concept_key": "main_character",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "main_character",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« Elle arrive en main character energy au resto. » Ça décrit surtout quelqu’un qui…",
+      "choices": [
+        "Se met au centre du récit, comme le héros du film",
+        "Paie l’addition pour tout le monde",
+        "Refuse de commander",
+        "Travaille en cuisine"
+      ],
+      "correct_index": 0,
+      "explanation": "Main character energy = attitude « c’est mon film » — présence / mise en scène de soi.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Main character — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "main_character",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel exemple colle le mieux avec « main character » ?",
+      "choices": [
+        "Il entre avec une playlist qui match son fit : main character.",
+        "Il a oublié ses clés : main character.",
+        "Le wifi coupe : main character.",
+        "Il a mis à jour iOS : main character."
+      ],
+      "correct_index": 0,
+      "explanation": "Ça parle d’une posture / d’une vibe, pas d’un incident technique.",
+      "tone": "social",
+      "context": "lifestyle",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Main character — authenticity scene check required before live."
+    }
+  ]
+}

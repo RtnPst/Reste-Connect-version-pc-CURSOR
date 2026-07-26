@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-07-26T23:17:49.358Z",
+  "policy": "discovery_decisions_v1_agent_editorial",
+  "approved": [
+    "rizz",
+    "soft_launch",
+    "hard_launch",
+    "touch_grass",
+    "main_character",
+    "locked_in",
+    "iykyk"
+  ],
+  "watchlist": [
+    "ate",
+    "glaze",
+    "beige_flag"
+  ],
+  "rejected_or_skip": [
+    "no_cap",
+    "slay",
+    "mid",
+    "situationship",
+    "npc"
+  ],
+  "csv_patched": [
+    {
+      "path": "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-discovery-v1-latest.csv",
+      "patched": 15
+    },
+    {
+      "path": "C:\\Users\\npays\\Desktop\\MonQuiz\\exports\\dedup-audit\\concept-intake-v1-review-latest.csv",
+      "patched": 10
+    }
+  ]
+}

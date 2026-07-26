@@ -1,0 +1,53 @@
+{
+  "pilot_id": "touch_grass-intake-promote-v1",
+  "concept_key": "touch_grass",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "touch_grass",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ton pote te dit : « T’es trop en ligne, go touch grass. » Il te dit surtout de…",
+      "choices": [
+        "Décrocher un peu / retrouver le réel",
+        "Tondre la pelouse demain",
+        "Changer de forfait mobile",
+        "Activer le mode développeur"
+      ],
+      "correct_index": 0,
+      "explanation": "« Touch grass » = sors un peu d’internet — vanne entre potes, pas un conseil jardinage.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Touch grass — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "touch_grass",
+      "theme": "reseaux_sociaux",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel usage sonne le plus naturel avec « touch grass » ?",
+      "choices": [
+        "Tu scrolles depuis 4h : go touch grass.",
+        "J’ai installé touch grass sur mon téléphone.",
+        "Touch grass est un antivirus.",
+        "Touch grass = code Wi-Fi."
+      ],
+      "correct_index": 0,
+      "explanation": "C’est une vanne sociale anti-addiction écrans.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Touch grass — authenticity scene check required before live."
+    }
+  ]
+}

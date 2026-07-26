@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-21T01:00:40.535Z",
+  "generated_at": "2026-07-26T23:20:35.105Z",
   "sources": {
-    "labels": 152,
-    "pack": 31,
+    "labels": 159,
+    "pack": 38,
     "csv_files": 3,
-    "live": 129,
-    "live_fetch": "ok"
+    "live": 0,
+    "live_fetch": "error:TypeError: fetch failed"
   },
-  "key_count": 320,
+  "key_count": 334,
   "keys": [
     "2fa",
     "5g",
@@ -20,6 +20,7 @@
     "appli",
     "askip",
     "assistant_vocal",
+    "avoir_du_rizz",
     "bail",
     "banger",
     "based",
@@ -136,15 +137,19 @@
     "grave_la_galere",
     "grave_le_bail",
     "hack",
+    "hard_launch",
+    "hard_launch_couple",
     "hater",
     "high_key",
     "hit",
     "ia",
+    "if_you_know_you_know",
     "il_force",
     "il_ma_ghoste",
     "influenceur",
     "inside_joke",
     "iphone_android",
+    "iykyk",
     "jai_la_flemme",
     "jai_le_seum",
     "jai_un_crush",
@@ -166,12 +171,16 @@
     "level_up",
     "lit",
     "live",
+    "lock_in",
+    "locked_in",
     "loot",
     "love_bombing",
     "low_key",
     "ma_go",
     "ma_gow",
     "magl",
+    "main_character",
+    "main_character_energy",
     "manga",
     "matrixe",
     "mdr",
@@ -225,6 +234,7 @@
     "remix",
     "repost",
     "respawn",
+    "rizz",
     "roast",
     "sah",
     "sah_frerot",
@@ -243,6 +253,8 @@
     "situationship",
     "skin",
     "slay",
+    "soft_launch",
+    "soft_launch_relation",
     "son",
     "spammer",
     "spawn",
@@ -261,6 +273,8 @@
     "texting",
     "thread",
     "tinquiete_oklm",
+    "touch_grass",
+    "touch_some_grass",
     "trend",
     "triggered",
     "troll",
@@ -334,16 +348,14 @@
     {
       "concept_key": "2fa",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "2FA"
     },
     {
       "concept_key": "5g",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "5G"
     },
@@ -375,7 +387,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "AFK"
@@ -383,16 +394,14 @@
     {
       "concept_key": "album_drop",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Album drop"
     },
     {
       "concept_key": "algo",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Algo"
     },
@@ -419,16 +428,20 @@
     {
       "concept_key": "assistant_vocal",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Assistant vocal"
+    },
+    {
+      "concept_key": "avoir_du_rizz",
+      "sources": [
+        "pack_surface"
+      ]
     },
     {
       "concept_key": "bail",
       "sources": [
         "labels",
-        "live_db",
         "pack"
       ],
       "label": "Bail",
@@ -439,8 +452,7 @@
     {
       "concept_key": "banger",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Banger"
     },
@@ -449,7 +461,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Based"
@@ -486,8 +497,7 @@
     {
       "concept_key": "block",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Block"
     },
@@ -524,7 +534,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Boss"
@@ -532,8 +541,7 @@
     {
       "concept_key": "bot",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Bot"
     },
@@ -542,7 +550,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Boujee"
@@ -569,7 +576,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Breadcrumbing"
@@ -577,16 +583,14 @@
     {
       "concept_key": "buff",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Buff"
     },
     {
       "concept_key": "buzz",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Buzz"
     },
@@ -625,7 +629,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Cap"
@@ -634,7 +637,6 @@
       "concept_key": "carre",
       "sources": [
         "labels",
-        "live_db",
         "pack"
       ],
       "label": "Carré",
@@ -644,8 +646,7 @@
     {
       "concept_key": "carry",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Carry"
     },
@@ -792,8 +793,7 @@
     {
       "concept_key": "challenge",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Challenge"
     },
@@ -817,8 +817,7 @@
     {
       "concept_key": "clean",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Clean"
     },
@@ -827,7 +826,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Clickbait"
@@ -835,8 +833,7 @@
     {
       "concept_key": "cloud",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Cloud"
     },
@@ -845,7 +842,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Clutch"
@@ -853,24 +849,21 @@
     {
       "concept_key": "commentaire_epingle",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Commentaire épinglé"
     },
     {
       "concept_key": "compte_prive",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Compte privé"
     },
     {
       "concept_key": "compte_verifie",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Compte vérifié"
     },
@@ -879,7 +872,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Contenu sponsorisé"
@@ -894,8 +886,7 @@
     {
       "concept_key": "cooldown",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Cooldown"
     },
@@ -915,7 +906,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "pack",
         "suggestions_csv"
       ],
@@ -935,7 +925,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Cursed"
@@ -946,7 +935,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "pack",
         "suggestions_csv"
       ],
@@ -991,7 +979,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "DM"
@@ -1008,7 +995,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Double text"
@@ -1018,7 +1004,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Drama"
@@ -1026,24 +1011,21 @@
     {
       "concept_key": "drop",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Drop"
     },
     {
       "concept_key": "ecran_tactile",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Écran tactile"
     },
     {
       "concept_key": "email_suspect",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Email suspect"
     },
@@ -1075,24 +1057,21 @@
     {
       "concept_key": "fail",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Fail"
     },
     {
       "concept_key": "fake_account",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Fake account"
     },
     {
       "concept_key": "fake_news",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Fake news"
     },
@@ -1102,7 +1081,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Farm"
@@ -1110,24 +1088,21 @@
     {
       "concept_key": "feat",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Feat"
     },
     {
       "concept_key": "feed",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Feed"
     },
     {
       "concept_key": "filtre",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Filtre"
     },
@@ -1154,7 +1129,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "pack",
         "suggestions_csv"
       ],
@@ -1195,8 +1169,7 @@
     {
       "concept_key": "follow",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Follow"
     },
@@ -1212,7 +1185,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "FOMO"
@@ -1251,7 +1223,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Friendzone"
@@ -1278,7 +1249,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "GG"
@@ -1300,7 +1270,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "pack",
         "suggestions_csv"
       ],
@@ -1324,7 +1293,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "GOAT"
@@ -1332,8 +1300,7 @@
     {
       "concept_key": "google_maps",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Google Maps"
     },
@@ -1358,16 +1325,31 @@
     {
       "concept_key": "hack",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Hack"
     },
     {
-      "concept_key": "hater",
+      "concept_key": "hard_launch",
       "sources": [
         "labels",
-        "live_db"
+        "pack"
+      ],
+      "label": "Hard launch",
+      "usage_vitality": "observed_irl",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "hard_launch_couple",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "hater",
+      "sources": [
+        "labels"
       ],
       "label": "Hater"
     },
@@ -1376,7 +1358,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "High-key"
@@ -1384,8 +1365,7 @@
     {
       "concept_key": "hit",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Hit"
     },
@@ -1394,6 +1374,12 @@
       "sources": [
         "group_review_csv",
         "suggestions_csv"
+      ]
+    },
+    {
+      "concept_key": "if_you_know_you_know",
+      "sources": [
+        "pack_surface"
       ]
     },
     {
@@ -1413,7 +1399,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Influenceur"
@@ -1421,18 +1406,27 @@
     {
       "concept_key": "inside_joke",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Inside joke"
     },
     {
       "concept_key": "iphone_android",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "iPhone / Android"
+    },
+    {
+      "concept_key": "iykyk",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "IYKYK",
+      "usage_vitality": "observed_irl",
+      "editorial_status": "draft",
+      "glossary_only": false
     },
     {
       "concept_key": "jai_la_flemme",
@@ -1523,7 +1517,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Lag"
@@ -1549,8 +1542,7 @@
     {
       "concept_key": "leak",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Leak"
     },
@@ -1559,7 +1551,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Level up"
@@ -1570,7 +1561,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Lit"
@@ -1578,10 +1568,26 @@
     {
       "concept_key": "live",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Live"
+    },
+    {
+      "concept_key": "lock_in",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "locked_in",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Locked in",
+      "usage_vitality": "observed_irl",
+      "editorial_status": "draft",
+      "glossary_only": false
     },
     {
       "concept_key": "loot",
@@ -1589,7 +1595,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Loot"
@@ -1599,7 +1604,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Love bombing"
@@ -1609,7 +1613,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Low-key"
@@ -1638,6 +1641,23 @@
       "glossary_only": false
     },
     {
+      "concept_key": "main_character",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Main character",
+      "usage_vitality": "observed_irl",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "main_character_energy",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
       "concept_key": "manga",
       "sources": [
         "group_review_csv",
@@ -1649,7 +1669,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Matrixé"
@@ -1677,32 +1696,28 @@
     {
       "concept_key": "meme",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Mème"
     },
     {
       "concept_key": "meme_mort",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Mème mort"
     },
     {
       "concept_key": "meme_template",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Mème template"
     },
     {
       "concept_key": "meme_viral",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Mème viral"
     },
@@ -1712,7 +1727,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Meta"
@@ -1723,7 +1737,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Mid"
@@ -1731,16 +1744,14 @@
     {
       "concept_key": "mise_a_jour",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Mise à jour"
     },
     {
       "concept_key": "mode_avion",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Mode avion"
     },
@@ -1766,8 +1777,7 @@
     {
       "concept_key": "mute",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Mute"
     },
@@ -1781,8 +1791,7 @@
     {
       "concept_key": "nerf",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Nerf"
     },
@@ -1791,7 +1800,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "No cap"
@@ -1799,8 +1807,7 @@
     {
       "concept_key": "noob",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Noob"
     },
@@ -1809,7 +1816,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "NPC"
@@ -1842,8 +1848,7 @@
     {
       "concept_key": "os",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "OS"
     },
@@ -1856,16 +1861,14 @@
     {
       "concept_key": "phishing",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Phishing"
     },
     {
       "concept_key": "ping",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Ping"
     },
@@ -1898,7 +1901,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Poster"
@@ -1908,7 +1910,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "POV"
@@ -1918,7 +1919,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "QR code"
@@ -1969,7 +1969,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Rage quit"
@@ -1979,7 +1978,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "pack",
         "suggestions_csv"
       ],
@@ -1997,8 +1995,7 @@
     {
       "concept_key": "reaction",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Reaction"
     },
@@ -2007,7 +2004,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "pack",
         "suggestions_csv"
       ],
@@ -2025,8 +2021,7 @@
     {
       "concept_key": "reel",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Reel"
     },
@@ -2057,16 +2052,14 @@
     {
       "concept_key": "remix",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Remix"
     },
     {
       "concept_key": "repost",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Repost"
     },
@@ -2075,16 +2068,25 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Respawn"
     },
     {
-      "concept_key": "roast",
+      "concept_key": "rizz",
       "sources": [
         "labels",
-        "live_db"
+        "pack"
+      ],
+      "label": "Rizz",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "roast",
+      "sources": [
+        "labels"
       ],
       "label": "Roast"
     },
@@ -2122,7 +2124,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Salty"
@@ -2132,7 +2133,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Scroll"
@@ -2156,7 +2156,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Seen"
@@ -2177,7 +2176,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Shadowban"
@@ -2187,7 +2185,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Ship"
@@ -2197,7 +2194,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Side eye"
@@ -2208,7 +2204,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Simp"
@@ -2218,7 +2213,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Situationship"
@@ -2226,8 +2220,7 @@
     {
       "concept_key": "skin",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Skin"
     },
@@ -2237,16 +2230,31 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Slay"
     },
     {
-      "concept_key": "son",
+      "concept_key": "soft_launch",
       "sources": [
         "labels",
-        "live_db"
+        "pack"
+      ],
+      "label": "Soft launch",
+      "usage_vitality": "living",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "soft_launch_relation",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
+      "concept_key": "son",
+      "sources": [
+        "labels"
       ],
       "label": "Son"
     },
@@ -2255,7 +2263,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Spammer"
@@ -2265,7 +2272,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Spawn"
@@ -2273,16 +2279,14 @@
     {
       "concept_key": "spoiler",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Spoiler"
     },
     {
       "concept_key": "stockage",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Mo / Go / To"
     },
@@ -2296,8 +2300,7 @@
     {
       "concept_key": "story",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Story"
     },
@@ -2306,7 +2309,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Streamer"
@@ -2317,7 +2319,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "pack",
         "suggestions_csv"
       ],
@@ -2369,7 +2370,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Texting"
@@ -2377,8 +2377,7 @@
     {
       "concept_key": "thread",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Thread"
     },
@@ -2389,11 +2388,27 @@
       ]
     },
     {
+      "concept_key": "touch_grass",
+      "sources": [
+        "labels",
+        "pack"
+      ],
+      "label": "Touch grass",
+      "usage_vitality": "observed_irl",
+      "editorial_status": "draft",
+      "glossary_only": false
+    },
+    {
+      "concept_key": "touch_some_grass",
+      "sources": [
+        "pack_surface"
+      ]
+    },
+    {
       "concept_key": "trend",
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Trend"
@@ -2403,7 +2418,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Triggered"
@@ -2411,8 +2425,7 @@
     {
       "concept_key": "troll",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Troll"
     },
@@ -2439,7 +2452,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Tryhard"
@@ -2453,8 +2465,7 @@
     {
       "concept_key": "tuto",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Tuto"
     },
@@ -2806,7 +2817,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Unfollow"
@@ -2816,7 +2826,6 @@
       "sources": [
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Unfollow + follow"
@@ -2832,7 +2841,6 @@
       "concept_key": "valide",
       "sources": [
         "labels",
-        "live_db",
         "pack"
       ],
       "label": "Validé",
@@ -2849,16 +2857,14 @@
     {
       "concept_key": "viewer",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Viewer"
     },
     {
       "concept_key": "viral",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Viral"
     },
@@ -2875,7 +2881,6 @@
         "backfill_csv",
         "group_review_csv",
         "labels",
-        "live_db",
         "suggestions_csv"
       ],
       "label": "Wesh"
@@ -2883,8 +2888,7 @@
     {
       "concept_key": "wifi",
       "sources": [
-        "labels",
-        "live_db"
+        "labels"
       ],
       "label": "Wi-Fi"
     }

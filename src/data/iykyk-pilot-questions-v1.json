@@ -1,0 +1,53 @@
+{
+  "pilot_id": "iykyk-intake-promote-v1",
+  "concept_key": "iykyk",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "iykyk",
+      "theme": "reseaux_sociaux",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Sous une story cryptique : « iykyk ». Ça veut dire…",
+      "choices": [
+        "Ceux qui savent savent — connivence entre initiés",
+        "Une erreur de frappe pour « ok »",
+        "Un code promo",
+        "Un réglage de confidentialité"
+      ],
+      "correct_index": 0,
+      "explanation": "IYKYK = If You Know, You Know : clin d’œil à ceux qui ont la ref.",
+      "tone": "social",
+      "context": "instagram_story",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot IYKYK — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "iykyk",
+      "theme": "reseaux_sociaux",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel usage de « iykyk » colle le mieux ?",
+      "choices": [
+        "La blague du week-end… iykyk.",
+        "J’ai payé en iykyk.",
+        "Iykyk est un navigateur.",
+        "Iykyk = 5G."
+      ],
+      "correct_index": 0,
+      "explanation": "C’est de la connivence sociale, pas un produit.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot IYKYK — authenticity scene check required before live."
+    }
+  ]
+}

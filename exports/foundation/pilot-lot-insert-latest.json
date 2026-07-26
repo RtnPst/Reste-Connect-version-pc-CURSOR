@@ -1,0 +1,16 @@
+{
+  "inserted_at": "2026-07-26T23:25:00.000Z",
+  "policy": "pilot_lot_live_insert_v1_idempotent",
+  "inserted_count": 16,
+  "concept_keys": [
+    "brainrot",
+    "delulu",
+    "rizz",
+    "soft_launch",
+    "touch_grass",
+    "main_character",
+    "locked_in",
+    "iykyk"
+  ],
+  "note": "Inserted via Supabase SQL (NOT EXISTS on question text). hard_launch label/pack only — covered in soft_launch lot. Watchlist kept: ate, glaze, beige_flag."
+}
