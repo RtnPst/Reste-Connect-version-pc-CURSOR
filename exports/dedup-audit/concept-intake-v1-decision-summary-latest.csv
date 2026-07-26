@@ -1,0 +1,16 @@
+raw_term,suggested_concept_key,suggested_theme,confidence,risk_flags,human_decision,human_notes,decision_status
+ate,ate,culture_pop,low,short_concept_key_len; micro_trend_volatility,watchlist,Micro-tendance EN — ancrage FR à confirmer.,resolved
+aura farming,aura_farming,culture_pop,medium,micro_trend_volatility,watchlist,Tendance visible mais encore mouvante; confirmer stabilité et sens avant approbation finale.,resolved
+beige flag,beige_flag,relations_lifestyle,medium,micro_trend_volatility,watchlist,Complète red_flag mais micro_trend — watchlist.,resolved
+brainrot,brainrot,reseaux_sociaux,medium,,approve,Concept largement compris en usage social; pertinent quiz si définition courte et neutre est validée.,resolved
+cooked,cooked,culture_pop,medium,micro_trend_volatility,watchlist,Usage très contextuel/polysemique; garder en observation avant production de questions.,resolved
+delulu,delulu,reseaux_sociaux,medium,,approve,Terme clair et fréquent dans les usages jeunes; bon candidat sous réserve de validation éditoriale de définition.,resolved
+glaze,glaze,reseaux_sociaux,medium,micro_trend_volatility,watchlist,Niche / récent — observer avant production.,resolved
+hard launch,hard_launch,reseaux_sociaux,medium,,approve,Complète soft launch ; lecture publique vs douce.,resolved
+iykyk,iykyk,reseaux_sociaux,medium,,approve,Connivence sociale ; angle reconnaissance pas glossaire.,resolved
+locked in,locked_in,culture_pop,medium,,approve,Focus study/sport/boulot — scène crédible.,resolved
+main character,main_character,relations_lifestyle,medium,,approve,Lifestyle reconnaissable ; piège narcissisme vs fun.,resolved
+mog,mog,culture_pop,low,short_concept_key_len; micro_trend_volatility,reject,Trop niche et volatile à ce stade; risque de confusion/contextes toxiques pour un quiz généraliste.,resolved
+rizz,rizz,reseaux_sociaux,medium,,approve,"Usage FR vivant, scène story crédible — bon candidat 35–55.",resolved
+soft launch,soft_launch,reseaux_sociaux,medium,,approve,Scène Instagram très claire ; paire soft/hard utile.,resolved
+touch grass,touch_grass,reseaux_sociaux,medium,,approve,Vanne pote→pote anti-écran ; éviter angle moralisateur.,resolved

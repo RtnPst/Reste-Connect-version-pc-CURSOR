@@ -1,0 +1,53 @@
+{
+  "pilot_id": "aura-intake-promote-v1",
+  "concept_key": "aura",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "aura",
+      "theme": "culture_pop",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« Avec ces lunettes, aura +1000. » Ça parle surtout de…",
+      "choices": [
+        "La présence / la vibe / le charisme perçu",
+        "Un score de batterie",
+        "Un filtre Instagram obligatoire",
+        "Un antivirus"
+      ],
+      "correct_index": 0,
+      "explanation": "Aura = énergie / présence — souvent chiffrée en meme (+1000 / −1000).",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Aura — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "aura",
+      "theme": "culture_pop",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel message colle avec « aura » ?",
+      "choices": [
+        "Il est arrivé en retard sans s’excuser : aura −1000.",
+        "J’ai activé aura dans le Bluetooth.",
+        "Aura est une banque.",
+        "Aura = code Wi-Fi."
+      ],
+      "correct_index": 0,
+      "explanation": "On juge une vibe, pas un réglage technique.",
+      "tone": "social",
+      "context": "social",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Aura — authenticity scene check required before live."
+    }
+  ]
+}

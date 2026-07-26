@@ -1,0 +1,53 @@
+{
+  "pilot_id": "pnj-intake-promote-v1",
+  "concept_key": "pnj",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "pnj",
+      "theme": "gaming",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« En soirée il répond comme un PNJ. » Ça veut dire qu’il…",
+      "choices": [
+        "A l’air d’un figurant : réactions automatiques, peu de personnalité",
+        "Est le boss final du jeu",
+        "Gère le Wi-Fi de la soirée",
+        "Est DJ professionnel"
+      ],
+      "correct_index": 0,
+      "explanation": "PNJ (comme NPC) = personnage non joueur → quelqu’un qui « joue un rôle plat ».",
+      "tone": "social",
+      "context": "party",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot PNJ — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "pnj",
+      "theme": "gaming",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel usage de « PNJ » sonne juste ?",
+      "choices": [
+        "À la réunion, tout le monde récite la même phrase : ambiance PNJ.",
+        "J’ai installé PNJ sur mon téléphone.",
+        "PNJ est un forfait mobile.",
+        "PNJ = 5G."
+      ],
+      "correct_index": 0,
+      "explanation": "C’est une vanne sociale venue du gaming.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot PNJ — authenticity scene check required before live."
+    }
+  ]
+}

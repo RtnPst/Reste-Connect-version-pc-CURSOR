@@ -1,0 +1,53 @@
+{
+  "pilot_id": "mon_pain-intake-promote-v1",
+  "concept_key": "mon_pain",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "mon_pain",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Dans le groupe : « Regarde mon pain sur Insta. » Là, « pain », c’est…",
+      "choices": [
+        "Quelqu’un qui plaît beaucoup (crush physique)",
+        "Une baguette à récupérer",
+        "Un filtre photo officiel",
+        "Un mot de passe"
+      ],
+      "correct_index": 0,
+      "explanation": "« Mon pain » = mon crush / quelqu’un qui attire — pas la boulangerie.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Mon pain — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "mon_pain",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« La boulangerie est remplie ce soir » en langage ado, ça évoque surtout…",
+      "choices": [
+        "Beaucoup de « pains » (gens attirants) sur place",
+        "Une pénurie de farine",
+        "Un solde sur le pain",
+        "Une panne de four"
+      ],
+      "correct_index": 0,
+      "explanation": "Boulangerie = endroit où il y a plein de pains (crushes).",
+      "tone": "social",
+      "context": "party",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Mon pain — authenticity scene check required before live."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "pilot_id": "chokbar-intake-promote-v1",
+  "concept_key": "chokbar",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "chokbar",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Ton ado : « J’ai ouvert mon bulletin… chokbar. » Ça veut dire qu’il est…",
+      "choices": [
+        "Très choqué / surpris",
+        "En train de manger du chocolat",
+        "En cours de sport",
+        "En mode avion"
+      ],
+      "correct_index": 0,
+      "explanation": "Chokbar = être choqué, souvent dit de façon théâtrale.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Chokbar — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "chokbar",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message sonne le plus naturel avec « chokbar » ?",
+      "choices": [
+        "Il a unfollow tout le monde d’un coup — chokbar.",
+        "J’ai activé chokbar dans les réglages.",
+        "Chokbar est une appli bancaire.",
+        "Chokbar = code Wi-Fi."
+      ],
+      "correct_index": 0,
+      "explanation": "On l’utilise comme réaction à une info surprise.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Chokbar — authenticity scene check required before live."
+    }
+  ]
+}

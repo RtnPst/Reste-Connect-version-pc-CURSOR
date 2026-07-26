@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-07-26T23:17:50.988Z",
+  "generated_at": "2026-07-26T23:28:43.591Z",
   "mode": "apply",
   "policy": "promote_approved_v1_no_db",
   "planned_count": 7,
   "planned": [
     {
-      "concept_key": "hard_launch",
-      "label": "Hard launch",
+      "concept_key": "chokbar",
+      "label": "Chokbar",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -16,8 +16,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "iykyk",
-      "label": "Iykyk",
+      "concept_key": "goumin",
+      "label": "Goumin",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -27,8 +27,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "locked_in",
-      "label": "Locked in",
+      "concept_key": "mon_pain",
+      "label": "Mon pain",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -38,8 +38,8 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "main_character",
-      "label": "Main character",
+      "concept_key": "aura",
+      "label": "Aura",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
@@ -49,30 +49,30 @@
       "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "rizz",
-      "label": "Rizz",
+      "concept_key": "pnj",
+      "label": "Pnj",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
         "skip_reason": ""
       },
       "authenticity_gate": "pass_with_review",
-      "suggested_usage_vitality": "living"
+      "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "soft_launch",
-      "label": "Soft launch",
+      "concept_key": "six_seven",
+      "label": "Six seven",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,
         "skip_reason": ""
       },
       "authenticity_gate": "pass_with_review",
-      "suggested_usage_vitality": "living"
+      "suggested_usage_vitality": "observed_irl"
     },
     {
-      "concept_key": "touch_grass",
-      "label": "Touch grass",
+      "concept_key": "sheesh",
+      "label": "Sheesh",
       "actions": {
         "add_label": true,
         "add_pack_draft": true,

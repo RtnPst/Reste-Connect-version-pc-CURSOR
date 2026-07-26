@@ -298,6 +298,239 @@ const LOTS = {
       },
     ],
   },
+  chokbar: {
+    concept_key: "chokbar",
+    theme: "vocabulaire",
+    label: "Chokbar",
+    questions: [
+      {
+        difficulty: "facile",
+        question: "Ton ado : « J’ai ouvert mon bulletin… chokbar. » Ça veut dire qu’il est…",
+        choices: [
+          "Très choqué / surpris",
+          "En train de manger du chocolat",
+          "En cours de sport",
+          "En mode avion",
+        ],
+        correct_index: 0,
+        explanation: "Chokbar = être choqué, souvent dit de façon théâtrale.",
+        context: "family",
+      },
+      {
+        difficulty: "moyen",
+        question: "Quel message sonne le plus naturel avec « chokbar » ?",
+        choices: [
+          "Il a unfollow tout le monde d’un coup — chokbar.",
+          "J’ai activé chokbar dans les réglages.",
+          "Chokbar est une appli bancaire.",
+          "Chokbar = code Wi-Fi.",
+        ],
+        correct_index: 0,
+        explanation: "On l’utilise comme réaction à une info surprise.",
+        context: "group_chat",
+      },
+    ],
+  },
+  goumin: {
+    concept_key: "goumin",
+    theme: "relations_lifestyle",
+    label: "Goumin",
+    questions: [
+      {
+        difficulty: "moyen",
+        question: "« Depuis la rupture je suis en goumin. » Goumin, c’est plutôt…",
+        choices: [
+          "Une peine de cœur / douleur amoureuse",
+          "Une fête improvisée",
+          "Un abonnement streaming",
+          "Un bug de téléphone",
+        ],
+        correct_index: 0,
+        explanation: "Être en goumin = mal vivre une histoire de cœur.",
+        context: "group_chat",
+      },
+      {
+        difficulty: "facile",
+        question: "Quel usage colle avec « goumin » ?",
+        choices: [
+          "Il l’a ghost — elle est en plein goumin.",
+          "J’ai payé mon goumin.",
+          "Goumin est un navigateur.",
+          "Goumin = 5G.",
+        ],
+        correct_index: 0,
+        explanation: "C’est de l’émotion relationnelle, pas un produit.",
+        context: "dating_debrief",
+      },
+    ],
+  },
+  mon_pain: {
+    concept_key: "mon_pain",
+    theme: "relations_lifestyle",
+    label: "Mon pain",
+    questions: [
+      {
+        difficulty: "moyen",
+        question: "Dans le groupe : « Regarde mon pain sur Insta. » Là, « pain », c’est…",
+        choices: [
+          "Quelqu’un qui plaît beaucoup (crush physique)",
+          "Une baguette à récupérer",
+          "Un filtre photo officiel",
+          "Un mot de passe",
+        ],
+        correct_index: 0,
+        explanation: "« Mon pain » = mon crush / quelqu’un qui attire — pas la boulangerie.",
+        context: "group_chat",
+      },
+      {
+        difficulty: "facile",
+        question: "« La boulangerie est remplie ce soir » en langage ado, ça évoque surtout…",
+        choices: [
+          "Beaucoup de « pains » (gens attirants) sur place",
+          "Une pénurie de farine",
+          "Un solde sur le pain",
+          "Une panne de four",
+        ],
+        correct_index: 0,
+        explanation: "Boulangerie = endroit où il y a plein de pains (crushes).",
+        context: "party",
+      },
+    ],
+  },
+  aura: {
+    concept_key: "aura",
+    theme: "culture_pop",
+    label: "Aura",
+    questions: [
+      {
+        difficulty: "moyen",
+        question: "« Avec ces lunettes, aura +1000. » Ça parle surtout de…",
+        choices: [
+          "La présence / la vibe / le charisme perçu",
+          "Un score de batterie",
+          "Un filtre Instagram obligatoire",
+          "Un antivirus",
+        ],
+        correct_index: 0,
+        explanation: "Aura = énergie / présence — souvent chiffrée en meme (+1000 / −1000).",
+        context: "group_chat",
+      },
+      {
+        difficulty: "facile",
+        question: "Quel message colle avec « aura » ?",
+        choices: [
+          "Il est arrivé en retard sans s’excuser : aura −1000.",
+          "J’ai activé aura dans le Bluetooth.",
+          "Aura est une banque.",
+          "Aura = code Wi-Fi.",
+        ],
+        correct_index: 0,
+        explanation: "On juge une vibe, pas un réglage technique.",
+        context: "social",
+      },
+    ],
+  },
+  pnj: {
+    concept_key: "pnj",
+    theme: "gaming",
+    label: "PNJ",
+    questions: [
+      {
+        difficulty: "moyen",
+        question: "« En soirée il répond comme un PNJ. » Ça veut dire qu’il…",
+        choices: [
+          "A l’air d’un figurant : réactions automatiques, peu de personnalité",
+          "Est le boss final du jeu",
+          "Gère le Wi-Fi de la soirée",
+          "Est DJ professionnel",
+        ],
+        correct_index: 0,
+        explanation: "PNJ (comme NPC) = personnage non joueur → quelqu’un qui « joue un rôle plat ».",
+        context: "party",
+      },
+      {
+        difficulty: "facile",
+        question: "Quel usage de « PNJ » sonne juste ?",
+        choices: [
+          "À la réunion, tout le monde récite la même phrase : ambiance PNJ.",
+          "J’ai installé PNJ sur mon téléphone.",
+          "PNJ est un forfait mobile.",
+          "PNJ = 5G.",
+        ],
+        correct_index: 0,
+        explanation: "C’est une vanne sociale venue du gaming.",
+        context: "group_chat",
+      },
+    ],
+  },
+  six_seven: {
+    concept_key: "six_seven",
+    theme: "trends_pop_culture",
+    label: "Six-seven",
+    questions: [
+      {
+        difficulty: "moyen",
+        question:
+          "Ton ado répond « six-seveeen » avec un geste des deux mains. Le plus juste, c’est…",
+        choices: [
+          "Un mème / cri de génération souvent absurde — code d’appartenance plus qu’une définition",
+          "Une note sur 10 en maths",
+          "Un code Wi-Fi",
+          "Une heure de rendez-vous fixe",
+        ],
+        correct_index: 0,
+        explanation:
+          "Comme le quoicoubeh en son temps : ça circule en France (récré, TikTok, même la télé), et le sens fixe est volontairement flou.",
+        context: "family",
+      },
+      {
+        difficulty: "facile",
+        question: "Pourquoi « six-seven » agace souvent les adultes ?",
+        choices: [
+          "Parce que c’est un effet de mode répété en boucle, sans explication claire",
+          "Parce que c’est un virus informatique",
+          "Parce que c’est une taxe",
+          "Parce que c’est un réglage d’iPhone",
+        ],
+        correct_index: 0,
+        explanation: "L’intérêt du mème, c’est justement le flou + le geste collectif.",
+        context: "family",
+      },
+    ],
+  },
+  sheesh: {
+    concept_key: "sheesh",
+    theme: "culture_pop",
+    label: "Sheesh",
+    questions: [
+      {
+        difficulty: "facile",
+        question: "« Sheesh, la tenue est de fou. » Sheesh sert surtout à…",
+        choices: [
+          "Marquer l’admiration / un petit choc positif",
+          "Demander l’heure",
+          "Couper le Wi-Fi",
+          "Valider un paiement",
+        ],
+        correct_index: 0,
+        explanation: "Sheesh ≈ wow — exclamation d’admiration.",
+        context: "group_chat",
+      },
+      {
+        difficulty: "moyen",
+        question: "Quel usage sonne naturel ?",
+        choices: [
+          "Sheesh, t’as cartonnné sur cette vidéo.",
+          "J’ai activé sheesh dans les réglages.",
+          "Sheesh est une banque.",
+          "Sheesh = antivirus.",
+        ],
+        correct_index: 0,
+        explanation: "Réaction orale / commentaire, pas un outil.",
+        context: "story_reply",
+      },
+    ],
+  },
 };
 
 const outDir = resolve(root, "exports/dedup-audit");

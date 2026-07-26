@@ -68,8 +68,14 @@ Already **approved** in intake decisions. After promote+lot:
 3. 4 draft questions (2 each) for human review
 4. **Not live** until you say OK to insert
 
-## What “integrate” means here
+## Orientation app FR (v1.3)
 
-1. **Memory UI** — label exists → « Tu as capté : … » works when questions use the key  
-2. **Editorial** — pack draft guides future angles  
-3. **Gameplay** — only after questions are live with that `concept_key`
+Tu Captes est **tourné France** :
+
+1. Prioriser l’usage **FR** (hybride cité / TikTok FR / verlan) pour 35–55 qui décodent.
+2. Anglicismes OK **s’ils circulent vraiment en France** avec une scène crédible.
+3. Effets de mode (ex. **six-seven**) : oui — surtout **fil du jour / tendances**, pas 10 questions permanentes.
+4. Veille assistée : `npm run discover:fr-first` puis `npm run decide:fr-first`.
+
+Anglicismes faibles (ate, glaze…) → watchlist, pas saturation du pool.
+

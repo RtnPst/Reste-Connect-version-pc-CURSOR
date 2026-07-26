@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-26T23:17:50.117Z",
-  "policy": "concept_intake_v1_review_only",
+  "generated_at": "2026-07-26T23:28:42.522Z",
+  "policy": "concept_intake_v1_plus_fr_first",
   "input": "exports/dedup-audit/concept-intake-v1-review-latest.csv",
   "counts": {
     "total": 15,
-    "approved": 9,
+    "approved": 17,
     "rejected": 1,
     "watchlist": 5,
     "merge": 0,
@@ -100,6 +100,102 @@
       "human_decision": "approve",
       "human_notes": "Vanne pote→pote anti-écran ; éviter angle moralisateur.",
       "decision_status": "resolved"
+    },
+    {
+      "raw_term": "chokbar",
+      "suggested_concept_key": "chokbar",
+      "suggested_theme": "vocabulaire",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "FR ado récurrent (presse parents 2025–26). Scène note/message.",
+      "decision_status": "resolved",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "goumin",
+      "suggested_concept_key": "goumin",
+      "suggested_theme": "relations_lifestyle",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "Ancré FR ; excellent pour 35–55 qui entendent le mot sans le dire.",
+      "decision_status": "resolved",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "mon pain",
+      "suggested_concept_key": "mon_pain",
+      "suggested_theme": "relations_lifestyle",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "Code ado FR ; piège boulangerie littérale = or pour quiz.",
+      "decision_status": "resolved",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "aura",
+      "suggested_concept_key": "aura",
+      "suggested_theme": "culture_pop",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "Très cité FR 2025 ; distinct d’aura farming (calculé).",
+      "decision_status": "resolved",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "pnj",
+      "suggested_concept_key": "pnj",
+      "suggested_theme": "gaming",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "Version FR de NPC — prioriser le label PNJ pour l’app FR.",
+      "decision_status": "resolved",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "six seven",
+      "suggested_concept_key": "six_seven",
+      "suggested_theme": "trends_pop_culture",
+      "confidence": "medium",
+      "risk_flags": "micro_trend_volatility",
+      "human_decision": "approve",
+      "human_notes": "Confirmé FR (TF1, Midi Libre, cours de récré). Idéal fil du jour / tendances — pas 10 Q en pool permanent.",
+      "decision_status": "resolved",
+      "fr_fit": "meme_mode",
+      "placement": "daily_friendly"
+    },
+    {
+      "raw_term": "sheesh",
+      "suggested_concept_key": "sheesh",
+      "suggested_theme": "culture_pop",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "Présent Le Bonbon 2025 ; plus oral/réseau que durable.",
+      "decision_status": "resolved",
+      "fr_fit": "medium",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "y’a pas H",
+      "suggested_concept_key": "ya_pas_h",
+      "suggested_theme": "vocabulaire",
+      "confidence": "medium",
+      "risk_flags": "",
+      "human_decision": "approve",
+      "human_notes": "FR oral ; vérifier graphie et scène.",
+      "decision_status": "resolved",
+      "fr_fit": "medium",
+      "placement": "theme_pool"
     }
   ],
   "rejected_concepts_summary": [

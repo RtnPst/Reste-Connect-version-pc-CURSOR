@@ -1,0 +1,53 @@
+{
+  "pilot_id": "goumin-intake-promote-v1",
+  "concept_key": "goumin",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "goumin",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« Depuis la rupture je suis en goumin. » Goumin, c’est plutôt…",
+      "choices": [
+        "Une peine de cœur / douleur amoureuse",
+        "Une fête improvisée",
+        "Un abonnement streaming",
+        "Un bug de téléphone"
+      ],
+      "correct_index": 0,
+      "explanation": "Être en goumin = mal vivre une histoire de cœur.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Goumin — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "goumin",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel usage colle avec « goumin » ?",
+      "choices": [
+        "Il l’a ghost — elle est en plein goumin.",
+        "J’ai payé mon goumin.",
+        "Goumin est un navigateur.",
+        "Goumin = 5G."
+      ],
+      "correct_index": 0,
+      "explanation": "C’est de l’émotion relationnelle, pas un produit.",
+      "tone": "social",
+      "context": "dating_debrief",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Goumin — authenticity scene check required before live."
+    }
+  ]
+}

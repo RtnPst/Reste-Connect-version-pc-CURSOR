@@ -3579,6 +3579,477 @@
       ],
       "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
       "human_notes": "Vanne pote→pote anti-écran ; éviter angle moralisateur."
+    },
+    {
+      "concept_key": "chokbar",
+      "canonical_label": "Chokbar",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "chokbar",
+        "chockbar",
+        "je suis chokbar"
+      ],
+      "variants": [
+        "chokbar"
+      ],
+      "short_definition": "Être très choqué / surpris (souvent théâtral).",
+      "long_definition": "Être très choqué / surpris (souvent théâtral).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "J’ai vu la note… chokbar."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "J’ai vu la note… chokbar."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "FR ado récurrent (presse parents 2025–26). Scène note/message."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "FR ado récurrent (presse parents 2025–26). Scène note/message."
+    },
+    {
+      "concept_key": "goumin",
+      "canonical_label": "Goumin",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "goumin",
+        "en goumin",
+        "être en goumin"
+      ],
+      "variants": [
+        "goumin"
+      ],
+      "short_definition": "Peine de cœur / douleur amoureuse.",
+      "long_definition": "Peine de cœur / douleur amoureuse.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "Depuis la rupture je suis en goumin."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Depuis la rupture je suis en goumin."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Ancré FR ; excellent pour 35–55 qui entendent le mot sans le dire."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Ancré FR ; excellent pour 35–55 qui entendent le mot sans le dire."
+    },
+    {
+      "concept_key": "mon_pain",
+      "canonical_label": "Mon pain",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "mon pain",
+        "pain",
+        "boulangerie"
+      ],
+      "variants": [
+        "mon pain"
+      ],
+      "short_definition": "Crush physique / quelqu’un qui plaît beaucoup (souvent look).",
+      "long_definition": "Crush physique / quelqu’un qui plaît beaucoup (souvent look).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "Regarde mon pain sur Insta."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Regarde mon pain sur Insta."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Code ado FR ; piège boulangerie littérale = or pour quiz."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Code ado FR ; piège boulangerie littérale = or pour quiz."
+    },
+    {
+      "concept_key": "aura",
+      "canonical_label": "Aura",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "aura",
+        "aura +1000",
+        "aura -1000",
+        "-1000 aura"
+      ],
+      "variants": [
+        "aura"
+      ],
+      "short_definition": "Présence / vibe / charisme (souvent chiffré en meme).",
+      "long_definition": "Présence / vibe / charisme (souvent chiffré en meme).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "culture_pop",
+      "context_pack": {
+        "credible_messages": [
+          "Avec ces lunettes, aura +1000."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Avec ces lunettes, aura +1000."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Très cité FR 2025 ; distinct d’aura farming (calculé)."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Très cité FR 2025 ; distinct d’aura farming (calculé)."
+    },
+    {
+      "concept_key": "pnj",
+      "canonical_label": "PNJ",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "pnj",
+        "PNJ",
+        "comportement PNJ",
+        "npc"
+      ],
+      "variants": [
+        "pnj"
+      ],
+      "short_definition": "Figurant social : réactions automatiques, peu de personnalité.",
+      "long_definition": "Figurant social : réactions automatiques, peu de personnalité.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "gaming",
+      "context_pack": {
+        "credible_messages": [
+          "En soirée il répond comme un PNJ."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "En soirée il répond comme un PNJ."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Version FR de NPC — prioriser le label PNJ pour l’app FR."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Version FR de NPC — prioriser le label PNJ pour l’app FR."
+    },
+    {
+      "concept_key": "six_seven",
+      "canonical_label": "Six-seven",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "six seven",
+        "6-7",
+        "67",
+        "six-seveeen"
+      ],
+      "variants": [
+        "six seven"
+      ],
+      "short_definition": "Catchphrase absurde Gen Alpha / TikTok : code d’appartenance, souvent sans sens fixe (proche du quoicoubeh).",
+      "long_definition": "Catchphrase absurde Gen Alpha / TikTok : code d’appartenance, souvent sans sens fixe (proche du quoicoubeh).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "trends_pop_culture",
+      "context_pack": {
+        "credible_messages": [
+          "Il répond juste « six-seveeen » avec le geste des mains."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Il répond juste « six-seveeen » avec le geste des mains."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Confirmé FR (TF1, Midi Libre, cours de récré). Idéal fil du jour / tendances — pas 10 Q en pool permanent."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: micro_trend_volatility. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Confirmé FR (TF1, Midi Libre, cours de récré). Idéal fil du jour / tendances — pas 10 Q en pool permanent."
+    },
+    {
+      "concept_key": "sheesh",
+      "canonical_label": "Sheesh",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "sheesh",
+        "shiish"
+      ],
+      "variants": [
+        "sheesh"
+      ],
+      "short_definition": "Exclamation d’admiration / choc léger (wow 2.0).",
+      "long_definition": "Exclamation d’admiration / choc léger (wow 2.0).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "culture_pop",
+      "context_pack": {
+        "credible_messages": [
+          "Sheesh, la tenue est de fou."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Sheesh, la tenue est de fou."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Présent Le Bonbon 2025 ; plus oral/réseau que durable."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Présent Le Bonbon 2025 ; plus oral/réseau que durable."
     }
   ]
 }

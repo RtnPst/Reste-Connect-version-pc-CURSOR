@@ -1,0 +1,53 @@
+{
+  "pilot_id": "six_seven-intake-promote-v1",
+  "concept_key": "six_seven",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "six_seven",
+      "theme": "trends_pop_culture",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ton ado répond « six-seveeen » avec un geste des deux mains. Le plus juste, c’est…",
+      "choices": [
+        "Un mème / cri de génération souvent absurde — code d’appartenance plus qu’une définition",
+        "Une note sur 10 en maths",
+        "Un code Wi-Fi",
+        "Une heure de rendez-vous fixe"
+      ],
+      "correct_index": 0,
+      "explanation": "Comme le quoicoubeh en son temps : ça circule en France (récré, TikTok, même la télé), et le sens fixe est volontairement flou.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Six-seven — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "six_seven",
+      "theme": "trends_pop_culture",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Pourquoi « six-seven » agace souvent les adultes ?",
+      "choices": [
+        "Parce que c’est un effet de mode répété en boucle, sans explication claire",
+        "Parce que c’est un virus informatique",
+        "Parce que c’est une taxe",
+        "Parce que c’est un réglage d’iPhone"
+      ],
+      "correct_index": 0,
+      "explanation": "L’intérêt du mème, c’est justement le flou + le geste collectif.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Six-seven — authenticity scene check required before live."
+    }
+  ]
+}

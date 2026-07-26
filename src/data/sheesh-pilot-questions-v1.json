@@ -1,0 +1,53 @@
+{
+  "pilot_id": "sheesh-intake-promote-v1",
+  "concept_key": "sheesh",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "sheesh",
+      "theme": "culture_pop",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Sheesh, la tenue est de fou. » Sheesh sert surtout à…",
+      "choices": [
+        "Marquer l’admiration / un petit choc positif",
+        "Demander l’heure",
+        "Couper le Wi-Fi",
+        "Valider un paiement"
+      ],
+      "correct_index": 0,
+      "explanation": "Sheesh ≈ wow — exclamation d’admiration.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Sheesh — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "sheesh",
+      "theme": "culture_pop",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel usage sonne naturel ?",
+      "choices": [
+        "Sheesh, t’as cartonnné sur cette vidéo.",
+        "J’ai activé sheesh dans les réglages.",
+        "Sheesh est une banque.",
+        "Sheesh = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "Réaction orale / commentaire, pas un outil.",
+      "tone": "social",
+      "context": "story_reply",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Sheesh — authenticity scene check required before live."
+    }
+  ]
+}
