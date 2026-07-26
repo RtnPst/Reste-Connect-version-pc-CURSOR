@@ -4050,6 +4050,812 @@
       ],
       "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
       "human_notes": "Présent Le Bonbon 2025 ; plus oral/réseau que durable."
+    },
+    {
+      "concept_key": "ya_pas_h",
+      "canonical_label": "Y’a pas H",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "y’a pas h",
+        "ya pas H",
+        "y a pas h"
+      ],
+      "variants": [
+        "y’a pas H"
+      ],
+      "short_definition": "Y’a pas de souci / c’est clair, go.",
+      "long_definition": "Y’a pas de souci / c’est clair, go.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Vas-y y’a pas H, on y va."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Vas-y y’a pas H, on y va."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "FR oral ; vérifier graphie et scène."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "FR oral ; vérifier graphie et scène."
+    },
+    {
+      "concept_key": "wallah",
+      "canonical_label": "Wallah",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "wallah",
+        "walpa",
+        "wallah je te jure"
+      ],
+      "variants": [
+        "wallah"
+      ],
+      "short_definition": "Serment / affirmation forte (« je te jure »).",
+      "long_definition": "Serment / affirmation forte (« je te jure »).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Wallah j’ai rien dit."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Wallah j’ai rien dit."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Oral cité FR ; variante walpa. Scène famille / pote."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Oral cité FR ; variante walpa. Scène famille / pote."
+    },
+    {
+      "concept_key": "jsp",
+      "canonical_label": "Jsp",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "jsp",
+        "jsp fréro",
+        "je sais pas"
+      ],
+      "variants": [
+        "jsp"
+      ],
+      "short_definition": "Je ne sais pas (abrégé).",
+      "long_definition": "Je ne sais pas (abrégé).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Tu viens ? — Jsp."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Tu viens ? — Jsp."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "SMS FR basique — utile pour décoder le fil sans jargon US."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "SMS FR basique — utile pour décoder le fil sans jargon US."
+    },
+    {
+      "concept_key": "charo",
+      "canonical_label": "Charo",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "charo",
+        "charognard",
+        "gros charo"
+      ],
+      "variants": [
+        "charo"
+      ],
+      "short_definition": "Personne qui enchaîne les conquêtes / trop « chasse ».",
+      "long_definition": "Personne qui enchaîne les conquêtes / trop « chasse ».",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "Ce mec est un charo."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Ce mec est un charo."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "FR ado / Parents.fr & glossaires 2025 — scène relationnelle claire."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "FR ado / Parents.fr & glossaires 2025 — scène relationnelle claire."
+    },
+    {
+      "concept_key": "sauce",
+      "canonical_label": "Sauce",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "sauce",
+        "dans la sauce",
+        "être saucé",
+        "il est saucé"
+      ],
+      "variants": [
+        "sauce"
+      ],
+      "short_definition": "Dans la galère / embêté ; « saucé » = sous le charme.",
+      "long_definition": "Dans la galère / embêté ; « saucé » = sous le charme.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "J’ai perdu mon tel, j’suis dans la sauce."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "J’ai perdu mon tel, j’suis dans la sauce."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Deux sens FR (galère vs crush) — excellent piège quiz."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Deux sens FR (galère vs crush) — excellent piège quiz."
+    },
+    {
+      "concept_key": "genance",
+      "canonical_label": "Gênance",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "gênance",
+        "c’est la gênance",
+        "grosse gênance"
+      ],
+      "variants": [
+        "gênance"
+      ],
+      "short_definition": "Situation très gênante / malaise collectif.",
+      "long_definition": "Situation très gênante / malaise collectif.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Il a parlé trop fort : c’est la gênance."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Il a parlé trop fort : c’est la gênance."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "FR oral TikTok / presse régionale — proche de cringe mais natif."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "FR oral TikTok / presse régionale — proche de cringe mais natif."
+    },
+    {
+      "concept_key": "charbonner",
+      "canonical_label": "Charbonner",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "charbonner",
+        "je charbonne",
+        "charbon"
+      ],
+      "variants": [
+        "charbonner"
+      ],
+      "short_definition": "Travailler dur / enchaîner le travail.",
+      "long_definition": "Travailler dur / enchaîner le travail.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "J’ai charbonné tout le week-end pour réviser."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "J’ai charbonné tout le week-end pour réviser."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "FR cité / rap / ado — pas un anglicisme."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "FR cité / rap / ado — pas un anglicisme."
+    },
+    {
+      "concept_key": "daron",
+      "canonical_label": "Daron",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "daron",
+        "daronne",
+        "les darons"
+      ],
+      "variants": [
+        "daron"
+      ],
+      "short_definition": "Père (daronne = mère) ; les parents.",
+      "long_definition": "Père (daronne = mère) ; les parents.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Mon daron est pas content."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Mon daron est pas content."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Verlan / argot FR classique encore vivant."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Verlan / argot FR classique encore vivant."
+    },
+    {
+      "concept_key": "bg",
+      "canonical_label": "BG",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "bg",
+        "beau gosse",
+        "c’est un bg"
+      ],
+      "variants": [
+        "bg"
+      ],
+      "short_definition": "Beau gosse / quelqu’un d’attirant ou stylé.",
+      "long_definition": "Beau gosse / quelqu’un d’attirant ou stylé.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "T’as vu le nouveau ? Il est bg."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "T’as vu le nouveau ? Il est bg."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Abréviation FR scolaire / Snap — prioritaire pool FR."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Abréviation FR scolaire / Snap — prioritaire pool FR."
+    },
+    {
+      "concept_key": "osef",
+      "canonical_label": "Osef",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "osef",
+        "on s’en fout",
+        "osef total"
+      ],
+      "variants": [
+        "osef"
+      ],
+      "short_definition": "On s’en fout / ça n’a aucune importance.",
+      "long_definition": "On s’en fout / ça n’a aucune importance.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "vocabulaire",
+      "context_pack": {
+        "credible_messages": [
+          "Il a liké ? Osef."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Il a liké ? Osef."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Abréviation FR chat — très utile pour 35–55."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Abréviation FR chat — très utile pour 35–55."
+    },
+    {
+      "concept_key": "quoicoubeh",
+      "canonical_label": "Quoicoubeh",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "quoicoubeh",
+        "quoi coubeh",
+        "quoicoubehhhh"
+      ],
+      "variants": [
+        "quoicoubeh"
+      ],
+      "short_definition": "Réplique absurde / mème ado (proche six-seven en esprit).",
+      "long_definition": "Réplique absurde / mème ado (proche six-seven en esprit).",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "trends_pop_culture",
+      "context_pack": {
+        "credible_messages": [
+          "Il répond juste « quoicoubeh » pour troll."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "Il répond juste « quoicoubeh » pour troll."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "Classique FR cour de récré — daily / tendances, pas 10 Q pool."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "Classique FR cour de récré — daily / tendances, pas 10 Q pool."
+    },
+    {
+      "concept_key": "go",
+      "canonical_label": "Go",
+      "editorial_tier": "accessible",
+      "editorial_status": "draft",
+      "usage_vitality": "observed_irl",
+      "import_confidence": "medium",
+      "source_tier": "intake_raw",
+      "glossary_only": false,
+      "surface_forms": [
+        "go",
+        "sa go",
+        "gow",
+        "ma go"
+      ],
+      "variants": [
+        "go"
+      ],
+      "short_definition": "Petite amie / copine.",
+      "long_definition": "Petite amie / copine.",
+      "cluster_tags": [
+        "internet_social_code"
+      ],
+      "lifecycle": "emerging",
+      "platforms": [
+        "tiktok",
+        "instagram",
+        "whatsapp"
+      ],
+      "social_vibe": "ironic",
+      "irony": "often_ironic",
+      "cringe_risk": "medium",
+      "generativity": "medium",
+      "default_theme_hint": "relations_lifestyle",
+      "context_pack": {
+        "credible_messages": [
+          "C’est sa go."
+        ],
+        "credible_contexts": [
+          "groupe_pote",
+          "commentaire",
+          "story"
+        ],
+        "avoid_scenes": [
+          "parent_explique_le_mot",
+          "cours_glossaire",
+          "journaliste_gen_z"
+        ],
+        "likely_speakers": [
+          "pote_16_30"
+        ],
+        "unlikely_speakers": [
+          "grand_parent_sans_reseaux"
+        ],
+        "real_vs_glossary": "real",
+        "example_usage": [
+          "C’est sa go."
+        ]
+      },
+      "sources": [
+        {
+          "id": "concept_intake_v1",
+          "note": "FR ado (≠ anglais « go ») — piège de sens utile."
+        }
+      ],
+      "ia_notes": "Promu depuis intake. Gate authenticité: pass_with_review. Flags: none. Pas golden_reference tant que review lot non faite.",
+      "human_notes": "FR ado (≠ anglais « go ») — piège de sens utile."
     }
   ]
 }

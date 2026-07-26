@@ -1,0 +1,53 @@
+{
+  "pilot_id": "osef-intake-promote-v1",
+  "concept_key": "osef",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "osef",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Il a liké ? Osef. » Osef signifie…",
+      "choices": [
+        "On s’en fout / ça n’a aucune importance",
+        "On se fait une fête",
+        "On se connecte en 5G",
+        "On active le mode avion"
+      ],
+      "correct_index": 0,
+      "explanation": "Osef = on s’en fout.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Osef — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "osef",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel usage sonne juste ?",
+      "choices": [
+        "Qu’il soit vexé ou pas, osef.",
+        "J’ai activé osef dans les réglages.",
+        "Osef est une banque.",
+        "Osef = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "Marqueur d’indifférence, pas un outil.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Osef — authenticity scene check required before live."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "pilot_id": "ya_pas_h-intake-promote-v1",
+  "concept_key": "ya_pas_h",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "ya_pas_h",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« Vas-y y’a pas H, on y va. » Ça veut dire…",
+      "choices": [
+        "Y’a pas de souci / c’est clair",
+        "Y’a pas d’hôtel",
+        "Y’a pas de Wi-Fi",
+        "Y’a pas d’heure"
+      ],
+      "correct_index": 0,
+      "explanation": "Y’a pas H ≈ y’a pas de H(istoire) / pas de problème — go.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Y’a pas H — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "ya_pas_h",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel usage sonne naturel ?",
+      "choices": [
+        "Tu veux venir ? Y’a pas H.",
+        "J’ai activé y’a pas H.",
+        "Y’a pas H est une banque.",
+        "Y’a pas H = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "Formule d’accord / détente, pas un produit.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Y’a pas H — authenticity scene check required before live."
+    }
+  ]
+}

@@ -1,97 +1,53 @@
 {
-  "pilot_id": "flemme-v1-authenticity",
+  "pilot_id": "flemme-intake-promote-v1",
   "concept_key": "flemme",
   "pack_ref": "cultural-pack-v1.json",
   "status": "draft_review",
-  "notes": "Pilote flemme — pas d'import Supabase. Pas envie du moment. Distracteurs corrigés post-review Sonnet (anti médical/patho, anti pur contraire).",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
   "questions": [
     {
       "concept_key": "flemme",
       "theme": "vocabulaire",
       "difficulty": "facile",
       "status": "draft",
-      "question": "Ton pote répond au plan du soir : « J'ai la flemme de sortir, je reste chez moi. » Il veut surtout dire qu'il…",
+      "question": "« J’ai la flemme de sortir. » Ça veut dire…",
       "choices": [
-        "N'a pas envie de sortir — pas d'énergie ou pas le mood",
-        "Est malade et contagieux",
-        "Est épuisé / avait vraiment besoin de souffler",
-        "A un empêchement professionnel imprévu"
+        "Pas envie / la paresse du moment",
+        "Une envie urgente de bouger",
+        "Un bug téléphone",
+        "Une panne de métro"
       ],
       "correct_index": 0,
-      "explanation": "« Avoir la flemme » = pas le mood ce soir — léger. Pas forcément malade, à bout ni un prétexte boulot.",
+      "explanation": "Avoir la flemme = ne pas avoir la motivation.",
       "tone": "social",
-      "context": "group_chat",
+      "context": "dm",
       "trap_intensity": "soft_trap",
-      "era": "snapchat",
+      "era": "tiktok",
       "format": "scenario_text",
       "internet_level": "debutant",
-      "editor_notes": "Pilote flemme #1 — plan soir. Correction Sonnet : méchanceté → épuisé/souffler (flemme vs fatigue) ; trap_intensity soft_trap."
-    },
-    {
-      "concept_key": "flemme",
-      "theme": "relations_lifestyle",
-      "difficulty": "moyen",
-      "status": "draft",
-      "question": "Groupe : « Il répond plus depuis hier. » — « Bah il a la flemme, laisse-le. » « Il a la flemme » veut surtout dire qu'il…",
-      "choices": [
-        "Repousse / n'a pas envie de répondre pour l'instant",
-        "T'a bloqué ou t'ignore volontairement pour te punir",
-        "T'en veut pour quelque chose / bouderie",
-        "A perdu son téléphone"
-      ],
-      "correct_index": 0,
-      "explanation": "« Flemme de répondre » + « laisse-le » = pas grave, il repousse — pas ghosting, rancune ni téléphone perdu.",
-      "tone": "social",
-      "context": "group_chat",
-      "trap_intensity": "soft_trap",
-      "era": "snapchat",
-      "format": "scenario_text",
-      "internet_level": "debutant",
-      "editor_notes": "Pilote flemme #2 — golden candidate confirmé. Correction Sonnet : dépression clinique → bouderie (flemme vs rancune)."
+      "editor_notes": "Pilot Flemme — authenticity scene check required before live."
     },
     {
       "concept_key": "flemme",
       "theme": "vocabulaire",
       "difficulty": "moyen",
       "status": "draft",
-      "question": "Après une semaine de rush au boulot, ton collègue lâche : « J'ai grave la flemme de cuisiner ce soir. » Il parle surtout de…",
+      "question": "Quel message colle ?",
       "choices": [
-        "Pas envie ce soir — flemme du moment",
-        "Vraiment épuisé / à bout après cette semaine",
-        "N'aime pas cuisiner en général — c'est son truc",
-        "A prévu de commander / se faire livrer"
+        "Grosse flemme ce soir, on reporte.",
+        "J’ai installé flemme.",
+        "Flemme est un forfait.",
+        "Flemme = 5G."
       ],
       "correct_index": 0,
-      "explanation": "« Grave la flemme » = pas le courage ce soir — peut coexister avec de la fatigue, mais ce n'est pas un diagnostic ni un trait permanent.",
+      "explanation": "État d’esprit, pas une appli.",
       "tone": "social",
       "context": "group_chat",
       "trap_intensity": "soft_trap",
-      "era": "snapchat",
+      "era": "tiktok",
       "format": "scenario_text",
       "internet_level": "debutant",
-      "editor_notes": "Pilote flemme #3 — refonte distracteurs Sonnet : fatigue réelle / trait caractère / commande (anti allergie/congé/patho)."
-    },
-    {
-      "concept_key": "flemme",
-      "theme": "vocabulaire",
-      "difficulty": "difficile",
-      "status": "draft",
-      "question": "Tu proposes : « On fait les courses maintenant ? » — réponse : « Flemme. On fera demain. » Dans ce message court, « flemme », c'est surtout…",
-      "choices": [
-        "Pas envie maintenant — report sans drama",
-        "Vraiment fatigué / a besoin de récupérer",
-        "Un refus définitif du projet",
-        "Qu'il est en colère contre toi"
-      ],
-      "correct_index": 0,
-      "explanation": "« Flemme » + « demain » = pas maintenant, sans crise — pas épuisement grave, rupture ni colère.",
-      "tone": "funny",
-      "context": "group_chat",
-      "trap_intensity": "soft_trap",
-      "era": "snapchat",
-      "format": "expression",
-      "internet_level": "initie",
-      "editor_notes": "Pilote flemme #4 — message court. Correction Sonnet : urgence médicale → fatigue réelle (anti absurde)."
+      "editor_notes": "Pilot Flemme — authenticity scene check required before live."
     }
   ]
 }

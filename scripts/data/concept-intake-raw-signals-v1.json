@@ -297,6 +297,152 @@
       "fr_fit": "medium",
       "placement": "theme_pool",
       "discovery_source": "seed_fr_first_discovery_v1"
+    },
+    {
+      "raw_term": "wallah",
+      "aliases": [
+        "walpa",
+        "wallah je te jure"
+      ],
+      "example_usage": "Wallah j’ai rien dit.",
+      "short_definition": "Serment / affirmation forte (« je te jure »).",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "jsp",
+      "aliases": [
+        "jsp fréro",
+        "je sais pas"
+      ],
+      "example_usage": "Tu viens ? — Jsp.",
+      "short_definition": "Je ne sais pas (abrégé).",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "charo",
+      "aliases": [
+        "charognard",
+        "gros charo"
+      ],
+      "example_usage": "Ce mec est un charo.",
+      "short_definition": "Personne qui enchaîne les conquêtes / trop « chasse ».",
+      "suggested_theme": "relations_lifestyle",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "sauce",
+      "aliases": [
+        "dans la sauce",
+        "être saucé",
+        "il est saucé"
+      ],
+      "example_usage": "J’ai perdu mon tel, j’suis dans la sauce.",
+      "short_definition": "Dans la galère / embêté ; « saucé » = sous le charme.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "gênance",
+      "aliases": [
+        "c’est la gênance",
+        "grosse gênance"
+      ],
+      "example_usage": "Il a parlé trop fort : c’est la gênance.",
+      "short_definition": "Situation très gênante / malaise collectif.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "charbonner",
+      "aliases": [
+        "je charbonne",
+        "charbon"
+      ],
+      "example_usage": "J’ai charbonné tout le week-end pour réviser.",
+      "short_definition": "Travailler dur / enchaîner le travail.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "daron",
+      "aliases": [
+        "daronne",
+        "les darons"
+      ],
+      "example_usage": "Mon daron est pas content.",
+      "short_definition": "Père (daronne = mère) ; les parents.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "bg",
+      "aliases": [
+        "beau gosse",
+        "c’est un bg"
+      ],
+      "example_usage": "T’as vu le nouveau ? Il est bg.",
+      "short_definition": "Beau gosse / quelqu’un d’attirant ou stylé.",
+      "suggested_theme": "relations_lifestyle",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "osef",
+      "aliases": [
+        "on s’en fout",
+        "osef total"
+      ],
+      "example_usage": "Il a liké ? Osef.",
+      "short_definition": "On s’en fout / ça n’a aucune importance.",
+      "suggested_theme": "vocabulaire",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
+    },
+    {
+      "raw_term": "quoicoubeh",
+      "aliases": [
+        "quoi coubeh",
+        "quoicoubehhhh"
+      ],
+      "example_usage": "Il répond juste « quoicoubeh » pour troll.",
+      "short_definition": "Réplique absurde / mème ado (proche six-seven en esprit).",
+      "suggested_theme": "trends_pop_culture",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "meme_mode",
+      "placement": "daily_friendly"
+    },
+    {
+      "raw_term": "go",
+      "aliases": [
+        "sa go",
+        "gow",
+        "ma go"
+      ],
+      "example_usage": "C’est sa go.",
+      "short_definition": "Petite amie / copine.",
+      "suggested_theme": "relations_lifestyle",
+      "source": "fr_first_discovery_v1",
+      "fr_fit": "strong",
+      "placement": "theme_pool"
     }
-  ]
+  ],
+  "updated_at": "2026-07-26T23:38:37.593Z"
 }

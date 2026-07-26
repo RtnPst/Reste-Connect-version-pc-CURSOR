@@ -1,0 +1,53 @@
+{
+  "pilot_id": "charo-intake-promote-v1",
+  "concept_key": "charo",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "charo",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« Ce mec est un charo. » On parle surtout de quelqu’un qui…",
+      "choices": [
+        "Enchaîne les conquêtes / est trop « chasse »",
+        "Répare des voitures",
+        "Gère le Wi-Fi du lycée",
+        "Est DJ professionnel"
+      ],
+      "correct_index": 0,
+      "explanation": "Charo vient de « charognard » : trop focalisé sur les plans / conquêtes.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Charo — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "charo",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel usage colle avec « charo » ?",
+      "choices": [
+        "Il DM toutes les stories : gros charo.",
+        "J’ai installé charo sur mon téléphone.",
+        "Charo est un forfait.",
+        "Charo = 5G."
+      ],
+      "correct_index": 0,
+      "explanation": "Jugement social / relationnel, pas une appli.",
+      "tone": "social",
+      "context": "story_reply",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Charo — authenticity scene check required before live."
+    }
+  ]
+}

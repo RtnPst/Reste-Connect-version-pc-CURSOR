@@ -1,0 +1,53 @@
+{
+  "pilot_id": "jsp-intake-promote-v1",
+  "concept_key": "jsp",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "jsp",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Tu demandes « Tu viens ? » — réponse : « Jsp. » Ça veut dire…",
+      "choices": [
+        "Je ne sais pas",
+        "Je suis prêt",
+        "Juste sans problème",
+        "Jour sans pub"
+      ],
+      "correct_index": 0,
+      "explanation": "Jsp = je sais pas (SMS / Snap).",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Jsp — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "jsp",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message sonne naturel ?",
+      "choices": [
+        "À quelle heure on se voit ? — Jsp encore.",
+        "Active jsp dans le Bluetooth.",
+        "Jsp est une cryptomonnaie.",
+        "Jsp = code barre."
+      ],
+      "correct_index": 0,
+      "explanation": "Réponse d’incertitude, pas un produit.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Jsp — authenticity scene check required before live."
+    }
+  ]
+}

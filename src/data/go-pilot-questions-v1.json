@@ -1,0 +1,53 @@
+{
+  "pilot_id": "go-intake-promote-v1",
+  "concept_key": "go",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "go",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« C’est sa go. » Ici, go veut dire…",
+      "choices": [
+        "Sa petite amie / copine",
+        "Qu’il faut y aller tout de suite",
+        "Un bouton « démarrer »",
+        "Une appli de sport"
+      ],
+      "correct_index": 0,
+      "explanation": "En FR ado, « go » / « gow » = petite amie (≠ l’anglais « go »).",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Go — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "go",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Quel message sonne juste ?",
+      "choices": [
+        "Il est sorti avec sa go ce week-end.",
+        "J’ai activé go dans le Bluetooth.",
+        "Go est une banque.",
+        "Go = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "Relation amoureuse, pas un réglage.",
+      "tone": "social",
+      "context": "story_reply",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Go — authenticity scene check required before live."
+    }
+  ]
+}

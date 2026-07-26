@@ -1,0 +1,53 @@
+{
+  "pilot_id": "bg-intake-promote-v1",
+  "concept_key": "bg",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "bg",
+      "theme": "relations_lifestyle",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« T’as vu le nouveau ? Il est bg. » BG veut dire…",
+      "choices": [
+        "Beau gosse / stylé / attirant",
+        "Bon grade scolaire",
+        "Batterie faible",
+        "Bloc-notes Google"
+      ],
+      "correct_index": 0,
+      "explanation": "BG = beau gosse.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot BG — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "bg",
+      "theme": "relations_lifestyle",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel usage sonne juste ?",
+      "choices": [
+        "Avec cette coupe, t’es trop bg.",
+        "J’ai activé BG dans les réglages.",
+        "BG est une banque.",
+        "BG = antivirus."
+      ],
+      "correct_index": 0,
+      "explanation": "Compliment d’apparence / vibe, pas un outil.",
+      "tone": "social",
+      "context": "story_reply",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot BG — authenticity scene check required before live."
+    }
+  ]
+}

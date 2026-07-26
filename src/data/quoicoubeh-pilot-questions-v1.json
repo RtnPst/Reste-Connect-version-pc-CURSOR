@@ -1,0 +1,53 @@
+{
+  "pilot_id": "quoicoubeh-intake-promote-v1",
+  "concept_key": "quoicoubeh",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "quoicoubeh",
+      "theme": "trends_pop_culture",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Ton ado répond « quoicoubeh » sans raison. Le plus juste, c’est…",
+      "choices": [
+        "Un mème / réplique absurde pour troller ou appartenir au groupe",
+        "Une question sur le Wi-Fi",
+        "Un code PIN",
+        "Une note de maths"
+      ],
+      "correct_index": 0,
+      "explanation": "Comme six-seven : code de génération plus qu’une définition fixe.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Quoicoubeh — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "quoicoubeh",
+      "theme": "trends_pop_culture",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Pourquoi « quoicoubeh » a agacé beaucoup d’adultes ?",
+      "choices": [
+        "Parce que c’est répété en boucle, souvent sans sens clair",
+        "Parce que c’est un virus",
+        "Parce que c’est une taxe",
+        "Parce que c’est un réglage iPhone"
+      ],
+      "correct_index": 0,
+      "explanation": "Effet de mode FR (cour de récré) — idéal fil du jour.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Quoicoubeh — authenticity scene check required before live."
+    }
+  ]
+}

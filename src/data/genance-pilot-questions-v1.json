@@ -1,0 +1,53 @@
+{
+  "pilot_id": "genance-intake-promote-v1",
+  "concept_key": "genance",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "genance",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Il a parlé trop fort au resto : c’est la gênance. » Ça décrit…",
+      "choices": [
+        "Une situation très gênante / un malaise",
+        "Une promo restaurant",
+        "Un bug de téléphone",
+        "Une note sur 20"
+      ],
+      "correct_index": 0,
+      "explanation": "La gênance = le malaise collectif face à une scène awkward.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Gênance — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "genance",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel usage sonne naturel ?",
+      "choices": [
+        "Il a appelé sa mère en haut-parleur dans le métro… grosse gênance.",
+        "J’ai activé gênance en Bluetooth.",
+        "Gênance est une appli bancaire.",
+        "Gênance = code Wi-Fi."
+      ],
+      "correct_index": 0,
+      "explanation": "C’est un jugement de situation, pas un réglage.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Gênance — authenticity scene check required before live."
+    }
+  ]
+}

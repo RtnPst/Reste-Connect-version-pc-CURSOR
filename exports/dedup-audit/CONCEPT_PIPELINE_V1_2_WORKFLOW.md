@@ -77,5 +77,7 @@ Tu Captes est **tourné France** :
 3. Effets de mode (ex. **six-seven**) : oui — surtout **fil du jour / tendances**, pas 10 questions permanentes.
 4. Veille assistée : `npm run discover:fr-first` puis `npm run decide:fr-first`.
 
-Anglicismes faibles (ate, glaze…) → watchlist, pas saturation du pool.
+Anglicismes faibles → watchlist ou **cull live** (2026-07-27) : iykyk, touch_grass, locked_in, soft_launch, high/low-key, based, boujee, breadcrumbing, lit, salty, side_eye, texting, triggered, no_cap, love_bombing, double_text, npc (préférer PNJ), sheesh.
+
+Préférer label **PNJ** à NPC. Effets de mode (six-seven, quoicoubeh) → fil du jour.
 

@@ -1,0 +1,53 @@
+{
+  "pilot_id": "daron-intake-promote-v1",
+  "concept_key": "daron",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "daron",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Mon daron est pas content. » Daron, c’est…",
+      "choices": [
+        "Le père (daronne = la mère)",
+        "Le professeur principal",
+        "Le Wi-Fi de la maison",
+        "Le compte Netflix"
+      ],
+      "correct_index": 0,
+      "explanation": "Daron / daronne = parents, en argot FR.",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Daron — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "daron",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« Les darons sont rentrés. » Ça signifie…",
+      "choices": [
+        "Les parents sont rentrés",
+        "Les voisins ont sonné",
+        "Le colis est arrivé",
+        "La batterie est à 100 %"
+      ],
+      "correct_index": 0,
+      "explanation": "Les darons = papa et/ou maman.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Daron — authenticity scene check required before live."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "pilot_id": "sauce-intake-promote-v1",
+  "concept_key": "sauce",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "sauce",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "« J’ai perdu mon tel, j’suis dans la sauce. » Là, sauce = …",
+      "choices": [
+        "Dans la galère / embêté",
+        "En train de cuisiner",
+        "En mode avion",
+        "Sur un forfait illimité"
+      ],
+      "correct_index": 0,
+      "explanation": "« Dans la sauce » = dans la merde / galère. (Autre sens : « saucé » = sous le charme.)",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Sauce — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "sauce",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« Il est saucé sur elle. » Ça veut plutôt dire…",
+      "choices": [
+        "Il est sous le charme / trop attiré",
+        "Il a mangé trop épicé",
+        "Il a un virus",
+        "Il a coupé le Wi-Fi"
+      ],
+      "correct_index": 0,
+      "explanation": "Être saucé = être captivé / en crush fort.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Sauce — authenticity scene check required before live."
+    }
+  ]
+}

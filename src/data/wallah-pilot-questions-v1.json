@@ -1,0 +1,53 @@
+{
+  "pilot_id": "wallah-intake-promote-v1",
+  "concept_key": "wallah",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "wallah",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "Ton ado : « Wallah j’ai rien touché. » Il veut surtout…",
+      "choices": [
+        "Insister / jurer que c’est vrai",
+        "Parler d’une appli bancaire",
+        "Donner un code PIN",
+        "Demander le Wi-Fi"
+      ],
+      "correct_index": 0,
+      "explanation": "Wallah = serment / « je te jure » (variante orale : walpa).",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Wallah — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "wallah",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel usage colle avec « wallah » ?",
+      "choices": [
+        "Wallah c’était pas moi qui ai liké ça.",
+        "J’ai mis wallah en 5G.",
+        "Wallah est un forfait mobile.",
+        "Wallah = mode avion."
+      ],
+      "correct_index": 0,
+      "explanation": "C’est une affirmation orale, pas un réglage.",
+      "tone": "social",
+      "context": "group_chat",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Wallah — authenticity scene check required before live."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "pilot_id": "charbonner-intake-promote-v1",
+  "concept_key": "charbonner",
+  "pack_ref": "cultural-pack-v1.json",
+  "status": "draft_review",
+  "notes": "Lot promu depuis intake approve. Pas d’import Supabase auto — review humaine puis insert admin ciblé.",
+  "questions": [
+    {
+      "concept_key": "charbonner",
+      "theme": "vocabulaire",
+      "difficulty": "facile",
+      "status": "draft",
+      "question": "« J’ai charbonné tout le week-end pour réviser. » Ça veut dire…",
+      "choices": [
+        "Travailler / enchaîner dur",
+        "Allumer un barbecue",
+        "Scroller sans but",
+        "Couper les notifs"
+      ],
+      "correct_index": 0,
+      "explanation": "Charbonner = travailler beaucoup (études, job, projets).",
+      "tone": "social",
+      "context": "family",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Charbonner — authenticity scene check required before live."
+    },
+    {
+      "concept_key": "charbonner",
+      "theme": "vocabulaire",
+      "difficulty": "moyen",
+      "status": "draft",
+      "question": "Quel message colle ?",
+      "choices": [
+        "Là je charbonne jusqu’à vendredi, on se voit après.",
+        "J’ai installé charbonner.",
+        "Charbonner est un forfait.",
+        "Charbonner = 5G."
+      ],
+      "correct_index": 0,
+      "explanation": "Verbe d’effort, pas un produit.",
+      "tone": "social",
+      "context": "dm",
+      "trap_intensity": "soft_trap",
+      "era": "tiktok",
+      "format": "scenario_text",
+      "internet_level": "debutant",
+      "editor_notes": "Pilot Charbonner — authenticity scene check required before live."
+    }
+  ]
+}

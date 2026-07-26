@@ -27,90 +27,136 @@ const MERGE = process.argv.includes("--merge-signals");
  */
 const FR_CANDIDATES = [
   {
-    raw_term: "chokbar",
-    aliases: ["chockbar", "je suis chokbar"],
-    example_usage: "J’ai vu la note… chokbar.",
-    short_definition: "Être très choqué / surpris (souvent théâtral).",
+    raw_term: "askip",
+    aliases: ["à ce qu’il paraît", "askip que"],
+    example_usage: "Askip il l’a ghost depuis samedi.",
+    short_definition: "Apparemment / à ce qu’il paraît.",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "recent",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "Abréviation FR ultra courante SMS / Snap — cœur cible 35–55.",
+  },
+  {
+    raw_term: "wallah",
+    aliases: ["walpa", "wallah je te jure"],
+    example_usage: "Wallah j’ai rien dit.",
+    short_definition: "Serment / affirmation forte (« je te jure »).",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "recent",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "Oral cité FR ; variante walpa. Scène famille / pote.",
+  },
+  {
+    raw_term: "jsp",
+    aliases: ["jsp fréro", "je sais pas"],
+    example_usage: "Tu viens ? — Jsp.",
+    short_definition: "Je ne sais pas (abrégé).",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "evergreen",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "SMS FR basique — utile pour décoder le fil sans jargon US.",
+  },
+  {
+    raw_term: "charo",
+    aliases: ["charognard", "gros charo"],
+    example_usage: "Ce mec est un charo.",
+    short_definition: "Personne qui enchaîne les conquêtes / trop « chasse ».",
+    suggested_theme: "relations_lifestyle",
+    trend_freshness: "recent",
+    trend_durability: "seasonal",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "FR ado / Parents.fr & glossaires 2025 — scène relationnelle claire.",
+  },
+  {
+    raw_term: "cringe",
+    aliases: ["c’est cringe", "cringe total"],
+    example_usage: "Son discours était trop cringe.",
+    short_definition: "Gênant / malaisant au point d’être inconfortable.",
+    suggested_theme: "culture_pop",
+    trend_freshness: "recent",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "Anglicisme mais oral FR massif — garder avec scènes FR.",
+  },
+  {
+    raw_term: "sauce",
+    aliases: ["dans la sauce", "être saucé", "il est saucé"],
+    example_usage: "J’ai perdu mon tel, j’suis dans la sauce.",
+    short_definition: "Dans la galère / embêté ; « saucé » = sous le charme.",
     suggested_theme: "vocabulaire",
     trend_freshness: "recent",
     trend_durability: "seasonal",
     fr_fit: "strong",
     placement: "theme_pool",
-    discovery_note: "FR ado récurrent (presse parents 2025–26). Scène note/message.",
+    discovery_note: "Deux sens FR (galère vs crush) — excellent piège quiz.",
   },
   {
-    raw_term: "goumin",
-    aliases: ["en goumin", "être en goumin"],
-    example_usage: "Depuis la rupture je suis en goumin.",
-    short_definition: "Peine de cœur / douleur amoureuse.",
+    raw_term: "gênance",
+    aliases: ["c’est la gênance", "grosse gênance"],
+    example_usage: "Il a parlé trop fort : c’est la gênance.",
+    short_definition: "Situation très gênante / malaise collectif.",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "recent",
+    trend_durability: "seasonal",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "FR oral TikTok / presse régionale — proche de cringe mais natif.",
+  },
+  {
+    raw_term: "charbonner",
+    aliases: ["je charbonne", "charbon"],
+    example_usage: "J’ai charbonné tout le week-end pour réviser.",
+    short_definition: "Travailler dur / enchaîner le travail.",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "recent",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "FR cité / rap / ado — pas un anglicisme.",
+  },
+  {
+    raw_term: "daron",
+    aliases: ["daronne", "les darons"],
+    example_usage: "Mon daron est pas content.",
+    short_definition: "Père (daronne = mère) ; les parents.",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "evergreen",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "Verlan / argot FR classique encore vivant.",
+  },
+  {
+    raw_term: "bg",
+    aliases: ["beau gosse", "c’est un bg"],
+    example_usage: "T’as vu le nouveau ? Il est bg.",
+    short_definition: "Beau gosse / quelqu’un d’attirant ou stylé.",
     suggested_theme: "relations_lifestyle",
-    trend_freshness: "recent",
-    trend_durability: "seasonal",
+    trend_freshness: "evergreen",
+    trend_durability: "durable",
     fr_fit: "strong",
     placement: "theme_pool",
-    discovery_note: "Ancré FR ; excellent pour 35–55 qui entendent le mot sans le dire.",
+    discovery_note: "Abréviation FR scolaire / Snap — prioritaire pool FR.",
   },
   {
-    raw_term: "mon pain",
-    aliases: ["pain", "boulangerie"],
-    example_usage: "Regarde mon pain sur Insta.",
-    short_definition: "Crush physique / quelqu’un qui plaît beaucoup (souvent look).",
-    suggested_theme: "relations_lifestyle",
-    trend_freshness: "recent",
-    trend_durability: "seasonal",
+    raw_term: "relou",
+    aliases: ["trop relou", "il est relou"],
+    example_usage: "Arrête, t’es relou.",
+    short_definition: "Lourd / agaçant / pénible (verlan de « lourd »).",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "evergreen",
+    trend_durability: "durable",
     fr_fit: "strong",
     placement: "theme_pool",
-    discovery_note: "Code ado FR ; piège boulangerie littérale = or pour quiz.",
-  },
-  {
-    raw_term: "aura",
-    aliases: ["aura +1000", "aura -1000", "-1000 aura"],
-    example_usage: "Avec ces lunettes, aura +1000.",
-    short_definition: "Présence / vibe / charisme (souvent chiffré en meme).",
-    suggested_theme: "culture_pop",
-    trend_freshness: "recent",
-    trend_durability: "seasonal",
-    fr_fit: "strong",
-    placement: "theme_pool",
-    discovery_note: "Très cité FR 2025 ; distinct d’aura farming (calculé).",
-  },
-  {
-    raw_term: "pnj",
-    aliases: ["PNJ", "comportement PNJ", "npc"],
-    example_usage: "En soirée il répond comme un PNJ.",
-    short_definition: "Figurant social : réactions automatiques, peu de personnalité.",
-    suggested_theme: "gaming",
-    trend_freshness: "recent",
-    trend_durability: "seasonal",
-    fr_fit: "strong",
-    placement: "theme_pool",
-    discovery_note: "Version FR de NPC — prioriser le label PNJ pour l’app FR.",
-  },
-  {
-    raw_term: "six seven",
-    aliases: ["6-7", "67", "six-seveeen"],
-    example_usage: "Il répond juste « six-seveeen » avec le geste des mains.",
-    short_definition:
-      "Catchphrase absurde Gen Alpha / TikTok : code d’appartenance, souvent sans sens fixe (proche du quoicoubeh).",
-    suggested_theme: "trends_pop_culture",
-    trend_freshness: "hot",
-    trend_durability: "micro_trend",
-    fr_fit: "meme_mode",
-    placement: "daily_friendly",
-    discovery_note:
-      "Confirmé FR (TF1, Midi Libre, cours de récré). Idéal fil du jour / tendances — pas 10 Q en pool permanent.",
-  },
-  {
-    raw_term: "sheesh",
-    aliases: ["shiish"],
-    example_usage: "Sheesh, la tenue est de fou.",
-    short_definition: "Exclamation d’admiration / choc léger (wow 2.0).",
-    suggested_theme: "culture_pop",
-    trend_freshness: "recent",
-    trend_durability: "seasonal",
-    fr_fit: "medium",
-    placement: "theme_pool",
-    discovery_note: "Présent Le Bonbon 2025 ; plus oral/réseau que durable.",
+    discovery_note: "Verlan FR incontournable pour le public cible.",
   },
   {
     raw_term: "y’a pas H",
@@ -122,16 +168,64 @@ const FR_CANDIDATES = [
     trend_durability: "seasonal",
     fr_fit: "medium",
     placement: "theme_pool",
-    discovery_note: "FR oral ; vérifier graphie et scène.",
+    discovery_note: "FR oral ; déjà en discovery — à shipper en questions.",
+  },
+  {
+    raw_term: "flemme",
+    aliases: ["j’ai la flemme", "grosse flemme"],
+    example_usage: "J’ai la flemme de sortir.",
+    short_definition: "Pas envie / paresse du moment.",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "evergreen",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "FR quotidien — label déjà en catalogue, manquait le live.",
+  },
+  {
+    raw_term: "osef",
+    aliases: ["on s’en fout", "osef total"],
+    example_usage: "Il a liké ? Osef.",
+    short_definition: "On s’en fout / ça n’a aucune importance.",
+    suggested_theme: "vocabulaire",
+    trend_freshness: "evergreen",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "Abréviation FR chat — très utile pour 35–55.",
+  },
+  {
+    raw_term: "quoicoubeh",
+    aliases: ["quoi coubeh", "quoicoubehhhh"],
+    example_usage: "Il répond juste « quoicoubeh » pour troll.",
+    short_definition: "Réplique absurde / mème ado (proche six-seven en esprit).",
+    suggested_theme: "trends_pop_culture",
+    trend_freshness: "recent",
+    trend_durability: "micro_trend",
+    fr_fit: "meme_mode",
+    placement: "daily_friendly",
+    discovery_note: "Classique FR cour de récré — daily / tendances, pas 10 Q pool.",
+  },
+  {
+    raw_term: "go",
+    aliases: ["sa go", "gow", "ma go"],
+    example_usage: "C’est sa go.",
+    short_definition: "Petite amie / copine.",
+    suggested_theme: "relations_lifestyle",
+    trend_freshness: "recent",
+    trend_durability: "durable",
+    fr_fit: "strong",
+    placement: "theme_pool",
+    discovery_note: "FR ado (≠ anglais « go ») — piège de sens utile.",
   },
 ];
 
-/** Anglicismes à freiner ou cadrer pour une app FR. */
+/** Anglicismes à freiner ou cullés du live FR. */
 const FR_WEAK_OR_CADRE = [
   {
     concept_key: "ate",
     fr_fit: "weak",
-    note: "Peu ancré oral FR hors niches EN ; garder watchlist.",
+    note: "Peu ancré oral FR hors niches EN ; watchlist.",
   },
   {
     concept_key: "glaze",
@@ -139,19 +233,104 @@ const FR_WEAK_OR_CADRE = [
     note: "Niche EN récente ; pas prioritaire pool FR.",
   },
   {
-    concept_key: "beige_flag",
-    fr_fit: "medium",
-    note: "Compris via red/green flag ; OK secondaire.",
-  },
-  {
     concept_key: "iykyk",
-    fr_fit: "medium",
-    note: "Plus initiés réseaux ; garder mais ne pas surpondérer.",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — trop initiés EN.",
   },
   {
     concept_key: "touch_grass",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — anglicisme peu oral FR.",
+  },
+  {
+    concept_key: "locked_in",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — slang US.",
+  },
+  {
+    concept_key: "soft_launch",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — jargon dating EN.",
+  },
+  {
+    concept_key: "high_key",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "low_key",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "based",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — niche EN.",
+  },
+  {
+    concept_key: "boujee",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "breadcrumbing",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — jargon psy EN.",
+  },
+  {
+    concept_key: "lit",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "salty",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "side_eye",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "texting",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — pas un code culturel FR.",
+  },
+  {
+    concept_key: "triggered",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "no_cap",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — préférer scènes FR (wallah, askip…).",
+  },
+  {
+    concept_key: "love_bombing",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "double_text",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27.",
+  },
+  {
+    concept_key: "npc",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — préférer label FR PNJ.",
+  },
+  {
+    concept_key: "sheesh",
+    fr_fit: "weak",
+    note: "Cull live 2026-07-27 — moins ancré que chokbar / sheesh US.",
+  },
+  {
+    concept_key: "beige_flag",
     fr_fit: "medium",
-    note: "Anglicisme connu en ligne ; scènes pote OK.",
+    note: "Compris via red/green flag ; OK secondaire.",
   },
 ];
 
@@ -167,7 +346,6 @@ const rows = [];
 for (const c of FR_CANDIDATES) {
   const key = toConceptSlug(c.raw_term);
   const collision = collisionAgainstIndex(key, index.keys);
-  // also check surface near "pain" / "aura" already in pack
   const auth = scoreAuthenticity(c);
   let recommendation = "approve_fr_first";
   if (collision.exact) recommendation = "skip_already_known";
@@ -195,65 +373,36 @@ for (const c of FR_CANDIDATES) {
     human_decision:
       collision.exact
         ? "reject"
-        : c.placement === "daily_friendly" || c.fr_fit === "strong"
+        : c.placement === "daily_friendly" || c.fr_fit === "strong" || c.fr_fit === "medium"
           ? "approve"
-          : c.fr_fit === "medium"
-            ? "approve"
-            : "watchlist",
+          : "watchlist",
     human_notes: c.discovery_note,
   });
 }
 
-const novelForMerge = rows.filter(
-  (r) => r.novelty_status === "novel_candidate" && r.already_in_raw_signals === "no",
-);
-
-if (MERGE && novelForMerge.length) {
-  const next = { ...existingSignals };
-  next.notes =
-    (next.notes || "") + " | FR-first seed " + new Date().toISOString().slice(0, 10);
-  next.raw_signals = [
-    ...(next.raw_signals ?? []),
-    ...novelForMerge.map((r) => ({
-      raw_term: r.raw_term,
-      aliases: r.aliases.split("; ").filter(Boolean),
-      example_usage: r.example_usage,
-      short_definition: r.short_definition,
-      suggested_theme: r.suggested_theme,
-      trend_freshness: r.trend_freshness,
-      trend_durability: r.trend_durability,
-      fr_fit: r.fr_fit,
-      placement: r.placement,
-      discovery_source: "seed_fr_first_discovery_v1",
-    })),
-  ];
-  writeJson(signalsPath, next);
-}
-
 const stamp = stampIso();
-const research = {
+const doc = {
   generated_at: new Date().toISOString(),
   policy: "fr_first_app_orientation_v1",
   sources_note:
-    "Veille assistée FR (TF1, Midi Libre, MagicMaman, MinutePunchline, Le Bonbon) — glossaires = indices, scènes = vérité.",
+    "Veille assistée FR (Figaro, Parents.fr, La Montagne, MinutePunchline, France Inter) — glossaires = indices, scènes = vérité.",
   principles: [
     "Prioriser FR hybride (verlan, cité, TikTok FR) pour l’app Tu Captes.",
     "Anglicismes OK s’ils circulent oralement en France avec scène crédible.",
-    "Effets de mode (six-seven) : daily / tendances, pas saturation du pool.",
-    "Éviter uniquement ce qui n’a aucune attestation FR utile pour 35–55.",
+    "Effets de mode (six-seven, quoicoubeh) : daily / tendances, pas saturation du pool.",
+    "Éviter / cull ce qui n’a aucune attestation FR utile pour 35–55.",
   ],
   weak_en_cadre: FR_WEAK_OR_CADRE,
   counts: {
     proposed: rows.length,
     novel: rows.filter((r) => r.novelty_status === "novel_candidate").length,
     approved_in_seed: rows.filter((r) => r.human_decision === "approve").length,
-    merged: MERGE ? novelForMerge.length : 0,
   },
   rows,
 };
 
-writeJson(resolve(outDir, "fr-first-discovery-v1-latest.json"), research);
-writeJson(resolve(outDir, `fr-first-discovery-v1-${stamp}.json`), research);
+writeJson(resolve(outDir, "fr-first-discovery-v1-latest.json"), doc);
+writeJson(resolve(outDir, `fr-first-discovery-v1-${stamp}.json`), doc);
 writeCsv(
   resolve(outDir, "fr-first-discovery-v1-latest.csv"),
   [
@@ -261,18 +410,52 @@ writeCsv(
     "suggested_concept_key",
     "suggested_theme",
     "short_definition",
-    "aliases",
-    "example_usage",
     "fr_fit",
     "placement",
     "novelty_status",
-    "near_key",
-    "authenticity_gate",
     "recommendation",
     "human_decision",
-    "human_notes",
+    "discovery_note",
   ],
   rows,
 );
 
-console.log(JSON.stringify({ ok: true, counts: research.counts, merge: MERGE }, null, 2));
+if (MERGE) {
+  const toAdd = rows.filter(
+    (r) => r.human_decision === "approve" && r.novelty_status === "novel_candidate",
+  );
+  const nextSignals = [...(existingSignals.raw_signals ?? [])];
+  for (const r of toAdd) {
+    const key = toConceptSlug(r.suggested_concept_key);
+    if (existingKeys.has(key)) continue;
+    nextSignals.push({
+      raw_term: r.raw_term,
+      aliases: r.aliases.split("; ").filter(Boolean),
+      example_usage: r.example_usage,
+      short_definition: r.short_definition,
+      suggested_theme: r.suggested_theme,
+      source: "fr_first_discovery_v1",
+      fr_fit: r.fr_fit,
+      placement: r.placement,
+    });
+    existingKeys.add(key);
+  }
+  writeJson(signalsPath, {
+    ...existingSignals,
+    updated_at: new Date().toISOString(),
+    raw_signals: nextSignals,
+  });
+  doc.counts.merged = toAdd.length;
+}
+
+console.log(
+  JSON.stringify(
+    {
+      ok: true,
+      counts: doc.counts,
+      merge: MERGE,
+    },
+    null,
+    2,
+  ),
+);
