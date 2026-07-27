@@ -55,7 +55,9 @@ function AuthPage() {
       if (mode === "signup") {
         const pseudo = (displayName || fallbackPseudoFromEmail(email)).trim();
         await signUp(email, password, pseudo);
-        toast.success(`Bienvenue sur le fil, ${pseudo}`);
+        toast.success(`Bienvenue sur le fil, ${pseudo}`, {
+          description: "Si la confirmation e-mail est active, vérifie ta boîte — puis reconnecte-toi.",
+        });
         navigate({ to: "/" });
       } else {
         await signIn(email, password);

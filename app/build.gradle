@@ -39,8 +39,8 @@ def twaManifest = [
     launchUrl: '/', // The start path for the TWA. Must be relative to the domain.
     name: 'Tu Captes ?', // The application name.
     launcherName: 'Tu Captes ?', // The name shown on the Android Launcher.
-    themeColor: '#5B52E8', // The color used for the status bar.
-    themeColorDark: '#171F31', // The color used for the dark status bar.
+        themeColor: '#3d8bfd', // Captes blue — matches web manifest
+        themeColorDark: '#171F31', // The color used for the dark status bar.
     navigationColor: '#171F31', // The color used for the navigation bar.
     navigationColorDark: '#171F31', // The color used for the dark navbar.
     navigationDividerColor: '#3F5268', // The navbar divider color.
@@ -70,8 +70,8 @@ android {
         applicationId "com.npaysant.resteconnecte"
         minSdkVersion 24
         targetSdkVersion 35
-        versionCode 5
-        versionName "1.0.4"
+        versionCode 6
+        versionName "1.0.5"
 
         // The name for the application
         resValue "string", "appName", twaManifest.name

@@ -1,4 +1,5 @@
 import { ArrowRight, FileQuestion, ListChecks, Sparkles } from "lucide-react";
+import { AdminDailyFilCard } from "@/components/admin-cockpit/AdminDailyFilCard";
 import { Button } from "@/components/ui/button";
 import { KpiCard } from "@/components/admin-cockpit/KpiCard";
 
@@ -58,6 +59,8 @@ export function AdminSimplePanel({
           </p>
         )}
       </section>
+
+      <AdminDailyFilCard />
 
       <section className="space-y-3">
         <Button

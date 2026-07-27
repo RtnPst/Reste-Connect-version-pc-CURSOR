@@ -9,7 +9,7 @@ test.describe("mobile 375 smoke (guest)", () => {
     logConsoleErrors(page);
     const res = await page.goto("/", { waitUntil: "load" });
     expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
-    await expect(page).toHaveTitle(/Tu captes/);
+    await expect(page).toHaveTitle(/Tu\s*captes/i);
     await expectNoCatastrophicDocumentOverflow(page);
     expect(getPageErrors(), "uncaught page errors").toEqual([]);
   });
@@ -19,7 +19,7 @@ test.describe("mobile 375 smoke (guest)", () => {
     logConsoleErrors(page);
     const res = await page.goto("/quiz", { waitUntil: "load" });
     expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
-    await expect(page.getByRole("heading", { name: /Quelle piste tu testes/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Une lecture du web|Quelle piste|Choisis ton angle/i })).toBeVisible();
     await expectNoCatastrophicDocumentOverflow(page);
     expect(getPageErrors(), "uncaught page errors").toEqual([]);
   });
@@ -40,8 +40,10 @@ test.describe("mobile 375 smoke (guest)", () => {
       const getPageErrors = attachPageErrorGuard(page);
       logConsoleErrors(page);
       await page.goto("/admin", { waitUntil: "load" });
-      const accèsRéservé = page.getByRole("heading", { name: "Accès réservé" });
-      const connexionFlow = page.getByRole("heading", { name: /Bon retour !|Créer mon compte/ });
+      const accèsRéservé = page.getByRole("heading", { name: /Accès réservé/i });
+      const connexionFlow = page.getByRole("heading", {
+        name: /Reprendre ton fil|Garder ton fil|Bon retour|Créer mon compte/i,
+      });
       await expect(accèsRéservé.or(connexionFlow)).toBeVisible({ timeout: 60_000 });
       /*
        * Cockpit tab strip appears only when logged in as admin (future auth tests).

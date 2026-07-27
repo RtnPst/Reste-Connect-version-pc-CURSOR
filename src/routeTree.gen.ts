@@ -18,6 +18,7 @@ import { Route as PlayRouteImport } from './routes/play'
 import { Route as ParcoursRouteImport } from './routes/parcours'
 import { Route as ParametresRouteImport } from './routes/parametres'
 import { Route as NiveauxRouteImport } from './routes/niveaux'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as MarathonRouteImport } from './routes/marathon'
 import { Route as DeleteAccountRouteImport } from './routes/delete-account'
 import { Route as ConnexionRouteImport } from './routes/connexion'
@@ -74,6 +75,11 @@ const ParametresRoute = ParametresRouteImport.update({
 const NiveauxRoute = NiveauxRouteImport.update({
   id: '/niveaux',
   path: '/niveaux',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MarathonRoute = MarathonRouteImport.update({
@@ -143,6 +149,7 @@ export interface FileRoutesByFullPath {
   '/connexion': typeof ConnexionRoute
   '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/niveaux': typeof NiveauxRoute
   '/parametres': typeof ParametresRoute
   '/parcours': typeof ParcoursRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/connexion': typeof ConnexionRoute
   '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/niveaux': typeof NiveauxRoute
   '/parametres': typeof ParametresRoute
   '/parcours': typeof ParcoursRoute
@@ -190,6 +198,7 @@ export interface FileRoutesById {
   '/connexion': typeof ConnexionRoute
   '/delete-account': typeof DeleteAccountRoute
   '/marathon': typeof MarathonRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/niveaux': typeof NiveauxRoute
   '/parametres': typeof ParametresRoute
   '/parcours': typeof ParcoursRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/connexion'
     | '/delete-account'
     | '/marathon'
+    | '/mentions-legales'
     | '/niveaux'
     | '/parametres'
     | '/parcours'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/connexion'
     | '/delete-account'
     | '/marathon'
+    | '/mentions-legales'
     | '/niveaux'
     | '/parametres'
     | '/parcours'
@@ -261,6 +272,7 @@ export interface FileRouteTypes {
     | '/connexion'
     | '/delete-account'
     | '/marathon'
+    | '/mentions-legales'
     | '/niveaux'
     | '/parametres'
     | '/parcours'
@@ -285,6 +297,7 @@ export interface RootRouteChildren {
   ConnexionRoute: typeof ConnexionRoute
   DeleteAccountRoute: typeof DeleteAccountRoute
   MarathonRoute: typeof MarathonRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   NiveauxRoute: typeof NiveauxRoute
   ParametresRoute: typeof ParametresRoute
   ParcoursRoute: typeof ParcoursRoute
@@ -366,6 +379,13 @@ declare module '@tanstack/react-router' {
       path: '/niveaux'
       fullPath: '/niveaux'
       preLoaderRoute: typeof NiveauxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/marathon': {
@@ -461,6 +481,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConnexionRoute: ConnexionRoute,
   DeleteAccountRoute: DeleteAccountRoute,
   MarathonRoute: MarathonRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   NiveauxRoute: NiveauxRoute,
   ParametresRoute: ParametresRoute,
   ParcoursRoute: ParcoursRoute,

@@ -16,10 +16,11 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Tu captes ? — Culture web, un fil à la fois" },
+      { title: "Tu Captes ? — Fil culturel français" },
       {
         name: "description",
-        content: "Croise le web vivant en deux minutes — une lecture culturelle par jour, puis les thèmes si tu veux.",
+        content:
+          "Le fil culturel français — capte les mots du web vivant, un passage à la fois.",
       },
     ],
   }),

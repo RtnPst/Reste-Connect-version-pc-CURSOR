@@ -7,7 +7,7 @@ test.describe("unauthenticated smoke", () => {
     logConsoleErrors(page);
     const res = await page.goto("/");
     expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
-    await expect(page).toHaveTitle(/Tu captes/);
+    await expect(page).toHaveTitle(/Tu\s*captes/i);
     expect(getPageErrors(), "uncaught page errors").toEqual([]);
   });
 
@@ -16,7 +16,7 @@ test.describe("unauthenticated smoke", () => {
     logConsoleErrors(page);
     const res = await page.goto("/quiz");
     expect(res?.ok(), `HTTP ${res?.status()}`).toBeTruthy();
-    await expect(page.getByRole("heading", { name: /Quelle piste tu testes/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /Une lecture du web|Quelle piste|Choisis ton angle/i })).toBeVisible();
     expect(getPageErrors(), "uncaught page errors").toEqual([]);
   });
 
@@ -53,9 +53,11 @@ test.describe("unauthenticated smoke", () => {
       const getPageErrors = attachPageErrorGuard(page);
       logConsoleErrors(page);
       await page.goto("/admin", { waitUntil: "load" });
-      /* Guest UX: client may navigate to /connexion OR render "Accès réservé" on /admin (useRequireAuth + !isAdmin). */
-      const accèsRéservé = page.getByRole("heading", { name: "Accès réservé" });
-      const connexionFlow = page.getByRole("heading", { name: /Bon retour !|Créer mon compte/ });
+      /* Guest UX: client may navigate to /connexion OR render "Accès réservé" on /admin. */
+      const accèsRéservé = page.getByRole("heading", { name: /Accès réservé/i });
+      const connexionFlow = page.getByRole("heading", {
+        name: /Reprendre ton fil|Garder ton fil|Bon retour|Créer mon compte/i,
+      });
       await expect(accèsRéservé.or(connexionFlow)).toBeVisible({ timeout: 60_000 });
       expect(getPageErrors(), "uncaught page errors").toEqual([]);
     },

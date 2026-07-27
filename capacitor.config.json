@@ -1,0 +1,14 @@
+{
+  "appId": "com.npaysant.tucaptes",
+  "appName": "Tu Captes ?",
+  "webDir": "dist/client",
+  "server": {
+    "url": "https://tanstack-start-ts.npaysant.workers.dev",
+    "cleartext": false
+  },
+  "ios": {
+    "contentInset": "automatic",
+    "scheme": "Tu Captes"
+  },
+  "plugins": {}
+}

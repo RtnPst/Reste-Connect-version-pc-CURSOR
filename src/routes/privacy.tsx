@@ -1,13 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppHeader } from "@/components/AppHeader";
+import { BRAND_NAME, SUPPORT_EMAIL, SUPPORT_MAILTO, SUPPORT_SLA } from "@/lib/brand";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Tu Captes ? — Politique de confidentialité" },
+      { title: `${BRAND_NAME} — Politique de confidentialité` },
       {
         name: "description",
-        content: "Politique de confidentialité de Tu Captes ?",
+        content: "Politique de confidentialité de Tu Captes — fil culturel français.",
       },
     ],
   }),
@@ -23,79 +24,108 @@ function PrivacyPage() {
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
             Politique de confidentialité
           </h1>
-          <p className="mt-2 text-sm text-muted-foreground sm:text-base">
-            Politique de confidentialité — Tu Captes ?
+          <p className="mt-2 text-sm text-muted-foreground">
+            {BRAND_NAME} — fil culturel français
           </p>
-          <p className="mt-1 text-sm text-muted-foreground sm:text-base">
-            Dernière mise à jour : Mai 2026
-          </p>
+          <p className="mt-1 text-sm text-muted-foreground">Dernière mise à jour : juillet 2026</p>
 
           <p className="mt-6 text-base sm:text-lg">
-            Tu Captes ? respecte la vie privée de ses utilisateurs.
+            Cette politique décrit quelles données nous traitons lorsque tu utilises {BRAND_NAME}{" "}
+            (site web, PWA installable, et application Android Trusted Web Activity).
           </p>
 
           <section className="mt-8 space-y-3">
             <h2 className="text-2xl font-extrabold">Données collectées</h2>
-            <p>Lors de l’utilisation de l’application, nous pouvons collecter :</p>
             <ul className="list-disc space-y-1 pl-6">
-              <li>adresse e-mail</li>
-              <li>pseudonyme / nom d’utilisateur</li>
-              <li>données liées à la progression dans le jeu (XP, niveau, séries, badges)</li>
-              <li>informations techniques nécessaires au fonctionnement de l’application</li>
+              <li>adresse e-mail et identifiants de connexion</li>
+              <li>pseudonyme / nom d’affichage</li>
+              <li>
+                données de parcours (passages, scores, séries, XP, badges, concepts captés)
+              </li>
+              <li>
+                événements d’usage product (ex. démarrage d’un mode, partage) lorsque l’analytics
+                produit est activée — liés à ton compte connecté
+              </li>
+              <li>
+                données techniques nécessaires (session, appareil / navigateur, journaux
+                d’erreurs d’infrastructure)
+              </li>
             </ul>
           </section>
 
           <section className="mt-8 space-y-3">
             <h2 className="text-2xl font-extrabold">Authentification</h2>
-            <p>Les utilisateurs peuvent :</p>
-            <ul className="list-disc space-y-1 pl-6">
-              <li>créer un compte avec une adresse e-mail</li>
-              <li>se connecter via Google</li>
-            </ul>
+            <p>Tu peux créer un compte e-mail / mot de passe ou te connecter via Google.</p>
             <p>
-              L’authentification et le stockage sécurisé des comptes sont gérés via Supabase.
+              L’authentification et le stockage des comptes sont assurés par Supabase (sous-traitant
+              technique).
             </p>
           </section>
 
           <section className="mt-8 space-y-3">
             <h2 className="text-2xl font-extrabold">Utilisation des données</h2>
-            <p>Les données sont utilisées uniquement pour :</p>
             <ul className="list-disc space-y-1 pl-6">
-              <li>permettre la connexion au compte</li>
-              <li>sauvegarder la progression</li>
-              <li>améliorer l’expérience utilisateur</li>
-              <li>assurer la sécurité et le bon fonctionnement du service</li>
+              <li>fournir le fil du jour, les angles, l’époque, le duel et le parcours</li>
+              <li>sauvegarder ta progression et tes captures</li>
+              <li>améliorer le produit (analytics agrégée / produit, sans revente)</li>
+              <li>sécurité, prévention d’abus, support</li>
             </ul>
-            <p>Nous ne revendons pas les données personnelles.</p>
+            <p>Nous ne revendons pas tes données personnelles.</p>
           </section>
 
           <section className="mt-8 space-y-3">
-            <h2 className="text-2xl font-extrabold">Conservation des données</h2>
-            <p>Les données sont conservées tant que le compte utilisateur existe.</p>
+            <h2 className="text-2xl font-extrabold">PWA, rappels et application Android</h2>
+            <p>
+              La version installable (PWA) et l’app Android (Trusted Web Activity) affichent le même
+              service web. Les rappels optionnels utilisent la permission Notifications du
+              navigateur / de l’appareil pour un rappel <strong>local</strong> lorsque tu rouvres
+              l’app — ce n’est pas une campagne push serveur distante.
+            </p>
+          </section>
+
+          <section className="mt-8 space-y-3">
+            <h2 className="text-2xl font-extrabold">Conservation</h2>
+            <p>
+              Les données de compte sont conservées tant que le compte existe. Après suppression,
+              elles sont effacées ou anonymisées dans un délai raisonnable compatible avec nos
+              sauvegardes techniques.
+            </p>
           </section>
 
           <section className="mt-8 space-y-3">
             <h2 className="text-2xl font-extrabold">Suppression du compte</h2>
             <p>
-              Les utilisateurs peuvent demander la suppression de leur compte et de leurs données
-              associées.
+              Tu peux demander la suppression via{" "}
+              <Link className="font-semibold text-primary underline-offset-4 hover:underline" to="/delete-account">
+                cette page
+              </Link>
+              . Nous répondons sous {SUPPORT_SLA} en règle générale.
             </p>
           </section>
 
           <section className="mt-8 space-y-3">
-            <h2 className="text-2xl font-extrabold">Cookies et technologies similaires</h2>
+            <h2 className="text-2xl font-extrabold">Cookies et stockage local</h2>
             <p>
-              Certaines technologies techniques peuvent être utilisées afin d’assurer le bon
-              fonctionnement de l’application.
+              Nous utilisons le stockage local / session pour la connexion, le confort (ex. onboarding,
+              rappels) et le fonctionnement de la PWA. Pas de publicité tierce.
             </p>
           </section>
 
           <section className="mt-8 space-y-3">
             <h2 className="text-2xl font-extrabold">Contact</h2>
-            <p>Pour toute question concernant la confidentialité :</p>
-            <a className="font-semibold text-primary underline-offset-4 hover:underline" href="mailto:npaysant@gmail.com">
-              npaysant@gmail.com
-            </a>
+            <p>
+              Confidentialité &amp; support :{" "}
+              <a className="font-semibold text-primary underline-offset-4 hover:underline" href={SUPPORT_MAILTO}>
+                {SUPPORT_EMAIL}
+              </a>
+            </p>
+            <p>
+              Voir aussi les{" "}
+              <Link className="font-semibold text-primary underline-offset-4 hover:underline" to="/mentions-legales">
+                mentions légales
+              </Link>
+              .
+            </p>
           </section>
         </article>
       </main>

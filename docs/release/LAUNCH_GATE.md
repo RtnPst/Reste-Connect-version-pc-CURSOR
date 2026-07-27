@@ -45,6 +45,7 @@ Use this before every deploy. Mark each item `PASS` / `FAIL` / `N/A`.
 - [ ] **Supabase target** matches the intended project for this deploy
 - [ ] `VITE_PUBLIC_APP_URL` matches the target public URL for this deploy
 - [ ] `VITE_ANALYTICS_PHASE1_ENABLED` matches release intention (`ON` / `OFF`)
+- [ ] If analytics ON: confirm a fresh row appears in `analytics_events` after a logged-in smoke (last ingest must not be weeks old)
 - [ ] Cloudflare Worker / deployment target matches `staging` vs `prod`
 - [ ] No production credentials mixed into staging/local tooling or Playwright `e2e/.auth/` files
 

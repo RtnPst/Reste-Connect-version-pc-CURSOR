@@ -201,7 +201,8 @@ function SettingsPage() {
                         <Bell className="size-5" /> Rappel quotidien
                       </Label>
                       <p className="text-sm sm:text-base text-muted-foreground mt-1">
-                        Petit ping <strong>navigateur</strong> (local), pas une push serveur.
+                        Rappel <strong>local</strong> quand tu rouvres l’app (pas une notification
+                        push envoyée à distance).
                       </p>
                     </div>
                     <Switch
@@ -239,6 +240,18 @@ function SettingsPage() {
               </Button>
             </div>
             <div className="mt-5 border-t border-border pt-4">
+              <h3 className="text-sm font-semibold tracking-wide text-muted-foreground">Aide</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Une question, un bug, une demande de suppression ? Réponse sous 48–72 h.
+              </p>
+              <a
+                className="mt-2 inline-block font-semibold text-primary underline-offset-4 hover:underline"
+                href={`mailto:npaysant@gmail.com?subject=${encodeURIComponent("[Tu Captes] Aide")}`}
+              >
+                Contacter le support
+              </a>
+            </div>
+            <div className="mt-5 border-t border-border pt-4">
               <h3 className="text-sm font-semibold tracking-wide text-muted-foreground">
                 Informations légales
               </h3>
@@ -248,6 +261,12 @@ function SettingsPage() {
                 </Link>
                 <Link className="font-semibold text-primary underline-offset-4 hover:underline" to="/terms">
                   Conditions d’utilisation
+                </Link>
+                <Link
+                  className="font-semibold text-primary underline-offset-4 hover:underline"
+                  to="/mentions-legales"
+                >
+                  Mentions légales
                 </Link>
                 <Link className="font-semibold text-primary underline-offset-4 hover:underline" to="/delete-account">
                   Supprimer mon compte

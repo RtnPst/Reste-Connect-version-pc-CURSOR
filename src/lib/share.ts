@@ -2,6 +2,8 @@
  * Soft share helpers — Web Share API with clipboard fallback.
  */
 
+import { BRAND_NAME, getPublicAppOrigin } from "@/lib/brand";
+
 export type SharePayload = {
   title: string;
   text: string;
@@ -9,9 +11,7 @@ export type SharePayload = {
 };
 
 export async function sharePayload(payload: SharePayload): Promise<"shared" | "copied" | "cancelled"> {
-  const url =
-    payload.url ??
-    (typeof window !== "undefined" ? window.location.origin : "https://tucaptes.fr");
+  const url = payload.url ?? getPublicAppOrigin();
 
   if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
     try {
@@ -41,8 +41,8 @@ export async function sharePayload(payload: SharePayload): Promise<"shared" | "c
 /** Viral-soft line after capturing a named concept. */
 export async function shareCapturedConcept(label: string, opts?: { url?: string }) {
   return sharePayload({
-    title: "Tu captes ?",
-    text: `Tu as capté : ${label} — sur Tu captes ?`,
+    title: BRAND_NAME,
+    text: `Tu as capté : ${label} — sur ${BRAND_NAME}`,
     url: opts?.url,
   });
 }

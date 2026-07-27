@@ -1,8 +1,10 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { AppBottomNav } from "@/components/AppBottomNav";
+import { OfflineBanner } from "@/components/OfflineBanner";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { BRAND_NAME, BRAND_TAGLINE, getPublicAppOrigin } from "@/lib/brand";
 
 import appCss from "../styles.css?url";
 
@@ -28,28 +30,36 @@ function NotFoundComponent() {
   );
 }
 
+const publicOrigin = getPublicAppOrigin();
+const ogImage = `${publicOrigin}/icon-512.png`;
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tu captes ? — Quiz fun culture web" },
+      { title: `${BRAND_NAME} — Fil culturel français` },
       {
         name: "description",
-        content:
-          "Tu captes ? est un quiz fun et rapide pour voir si tu es encore dans le game des expressions et codes web.",
+        content: BRAND_TAGLINE,
       },
-      { property: "og:title", content: "Tu captes ? — Quiz fun culture web" },
+      { property: "og:title", content: `${BRAND_NAME} — Fil culturel` },
       {
         property: "og:description",
-        content:
-          "Comprenez les codes et expressions d'aujourd'hui avec des quiz modernes, chaleureux et accessibles.",
+        content: BRAND_TAGLINE,
       },
       { property: "og:type", content: "website" },
-      { name: "theme-color", content: "#4f46e5" },
+      { property: "og:url", content: `${publicOrigin}/` },
+      { property: "og:image", content: ogImage },
+      { property: "og:locale", content: "fr_FR" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: `${BRAND_NAME} — Fil culturel` },
+      { name: "twitter:description", content: BRAND_TAGLINE },
+      { name: "twitter:image", content: ogImage },
+      { name: "theme-color", content: "#3d8bfd" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "default" },
-      { name: "apple-mobile-web-app-title", content: "Tu captes ?" },
+      { name: "apple-mobile-web-app-title", content: "Tu Captes" },
       { name: "mobile-web-app-capable", content: "yes" },
     ],
     links: [
@@ -95,6 +105,7 @@ function RootComponent() {
 
   return (
     <AuthProvider>
+      <OfflineBanner />
       <Outlet />
       <Toaster position="top-center" />
       <AppBottomNav />
