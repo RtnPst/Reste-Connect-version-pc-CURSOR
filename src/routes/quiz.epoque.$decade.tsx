@@ -17,6 +17,7 @@ import { parisCalendarDate } from "@/lib/paris-calendar";
 import { getPlayableQuestionsByConcepts } from "@/lib/quiz-api";
 import { checkAnswer } from "@/lib/quiz-security";
 import { shareCapturedConcept, sharePayload } from "@/lib/share";
+import { createAnalyticsRunId, trackEvent } from "@/lib/analytics";
 import { playCorrect, playWrong, playFanfare, stopMusic } from "@/lib/sfx";
 import { speak, stopSpeaking } from "@/lib/speech";
 import type { ThemeKey } from "@/lib/themes";
@@ -66,6 +67,8 @@ function EpoqueQuizPage() {
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
   const [xpGained, setXpGained] = useState<number | null>(null);
+  const [runId] = useState(() => createAnalyticsRunId());
+  const [startedAt] = useState(() => Date.now());
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -94,13 +97,23 @@ function EpoqueQuizPage() {
           ...toDisplayChoices(q.choices),
         })),
       );
+      void trackEvent({
+        event_name: "mode_started",
+        user_id: user?.id,
+        mode: "epoque",
+        run_id: runId,
+        event_props: {
+          entry_surface: "epoque",
+          decade: pack.key,
+        },
+      });
     } catch (e) {
       console.error(e);
       setError("Impossible de charger cette époque.");
     } finally {
       setLoading(false);
     }
-  }, [pack.conceptKeys]);
+  }, [pack.conceptKeys, pack.key, runId, user?.id]);
 
   useEffect(() => {
     void load();
@@ -145,6 +158,19 @@ function EpoqueQuizPage() {
     setFinished(true);
     playFanfare(profile?.sfx_enabled ?? true);
     stopMusic();
+    void trackEvent({
+      event_name: "mode_completed",
+      user_id: user?.id,
+      mode: "epoque",
+      run_id: runId,
+      event_props: {
+        score,
+        total_questions: questions.length,
+        duration_sec: Math.max(0, Math.round((Date.now() - startedAt) / 1000)),
+        completed: true,
+        decade: pack.key,
+      },
+    });
     if (!user) return;
     const theme = questions[0]?.theme ?? "vocabulaire";
     const { error: saveErr } = await supabase.from("quiz_attempts").insert({
@@ -188,7 +214,18 @@ function EpoqueQuizPage() {
         .eq("id", user.id);
       await refreshProfile();
     }
-  }, [currentIndex, questions, score, answers, user, profile?.sfx_enabled, refreshProfile]);
+  }, [
+    currentIndex,
+    questions,
+    score,
+    answers,
+    user,
+    profile?.sfx_enabled,
+    refreshProfile,
+    runId,
+    startedAt,
+    pack.key,
+  ]);
 
   if (loading) {
     return (
@@ -224,6 +261,16 @@ function EpoqueQuizPage() {
             title: "Tu captes ?",
             text: `J’ai revisité « ${pack.label} » sur Tu captes ?.`,
           });
+      void trackEvent({
+        event_name: "share_clicked",
+        user_id: user?.id,
+        mode: "epoque",
+        event_props: {
+          surface: "epoque_result",
+          outcome: result,
+          has_concept: Boolean(sessionCapturedLabel),
+        },
+      });
       if (result === "copied") toast.success("Copié dans le presse-papiers");
     };
 

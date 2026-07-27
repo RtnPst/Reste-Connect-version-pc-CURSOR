@@ -10,9 +10,12 @@ type AllowedEventName =
   | "mode_completed"
   | "level_result"
   | "marathon_ended"
-  | "post_run_cta_clicked";
+  | "post_run_cta_clicked"
+  | "share_clicked"
+  | "duel_created"
+  | "onboarding_completed";
 
-type AllowedMode = "theme" | "daily" | "level" | "marathon";
+type AllowedMode = "theme" | "daily" | "level" | "marathon" | "duel" | "epoque" | "shell";
 
 type PrimitiveKind = "string" | "number" | "boolean";
 
@@ -22,9 +25,20 @@ const VALID_EVENT_NAMES = new Set<AllowedEventName>([
   "level_result",
   "marathon_ended",
   "post_run_cta_clicked",
+  "share_clicked",
+  "duel_created",
+  "onboarding_completed",
 ]);
 
-const VALID_MODES = new Set<AllowedMode>(["theme", "daily", "level", "marathon"]);
+const VALID_MODES = new Set<AllowedMode>([
+  "theme",
+  "daily",
+  "level",
+  "marathon",
+  "duel",
+  "epoque",
+  "shell",
+]);
 
 const EVENT_PROP_SCHEMA: Record<AllowedEventName, Record<string, PrimitiveKind>> = {
   mode_started: {
@@ -32,6 +46,7 @@ const EVENT_PROP_SCHEMA: Record<AllowedEventName, Record<string, PrimitiveKind>>
     level: "number",
     theme: "string",
     is_retry: "boolean",
+    decade: "string",
   },
   mode_completed: {
     score: "number",
@@ -40,6 +55,7 @@ const EVENT_PROP_SCHEMA: Record<AllowedEventName, Record<string, PrimitiveKind>>
     completed: "boolean",
     level: "number",
     theme: "string",
+    decade: "string",
   },
   level_result: {
     level: "number",
@@ -60,6 +76,18 @@ const EVENT_PROP_SCHEMA: Record<AllowedEventName, Record<string, PrimitiveKind>>
     destination: "string",
     score_context: "number",
     total_context: "number",
+  },
+  share_clicked: {
+    surface: "string",
+    outcome: "string",
+    has_concept: "boolean",
+  },
+  duel_created: {
+    theme: "string",
+    question_count: "number",
+  },
+  onboarding_completed: {
+    destination: "string",
   },
 };
 
@@ -156,7 +184,7 @@ function validateEvent(input: AnalyticsEventInput): string[] {
   if (input.mode !== "level" && "level" in input.event_props) {
     errs.push("event_props.level is only valid for level mode");
   }
-  if (input.mode !== "theme" && "theme" in input.event_props) {
+  if (input.mode !== "theme" && "theme" in input.event_props && input.event_name !== "duel_created") {
     errs.push("event_props.theme is only valid for theme mode");
   }
 
@@ -201,4 +229,3 @@ export async function trackEvent(input: AnalyticsEventInput): Promise<void> {
     });
   }
 }
-

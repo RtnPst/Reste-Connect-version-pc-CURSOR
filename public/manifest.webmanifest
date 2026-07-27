@@ -1,7 +1,7 @@
 {
   "name": "Tu Captes ?",
   "short_name": "Tu Captes",
-  "description": "Quiz fun et rapide pour voir si tu captes encore les codes du web.",
+  "description": "Le fil culturel français — capte les mots du web vivant, un passage à la fois.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

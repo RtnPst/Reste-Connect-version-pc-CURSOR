@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { getPlayableQuestions } from "@/lib/quiz-api";
+import { trackEvent } from "@/lib/analytics";
 import { THEMES, PLAYABLE_THEME_KEYS, type ThemeKey } from "@/lib/themes";
 
 const QUESTION_COUNT = 10;
@@ -120,6 +121,13 @@ function DuelHomePage() {
         toast.error("Impossible de créer le duel. Réessaie.");
         return;
       }
+
+      void trackEvent({
+        event_name: "duel_created",
+        user_id: user.id,
+        mode: "duel",
+        event_props: { theme, question_count: questionIds.length },
+      });
 
       toast.success("Duel créé — partage le code !");
       await navigate({ to: "/duel/$code", params: { code: inserted.code } });

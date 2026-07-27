@@ -39,7 +39,7 @@ export function FilTracesSection({ passages, concepts }: FilTracesSectionProps) 
       <p className="mt-1 text-xs text-muted-foreground">Ce que tu as parcouru et capté récemment.</p>
       <ul className="fil-traces-list mt-4 list-none space-y-0 p-0">
         {concepts.map((item) => (
-          <li key={`c-${item.label}-${item.lastSeenAt}`} className="fil-traces-item fil-traces-item--capture">
+          <li key={`c-${item.conceptKey}-${item.lastSeenAt}`} className="fil-traces-item fil-traces-item--capture">
             <span className="fil-traces-dot" aria-hidden />
             <span className="min-w-0 flex-1">
               <span className="block text-[11px] font-medium tracking-wide text-primary/75">

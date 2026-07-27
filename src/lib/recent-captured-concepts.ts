@@ -2,6 +2,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { getConceptLabel } from "@/lib/concept-labels";
 
 export type RecentCapturedConcept = {
+  conceptKey: string;
   label: string;
   lastSeenAt: string;
 };
@@ -27,11 +28,23 @@ export async function fetchRecentCapturedConcepts(
   }
 
   const out: RecentCapturedConcept[] = [];
+  const seen = new Set<string>();
   for (const row of data ?? []) {
-    const label = getConceptLabel(row.concept_key);
+    const key = row.concept_key as string;
+    if (!key || seen.has(key)) continue;
+    const label = getConceptLabel(key);
     if (!label) continue;
-    out.push({ label, lastSeenAt: row.last_seen_at });
+    seen.add(key);
+    out.push({ conceptKey: key, label, lastSeenAt: row.last_seen_at });
     if (out.length >= limit) break;
   }
   return out;
+}
+
+/** Full capture memory for Parcours gallery (deduped, labeled). */
+export async function fetchCapturedConceptGallery(
+  userId: string,
+  limit = 60,
+): Promise<RecentCapturedConcept[]> {
+  return fetchRecentCapturedConcepts(userId, limit);
 }

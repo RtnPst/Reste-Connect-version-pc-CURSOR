@@ -298,6 +298,24 @@ function AdminPage() {
     };
   }, [isAdmin]);
 
+  const startNew = () => {
+    setEditingId("new");
+    setDraft(EMPTY);
+    setAdvancedOpen(false);
+    toast.message("Formulaire nouvelle question ouvert");
+    window.setTimeout(() => {
+      editorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      firstQuestionFieldRef.current?.focus();
+    }, 120);
+  };
+
+  // Must stay before any conditional return — Rules of Hooks.
+  useEffect(() => {
+    if (!isAdmin || !pendingNewQuestion || search.tab !== "legacy") return;
+    startNew();
+    setPendingNewQuestion(false);
+  }, [isAdmin, pendingNewQuestion, search.tab]);
+
   if (authLoading || roleLoading) {
     return (
       <div className="min-h-screen min-w-0 overflow-x-clip bg-background">
@@ -326,23 +344,6 @@ function AdminPage() {
       </div>
     );
   }
-
-  const startNew = () => {
-    setEditingId("new");
-    setDraft(EMPTY);
-    setAdvancedOpen(false);
-    toast.message("Formulaire nouvelle question ouvert");
-    window.setTimeout(() => {
-      editorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      firstQuestionFieldRef.current?.focus();
-    }, 120);
-  };
-
-  useEffect(() => {
-    if (!isAdmin || !pendingNewQuestion || search.tab !== "legacy") return;
-    startNew();
-    setPendingNewQuestion(false);
-  }, [isAdmin, pendingNewQuestion, search.tab]);
 
   const startEdit = (q: Question) => {
     setEditingId(q.id);

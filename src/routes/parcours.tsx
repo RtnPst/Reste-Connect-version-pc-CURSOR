@@ -9,6 +9,7 @@ import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { getBadgeUiCopy, badgeUnlockHintOrDefault } from "@/lib/badge-ui";
 import {
+  fetchCapturedConceptGallery,
   fetchRecentCapturedConcepts,
   type RecentCapturedConcept,
 } from "@/lib/recent-captured-concepts";
@@ -58,6 +59,7 @@ function ProfilePage() {
   const [themeStats, setThemeStats] = useState<ThemeStat[]>([]);
   const [recentAttempts, setRecentAttempts] = useState<RecentAttempt[]>([]);
   const [recentCaptured, setRecentCaptured] = useState<RecentCapturedConcept[]>([]);
+  const [capturedGallery, setCapturedGallery] = useState<RecentCapturedConcept[]>([]);
   const [showAllBadges, setShowAllBadges] = useState(false);
 
   useEffect(() => {
@@ -157,6 +159,8 @@ function ProfilePage() {
 
       const captured = await fetchRecentCapturedConcepts(user.id, 4);
       setRecentCaptured(captured);
+      const gallery = await fetchCapturedConceptGallery(user.id, 60);
+      setCapturedGallery(gallery);
     })();
   }, [user]);
 
@@ -200,8 +204,19 @@ function ProfilePage() {
                 onClick={() => {
                   void (async () => {
                     const { shareCapturedConcept } = await import("@/lib/share");
+                    const { trackEvent } = await import("@/lib/analytics");
                     const { toast } = await import("sonner");
                     const r = await shareCapturedConcept(recentCaptured[0].label);
+                    void trackEvent({
+                      event_name: "share_clicked",
+                      user_id: user.id,
+                      mode: "shell",
+                      event_props: {
+                        surface: "parcours_hero",
+                        outcome: r,
+                        has_concept: true,
+                      },
+                    });
                     if (r === "copied") toast.success("Copié dans le presse-papiers");
                   })();
                 }}
@@ -251,6 +266,26 @@ function ProfilePage() {
 
         <FilTracesSection passages={recentAttempts} concepts={recentCaptured} />
 
+        {capturedGallery.length > 0 ? (
+          <section className="journey-panel mb-6 p-4 sm:p-5" aria-labelledby="capture-gallery-heading">
+            <h2 id="capture-gallery-heading" className="text-sm font-extrabold sm:text-base">
+              Mots captés ({capturedGallery.length})
+            </h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Ta mémoire du fil — les concepts que tu as croisés et retenus.
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {capturedGallery.map((item) => (
+                <li key={`${item.conceptKey}-${item.lastSeenAt}`}>
+                  <span className="inline-flex items-center rounded-full border border-primary/25 bg-primary-soft/35 px-3 py-1.5 text-sm font-medium text-foreground">
+                    {item.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
         <div className="journey-panel mb-6 p-5 sm:p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
             <h2 className="text-xl font-extrabold sm:text-2xl">Moments sur le fil ({badges.length})</h2>
@@ -287,7 +322,7 @@ function ProfilePage() {
                     <div className="min-w-0">
                       <p className="font-bold text-[15px] leading-tight">
                         {displayName}{" "}
-                        {!isEarned && <span className="text-xs font-medium text-muted-foreground">· bientôt</span>}
+                        {!isEarned && <span className="text-xs font-medium text-muted-foreground">· à débloquer</span>}
                       </p>
                       <p className="mt-0.5 text-xs text-muted-foreground">
                         {isEarned ? earnedDescription : lockedHint}

@@ -633,12 +633,32 @@ function ResultsScreen({
     const label = sessionCapturedLabel ?? takeawayLabel;
     if (label) {
       const result = await shareCapturedConcept(label);
+      void trackEvent({
+        event_name: "share_clicked",
+        user_id: user?.id,
+        mode: "theme",
+        event_props: {
+          surface: "theme_result",
+          outcome: result,
+          has_concept: true,
+        },
+      });
       if (result === "copied") toast.success("Copié dans le presse-papiers");
       return;
     }
     const result = await sharePayload({
       title: "Tu captes ?",
       text: `J’ai exploré « ${themeMeta.short} » sur Tu captes ?.`,
+    });
+    void trackEvent({
+      event_name: "share_clicked",
+      user_id: user?.id,
+      mode: "theme",
+      event_props: {
+        surface: "theme_result",
+        outcome: result,
+        has_concept: false,
+      },
     });
     if (result === "copied") toast.success("Lien copié dans le presse-papiers");
   };

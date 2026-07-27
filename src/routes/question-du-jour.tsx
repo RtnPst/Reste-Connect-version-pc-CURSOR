@@ -18,6 +18,7 @@ import { THEMES, type ThemeKey } from "@/lib/themes";
 import { toDisplayChoices } from "@/lib/choice-order";
 import { parisCalendarDate } from "@/lib/paris-calendar";
 import { shareCapturedConcept, sharePayload } from "@/lib/share";
+import { trackEvent } from "@/lib/analytics";
 
 type Q = {
   id: string;
@@ -262,6 +263,16 @@ function DailyQuestionPage() {
           text: "Je viens de faire la question du jour sur Tu captes ?",
           url: `${window.location.origin}/question-du-jour`,
         });
+    void trackEvent({
+      event_name: "share_clicked",
+      user_id: user?.id,
+      mode: "daily",
+      event_props: {
+        surface: "daily_result",
+        outcome: result,
+        has_concept: Boolean(label),
+      },
+    });
     if (result === "copied") toast.success("Lien copié dans le presse-papiers");
   };
 
@@ -328,6 +339,16 @@ function DailyQuestionPage() {
         title: "Tu captes ?",
         text: "J’ai déjà fait la question du jour sur Tu captes ? — et toi ?",
         url: `${window.location.origin}/question-du-jour`,
+      });
+      void trackEvent({
+        event_name: "share_clicked",
+        user_id: user?.id,
+        mode: "daily",
+        event_props: {
+          surface: "daily_already_done",
+          outcome: result,
+          has_concept: false,
+        },
       });
       if (result === "copied") toast.success("Lien copié dans le presse-papiers");
     };

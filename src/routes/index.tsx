@@ -4,9 +4,11 @@ import { Download } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
 import { FilRepriseEcho } from "@/components/FilRepriseEcho";
 import { JourneyPage } from "@/components/JourneyPage";
+import { OnboardingSheet } from "@/components/OnboardingSheet";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { parisCalendarDate } from "@/lib/paris-calendar";
 import { fetchRecentCapturedConcepts } from "@/lib/recent-captured-concepts";
 import { maybeShowDailyReminder } from "@/lib/reminders";
 import { cn } from "@/lib/utils";
@@ -55,17 +57,18 @@ function HomePage() {
 
     let cancelled = false;
     (async () => {
-      const today = new Date().toISOString().slice(0, 10);
-      const tomorrow = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
+      const todayParis = parisCalendarDate();
       const { data } = await supabase
         .from("quiz_attempts")
-        .select("id")
+        .select("id, completed_at")
         .eq("user_id", user.id)
         .eq("mode", "daily")
-        .gte("completed_at", `${today}T00:00:00.000Z`)
-        .lt("completed_at", `${tomorrow}T00:00:00.000Z`)
-        .limit(1);
-      if (!cancelled) setDailyCompletedToday((data?.length ?? 0) > 0);
+        .order("completed_at", { ascending: false })
+        .limit(8);
+      const done = (data ?? []).some(
+        (a) => parisCalendarDate(new Date(a.completed_at)) === todayParis,
+      );
+      if (!cancelled) setDailyCompletedToday(done);
     })();
 
     return () => {
@@ -130,6 +133,7 @@ function HomePage() {
   return (
     <JourneyPage>
       <AppHeader />
+      <OnboardingSheet userId={user?.id} />
 
       <main className="min-w-0 w-full flex-1 overflow-x-clip pb-2">
         <section className="container mx-auto max-w-lg px-4 pt-4 sm:px-6 sm:pt-6 [@media(max-height:780px)]:pt-2">
