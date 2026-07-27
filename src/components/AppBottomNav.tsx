@@ -21,7 +21,13 @@ export function AppBottomNav() {
   if (HIDE_ON_PATHS.some((pattern) => pattern.test(pathname))) return null;
 
   const tabs = [
-    { to: "/", label: "Accueil", icon: Home, active: pathname === "/", navTab: "home" as const },
+    {
+      to: "/",
+      label: "Accueil",
+      icon: Home,
+      active: pathname === "/" || pathname.startsWith("/question-du-jour"),
+      navTab: "home" as const,
+    },
     {
       to: "/play",
       label: "Jouer",
@@ -30,7 +36,6 @@ export function AppBottomNav() {
         pathname === "/play" ||
         pathname.startsWith("/quiz") ||
         pathname.startsWith("/niveaux") ||
-        pathname.startsWith("/question-du-jour") ||
         pathname.startsWith("/duel"),
       navTab: "play" as const,
     },

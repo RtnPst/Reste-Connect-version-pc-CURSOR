@@ -55,10 +55,11 @@ const STEPS: TourStep[] = [
   },
   {
     route: "/question-du-jour",
+    navTab: "home",
     pose: "tip",
-    chip: "Le geste",
-    title: "Capturer, c’est le cœur",
-    body: "Une situation → un choix → le décode. Tu repars avec un mot nommé, pas juste un score.",
+    chip: "Fil du jour",
+    title: "Ici, tu captes pour de vrai",
+    body: "Une situation → un choix → le décode. L’onglet Accueil te ramène au fil ; Jouer, c’est le carrefour des modes.",
     final: true,
   },
 ];

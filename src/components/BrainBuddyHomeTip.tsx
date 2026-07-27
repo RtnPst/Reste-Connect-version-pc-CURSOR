@@ -18,7 +18,7 @@ export function BrainBuddyHomeTip({ dailyDone }: { dailyDone?: boolean | null })
     if (typeof window === "undefined") return;
     if (!hasCompletedOnboarding()) return;
     if (window.localStorage.getItem(DISMISS_KEY) === "1") return;
-    if (dailyDone) return;
+    // Show tip whether daily is done or not (copy adapts).
     const t = window.setTimeout(() => setShow(true), 700);
     return () => window.clearTimeout(t);
   }, [dailyDone]);
@@ -34,6 +34,8 @@ export function BrainBuddyHomeTip({ dailyDone }: { dailyDone?: boolean | null })
     }
   };
 
+  const done = Boolean(dailyDone);
+
   return (
     <div
       className={cn(
@@ -44,18 +46,20 @@ export function BrainBuddyHomeTip({ dailyDone }: { dailyDone?: boolean | null })
       <div className="pointer-events-auto flex items-end gap-2">
         <div className="relative rounded-2xl border border-border/80 bg-card/95 px-3 py-2.5 text-sm shadow-[var(--shadow-soft)] backdrop-blur-md">
           <p className="font-semibold leading-snug text-foreground">
-            {dailyDone ? "Nice — tu as déjà capté aujourd’hui." : "Le fil du jour t’attend."}
+            {done ? "Nice — tu as déjà capté aujourd’hui." : "Le fil du jour t’attend."}
           </p>
           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-            Un passage court. Je reste dans le coin si besoin.
+            {done
+              ? "Le carrefour Jouer garde d’autres angles sur le même fil."
+              : "Un passage court depuis Accueil — pas depuis un autre onglet."}
           </p>
           <div className="mt-2.5 flex items-center gap-3">
             <Link
-              to="/question-du-jour"
+              to={done ? "/play" : "/question-du-jour"}
               className="text-xs font-bold text-primary underline-offset-2 hover:underline"
               onClick={dismiss}
             >
-              J’y vais
+              {done ? "Voir Jouer" : "J’y vais"}
             </Link>
             <button
               type="button"
@@ -70,7 +74,7 @@ export function BrainBuddyHomeTip({ dailyDone }: { dailyDone?: boolean | null })
             aria-hidden
           />
         </div>
-        <BrainBuddy pose="tip" size="sm" className="shrink-0 drop-shadow-md" />
+        <BrainBuddy pose={done ? "wink" : "tip"} size="sm" className="shrink-0 drop-shadow-md" />
       </div>
     </div>
   );
