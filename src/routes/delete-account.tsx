@@ -40,12 +40,30 @@ function DeleteAccountPage() {
 
   const canConfirm = confirmText.trim().toUpperCase() === "SUPPRIMER";
 
+  const clearLocalAccountArtifacts = () => {
+    if (typeof window === "undefined") return;
+    const localKeys = [
+      "rc_levels_progress_v1",
+      "rc_reminder_enabled",
+      "rc_reminder_last_shown",
+      "marathon_best_score",
+      "tc_onboarding_v1_done",
+    ];
+    for (const key of localKeys) window.localStorage.removeItem(key);
+    try {
+      window.sessionStorage.removeItem("analytics_phase1_session_id");
+    } catch {
+      /* ignore */
+    }
+  };
+
   const handleSelfDelete = async () => {
     if (!user || !canConfirm || busy) return;
     setBusy(true);
     try {
       const { error } = await supabase.rpc("delete_own_account");
       if (error) throw error;
+      clearLocalAccountArtifacts();
       await signOut();
       setDone(true);
       toast.success("Compte supprimé");
