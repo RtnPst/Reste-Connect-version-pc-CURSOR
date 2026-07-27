@@ -19,8 +19,8 @@
     "path": "C:\\Users\\npays\\Desktop\\MonQuiz\\android.keystore",
     "alias": "android"
   },
-  "appVersionName": "1.0.6",
-  "appVersionCode": 7,
+  "appVersionName": "1.0.7",
+  "appVersionCode": 8,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://tanstack-start-ts.npaysant.workers.dev/manifest.json",
