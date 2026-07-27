@@ -1056,3 +1056,203 @@ main {
     transparent 56%
   ) !important;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Brain buddy (Capte) — soft companion poses                                   */
+/* -------------------------------------------------------------------------- */
+
+.brain-buddy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  user-select: none;
+}
+
+.brain-buddy__body {
+  transform-origin: 60px 78px;
+  animation: brain-buddy-breathe 3.6s ease-in-out infinite;
+}
+
+.brain-buddy__bolt {
+  transform-origin: 64px 50px;
+}
+
+.brain-buddy__wave-arm,
+.brain-buddy__sparkles {
+  opacity: 0;
+}
+
+.brain-buddy--idle .brain-buddy__body {
+  animation: brain-buddy-breathe 3.6s ease-in-out infinite;
+}
+
+.brain-buddy--wave .brain-buddy__wave-arm {
+  opacity: 1;
+  transform-origin: 88px 54px;
+  animation: brain-buddy-wave 1.1s ease-in-out infinite;
+}
+
+.brain-buddy--wave .brain-buddy__body {
+  animation: brain-buddy-sway 2.4s ease-in-out infinite;
+}
+
+.brain-buddy--aha .brain-buddy__bolt {
+  animation: brain-buddy-bolt-flash 1.2s ease-in-out infinite;
+}
+
+.brain-buddy--aha .brain-buddy__sparkles {
+  opacity: 1;
+  animation: brain-buddy-sparkle 1.4s ease-in-out infinite;
+}
+
+.brain-buddy--aha .brain-buddy__mouth {
+  opacity: 0;
+}
+
+.brain-buddy--aha .brain-buddy__mouth-aha {
+  opacity: 1;
+}
+
+.brain-buddy--think .brain-buddy__body {
+  animation: brain-buddy-think 2.8s ease-in-out infinite;
+}
+
+.brain-buddy--think .brain-buddy__eye--l,
+.brain-buddy--think .brain-buddy__eye--r {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: brain-buddy-look 2.8s ease-in-out infinite;
+}
+
+.brain-buddy--tip .brain-buddy__sparkles {
+  opacity: 1;
+}
+
+.brain-buddy--tip .brain-buddy__body {
+  animation: brain-buddy-tip-bob 2.2s ease-in-out infinite;
+}
+
+.brain-buddy--wink .brain-buddy__eye--r {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: brain-buddy-wink 2.4s ease-in-out infinite;
+}
+
+.brain-buddy--wink .brain-buddy__bolt {
+  animation: brain-buddy-bolt-flash 2.4s ease-in-out infinite;
+}
+
+@keyframes brain-buddy-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+@keyframes brain-buddy-sway {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes brain-buddy-wave {
+  0%,
+  100% {
+    transform: rotate(-12deg) translateY(0);
+  }
+  50% {
+    transform: rotate(18deg) translateY(-2px);
+  }
+}
+
+@keyframes brain-buddy-bolt-flash {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  40% {
+    transform: scale(1.12);
+    filter: brightness(1.25);
+  }
+  70% {
+    transform: scale(0.96);
+    filter: brightness(1.05);
+  }
+}
+
+@keyframes brain-buddy-sparkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes brain-buddy-think {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-1px) rotate(-3deg);
+  }
+}
+
+@keyframes brain-buddy-look {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  40% {
+    transform: translate(1.5px, -1px);
+  }
+  70% {
+    transform: translate(-1px, 0.5px);
+  }
+}
+
+@keyframes brain-buddy-tip-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes brain-buddy-wink {
+  0%,
+  42%,
+  58%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brain-buddy__body,
+  .brain-buddy__bolt,
+  .brain-buddy__wave-arm,
+  .brain-buddy__sparkles,
+  .brain-buddy__eye--l,
+  .brain-buddy__eye--r {
+    animation: none !important;
+  }
+}

@@ -250,6 +250,22 @@ function SettingsPage() {
               >
                 Contacter le support
               </a>
+              <button
+                type="button"
+                className="mt-3 block text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                onClick={() => {
+                  try {
+                    window.localStorage.removeItem("tc_onboarding_v2_buddy");
+                    window.localStorage.removeItem("tc_buddy_home_tip_dismissed");
+                  } catch {
+                    /* ignore */
+                  }
+                  toast.success("Intro Capte prête — retour à l’accueil");
+                  navigate({ to: "/" });
+                }}
+              >
+                Revoir l’intro avec Capte
+              </button>
             </div>
             <div className="mt-5 border-t border-border pt-4">
               <h3 className="text-sm font-semibold tracking-wide text-muted-foreground">

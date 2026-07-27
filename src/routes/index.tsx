@@ -4,6 +4,7 @@ import { Download } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
 import { FilRepriseEcho } from "@/components/FilRepriseEcho";
 import { JourneyPage } from "@/components/JourneyPage";
+import { BrainBuddyHomeTip } from "@/components/BrainBuddyHomeTip";
 import { OnboardingSheet } from "@/components/OnboardingSheet";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
@@ -135,6 +136,7 @@ function HomePage() {
     <JourneyPage>
       <AppHeader />
       <OnboardingSheet userId={user?.id} />
+      <BrainBuddyHomeTip dailyDone={dailyCompletedToday} />
 
       <main className="min-w-0 w-full flex-1 overflow-x-clip pb-2">
         <section className="container mx-auto max-w-lg px-4 pt-4 sm:px-6 sm:pt-6 [@media(max-height:780px)]:pt-2">
