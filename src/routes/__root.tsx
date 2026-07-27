@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { AppBottomNav } from "@/components/AppBottomNav";
+import { CapteOnboardingTour } from "@/components/CapteOnboardingTour";
 import { OfflineBanner } from "@/components/OfflineBanner";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/contexts/AuthContext";
@@ -107,6 +108,7 @@ function RootComponent() {
     <AuthProvider>
       <OfflineBanner />
       <Outlet />
+      <CapteOnboardingTour />
       <Toaster position="top-center" />
       <AppBottomNav />
     </AuthProvider>

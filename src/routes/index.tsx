@@ -5,7 +5,6 @@ import { AppHeader } from "@/components/AppHeader";
 import { FilRepriseEcho } from "@/components/FilRepriseEcho";
 import { JourneyPage } from "@/components/JourneyPage";
 import { BrainBuddyHomeTip } from "@/components/BrainBuddyHomeTip";
-import { OnboardingSheet } from "@/components/OnboardingSheet";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -135,7 +134,6 @@ function HomePage() {
   return (
     <JourneyPage>
       <AppHeader />
-      <OnboardingSheet userId={user?.id} />
       <BrainBuddyHomeTip dailyDone={dailyCompletedToday} />
 
       <main className="min-w-0 w-full flex-1 overflow-x-clip pb-2">

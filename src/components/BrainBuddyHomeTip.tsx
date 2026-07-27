@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { BrainBuddy } from "@/components/BrainBuddy";
-import { hasCompletedOnboarding } from "@/components/OnboardingSheet";
+import { hasCompletedOnboarding, ONBOARDING_KEY } from "@/components/CapteOnboardingTour";
 import { cn } from "@/lib/utils";
 
 const DISMISS_KEY = "tc_buddy_home_tip_dismissed";

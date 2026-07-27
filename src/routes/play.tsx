@@ -1,6 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Calendar, CalendarCheck2, ChevronRight, Compass, Footprints, Swords, Hourglass } from "lucide-react";
+import {
+  Calendar,
+  CalendarCheck2,
+  ChevronRight,
+  Compass,
+  Footprints,
+  Swords,
+  Hourglass,
+  type LucideIcon,
+} from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
 import { JourneyPage } from "@/components/JourneyPage";
 import { useAuth } from "@/contexts/AuthContext";
@@ -21,6 +30,60 @@ export const Route = createFileRoute("/play")({
   }),
   component: PlayPage,
 });
+
+type ModeCardProps = {
+  to: string;
+  icon: LucideIcon;
+  title: string;
+  subtitle: string;
+  accent?: boolean;
+  next?: boolean;
+  tone?: "sky" | "violet" | "amber" | "rose" | "slate";
+};
+
+function ModeCard({ to, icon: Icon, title, subtitle, accent, next, tone = "sky" }: ModeCardProps) {
+  const toneRing: Record<NonNullable<ModeCardProps["tone"]>, string> = {
+    sky: "ring-sky-400/25 bg-sky-500/10 text-sky-600 dark:text-sky-300",
+    violet: "ring-violet-400/25 bg-violet-500/10 text-violet-600 dark:text-violet-300",
+    amber: "ring-amber-400/25 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+    rose: "ring-rose-400/25 bg-rose-500/10 text-rose-600 dark:text-rose-300",
+    slate: "ring-border/60 bg-muted/40 text-foreground",
+  };
+
+  return (
+    <Link
+      to={to}
+      className={cn(
+        "group flex min-h-[4.5rem] items-center gap-3.5 rounded-2xl border px-3.5 py-3.5 pr-2 transition-[transform,box-shadow,border-color] duration-300 active:scale-[0.99] motion-reduce:active:scale-100",
+        accent
+          ? "border-primary/35 bg-linear-to-br from-primary/12 via-card to-card shadow-[0_0_0_1px_rgba(61,139,253,0.12),var(--shadow-soft)]"
+          : next
+            ? "border-primary/25 bg-card/95 shadow-[var(--shadow-soft)]"
+            : "border-border/70 bg-card/90 shadow-[var(--shadow-soft)] hover:border-border hover:shadow-[var(--shadow-card)]",
+      )}
+    >
+      <span
+        className={cn(
+          "flex size-11 shrink-0 items-center justify-center rounded-xl ring-1",
+          toneRing[tone],
+        )}
+      >
+        <Icon className="size-5" strokeWidth={accent ? 2.25 : 2} aria-hidden />
+      </span>
+      <span className="min-w-0 flex-1 text-left">
+        <p className="text-base font-bold leading-snug">{title}</p>
+        <p className="mt-0.5 text-sm leading-snug text-muted-foreground">{subtitle}</p>
+      </span>
+      <ChevronRight
+        className={cn(
+          "size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5",
+          accent || next ? "text-primary/80" : "text-muted-foreground/50",
+        )}
+        aria-hidden
+      />
+    </Link>
+  );
+}
 
 function PlayPage() {
   const { user } = useAuth();
@@ -72,105 +135,59 @@ function PlayPage() {
           </div>
         </header>
 
-        <div className="fil-continuity-rail fil-continuity-rail--soft">
+        <div className="space-y-3">
           {dailyDone ? (
-            <Link
+            <ModeCard
               to="/quiz"
-              className="fil-passage group flex min-h-[4.75rem] items-center gap-3.5 py-3.5 pr-1 transition-transform duration-300 active:scale-[0.99] motion-reduce:active:scale-100"
-            >
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary ring-1 ring-primary/25">
-                <CalendarCheck2 className="size-5" strokeWidth={2.25} aria-hidden />
-              </span>
-              <span className="min-w-0 flex-1 text-left">
-                <p className="text-base font-bold leading-snug">Capté pour aujourd’hui</p>
-                <p className="mt-0.5 text-sm text-muted-foreground">Continue avec un angle sur le fil.</p>
-              </span>
-              <ChevronRight className="size-4 shrink-0 text-primary/70 opacity-70" aria-hidden />
-            </Link>
+              icon={CalendarCheck2}
+              title="Capté pour aujourd’hui"
+              subtitle="Continue avec un angle sur le fil."
+              tone="sky"
+              next
+            />
           ) : (
-            <Link
+            <ModeCard
               to="/question-du-jour"
-              className="fil-passage fil-passage--accent group flex min-h-[4.75rem] items-center gap-3.5 py-3.5 pr-1 transition-transform duration-300 active:scale-[0.99] motion-reduce:active:scale-100"
-            >
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary ring-1 ring-primary/20">
-                <Calendar className="size-5" aria-hidden />
-              </span>
-              <span className="min-w-0 flex-1 text-left">
-                <p className="text-base font-bold leading-snug">Ouvrir le fil du jour</p>
-                <p className="mt-0.5 text-sm text-muted-foreground">Le passage qui ouvre la journée.</p>
-              </span>
-              <ChevronRight className="size-4 shrink-0 text-primary opacity-80" aria-hidden />
-            </Link>
+              icon={Calendar}
+              title="Ouvrir le fil du jour"
+              subtitle="Le passage qui ouvre la journée."
+              accent
+              tone="sky"
+            />
           )}
 
-          <div className="journey-connector" aria-hidden />
-
-          <Link
+          <ModeCard
             to="/quiz"
-            className={cn(
-              "fil-passage group flex min-h-[4.25rem] items-center gap-3.5 py-3 pr-1 transition-colors duration-300",
-              dailyDone && "fil-passage--next",
-            )}
-          >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/12 text-primary">
-              <Compass className="size-5" aria-hidden />
-            </span>
-            <span className="min-w-0 flex-1 text-left">
-              <p className="text-base font-bold leading-tight">Un angle</p>
-              <p className="mt-0.5 text-sm text-muted-foreground">
-                {PLAYABLE_THEME_KEYS.length} angles · environ 10 questions par run.
-              </p>
-            </span>
-            <ChevronRight className="size-4 shrink-0 text-muted-foreground/50" aria-hidden />
-          </Link>
+            icon={Compass}
+            title="Un angle"
+            subtitle={`${PLAYABLE_THEME_KEYS.length} angles · environ 10 questions par run.`}
+            tone="violet"
+            next={dailyDone}
+          />
 
-          <div className="journey-connector" aria-hidden />
-
-          <Link
-            to="/quiz/epoque/"
-            className="fil-passage group flex min-h-[4.25rem] items-center gap-3.5 py-3 pr-1"
-          >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
-              <Hourglass className="size-5" aria-hidden />
-            </span>
-            <span className="min-w-0 flex-1 text-left">
-              <p className="text-base font-bold leading-tight">Par époque</p>
-              <p className="mt-0.5 text-sm text-muted-foreground">90s, 2000s, 2010s ou maintenant.</p>
-            </span>
-            <ChevronRight className="size-4 shrink-0 text-muted-foreground/40" aria-hidden />
-          </Link>
-
-          <div className="journey-connector" aria-hidden />
-
-          <Link
+          <ModeCard
             to="/niveaux"
-            className="fil-passage group flex min-h-[4.25rem] items-center gap-3.5 py-3 pr-1"
-          >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
-              <Footprints className="size-5" aria-hidden />
-            </span>
-            <span className="min-w-0 flex-1 text-left">
-              <p className="text-base font-extrabold leading-tight">Le chemin</p>
-              <p className="mt-0.5 text-sm text-muted-foreground">Étapes reliées — tu es ici sur la ligne.</p>
-            </span>
-            <ChevronRight className="size-4 shrink-0 text-muted-foreground/40" aria-hidden />
-          </Link>
+            icon={Footprints}
+            title="Le chemin"
+            subtitle="Étapes reliées — difficulté qui monte doucement."
+            tone="amber"
+          />
 
-          <div className="journey-connector" aria-hidden />
+          <ModeCard
+            to="/quiz/epoque/"
+            icon={Hourglass}
+            title="Par époque"
+            subtitle="90s, 2000s, 2010s ou maintenant."
+            tone="slate"
+          />
 
-          <Link
+          <ModeCard
             to="/duel"
-            className="fil-passage group flex min-h-[4.25rem] items-center gap-3.5 py-3 pr-1"
-          >
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/12 text-primary">
-              <Swords className="size-5" aria-hidden />
-            </span>
-            <span className="min-w-0 flex-1 text-left">
-              <p className="text-base font-bold leading-tight">Duel</p>
-              <p className="mt-0.5 text-sm text-muted-foreground">Mêmes questions, à deux — partage un code.</p>
-            </span>
-            <ChevronRight className="size-4 shrink-0 text-muted-foreground/40" aria-hidden />
-          </Link>
+            icon={Swords}
+            title="Duel"
+            subtitle="Mêmes questions, à deux — partage un code."
+            tone="rose"
+          />
         </div>
 
         <p className="mt-8 text-center text-xs text-muted-foreground">

@@ -12,6 +12,7 @@
     "cap:open:ios": "npx cap open ios",
     "verify:concept-foundation": "node scripts/verify-concept-foundation.mjs",
     "audit:concept-key-coverage": "node scripts/audit-concept-key-coverage.mjs",
+    "audit:choice-length-bias": "node --env-file=.env scripts/audit-choice-length-bias.mjs",
     "audit:concept-novelty": "node scripts/build-concept-novelty-index.mjs",
     "discover:concepts": "node scripts/propose-concept-discovery-v1.mjs",
     "discover:fr-first": "node scripts/seed-fr-first-discovery-v1.mjs",

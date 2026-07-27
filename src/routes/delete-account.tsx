@@ -49,6 +49,7 @@ function DeleteAccountPage() {
       "marathon_best_score",
       "tc_onboarding_v1_done",
       "tc_onboarding_v2_buddy",
+      "tc_onboarding_v3_contextual",
       "tc_buddy_home_tip_dismissed",
     ];
     for (const key of localKeys) window.localStorage.removeItem(key);

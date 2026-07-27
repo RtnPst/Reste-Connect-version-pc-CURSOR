@@ -255,6 +255,7 @@ function SettingsPage() {
                 className="mt-3 block text-sm font-semibold text-primary underline-offset-4 hover:underline"
                 onClick={() => {
                   try {
+                    window.localStorage.removeItem(ONBOARDING_KEY);
                     window.localStorage.removeItem("tc_onboarding_v2_buddy");
                     window.localStorage.removeItem("tc_buddy_home_tip_dismissed");
                   } catch {
