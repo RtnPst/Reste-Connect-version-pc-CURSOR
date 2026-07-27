@@ -140,15 +140,16 @@ export function AppHeader() {
                   </p>
                   <span
                     className={cn(
-                      "shrink-0 rounded-full border border-primary/30 bg-primary-soft/55 px-1.5 py-px font-semibold leading-none text-primary transition-[font-size,padding] duration-300",
+                      "shrink-0 rounded-full border border-border/60 bg-muted/40 px-1.5 py-px font-medium leading-none text-muted-foreground transition-[font-size,padding] duration-300",
                       "text-[10px] sm:text-[10.5px]",
                     )}
+                    title="Repère discret sur ton fil — pas un classement"
                   >
-                    Niveau {level}
+                    Étape {level}
                   </span>
                 </div>
                 <span className="sr-only">
-                  Niveau {level}, environ {xpToNextPalier} XP avant la suite du parcours.
+                  Étape {level} sur le fil — environ {xpToNextPalier} XP avant la suite.
                 </span>
                 <div
                   className={cn(

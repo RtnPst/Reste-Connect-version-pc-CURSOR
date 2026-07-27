@@ -2,7 +2,14 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { Home, Play, Footprints, User } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
-const HIDE_ON_PATHS = [/^\/quiz\/[^/]+$/, /^\/niveau\/[^/]+$/, /^\/duel\/[^/]+$/, /^\/marathon$/, /^\/question-du-jour$/];
+const HIDE_ON_PATHS = [
+  /^\/quiz\/[^/]+$/,
+  /^\/quiz\/epoque\/[^/]+$/,
+  /^\/niveau\/[^/]+$/,
+  /^\/duel\/[^/]+$/,
+  /^\/marathon$/,
+  /^\/question-du-jour$/,
+];
 
 export function AppBottomNav() {
   const { user } = useAuth();
@@ -21,7 +28,8 @@ export function AppBottomNav() {
         pathname === "/play" ||
         pathname.startsWith("/quiz") ||
         pathname.startsWith("/niveaux") ||
-        pathname.startsWith("/question-du-jour"),
+        pathname.startsWith("/question-du-jour") ||
+        pathname.startsWith("/duel"),
     },
     { to: user ? "/parcours" : "/connexion", label: "Parcours", icon: Footprints, active: pathname.startsWith("/parcours") || pathname.startsWith("/statistiques") },
     { to: user ? "/reglages" : "/connexion", label: "Profil", icon: User, active: pathname.startsWith("/reglages") || pathname.startsWith("/connexion") },

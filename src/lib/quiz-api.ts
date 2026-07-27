@@ -36,6 +36,22 @@ export async function getPlayableQuestions(params: {
   }));
 }
 
+/** Random live questions whose concept_key is in the given list (époque packs). */
+export async function getPlayableQuestionsByConcepts(
+  conceptKeys: string[],
+  limit = 10,
+): Promise<PlayableQuestion[]> {
+  if (!conceptKeys.length) return [];
+  const { data: ids, error } = await supabase.rpc("get_playable_question_ids_by_concepts", {
+    _concept_keys: conceptKeys,
+    _limit: limit,
+  });
+  if (error) throw error;
+  const list = (ids as string[] | null) ?? [];
+  if (!list.length) return [];
+  return getPlayableQuestions({ ids: list, limit: list.length });
+}
+
 export async function getActiveQuestionCounts(): Promise<Record<ThemeKey, number>> {
   const { data, error } = await supabase.rpc("get_active_question_counts");
   if (error) throw error;

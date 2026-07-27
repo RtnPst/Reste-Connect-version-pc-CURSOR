@@ -181,12 +181,44 @@ function ProfilePage() {
       <main className="container mx-auto w-full min-w-0 max-w-lg flex-1 overflow-x-clip px-4 py-5 sm:px-6 sm:py-7">
         <header className="mb-6 animate-fade-in">
           <p className="text-[11px] font-medium tracking-[0.12em] text-muted-foreground/85">Mémoire du fil</p>
-          <h1 className="mt-1.5 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
-            {profile.display_name ? `${profile.display_name} — ton fil` : "Traces sur ton fil"}
-          </h1>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Ce que tu as parcouru et capté — une ligne de lecture, pas un tableau.
-          </p>
+          {recentCaptured[0] ? (
+            <div className="mt-3 rounded-2xl border border-primary/25 bg-primary-soft/40 px-4 py-4 sm:px-5 sm:py-5">
+              <p className="text-[11px] font-medium tracking-[0.12em] text-primary/80">Tu as capté</p>
+              <h1 className="mt-1.5 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
+                {recentCaptured[0].label}
+              </h1>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {profile.display_name
+                  ? `${profile.display_name} — ce mot reste sur ton fil.`
+                  : "Ce mot reste sur ton fil."}
+              </p>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="mt-3"
+                onClick={() => {
+                  void (async () => {
+                    const { shareCapturedConcept } = await import("@/lib/share");
+                    const { toast } = await import("sonner");
+                    const r = await shareCapturedConcept(recentCaptured[0].label);
+                    if (r === "copied") toast.success("Copié dans le presse-papiers");
+                  })();
+                }}
+              >
+                Partager « Tu as capté »
+              </Button>
+            </div>
+          ) : (
+            <>
+              <h1 className="mt-1.5 text-[1.65rem] font-extrabold leading-tight tracking-tight sm:text-3xl">
+                {profile.display_name ? `${profile.display_name} — ton fil` : "Traces sur ton fil"}
+              </h1>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Ce que tu as parcouru et capté — une ligne de lecture, pas un tableau.
+              </p>
+            </>
+          )}
         </header>
 
         <section className="journey-panel mb-6 p-4 sm:p-5">

@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Calendar, CalendarCheck2, ChevronRight, Compass, Footprints } from "lucide-react";
+import { Calendar, CalendarCheck2, ChevronRight, Compass, Footprints, Swords, Hourglass } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
 import { JourneyPage } from "@/components/JourneyPage";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { parisCalendarDate } from "@/lib/paris-calendar";
 import { cn } from "@/lib/utils";
+import { PLAYABLE_THEME_KEYS } from "@/lib/themes";
 
 export const Route = createFileRoute("/play")({
   head: () => ({
@@ -32,17 +34,16 @@ function PlayPage() {
 
     let cancelled = false;
     (async () => {
-      const today = new Date().toISOString().slice(0, 10);
-      const tomorrow = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
+      const today = parisCalendarDate();
       const { data } = await supabase
         .from("quiz_attempts")
-        .select("id")
+        .select("id, completed_at")
         .eq("user_id", user.id)
         .eq("mode", "daily")
-        .gte("completed_at", `${today}T00:00:00.000Z`)
-        .lt("completed_at", `${tomorrow}T00:00:00.000Z`)
-        .limit(1);
-      if (!cancelled) setDailyCompletedToday((data?.length ?? 0) > 0);
+        .order("completed_at", { ascending: false })
+        .limit(12);
+      const done = (data ?? []).some((a) => parisCalendarDate(new Date(a.completed_at)) === today);
+      if (!cancelled) setDailyCompletedToday(done);
     })();
 
     return () => {
@@ -116,9 +117,27 @@ function PlayPage() {
             </span>
             <span className="min-w-0 flex-1 text-left">
               <p className="text-base font-bold leading-tight">Un angle</p>
-              <p className="mt-0.5 text-sm text-muted-foreground">Six lectures courtes — autre thème, même fil.</p>
+              <p className="mt-0.5 text-sm text-muted-foreground">
+                {PLAYABLE_THEME_KEYS.length} angles · environ 10 questions par run.
+              </p>
             </span>
             <ChevronRight className="size-4 shrink-0 text-muted-foreground/50" aria-hidden />
+          </Link>
+
+          <div className="journey-connector" aria-hidden />
+
+          <Link
+            to="/quiz/epoque/"
+            className="fil-passage group flex min-h-[4.25rem] items-center gap-3.5 py-3 pr-1"
+          >
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
+              <Hourglass className="size-5" aria-hidden />
+            </span>
+            <span className="min-w-0 flex-1 text-left">
+              <p className="text-base font-bold leading-tight">Par époque</p>
+              <p className="mt-0.5 text-sm text-muted-foreground">90s, 2000s, 2010s ou maintenant.</p>
+            </span>
+            <ChevronRight className="size-4 shrink-0 text-muted-foreground/40" aria-hidden />
           </Link>
 
           <div className="journey-connector" aria-hidden />
@@ -133,6 +152,22 @@ function PlayPage() {
             <span className="min-w-0 flex-1 text-left">
               <p className="text-base font-extrabold leading-tight">Le chemin</p>
               <p className="mt-0.5 text-sm text-muted-foreground">Étapes reliées — tu es ici sur la ligne.</p>
+            </span>
+            <ChevronRight className="size-4 shrink-0 text-muted-foreground/40" aria-hidden />
+          </Link>
+
+          <div className="journey-connector" aria-hidden />
+
+          <Link
+            to="/duel"
+            className="fil-passage group flex min-h-[4.25rem] items-center gap-3.5 py-3 pr-1"
+          >
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/12 text-primary">
+              <Swords className="size-5" aria-hidden />
+            </span>
+            <span className="min-w-0 flex-1 text-left">
+              <p className="text-base font-bold leading-tight">Duel</p>
+              <p className="mt-0.5 text-sm text-muted-foreground">Mêmes questions, à deux — partage un code.</p>
             </span>
             <ChevronRight className="size-4 shrink-0 text-muted-foreground/40" aria-hidden />
           </Link>

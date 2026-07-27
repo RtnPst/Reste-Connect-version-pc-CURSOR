@@ -17,6 +17,7 @@ import { speak } from "@/lib/speech";
 import { THEMES, type ThemeKey } from "@/lib/themes";
 import { toDisplayChoices } from "@/lib/choice-order";
 import { parisCalendarDate } from "@/lib/paris-calendar";
+import { shareCapturedConcept, sharePayload } from "@/lib/share";
 
 type Q = {
   id: string;
@@ -253,27 +254,15 @@ function DailyQuestionPage() {
   };
 
   const handleShare = async () => {
-    const url = window.location.origin;
-    const shareData = {
-      title: "Tu captes ?",
-      text: "Je viens de faire la question du jour sur Tu captes ?",
-      url,
-    };
-    try {
-      if (navigator.share && navigator.canShare?.(shareData)) {
-        await navigator.share(shareData);
-        return;
-      }
-    } catch (e) {
-      // user cancelled or share failed — fall through to clipboard
-      if ((e as Error).name === "AbortError") return;
-    }
-    try {
-      await navigator.clipboard.writeText(`${shareData.text} ${url}`);
-      toast.success("Lien copié dans le presse-papiers");
-    } catch {
-      toast.error("Impossible de copier le lien");
-    }
+    const label = getConceptLabel(question.conceptKey);
+    const result = label
+      ? await shareCapturedConcept(label, { url: `${window.location.origin}/question-du-jour` })
+      : await sharePayload({
+          title: "Tu captes ?",
+          text: "Je viens de faire la question du jour sur Tu captes ?",
+          url: `${window.location.origin}/question-du-jour`,
+        });
+    if (result === "copied") toast.success("Lien copié dans le presse-papiers");
   };
 
   if (loading) {
@@ -335,26 +324,12 @@ function DailyQuestionPage() {
     const streak = profile?.current_streak ?? 0;
     const longestStreak = profile?.longest_streak ?? 0;
     const handleShareDone = async () => {
-      const url = `${window.location.origin}/question-du-jour`;
-      const shareData = {
+      const result = await sharePayload({
         title: "Tu captes ?",
         text: "J’ai déjà fait la question du jour sur Tu captes ? — et toi ?",
-        url,
-      };
-      try {
-        if (navigator.share && navigator.canShare?.(shareData)) {
-          await navigator.share(shareData);
-          return;
-        }
-      } catch (e) {
-        if ((e as Error).name === "AbortError") return;
-      }
-      try {
-        await navigator.clipboard.writeText(`${shareData.text} ${url}`);
-        toast.success("Lien copié dans le presse-papiers");
-      } catch {
-        toast.error("Impossible de copier le lien");
-      }
+        url: `${window.location.origin}/question-du-jour`,
+      });
+      if (result === "copied") toast.success("Lien copié dans le presse-papiers");
     };
 
     return (

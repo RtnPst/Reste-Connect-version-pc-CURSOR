@@ -26,6 +26,7 @@ import { excerptExplanation, getConceptLabel } from "@/lib/concept-labels";
 import { recordConceptSeen } from "@/lib/concept-memory";
 import { getNextActionSuggestion } from "@/lib/next-action";
 import { createAnalyticsRunId, trackEvent } from "@/lib/analytics";
+import { shareCapturedConcept, sharePayload } from "@/lib/share";
 
 type Question = {
   id: string;
@@ -80,6 +81,9 @@ function applyConceptSpacing(questions: Question[]): Question[] {
 export const Route = createFileRoute("/quiz/$theme")({
   validateSearch: () => ({}),
   beforeLoad: ({ params, search }) => {
+    if (params.theme === "epoque") {
+      throw redirect({ to: "/quiz/epoque/", replace: true });
+    }
     if (params.theme !== "culture_pop") return;
     const raw = (search as Record<string, unknown>).piste;
     const piste = typeof raw === "string" ? raw.trim().toLowerCase() : "";
@@ -626,26 +630,17 @@ function ResultsScreen({
   const sessionCapturedLabel = pickSessionCapturedConceptLabel(questions, answers);
 
   const handleShare = async () => {
-    const url = window.location.origin;
-    const shareData = {
+    const label = sessionCapturedLabel ?? takeawayLabel;
+    if (label) {
+      const result = await shareCapturedConcept(label);
+      if (result === "copied") toast.success("Copié dans le presse-papiers");
+      return;
+    }
+    const result = await sharePayload({
       title: "Tu captes ?",
       text: `J’ai exploré « ${themeMeta.short} » sur Tu captes ?.`,
-      url,
-    };
-    try {
-      if (navigator.share && navigator.canShare?.(shareData)) {
-        await navigator.share(shareData);
-        return;
-      }
-    } catch (e) {
-      if ((e as Error).name === "AbortError") return;
-    }
-    try {
-      await navigator.clipboard.writeText(`${shareData.text} ${url}`);
-      toast.success("Lien copié dans le presse-papiers");
-    } catch {
-      toast.error("Impossible de copier le lien");
-    }
+    });
+    if (result === "copied") toast.success("Lien copié dans le presse-papiers");
   };
 
   return (

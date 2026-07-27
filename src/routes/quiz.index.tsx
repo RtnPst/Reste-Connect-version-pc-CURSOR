@@ -15,7 +15,7 @@ export const Route = createFileRoute("/quiz/")({
       { title: "Choisir un thème — Tu captes ?" },
       {
         name: "description",
-        content: "Six lectures du web vivant — gaming, mèmes, relations, tech… Un run court par angle.",
+        content: "Six angles du web vivant — gaming, mèmes, relations, tech… Environ 10 questions par run.",
       },
     ],
   }),
@@ -72,9 +72,20 @@ function ThemeSelection() {
             Une lecture du web
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Chaque angle, un passage court — même fil, autre lumière.
+            Chaque angle, un passage d’environ 10 questions — même fil, autre lumière.
           </p>
         </header>
+
+        <Link
+          to="/quiz/epoque/"
+          className="journey-panel mb-4 flex min-h-[3.75rem] items-center gap-3 p-3.5 transition-colors hover:border-primary/35"
+        >
+          <span className="text-sm font-bold text-primary">Par époque</span>
+          <span className="min-w-0 flex-1 text-sm text-muted-foreground">
+            90s → maintenant
+          </span>
+          <ChevronRight className="size-4 text-muted-foreground/50" aria-hidden />
+        </Link>
 
         <div className="grid grid-cols-2 gap-3">
           {PLAYABLE_THEME_KEYS.map((theme) => {

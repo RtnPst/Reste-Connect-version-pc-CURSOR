@@ -28,6 +28,8 @@ import { Route as DuelIndexRouteImport } from './routes/duel.index'
 import { Route as QuizThemeRouteImport } from './routes/quiz.$theme'
 import { Route as NiveauNRouteImport } from './routes/niveau.$n'
 import { Route as DuelCodeRouteImport } from './routes/duel.$code'
+import { Route as QuizEpoqueIndexRouteImport } from './routes/quiz.epoque.index'
+import { Route as QuizEpoqueDecadeRouteImport } from './routes/quiz.epoque.$decade'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -124,6 +126,16 @@ const DuelCodeRoute = DuelCodeRouteImport.update({
   path: '/duel/$code',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuizEpoqueIndexRoute = QuizEpoqueIndexRouteImport.update({
+  id: '/quiz/epoque/',
+  path: '/quiz/epoque/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizEpoqueDecadeRoute = QuizEpoqueDecadeRouteImport.update({
+  id: '/quiz/epoque/$decade',
+  path: '/quiz/epoque/$decade',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -145,6 +157,8 @@ export interface FileRoutesByFullPath {
   '/quiz/$theme': typeof QuizThemeRoute
   '/duel/': typeof DuelIndexRoute
   '/quiz/': typeof QuizIndexRoute
+  '/quiz/epoque/$decade': typeof QuizEpoqueDecadeRoute
+  '/quiz/epoque/': typeof QuizEpoqueIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -166,6 +180,8 @@ export interface FileRoutesByTo {
   '/quiz/$theme': typeof QuizThemeRoute
   '/duel': typeof DuelIndexRoute
   '/quiz': typeof QuizIndexRoute
+  '/quiz/epoque/$decade': typeof QuizEpoqueDecadeRoute
+  '/quiz/epoque': typeof QuizEpoqueIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -188,6 +204,8 @@ export interface FileRoutesById {
   '/quiz/$theme': typeof QuizThemeRoute
   '/duel/': typeof DuelIndexRoute
   '/quiz/': typeof QuizIndexRoute
+  '/quiz/epoque/$decade': typeof QuizEpoqueDecadeRoute
+  '/quiz/epoque/': typeof QuizEpoqueIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -211,6 +229,8 @@ export interface FileRouteTypes {
     | '/quiz/$theme'
     | '/duel/'
     | '/quiz/'
+    | '/quiz/epoque/$decade'
+    | '/quiz/epoque/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -232,6 +252,8 @@ export interface FileRouteTypes {
     | '/quiz/$theme'
     | '/duel'
     | '/quiz'
+    | '/quiz/epoque/$decade'
+    | '/quiz/epoque'
   id:
     | '__root__'
     | '/'
@@ -253,6 +275,8 @@ export interface FileRouteTypes {
     | '/quiz/$theme'
     | '/duel/'
     | '/quiz/'
+    | '/quiz/epoque/$decade'
+    | '/quiz/epoque/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -275,6 +299,8 @@ export interface RootRouteChildren {
   QuizThemeRoute: typeof QuizThemeRoute
   DuelIndexRoute: typeof DuelIndexRoute
   QuizIndexRoute: typeof QuizIndexRoute
+  QuizEpoqueDecadeRoute: typeof QuizEpoqueDecadeRoute
+  QuizEpoqueIndexRoute: typeof QuizEpoqueIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -412,6 +438,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DuelCodeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quiz/epoque/': {
+      id: '/quiz/epoque/'
+      path: '/quiz/epoque'
+      fullPath: '/quiz/epoque/'
+      preLoaderRoute: typeof QuizEpoqueIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz/epoque/$decade': {
+      id: '/quiz/epoque/$decade'
+      path: '/quiz/epoque/$decade'
+      fullPath: '/quiz/epoque/$decade'
+      preLoaderRoute: typeof QuizEpoqueDecadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -435,6 +475,8 @@ const rootRouteChildren: RootRouteChildren = {
   QuizThemeRoute: QuizThemeRoute,
   DuelIndexRoute: DuelIndexRoute,
   QuizIndexRoute: QuizIndexRoute,
+  QuizEpoqueDecadeRoute: QuizEpoqueDecadeRoute,
+  QuizEpoqueIndexRoute: QuizEpoqueIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,9 +1,10 @@
 /**
  * Lightweight reminder helper using Notifications API.
- * Shows a daily reminder popup when the user opens the app on a new day,
- * if they have enabled the reminder. PWA push notifications proper would
- * require a service worker + push server, which is overkill here.
+ * Shows a daily reminder when the user opens the app on a new Paris day,
+ * if they have enabled the reminder. Deep-links toward the fil du jour when possible.
  */
+
+import { parisCalendarDate } from "@/lib/paris-calendar";
 
 const KEY_ENABLED = "rc_reminder_enabled";
 const KEY_LAST_SHOWN = "rc_reminder_last_shown";
@@ -33,16 +34,24 @@ export function maybeShowDailyReminder() {
   if (typeof window === "undefined" || !("Notification" in window)) return;
   if (!isReminderEnabled()) return;
   if (Notification.permission !== "granted") return;
-  const today = new Date().toISOString().slice(0, 10);
+  const today = parisCalendarDate();
   const last = window.localStorage.getItem(KEY_LAST_SHOWN);
   if (last === today) return;
   window.localStorage.setItem(KEY_LAST_SHOWN, today);
+  const dailyUrl = `${window.location.origin}/question-du-jour`;
   try {
-    new Notification("Tu captes ? 👀", {
-      body: "Ta question du jour t'attend. T'es encore dans le game ?",
+    const n = new Notification("Tu captes ?", {
+      body: "Ton fil du jour t’attend — un mot à capter, sans pression.",
       icon: "/icon-192.png",
       badge: "/icon-192.png",
+      tag: "fil-du-jour",
+      data: { url: dailyUrl },
     });
+    n.onclick = () => {
+      window.focus();
+      window.location.assign("/question-du-jour");
+      n.close();
+    };
   } catch {
     // ignored
   }
