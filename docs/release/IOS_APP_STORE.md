@@ -1,9 +1,12 @@
 # iOS / App Store (Capacitor shell)
 
+> **Hors scope actuel** — distribution prévue **Play Store uniquement**. Ce doc reste pour un éventuel retour Apple plus tard.
+
 Tu Captes web is wrapped like the Android TWA: the native shell loads the **production URL**.
 
 ## Status
 
+- **Deferred** (Play-only product decision)
 - Config: `capacitor.config.json` (`com.npaysant.tucaptes`)
 - Native `ios/` project is generated on a **Mac** with Xcode (not on Windows CI)
 

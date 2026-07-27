@@ -95,11 +95,11 @@ function PrivacyPage() {
           <section className="mt-8 space-y-3">
             <h2 className="text-2xl font-extrabold">Suppression du compte</h2>
             <p>
-              Tu peux demander la suppression via{" "}
+              Tu peux supprimer ton compte toi-même depuis{" "}
               <Link className="font-semibold text-primary underline-offset-4 hover:underline" to="/delete-account">
                 cette page
-              </Link>
-              . Nous répondons sous {SUPPORT_SLA} en règle générale.
+              </Link>{" "}
+              (connecté), ou nous écrire — réponse sous {SUPPORT_SLA} en règle générale.
             </p>
           </section>
 

@@ -2,6 +2,9 @@
  * Lightweight reminder helper using Notifications API.
  * Shows a daily reminder when the user opens the app on a new Paris day,
  * if they have enabled the reminder. Deep-links toward the fil du jour when possible.
+ *
+ * Intentionally local-only (no Web Push / VAPID / FCM). Server push is deferred:
+ * needs subscription storage, keys, and a cron — not required for Play soft-launch.
  */
 
 import { parisCalendarDate } from "@/lib/paris-calendar";

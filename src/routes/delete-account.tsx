@@ -1,5 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { AppHeader } from "@/components/AppHeader";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 import {
   BRAND_NAME,
   SUPPORT_EMAIL,
@@ -14,7 +20,7 @@ export const Route = createFileRoute("/delete-account")({
       { title: `${BRAND_NAME} — Suppression de compte` },
       {
         name: "description",
-        content: "Demander la suppression de ton compte Tu Captes ?",
+        content: "Supprimer ton compte Tu Captes ? et les données associées.",
       },
     ],
   }),
@@ -22,9 +28,35 @@ export const Route = createFileRoute("/delete-account")({
 });
 
 function DeleteAccountPage() {
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+  const [confirmText, setConfirmText] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState(false);
+
   const mailto = `${SUPPORT_MAILTO}?subject=${encodeURIComponent(`${SUPPORT_SUBJECT_PREFIX} Suppression de compte`)}&body=${encodeURIComponent(
     "Bonjour,\n\nJe demande la suppression de mon compte Tu Captes ? et des données associées.\n\nAdresse e-mail du compte :\n\nMerci.",
   )}`;
+
+  const canConfirm = confirmText.trim().toUpperCase() === "SUPPRIMER";
+
+  const handleSelfDelete = async () => {
+    if (!user || !canConfirm || busy) return;
+    setBusy(true);
+    try {
+      const { error } = await supabase.rpc("delete_own_account");
+      if (error) throw error;
+      await signOut();
+      setDone(true);
+      toast.success("Compte supprimé");
+      navigate({ to: "/" });
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Suppression impossible pour le moment";
+      toast.error(msg);
+    } finally {
+      setBusy(false);
+    }
+  };
 
   return (
     <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background">
@@ -35,20 +67,60 @@ function DeleteAccountPage() {
             Supprimer mon compte
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Processus support — délai indicatif {SUPPORT_SLA}
+            Efface le compte et les données associées (progression, captures, duels…).
           </p>
 
-          <section className="mt-8 space-y-4 text-base sm:text-lg">
+          {user && !done ? (
+            <section className="mt-8 space-y-4">
+              <p className="text-base sm:text-lg">
+                Connecté en tant que{" "}
+                <span className="font-semibold">{user.email ?? "compte"}</span>. Cette action est
+                définitive.
+              </p>
+              <label className="block space-y-2 text-sm" htmlFor="confirm-delete">
+                <span className="font-medium">
+                  Tape <span className="font-extrabold tracking-wide">SUPPRIMER</span> pour confirmer
+                </span>
+                <Input
+                  id="confirm-delete"
+                  autoComplete="off"
+                  value={confirmText}
+                  onChange={(e) => setConfirmText(e.target.value)}
+                  placeholder="SUPPRIMER"
+                  disabled={busy}
+                />
+              </label>
+              <Button
+                type="button"
+                variant="destructive"
+                size="lg"
+                className="w-full sm:w-auto"
+                disabled={!canConfirm || busy}
+                onClick={() => void handleSelfDelete()}
+              >
+                {busy ? "Suppression…" : "Supprimer mon compte maintenant"}
+              </Button>
+            </section>
+          ) : (
+            <section className="mt-8 space-y-4 text-base sm:text-lg">
+              <p>
+                Connecte-toi pour supprimer ton compte directement, ou écris-nous depuis l’adresse
+                liée au compte :
+              </p>
+              <p>
+                <Link className="font-semibold text-primary underline-offset-4 hover:underline" to="/connexion">
+                  Se connecter
+                </Link>
+              </p>
+            </section>
+          )}
+
+          <section className="mt-10 space-y-3 border-t border-border pt-6 text-sm text-muted-foreground">
             <p>
-              Pour supprimer ton compte et les données associées (progression, captures, duels…),
-              envoie un e-mail depuis l’adresse liée au compte :
-            </p>
-            <a className="font-semibold text-primary underline-offset-4 hover:underline" href={mailto}>
-              {SUPPORT_EMAIL}
-            </a>
-            <p className="text-sm text-muted-foreground">
-              Objet suggéré : « {SUPPORT_SUBJECT_PREFIX} Suppression de compte ». Indique l’e-mail
-              du compte. Nous confirmons quand c’est fait.
+              Alternative support (délai indicatif {SUPPORT_SLA}) :{" "}
+              <a className="font-semibold text-primary underline-offset-4 hover:underline" href={mailto}>
+                {SUPPORT_EMAIL}
+              </a>
             </p>
             <p>
               <Link className="font-semibold text-primary underline-offset-4 hover:underline" to="/privacy">
